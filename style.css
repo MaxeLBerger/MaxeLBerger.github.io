@@ -1,69 +1,220 @@
 body {
-    background-color: #01092c;
+    background-color: #150c33;
     color: white;
-    font-family: "Roboto", sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+    font-family: Bahnschrift;
+    overflow: hidden;
+}
+
+#wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    width: 200%;
+}
+
+    #wrapper.split {
+        width: 100%;
+        transition: 1s;
+    }
+
+#home {
+    width: 50%;
 }
 
 .center {
-    text-align: center;
-    position: absolute;
-    top: 30%; /* Startpunkt des Textes in der Mitte des Bildschirms */
-    left: 50%;
-    transform: translateX(-50%);
-    animation: moveToTop 8s ease-in-out forwards; /* Bewegung nach oben */
+    flex-direction: column;
+    display: flex;
 }
 
 h1 {
-    font-size: 10vw; /* Dynamische Schriftgröße */
-    white-space: nowrap;
-    opacity: 0; /* Unsichtbar beim Start */
-    animation: fadeInTitle 4s ease-in-out forwards; /* Animation für das Einblenden */
+    font-size: 100px;
+    background: linear-gradient(to right, darkviolet, mediumvioletred);
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 32px;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    animation: fadeIn 1s;
 }
+
+.slideAnimation h1 {
+    font-size: 70px;
+    transition: 1s;
+    border-radius: 12px;
+}
+
 
 h2 {
-    font-size: 3vw; /* Dynamische Schriftgröße */
-    margin-top: 20px; /* Abstand zum Titel */
-    white-space: nowrap;
-    opacity: 0; /* Unsichtbar beim Start */
-    animation: fadeInSubtitle 4s ease-in-out forwards 2s; /* Verzögerte Animation nach dem Titel */
+    font-size: 64px;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    animation: fadeIn 1s;
 }
 
-@keyframes fadeInTitle {
-    0% {
-        opacity: 0;
-        transform: translateY(50px) scale(1.5); /* Größer und weiter unten zu Beginn */
+.slideAnimation h2 {
+    font-size: 90px;
+    transition: 1s;
+}
+
+
+h3 {
+    font-size: 36px;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    animation: fadeIn 1s;
+}
+
+.aboutme {
+    margin-top: 100px;
+    animation: fadeIn 1s;
+}
+
+    .aboutme .box {
+        box-shadow: #322854 0px 0px 25px 10px;
+        border-radius: 16px;
+        width: 60%;
+        text-align: left;
+        background: url('res/programming1.jpg');
+        height: 500px;
+        display: flex;
+        margin-bottom: 32px;
+        font-size: 28px;
     }
+
+        .aboutme .box p {
+            margin-left: 16px;
+        }
+
+        .aboutme .box h3 {
+            font-size: 2em;
+            margin-left: 16px;
+            margin-block-start: 25px;
+            margin-block-end: 3px;
+            color: #9afffe;
+            text-shadow: 3px 3px #150c33;
+        }
+
+    .aboutme .picture {
+        height: 100%;
+        border-radius: 16px;
+    }
+
+    .aboutme .text {
+        margin-right: 32px;
+    }
+
+    .aboutme .box.slideAnimation {
+        font-size: 18px;
+        height: 400px;
+        transition: 1s;
+        width: 80%;
+    }
+
+@keyframes fadeIn {
+    0% {
+        margin-top: 100%;
+    }
+
+    70% {
+        margin-top: -15px;
+    }
+
     100% {
+    }
+}
+
+.arrowRight {
+    position: absolute;
+    right: 32px;
+    height: 64px;
+    width: 64px;
+    text-align: center;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px 1px white;
+    opacity: 0.3;
+    transition: 0.2s;
+}
+
+    .arrowRight img {
+        margin-top: 8px;
+        margin-left: 4px;
+        height: 48px;
+    }
+
+    .arrowRight:hover {
         opacity: 1;
-        transform: translateY(0) scale(1); /* Endgröße und Endposition */
+        transition: 0.2s;
+    }
+
+.slide {
+    position: relative;
+    left: 50%;
+    width: fit-content;
+    transform: translate(-50%);
+}
+
+.slideAnimation {
+    animation: slideLeft 1s ease-in-out forwards;
+}
+
+@keyframes slideLeft {
+    from {
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    to {
+        left: 25px;
+        transform: translate(0%);
     }
 }
 
-/* Keyframe-Animation für das Einblenden des Untertitels */
-@keyframes fadeInSubtitle {
-    0% {
-        opacity: 0;
-        transform: translateY(30px); /* Leicht nach unten versetzt zu Beginn */
-    }
-    100% {
+
+#projects {
+    width: 50%;
+    opacity: 0;
+    text-align: right;
+}
+
+    #projects.show {
         opacity: 1;
-        transform: translateY(0); /* Endposition */
+        transition: 1s;
     }
+
+    #projects .header {
+        text-align: right;
+        position: relative;
+        right: 25px;
+    }
+
+.projectTree {
 }
 
-/* Keyframe-Animation für die Bewegung nach oben */
-@keyframes moveToTop {
-    0% {
-        top: 50%; /* Startpunkt näher an der Mitte */
-    }
-    100% {
-        top: 10%; /* Endpunkt oben am Bildschirm */
-    }
+.project {
+    border: white 2px solid;
+    border-radius: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 50%;
+    position: relative;
+    text-align: left;
 }
+
+    .project p {
+        margin-left: 10px;
+    }
+
+    .project a {
+        color: white
+    }
+
+    .project a:visited {
+        color: white
+    }
+
+    .project img {
+        position: relative;
+        width: 100%;
+    }

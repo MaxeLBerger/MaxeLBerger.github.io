@@ -1,15 +1,61 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacquarda+Bastarda+9&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class = "center">
-            <h1 class="spawn">Maximilian Haak.</h1>
-            <h2 class="spawn2">Software-Entwickler</h2>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haak</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="home">
+            <div class="center">
+                <div class="slide">
+                    <h2>Servus, ich bin</h2>
+                </div>
+                <div class="slide">
+                    <h1 id="name">Maximilian Haak</h1>
+                </div>
+                <div class="slide">
+                    <h3>Software Entwickler</h3>
+                </div>
+
+            </div>
+
+            <div class="arrowRight" onclick="slideLeft()">
+                <img src="res/arrowRight.png" />
+            </div>
+
+            <div class="center aboutme">
+                <div class="box slide" id="aboutMeBox">
+                    <div class="text">
+                        <h3>About Me</h3>
+                        <p>
+                            Ich begann 2020 mit dem Programmieren, zunächst mit einfachen Websites.
+                            Bald darauf folgten komplexere Projekte in Java.<br /><br />
+                            2022 startete ich meine Ausbildung, die mir half, mit Softwareentwicklungen und Datenbankanbindungen in Delphi zu arbeiten.<br /><br />
+                            Meine Leidenschaft für Programmierung wächst weiterhin und ich freue mich immer über neue Herausforderungen
+                        </p>
+                    </div>
+                    <img src="res/inder.png" class="picture" />
+                </div>
+            </div>
         </div>
-    </body>
+
+        <div id="projects">
+            <h2>Projekte</h2>
+
+            <div class="projectTree">
+                <div class="project">
+                    <h3>Albert</h3>
+                    <img src="res/albert.png" />
+                    <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden. Jedes Mal, wenn ein Albert Nahrung findet, erhöht sich seine Lebensdauer und er dupliziert sich. Dadurch überleben die erfolgreichen Alberts, während die weniger erfolgreichen sterben. Am Ende bleibt der Albert übrig, der am besten darin ist, Nahrung zu finden.</p>
+                    <p><a href="projects/albert.html">Weitere Infos</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
