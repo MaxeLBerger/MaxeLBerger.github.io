@@ -2,21 +2,12 @@ body {
     background-color: #150c33;
     color: white;
     font-family: Bahnschrift;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #wrapper {
-    display: flex;
-    width: 200%;
-}
-
-    #wrapper.split {
-        width: 100%;
-        transition: 1s;
-    }
-
-#home {
-    width: 50%;
+    display: block;
+    width: 100%;
 }
 
 .center {
@@ -35,12 +26,6 @@ h1 {
     animation: fadeIn 1s;
 }
 
-.slideAnimation h1 {
-    font-size: 70px;
-    transition: 1s;
-    border-radius: 12px;
-}
-
 
 h2 {
     font-size: 64px;
@@ -48,12 +33,6 @@ h2 {
     margin-block-end: 10px;
     animation: fadeIn 1s;
 }
-
-.slideAnimation h2 {
-    font-size: 90px;
-    transition: 1s;
-}
-
 
 h3 {
     font-size: 36px;
@@ -126,33 +105,6 @@ h3 {
     }
 }
 
-.arrowRight {
-    position: absolute;
-    right: 32px;
-    height: 64px;
-    width: 64px;
-    text-align: center;
-    margin: 0;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    border-radius: 100%;
-    box-shadow: 0px 0px 10px 1px white;
-    opacity: 0.3;
-    transition: 0.2s;
-}
-
-    .arrowRight img {
-        margin-top: 8px;
-        margin-left: 4px;
-        height: 48px;
-    }
-
-    .arrowRight:hover {
-        opacity: 1;
-        transition: 0.2s;
-    }
-
 .slide {
     position: relative;
     left: 50%;
@@ -160,33 +112,9 @@ h3 {
     transform: translate(-50%);
 }
 
-.slideAnimation {
-    animation: slideLeft 1s ease-in-out forwards;
-}
-
-@keyframes slideLeft {
-    from {
-        left: 50%;
-        transform: translate(-50%);
-    }
-
-    to {
-        left: 25px;
-        transform: translate(0%);
-    }
-}
-
-
 #projects {
-    width: 50%;
-    opacity: 0;
-    text-align: right;
+    
 }
-
-    #projects.show {
-        opacity: 1;
-        transition: 1s;
-    }
 
     #projects .header {
         text-align: right;
@@ -202,7 +130,7 @@ h3 {
     border-radius: 16px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 50%;
+    width: 90%;
     position: relative;
     text-align: left;
 }
@@ -223,3 +151,77 @@ h3 {
         position: relative;
         width: 100%;
     }
+
+
+@media (max-width: 1533px) {
+    .aboutme .box {
+        height: 350px;
+        font-size: 18px;
+        color: white;
+    }
+
+    h1 {
+        font-size: 70px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1020px) {
+    .aboutme .box {
+        height: 300px;
+        font-size: 18px;
+        color: white;
+        width: 90%;
+    }
+}
+
+@media (max-width: 870px) {
+    .aboutme .box {
+        height: 300px;
+        font-size: 18px;
+        color: white;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .aboutme .box {
+        height: 300px;
+        font-size: 18px;
+        color: white;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
