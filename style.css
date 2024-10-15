@@ -1,128 +1,153 @@
+/* Allgemeines Styling */
 body {
     background-color: #150c33;
     color: white;
-    font-family: Bahnschrift;
+    font-family: 'Roboto', sans-serif;
     overflow: scroll;
+    margin: 0;
+    padding: 0;
 }
 
+/* Wrapper */
 #wrapper {
     display: block;
     width: 100%;
+    padding-top: 70px; /* Platz für die Navigationsleiste */
 }
 
+/* Flexbox Zentrierung */
 .center {
     flex-direction: column;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #6c63ff;
+    border-radius: 8px;
+}
+
+/* Überschriften */
 h1 {
-    font-size: 100px;
+    font-size: 80px;
     background-color: #6c63ff;
     padding-right: 10px;
     padding-left: 10px;
     border-radius: 32px;
     margin-block-start: 10px;
     margin-block-end: 10px;
-    animation: fadeIn 1s;
+    color: #fff;
+    line-height: 1.2;
+    animation: fadeIn 0.5s ease-in-out;
 }
-
 
 h2 {
     font-size: 64px;
     margin-block-start: 10px;
     margin-block-end: 10px;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 h3 {
     font-size: 36px;
     margin-block-start: 10px;
     margin-block-end: 10px;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
+/* About Me Section */
 .aboutme {
     margin-top: 100px;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-    .aboutme .box {
-        box-shadow: #322854 0px 0px 25px 10px;
-        border-radius: 16px;
-        width: 60%;
-        text-align: left;
-        background: url('res/programming1.jpg');
-        height: 500px;
-        display: flex;
-        margin-bottom: 32px;
-        font-size: 28px;
-    }
-
-        .aboutme .box p {
-            margin-left: 16px;
-        }
-
-        .aboutme .box h3 {
-            background-color: #6c63ff;
-            padding-right: 10px;
-            padding-left: 10px;
-            font-size: 2em;
-            margin-left: 16px;
-            margin-block-start: 25px;
-            margin-block-end: 3px;
-            border-radius: 16px;
-            width: fit-content;
-            color: white;
-            text-shadow: 3px 3px #150c33;
-        }
-
-    .aboutme .picture {
-        height: 100%;
-        border-radius: 16px;
-    }
-
-    .aboutme .text {
-        margin-right: 32px;
-    }
-
-    .aboutme .box.slideAnimation {
-        font-size: 18px;
-        height: 400px;
-        transition: 1s;
-        width: 80%;
-    }
-
-@keyframes fadeIn {
-    0% {
-        margin-top: 100%;
-    }
-
-    70% {
-        margin-top: -15px;
-    }
-
-    100% {
-    }
+.aboutme .box {
+    box-shadow: #322854 0px 0px 25px 10px;
+    border-radius: 16px;
+    width: 60%;
+    text-align: left;
+    background: url('res/programming1.jpg');
+    height: auto;
+    display: flex;
+    margin-bottom: 32px;
+    font-size: 28px;
+    transition: 0.5s;
+    overflow: hidden;
 }
 
-.slide {
-    position: relative;
-    left: 50%;
+.aboutme .box p {
+    margin-left: 16px;
+}
+
+.aboutme .box h3 {
+    background-color: #6c63ff;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 2em;
+    margin-left: 16px;
+    margin-block-start: 25px;
+    margin-block-end: 3px;
+    border-radius: 16px;
     width: fit-content;
-    transform: translate(-50%);
+    color: white;
+    text-shadow: 3px 3px #150c33;
 }
 
-#projects {
-    text-align: center;
+.aboutme .picture {
+    width: 25%; /* Verkleinert das Bild auf 25% der Box */
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
 }
 
-    #projects .header {
-        text-align: right;
-        position: relative;
-        right: 25px;
-    }
+.aboutme .text {
+    width: 75%; /* Text nimmt 75% der Box ein */
+    padding: 20px;
+}
 
+/* Projektbereich */
 .projectTree {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .project {
@@ -130,34 +155,57 @@ h3 {
     border-radius: 16px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 50%;
+    width: 45%;
     position: relative;
     text-align: left;
+    transition: transform 0.3s ease;
 }
 
-    .project p {
-        margin-left: 10px;
+.project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project p {
+    margin-left: 10px;
+}
+
+.project a {
+    color: white;
+    text-decoration: none;
+}
+
+.project a:visited {
+    color: white;
+}
+
+.project img {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Keyframes Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .project a {
-        color: white
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .project a:visited {
-        color: white
-    }
-
-    .project img {
-        position: relative;
-        width: 100%;
-    }
-
-
-@media (max-width: 1533px) {
+/* Medienabfragen für Responsivität */
+@media (max-width: 1020px) {
     .aboutme .box {
-        height: 350px;
-        font-size: 18px;
-        color: white;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .aboutme .text, .aboutme .picture {
+        width: 100%;
     }
 
     h1 {
@@ -173,38 +221,15 @@ h3 {
     }
 }
 
-@media (max-width: 1020px) {
-    .aboutme .box {
-        height: 300px;
-        font-size: 18px;
-        color: white;
-        width: 90%;
-    }
-
-
-}
-
 @media (max-width: 870px) {
     .aboutme .box {
-        height: 300px;
+        height: auto;
         font-size: 18px;
         color: white;
         width: 90%;
         overflow: scroll;
         display: flex;
-    }
-
-    .aboutme .text {
-        width: 100%;
-        position: relative;
-    }
-
-    .project {
-        width: 90%;
-    }
-
-    .aboutme .picture {
-        position: relative;
+        flex-direction: column;
     }
 
     h1 {
@@ -222,11 +247,13 @@ h3 {
 
 @media (max-width: 400px) {
     .aboutme .box {
-        height: 300px;
+        height: auto;
         font-size: 18px;
         color: white;
         width: 90%;
         overflow: scroll;
+        display: flex;
+        flex-direction: column;
     }
 
     h1 {

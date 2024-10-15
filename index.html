@@ -6,10 +6,22 @@
     <title>Haak</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <!-- Font für professionelles Erscheinungsbild -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#aboutMe">Über mich</a></li>
+            <li><a href="#projects">Projekte</a></li>
+        </ul>
+    </nav>
+
     <div id="wrapper">
+        <!-- Home Bereich -->
         <div id="home">
             <div class="center">
                 <div class="slide">
@@ -21,37 +33,31 @@
                 <div class="slide">
                     <h3>Software Entwickler</h3>
                 </div>
-
             </div>
 
-            <div class="center aboutme">
+            <!-- Über mich Bereich -->
+            <div class="center aboutme" id="aboutMe">
                 <div class="box slide" id="aboutMeBox">
                     <div class="text">
                         <h3>About Me</h3>
                         <p>
                             Ich begann 2020 mit dem Programmieren, zunächst mit einfachen Websites.
                             Bald darauf folgten komplexere Projekte in Java.<br /><br />
-                            2022 startete ich meine Ausbildung, die mir half, mit Softwareentwicklungen und Datenbankanbindungen in Delphi zu arbeiten.<br /><br />
-                            Meine Leidenschaft für Programmierung wächst weiterhin und ich freue mich immer über neue Herausforderungen
+                            2022 starte ich im Rahmen meiner Ausbildung mit Softwareentwicklungen und Datenbankanbindungen in Delphi.<br /><br />
+                            Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
                         </p>
                     </div>
-                    <img src="res/maxlervorne.png" class="picture" />
+                    <img src="res/maxlervorne.png" class="picture" alt="Bild von Maximilian Haak" loading="lazy" />
                 </div>
             </div>
         </div>
 
+        <!-- Projekte Bereich -->
         <div id="projects">
             <h2>Projekte</h2>
 
             <div class="projectTree">
                 <div class="project slide">
                     <h3><a href="projects/albert.html">Albert</a></h3>
-                    <img src="res/albert.png" />
-                    <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden. Jedes Mal, wenn ein Albert Nahrung findet, erhöht sich seine Lebensdauer und er dupliziert sich. Dadurch überleben die erfolgreichen Alberts, während die weniger erfolgreichen sterben. Am Ende bleibt der Albert übrig, der am besten darin ist, Nahrung zu finden.</p>
-                    <p><a href="projects/albert.html">Weitere Infos</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                    <img src="res/albert.png" alt="Albert Projekt" loading="lazy" />
+                    <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden
