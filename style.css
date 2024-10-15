@@ -183,6 +183,7 @@ h3 {
     position: relative;
     width: 100%;
     object-fit: cover;
+    loading: lazy; /* Lazy Loading für Bilder */
 }
 
 /* Keyframes Animation */
@@ -266,5 +267,20 @@ h3 {
 
     h3 {
         font-size: 20px;
+    }
+}
+
+/* Zusätzliche Medienabfrage für sehr kleine Bildschirme (320px oder kleiner) */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
     }
 }
