@@ -15,15 +15,13 @@
 </head>
 
 <body>
-    <!-- Toggle für Dunkelmodus -->
-    <button id="toggle-dark-mode" class="dark-mode-button">Toggle Dark Mode</button>
-
     <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#aboutMe">Über mich</a></li>
             <li><a href="#projects">Projekte</a></li>
+            <li><button id="toggle-design-mode" class="nav-button">Design</button></li> <!-- Neuer Button für Design -->
         </ul>
     </nav>
 
@@ -89,9 +87,9 @@
 
     <!-- JavaScript für Dark Mode, Typed.js und Scroll-Animationen -->
     <script>
-        // Dark Mode Toggle
-        const toggleButton = document.getElementById('toggle-dark-mode');
-        toggleButton.addEventListener('click', () => {
+        // Toggle für Design-Modus und Siemens Mode
+        const designButton = document.getElementById('toggle-design-mode');
+        designButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
         });
 
