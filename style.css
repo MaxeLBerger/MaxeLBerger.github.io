@@ -6,6 +6,7 @@ body {
     overflow: scroll;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth; /* Smooth Scroll */
 }
 
 /* Wrapper */
@@ -21,6 +22,34 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode nav {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .project {
+    border-color: #6c63ff;
+}
+
+/* Dark Mode Button */
+.dark-mode-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1100;
 }
 
 /* Navigation */
@@ -89,6 +118,15 @@ h3 {
     margin-block-start: 10px;
     margin-block-end: 10px;
     animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Typing Text Animation */
+.typing {
+    display: inline-block; /* Verhindert das Springen in die nächste Zeile */
+    height: 36px; /* Fixierte Höhe, um Layout-Verschiebungen zu verhindern */
+    white-space: nowrap; /* Verhindert Zeilenumbrüche */
+    overflow: hidden; /* Verhindert, dass Text überläuft */
+    vertical-align: bottom; /* Justiert das "|" Zeichen am unteren Rand */
 }
 
 /* About Me Section */
@@ -166,26 +204,6 @@ h3 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.project p {
-    margin-left: 10px;
-}
-
-.project a {
-    color: white;
-    text-decoration: none;
-}
-
-.project a:visited {
-    color: white;
-}
-
-.project img {
-    position: relative;
-    width: 100%;
-    object-fit: cover;
-    loading: lazy; /* Lazy Loading für Bilder */
-}
-
 /* Keyframes Animation */
 @keyframes fadeIn {
     0% {
@@ -196,6 +214,49 @@ h3 {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Scroll Animationen */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Kontaktformular */
+#contact {
+    padding: 50px;
+    text-align: center;
+}
+
+#contact-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contact-form input, #contact-form textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 /* Medienabfragen für Responsivität */

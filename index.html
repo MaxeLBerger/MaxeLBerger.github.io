@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,16 @@
     <script src="script.js"></script>
     <!-- Font für professionelles Erscheinungsbild -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Typed.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- EmailJS Library -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
+    <!-- Toggle für Dunkelmodus -->
+    <button id="toggle-dark-mode" class="dark-mode-button">Toggle Dark Mode</button>
+
     <!-- Navigation -->
     <nav>
         <ul>
@@ -24,20 +31,20 @@
         <!-- Home Bereich -->
         <div id="home">
             <div class="center">
-                <div class="slide">
+                <div class="slide fade-in">
                     <h2>Servus, ich bin</h2>
                 </div>
-                <div class="slide">
+                <div class="slide fade-in">
                     <h1 id="name">Maximilian Haak</h1>
                 </div>
-                <div class="slide">
-                    <h3>Software Entwickler</h3>
+                <div class="slide fade-in">
+                    <h3><span class="typing"></span></h3> <!-- Eingewickelt in ein Span, um die Animation besser zu kontrollieren -->
                 </div>
             </div>
 
             <!-- Über mich Bereich -->
             <div class="center aboutme" id="aboutMe">
-                <div class="box slide" id="aboutMeBox">
+                <div class="box slide fade-in" id="aboutMeBox">
                     <div class="text">
                         <h3>About Me</h3>
                         <p>
@@ -58,7 +65,7 @@
             <h2>Projekte</h2>
 
             <div class="projectTree">
-                <div class="project slide">
+                <div class="project slide fade-in">
                     <h3><a href="projects/albert.html">Albert</a></h3>
                     <!-- Lazy Loading für Bild + alt-Text -->
                     <img src="res/albert.png" alt="Albert Projekt Vorschaubild" loading="lazy" />
@@ -67,6 +74,73 @@
                 </div>
             </div>
         </div>
+
+        <!-- Kontaktformular -->
+        <div id="contact">
+            <h2>Kontakt</h2>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Nachricht" required></textarea>
+                <button type="submit">Senden</button>
+            </form>
+        </div>
     </div>
+
+    <!-- JavaScript für Dark Mode, Typed.js und Scroll-Animationen -->
+    <script>
+        // Dark Mode Toggle
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Typed.js Animation
+        var typed = new Typed('.typing', {
+            strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: true,
+            showCursor: false // Entfernt den blinkenden Cursor, um den Sprung zu verhindern
+        });
+
+        // Scroll-Animationen
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.5,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('show');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // EmailJS - Send Email
+        (function() {
+            emailjs.init('YOUR_USER_ID');
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    alert('Nachricht gesendet!');
+                }, function(error) {
+                    alert('Fehler: ' + JSON.stringify(error));
+                });
+        });
+    </script>
 </body>
 </html>
