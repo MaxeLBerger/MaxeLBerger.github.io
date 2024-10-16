@@ -10,8 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Typed.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- EmailJS Library -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -21,9 +19,14 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#aboutMe">Über mich</a></li>
             <li><a href="#projects">Projekte</a></li>
-            <li><button id="toggle-design-mode" class="nav-button">Design</button></li> <!-- Neuer Button für Design -->
         </ul>
     </nav>
+
+    <!-- Siemens Mode and Dark Mode Toggle -->
+    <div class="mode-buttons">
+        <button id="toggle-siemens-mode" class="mode-button">Siemens Mode</button>
+        <button id="toggle-dark-mode" class="mode-button">Dark Mode</button>
+    </div>
 
     <div id="wrapper">
         <!-- Home Bereich -->
@@ -72,25 +75,20 @@
                 </div>
             </div>
         </div>
-
-        <!-- Kontaktformular -->
-        <div id="contact">
-            <h2>Kontakt</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Nachricht" required></textarea>
-                <button type="submit">Senden</button>
-            </form>
-        </div>
     </div>
 
-    <!-- JavaScript für Dark Mode, Typed.js und Scroll-Animationen -->
+    <!-- JavaScript für Dark Mode, Siemens Mode, Typed.js und Scroll-Animationen -->
     <script>
-        // Toggle für Design-Modus und Siemens Mode
-        const designButton = document.getElementById('toggle-design-mode');
-        designButton.addEventListener('click', () => {
+        // Dark Mode Toggle
+        const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
+        toggleDarkModeButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+        });
+
+        // Siemens Mode Toggle
+        const siemensModeButton = document.getElementById('toggle-siemens-mode');
+        siemensModeButton.addEventListener('click', () => {
+            document.body.classList.toggle('siemens-mode');
         });
 
         // Typed.js Animation
@@ -99,7 +97,7 @@
             typeSpeed: 50,
             backSpeed: 50,
             loop: true,
-            showCursor: false // Entfernt den blinkenden Cursor, um den Sprung zu verhindern
+            showCursor: false
         });
 
         // Scroll-Animationen
@@ -123,21 +121,6 @@
 
         faders.forEach(fader => {
             appearOnScroll.observe(fader);
-        });
-
-        // EmailJS - Send Email
-        (function() {
-            emailjs.init('YOUR_USER_ID');
-        })();
-
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(function() {
-                    alert('Nachricht gesendet!');
-                }, function(error) {
-                    alert('Fehler: ' + JSON.stringify(error));
-                });
         });
     </script>
 </body>

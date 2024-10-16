@@ -6,14 +6,14 @@ body {
     overflow: scroll;
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth; /* Smooth Scroll */
+    scroll-behavior: smooth;
 }
 
 /* Wrapper */
 #wrapper {
     display: block;
     width: 100%;
-    padding-top: 70px; /* Platz für die Navigationsleiste */
+    padding-top: 70px;
 }
 
 /* Flexbox Zentrierung */
@@ -38,34 +38,22 @@ body.dark-mode .project {
     border-color: #6c63ff;
 }
 
-/* Design Button */
-.nav-button {
-    background-color: #6c63ff;
+/* Siemens Mode */
+body.siemens-mode {
+    background-color: #00a8e8; /* Siemens-Türkis */
     color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
 }
 
-.nav-button:hover {
-    background-color: #564ecc;
+body.siemens-mode nav {
+    background-color: #007db8;
 }
 
-/* Kleinere Bildschirme */
-@media (max-width: 870px) {
-    .nav-button {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
+body.siemens-mode a {
+    color: white;
 }
 
-@media (max-width: 400px) {
-    .nav-button {
-        padding: 6px 10px;
-        font-size: 12px;
-    }
+body.siemens-mode h1, body.siemens-mode h2, body.siemens-mode h3 {
+    color: #007db8; /* Siemens-Blau */
 }
 
 /* Navigation */
@@ -92,20 +80,45 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 10px 15px;
+    font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
     background-color: #6c63ff;
     border-radius: 8px;
+}
+
+/* Mode Buttons Styling */
+.mode-buttons {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mode-button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.mode-button:hover {
+    background-color: #5540d1;
 }
 
 /* Überschriften */
@@ -124,10 +137,10 @@ h1 {
 
 h2 {
     font-size: 64px;
+    text-align: center;
     margin-block-start: 10px;
     margin-block-end: 10px;
     animation: fadeIn 0.5s ease-in-out;
-    text-align: center; /* Zentrierung von Projekte */
 }
 
 h3 {
@@ -139,8 +152,8 @@ h3 {
 
 /* Typing Text Animation */
 .typing {
-    display: inline-block; /* Verhindert das Springen in die nächste Zeile */
-    height: 36px; /* Fixierte Höhe, um Layout-Verschiebungen zu verhindern */
+    display: inline-block;
+    height: 36px; /* Feste Höhe, um das Springen zu verhindern */
     white-space: nowrap; /* Verhindert Zeilenumbrüche */
     overflow: hidden; /* Verhindert, dass Text überläuft */
     vertical-align: bottom; /* Justiert das "|" Zeichen am unteren Rand */
@@ -182,11 +195,10 @@ h3 {
     width: fit-content;
     color: white;
     text-shadow: 3px 3px #150c33;
-    text-align: center; /* "Über Mich" zentrieren */
 }
 
 .aboutme .picture {
-    width: 25%; /* Verkleinert das Bild auf 25% der Box */
+    width: 25%; 
     height: auto;
     object-fit: cover;
     border-radius: 16px;
@@ -194,31 +206,10 @@ h3 {
 }
 
 .aboutme .text {
-    width: calc(100% - 25%); /* Text passt sich dem Bild an */
-    padding-right: 16px;
-}
-
-@media (max-width: 870px) {
-    .aboutme .box {
-        flex-direction: column;
-        width: 90%;
-    }
-
-    .aboutme .text, .aboutme .picture {
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 70px;
-    }
-
-    h2 {
-        font-size: 48px;
-    }
-
-    h3 {
-        font-size: 24px;
-    }
+    width: 100%;
+    max-width: 60%;
+    margin: auto;
+    padding: 20px;
 }
 
 /* Projektbereich */
@@ -241,7 +232,7 @@ h3 {
 }
 
 .project img {
-    width: 100%; /* Bildgröße für mobile Ansicht */
+    width: 100%;
     height: auto;
 }
 
@@ -272,37 +263,6 @@ h3 {
 .fade-in.show {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Kontaktformular */
-#contact {
-    padding: 50px;
-    text-align: center;
-}
-
-#contact-form {
-    max-width: 500px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#contact-form input, #contact-form textarea {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    width: 100%;
-}
-
-#contact-form button {
-    padding: 10px;
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
 }
 
 /* Medienabfragen für Responsivität */
