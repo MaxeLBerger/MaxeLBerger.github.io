@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -22,10 +22,13 @@
         </ul>
     </nav>
 
-    <!-- Siemens Mode and Dark Mode Toggle -->
-    <div class="mode-buttons">
-        <button id="toggle-siemens-mode" class="mode-button">Siemens Mode</button>
-        <button id="toggle-dark-mode" class="mode-button">Dark Mode</button>
+    <!-- Schalter für Modus-Wechsel -->
+    <div class="mode-switch">
+        <select id="mode-selector" class="mode-selector">
+            <option value="regular">Regular</option>
+            <option value="dark">Dark</option>
+            <option value="siemens">Siemens</option>
+        </select>
     </div>
 
     <div id="wrapper">
@@ -39,7 +42,7 @@
                     <h1 id="name">Maximilian Haak</h1>
                 </div>
                 <div class="slide fade-in">
-                    <h3><span class="typing"></span></h3> <!-- Eingewickelt in ein Span, um die Animation besser zu kontrollieren -->
+                    <h3><span class="typing"></span></h3>
                 </div>
             </div>
 
@@ -55,7 +58,6 @@
                             Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
                         </p>
                     </div>
-                    <!-- Lazy Loading für Bild + alt-Text -->
                     <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" />
                 </div>
             </div>
@@ -68,7 +70,6 @@
             <div class="projectTree">
                 <div class="project slide fade-in">
                     <h3><a href="projects/albert.html">Albert</a></h3>
-                    <!-- Lazy Loading für Bild + alt-Text -->
                     <img src="res/albert.png" alt="Albert Projekt Vorschaubild" loading="lazy" />
                     <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden. Jedes Mal, wenn ein Albert Nahrung findet, erhöht sich seine Lebensdauer und er dupliziert sich. Dadurch überleben die erfolgreichen Alberts, während die weniger erfolgreichen sterben. Am Ende bleibt der Albert übrig, der am besten darin ist, Nahrung zu finden.</p>
                     <p><a href="projects/albert.html">Weitere Infos</a></p>
@@ -77,18 +78,18 @@
         </div>
     </div>
 
-    <!-- JavaScript für Dark Mode, Siemens Mode, Typed.js und Scroll-Animationen -->
+    <!-- JavaScript für Mode-Wechsel, Typed.js und Scroll-Animationen -->
     <script>
-        // Dark Mode Toggle
-        const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
-        toggleDarkModeButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-
-        // Siemens Mode Toggle
-        const siemensModeButton = document.getElementById('toggle-siemens-mode');
-        siemensModeButton.addEventListener('click', () => {
-            document.body.classList.toggle('siemens-mode');
+        // Modus-Wechsel
+        const modeSelector = document.getElementById('mode-selector');
+        modeSelector.addEventListener('change', function () {
+            const selectedMode = this.value;
+            document.body.classList.remove('dark-mode', 'siemens-mode'); // Entfernt vorherige Modus-Klassen
+            if (selectedMode === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else if (selectedMode === 'siemens') {
+                document.body.classList.add('siemens-mode');
+            }
         });
 
         // Typed.js Animation
@@ -108,7 +109,7 @@
             rootMargin: "0px 0px -100px 0px"
         };
 
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
                     return;
