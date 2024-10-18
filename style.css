@@ -27,15 +27,15 @@ body {
 /* Dropdown-Schalter Styling */
 .mode-switch {
     position: fixed;
-    right: 20px;  /* Positioniert das Dropdown rechts oben */
-    top: 20px;    /* Positioniert es oben */
+    right: 5px;  /* Positioniert das Dropdown rechts oben */
+    top: 5px;    /* Positioniert es oben */
     z-index: 1100;
 }
 
 .mode-selector {
     padding: 10px;
     font-size: 16px;
-    background-color: #6c63ff;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 8px;
@@ -61,22 +61,98 @@ body.dark-mode .project {
     border-color: #6c63ff;
 }
 
+body.dark-mode .mode-selector {
+    background-color: #333333;
+}
+
 /* Siemens Mode */
 body.siemens-mode {
-    background-color: #00a8e8; /* Siemens-Türkis */
+    background-color: #00AAB5; /* Siemens Cyan */
     color: white;
 }
 
+/* Titelbereich (Maximilian Haak) - Siemens Mode */
+body.siemens-mode #name {
+    background-color: #009999; /* Siemens Blau als Hintergrund für den Namen */
+    color: #ffffff; /* Weiße Schrift für guten Kontrast */
+    padding: 10px 20px; /* Abstand für bessere Lesbarkeit */
+    border-radius: 16px; /* Runde Ecken für ein angenehmes Design */
+    text-shadow: 2px 2px #005f5f; /* Leichter Schatten für mehr Tiefe */
+}
+
 body.siemens-mode nav {
-    background-color: #007db8;
+    background-color: #009999; /* Siemens Blau */
 }
 
 body.siemens-mode a {
     color: white;
 }
 
+/* Anpassung der Typing Animation ("Software Entwickler") */
+body.siemens-mode .typing {
+    color: #ffffff; /* Weißer Text für klaren Kontrast */
+    background: none; /* Kein Hintergrund, um einen sauberen Look zu gewährleisten */
+    padding: 0;
+    border-radius: 0;
+}
+
+/* About Me Section - Anpassung für das Bild bei schmalen Bildschirmen */
+.aboutme .box {
+    display: flex;
+    flex-wrap: wrap; /* Bild und Text sollten sich bei schmaleren Bildschirmen korrekt umbrechen */
+    align-items: center;
+}
+
+.aboutme .picture {
+    flex: 0 0 auto;
+    width: 100%; /* Bild nimmt bei schmalen Bildschirmen die gesamte Breite ein */
+    max-width: 300px; /* Maximale Breite des Bildes */
+    height: auto;
+    object-fit: contain; /* Das Bild wird an die Box angepasst, ohne beschnitten zu werden */
+    margin: 10px auto; /* Automatisches zentrieren des Bildes */
+}
+
+/* Medienabfrage für extrem schmale Bildschirme */
+@media (max-width: 600px) {
+    .aboutme .box {
+        flex-direction: column;
+        align-items: center; /* Bild und Text zentriert bei sehr schmalen Bildschirmen */
+    }
+
+    .aboutme .text {
+        width: 90%; /* Textbereich reduziert für bessere Lesbarkeit bei sehr schmalen Bildschirmen */
+    }
+}
+
+/* Titelbereich (Maximilian Haak) */
 body.siemens-mode h1, body.siemens-mode h2, body.siemens-mode h3 {
-    color: #007db8; /* Siemens-Blau */
+    color: #ffffff; /* Weiße Schrift für bessere Lesbarkeit */
+    background: none; /* Kein zusätzlicher Hintergrund */
+}
+
+/* About Me Section */
+body.siemens-mode .aboutme .box {
+    background-color: rgba(255, 255, 255, 0.1); /* Sehr leichter, transparenter weißer Hintergrund, um den Kontrast zu verbessern und harmonisch zu bleiben */
+    box-shadow: none; /* Keine Schatteneffekte, um einen simplen, modernen Look zu gewährleisten */
+    color: white;
+    border-radius: 16px;
+}
+
+body.siemens-mode .aboutme .box h3 {
+    background-color: #009999; /* Siemens Blau */
+    color: white; /* Weiß für besseren Kontrast */
+    padding: 10px;
+    text-shadow: 2px 2px #005f5f; /* Etwas dunklerer Schatten für besseren Kontrast */
+    border-radius: 12px;
+}
+
+body.siemens-mode .aboutme .box p {
+    color: #ffffff; /* Weiß für bessere Lesbarkeit */
+}
+
+/* Projektbereich Titel */
+body.siemens-mode .project-section-title {
+    color: #ffffff; /* Weiß für bessere Lesbarkeit */
 }
 
 /* Navigation */
@@ -249,18 +325,6 @@ h3 {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Scroll Animationen */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Medienabfragen für Responsivität */
