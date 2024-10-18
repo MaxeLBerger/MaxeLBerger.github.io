@@ -23,19 +23,10 @@
         </ul>
     </nav>
 
-    <!-- Schalter für Modus-Wechsel -->
-    <div class="mode-switch">
-        <select id="mode-selector" class="mode-selector">
-            <option value="regular">Regular</option>
-            <option value="dark">Dark</option>
-            <option value="siemens">Siemens</option>
-        </select>
-    </div>
-
     <div id="wrapper">
         <!-- Home Bereich -->
-        <div id="home">
-            <div class="center">
+        <div id="home" style="margin-top: 50px;">
+<div class="center">
                 <div class="slide fade-in">
                     <h2>Servus, ich bin</h2>
                 </div>
@@ -59,7 +50,7 @@
                             Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
                         </p>
                     </div>
-                    <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" />
+                    <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto;" />
                 </div>
             </div>
         </div>
@@ -79,20 +70,8 @@
         </div>
     </div>
 
-    <!-- JavaScript für Mode-Wechsel, Typed.js und Scroll-Animationen -->
+    <!-- JavaScript für Typed.js und Scroll-Animationen -->
     <script>
-        // Modus-Wechsel
-        const modeSelector = document.getElementById('mode-selector');
-        modeSelector.addEventListener('change', function () {
-            const selectedMode = this.value;
-            document.body.classList.remove('dark-mode', 'siemens-mode'); // Entfernt vorherige Modus-Klassen
-            if (selectedMode === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else if (selectedMode === 'siemens') {
-                document.body.classList.add('siemens-mode');
-            }
-        });
-
         // Typed.js Animation
         var typed = new Typed('.typing', {
             strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
