@@ -26,7 +26,7 @@
     <div id="wrapper">
         <!-- Home Bereich -->
         <div id="home" style="margin-top: 50px;">
-<div class="center">
+            <div class="center">
                 <div class="slide fade-in">
                     <h2>Servus, ich bin</h2>
                 </div>
@@ -52,6 +52,55 @@
                     </div>
                     <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto;" />
                 </div>
+            </div>
+
+            <!-- Programmiersprachen Bereich -->
+            <div class="center skills-list" id="skills">
+                <h3>Programmiersprachen, die ich beherrsche:</h3>
+                <ul class="languages">
+                    <li>
+                        <div class="language-box">
+                            <img src="res/java-icon.png" alt="Java Icon">
+                            <span>Java</span>
+                            <button class="details-btn" onclick="showDetails('Java')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="language-box">
+                            <img src="res/delphi-icon.png" alt="Delphi Icon">
+                            <span>Delphi</span>
+                            <button class="details-btn" onclick="showDetails('JavaScript')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="language-box">
+                            <img src="res/javascript-icon.png" alt="Javascript Icon">
+                            <span>JavaScript</span>
+                            <button class="details-btn" onclick="showDetails('Delphi')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="language-box">
+                            <img src="res/html-icon.png" alt="HTML Icon">
+                            <span>HTML</span>
+                            <button class="details-btn" onclick="showDetails('Python')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="language-box">
+                            <img src="res/css-icon.png" alt="CSS Icon">
+                            <span>CSS</span>
+                            <button class="details-btn" onclick="showDetails('HTML & CSS')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="language-box">
+                            <img src="res/postgres-icon.png" alt="PostgreSQL Icon">
+                            <span>PostgreSQL</span>
+                            <button class="details-btn" onclick="showDetails('C#')">Mehr erfahren</button>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -103,6 +152,73 @@
         faders.forEach(fader => {
             appearOnScroll.observe(fader);
         });
+
+        // Show Details Function
+        function showDetails(language) {
+            alert(`Hier erfährst du mehr über ${language} und wie ich es anwende.`);
+        }
     </script>
+
+    <!-- Stil für die Programmiersprachen Liste -->
+    <style>
+        .skills-list {
+            margin-top: 50px;
+        }
+
+        .languages {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .language-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #6c63ff;
+            padding: 20px;
+            border-radius: 16px;
+            width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .language-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .language-box img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .language-box span {
+            font-weight: bold;
+            color: white;
+        }
+
+        .details-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #00e676;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .details-btn:hover {
+            background-color: #00c853;
+        }
+    </style>
 </body>
 </html>
