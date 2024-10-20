@@ -1,37 +1,57 @@
-// JavaScript-Code für die interaktiven Funktionen der Website
-
-// Typed.js Animation
 document.addEventListener('DOMContentLoaded', function () {
+    // Typed.js Animation
     var typed = new Typed('.typing', {
         strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
-        typeSpeed: 50,
-        backSpeed: 50,
+        typeSpeed: 60,
+        backSpeed: 40,
         loop: true,
         showCursor: false
     });
 
-    // Scroll-Animationen
-    const faders = document.querySelectorAll('.fade-in');
+    // Back-to-Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
 
-    const appearOptions = {
-        threshold: 0.5,
-        rootMargin: "0px 0px -100px 0px"
-    };
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('show');
-                entry.target.style.transition = "opacity 1.5s ease-out, transform 1.5s ease-out";
-                appearOnScroll.unobserve(entry.target);
+    // Navigation Scroll
+    const nav = document.querySelector('nav');
+    const navHeight = nav.offsetHeight;
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        // Hintergrundfarbe der Navigation
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+
+        // Aktive Navigation hervorheben
+        let currentSection = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navHeight;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
             }
         });
-    }, appearOptions);
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
     });
 
     // Mobile Navigation
@@ -40,52 +60,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     mobileMenu.addEventListener('click', () => {
         navList.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
     });
 
-    // Active Navigation Highlight
-    const updateActiveLink = () => {
-        const sections = document.querySelectorAll('section');
-        let scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
-        const offset = 150;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPos >= sectionTop - offset && scrollPos < sectionTop + sectionHeight - offset) {
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                if (sectionId && document.querySelector(`#nav-${sectionId}`)) {
-                    document.querySelector(`#nav-${sectionId}`).classList.add('active');
-                }
-            }
-        });
-    };
-
-    window.addEventListener('scroll', updateActiveLink);
-    window.addEventListener('load', () => {
-        updateActiveLink();
-        setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            updateActiveLink();
-        }, 100);
-    });
+    // Smooth Scrolling
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetPosition = document.getElementById(targetId).offsetTop - navHeight;
 
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
+                top: targetPosition,
                 behavior: 'smooth'
             });
 
-            setTimeout(() => {
-                updateActiveLink();
-            }, 600);
+            navList.classList.remove('active');
+            mobileMenu.classList.remove('active');
         });
     });
 
@@ -93,19 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const themeCheckbox = document.getElementById('theme-checkbox');
     themeCheckbox.addEventListener('change', () => {
         document.body.classList.toggle('light-theme');
-    });
-
-    // Back-to-Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
-        }
-    });
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Scroll Indikator

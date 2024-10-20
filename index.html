@@ -1,24 +1,34 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="de">
 <head>
+    <!-- Meta-Tags für SEO und responsives Design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maximilian Haak - Softwareentwickler</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font für professionelles Erscheinungsbild -->
+    <meta name="description" content="Portfolio von Maximilian Haak, Softwareentwickler und KI-Enthusiast.">
+    <meta name="keywords" content="Maximilian Haak, Softwareentwickler, KI, Webentwicklung, Portfolio">
+    <meta name="author" content="Maximilian Haak">
+
+    <!-- Verknüpfung der CSS-Datei -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
     <link rel="icon" href="res/faviconpurple.png" type="image/png">
+
     <!-- Typed.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <!-- Font Awesome für Icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <!-- Umschalter für Dark/Light Mode -->
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="theme-checkbox">
-            <input type="checkbox" id="theme-checkbox" />
+            <input type="checkbox" id="theme-checkbox">
             <span class="slider round"></span>
         </label>
         <em>Dark Mode</em>
@@ -26,6 +36,9 @@
 
     <!-- Navigation -->
     <nav>
+        <div class="logo">
+            <a href="#home">Maximilian Haak</a>
+        </div>
         <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -42,20 +55,18 @@
     <!-- Scroll Indikator -->
     <div id="progress-bar"></div>
 
-    <div id="wrapper">
+    <!-- Hauptinhalt -->
+    <main id="wrapper">
         <!-- Home Bereich -->
-        <section id="home" class="slide fade-in section parallax" style="margin-top: 50px; margin-bottom: 50px; padding-top: 100px;">
-            <div class="center">
-                <div class="slide fade-in">
-                    <h2>Hallo, ich bin</h2>
-                </div>
-                <div class="slide fade-in">
-                    <h1 id="name">Maximilian Haak</h1>
-                </div>
-                <div class="slide fade-in">
-                    <h3><span class="typing"></span></h3>
-                </div>
-                <a href="#aboutMe" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Hallo, ich bin</h2>
+                <h1><span class="highlight">Maximilian Haak</span></h1>
+                <h3><span class="typing"></span></h3>
+                <a href="#aboutMe" class="btn">Mehr über mich</a>
+            </div>
+            <div class="scroll-indicator">
+                <a href="#aboutMe"><i class="fas fa-chevron-down"></i></a>
             </div>
         </section>
 
@@ -63,16 +74,17 @@
         <div class="section-divider"></div>
 
         <!-- Über mich Bereich -->
-        <section class="center aboutme slide fade-in section" id="aboutMe" style="margin-top: 100px; margin-bottom: 100px;">
-            <div class="box" id="aboutMeBox">
-                <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto; border: none;" />
-                <div class="text">
-                    <h3>About Me</h3>
+        <section id="aboutMe" class="about-section">
+            <div class="container">
+                <div class="about-image">
+                    <img src="res/maxlervorne.png" alt="Portrait von Maximilian Haak" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
                     <p>
-                        Ich begann 2020 mit dem Programmieren, zunächst mit einfachen Websites.
-                        Bald darauf folgten komplexere Projekte in Java.<br /><br />
-                        2022 startete ich im Rahmen meiner Ausbildung mit Softwareentwicklungen und Datenbankanbindungen in Delphi.<br /><br />
-                        Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
+                        Ich begann 2020 mit dem Programmieren, zunächst mit einfachen Websites. Bald darauf folgten komplexere Projekte in Java.<br><br>
+                        2022 startete ich im Rahmen meiner Ausbildung mit Softwareentwicklungen und Datenbankanbindungen in Delphi.<br><br>
+                        Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.
                     </p>
                 </div>
             </div>
@@ -82,87 +94,65 @@
         <div class="section-divider"></div>
 
         <!-- Skills Bereich -->
-        <section class="center skills-list slide fade-in section" id="skills" style="margin-top: 150px; margin-bottom: 100px;">
-            <!-- Divider -->
-            <div class="section-divider"></div>
-
-            <h3>Skills</h3>
-            <ul class="languages">
-                <li>
-                    <div class="language-box">
-                        <img src="res/java-icon.png" alt="Java Icon">
-                        <span>Java</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-box">
-                        <img src="res/delphi-icon.png" alt="Delphi Icon">
-                        <span>Delphi</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-box">
-                        <img src="res/javascript-icon.png" alt="JavaScript Icon">
-                        <span>JavaScript</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-box">
-                        <img src="res/html-icon.png" alt="HTML Icon">
-                        <span>HTML</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-box">
-                        <img src="res/css-icon.png" alt="CSS Icon">
-                        <span>CSS</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-box">
-                        <img src="res/postgres-icon.png" alt="PostgreSQL Icon">
-                        <span>PostgreSQL</span>
-                    </div>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Divider -->
-        <div class="section-divider"></div>
-
-        <!-- Projekte Bereich -->
-        <section id="projects" class="center slide fade-in section" style="margin-top: 100px; margin-bottom: 100px;">
-            <!-- Divider -->
-            <div class="section-divider"></div>
-
-            <h2>Projekte</h2>
-            <div class="projects-divider"></div>
-
-            <div class="projectTree">
-                <!-- Projekt 1 -->
-                <div class="project slide fade-in">
-                    <h3><a href="projects/albert.html">Albert</a></h3>
-                    <img src="res/albert.png" alt="Albert Projekt Vorschaubild" loading="lazy" />
-                    <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden. Jedes Mal, wenn ein Albert Nahrung findet, erhöht sich seine Lebensdauer und er dupliziert sich. Dadurch überleben die erfolgreichen Alberts, während die weniger erfolgreichen sterben. Am Ende bleibt der Albert übrig, der am besten darin ist, Nahrung zu finden.</p>
-                    <p><a href="projects/albert.html">Weitere Infos</a></p>
+        <section id="skills" class="skills-section">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <!-- Skill Cards -->
+                <div class="skill-card">
+                    <img src="res/java-icon.png" alt="Java">
+                    <h3>Java</h3>
                 </div>
-
-                <!-- Projekt 2 -->
-                <div class="project slide fade-in">
-                    <h3><a href="projects/weatherApp.html">Wetter App</a></h3>
-                    <img src="res/weather-app.png" alt="Wetter App Projekt Vorschaubild" loading="lazy" />
-                    <p>Die Wetter App zeigt aktuelle Wetterdaten für verschiedene Standorte an. Sie verwendet eine externe Wetter-API und stellt die Informationen in einer ansprechenden Benutzeroberfläche dar. Entwickelt mit JavaScript und einer REST-API-Anbindung.</p>
-                    <p><a href="projects/weatherApp.html">Weitere Infos</a></p>
+                <div class="skill-card">
+                    <img src="res/delphi-icon.png" alt="Delphi">
+                    <h3>Delphi</h3>
                 </div>
-
-                <!-- Weitere Projekte hier einfügen -->
+                <div class="skill-card">
+                    <img src="res/javascript-icon.png" alt="JavaScript">
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card">
+                    <img src="res/html-icon.png" alt="HTML">
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-card">
+                    <img src="res/css-icon.png" alt="CSS">
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <img src="res/postgres-icon.png" alt="PostgreSQL">
+                    <h3>PostgreSQL</h3>
+                </div>
             </div>
         </section>
 
         <!-- Divider -->
         <div class="section-divider"></div>
 
-    </div>
+        <!-- Projekte Bereich -->
+        <section id="projects" class="projects-section">
+            <h2>Projekte</h2>
+            <div class="projects-container">
+                <!-- Projekt 1 -->
+                <div class="project-card">
+                    <img src="res/albert.png" alt="Albert Projekt Vorschaubild" loading="lazy">
+                    <div class="project-info">
+                        <h3>Albert</h3>
+                        <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden...</p>
+                        <a href="projects/albert.html" class="btn">Mehr erfahren</a>
+                    </div>
+                </div>
+                <!-- Projekt 2 -->
+                <div class="project-card">
+                    <img src="res/weather-app.png" alt="Wetter App Projekt Vorschaubild" loading="lazy">
+                    <div class="project-info">
+                        <h3>Wetter App</h3>
+                        <p>Die Wetter App zeigt aktuelle Wetterdaten für verschiedene Standorte an...</p>
+                        <a href="projects/weatherApp.html" class="btn">Mehr erfahren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Back-to-Top Button -->
     <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
@@ -170,127 +160,18 @@
     <!-- Footer mit Social-Media-Links -->
     <footer>
         <div class="social-media">
-            <a href="https://github.com/dein-profil" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/dein-profil" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/dein-profil" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dein-profil" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <!-- Weitere Links -->
         </div>
+        <p>&copy; 2024 Maximilian Haak</p>
     </footer>
 
-    <!-- JavaScript für Typed.js und Scroll-Animationen -->
-    <script>
-        // Typed.js Animation
-        var typed = new Typed('.typing', {
-            strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
-            typeSpeed: 50,
-            backSpeed: 50,
-            loop: true,
-            showCursor: false
-        });
+    <!-- JavaScript-Dateien -->
+    <!-- Typed.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-        // Scroll-Animationen
-        const faders = document.querySelectorAll('.fade-in');
-
-        const appearOptions = {
-            threshold: 0.5,
-            rootMargin: "0px 0px -100px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('show');
-                    entry.target.style.transition = "opacity 1.5s ease-out, transform 1.5s ease-out";
-                    appearOnScroll.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-
-        // Mobile Navigation
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navList = document.querySelector('.nav-list');
-
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-
-        // Active Navigation Highlight
-        const updateActiveLink = () => {
-            const sections = document.querySelectorAll('section');
-            let scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
-            const offset = 150;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollPos >= sectionTop - offset && scrollPos < sectionTop + sectionHeight - offset) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    if (sectionId && document.querySelector(`#nav-${sectionId}`)) {
-                        document.querySelector(`#nav-${sectionId}`).classList.add('active');
-                    }
-                }
-            });
-        };
-
-        window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', () => {
-            updateActiveLink();
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                updateActiveLink();
-            }, 100);
-        });
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-
-                setTimeout(() => {
-                    updateActiveLink();
-                }, 600);
-            });
-        });
-
-        // Theme Switcher
-        const themeCheckbox = document.getElementById('theme-checkbox');
-        themeCheckbox.addEventListener('change', () => {
-            document.body.classList.toggle('light-theme');
-        });
-
-        // Back-to-Top Button
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Scroll Indikator
-        window.addEventListener('scroll', () => {
-            const scrollTotal = document.body.scrollHeight - window.innerHeight;
-            const scrollProgress = (window.scrollY / scrollTotal) * 100;
-            document.getElementById('progress-bar').style.width = `${scrollProgress}%`;
-        });
-    </script>
+    <!-- Eigene JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>
