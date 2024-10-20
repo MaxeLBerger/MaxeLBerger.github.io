@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            const targetPosition = document.getElementById(targetId).offsetTop - navHeight;
+            const targetElement = document.getElementById(targetId);
+            const targetPosition = targetElement.offsetTop - navHeight;
 
             window.scrollTo({
                 top: targetPosition,
@@ -78,12 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
             navList.classList.remove('active');
             mobileMenu.classList.remove('active');
         });
-    });
-
-    // Theme Switcher
-    const themeCheckbox = document.getElementById('theme-checkbox');
-    themeCheckbox.addEventListener('change', () => {
-        document.body.classList.toggle('light-theme');
     });
 
     // Scroll Indikator

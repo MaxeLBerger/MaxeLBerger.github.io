@@ -8,11 +8,6 @@ body {
     scroll-behavior: smooth;
 }
 
-body.light-theme {
-    background-color: #f5f5f5;
-    color: #121212;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -21,6 +16,10 @@ a {
 img {
     max-width: 100%;
     height: auto;
+}
+
+.highlight {
+    color: #00e676;
 }
 
 /* Navigation */
@@ -227,6 +226,7 @@ nav .menu-toggle .bar {
 .about-text h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #00e676; /* Neon-Grün für die Überschrift */
 }
 
 .about-text p {
@@ -244,6 +244,7 @@ nav .menu-toggle .bar {
     text-align: center;
     margin-bottom: 60px;
     font-size: 36px;
+    color: #00e676; /* Neon-Grün für die Überschrift */
 }
 
 .skills-container {
@@ -259,11 +260,12 @@ nav .menu-toggle .bar {
     border-radius: 16px;
     text-align: center;
     width: 200px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .skill-card:hover {
     transform: translateY(-10px);
+    background-color: #00e676; /* Neon-Grün beim Hover */
 }
 
 .skill-card img {
@@ -273,6 +275,11 @@ nav .menu-toggle .bar {
 
 .skill-card h3 {
     font-size: 24px;
+    color: #fff;
+}
+
+.skill-card:hover h3 {
+    color: #121212; /* Dunkler Text auf Neon-Grünem Hintergrund */
 }
 
 /* Projekte Section */
@@ -285,6 +292,7 @@ nav .menu-toggle .bar {
     text-align: center;
     margin-bottom: 60px;
     font-size: 36px;
+    color: #00e676; /* Neon-Grün für die Überschrift */
 }
 
 .projects-container {
@@ -388,38 +396,6 @@ footer p {
 
 #back-to-top.show {
     display: block;
-}
-
-/* Light Theme */
-body.light-theme {
-    background-color: #f5f5f5;
-    color: #121212;
-}
-
-body.light-theme nav,
-body.light-theme .skills-section,
-body.light-theme .projects-section,
-body.light-theme footer {
-    background-color: #fff;
-}
-
-body.light-theme .skill-card,
-body.light-theme .project-card {
-    background-color: #f5f5f5;
-    color: #121212;
-}
-
-body.light-theme nav .nav-list li a:hover,
-body.light-theme nav .nav-list li a.active {
-    color: #6c63ff;
-}
-
-body.light-theme #back-to-top {
-    background-color: #6c63ff;
-}
-
-body.light-theme #back-to-top:hover {
-    background-color: #5e55e2;
 }
 
 /* Responsives Design */
