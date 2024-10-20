@@ -16,9 +16,14 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
             <li><a href="#home">Home</a></li>
-            <li><a href="#aboutMe">AboutMe</a></li>
+            <li><a href="#aboutMe">About Me</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projekte</a></li>
         </ul>
@@ -52,7 +57,7 @@
                         Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
                     </p>
                 </div>
-                <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto;" />
+                <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto; border: none;" />
             </div>
         </div>
 
@@ -110,6 +115,38 @@
                     <p>Albert ist ein KI-Projekt, in dem 100 verschiedene Kreaturen, genannt Alberts, darum wetteifern, die meiste Nahrung zu finden. Jedes Mal, wenn ein Albert Nahrung findet, erhöht sich seine Lebensdauer und er dupliziert sich. Dadurch überleben die erfolgreichen Alberts, während die weniger erfolgreichen sterben. Am Ende bleibt der Albert übrig, der am besten darin ist, Nahrung zu finden.</p>
                     <p><a href="projects/albert.html">Weitere Infos</a></p>
                 </div>
+
+                <!-- Beispielprojekt 1 -->
+                <div class="project slide fade-in">
+                    <h3><a href="projects/weatherApp.html">Wetter App</a></h3>
+                    <img src="res/weather-app.png" alt="Wetter App Projekt Vorschaubild" loading="lazy" />
+                    <p>Die Wetter App zeigt aktuelle Wetterdaten für verschiedene Standorte an. Sie verwendet eine externe Wetter-API und stellt die Informationen in einer ansprechenden Benutzeroberfläche dar. Entwickelt mit JavaScript und einer REST-API-Anbindung.</p>
+                    <p><a href="projects/weatherApp.html">Weitere Infos</a></p>
+                </div>
+
+                <!-- Beispielprojekt 2 -->
+                <div class="project slide fade-in">
+                    <h3><a href="projects/todoApp.html">To-Do Liste</a></h3>
+                    <img src="res/todo-app.png" alt="To-Do App Projekt Vorschaubild" loading="lazy" />
+                    <p>Die To-Do Liste hilft Benutzern, ihre Aufgaben zu organisieren und den Fortschritt zu verfolgen. Das Projekt ist mit HTML, CSS und JavaScript umgesetzt und speichert Daten im lokalen Speicher des Browsers, um die Aufgaben auch nach dem Schließen des Fensters zu behalten.</p>
+                    <p><a href="projects/todoApp.html">Weitere Infos</a></p>
+                </div>
+
+                <!-- Beispielprojekt 3 -->
+                <div class="project slide fade-in">
+                    <h3><a href="projects/portfolioSite.html">Portfolio Webseite</a></h3>
+                    <img src="res/portfolio.png" alt="Portfolio Website Projekt Vorschaubild" loading="lazy" />
+                    <p>Diese Portfolio-Webseite zeigt meine Fähigkeiten und Projekte auf professionelle Weise. Das Projekt wurde mit HTML, CSS und JavaScript erstellt und ist für verschiedene Bildschirmgrößen optimiert.</p>
+                    <p><a href="projects/portfolioSite.html">Weitere Infos</a></p>
+                </div>
+
+                <!-- Beispielprojekt 4 -->
+                <div class="project slide fade-in">
+                    <h3><a href="projects/chatApp.html">Chat Anwendung</a></h3>
+                    <img src="res/chat-app.png" alt="Chat App Projekt Vorschaubild" loading="lazy" />
+                    <p>Eine einfache Chat-Anwendung, die es Benutzern ermöglicht, in Echtzeit Nachrichten auszutauschen. Entwickelt mit Node.js, Socket.IO und einer modernen Benutzeroberfläche, um eine angenehme Chat-Erfahrung zu gewährleisten.</p>
+                    <p><a href="projects/chatApp.html">Weitere Infos</a></p>
+                </div>
             </div>
         </div>
     </div>
@@ -148,6 +185,13 @@
             appearOnScroll.observe(fader);
         });
 
+        // Mobile Navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
     </script>
 
     <!-- Stil für die Programmiersprachen Liste -->
@@ -195,20 +239,139 @@
             color: white;
         }
 
-        .details-btn {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #00e676;
-            border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            font-weight: bold;
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        .details-btn:hover {
-            background-color: #00c853;
+        .bar {
+            background-color: #fff;
+            height: 3px;
+            width: 25px;
+            margin: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #333;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav-list.active li {
+            padding: 10px 0;
+        }
+
+        .project {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 300px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover img {
+            transform: scale(1.05);
+        }
+
+        .project p {
+            color: #cfcfcf;
+            line-height: 1.5;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            padding: 0 10px;
+        }
+
+        .project:hover p {
+            color: #ffffff;
+        }
+
+        .project h3 a {
+            color: #6c63ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project h3 a:hover {
+            color: #00e676;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-list {
+                display: none;
+                width: 100%;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        /* Anpassungen für Textgrößen auf kleinen Bildschirmen */
+        @media (max-width: 870px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .aboutme .box {
+                padding: 20px;
+                overflow: hidden; /* Entfernt unnötige Scrollbars */
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .aboutme .box {
+                padding: 15px;
+                overflow: hidden; /* Entfernt unnötige Scrollbars */
+            }
         }
     </style>
 </body>
