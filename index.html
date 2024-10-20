@@ -1,19 +1,29 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maximilian Haak - Softwareentwickler</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
     <!-- Font für professionelles Erscheinungsbild -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="res/faviconpurple.png" type="image/png">
     <!-- Typed.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Font Awesome für Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <!-- Umschalter für Dark/Light Mode -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-checkbox">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider round"></span>
+        </label>
+        <em>Dark Mode</em>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="menu-toggle" id="mobile-menu">
@@ -22,16 +32,19 @@
             <span class="bar"></span>
         </div>
         <ul class="nav-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#aboutMe">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projekte</a></li>
+            <li><a href="#home" class="nav-link" id="nav-home">Home</a></li>
+            <li><a href="#aboutMe" class="nav-link" id="nav-aboutMe">About Me</a></li>
+            <li><a href="#skills" class="nav-link" id="nav-skills">Skills</a></li>
+            <li><a href="#projects" class="nav-link" id="nav-projects">Projekte</a></li>
         </ul>
     </nav>
 
+    <!-- Scroll Indikator -->
+    <div id="progress-bar"></div>
+
     <div id="wrapper">
         <!-- Home Bereich -->
-        <div id="home" class="slide fade-in" style="margin-top: 50px;">
+        <section id="home" class="slide fade-in section parallax" style="margin-top: 50px; margin-bottom: 50px; padding-top: 100px;">
             <div class="center">
                 <div class="slide fade-in">
                     <h2>Hallo, ich bin</h2>
@@ -42,27 +55,37 @@
                 <div class="slide fade-in">
                     <h3><span class="typing"></span></h3>
                 </div>
+                <a href="#aboutMe" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
             </div>
-        </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
 
         <!-- Über mich Bereich -->
-        <div class="center aboutme slide fade-in" id="aboutMe">
+        <section class="center aboutme slide fade-in section" id="aboutMe" style="margin-top: 100px; margin-bottom: 100px;">
             <div class="box" id="aboutMeBox">
+                <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto; border: none;" />
                 <div class="text">
                     <h3>About Me</h3>
                     <p>
                         Ich begann 2020 mit dem Programmieren, zunächst mit einfachen Websites.
                         Bald darauf folgten komplexere Projekte in Java.<br /><br />
-                        2022 starte ich im Rahmen meiner Ausbildung mit Softwareentwicklungen und Datenbankanbindungen in Delphi.<br /><br />
+                        2022 startete ich im Rahmen meiner Ausbildung mit Softwareentwicklungen und Datenbankanbindungen in Delphi.<br /><br />
                         Meine Leidenschaft für Programmierung wächst weiterhin, besonders beschäftigt mich das Thema KI und die intelligente Nutzung im Bereich Entwicklung.<br /><br />
                     </p>
                 </div>
-                <img src="res/maxlervorne.png" class="picture" alt="Portrait von Maximilian Haak" loading="lazy" style="max-width: 100%; height: auto; border: none;" />
             </div>
-        </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
 
         <!-- Skills Bereich -->
-        <div class="center skills-list slide fade-in" id="skills">
+        <section class="center skills-list slide fade-in section" id="skills" style="margin-top: 150px; margin-bottom: 100px;">
+            <!-- Divider -->
+            <div class="section-divider"></div>
+
             <h3>Skills</h3>
             <ul class="languages">
                 <li>
@@ -79,7 +102,7 @@
                 </li>
                 <li>
                     <div class="language-box">
-                        <img src="res/javascript-icon.png" alt="Javascript Icon">
+                        <img src="res/javascript-icon.png" alt="JavaScript Icon">
                         <span>JavaScript</span>
                     </div>
                 </li>
@@ -102,13 +125,21 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
 
         <!-- Projekte Bereich -->
-        <div id="projects" class="slide fade-in">
+        <section id="projects" class="center slide fade-in section" style="margin-top: 100px; margin-bottom: 100px;">
+            <!-- Divider -->
+            <div class="section-divider"></div>
+
             <h2>Projekte</h2>
+            <div class="projects-divider"></div>
 
             <div class="projectTree">
+                <!-- Projekt 1 -->
                 <div class="project slide fade-in">
                     <h3><a href="projects/albert.html">Albert</a></h3>
                     <img src="res/albert.png" alt="Albert Projekt Vorschaubild" loading="lazy" />
@@ -116,7 +147,7 @@
                     <p><a href="projects/albert.html">Weitere Infos</a></p>
                 </div>
 
-                <!-- Beispielprojekt 1 -->
+                <!-- Projekt 2 -->
                 <div class="project slide fade-in">
                     <h3><a href="projects/weatherApp.html">Wetter App</a></h3>
                     <img src="res/weather-app.png" alt="Wetter App Projekt Vorschaubild" loading="lazy" />
@@ -124,32 +155,26 @@
                     <p><a href="projects/weatherApp.html">Weitere Infos</a></p>
                 </div>
 
-                <!-- Beispielprojekt 2 -->
-                <div class="project slide fade-in">
-                    <h3><a href="projects/todoApp.html">To-Do Liste</a></h3>
-                    <img src="res/todo-app.png" alt="To-Do App Projekt Vorschaubild" loading="lazy" />
-                    <p>Die To-Do Liste hilft Benutzern, ihre Aufgaben zu organisieren und den Fortschritt zu verfolgen. Das Projekt ist mit HTML, CSS und JavaScript umgesetzt und speichert Daten im lokalen Speicher des Browsers, um die Aufgaben auch nach dem Schließen des Fensters zu behalten.</p>
-                    <p><a href="projects/todoApp.html">Weitere Infos</a></p>
-                </div>
-
-                <!-- Beispielprojekt 3 -->
-                <div class="project slide fade-in">
-                    <h3><a href="projects/portfolioSite.html">Portfolio Webseite</a></h3>
-                    <img src="res/portfolio.png" alt="Portfolio Website Projekt Vorschaubild" loading="lazy" />
-                    <p>Diese Portfolio-Webseite zeigt meine Fähigkeiten und Projekte auf professionelle Weise. Das Projekt wurde mit HTML, CSS und JavaScript erstellt und ist für verschiedene Bildschirmgrößen optimiert.</p>
-                    <p><a href="projects/portfolioSite.html">Weitere Infos</a></p>
-                </div>
-
-                <!-- Beispielprojekt 4 -->
-                <div class="project slide fade-in">
-                    <h3><a href="projects/chatApp.html">Chat Anwendung</a></h3>
-                    <img src="res/chat-app.png" alt="Chat App Projekt Vorschaubild" loading="lazy" />
-                    <p>Eine einfache Chat-Anwendung, die es Benutzern ermöglicht, in Echtzeit Nachrichten auszutauschen. Entwickelt mit Node.js, Socket.IO und einer modernen Benutzeroberfläche, um eine angenehme Chat-Erfahrung zu gewährleisten.</p>
-                    <p><a href="projects/chatApp.html">Weitere Infos</a></p>
-                </div>
+                <!-- Weitere Projekte hier einfügen -->
             </div>
-        </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
+
     </div>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Footer mit Social-Media-Links -->
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/dein-profil" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dein-profil" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <!-- Weitere Links -->
+        </div>
+    </footer>
 
     <!-- JavaScript für Typed.js und Scroll-Animationen -->
     <script>
@@ -176,6 +201,7 @@
                     return;
                 } else {
                     entry.target.classList.add('show');
+                    entry.target.style.transition = "opacity 1.5s ease-out, transform 1.5s ease-out";
                     appearOnScroll.unobserve(entry.target);
                 }
             });
@@ -192,187 +218,79 @@
         mobileMenu.addEventListener('click', () => {
             navList.classList.toggle('active');
         });
+
+        // Active Navigation Highlight
+        const updateActiveLink = () => {
+            const sections = document.querySelectorAll('section');
+            let scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+            const offset = 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPos >= sectionTop - offset && scrollPos < sectionTop + sectionHeight - offset) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    if (sectionId && document.querySelector(`#nav-${sectionId}`)) {
+                        document.querySelector(`#nav-${sectionId}`).classList.add('active');
+                    }
+                }
+            });
+        };
+
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', () => {
+            updateActiveLink();
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                updateActiveLink();
+            }, 100);
+        });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                setTimeout(() => {
+                    updateActiveLink();
+                }, 600);
+            });
+        });
+
+        // Theme Switcher
+        const themeCheckbox = document.getElementById('theme-checkbox');
+        themeCheckbox.addEventListener('change', () => {
+            document.body.classList.toggle('light-theme');
+        });
+
+        // Back-to-Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll Indikator
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.body.scrollHeight - window.innerHeight;
+            const scrollProgress = (window.scrollY / scrollTotal) * 100;
+            document.getElementById('progress-bar').style.width = `${scrollProgress}%`;
+        });
     </script>
-
-    <!-- Stil für die Programmiersprachen Liste -->
-    <style>
-        .skills-list {
-            margin-top: 50px;
-        }
-
-        .languages {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .language-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #6c63ff;
-            padding: 20px;
-            border-radius: 16px;
-            width: 120px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-
-        .language-box:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .language-box img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .language-box span {
-            font-weight: bold;
-            color: white;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .bar {
-            background-color: #fff;
-            height: 3px;
-            width: 25px;
-            margin: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-list.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #333;
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .nav-list.active li {
-            padding: 10px 0;
-        }
-
-        .project {
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            max-width: 300px;
-            margin: 20px;
-            text-align: center;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .project img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .project:hover img {
-            transform: scale(1.05);
-        }
-
-        .project p {
-            color: #cfcfcf;
-            line-height: 1.5;
-            font-size: 14px;
-            transition: color 0.3s ease;
-            padding: 0 10px;
-        }
-
-        .project:hover p {
-            color: #ffffff;
-        }
-
-        .project h3 a {
-            color: #6c63ff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .project h3 a:hover {
-            color: #00e676;
-        }
-
-        @media screen and (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-list {
-                display: none;
-                width: 100%;
-            }
-
-            nav ul {
-                display: none;
-            }
-        }
-
-        /* Anpassungen für Textgrößen auf kleinen Bildschirmen */
-        @media (max-width: 870px) {
-            h1 {
-                font-size: 48px;
-            }
-
-            h2 {
-                font-size: 32px;
-            }
-
-            h3 {
-                font-size: 24px;
-            }
-
-            .aboutme .box {
-                padding: 20px;
-                overflow: hidden; /* Entfernt unnötige Scrollbars */
-            }
-        }
-
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            h2 {
-                font-size: 28px;
-            }
-
-            h3 {
-                font-size: 20px;
-            }
-
-            .aboutme .box {
-                padding: 15px;
-                overflow: hidden; /* Entfernt unnötige Scrollbars */
-            }
-        }
-    </style>
 </body>
 </html>
