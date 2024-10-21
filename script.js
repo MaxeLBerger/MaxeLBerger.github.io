@@ -7,6 +7,29 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
         showCursor: false
     });
+    
+    // Smooth Scrolling
+    document.querySelectorAll('.nav-link, .scroll-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Überprüfe, ob das Ziel existiert
+            if (targetElement) {
+                const targetPosition = targetElement.offsetTop - navHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            navList.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
 
     // Back-to-Top Button
     const backToTopButton = document.getElementById('back-to-top');
@@ -24,37 +47,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Navigation Scroll
     const nav = document.querySelector('nav');
+    let navHeight = nav.offsetHeight;
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
 
-    function activateNavLink() {
-        let currentSection = "";
-        const navHeight = nav.offsetHeight;
-        const threshold = navHeight + 50; // Optionaler Offset
+    function updateActiveNav() {
+        let scrollPosition = window.scrollY + navHeight + 1; // +1 to ensure proper highlighting
 
         sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= threshold && rect.bottom > threshold) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
 
-        // Spezieller Fall: Wenn am Ende der Seite, setze currentSection auf die letzte Sektion
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-            currentSection = sections[sections.length - 1].getAttribute('id');
-        }
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                const currentId = section.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
     }
 
-    window.addEventListener('scroll', activateNavLink);
-    window.addEventListener('resize', activateNavLink); // Aktualisiert bei Größenänderung
-    activateNavLink(); // Initialer Aufruf
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('resize', () => {
+        navHeight = nav.offsetHeight; // Update navHeight on resize
+        updateActiveNav();
+    });
+
+    // Initial call to set active nav
+    updateActiveNav();
 
     // Mobile Navigation
     const mobileMenu = document.getElementById('mobile-menu');
@@ -69,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
+            navHeight = nav.offsetHeight; // Update navHeight
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             const targetPosition = targetElement.offsetTop - navHeight;
