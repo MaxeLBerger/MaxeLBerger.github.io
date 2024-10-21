@@ -18,11 +18,9 @@
     <!-- Favicon -->
     <link rel="icon" href="res/favicongreen1.png" type="image/png">
 
-    <!-- Typed.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
     <!-- Font Awesome für Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-+Yf1xg2xeYnV6Yv5sBjx6K0DROmBk1FJ0VD1y0N1hGeQg4I5jJQ1W2cfZP3QXlY4Zt1JPMcOZ0ovUbVkQ5D6lA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <!-- Particles.js Hintergrund -->
@@ -33,21 +31,21 @@
         <div class="logo">
             <a href="#home">Maximilian Haak</a>
         </div>
-        <div class="menu-toggle" id="mobile-menu">
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
-        <ul class="nav-list">
-            <li><a href="#home" class="nav-link" id="nav-home">Home</a></li>
-            <li><a href="#aboutMe" class="nav-link" id="nav-aboutMe">About Me</a></li>
-            <li><a href="#skills" class="nav-link" id="nav-skills">Skills</a></li>
-            <li><a href="#projects" class="nav-link" id="nav-projects">Projekte</a></li>
+        <ul class="nav-list" role="navigation">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projekte</a></li>
         </ul>
     </nav>
 
     <!-- Scroll Indikator -->
-    <div id="progress-bar"></div>
+    <div id="progress-bar" aria-hidden="true"></div>
 
     <!-- Hauptinhalt -->
     <main id="wrapper">
@@ -60,12 +58,12 @@
                 <a href="#aboutMe" class="btn scroll-link">Mehr über mich</a>
             </div>
             <div class="scroll-indicator">
-                <a href="#aboutMe" class="scroll-link"><i class="fas fa-chevron-down"></i></a>
+                <a href="#aboutMe" class="scroll-link" aria-label="Zum Abschnitt Über mich scrollen"><i class="fas fa-chevron-down"></i></a>
             </div>
         </section>
-        
+
         <!-- Divider -->
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- Über mich Bereich -->
         <section id="aboutMe" class="about-section">
@@ -85,7 +83,7 @@
         </section>
 
         <!-- Divider -->
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- Skills Bereich -->
         <section id="skills" class="skills-section">
@@ -93,34 +91,34 @@
             <div class="skills-container">
                 <!-- Skill Cards -->
                 <div class="skill-card">
-                    <img src="res/java-icon.png" alt="Java">
+                    <img src="res/java-icon.png" alt="Java Icon">
                     <h3>Java</h3>
                 </div>
                 <div class="skill-card">
-                    <img src="res/delphi-icon.png" alt="Delphi">
+                    <img src="res/delphi-icon.png" alt="Delphi Icon">
                     <h3>Delphi</h3>
                 </div>
                 <div class="skill-card">
-                    <img src="res/javascript-icon.png" alt="JavaScript">
+                    <img src="res/javascript-icon.png" alt="JavaScript Icon">
                     <h3>JavaScript</h3>
                 </div>
                 <div class="skill-card">
-                    <img src="res/html-icon.png" alt="HTML">
+                    <img src="res/html-icon.png" alt="HTML Icon">
                     <h3>HTML</h3>
                 </div>
                 <div class="skill-card">
-                    <img src="res/css-icon.png" alt="CSS">
+                    <img src="res/css-icon.png" alt="CSS Icon">
                     <h3>CSS</h3>
                 </div>
                 <div class="skill-card">
-                    <img src="res/postgres-icon.png" alt="PostgreSQL">
+                    <img src="res/postgres-icon.png" alt="PostgreSQL Icon">
                     <h3>PostgreSQL</h3>
                 </div>
             </div>
         </section>
 
         <!-- Divider -->
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- Projekte Bereich -->
         <section id="projects" class="projects-section">
@@ -149,24 +147,24 @@
     </main>
 
     <!-- Back-to-Top Button -->
-    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
 
     <!-- Footer mit Social-Media-Links -->
     <footer>
         <div class="social-media">
             <a href="https://github.com/MaxeLBerger" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/dein-profil" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/maximilian-haak" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <!-- Weitere Links -->
         </div>
         <p>&copy; 2024 Maximilian Haak</p>
     </footer>
 
     <!-- JavaScript-Dateien -->
-        <!-- Typed.js Library -->
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-        <!-- Eigene JavaScript-Datei -->
-        <script src="script.js"></script>
-        <!-- particles.js Library -->
-        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Typed.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Eigene JavaScript-Datei -->
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -33,30 +33,6 @@ img {
     z-index: -1;
 }
 
-/* Hero Section */
-.hero-section {
-    height: 100vh;
-    position: relative;
-    background-color: transparent;
-}
-
-/* Entferne das Hintergrundbild oder setze es auf transparent */
-.hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Hintergrundfarbe oder Bild entfernen */
-}
-
-/* Optional: Halbtransparenter Hintergrund für Textlesbarkeit */
-.hero-content {
-    background-color: rgba(18, 18, 18, 0.6);
-    border-radius: 16px;
-}
-
 /* Navigation */
 nav {
     position: fixed;
@@ -131,20 +107,8 @@ nav .menu-toggle .bar {
 /* Hero Section */
 .hero-section {
     height: 100vh;
-    background-image: url('res/background.jpg');
-    background-size: cover;
-    background-position: center;
     position: relative;
-}
-
-.hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(18, 18, 18, 0.6);
+    background-color: transparent;
 }
 
 .hero-content {
@@ -154,6 +118,8 @@ nav .menu-toggle .bar {
     margin: 0 auto;
     padding-top: 200px;
     text-align: center;
+    background-color: rgba(18, 18, 18, 0.6);
+    border-radius: 16px;
 }
 
 .hero-content h2 {
@@ -261,7 +227,7 @@ nav .menu-toggle .bar {
 .about-text h2 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #00e676; /* Neon-Grün für die Überschrift */
+    color: #00e676;
 }
 
 .about-text p {
@@ -279,7 +245,7 @@ nav .menu-toggle .bar {
     text-align: center;
     margin-bottom: 60px;
     font-size: 36px;
-    color: #00e676; /* Neon-Grün für die Überschrift */
+    color: #00e676;
 }
 
 .skills-container {
@@ -300,7 +266,7 @@ nav .menu-toggle .bar {
 
 .skill-card:hover {
     transform: translateY(-10px);
-    background-color: #00e676; /* Neon-Grün beim Hover */
+    background-color: #00e676;
 }
 
 .skill-card img {
@@ -314,7 +280,7 @@ nav .menu-toggle .bar {
 }
 
 .skill-card:hover h3 {
-    color: #121212; /* Dunkler Text auf Neon-Grünem Hintergrund */
+    color: #121212;
 }
 
 /* Projekte Section */
@@ -327,7 +293,7 @@ nav .menu-toggle .bar {
     text-align: center;
     margin-bottom: 60px;
     font-size: 36px;
-    color: #00e676; /* Neon-Grün für die Überschrift */
+    color: #00e676;
 }
 
 .projects-container {

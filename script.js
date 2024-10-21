@@ -7,16 +7,23 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
         showCursor: false
     });
-    
+
+    // Navigation Elemente
+    const nav = document.querySelector('nav');
+    let navHeight = nav.offsetHeight;
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+
     // Smooth Scrolling
     document.querySelectorAll('.nav-link, .scroll-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
+            navHeight = nav.offsetHeight; // Update navHeight
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
 
-            // Überprüfe, ob das Ziel existiert
             if (targetElement) {
                 const targetPosition = targetElement.offsetTop - navHeight;
 
@@ -46,13 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Navigation Scroll
-    const nav = document.querySelector('nav');
-    let navHeight = nav.offsetHeight;
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-
     function updateActiveNav() {
-        let scrollPosition = window.scrollY + navHeight + 1; // +1 to ensure proper highlighting
+        let scrollPosition = window.scrollY + navHeight + 1;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -72,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', updateActiveNav);
     window.addEventListener('resize', () => {
-        navHeight = nav.offsetHeight; // Update navHeight on resize
+        navHeight = nav.offsetHeight;
         updateActiveNav();
     });
 
@@ -80,31 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
     updateActiveNav();
 
     // Mobile Navigation
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-
     mobileMenu.addEventListener('click', () => {
         navList.classList.toggle('active');
         mobileMenu.classList.toggle('active');
-    });
-
-    // Smooth Scrolling
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            navHeight = nav.offsetHeight; // Update navHeight
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            const targetPosition = targetElement.offsetTop - navHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-
-            navList.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        });
     });
 
     // Scroll Indikator
