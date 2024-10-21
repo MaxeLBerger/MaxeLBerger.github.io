@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Typed.js Animation
-    var typed = new Typed('.typing', {
-        strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
-        typeSpeed: 60,
-        backSpeed: 40,
-        loop: true,
-        showCursor: false
-    });
+    // Typed.js Animation (nur in der Home-Section)
+    var heroSection = document.getElementById('home');
+    if (heroSection) {
+        var typed = new Typed('.typing', {
+            strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true,
+            showCursor: false
+        });
+    }
 
     // Navigation Elemente
     const nav = document.querySelector('nav');
@@ -19,20 +22,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // Smooth Scrolling
     document.querySelectorAll('.nav-link, .scroll-link').forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            navHeight = nav.offsetHeight; // Update navHeight
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+            const href = this.getAttribute('href');
+            // Prüfen, ob der Link zu einer Sektion auf der aktuellen Seite zeigt
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                navHeight = nav.offsetHeight; // Aktualisiere navHeight
+                const targetId = href.split('#')[1];
+                const targetElement = document.getElementById(targetId);
 
-            if (targetElement) {
-                const targetPosition = targetElement.offsetTop - navHeight;
+                if (targetElement) {
+                    const targetPosition = targetElement.offsetTop - navHeight;
 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                // Link zu einer anderen Seite, Standardverhalten beibehalten
+                // Optional: Implementiere hier zusätzliche Logik, falls gewünscht
             }
 
+            // Entferne aktive Klasse und schließe das mobile Menü
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
             navList.classList.remove('active');
             mobileMenu.classList.remove('active');
         });
@@ -52,91 +65,96 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Navigation Scroll
-    function updateActiveNav() {
-        let scrollPosition = window.scrollY + navHeight + 1;
+    // Intersection Observer für Scroll-Erkennung
+    if (sections.length > 0 && navLinks.length > 0) {
+        const options = {
+            root: null,
+            rootMargin: `-${navHeight}px 0px 0px 0px`, // Verhindert das Überdecken durch die Nav
+            threshold: 0.6 // 60% des Elements müssen sichtbar sein
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        const href = link.getAttribute('href');
+                        if (href.startsWith('#') && href.split('#')[1] === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, options);
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                const currentId = section.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+            observer.observe(section);
         });
     }
 
-    window.addEventListener('scroll', updateActiveNav);
-    window.addEventListener('resize', () => {
-        navHeight = nav.offsetHeight;
-        updateActiveNav();
-    });
-
-    // Initial call to set active nav
-    updateActiveNav();
-
     // Mobile Navigation
-    mobileMenu.addEventListener('click', () => {
-        navList.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
 
     // Scroll Indikator
     window.addEventListener('scroll', () => {
         const scrollTotal = document.body.scrollHeight - window.innerHeight;
         const scrollProgress = (window.scrollY / scrollTotal) * 100;
-        document.getElementById('progress-bar').style.width = `${scrollProgress}%`;
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = `${scrollProgress}%`;
+        }
     });
 
-    // Particles.js Konfiguration
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 60,
-                "density": {
+    // Particles.js Konfiguration (nur in der Home-Section)
+    if (heroSection) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00e676"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.3
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
                     "enable": true,
-                    "value_area": 800
+                    "distance": 150,
+                    "color": "#00e676",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2
                 }
             },
-            "color": {
-                "value": "#00e676"
-            },
-            "shape": {
-                "type": "circle"
-            },
-            "opacity": {
-                "value": 0.3
-            },
-            "size": {
-                "value": 3,
-                "random": true
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#00e676",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 2
-            }
-        },
-        "interactivity": {
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    }
                 }
-            }
-        },
-        "retina_detect": true
-    });
+            },
+            "retina_detect": true
+        });
+    }
 });

@@ -22,12 +22,12 @@ img {
     color: #00e676;
 }
 
-/* Particles.js Hintergrund */
+/* Particles.js Hintergrund (nur in der Home-Section sichtbar) */
 #particles-js {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #121212;
+    background-color: transparent;
     background-size: cover;
     background-position: 50% 50%;
     z-index: -1;
@@ -38,7 +38,7 @@ nav {
     position: fixed;
     width: 100%;
     top: 0;
-    background-color: rgba(18, 18, 18, 0.9);
+    background-color: rgba(18, 18, 18, 0.95); /* Leicht transparenter Hintergrund für bessere Sichtbarkeit */
     z-index: 999;
     transition: background-color 0.3s ease;
 }
@@ -51,7 +51,12 @@ nav .logo {
 nav .logo a {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: #fff; /* Weiß für das Logo */
+    transition: color 0.3s ease;
+}
+
+nav .logo a:hover {
+    color: #00e676; /* Grün beim Hover */
 }
 
 nav .nav-list {
@@ -99,7 +104,7 @@ nav .menu-toggle .bar {
     top: 0;
     left: 0;
     height: 5px;
-    background: linear-gradient(to right, #6c63ff, #00e676);
+    background: linear-gradient(to right, #00e676, #6c63ff); /* Grüner Farbverlauf */
     width: 0%;
     z-index: 1000;
 }
@@ -118,8 +123,9 @@ nav .menu-toggle .bar {
     margin: 0 auto;
     padding-top: 200px;
     text-align: center;
-    background-color: rgba(18, 18, 18, 0.6);
-    border-radius: 16px;
+    background-color: transparent; /* Entfernt den Hintergrundkasten */
+    border-radius: 0; /* Entfernt abgerundete Ecken */
+    box-shadow: none; /* Entfernt den Schatten */
 }
 
 .hero-content h2 {
@@ -146,13 +152,15 @@ nav .menu-toggle .bar {
 .hero-content .btn {
     padding: 12px 24px;
     background-color: #00e676;
-    color: #fff;
+    color: #121212; /* Dunkler Text für besseren Kontrast */
     border-radius: 30px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
 }
 
 .hero-content .btn:hover {
     background-color: #00c853;
+    color: #fff; /* Weißer Text beim Hover */
 }
 
 /* Scroll-Indikator */
@@ -164,7 +172,7 @@ nav .menu-toggle .bar {
 }
 
 .scroll-indicator a {
-    color: #fff;
+    color: #00e676; /* Grüner Pfeil */
     font-size: 32px;
     animation: bounce 2s infinite;
 }
@@ -185,14 +193,14 @@ nav .menu-toggle .bar {
 .section-divider {
     width: 80%;
     height: 2px;
-    background: linear-gradient(to right, #6c63ff, #00e676);
+    background: linear-gradient(to right, #00e676, #6c63ff); /* Grüner Farbverlauf */
     margin: 0 auto;
 }
 
 /* Über mich Section */
 .about-section {
     padding: 100px 20px;
-    background-color: #121212;
+    background-color: rgba(18, 18, 18, 0.8);
 }
 
 .about-section .container {
@@ -232,13 +240,13 @@ nav .menu-toggle .bar {
 
 .about-text p {
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.8; /* Erhöhter Zeilenabstand */
 }
 
 /* Skills Section */
 .skills-section {
     padding: 100px 20px;
-    background-color: #1e1e1e;
+    background-color: transparent; /* Grauer Bereich entfernt */
 }
 
 .skills-section h2 {
@@ -256,7 +264,7 @@ nav .menu-toggle .bar {
 }
 
 .skill-card {
-    background-color: #2a2a2a;
+    background-color: rgba(42, 42, 42, 0.8); /* Transparenter Hintergrund */
     padding: 40px 20px;
     border-radius: 16px;
     text-align: center;
@@ -286,7 +294,7 @@ nav .menu-toggle .bar {
 /* Projekte Section */
 .projects-section {
     padding: 100px 20px;
-    background-color: #121212;
+    background-color: rgba(18, 18, 18, 0.8);
 }
 
 .projects-section h2 {
@@ -304,7 +312,7 @@ nav .menu-toggle .bar {
 }
 
 .project-card {
-    background-color: #1e1e1e;
+    background-color: rgba(30, 30, 30, 0.8);
     border-radius: 16px;
     overflow: hidden;
     width: 300px;
@@ -329,6 +337,7 @@ nav .menu-toggle .bar {
 .project-info h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #00e676; /* Grüner Titel */
 }
 
 .project-info p {
@@ -339,13 +348,38 @@ nav .menu-toggle .bar {
 .project-info .btn {
     padding: 8px 16px;
     background-color: #00e676;
-    color: #fff;
+    color: #121212; /* Dunkler Text für besseren Kontrast */
     border-radius: 30px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
 }
 
 .project-info .btn:hover {
     background-color: #00c853;
+    color: #fff; /* Weißer Text beim Hover */
+}
+
+/* Coming Soon Card */
+.project-card.coming-soon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(42, 42, 42, 0.8);
+}
+
+.project-card.coming-soon .project-info {
+    text-align: center;
+}
+
+.project-card.coming-soon h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #00e676;
+}
+
+.project-card.coming-soon p {
+    font-size: 16px;
+    color: #fff;
 }
 
 /* Footer */
@@ -361,14 +395,14 @@ footer .social-media {
 }
 
 footer .social-media a {
-    color: #777;
+    color: #00e676; /* Grüner Farbton für Icons */
     margin: 0 10px;
     font-size: 24px;
     transition: color 0.3s ease;
 }
 
 footer .social-media a:hover {
-    color: #00e676;
+    color: #fff; /* Weiß beim Hover */
 }
 
 footer p {
@@ -388,11 +422,13 @@ footer p {
     cursor: pointer;
     display: none;
     z-index: 1000;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
 }
 
 #back-to-top:hover {
     background-color: #00c853;
+    transform: scale(1.1); /* Leichte Vergrößerung beim Hover */
 }
 
 #back-to-top.show {
@@ -404,7 +440,7 @@ footer p {
     nav .nav-list {
         display: none;
         flex-direction: column;
-        background-color: rgba(18, 18, 18, 0.9);
+        background-color: rgba(18, 18, 18, 0.95);
         position: absolute;
         top: 70px;
         right: 0;
@@ -456,6 +492,17 @@ footer p {
         font-size: 28px;
         height: 32px;
     }
+
+    /* Zusätzliche Anpassungen für albert.html */
+    .albert-main .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .project-detail-section .container {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -475,4 +522,95 @@ footer p {
         font-size: 24px;
         height: 28px;
     }
+
+    /* Zusätzliche Anpassungen für albert.html */
+    .project-detail-section .container {
+        padding: 10px;
+    }
+
+    .project-detail-section h1,
+    .project-detail-section h2 {
+        font-size: 28px;
+    }
+
+    .project-detail-section p {
+        font-size: 16px;
+    }
+
+    .project-detail-section .images h2 {
+        font-size: 20px;
+    }
+}
+
+/* Spezifische Styles für albert.html */
+.albert-headline {
+    color: #00e676; /* Grüner Farbton */
+    line-height: 1.8; /* Erhöhter Zeilenabstand */
+    text-align: center; /* Zentrierung der Headlines */
+}
+
+.albert-main .project-detail-section {
+    background: url('../res/magical-background.jpg') no-repeat center center / cover; /* Magischer Hintergrund */
+    padding: 60px 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+}
+
+.albert-main .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.albert-main .images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.albert-main .imgContainer {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.albert-main .imgContainer:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 230, 118, 0.7);
+}
+
+.albert-main .imgContainer img {
+    width: 100%;
+    height: auto;
+}
+
+/* Animation für magische Effekte */
+@keyframes shimmer {
+    0% {
+        background-position: -500px 0;
+    }
+    100% {
+        background-position: 500px 0;
+    }
+}
+
+.project-detail-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-detail-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(0, 230, 118, 0.2), rgba(108, 99, 255, 0.2), rgba(0, 230, 118, 0.2));
+    animation: shimmer 5s linear infinite;
 }
