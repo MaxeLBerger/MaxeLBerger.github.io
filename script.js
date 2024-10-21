@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Navigation Scroll
     const nav = document.querySelector('nav');
-    const navHeight = nav.offsetHeight;
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
 
@@ -38,13 +37,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Aktive Navigation hervorheben
         let currentSection = "";
-        sections.forEach(section => {
+        const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
+        sections.forEach((section, index) => {
             const sectionTop = section.offsetTop - navHeight;
             const sectionHeight = section.offsetHeight;
             if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                 currentSection = section.getAttribute('id');
             }
         });
+
+        // Spezieller Fall: Wenn am Ende der Seite, setze currentSection auf die letzte Sektion
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+            currentSection = sections[sections.length - 1].getAttribute('id');
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -67,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
+            const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             const targetPosition = targetElement.offsetTop - navHeight;
