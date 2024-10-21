@@ -27,21 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
 
-    window.addEventListener('scroll', () => {
-        // Hintergrundfarbe der Navigation
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-
-        // Aktive Navigation hervorheben
+    function activateNavLink() {
         let currentSection = "";
-        const navHeight = nav.offsetHeight; // Nav-Höhe hier neu berechnen
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop - navHeight;
-            const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+        const navHeight = nav.offsetHeight;
+        const threshold = navHeight + 50; // Optionaler Offset
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= threshold && rect.bottom > threshold) {
                 currentSection = section.getAttribute('id');
             }
         });
@@ -57,7 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.classList.add('active');
             }
         });
-    });
+    }
+
+    window.addEventListener('scroll', activateNavLink);
+    window.addEventListener('resize', activateNavLink); // Aktualisiert bei Größenänderung
+    activateNavLink(); // Initialer Aufruf
 
     // Mobile Navigation
     const mobileMenu = document.getElementById('mobile-menu');
@@ -92,5 +89,51 @@ document.addEventListener('DOMContentLoaded', function () {
         const scrollTotal = document.body.scrollHeight - window.innerHeight;
         const scrollProgress = (window.scrollY / scrollTotal) * 100;
         document.getElementById('progress-bar').style.width = `${scrollProgress}%`;
+    });
+
+    // Particles.js Konfiguration
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 60,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#00e676"
+            },
+            "shape": {
+                "type": "circle"
+            },
+            "opacity": {
+                "value": 0.3
+            },
+            "size": {
+                "value": 3,
+                "random": true
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#00e676",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2
+            }
+        },
+        "interactivity": {
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                }
+            }
+        },
+        "retina_detect": true
     });
 });
