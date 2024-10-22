@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var heroSection = document.getElementById('home');
     if (heroSection) {
         var typed = new Typed('.typing', {
-            strings: ["Software Entwickler", "Web-Entwickler", "KI-Enthusiast"],
+            strings: ["Software-Entwickler", "Web-Entwickler", "KI-Enthusiast"],
             typeSpeed: 60,
             backSpeed: 40,
             loop: true,
