@@ -38,9 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         behavior: 'smooth'
                     });
                 }
-            } else {
-                // Link zu einer anderen Seite, Standardverhalten beibehalten
-                // Optional: Implementiere hier zusätzliche Logik, falls gewünscht
             }
 
             // Entferne aktive Klasse und schließe das mobile Menü

@@ -409,6 +409,16 @@ footer p {
     font-size: 14px;
 }
 
+footer .footer-link {
+    color: #00e676;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer .footer-link:hover {
+    color: #fff;
+}
+
 /* Back-to-Top Button */
 #back-to-top {
     position: fixed;
@@ -613,4 +623,51 @@ footer p {
     height: 100%;
     background: linear-gradient(120deg, rgba(0, 230, 118, 0.2), rgba(108, 99, 255, 0.2), rgba(0, 230, 118, 0.2));
     animation: shimmer 5s linear infinite;
+}
+
+/* Spezifische Styles für Impressum und Datenschutz */
+.impressum-section,
+.datenschutz-section {
+    max-width: 800px; /* Begrenze die maximale Breite für bessere Lesbarkeit */
+    margin: 0 auto; /* Zentriere den Inhalt */
+    padding: 40px 20px; /* Innenabstand */
+    background-color: rgba(18, 18, 18, 0.9); /* Hintergrundfarbe, passend zum Rest der Seite */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Schatten für 3D-Effekt */
+}
+
+.impressum-headline,
+.datenschutz-headline {
+    text-align: center; /* Zentriere die Überschrift */
+    color: #00e676; /* Grüner Farbton für die Überschrift */
+    margin-bottom: 30px; /* Abstand nach unten */
+    font-size: 32px; /* Schriftgröße der Überschrift */
+}
+
+.impressum-section h2,
+.datenschutz-section h2 {
+    color: #00e676; /* Grüner Farbton für Unterüberschriften */
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.impressum-section p,
+.datenschutz-section p {
+    text-align: justify; /* Blocksatz für bessere Lesbarkeit */
+    line-height: 1.8; /* Erhöhter Zeilenabstand */
+    font-size: 18px; /* Schriftgröße für den Fließtext */
+    margin-bottom: 20px; /* Abstand zwischen den Absätzen */
+}
+
+.impressum-section a,
+.datenschutz-section a {
+    color: #00e676; /* Grüner Farbton für Links */
+    text-decoration: underline; /* Unterstrich für Links */
+    transition: color 0.3s ease;
+}
+
+.impressum-section a:hover,
+.datenschutz-section a:hover {
+    color: #6c63ff; /* Farbwechsel beim Hover */
 }
