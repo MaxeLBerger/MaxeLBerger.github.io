@@ -671,3 +671,91 @@ footer .footer-link:hover {
 .datenschutz-section a:hover {
     color: #6c63ff; /* Farbwechsel beim Hover */
 }
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 60px rgba(0, 0, 0, 0.9);
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #6c63ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Spezifische Styles für albert.html - Hover- und Schatteneffekte */
+.albert-main .project-detail-section h1.albert-headline {
+    font-size: 48px; /* Größere Schriftgröße für das Haupttitel */
+    font-weight: 700; /* Fettgedruckt */
+    color: #00e676; /* Grüner Farbton */
+    margin-bottom: 40px; /* Abstand nach unten */
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease; /* Übergangseffekt für Transformation, Farbe und Schatten */
+    display: inline-block; /* Ermöglicht die Transformation */
+}
+
+.albert-main .project-detail-section h1.albert-headline:hover {
+    transform: scale(1.05); /* Vergrößerung beim Hover */
+    color: #6c63ff; /* Farbwechsel beim Hover */
+    text-shadow: 2px 2px 10px rgba(0, 230, 118, 0.7); /* Schatteneffekt beim Hover */
+}
+
+.albert-main .project-detail-section h2.albert-headline {
+    font-size: 28px; /* Angepasste Schriftgröße für Unterüberschriften */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease; /* Übergangseffekt für Transformation, Farbe und Schatten */
+    display: inline-block; /* Ermöglicht die Transformation */
+}
+
+.albert-main .project-detail-section h2.albert-headline:hover {
+    transform: scale(1.02); /* Leichte Vergrößerung beim Hover */
+    color: #6c63ff; /* Farbwechsel beim Hover */
+    text-shadow: 1px 1px 5px rgba(0, 230, 118, 0.5); /* Schatteneffekt beim Hover */
+}
