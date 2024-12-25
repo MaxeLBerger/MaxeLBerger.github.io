@@ -1,1 +1,1 @@
-Fc Bayern
+Fc Bayern und Moritz stinkt!
