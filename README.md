@@ -53,8 +53,6 @@ Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
 
 Sie können mich über die folgenden Kanäle erreichen:
 
-- **E-Mail**: [maximilian.haak@example.com](mailto:maximilian.haak@example.com)
-- **LinkedIn**: [Maximilian Haak](https://www.linkedin.com/in/maximilianhaak)
-- **Twitter**: [@MaxHaak](https://twitter.com/MaxHaak)
+- **E-Mail**: [maximilian@haak.in](mailto:maximilian@haak.in)
 
 Vielen Dank für Ihr Interesse an meiner Website!
