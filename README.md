@@ -1,4 +1,4 @@
-# MaxeLBerger.github.io
+# maximilianhaak.de / MaxeLBerger.github.io
 
 Willkommen zu meinem persönlichen Portfolio und Blog. Diese Website dient als zentrale Anlaufstelle für Informationen über mich, meine Projekte und meine Interessen.
 
@@ -18,7 +18,7 @@ Diese Website wurde mit den folgenden Technologien erstellt:
 - **Jekyll**: Ein statischer Site-Generator für GitHub Pages.
 
 ## Installation und Ausführung
-
+Die Website ist zu erreichen unter maximilianhaak.de oder Maxelberger.github.io
 Falls Sie die Website lokal auf Ihrem Rechner ausführen möchten:
 
 1. **Repository klonen**:
