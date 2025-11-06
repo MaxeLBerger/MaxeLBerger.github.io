@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuTune Online - Audio Visualizer | Maximilian Haak</title>
+    <meta name="description" content="AuTune Online - Professioneller Audio Visualizer mit BPM-Erkennung, Frequenzanalyse und Partikeleffekten.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../res/favicongreen1.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html#home">Maximilian Haak</a></div>
+        <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        <ul class="nav-list">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+    <div id="progress-bar"></div>
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">AuTune Online</h1>
+                <p class="project-tagline">Feel the Sound, Shape the Mind</p>
+                <div class="project-actions">
+                    <a href="https://maxelberger.github.io/AuTuneOnline" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-music"></i> App öffnen
+                    </a>
+                    <a href="https://github.com/MaxeLBerger/AuTuneOnline" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>AuTune Online ist ein professionelles Audio-Visualisierungs-Tool, das MP3-Dateien analysiert und atemberaubende visuelle Effekte basierend auf Frequenzen und BPM erzeugt.</p>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card"><i class="fas fa-file-upload"></i><h3>MP3 Upload</h3><p>Drag & Drop oder File-Dialog</p></div>
+                        <div class="feature-card"><i class="fas fa-wave-square"></i><h3>Frequenzanalyse</h3><p>Web Audio API Spektrum-Analyse</p></div>
+                        <div class="feature-card"><i class="fas fa-drum"></i><h3>BPM-Erkennung</h3><p>Automatische Tempo-Erkennung</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-bar"></i><h3>Frequenz-Bars</h3><p>Live Audio-Spektrum Visualisierung</p></div>
+                        <div class="feature-card"><i class="fas fa-star"></i><h3>Partikel-Effekte</h3><p>Reaktiv auf Bass und BPM</p></div>
+                        <div class="feature-card"><i class="fas fa-palette"></i><h3>Verschiedene Themes</h3><p>Anpassbare Visualisierungen</p></div>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Web Audio API</span>
+                        <span class="tech-badge">Canvas API</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">HTML5/CSS3</span>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-lightbulb"></i> Wie es funktioniert</h2>
+                    <ol class="game-steps">
+                        <li>Lade eine MP3-Datei hoch (Drag & Drop)</li>
+                        <li>Die App analysiert das Audio via Web Audio API</li>
+                        <li>BPM wird automatisch erkannt</li>
+                        <li>Frequenzen werden in Echtzeit visualisiert</li>
+                        <li>Partikel reagieren auf Bass-Frequenzen</li>
+                        <li>Genieße die synchronisierten visuellen Effekte!</li>
+                    </ol>
+                </section>
+                <div class="project-cta">
+                    <h2>Visualisiere deine Musik!</h2>
+                    <p>Erlebe deine Lieblingssongs mit beeindruckenden visuellen Effekten</p>
+                    <a href="https://maxelberger.github.io/AuTuneOnline" class="btn btn-primary btn-lg" target="_blank">
+                        <i class="fas fa-play"></i> App starten
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+    <footer>
+        <div class="social-media"><a href="https://github.com/MaxeLBerger/AuTuneOnline" target="_blank"><i class="fab fa-github"></i></a></div>
+        <p>&copy; 2024 Maximilian Haak</p>
+        <p><a href="../impressum.html">Impressum</a> | <a href="../datenschutz.html">Datenschutz</a></p>
+    </footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>

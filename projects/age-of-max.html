@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Meta-Tags für SEO und responsives Design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age of Max - Tower Defense Spiel | Maximilian Haak</title>
+    <meta name="description" content="Age of Max - Ein strategisches Tower Defense Spiel mit 5 historischen Epochen. Von der Steinzeit bis zur Zukunft!">
+    <meta name="keywords" content="Age of Max, Tower Defense, Phaser, TypeScript, Game Development, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <!-- Verknüpfung der CSS-Dateien -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../res/favicongreen1.png" type="image/png">
+
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scroll Indikator -->
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <!-- Hauptinhalt -->
+    <main id="wrapper" class="project-main">
+        <!-- Hero Section -->
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">Age of Max</h1>
+                <p class="project-tagline">Strategisches Tower Defense durch 5 historische Epochen</p>
+                <div class="project-actions">
+                    <a href="https://maxelberger.github.io/AgeOfMax" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fas fa-gamepad"></i> Spiel jetzt spielen
+                    </a>
+                    <a href="https://github.com/MaxeLBerger/AgeOfMax" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projektinhalt -->
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>Age of Max ist ein strategisches Tower Defense Spiel, inspiriert von der klassischen Age of War Serie. Baue Einheiten, durchlaufe historische Epochen und verteidige deine Basis gegen feindliche Angriffe!</p>
+                    <p>Das Spiel bietet eine einzigartige Kombination aus klassischem Tower Defense Gameplay und strategischer Epochen-Progression, die dich von der Steinzeit bis in die Zukunft führt.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-history"></i>
+                            <h3>5 Historische Epochen</h3>
+                            <p>Steinzeit, Mittelalter, Renaissance, Moderne und Zukunft</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>20 Einzigartige Einheiten</h3>
+                            <p>4 Einheiten pro Epoche mit einzigartigen Fähigkeiten</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>3 Schwierigkeitsgrade</h3>
+                            <p>Easy, Medium und Hard für jeden Skill-Level</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-brain"></i>
+                            <h3>Intelligente KI</h3>
+                            <p>Adaptive Gegner-KI passt sich deiner Strategie an</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tower-broadcast"></i>
+                            <h3>Turret Defense System</h3>
+                            <p>Platziere defensive Türme strategisch</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Spezialfähigkeiten</h3>
+                            <p>Mächtige Abilities zum Kampfverlauf ändern</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-layer-group"></i> Die Epochen</h2>
+                    <div class="epochs-container">
+                        <div class="epoch-card">
+                            <h3>🦴 Steinzeit</h3>
+                            <ul>
+                                <li><strong>Keulenträger</strong> - Basis Krieger</li>
+                                <li><strong>Speerträger</strong> - Starker Verteidiger</li>
+                                <li><strong>Steinschleuderer</strong> - Fernkämpfer</li>
+                                <li><strong>Dino Reiter</strong> - Schnelle Kavallerie</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3>🏰 Mittelalter</h3>
+                            <ul>
+                                <li><strong>Schwertkämpfer</strong> - Gepanzerter Kämpfer</li>
+                                <li><strong>Bogenschütze</strong> - Weitreichender Schaden</li>
+                                <li><strong>Ritter</strong> - Schwere Kavallerie</li>
+                                <li><strong>Ballista</strong> - Belagerungswaffe</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3>🎭 Renaissance</h3>
+                            <ul>
+                                <li><strong>Musketier</strong> - Schwarzpulver-Infanterie</li>
+                                <li><strong>Kavallerie</strong> - Elite Reiter</li>
+                                <li><strong>Kanone</strong> - Schwere Artillerie</li>
+                                <li><strong>Duellant</strong> - Schneller Schwertkämpfer</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3>🏙️ Moderne</h3>
+                            <ul>
+                                <li><strong>Schütze</strong> - Moderne Infanterie</li>
+                                <li><strong>Grenadier</strong> - Explosiv-Spezialist</li>
+                                <li><strong>Panzer</strong> - Gepanzertes Fahrzeug</li>
+                                <li><strong>Scharfschütze</strong> - Präzisions-Schütze</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3>🚀 Zukunft</h3>
+                            <ul>
+                                <li><strong>Laser Soldat</strong> - Energiewaffen</li>
+                                <li><strong>Mech</strong> - Schwerer Kampfanzug</li>
+                                <li><strong>Plasma Truppe</strong> - Fortgeschrittene Tech</li>
+                                <li><strong>Super Heavy</strong> - Ultimativer Verteidiger</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TypeScript 5.5</span>
+                        <span class="tech-badge">Phaser 3.85</span>
+                        <span class="tech-badge">Vite 5.4</span>
+                        <span class="tech-badge">Jest</span>
+                        <span class="tech-badge">Playwright</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-gamepad"></i> Steuerung</h2>
+                    <div class="controls-grid">
+                        <div class="control-item">
+                            <kbd>U1-U5</kbd>
+                            <p>Einheiten der aktuellen Epoche spawnen</p>
+                        </div>
+                        <div class="control-item">
+                            <kbd>T1-T5</kbd>
+                            <p>Defensive Türme platzieren</p>
+                        </div>
+                        <div class="control-item">
+                            <kbd>F2</kbd>
+                            <p>Debug-Overlay umschalten</p>
+                        </div>
+                        <div class="control-item">
+                            <kbd>Maus</kbd>
+                            <p>Spezialfähigkeiten aktivieren</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-trophy"></i> Spielziel</h2>
+                    <ol class="game-steps">
+                        <li><strong>Schwierigkeit wählen:</strong> Easy, Medium oder Hard</li>
+                        <li><strong>Gold verdienen:</strong> Automatische Gold-Generierung über Zeit</li>
+                        <li><strong>Einheiten spawnen:</strong> Kaufe Einheiten zum Angriff auf die gegnerische Basis</li>
+                        <li><strong>Verteidigung:</strong> Platziere Türme zum Schutz deiner Basis</li>
+                        <li><strong>Epochen durchlaufen:</strong> Sammle XP um bessere Einheiten freizuschalten</li>
+                        <li><strong>Gewinnen:</strong> Zerstöre die gegnerische Basis bevor sie deine zerstört!</li>
+                    </ol>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-road"></i> Entwicklungs-Roadmap</h2>
+                    <div class="roadmap">
+                        <div class="roadmap-item">
+                            <h4>Phase 2 - Gameplay Verbesserungen</h4>
+                            <ul>
+                                <li>Einheiten-Formationen System</li>
+                                <li>Kill Streak Gold Boni</li>
+                                <li>Dynamische Gold-Generierung</li>
+                                <li>Einheiten-Rückzug Mechanik</li>
+                            </ul>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Phase 3 - Polish & Features</h4>
+                            <ul>
+                                <li>Sound-Effekte System</li>
+                                <li>Hintergrundmusik</li>
+                                <li>Einheiten-Veteranen System</li>
+                                <li>Achievement System</li>
+                                <li>Bestenlisten</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Bereit für die Schlacht?</h2>
+                    <p>Tauche ein in epische Tower Defense Action durch die Geschichte!</p>
+                    <a href="https://maxelberger.github.io/AgeOfMax" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                        <i class="fas fa-play"></i> Jetzt spielen
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/AgeOfMax" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2024 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a>
+        </p>
+    </footer>
+
+    <!-- JavaScript-Dateien -->
+    <script src="../script.js" defer></script>
+</body>
+</html>

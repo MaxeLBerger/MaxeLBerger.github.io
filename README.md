@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Fc Bayern und Moritz stinkt!
-=======
 # maximilianhaak.de / MaxeLBerger.github.io
 
 Willkommen zu meinem persönlichen Portfolio und Blog. Diese Website dient als zentrale Anlaufstelle für Informationen über mich, meine Projekte und meine Interessen.
@@ -11,6 +8,15 @@ Willkommen zu meinem persönlichen Portfolio und Blog. Diese Website dient als z
 - **Projekte**: Eine Übersicht über meine aktuellen und abgeschlossenen Projekte, einschließlich Beschreibungen, Technologien und Links zu den jeweiligen Repositories.
 - **Blog**: Beiträge zu verschiedenen Themen, die mich interessieren, wie Programmierung, künstliche Intelligenz und persönliche Erfahrungen.
 
+## Projekte
+
+### Live-Demos
+- **[Age of Max](https://maxelberger.github.io/AgeOfMax)** - Tower Defense Spiel
+- **[FireCastle](https://maxelberger.github.io/FireCastle)** - Clash of Clans API & Website
+- **[AuTune Online](https://maxelberger.github.io/AuTuneOnline)** - Audio Visualizer
+- **[SoundofLvke](https://soundoflvke.github.io)** - Musik-Portfolio & Beat-Shop
+- **[Albert](projects/albert.html)** - KI Evolution Simulation
+
 ## Technologien
 
 Diese Website wurde mit den folgenden Technologien erstellt:
@@ -18,7 +24,6 @@ Diese Website wurde mit den folgenden Technologien erstellt:
 - **HTML5**: Strukturierung des Inhalts.
 - **CSS3**: Gestaltung und Layout.
 - **JavaScript**: Interaktive Funktionen und dynamische Inhalte.
-- **Jekyll**: Ein statischer Site-Generator für GitHub Pages.
 
 ## Installation und Ausführung
 Die Website ist zu erreichen unter maximilianhaak.de oder Maxelberger.github.io
@@ -32,17 +37,8 @@ Falls Sie die Website lokal auf Ihrem Rechner ausführen möchten:
    ```bash
    cd MaxeLBerger.github.io
    ```
-3. **Abhängigkeiten installieren**:
-   Stellen Sie sicher, dass [Ruby](https://www.ruby-lang.org/) und [Bundler](https://bundler.io/) installiert sind. Führen Sie dann aus:
-   ```bash
-   bundle install
-   ```
-4. **Jekyll-Server starten**:
-   ```bash
-   bundle exec jekyll serve
-   ```
-5. **Website anzeigen**:
-   Öffnen Sie Ihren Browser und navigieren Sie zu `http://localhost:4000`, um die Website lokal zu betrachten.
+3. **Website anzeigen**:
+   Öffnen Sie `index.html` in Ihrem Browser.
 
 ## Beiträge
 
@@ -59,4 +55,3 @@ Sie können mich über die folgenden Kanäle erreichen:
 - **E-Mail**: [maximilian@haak.in](mailto:maximilian@haak.in)
 
 Vielen Dank für Ihr Interesse an meiner Website!
->>>>>>> 1af8f1343961be7bb74ed549e29c110e1ad1c71d

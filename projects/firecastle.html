@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireCastle - Clash of Clans API | Maximilian Haak</title>
+    <meta name="description" content="FireCastle - Node.js Projekt mit API-Endpunkten für Clash of Clans Clan- und Spielerinformationen.">
+    <meta name="keywords" content="FireCastle, Clash of Clans, Node.js, API, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../res/favicongreen1.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html#home">Maximilian Haak</a></div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">FireCastle</h1>
+                <p class="project-tagline">Clash of Clans Clan Website & API</p>
+                <div class="project-actions">
+                    <a href="https://maxelberger.github.io/FireCastle" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fas fa-globe"></i> Website besuchen
+                    </a>
+                    <a href="https://github.com/MaxeLBerger/FireCastle" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Projektbeschreibung</h2>
+                    <p>FireCastle ist ein Node.js-Projekt, das API-Endpunkte für Clash of Clans bereitstellt. Es bietet Routen für die Abfrage von Clan- und Spielerinformationen sowie den Status laufender Clan-Kriege. Erweiterte Statistiken und eine Caching-Logik verbessern die Performance.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Clan-Informationen</h3>
+                            <p>Detaillierte Clan-Daten und Statistiken</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-user"></i>
+                            <h3>Spieler-Profile</h3>
+                            <p>Individuelle Spieler-Statistiken abrufen</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-sword"></i>
+                            <h3>Kriegs-Status</h3>
+                            <p>Live Clan-Krieg Informationen</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h3>Performance Caching</h3>
+                            <p>In-Memory-Cache für schnelle Antworten</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3>Erweiterte Statistiken</h3>
+                            <p>Donations, Top-Spieler, Kriege</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Logging System</h3>
+                            <p>Winston-basiertes Logging</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-plug"></i> API Endpunkte</h2>
+                    <div class="api-endpoints">
+                        <div class="endpoint">
+                            <h4><span class="method get">GET</span> /api/clan</h4>
+                            <p>Clan-Informationen abrufen (Name, Level, Mitglieder, Win-Rate)</p>
+                        </div>
+                        <div class="endpoint">
+                            <h4><span class="method get">GET</span> /api/player</h4>
+                            <p>Spieler-Daten abrufen (Level, Trophäen, Donations, Angriffe)</p>
+                        </div>
+                        <div class="endpoint">
+                            <h4><span class="method get">GET</span> /api/clanwar</h4>
+                            <p>Aktuellen Clan-Kriegsstatus abfragen</p>
+                        </div>
+                        <div class="endpoint">
+                            <h4><span class="method get">GET</span> /api/clan/stats</h4>
+                            <p>Erweiterte Clan-Statistiken (Top-Donoren, etc.)</p>
+                        </div>
+                        <div class="endpoint">
+                            <h4><span class="method get">GET</span> /api/player/stats</h4>
+                            <p>Detaillierte Spieler-Statistiken</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">node-cache</span>
+                        <span class="tech-badge">Winston</span>
+                        <span class="tech-badge">Jest</span>
+                        <span class="tech-badge">HTML/CSS/JavaScript</span>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-bolt"></i> Performance</h2>
+                    <p><strong>Caching-System:</strong> Implementiert mit node-cache für 5-minütige TTL</p>
+                    <ul>
+                        <li><strong>Cache-Hit:</strong> Sofortige Antwort aus dem Speicher</li>
+                        <li><strong>Cache-Miss:</strong> API-Aufruf wird gecached für zukünftige Anfragen</li>
+                        <li><strong>Logging:</strong> Vollständiges Request/Response Logging mit Winston</li>
+                    </ul>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Entdecke den FireCastle Clan!</h2>
+                    <p>Besuche die Website für Live-Statistiken und Clan-Informationen</p>
+                    <a href="https://maxelberger.github.io/FireCastle" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i> Website öffnen
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/FireCastle" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2024 Maximilian Haak</p>
+        <p><a href="../impressum.html" class="footer-link">Impressum</a> | <a href="../datenschutz.html" class="footer-link">Datenschutz</a></p>
+    </footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>

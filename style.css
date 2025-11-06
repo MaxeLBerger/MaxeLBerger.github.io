@@ -345,18 +345,39 @@ nav .menu-toggle .bar {
     margin-bottom: 20px;
 }
 
+/* Project Links Container */
+.project-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .project-info .btn {
     padding: 8px 16px;
     background-color: #00e676;
     color: #121212; /* Dunkler Text für besseren Kontrast */
     border-radius: 30px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .project-info .btn:hover {
     background-color: #00c853;
     color: #fff; /* Weißer Text beim Hover */
+    transform: translateY(-2px);
+}
+
+.project-info .btn-primary {
+    background-color: #667eea;
+    color: #fff;
+}
+
+.project-info .btn-primary:hover {
+    background-color: #764ba2;
 }
 
 /* Coming Soon Card */
