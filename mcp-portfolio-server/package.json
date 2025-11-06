@@ -1,0 +1,25 @@
+{
+  "name": "mcp-portfolio-server",
+  "version": "1.0.0",
+  "description": "MCP Server für Portfolio Website Optimierung",
+  "type": "module",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx src/index.ts",
+    "watch": "tsx watch src/index.ts"
+  },
+  "keywords": ["mcp", "portfolio", "website", "optimization"],
+  "author": "Maximilian Haak",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
