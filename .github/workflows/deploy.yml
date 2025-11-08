@@ -37,15 +37,19 @@ jobs:
         mkdir -p dist/AgeOfMax
         cp AgeOfMax/dist/* dist/AgeOfMax/ -r
         
-    - name: Copy FireCastle
+    - name: Copy FireCastle static files
       run: |
         mkdir -p dist/FireCastle
-        cp FireCastle/* dist/FireCastle/ -r
+        cp FireCastle/index.html dist/FireCastle/
+        cp -r FireCastle/css dist/FireCastle/
+        cp -r FireCastle/js dist/FireCastle/
+        cp -r FireCastle/images dist/FireCastle/
+        cp -r FireCastle/pages dist/FireCastle/
         
-    - name: Copy AuTuneOnline  
+    - name: Copy AuTuneOnline static files 
       run: |
         mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/* dist/AuTuneOnline/ -r
+        cp AuTuneOnline/public/* dist/AuTuneOnline/ -r
         
     - name: Copy portfolio files
       run: |

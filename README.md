@@ -1,5 +1,7 @@
 ﻿# Portfolio - Maximilian Haak
 
+[![Deploy Status](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml)
+
  **Live:** [maximilianhaak.de](https://maximilianhaak.de)
 
 Professional portfolio website showcasing software development projects with automated CI/CD deployment.
