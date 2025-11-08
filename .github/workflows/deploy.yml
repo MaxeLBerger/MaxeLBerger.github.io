@@ -1,0 +1,66 @@
+﻿name: Deploy Portfolio with Project Builds
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout main repo
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Build AgeOfMax
+      run: |
+        cd AgeOfMax
+        npm ci
+        npm run build
+        cd ..
+        
+    - name: Copy AgeOfMax build artifacts
+      run: |
+        mkdir -p dist/AgeOfMax
+        cp AgeOfMax/dist/* dist/AgeOfMax/ -r
+        
+    - name: Copy FireCastle
+      run: |
+        mkdir -p dist/FireCastle
+        cp FireCastle/* dist/FireCastle/ -r
+        
+    - name: Copy AuTuneOnline  
+      run: |
+        mkdir -p dist/AuTuneOnline
+        cp AuTuneOnline/* dist/AuTuneOnline/ -r
+        
+    - name: Copy portfolio files
+      run: |
+        cp index.html dist/
+        cp style.css dist/
+        cp script.js dist/
+        cp CNAME dist/
+        cp -r projects dist/
+        cp -r res dist/
+        cp impressum.html dist/
+        cp datenschutz.html dist/
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        force_orphan: true

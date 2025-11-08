@@ -1,0 +1,9 @@
+[submodule "AgeOfMax"]
+	path = AgeOfMax
+	url = https://github.com/MaxeLBerger/AgeOfMax.git
+[submodule "FireCastle"]
+	path = FireCastle
+	url = https://github.com/MaxeLBerger/FireCastle.git
+[submodule "AuTuneOnline"]
+	path = AuTuneOnline
+	url = https://github.com/MaxeLBerger/AuTuneOnline.git

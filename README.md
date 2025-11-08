@@ -1,57 +1,106 @@
-# maximilianhaak.de / MaxeLBerger.github.io
+﻿# Portfolio - Maximilian Haak
 
-Willkommen zu meinem persönlichen Portfolio und Blog. Diese Website dient als zentrale Anlaufstelle für Informationen über mich, meine Projekte und meine Interessen.
+ **Live:** [maximilianhaak.de](https://maximilianhaak.de)
 
-## Inhalt
+Professional portfolio website showcasing software development projects with automated CI/CD deployment.
 
-- **Über mich**: Eine kurze Einführung in meine Person, meinen Hintergrund und meine Leidenschaften.
-- **Projekte**: Eine Übersicht über meine aktuellen und abgeschlossenen Projekte, einschließlich Beschreibungen, Technologien und Links zu den jeweiligen Repositories.
-- **Blog**: Beiträge zu verschiedenen Themen, die mich interessieren, wie Programmierung, künstliche Intelligenz und persönliche Erfahrungen.
+##  Architecture
 
-## Projekte
+This repository uses **Git Submodules** for clean project separation and **GitHub Actions** for automated builds.
 
-### Live-Demos
-- **[Age of Max](https://maxelberger.github.io/AgeOfMax)** - Tower Defense Spiel
-- **[FireCastle](https://maxelberger.github.io/FireCastle)** - Clash of Clans API & Website
-- **[AuTune Online](https://maxelberger.github.io/AuTuneOnline)** - Audio Visualizer
-- **[SoundofLvke](https://soundoflvke.github.io)** - Musik-Portfolio & Beat-Shop
-- **[Albert](projects/albert.html)** - KI Evolution Simulation
+\\\
+MaxeLBerger.github.io/
+ .github/workflows/
+    deploy.yml          # Automated CI/CD pipeline
+ AgeOfMax/              # Git Submodule  MaxeLBerger/AgeOfMax
+ FireCastle/            # Git Submodule  MaxeLBerger/FireCastle
+ AuTuneOnline/          # Git Submodule  MaxeLBerger/AuTuneOnline
+ projects/              # Project landing pages
+ res/                   # Static resources
+ index.html             # Portfolio homepage
+ style.css
+ script.js
+\\\
 
-## Technologien
+##  Projects
 
-Diese Website wurde mit den folgenden Technologien erstellt:
+###  [AgeOfMax](https://github.com/MaxeLBerger/AgeOfMax)
+Strategic tower defense game with 5 historical epochs  
+**Tech:** TypeScript, Phaser 3, Vite  
+**Live:** [maximilianhaak.de/AgeOfMax](https://maximilianhaak.de/AgeOfMax)
 
-- **HTML5**: Strukturierung des Inhalts.
-- **CSS3**: Gestaltung und Layout.
-- **JavaScript**: Interaktive Funktionen und dynamische Inhalte.
+###  [FireCastle](https://github.com/MaxeLBerger/FireCastle)
+Clash of Clans clan management website  
+**Tech:** JavaScript, Node.js, Express  
+**Live:** [maximilianhaak.de/FireCastle](https://maximilianhaak.de/FireCastle)
 
-## Installation und Ausführung
-Die Website ist zu erreichen unter maximilianhaak.de oder Maxelberger.github.io
-Falls Sie die Website lokal auf Ihrem Rechner ausführen möchten:
+###  [AuTuneOnline](https://github.com/MaxeLBerger/AuTuneOnline)
+Real-time audio visualizer with BPM detection  
+**Tech:** JavaScript, Web Audio API  
+**Live:** [maximilianhaak.de/AuTuneOnline](https://maximilianhaak.de/AuTuneOnline)
 
-1. **Repository klonen**:
-   ```bash
-   git clone https://github.com/MaxeLBerger/MaxeLBerger.github.io.git
-   ```
-2. **In das Verzeichnis wechseln**:
-   ```bash
-   cd MaxeLBerger.github.io
-   ```
-3. **Website anzeigen**:
-   Öffnen Sie `index.html` in Ihrem Browser.
+##  Automated Deployment
 
-## Beiträge
+Every push to \main\ triggers:
+1. Checkout all submodules
+2. Build each project (e.g., AgeOfMax TypeScript compilation)
+3. Copy build artifacts to \dist/\
+4. Deploy to GitHub Pages
 
-Ich freue mich über Beiträge und Verbesserungsvorschläge. Wenn Sie einen Fehler finden oder eine Verbesserung vorschlagen möchten, öffnen Sie bitte ein Issue oder erstellen Sie einen Pull-Request.
+**Result:** Projects stay in sync automatically! 
 
-## Lizenz
+##  Development
 
-Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
+### Clone with submodules
+\\\ash
+git clone --recurse-submodules https://github.com/MaxeLBerger/MaxeLBerger.github.io.git
+\\\
 
-## Kontakt
+### Update submodules to latest
+\\\ash
+git submodule update --remote --merge
+\\\
 
-Sie können mich über die folgenden Kanäle erreichen:
+### Work on a specific project
+\\\ash
+cd AgeOfMax
+# Make changes, commit, push
+git add .
+git commit -m "Update game mechanics"
+git push
 
-- **E-Mail**: [maximilian@haak.in](mailto:maximilian@haak.in)
+# Return to portfolio repo
+cd ..
+git add AgeOfMax
+git commit -m "Update AgeOfMax submodule"
+git push
+\\\
 
-Vielen Dank für Ihr Interesse an meiner Website!
+GitHub Actions will automatically rebuild and deploy! 
+
+##  Local Testing
+
+\\\ash
+# Serve locally
+python -m http.server 8000
+# or
+npx serve .
+\\\
+
+Visit: http://localhost:8000
+
+##  Tech Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Build Tools:** Vite, TypeScript
+- **CI/CD:** GitHub Actions
+- **Hosting:** GitHub Pages
+- **Version Control:** Git Submodules
+
+##  License
+
+Individual projects have their own licenses. See submodule repositories for details.
+
+---
+
+**Built with  by Maximilian Haak**
