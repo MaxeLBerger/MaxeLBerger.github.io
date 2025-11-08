@@ -33,10 +33,33 @@ const AnalyzeCSSArgsSchema = z.object({
   filePath: z.string().describe("Pfad zur CSS-Datei"),
 });
 
+const GetPortfolioDataArgsSchema = z.object({
+  section: z
+    .enum(["personal", "skills", "projects", "about", "all"])
+    .optional()
+    .describe("Spezifischer Bereich des Portfolios"),
+});
+
+const GetProjectDetailsArgsSchema = z.object({
+  projectId: z.string().describe("ID des Projekts"),
+});
+
 // Portfolio Root Pfad
 const PORTFOLIO_ROOT = path.resolve(
   "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io"
 );
+
+const PORTFOLIO_DATA_PATH = path.join(
+  PORTFOLIO_ROOT,
+  "mcp-portfolio-server",
+  "portfolio-data.json"
+);
+
+// Portfolio-Daten laden
+async function loadPortfolioData() {
+  const data = await fs.readFile(PORTFOLIO_DATA_PATH, "utf-8");
+  return JSON.parse(data);
+}
 
 // Server-Instanz erstellen
 const server = new Server(
@@ -139,6 +162,36 @@ const TOOLS: Tool[] = [
     inputSchema: {
       type: "object",
       properties: {},
+    },
+  },
+  {
+    name: "get_portfolio_data",
+    description:
+      "Gibt strukturierte Informationen über das Portfolio zurück: Persönliche Infos, Skills, Projekte, Timeline etc.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        section: {
+          type: "string",
+          description: "Optional: Spezifischer Bereich (personal, skills, projects, about, all)",
+          enum: ["personal", "skills", "projects", "about", "all"],
+        },
+      },
+    },
+  },
+  {
+    name: "get_project_details",
+    description:
+      "Gibt detaillierte Informationen über ein bestimmtes Projekt zurück.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        projectId: {
+          type: "string",
+          description: "ID des Projekts (z.B. 'age-of-max', 'firecastle', 'autune-online', 'soundoflvke', 'albert')",
+        },
+      },
+      required: ["projectId"],
     },
   },
 ];
@@ -305,6 +358,49 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text: `Portfolio-Projektstruktur:\n\n${structure}`,
+            },
+          ],
+        };
+      }
+
+      case "get_portfolio_data": {
+        const { section } = GetPortfolioDataArgsSchema.parse(args);
+        const portfolioData = await loadPortfolioData();
+        
+        let result;
+        if (!section || section === "all") {
+          result = portfolioData;
+        } else {
+          result = portfolioData[section];
+        }
+        
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
+        };
+      }
+
+      case "get_project_details": {
+        const { projectId } = GetProjectDetailsArgsSchema.parse(args);
+        const portfolioData = await loadPortfolioData();
+        
+        const project = portfolioData.projects.find(
+          (p: any) => p.id === projectId
+        );
+        
+        if (!project) {
+          throw new Error(`Projekt mit ID '${projectId}' nicht gefunden`);
+        }
+        
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(project, null, 2),
             },
           ],
         };

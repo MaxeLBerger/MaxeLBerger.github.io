@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "mcp:serve",
+      "type": "shell",
+      "command": "cd simple-mcp-server && npm run dev:http",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 0 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting Simple MCP HTTP Server",
+          "endsPattern": "MCP HTTP Server running on http://localhost:3000"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "mcp" }
+    },
+    {
+      "label": "mcp:health",
+      "type": "shell",
+      "command": "powershell -Command \"try { (Invoke-RestMethod http://localhost:3000/health).status } catch { 'down' }\"",
+      "problemMatcher": []
+    },
+    {
+      "label": "aow:install",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}" }
+    },
+    {
+      "label": "aow:dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "panel": "new" }
+    },
+    {
+      "label": "aow:test:install",
+      "type": "shell",
+      "command": "npx playwright install",
+      "options": { "cwd": "${workspaceFolder}" }
+    },
+    {
+      "label": "aow:test",
+      "type": "shell",
+      "command": "npm test",
+      "options": { "cwd": "${workspaceFolder}" }
+    }
+  ]
+}

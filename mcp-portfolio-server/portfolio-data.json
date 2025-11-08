@@ -1,0 +1,196 @@
+{
+  "personal": {
+    "name": "Maximilian Haak",
+    "title": "Softwareentwickler",
+    "email": "maximilian@haak.in",
+    "website": "https://maximilianhaak.de",
+    "github": "https://github.com/MaxeLBerger",
+    "description": "Softwareentwickler und KI-Enthusiast mit Leidenschaft für innovative Technologien"
+  },
+  "about": {
+    "timeline": [
+      {
+        "year": 2020,
+        "event": "Begann mit Programmieren - erste einfache Websites",
+        "skills": ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        "year": 2020,
+        "event": "Entwicklung komplexerer Projekte in Java",
+        "skills": ["Java"]
+      },
+      {
+        "year": 2022,
+        "event": "Start der Ausbildung - Softwareentwicklung und Datenbankanbindungen in Delphi",
+        "skills": ["Delphi", "PostgreSQL", "SQL"]
+      },
+      {
+        "year": 2024,
+        "event": "Fokus auf KI und intelligente Entwicklungswerkzeuge",
+        "skills": ["AI", "Machine Learning", "Automation"]
+      }
+    ],
+    "interests": [
+      "Künstliche Intelligenz",
+      "Web-Entwicklung",
+      "Game Development",
+      "Audio Visualisierung",
+      "Evolutionäre Algorithmen"
+    ]
+  },
+  "skills": [
+    {
+      "name": "Java",
+      "category": "Programming Language",
+      "icon": "res/java-icon.png",
+      "level": "Advanced"
+    },
+    {
+      "name": "Delphi",
+      "category": "Programming Language",
+      "icon": "res/delphi-icon.png",
+      "level": "Advanced"
+    },
+    {
+      "name": "JavaScript",
+      "category": "Programming Language",
+      "icon": "res/javascript-icon.png",
+      "level": "Advanced"
+    },
+    {
+      "name": "HTML",
+      "category": "Markup Language",
+      "icon": "res/html-icon.png",
+      "level": "Expert"
+    },
+    {
+      "name": "CSS",
+      "category": "Styling",
+      "icon": "res/css-icon.png",
+      "level": "Advanced"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "icon": "res/postgres-icon.png",
+      "level": "Intermediate"
+    }
+  ],
+  "projects": [
+    {
+      "id": "age-of-max",
+      "name": "Age of Max",
+      "shortDescription": "Strategisches Tower Defense Spiel mit 5 historischen Epochen",
+      "fullDescription": "Von der Steinzeit bis zur Zukunft - baue Einheiten und verteidige deine Basis! Ein vollständiges Tower Defense Spiel mit historischen Epochen, verschiedenen Einheiten-Typen und strategischem Gameplay.",
+      "category": "Game Development",
+      "technologies": ["JavaScript", "HTML5 Canvas", "CSS3"],
+      "features": [
+        "5 historische Epochen (Steinzeit bis Zukunft)",
+        "Verschiedene Einheiten-Typen pro Epoche",
+        "Strategisches Gameplay",
+        "Responsive Design",
+        "Score-System"
+      ],
+      "liveUrl": "https://maximilianhaak.de/AgeOfMax",
+      "detailsUrl": "projects/age-of-max.html",
+      "image": "res/programming1.jpg",
+      "status": "completed",
+      "year": 2023
+    },
+    {
+      "id": "firecastle",
+      "name": "FireCastle",
+      "shortDescription": "Node.js Website mit API für Clash of Clans",
+      "fullDescription": "Eine vollständige Web-Anwendung mit Backend-API für Clash of Clans. Zeigt Clan-Statistiken, Spieler-Profile und Live-Kriegsinformationen mit intelligenten Caching und Logging-Mechanismen.",
+      "category": "Web Development",
+      "technologies": ["Node.js", "Express", "Clash of Clans API", "JavaScript", "HTML", "CSS"],
+      "features": [
+        "Clan-Statistiken in Echtzeit",
+        "Spieler-Profile und Fortschritt",
+        "Live-Kriegsinformationen",
+        "API-Integration mit Caching",
+        "Logging-System",
+        "Responsive Design"
+      ],
+      "liveUrl": "https://maximilianhaak.de/FireCastle",
+      "detailsUrl": "projects/firecastle.html",
+      "image": "res/programming1.jpg",
+      "status": "completed",
+      "year": 2023
+    },
+    {
+      "id": "autune-online",
+      "name": "AuTune Online",
+      "shortDescription": "Professioneller Audio Visualizer",
+      "fullDescription": "Ein hochmoderner Audio Visualizer mit BPM-Erkennung, Frequenzanalyse und reaktiven Partikeleffekten. Upload deine Musik und erlebe sie auf eine völlig neue visuelle Art!",
+      "category": "Audio Visualization",
+      "technologies": ["JavaScript", "Web Audio API", "HTML5 Canvas", "CSS3"],
+      "features": [
+        "BPM-Erkennung (Beat Detection)",
+        "Echtzeit-Frequenzanalyse",
+        "Reaktive Partikeleffekte",
+        "Multiple Visualisierungs-Modi",
+        "Audio-Upload-Funktion",
+        "Responsive Design"
+      ],
+      "liveUrl": "https://maximilianhaak.de/AuTuneOnline",
+      "detailsUrl": "projects/autune-online.html",
+      "image": "res/programming1.jpg",
+      "status": "completed",
+      "year": 2024
+    },
+    {
+      "id": "soundoflvke",
+      "name": "SoundofLvke",
+      "shortDescription": "Portfolio-Website für Musikproduzenten",
+      "fullDescription": "Eine vollständige Portfolio-Website für einen Musikproduzenten mit integriertem Beat-Shop, Projekt-Showcase und nahtloser Integration zu allen wichtigen Musik-Plattformen wie Spotify, SoundCloud und YouTube.",
+      "category": "Web Development",
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "features": [
+        "Beat-Shop mit Hörproben",
+        "Projekt-Portfolio",
+        "Integration zu Musik-Plattformen",
+        "Responsive Design",
+        "Modern UI/UX",
+        "Social Media Integration"
+      ],
+      "liveUrl": "https://soundoflvke.github.io",
+      "detailsUrl": "projects/soundoflvke.html",
+      "image": "res/programming1.jpg",
+      "status": "completed",
+      "year": 2024
+    },
+    {
+      "id": "albert",
+      "name": "Albert",
+      "shortDescription": "KI-Evolution-Simulation",
+      "fullDescription": "Eine faszinierende KI-Evolution-Simulation mit 100 Kreaturen, die durch natürliche Selektion und neuronale Anpassung in einer dynamischen Umgebung überleben und sich weiterentwickeln. Beobachte, wie sich intelligentes Verhalten durch evolutionäre Prozesse entwickelt.",
+      "category": "Artificial Intelligence",
+      "technologies": ["JavaScript", "Neural Networks", "Genetic Algorithms", "HTML5 Canvas"],
+      "features": [
+        "100 autonome Kreaturen",
+        "Neuronale Netzwerke",
+        "Genetische Algorithmen",
+        "Natürliche Selektion",
+        "Dynamische Umgebung",
+        "Echtzeit-Visualisierung",
+        "Generations-Tracking"
+      ],
+      "detailsUrl": "projects/albert.html",
+      "image": "res/albert.png",
+      "status": "completed",
+      "year": 2024
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-11-07",
+    "version": "1.0.0",
+    "totalProjects": 5,
+    "categories": [
+      "Game Development",
+      "Web Development",
+      "Audio Visualization",
+      "Artificial Intelligence"
+    ]
+  }
+}
