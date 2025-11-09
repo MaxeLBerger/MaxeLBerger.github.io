@@ -1,4 +1,15 @@
-﻿#  SUBMODULE UPDATE WORKFLOW
+﻿# 🔄 SUBMODULE UPDATE WORKFLOW
+
+## 🎯 Zwei Wege Updates auf die Website zu bringen
+
+### ⚡ Automatisch (EMPFOHLEN)
+Push in Projekt-Repo → Automatisches Portfolio-Update → Auto-Deploy
+*(Erfordert einmalige Einrichtung pro Projekt-Repo)*
+
+### 🔧 Manuell  
+Push in Projekt-Repo → Manuelles Submodule-Update → Push → Auto-Deploy
+
+---
 
 ## Wie kommen Updates auf die Website?
 
@@ -49,6 +60,48 @@ git push
 
 ---
 
+### ⚡ Szenario 3: AUTOMATISCHES UPDATE (Einmal einrichten, dann automatisch!)
+
+**Im Projekt-Repo (z.B. AgeOfMax) diese Action hinzufügen:**
+
+Erstelle `.github/workflows/update-portfolio.yml`:
+
+```yaml
+name: Update Portfolio on Push
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  trigger-portfolio-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Portfolio Submodule Update
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
+          repository: MaxeLBerger/MaxeLBerger.github.io
+          event-type: update-submodule
+          client-payload: '{"submodule": "AgeOfMax"}'
+```
+
+**Setup (Einmalig):**
+1. GitHub Personal Access Token erstellen mit `repo` scope
+2. In AgeOfMax Repo: Settings → Secrets → New secret → Name: `PORTFOLIO_UPDATE_TOKEN`
+3. Token einfügen und speichern
+
+**Dann:**
+```bash
+# In AgeOfMax arbeiten
+git add .
+git commit -m "Add feature"
+git push
+# → Portfolio updated AUTOMATISCH! 🎉
+```
+
+---
+
 ## Schnellreferenz: Alle Submodules updaten
 
 ```powershell
@@ -92,25 +145,45 @@ Dann einfach: `.\update-projects.ps1`
 
 ---
 
-##  Quick Commands
+## ⚡ Quick Commands
 
 | Aktion | Command |
 |--------|---------|
 | Portfolio ändern | `git add . && git commit -m "msg" && git push` |
-| Projekt updaten (einzeln) | `git submodule update --remote ProjectName` |
-| Alle Projekte updaten | `git submodule update --remote --merge` |
+| Projekt updaten (einzeln) MANUELL | `git submodule update --remote ProjectName` |
+| Alle Projekte updaten MANUELL | `git submodule update --remote --merge` |
+| Projekt updaten AUTOMATISCH | Workflow im Projekt-Repo einrichten (siehe oben) |
+| Manual Trigger (Portfolio Repo) | Actions → Auto Update Submodules → Run workflow |
 | Status checken | `git status` |
 | Build Status | https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions |
 
 ---
 
-##  Zusammenfassung
+## 🎯 Zusammenfassung
 
-**Portfolio-Änderungen**  push  Auto-Deploy 
+### Manueller Workflow:
+**Portfolio-Änderungen** → push → Auto-Deploy ✅
 
-**Projekt-Änderungen**  push im Original-Repo  UPDATE Submodule im Portfolio  push  Auto-Deploy 
+**Projekt-Änderungen** → push im Original-Repo → UPDATE Submodule im Portfolio → push → Auto-Deploy ✅
 
-**Der Submodule-Update Schritt ist essentiell!**
+### Automatischer Workflow (nach Setup):
+**Portfolio-Änderungen** → push → Auto-Deploy ✅
+
+**Projekt-Änderungen** → push im Original-Repo → **AUTOMATISCH** Portfolio-Update → Auto-Deploy ✅🎉
+
+---
+
+## 📋 Setup-Checklist für Auto-Updates:
+
+Für **jedes Projekt-Repo** das automatisch updaten soll:
+
+- [ ] Personal Access Token erstellen (GitHub Settings → Developer settings → Tokens)
+- [ ] Token als Secret im Projekt-Repo hinzufügen (`PORTFOLIO_UPDATE_TOKEN`)
+- [ ] `.github/workflows/update-portfolio.yml` im Projekt-Repo erstellen
+- [ ] Workflow-Datei anpassen (Submodule-Name ändern!)
+- [ ] Testen: Push zum Projekt → Portfolio sollte auto-updaten
+
+**Portfolio-Repo hat bereits die empfangende Action!** ✅
 
 ---
 
