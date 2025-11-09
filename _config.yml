@@ -1,0 +1,9 @@
+﻿# Jekyll Configuration for GitHub Pages
+exclude:
+  - node_modules/
+  - AgeOfMax/node_modules/
+  - FireCastle/node_modules/
+  - AuTuneOnline/node_modules/
+  - '*.json'
+  - '*.lock'
+  - README.md
