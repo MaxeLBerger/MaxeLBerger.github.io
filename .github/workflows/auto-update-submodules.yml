@@ -1,0 +1,59 @@
+﻿name: Auto Update Submodules
+
+on:
+  repository_dispatch:
+    types: [update-submodule]
+  workflow_dispatch:
+    inputs:
+      submodule:
+        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline)'
+        required: true
+        type: choice
+        options:
+          - AgeOfMax
+          - FireCastle
+          - AuTuneOnline
+
+permissions:
+  contents: write
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
+      - name: Update Submodule (Repository Dispatch)
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          echo "Updating submodule: ${{ github.event.client_payload.submodule }}"
+          git submodule update --remote ${{ github.event.client_payload.submodule }}
+          git add ${{ github.event.client_payload.submodule }}
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m " Auto-update ${{ github.event.client_payload.submodule }} to latest version"
+            git push
+          fi
+          
+      - name: Update Submodule (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "Updating submodule: ${{ inputs.submodule }}"
+          git submodule update --remote ${{ inputs.submodule }}
+          git add ${{ inputs.submodule }}
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m " Update ${{ inputs.submodule }} to latest version"
+            git push
+          fi
