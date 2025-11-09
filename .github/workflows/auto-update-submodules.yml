@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
           
       - name: Configure Git
         run: |
