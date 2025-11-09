@@ -43,13 +43,20 @@ Real-time audio visualizer with BPM detection
 
 ##  Automated Deployment
 
-Every push to \main\ triggers:
+### Portfolio Changes
+Every push to `main` triggers:
 1. Checkout all submodules
 2. Build each project (e.g., AgeOfMax TypeScript compilation)
-3. Copy build artifacts to \dist/\
+3. Copy build artifacts to `dist/`
 4. Deploy to GitHub Pages
 
-**Result:** Projects stay in sync automatically! 
+### Project Changes (Automatic!)
+Push to any project repo (AgeOfMax, FireCastle, AuTuneOnline) **automatically**:
+1. Triggers portfolio submodule update via `repository_dispatch`
+2. Updates the submodule reference to latest commit
+3. Triggers full rebuild and deployment
+
+**Result:** Push to project → Live on website in 3 minutes! 🚀 
 
 ##  Development
 
@@ -63,22 +70,31 @@ git clone --recurse-submodules https://github.com/MaxeLBerger/MaxeLBerger.github
 git submodule update --remote --merge
 \\\
 
-### Work on a specific project
-\\\ash
+### Work on a project (Automatic deployment!)
+\\\ash
+# Clone and work in the original project repo
+git clone https://github.com/MaxeLBerger/AgeOfMax.git
 cd AgeOfMax
-# Make changes, commit, push
+
+# Make changes
 git add .
-git commit -m "Update game mechanics"
+git commit -m "Add new feature"
 git push
 
-# Return to portfolio repo
-cd ..
-git add AgeOfMax
-git commit -m "Update AgeOfMax submodule"
+#  Portfolio updates AUTOMATICALLY via repository_dispatch!
+# Website will be live in ~3 minutes
+\\\
+
+### Manual submodule update (if needed)
+\\\ash
+# In portfolio repo
+git submodule update --remote --merge
+git add .
+git commit -m "Update all projects"
 git push
 \\\
 
-GitHub Actions will automatically rebuild and deploy! 
+See **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** for detailed instructions!
 
 ##  Local Testing
 
