@@ -34,8 +34,9 @@ jobs:
         
     - name: Copy AgeOfMax build artifacts
       run: |
+        rm -rf dist/AgeOfMax
         mkdir -p dist/AgeOfMax
-        cp AgeOfMax/dist/* dist/AgeOfMax/ -r
+        cp -r AgeOfMax/dist/* dist/AgeOfMax/
         
     - name: Copy FireCastle static files
       run: |
@@ -48,8 +49,9 @@ jobs:
         
     - name: Copy AuTuneOnline static files 
       run: |
+        rm -rf dist/AuTuneOnline
         mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/public/* dist/AuTuneOnline/ -r
+        cp -r AuTuneOnline/public/* dist/AuTuneOnline/
         
     - name: Copy portfolio files
       run: |
