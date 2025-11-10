@@ -51,7 +51,9 @@ jobs:
       run: |
         rm -rf dist/AuTuneOnline
         mkdir -p dist/AuTuneOnline
-        cp -r AuTuneOnline/public/* dist/AuTuneOnline/
+        cp AuTuneOnline/public/index.html dist/AuTuneOnline/
+        cp AuTuneOnline/public/style.css dist/AuTuneOnline/
+        cp AuTuneOnline/public/app.js dist/AuTuneOnline/
         
     - name: Copy portfolio files
       run: |
