@@ -353,22 +353,22 @@ nav .menu-toggle .bar {
 }
 
 .project-info .btn {
-    padding: 10px 16px;
+    padding: 8px 14px;
     background-color: #00e676;
     color: #121212; /* Dunkler Text für besseren Kontrast */
-    border-radius: 24px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
+    border-radius: 22px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 3px 8px rgba(0, 230, 118, 0.45); /* Leichterer Schatten */
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    height: 40px;            /* Einheitliche Höhe */
-    min-width: 150px;        /* Einheitliche Mindestbreite */
+    height: 36px;            /* etwas kleiner */
+    min-width: 130px;        /* kompaktere Mindestbreite */
     white-space: nowrap;     /* keine Zeilenumbrüche in Buttons */
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .project-info .btn i { font-size: 16px; }
@@ -385,12 +385,12 @@ nav .menu-toggle .bar {
 }
 
 .project-info .btn-primary {
-    background-color: #667eea;
+    background-color: #667eea; /* Primär: Purple passend zum Branding */
     color: #fff;
 }
 
 .project-info .btn-primary:hover {
-    background-color: #764ba2;
+    background-color: #6f65f0; /* etwas heller für Hover */
 }
 
 /* Coming Soon Card */
