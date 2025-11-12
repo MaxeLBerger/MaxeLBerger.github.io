@@ -37,6 +37,10 @@ jobs:
         rm -rf dist/AgeOfMax
         mkdir -p dist/AgeOfMax
         cp -r AgeOfMax/dist/* dist/AgeOfMax/
+        echo "--- Head of deployed AgeOfMax/index.html ---"
+        head -n 20 dist/AgeOfMax/index.html || true
+        echo "--- Check for old redirect marker ---"
+        (grep -n "Redirecting to the game" dist/AgeOfMax/index.html && exit 1) || true
         
     - name: Copy FireCastle static files
       run: |
