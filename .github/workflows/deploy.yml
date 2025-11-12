@@ -40,7 +40,10 @@ jobs:
         echo "--- Head of deployed AgeOfMax/index.html ---"
         head -n 20 dist/AgeOfMax/index.html || true
         echo "--- Check for old redirect marker ---"
-        (grep -n "Redirecting to the game" dist/AgeOfMax/index.html && exit 1) || true
+        if grep -q "Redirecting to the game" dist/AgeOfMax/index.html; then
+          echo "ERROR: Old redirect content detected in deployed AgeOfMax/index.html" >&2
+          exit 1
+        fi
         
     - name: Copy FireCastle static files
       run: |
