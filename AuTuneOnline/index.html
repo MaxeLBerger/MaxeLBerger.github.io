@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>AuTune</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>AuTune</h1>
+  </header>
+  
+  <main>
+    <!-- Upload-Bereich (groß) -->
+    <div id="uploadSection">
+      <h2>Datei hochladen oder reinziehen</h2>
+  <input type="file" id="fileInput" accept="audio/*" aria-label="Audiodatei auswählen" title="Audiodatei auswählen">
+  <div id="dropZone" role="button" tabindex="0" aria-label="Datei hierher ziehen oder klicken" title="Datei hierher ziehen oder klicken">Drag &amp; Drop Zone</div>
+      <!-- Label für den Dateinamen -->
+      <div id="fileNameLabel" style="margin-top:10px; color:#bbb; font-style:italic;"></div>
+    </div>
+
+    <!-- Player- und Timeline-Bereich -->
+    <section id="playerSection">
+      <!-- Unser Audio-Element -->
+      <audio id="audioPlayer"></audio>
+      
+      <!-- Timeline + Zeit-Anzeige -->
+      <div id="timelineContainer">
+  <span id="currentTimeLabel" aria-label="Aktuelle Zeit">0:00</span>
+  <input type="range" id="timelineRange" value="0" min="0" max="100" step="1" aria-label="Positionsregler" title="Positionsregler">
+  <span id="durationLabel" aria-label="Gesamtdauer">0:00</span>
+      </div>
+
+      <!-- Buttons -->
+      <div id="playerButtons">
+  <button id="togglePlayBtn" aria-label="Abspielen oder pausieren (Leertaste)" title="Abspielen oder pausieren (Leertaste)">Play</button>
+      </div>
+    </section>
+
+    <!-- Controls für Animation / Farbe / Größe / Sensitivität -->
+    <section id="controlsSection">
+      <div id="settingsRow">
+        <div id="selectControls">
+          <label for="animationSelect">Animation:</label>
+          <select id="animationSelect" aria-label="Visualisierungsart wählen" title="Visualisierungsart wählen">
+            <option value="bars">Bars</option>
+            <option value="particles">Particles</option>
+            <option value="circles">Circles</option>
+            <option value="wave">Wave</option>
+            <option value="spiral">Spiral</option>
+            <option value="grid">Grid</option>
+            <option value="radialLines">Radial Lines</option>
+          </select>
+
+          <label for="colorSelect">Farbschema:</label>
+          <select id="colorSelect" aria-label="Farbschema wählen" title="Farbschema wählen">
+            <option value="rainbow">Rainbow</option>
+            <option value="warm">Warm</option>
+            <option value="cool">Cool</option>
+            <option value="happy">Happy</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+
+        <div id="rangeControls">
+          <label for="sensitivityRange">Sensitivität:</label>
+          <input type="range" id="sensitivityRange" min="1" max="5" step="0.1" value="2" aria-label="Sensitivität" title="Sensitivität">
+
+          <label for="sizeRange">Größe:</label>
+          <input type="range" id="sizeRange" min="0.5" max="4" step="0.1" value="1" aria-label="Animationsgröße" title="Animationsgröße">
+        </div>
+      </div>
+
+      <div id="infoRow">
+  <p id="bpmDisplay" aria-live="polite" aria-label="Geschätzte BPM">BPM: --</p>
+      </div>
+
+      <div id="canvasContainer">
+  <canvas id="visualizerCanvas" aria-label="Audio Visualisierung" role="img"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AuTune - All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Kurze Tastatur-Hilfe für Accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        document.getElementById('togglePlayBtn').click();
+      } else if (e.code === 'ArrowRight') {
+        const range = document.getElementById('timelineRange');
+        range.value = Math.min(parseInt(range.value) + 5, parseInt(range.max));
+        range.dispatchEvent(new Event('input'));
+      } else if (e.code === 'ArrowLeft') {
+        const range = document.getElementById('timelineRange');
+        range.value = Math.max(parseInt(range.value) - 5, 0);
+        range.dispatchEvent(new Event('input'));
+      }
+    });
+  </script>
+</body>
+</html>
