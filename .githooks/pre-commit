@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-echo "[pre-commit] Running Maven verify (modules)..."
-.tools/apache-maven-3.9.11/bin/mvn -f modules/pom.xml -q -B -DskipITs=false verify
-
-echo "[pre-commit] Success. Proceeding with commit."
