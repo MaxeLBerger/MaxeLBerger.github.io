@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe ../script.js) -->
 
     <!-- Favicon (unified) -->
     <link rel="icon" href="../res/faviconwhitegreen.png" type="image/png">
@@ -276,7 +275,8 @@
         <p>&copy; 2024 Maximilian Haak</p>
         <p>
             <a href="../impressum.html" class="footer-link">Impressum</a> | 
-            <a href="../datenschutz.html" class="footer-link">Datenschutz</a>
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
         </p>
     </footer>
 
