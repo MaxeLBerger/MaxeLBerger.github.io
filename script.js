@@ -155,4 +155,92 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
+    // --- Consent Management (Cookie/Tracking Einwilligung) ---
+    (function initConsent() {
+        const GA_ID = 'G-QFHRSY5Z0C';
+
+        function getConsent() {
+            try { return localStorage.getItem('site_consent'); } catch (_) { return null; }
+        }
+
+        function setConsent(value) {
+            try { localStorage.setItem('site_consent', value); } catch (_) {}
+        }
+
+        function loadGoogleFonts() {
+            if (document.getElementById('gf-roboto')) return;
+            const link = document.createElement('link');
+            link.id = 'gf-roboto';
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+            document.head.appendChild(link);
+        }
+
+        function loadAnalytics() {
+            if (!GA_ID) return;
+            if (window.gtag) return; // already loaded
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+            s.onload = function () {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                window.gtag = gtag;
+                gtag('js', new Date());
+                // Consent Mode basic: only analytics if granted
+                gtag('consent', 'update', { ad_storage: 'denied', analytics_storage: 'granted' });
+                gtag('config', GA_ID);
+            };
+            document.head.appendChild(s);
+        }
+
+        function applyConsent(state) {
+            if (state === 'granted') {
+                loadGoogleFonts();
+                loadAnalytics();
+            }
+        }
+
+        function buildBanner() {
+            if (document.getElementById('consent-banner')) return;
+            const banner = document.createElement('div');
+            banner.id = 'consent-banner';
+            banner.className = 'consent-banner';
+            banner.innerHTML = `
+                <h3>Cookies & Dienste</h3>
+                <p>Wir verwenden optionale Dienste für Statistik (Google Analytics) und externe Schriftarten (Google Fonts). Diese werden nur nach Ihrer Einwilligung geladen. Mehr dazu in der <a class="consent-link" href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+                <div class="consent-actions">
+                    <button class="consent-btn" id="consent-accept">Akzeptieren</button>
+                    <button class="consent-btn secondary" id="consent-decline">Ablehnen</button>
+                </div>
+            `;
+            document.body.appendChild(banner);
+
+            document.getElementById('consent-accept').addEventListener('click', function() {
+                setConsent('granted');
+                hideBanner();
+                applyConsent('granted');
+            });
+            document.getElementById('consent-decline').addEventListener('click', function() {
+                setConsent('denied');
+                hideBanner();
+            });
+
+            function showBanner() { banner.classList.add('show'); }
+            function hideBanner() { banner.classList.remove('show'); }
+            window.showConsentManager = showBanner;
+
+            return { showBanner, hideBanner };
+        }
+
+        const bannerAPI = buildBanner();
+        const consent = getConsent();
+        if (consent === 'granted') {
+            applyConsent('granted');
+        } else if (consent === 'denied') {
+            // do nothing
+        } else {
+            bannerAPI && bannerAPI.showBanner();
+        }
+    })();
 });
