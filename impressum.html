@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum - Maximilian Haak</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="res/favicongreen1.png" type="image/png">
+    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe script.js) -->
+    <link rel="icon" href="res/faviconwhitegreen.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
@@ -38,7 +38,12 @@
             <div class="container">
                 <h1 class="impressum-headline">Impressum</h1>
 
-                <h2>Angaben gemäß § 5 TMG:</h2>
+                <h2>Hinweis</h2>
+                <p>
+                    Dieses Webangebot ist privat und nicht-kommerziell. Die Anbieterkennzeichnung erfolgt freiwillig.
+                </p>
+
+                <h2>Angaben gemäß § 5 TMG</h2>
                 <p>
                     Maximilian Haak<br>
                     Richard-Strauss-Str. 4<br>
@@ -47,20 +52,14 @@
 
                 <h2>Kontakt:</h2>
                 <p>
-                    Telefon: 0174-4954579<br>
                     E-Mail: <a href="mailto:maximilian@haak.in">maximilian@haak.in</a><br>
                 </p>
 
-                <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>
+                <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
                 <p>
                     Maximilian Haak<br>
                     Richard-Strauss-Str. 4<br>
                     83052 Bruckmühl<br>
-                </p>
-
-                <h2>Umsatzsteuer-ID:</h2>
-                <p>
-                    Aufgrund des Kleinunternehmerstatus gem. § 19 UStG erheben wir keine Umsatzsteuer und weisen diese daher auch nicht aus.
                 </p>
 
                 <h2>Haftung für Inhalte</h2>
@@ -105,7 +104,8 @@
         <p>&copy; 2024 Maximilian Haak</p>
         <p>
             <a href="impressum.html" class="footer-link">Impressum</a> | 
-            <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+            <a href="datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
         </p>
     </footer>
 
