@@ -1,9 +1,25 @@
+/* Override adjustments for project pages to align with main site styling */
 body {
-    background-color: #150c33;
-    color: white;
-    font-family: Bahnschrift, sans-serif;
-    margin: 20px;
+    background-color: #121212; /* Match root page background */
+    color: #fff;
+    font-family: 'Roboto', sans-serif; /* Use global font for consistency */
+    margin: 0; /* Remove default margin to avoid layout shift under fixed nav */
     line-height: 1.6;
+}
+
+/* Generic container similar to main layout */
+.project-main .container,
+.albert-main .container,
+.project-detail-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Provide top padding so content is not hidden under fixed nav */
+.project-main,
+.albert-main {
+    padding-top: 90px;
 }
 
 h1 {
