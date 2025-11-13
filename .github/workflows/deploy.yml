@@ -25,12 +25,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
 
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
       run: |
-        npm ci
+        # Install dependencies; use npm install since no package-lock.json is committed yet
+        npm install
         npx vite build --mode production
 
     - name: Prepare distribution folder
