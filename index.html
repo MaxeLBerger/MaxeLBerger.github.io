@@ -9,21 +9,12 @@
     <meta name="keywords" content="Maximilian Haak, Softwareentwickler, KI, Webentwicklung, Portfolio">
     <meta name="author" content="Maximilian Haak">
 
-    <!-- Google Tag für Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFHRSY5Z0C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QFHRSY5Z0C');
-    </script>
+        <!-- Google Analytics wird nur nach Einwilligung geladen (siehe script.js) -->
 
     <!-- Verknüpfung der CSS-Datei -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe script.js) -->
 
     <!-- Favicon -->
     <link rel="icon" href="res/faviconwhitegreen.png" type="image/png">
@@ -227,7 +218,8 @@
         <p>&copy; 2024 Maximilian Haak</p>
         <p>
             <a href="impressum.html" class="footer-link">Impressum</a> | 
-            <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+            <a href="datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
         </p>
     </footer>
 
