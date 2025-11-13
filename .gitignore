@@ -1,3 +1,10 @@
+# Secret and sensitive files
+**/*keypair*.json
+**/wallet/**
+**/*.pem
+**/*.p12
+config/private/**
+.env
 # Visual Studio
 .vs/
 

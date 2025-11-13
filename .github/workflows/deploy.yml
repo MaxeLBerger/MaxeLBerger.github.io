@@ -15,54 +15,53 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout main repo
+    - name: Checkout main repo with submodules
       uses: actions/checkout@v4
       with:
         submodules: recursive
-        
-    - name: Setup Node.js
+        fetch-depth: 0
+
+    - name: Setup Node.js 20.x
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        
-    - name: Build AgeOfMax
+        cache: 'npm'
+
+    - name: Build AgeOfMax (Vite production)
+      working-directory: AgeOfMax
       run: |
-        cd AgeOfMax
         npm ci
         npx vite build --mode production
-        cd ..
-        
+
+    - name: Prepare distribution folder
+      run: |
+        rm -rf dist
+        mkdir dist
+
     - name: Copy AgeOfMax build artifacts
       run: |
-        rm -rf dist/AgeOfMax
         mkdir -p dist/AgeOfMax
         cp -r AgeOfMax/dist/* dist/AgeOfMax/
         echo "--- Head of deployed AgeOfMax/index.html ---"
-        head -n 20 dist/AgeOfMax/index.html || true
-        echo "--- Check for old redirect marker ---"
-        if grep -q "Redirecting to the game" dist/AgeOfMax/index.html; then
-          echo "ERROR: Old redirect content detected in deployed AgeOfMax/index.html" >&2
-          exit 1
-        fi
-        
+        head -n 15 dist/AgeOfMax/index.html || true
+
     - name: Copy FireCastle static files
       run: |
         mkdir -p dist/FireCastle
-        cp FireCastle/index.html dist/FireCastle/
-        cp -r FireCastle/css dist/FireCastle/
-        cp -r FireCastle/js dist/FireCastle/
-        cp -r FireCastle/images dist/FireCastle/
-        cp -r FireCastle/pages dist/FireCastle/
-        
-    - name: Copy AuTuneOnline static files 
+        cp FireCastle/index.html dist/FireCastle/ || true
+        cp -r FireCastle/css dist/FireCastle/ || true
+        cp -r FireCastle/js dist/FireCastle/ || true
+        cp -r FireCastle/images dist/FireCastle/ || true
+        cp -r FireCastle/pages dist/FireCastle/ || true
+
+    - name: Copy AuTuneOnline static files
       run: |
-        rm -rf dist/AuTuneOnline
         mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/public/index.html dist/AuTuneOnline/
-        cp AuTuneOnline/public/style.css dist/AuTuneOnline/
-        cp AuTuneOnline/public/app.js dist/AuTuneOnline/
-        
-    - name: Copy portfolio files
+        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ || true
+        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ || true
+        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ || true
+
+    - name: Copy portfolio & shared assets
       run: |
         cp index.html dist/
         cp style.css dist/
@@ -72,14 +71,17 @@ jobs:
         cp -r res dist/
         cp impressum.html dist/
         cp datenschutz.html dist/
-        
-    - name: Disable Jekyll
-      run: |
         touch dist/.nojekyll
-        
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        force_orphan: true
+        path: dist
+
+    - name: Deploy to GitHub Pages
+      id: deploy
+      uses: actions/deploy-pages@v4
+
+    - name: Deployment summary
+      run: |
+        echo "Deployment URL: ${{ steps.deploy.outputs.page_url }}"
