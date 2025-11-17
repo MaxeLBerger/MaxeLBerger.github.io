@@ -10,6 +10,11 @@ Professional portfolio website showcasing software development projects with aut
 
 This repository uses **Git Submodules** for clean project separation and **GitHub Actions** for automated builds.
 
+> **⚠️ Important:** If you cloned this repository and the project directories (`AgeOfMax/`, `FireCastle/`, `AuTuneOnline/`) are empty, you need to initialize the submodules:
+> ```bash
+> git submodule update --init --recursive
+> ```
+
 \\\
 MaxeLBerger.github.io/
  .github/workflows/
