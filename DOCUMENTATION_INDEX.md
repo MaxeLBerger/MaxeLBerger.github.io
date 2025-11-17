@@ -51,6 +51,12 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 | `test-projects.sh` | Automatisiertes Test-Script | Developer | - |
 | `test-firecastle-api.sh` | FireCastle API Test-Script | Developer | - |
 
+### Troubleshooting & Fixes
+
+| Dokument | Zweck | Zielgruppe | Geschätzte Lesezeit |
+|----------|-------|------------|---------------------|
+| [CASINOIDLESLOTS_FIX_SUMMARY.md](CASINOIDLESLOTS_FIX_SUMMARY.md) | Fix für 404-Fehler bei Vite-Builds | Developer, DevOps | 10 min |
+
 ### Meta
 
 | Dokument | Zweck |
@@ -152,7 +158,10 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 → [TESTING.md - FireCastle APIs](TESTING.md#2-firecastle-), `test-firecastle-api.sh`
 
 #### "Troubleshooting"
-→ [COMPLETE_SETUP_GUIDE.md - Troubleshooting](COMPLETE_SETUP_GUIDE.md#-troubleshooting), [QUICK_REFERENCE.md - Troubleshooting](QUICK_REFERENCE.md#-quick-troubleshooting)
+→ [COMPLETE_SETUP_GUIDE.md - Troubleshooting](COMPLETE_SETUP_GUIDE.md#-troubleshooting), [QUICK_REFERENCE.md - Troubleshooting](QUICK_REFERENCE.md#-quick-troubleshooting), [CASINOIDLESLOTS_FIX_SUMMARY.md](CASINOIDLESLOTS_FIX_SUMMARY.md)
+
+#### "404 Errors / Vite Base Path"
+→ [CASINOIDLESLOTS_FIX_SUMMARY.md](CASINOIDLESLOTS_FIX_SUMMARY.md)
 
 #### "Quick Commands"
 → [QUICK_REFERENCE.md](QUICK_REFERENCE.md), [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)
