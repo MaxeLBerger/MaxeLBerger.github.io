@@ -7,3 +7,6 @@
 [submodule "AuTuneOnline"]
 	path = AuTuneOnline
 	url = https://github.com/MaxeLBerger/AuTuneOnline.git
+[submodule "CasinoIdleSlots"]
+	path = CasinoIdleSlots
+	url = https://github.com/MaxeLBerger/casino-idle-slots.git

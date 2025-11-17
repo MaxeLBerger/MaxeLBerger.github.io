@@ -47,6 +47,16 @@ jobs:
         npx vite build --mode production
         echo "✅ AgeOfMax build complete"
 
+    - name: Build CasinoIdleSlots (Vite production)
+      working-directory: CasinoIdleSlots
+      run: |
+        echo "🎰 Building CasinoIdleSlots..."
+        # Install dependencies
+        npm ci 2>/dev/null || npm install
+        # Build for production
+        npm run build
+        echo "✅ CasinoIdleSlots build complete"
+
     - name: Prepare distribution folder
       run: |
         echo "🗂️ Preparing distribution folder..."
@@ -82,6 +92,15 @@ jobs:
         cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/style.css not found"
         cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/app.js not found"
         echo "✅ AuTuneOnline files copied"
+
+    - name: Copy CasinoIdleSlots build artifacts
+      run: |
+        echo "🎰 Copying CasinoIdleSlots build artifacts..."
+        mkdir -p dist/CasinoIdleSlots
+        cp -r CasinoIdleSlots/dist/* dist/CasinoIdleSlots/
+        echo "✅ CasinoIdleSlots artifacts copied"
+        echo "--- Preview of deployed CasinoIdleSlots/index.html ---"
+        head -n 15 dist/CasinoIdleSlots/index.html || true
 
     - name: Copy portfolio & shared assets
       run: |
