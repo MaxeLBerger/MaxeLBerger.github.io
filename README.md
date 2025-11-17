@@ -6,7 +6,10 @@
 
 Professional portfolio website showcasing software development projects with automated CI/CD deployment.
 
+**🎉 NEW: Workflow system updated!** → [START_HERE.md](START_HERE.md)
+
 **🚀 Quick Links:**
+- [START_HERE.md](START_HERE.md) - Overview of recent changes and next steps
 - [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md) - System overview and how it works
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Quick commands and checklists
 - [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) - Step-by-step setup for project automation
