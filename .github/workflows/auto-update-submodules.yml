@@ -56,10 +56,7 @@ jobs:
           else
             echo "📦 New submodule commit:"
             git submodule status $SUBMODULE
-            git commit -m "🤖 Auto-update $SUBMODULE to latest version
-
-Triggered by push to $SUBMODULE repository.
-Updated via repository_dispatch event."
+            git commit -m "🤖 Auto-update $SUBMODULE to latest version" -m "Triggered by push to $SUBMODULE repository." -m "Updated via repository_dispatch event."
             git push
             echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
@@ -86,9 +83,7 @@ Updated via repository_dispatch event."
           else
             echo "📦 New submodule commit:"
             git submodule status $SUBMODULE
-            git commit -m "🔄 Update $SUBMODULE to latest version
-
-Manually triggered via workflow_dispatch."
+            git commit -m "🔄 Update $SUBMODULE to latest version" -m "Manually triggered via workflow_dispatch."
             git push
             echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
