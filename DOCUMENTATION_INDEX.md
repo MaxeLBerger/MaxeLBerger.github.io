@@ -42,6 +42,15 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution Guidelines | Contributors | 5 min |
 | [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) | GitHub Pages Konfiguration | DevOps | 10 min |
 
+### Testing & Quality Assurance
+
+| Dokument | Zweck | Zielgruppe | Geschätzte Lesezeit |
+|----------|-------|------------|---------------------|
+| **[TESTING.md](TESTING.md)** | Testing-Dokumentation & API-Tests | Developer, QA | 15 min |
+| [PROJECT_TEST_CHECKLIST.md](PROJECT_TEST_CHECKLIST.md) | Manuelle Test-Checkliste | QA, Developer | 5 min (30-60 min testing) |
+| `test-projects.sh` | Automatisiertes Test-Script | Developer | - |
+| `test-firecastle-api.sh` | FireCastle API Test-Script | Developer | - |
+
 ### Meta
 
 | Dokument | Zweck |
@@ -104,6 +113,12 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 - [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md) - Workflows
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution-Guide
 
+### Testing & Quality
+- [TESTING.md](TESTING.md) - Test-Dokumentation
+- [PROJECT_TEST_CHECKLIST.md](PROJECT_TEST_CHECKLIST.md) - Manuelle Tests
+- `test-projects.sh` - Automatisierte Tests
+- `test-firecastle-api.sh` - API Tests
+
 ### GitHub Copilot Agents
 - `.github/agents/portfolio-fix.agent.md` - Portfolio Agent
 - [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md) - Agent Templates für Projekte
@@ -129,6 +144,12 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 
 #### "Deployment"
 → [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md), [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md)
+
+#### "Testing"
+→ [TESTING.md](TESTING.md), [PROJECT_TEST_CHECKLIST.md](PROJECT_TEST_CHECKLIST.md)
+
+#### "API"
+→ [TESTING.md - FireCastle APIs](TESTING.md#2-firecastle-), `test-firecastle-api.sh`
 
 #### "Troubleshooting"
 → [COMPLETE_SETUP_GUIDE.md - Troubleshooting](COMPLETE_SETUP_GUIDE.md#-troubleshooting), [QUICK_REFERENCE.md - Troubleshooting](QUICK_REFERENCE.md#-quick-troubleshooting)
