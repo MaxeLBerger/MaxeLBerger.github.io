@@ -6,6 +6,11 @@
 
 Professional portfolio website showcasing software development projects with automated CI/CD deployment.
 
+**🚀 Quick Links:**
+- [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md) - System overview and how it works
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Quick commands and checklists
+- [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) - Step-by-step setup for project automation
+
 ##  Architecture
 
 This repository uses **Git Submodules** for clean project separation and **GitHub Actions** for automated builds.
