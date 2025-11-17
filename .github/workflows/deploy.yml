@@ -48,6 +48,9 @@ jobs:
         echo ""
         echo "FireCastle files:"
         ls -la FireCastle/ | head -10
+        echo ""
+        echo "AuTuneOnline files:"
+        ls -la AuTuneOnline/ | head -10
 
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
@@ -55,18 +58,55 @@ jobs:
         echo "🎮 Building AgeOfMax..."
         # Install dependencies
         npm ci 2>/dev/null || npm install
-        # Build for production with correct base path for GitHub Pages
-        npx vite build --base=/AgeOfMax/ --mode production
+        # Build for production
+        npx vite build --mode production
         echo "✅ AgeOfMax build complete"
 
     - name: Build CasinoIdleSlots (Vite production)
       working-directory: CasinoIdleSlots
+      env:
+        # Supabase configuration (set these as GitHub Secrets)
+        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        # Fallback to demo mode if secrets not configured
+        VITE_ENABLE_DEMO_MODE: ${{ secrets.VITE_SUPABASE_URL == '' && 'true' || 'false' }}
       run: |
         echo "🎰 Building CasinoIdleSlots..."
         # Check if package.json exists
         if [ ! -f package.json ]; then
           echo "❌ package.json not found in CasinoIdleSlots directory"
           exit 1
+        fi
+        # Debug: Show secret status (without revealing values)
+        echo "🔍 Environment variable status:"
+        if [ -n "$VITE_SUPABASE_URL" ]; then
+          echo "  ✅ VITE_SUPABASE_URL is set (length: ${#VITE_SUPABASE_URL} characters)"
+        else
+          echo "  ❌ VITE_SUPABASE_URL is NOT set or empty"
+        fi
+        if [ -n "$VITE_SUPABASE_ANON_KEY" ]; then
+          echo "  ✅ VITE_SUPABASE_ANON_KEY is set (length: ${#VITE_SUPABASE_ANON_KEY} characters)"
+        else
+          echo "  ❌ VITE_SUPABASE_ANON_KEY is NOT set or empty"
+        fi
+        if [ -n "$VITE_ENABLE_DEMO_MODE" ]; then
+          echo "  ℹ️ VITE_ENABLE_DEMO_MODE=$VITE_ENABLE_DEMO_MODE"
+        fi
+        # Create .env file for Vite build (temporary, not committed)
+        echo "📝 Creating temporary .env file for build..."
+        cat > .env << EOF
+        VITE_SUPABASE_URL=$VITE_SUPABASE_URL
+        VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
+        EOF
+        echo "✅ .env file created for build process"
+        # Check if Supabase secrets are configured
+        if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_ANON_KEY" ]; then
+          echo "⚠️ Supabase secrets not configured - building in demo mode"
+          echo "ℹ️ To enable full features, add these secrets to GitHub:"
+          echo "   - VITE_SUPABASE_URL"
+          echo "   - VITE_SUPABASE_ANON_KEY"
+        else
+          echo "✅ Supabase configuration detected - building with full backend features"
         fi
         # Install dependencies with fallback
         echo "📦 Installing dependencies..."
@@ -77,9 +117,9 @@ jobs:
         # Verify TypeScript compilation
         echo "🔍 Checking TypeScript compilation..."
         npx tsc --noEmit --skipLibCheck || echo "⚠️ TypeScript check warnings (continuing...)"
-        # Build for production with correct base path for GitHub Pages
+        # Build for production
         echo "🏗️ Building for production..."
-        npx vite build --base=/CasinoIdleSlots/
+        npm run build
         # Verify build output
         if [ ! -d dist ]; then
           echo "❌ Build failed - dist directory not created"
