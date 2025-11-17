@@ -1,6 +1,7 @@
 ﻿# Portfolio - Maximilian Haak
 
 [![Deploy Status](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml)
+[![Test Projects](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/test-projects.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/test-projects.yml)
 
  **Live:** [maximilianhaak.de](https://maximilianhaak.de)
 
@@ -13,6 +14,7 @@ Professional portfolio website showcasing software development projects with aut
 - [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md) - System overview and how it works
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Quick commands and checklists
 - [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) - Step-by-step setup for project automation
+- [TESTING.md](TESTING.md) - Testing documentation and API validation
 
 ##  Architecture
 
@@ -113,6 +115,32 @@ git push
 \\\
 
 See **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** for detailed workflow instructions and **[PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md)** for project repository setup!
+
+##  Testing
+
+### Automated Testing
+
+All projects are automatically tested on every push and daily:
+
+- **Project availability** - Checks if all pages load correctly
+- **Build validation** - Verifies AgeOfMax builds successfully
+- **Structure tests** - Validates project file structures
+- **Link checking** - Tests internal and external links
+- **API documentation** - Documents FireCastle API endpoints
+
+See **[TESTING.md](TESTING.md)** for detailed testing documentation.
+
+### Manual Testing Scripts
+
+```bash
+# Test all deployed projects
+chmod +x test-projects.sh
+./test-projects.sh
+
+# Test FireCastle API specifically
+chmod +x test-firecastle-api.sh
+./test-firecastle-api.sh
+```
 
 ##  Local Testing
 
