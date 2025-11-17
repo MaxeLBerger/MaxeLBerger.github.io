@@ -3,7 +3,7 @@
 ## 🎯 Zwei Wege Updates auf die Website zu bringen
 
 ### ⚡ Automatisch (EMPFOHLEN)
-Push in Projekt-Repo → Automatisches Portfolio-Update → Auto-Deploy
+Push in Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots) → Automatisches Portfolio-Update → Auto-Deploy
 *(Erfordert einmalige Einrichtung pro Projekt-Repo)*
 
 ### 🔧 Manuell  
@@ -28,7 +28,7 @@ git push
 
 ---
 
-### Szenario 2: Du änderst was im PROJEKT REPO (z.B. AgeOfMax)
+### Szenario 2: Du änderst was im PROJEKT REPO (z.B. AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots)
 
 ```bash
 # Im ORIGINAL AgeOfMax Repo arbeiten
@@ -66,7 +66,7 @@ git push
 
 **Kurzversion:**
 
-1. In jedem Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline) erstelle `.github/workflows/update-portfolio.yml`:
+1. In jedem Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots) erstelle `.github/workflows/update-portfolio.yml`:
 
 ```yaml
 name: Update Portfolio on Push

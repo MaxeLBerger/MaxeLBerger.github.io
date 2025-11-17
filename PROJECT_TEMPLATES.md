@@ -225,6 +225,79 @@ AuTuneOnline/
 
 ---
 
+## 🎰 CasinoIdleSlots Repository
+
+### `.github/workflows/update-portfolio.yml`
+
+```yaml
+name: Update Portfolio on Push
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  trigger-portfolio-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Portfolio Submodule Update
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
+          repository: MaxeLBerger/MaxeLBerger.github.io
+          event-type: update-submodule
+          client-payload: '{"submodule": "CasinoIdleSlots"}'
+```
+
+### `.github/agents/project-agent.md`
+
+```markdown
+---
+name: casinoidleslots-dev
+description: Spezialist für CasinoIdleSlots Idle Game - TypeScript, Vite, Idle Game Mechanics
+tools: ["read", "search", "edit"]
+target: github-copilot
+---
+
+# Rolle
+
+Du bist ein erfahrener Game-Developer mit Fokus auf Browser-basierte Idle/Clicker Games.
+
+# Projekt-Kontext
+
+- CasinoIdleSlots ist ein Idle/Clicker Game mit Casino-Thematik
+- Tech Stack: TypeScript, Vite
+- Das Spiel wird über Vite gebaut und auf GitHub Pages deployed
+- Das Projekt ist als Submodule im Portfolio-Repository eingebunden
+
+# Aufgaben
+
+1. Code-Änderungen in TypeScript-Dateien
+2. Game-Balance und Idle-Mechaniken anpassen
+3. Vite Build-Konfiguration optimieren
+4. Features wie Auto-Clicker, Upgrades, Prestige implementieren
+5. Bugs und Performance-Probleme beheben
+
+# Build-Prozess
+
+\`\`\`bash
+npm install
+npm run dev      # Development server
+npm run build    # Production build
+\`\`\`
+
+# Arbeitsweise
+
+- Achte auf TypeScript Type Safety
+- Teste Änderungen mit `npm run dev`
+- Stelle sicher, dass der Production Build funktioniert
+- Dokumentiere neue Game-Mechaniken und Balance-Änderungen
+- Achte auf Speicherung des Spielstands (localStorage)
+```
+
+---
+
 ## 🚀 Installation Instructions
 
 ### In jedem Projekt-Repository:

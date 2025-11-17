@@ -18,7 +18,7 @@ Professional portfolio website showcasing software development projects with aut
 
 This repository uses **Git Submodules** for clean project separation and **GitHub Actions** for automated builds.
 
-> **⚠️ Important:** If you cloned this repository and the project directories (`AgeOfMax/`, `FireCastle/`, `AuTuneOnline/`) are empty, you need to initialize the submodules:
+> **⚠️ Important:** If you cloned this repository and the project directories (`AgeOfMax/`, `FireCastle/`, `AuTuneOnline/`, `CasinoIdleSlots/`) are empty, you need to initialize the submodules:
 > ```bash
 > git submodule update --init --recursive
 > ```
@@ -30,6 +30,7 @@ MaxeLBerger.github.io/
  AgeOfMax/              # Git Submodule  MaxeLBerger/AgeOfMax
  FireCastle/            # Git Submodule  MaxeLBerger/FireCastle
  AuTuneOnline/          # Git Submodule  MaxeLBerger/AuTuneOnline
+ CasinoIdleSlots/       # Git Submodule  MaxeLBerger/casino-idle-slots
  projects/              # Project landing pages
  res/                   # Static resources
  index.html             # Portfolio homepage
@@ -64,7 +65,7 @@ Every push to `main` triggers:
 4. Deploy to GitHub Pages
 
 ### Project Changes (Automatic!)
-Push to any project repo (AgeOfMax, FireCastle, AuTuneOnline) **automatically**:
+Push to any project repo (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots) **automatically**:
 1. Triggers portfolio submodule update via `repository_dispatch`
 2. Updates the submodule reference to latest commit
 3. Triggers full rebuild and deployment
