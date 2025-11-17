@@ -5,7 +5,7 @@ Diese Anleitung führt dich Schritt für Schritt durch die komplette Einrichtung
 ## 🎯 Was wird eingerichtet?
 
 Ein vollautomatisches System, bei dem:
-1. Push zu einem Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline)
+1. Push zu einem Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots)
 2. Automatisch das Portfolio-Repo updated
 3. Automatisch neu gebaut und deployed wird
 4. Änderungen in 3-5 Minuten live sind
@@ -16,7 +16,7 @@ Ein vollautomatisches System, bei dem:
 
 - [x] Portfolio-Repository (MaxeLBerger.github.io) ist bereits konfiguriert ✅
 - [ ] GitHub Personal Access Token (wird erstellt)
-- [ ] Zugriff auf alle drei Projekt-Repositories
+- [ ] Zugriff auf alle vier Projekt-Repositories
 
 ## 🔧 Setup-Schritte
 
@@ -172,6 +172,46 @@ Genau wie bei den anderen: `PORTFOLIO_UPDATE_TOKEN`
 
 ---
 
+### Schritt 5: CasinoIdleSlots Repository Setup
+
+#### 5.1 Workflow-Datei erstellen
+
+`.github/workflows/update-portfolio.yml`:
+```yaml
+name: Update Portfolio on Push
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  trigger-portfolio-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Portfolio Submodule Update
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
+          repository: MaxeLBerger/MaxeLBerger.github.io
+          event-type: update-submodule
+          client-payload: '{"submodule": "CasinoIdleSlots"}'
+```
+
+**Wichtig:** Der `client-payload` muss `"CasinoIdleSlots"` enthalten!
+
+#### 5.2 Agent-Konfiguration
+
+`.github/agents/project-agent.md` - Kopiere aus PROJECT_TEMPLATES.md (CasinoIdleSlots Section)
+
+#### 5.3 Secret konfigurieren
+
+Genau wie bei den anderen: `PORTFOLIO_UPDATE_TOKEN`
+
+✅ **CasinoIdleSlots ist fertig!**
+
+---
+
 ## 🧪 Testen des kompletten Systems
 
 ### Test 1: AgeOfMax
@@ -214,6 +254,16 @@ git commit -m "test: Auto-update trigger"
 git push
 ```
 
+### Test 4: CasinoIdleSlots
+
+```bash
+cd CasinoIdleSlots
+echo "# Test $(date)" >> README.md
+git add README.md
+git commit -m "test: Auto-update trigger"
+git push
+```
+
 ---
 
 ## 🎉 Erfolgskriterien
@@ -226,7 +276,8 @@ Nach vollständigem Setup sollte gelten:
 - [ ] AgeOfMax: Workflow + Agent + Secret konfiguriert
 - [ ] FireCastle: Workflow + Agent + Secret konfiguriert
 - [ ] AuTuneOnline: Workflow + Agent + Secret konfiguriert
-- [ ] Test-Commits in allen drei Repos erfolgreich
+- [ ] CasinoIdleSlots: Workflow + Agent + Secret konfiguriert
+- [ ] Test-Commits in allen vier Repos erfolgreich
 - [ ] Portfolio wird automatisch aktualisiert
 - [ ] Website zeigt Änderungen nach 3-5 Minuten
 
@@ -236,6 +287,7 @@ Nach vollständigem Setup sollte gelten:
 - [AgeOfMax Actions](https://github.com/MaxeLBerger/AgeOfMax/actions)
 - [FireCastle Actions](https://github.com/MaxeLBerger/FireCastle/actions)
 - [AuTuneOnline Actions](https://github.com/MaxeLBerger/AuTuneOnline/actions)
+- [CasinoIdleSlots Actions](https://github.com/MaxeLBerger/casino-idle-slots/actions)
 
 **Portfolio Actions:**
 - [Portfolio Actions](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions)

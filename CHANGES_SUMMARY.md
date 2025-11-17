@@ -116,6 +116,13 @@ description: Spezialist für Audio Visualizer
 expertise: Web Audio API, Canvas, BPM Detection
 ```
 
+#### CasinoIdleSlots Agent
+```markdown
+name: casinoidleslots-dev
+description: Spezialist für CasinoIdleSlots Idle Game
+expertise: TypeScript, Vite, Idle Game Mechanics
+```
+
 **Location:** Alle Templates in [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md)
 
 ### 4. 🔄 Workflow-Integration dokumentiert
@@ -160,9 +167,9 @@ MaxeLBerger.github.io/
 
 ## 🎯 Was muss noch getan werden?
 
-### In den Projekt-Repositories (AgeOfMax, FireCastle, AuTuneOnline):
+### In den Projekt-Repositories (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots):
 
-Für **jedes** der drei Projekt-Repos:
+Für **jedes** der vier Projekt-Repos:
 
 1. **Workflow-Datei erstellen:**
    ```
@@ -246,10 +253,11 @@ git push
 - [ ] **AgeOfMax:** Workflow + Agent + Secret
 - [ ] **FireCastle:** Workflow + Agent + Secret
 - [ ] **AuTuneOnline:** Workflow + Agent + Secret
+- [ ] **CasinoIdleSlots:** Workflow + Agent + Secret
 
 ### Token 🔑
 - [ ] GitHub Personal Access Token erstellt
-- [ ] Token in allen 3 Projekt-Repos als Secret hinterlegt
+- [ ] Token in allen 4 Projekt-Repos als Secret hinterlegt
 
 ## 🎓 Nächste Schritte
 
@@ -268,11 +276,11 @@ git push
 - ✅ Agent-Konfigurationen vorbereitet
 
 **Was noch zu tun ist:**
-- ⏳ Setup in den 3 Projekt-Repositories durchführen
+- ⏳ Setup in den 4 Projekt-Repositories durchführen
 - ⏳ Token erstellen und konfigurieren
 - ⏳ System testen
 
-**Geschätzte Zeit für komplettes Setup:** 30-45 Minuten
+**Geschätzte Zeit für komplettes Setup:** 40-60 Minuten
 
 ---
 

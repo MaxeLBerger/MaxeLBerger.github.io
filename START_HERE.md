@@ -37,11 +37,12 @@ Die beiden Haupt-Workflows wurden verbessert:
 
 ### 🤖 Agent-Templates vorbereitet
 
-Für alle drei Projekte sind GitHub Copilot Agent-Konfigurationen bereit:
+Für alle vier Projekte sind GitHub Copilot Agent-Konfigurationen bereit:
 
 - ✅ **AgeOfMax Agent** (TypeScript, Phaser 3, Vite)
 - ✅ **FireCastle Agent** (Node.js, Express, CoC API)
 - ✅ **AuTuneOnline Agent** (Web Audio API, Canvas)
+- ✅ **CasinoIdleSlots Agent** (TypeScript, Vite, Idle Game Mechanics)
 
 Alle Templates in [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md)!
 
@@ -59,7 +60,8 @@ Folge [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) Schritt für Schritt:
 2. **AgeOfMax konfigurieren** (10 min)
 3. **FireCastle konfigurieren** (10 min)
 4. **AuTuneOnline konfigurieren** (10 min)
-5. **Testen** (5 min)
+5. **CasinoIdleSlots konfigurieren** (10 min)
+6. **Testen** (5 min)
 
 ### Schritt 3: Nutzen (täglich)
 
@@ -129,6 +131,7 @@ Benutze [QUICK_REFERENCE.md](QUICK_REFERENCE.md) für schnelle Befehle und Troub
 - ⏳ **AgeOfMax** - Workflow + Agent Templates bereit
 - ⏳ **FireCastle** - Workflow + Agent Templates bereit
 - ⏳ **AuTuneOnline** - Workflow + Agent Templates bereit
+- ⏳ **CasinoIdleSlots** - Workflow + Agent Templates bereit
 
 ### Nach Setup
 - ✅ **Push to any project** → Automatic portfolio update
@@ -193,7 +196,8 @@ Portfolio-Repository (MaxeLBerger.github.io)
 Projekt-Repositories
 ├── AgeOfMax                         ⏳ Setup erforderlich
 ├── FireCastle                       ⏳ Setup erforderlich
-└── AuTuneOnline                     ⏳ Setup erforderlich
+├── AuTuneOnline                     ⏳ Setup erforderlich
+└── CasinoIdleSlots                  ⏳ Setup erforderlich
 
 Templates
 ├── Workflows                        ✅ Bereit
@@ -209,7 +213,7 @@ Templates
 - ✅ Templates für Projekt-Setup bereit
 
 **Was noch zu tun ist:**
-- ⏳ Setup in den 3 Projekt-Repos durchführen
+- ⏳ Setup in den 4 Projekt-Repos durchführen
 - ⏳ Testen
 - ⏳ Genießen! 🎉
 

@@ -24,7 +24,7 @@ git push
 
 ### Projekt ändern (nach Setup)
 ```bash
-cd AgeOfMax  # oder FireCastle / AuTuneOnline
+cd AgeOfMax  # oder FireCastle / AuTuneOnline / CasinoIdleSlots
 # Dateien ändern
 git add .
 git commit -m "Add feature"
@@ -52,7 +52,7 @@ git push
 
 ## 🔧 Setup Checklist (Pro Projekt)
 
-Für **AgeOfMax** / **FireCastle** / **AuTuneOnline**:
+Für **AgeOfMax** / **FireCastle** / **AuTuneOnline** / **CasinoIdleSlots**:
 
 ```
 1. [ ] Erstelle .github/workflows/update-portfolio.yml
@@ -102,6 +102,7 @@ Push → ⚠️ Nichts passiert ⚠️ → Manuelles Submodule-Update nötig
 | AgeOfMax Actions | https://github.com/MaxeLBerger/AgeOfMax/actions |
 | FireCastle Actions | https://github.com/MaxeLBerger/FireCastle/actions |
 | AuTuneOnline Actions | https://github.com/MaxeLBerger/AuTuneOnline/actions |
+| CasinoIdleSlots Actions | https://github.com/MaxeLBerger/casino-idle-slots/actions |
 
 ## 🐛 Quick Troubleshooting
 
@@ -148,11 +149,18 @@ AuTuneOnline/
     │   └── update-portfolio.yml          ⚠️ Zu erstellen
     └── agents/
         └── project-agent.md              ⚠️ Zu erstellen
+
+CasinoIdleSlots/
+└── .github/
+    ├── workflows/
+    │   └── update-portfolio.yml          ⚠️ Zu erstellen
+    └── agents/
+        └── project-agent.md              ⚠️ Zu erstellen
 ```
 
 ## 🔑 Secret Name
 
-Für alle drei Projekt-Repos:
+Für alle vier Projekt-Repos:
 ```
 Name:  PORTFOLIO_UPDATE_TOKEN
 Scope: repo

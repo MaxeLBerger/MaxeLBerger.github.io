@@ -15,7 +15,7 @@ Ein vollautomatisches CI/CD-System für dein Portfolio mit GitHub Copilot Agents
 
 ### 📦 Setup erforderlich (Pro Projekt-Repo)
 
-Für AgeOfMax, FireCastle und AuTuneOnline:
+Für AgeOfMax, FireCastle, AuTuneOnline und CasinoIdleSlots:
 - [ ] **Workflow-Datei** zum Triggern von Portfolio-Updates
 - [ ] **Agent-Konfiguration** für projekt-spezifische Assistenz
 - [ ] **GitHub Secret** für Authentication
@@ -33,6 +33,7 @@ Für AgeOfMax, FireCastle und AuTuneOnline:
    - AgeOfMax: Folge [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md#schritt-2-ageofmax-repository-setup)
    - FireCastle: Folge [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md#schritt-3-firecastle-repository-setup)
    - AuTuneOnline: Folge [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md#schritt-4-autuneonline-repository-setup)
+   - CasinoIdleSlots: Folge [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md#schritt-5-casinoidleslots-repository-setup)
 
 3. **Testen:**
    - Push zu einem Projekt
@@ -135,6 +136,11 @@ Einfach zu einem Projekt-Repo pushen - alles andere passiert automatisch! 🎉
 - **Expertise:** Web Audio API, Canvas, BPM Detection
 - **Template:** [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md#-autuneonline-repository)
 
+#### CasinoIdleSlots Agent
+- **Location:** `CasinoIdleSlots/.github/agents/project-agent.md`
+- **Expertise:** TypeScript, Vite, Idle Game Mechanics
+- **Template:** [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md#-casinoidleslots-repository)
+
 ## 🎓 Wie funktioniert's?
 
 ### Szenario 1: Portfolio-Änderung
@@ -171,6 +177,7 @@ Du änderst AgeOfMax → git push → ✨ AUTOMATISCH ✨ → Live ✅
 - [AgeOfMax Actions](https://github.com/MaxeLBerger/AgeOfMax/actions)
 - [FireCastle Actions](https://github.com/MaxeLBerger/FireCastle/actions)
 - [AuTuneOnline Actions](https://github.com/MaxeLBerger/AuTuneOnline/actions)
+- [CasinoIdleSlots Actions](https://github.com/MaxeLBerger/casino-idle-slots/actions)
 
 **Portfolio-Repository:**
 - [Portfolio Actions](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions)
@@ -196,7 +203,7 @@ Du änderst AgeOfMax → git push → ✨ AUTOMATISCH ✨ → Live ✅
 
 2. **"Submodule not updated"**
    - → Falscher Projektname im `client-payload`
-   - → Muss exakt `AgeOfMax`, `FireCastle` oder `AuTuneOnline` sein
+   - → Muss exakt `AgeOfMax`, `FireCastle`, `AuTuneOnline` oder `CasinoIdleSlots` sein
 
 3. **"Build failed"**
    - → Prüfe Build-Logs im Deploy Workflow
@@ -239,9 +246,15 @@ Verwende diese Checkliste um den Setup-Status zu tracken:
 - [ ] `PORTFOLIO_UPDATE_TOKEN` Secret konfiguriert
 - [ ] Workflow getestet
 
+### CasinoIdleSlots Repository
+- [ ] `.github/workflows/update-portfolio.yml` erstellt
+- [ ] `.github/agents/project-agent.md` erstellt
+- [ ] `PORTFOLIO_UPDATE_TOKEN` Secret konfiguriert
+- [ ] Workflow getestet
+
 ### Personal Access Token
 - [ ] Token erstellt mit `repo` scope
-- [ ] Token in allen drei Projekt-Repos als Secret hinterlegt
+- [ ] Token in allen vier Projekt-Repos als Secret hinterlegt
 - [ ] Token getestet (mindestens ein Test-Push pro Repo)
 
 ## 🚀 Nächste Schritte
