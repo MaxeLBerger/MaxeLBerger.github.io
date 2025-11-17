@@ -26,6 +26,7 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Configure Git
         run: |
@@ -35,25 +36,58 @@ jobs:
       - name: Update Submodule (Repository Dispatch)
         if: github.event_name == 'repository_dispatch'
         run: |
-          echo "Updating submodule: ${{ github.event.client_payload.submodule }}"
-          git submodule update --remote ${{ github.event.client_payload.submodule }}
-          git add ${{ github.event.client_payload.submodule }}
+          SUBMODULE="${{ github.event.client_payload.submodule }}"
+          echo "🔄 Triggered by repository_dispatch from project: $SUBMODULE"
+          echo "📦 Current submodule commit:"
+          git submodule status $SUBMODULE || true
+          
+          echo "⬇️ Fetching latest changes from $SUBMODULE..."
+          cd $SUBMODULE
+          git fetch origin main
+          git checkout origin/main
+          cd ..
+          
+          echo "📝 Staging changes..."
+          git add $SUBMODULE
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "✅ No changes to commit - already up to date"
           else
-            git commit -m "Auto-update ${{ github.event.client_payload.submodule }} to latest version"
+            echo "📦 New submodule commit:"
+            git submodule status $SUBMODULE
+            git commit -m "🤖 Auto-update $SUBMODULE to latest version
+
+Triggered by push to $SUBMODULE repository.
+Updated via repository_dispatch event."
             git push
+            echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
           
       - name: Update Submodule (Manual Dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "Updating submodule: ${{ inputs.submodule }}"
-          git submodule update --remote ${{ inputs.submodule }}
-          git add ${{ inputs.submodule }}
+          SUBMODULE="${{ inputs.submodule }}"
+          echo "🔄 Manual update triggered for: $SUBMODULE"
+          echo "📦 Current submodule commit:"
+          git submodule status $SUBMODULE || true
+          
+          echo "⬇️ Fetching latest changes from $SUBMODULE..."
+          cd $SUBMODULE
+          git fetch origin main
+          git checkout origin/main
+          cd ..
+          
+          echo "📝 Staging changes..."
+          git add $SUBMODULE
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "✅ No changes to commit - already up to date"
           else
-            git commit -m "Update ${{ inputs.submodule }} to latest version"
+            echo "📦 New submodule commit:"
+            git submodule status $SUBMODULE
+            git commit -m "🔄 Update $SUBMODULE to latest version
+
+Manually triggered via workflow_dispatch."
             git push
+            echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
