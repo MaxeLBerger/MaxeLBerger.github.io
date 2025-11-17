@@ -62,9 +62,11 @@ git push
 
 ### ⚡ Szenario 3: AUTOMATISCHES UPDATE (Einmal einrichten, dann automatisch!)
 
-**Im Projekt-Repo (z.B. AgeOfMax) diese Action hinzufügen:**
+**Siehe die detaillierte Anleitung in [PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md)!**
 
-Erstelle `.github/workflows/update-portfolio.yml`:
+**Kurzversion:**
+
+1. In jedem Projekt-Repo (AgeOfMax, FireCastle, AuTuneOnline) erstelle `.github/workflows/update-portfolio.yml`:
 
 ```yaml
 name: Update Portfolio on Push
@@ -78,18 +80,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Portfolio Submodule Update
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
           repository: MaxeLBerger/MaxeLBerger.github.io
           event-type: update-submodule
-          client-payload: '{"submodule": "AgeOfMax"}'
+          client-payload: '{"submodule": "AgeOfMax"}'  # Projektname anpassen!
 ```
 
-**Setup (Einmalig):**
-1. GitHub Personal Access Token erstellen mit `repo` scope
-2. In AgeOfMax Repo: Settings → Secrets → New secret → Name: `PORTFOLIO_UPDATE_TOKEN`
-3. Token einfügen und speichern
+2. GitHub Personal Access Token erstellen mit `repo` scope
+3. In jedem Projekt-Repo: Settings → Secrets → `PORTFOLIO_UPDATE_TOKEN` hinzufügen
+4. Optional: Agent-Konfiguration in `.github/agents/project-agent.md` hinzufügen
 
 **Dann:**
 ```bash
@@ -99,6 +100,8 @@ git commit -m "Add feature"
 git push
 # → Portfolio updated AUTOMATISCH! 🎉
 ```
+
+**📖 Für die vollständige Anleitung mit Agent-Konfigurationen siehe [PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md)**
 
 ---
 

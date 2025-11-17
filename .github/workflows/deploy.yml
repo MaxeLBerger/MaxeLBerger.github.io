@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -25,44 +29,63 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: 'AgeOfMax/package-lock.json'
+
+    - name: Display submodule status
+      run: |
+        echo "📦 Submodule versions being deployed:"
+        git submodule status
 
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
       run: |
-        # Install dependencies; use npm install since no package-lock.json is committed yet
-        npm install
+        echo "🎮 Building AgeOfMax..."
+        # Install dependencies
+        npm ci 2>/dev/null || npm install
+        # Build for production
         npx vite build --mode production
+        echo "✅ AgeOfMax build complete"
 
     - name: Prepare distribution folder
       run: |
+        echo "🗂️ Preparing distribution folder..."
         rm -rf dist
         mkdir dist
+        echo "✅ Distribution folder ready"
 
     - name: Copy AgeOfMax build artifacts
       run: |
+        echo "📦 Copying AgeOfMax build artifacts..."
         mkdir -p dist/AgeOfMax
         cp -r AgeOfMax/dist/* dist/AgeOfMax/
-        echo "--- Head of deployed AgeOfMax/index.html ---"
+        echo "✅ AgeOfMax artifacts copied"
+        echo "--- Preview of deployed AgeOfMax/index.html ---"
         head -n 15 dist/AgeOfMax/index.html || true
 
     - name: Copy FireCastle static files
       run: |
+        echo "🏰 Copying FireCastle static files..."
         mkdir -p dist/FireCastle
-        cp FireCastle/index.html dist/FireCastle/ || true
-        cp -r FireCastle/css dist/FireCastle/ || true
-        cp -r FireCastle/js dist/FireCastle/ || true
-        cp -r FireCastle/images dist/FireCastle/ || true
-        cp -r FireCastle/pages dist/FireCastle/ || true
+        cp FireCastle/index.html dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/index.html not found"
+        cp -r FireCastle/css dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/css not found"
+        cp -r FireCastle/js dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/js not found"
+        cp -r FireCastle/images dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/images not found"
+        cp -r FireCastle/pages dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/pages not found"
+        echo "✅ FireCastle files copied"
 
     - name: Copy AuTuneOnline static files
       run: |
+        echo "🎵 Copying AuTuneOnline static files..."
         mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ || true
-        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ || true
-        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ || true
+        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/index.html not found"
+        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/style.css not found"
+        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/app.js not found"
+        echo "✅ AuTuneOnline files copied"
 
     - name: Copy portfolio & shared assets
       run: |
+        echo "🌐 Copying portfolio and shared assets..."
         cp index.html dist/
         cp style.css dist/
         cp script.js dist/
@@ -72,6 +95,18 @@ jobs:
         cp impressum.html dist/
         cp datenschutz.html dist/
         touch dist/.nojekyll
+        echo "✅ Portfolio assets copied"
+        
+    - name: Verify build output
+      run: |
+        echo "🔍 Verifying build output structure..."
+        echo "Main files:"
+        ls -la dist/
+        echo ""
+        echo "Project directories:"
+        ls -la dist/AgeOfMax/ 2>/dev/null || echo "⚠️ AgeOfMax directory missing"
+        ls -la dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle directory missing"
+        ls -la dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline directory missing"
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
@@ -84,4 +119,12 @@ jobs:
 
     - name: Deployment summary
       run: |
-        echo "Deployment URL: ${{ steps.deploy.outputs.page_url }}"
+        echo "🚀 ============================================"
+        echo "✅ Deployment successful!"
+        echo "🌐 Website URL: ${{ steps.deploy.outputs.page_url }}"
+        echo "📦 Deployed projects:"
+        echo "   - AgeOfMax: ${{ steps.deploy.outputs.page_url }}AgeOfMax/"
+        echo "   - FireCastle: ${{ steps.deploy.outputs.page_url }}FireCastle/"
+        echo "   - AuTuneOnline: ${{ steps.deploy.outputs.page_url }}AuTuneOnline/"
+        echo "⏱️  Changes should be live in 1-2 minutes"
+        echo "=============================================="

@@ -6,6 +6,14 @@
 
 Professional portfolio website showcasing software development projects with automated CI/CD deployment.
 
+**🎉 NEW: Workflow system updated!** → [START_HERE.md](START_HERE.md)
+
+**🚀 Quick Links:**
+- [START_HERE.md](START_HERE.md) - Overview of recent changes and next steps
+- [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md) - System overview and how it works
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Quick commands and checklists
+- [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) - Step-by-step setup for project automation
+
 ##  Architecture
 
 This repository uses **Git Submodules** for clean project separation and **GitHub Actions** for automated builds.
@@ -61,7 +69,12 @@ Push to any project repo (AgeOfMax, FireCastle, AuTuneOnline) **automatically**:
 2. Updates the submodule reference to latest commit
 3. Triggers full rebuild and deployment
 
-**Result:** Push to project → Live on website in 3 minutes! 🚀 
+**Result:** Push to project → Live on website in 3 minutes! 🚀
+
+**📖 Setup Guides:**
+- **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** - Step-by-step setup for complete automation
+- [PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md) - Detailed technical documentation
+- [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md) - Ready-to-copy workflow and agent templates 
 
 ##  Development
 
@@ -99,7 +112,7 @@ git commit -m "Update all projects"
 git push
 \\\
 
-See **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** for detailed instructions!
+See **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** for detailed workflow instructions and **[PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md)** for project repository setup!
 
 ##  Local Testing
 
