@@ -55,8 +55,8 @@ jobs:
         echo "🎮 Building AgeOfMax..."
         # Install dependencies
         npm ci 2>/dev/null || npm install
-        # Build for production
-        npx vite build --mode production
+        # Build for production with correct base path for GitHub Pages
+        npx vite build --base=/AgeOfMax/ --mode production
         echo "✅ AgeOfMax build complete"
 
     - name: Build CasinoIdleSlots (Vite production)
@@ -77,9 +77,9 @@ jobs:
         # Verify TypeScript compilation
         echo "🔍 Checking TypeScript compilation..."
         npx tsc --noEmit --skipLibCheck || echo "⚠️ TypeScript check warnings (continuing...)"
-        # Build for production
+        # Build for production with correct base path for GitHub Pages
         echo "🏗️ Building for production..."
-        npm run build
+        npx vite build --base=/CasinoIdleSlots/
         # Verify build output
         if [ ! -d dist ]; then
           echo "❌ Build failed - dist directory not created"
