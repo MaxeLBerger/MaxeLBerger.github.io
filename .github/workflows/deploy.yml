@@ -30,12 +30,24 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
-        cache-dependency-path: 'AgeOfMax/package-lock.json'
+        cache-dependency-path: |
+          AgeOfMax/package-lock.json
+          CasinoIdleSlots/package-lock.json
 
     - name: Display submodule status
       run: |
         echo "📦 Submodule versions being deployed:"
         git submodule status
+        echo ""
+        echo "🔍 Verifying submodule contents:"
+        echo "AgeOfMax files:"
+        ls -la AgeOfMax/ | head -10
+        echo ""
+        echo "CasinoIdleSlots files:"
+        ls -la CasinoIdleSlots/ | head -10
+        echo ""
+        echo "FireCastle files:"
+        ls -la FireCastle/ | head -10
 
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
@@ -51,11 +63,35 @@ jobs:
       working-directory: CasinoIdleSlots
       run: |
         echo "🎰 Building CasinoIdleSlots..."
-        # Install dependencies
-        npm ci 2>/dev/null || npm install
+        # Check if package.json exists
+        if [ ! -f package.json ]; then
+          echo "❌ package.json not found in CasinoIdleSlots directory"
+          exit 1
+        fi
+        # Install dependencies with fallback
+        echo "📦 Installing dependencies..."
+        npm ci 2>/dev/null || {
+          echo "⚠️ npm ci failed, falling back to npm install"
+          npm install
+        }
+        # Verify TypeScript compilation
+        echo "🔍 Checking TypeScript compilation..."
+        npx tsc --noEmit --skipLibCheck || echo "⚠️ TypeScript check warnings (continuing...)"
         # Build for production
+        echo "🏗️ Building for production..."
         npm run build
+        # Verify build output
+        if [ ! -d dist ]; then
+          echo "❌ Build failed - dist directory not created"
+          exit 1
+        fi
+        if [ ! -f dist/index.html ]; then
+          echo "❌ Build failed - index.html not found in dist"
+          exit 1
+        fi
         echo "✅ CasinoIdleSlots build complete"
+        echo "📄 Build output:"
+        ls -la dist/
 
     - name: Prepare distribution folder
       run: |
@@ -97,8 +133,21 @@ jobs:
       run: |
         echo "🎰 Copying CasinoIdleSlots build artifacts..."
         mkdir -p dist/CasinoIdleSlots
+        # Verify source directory exists
+        if [ ! -d CasinoIdleSlots/dist ]; then
+          echo "❌ CasinoIdleSlots/dist directory not found"
+          exit 1
+        fi
+        # Copy all build artifacts
         cp -r CasinoIdleSlots/dist/* dist/CasinoIdleSlots/
-        echo "✅ CasinoIdleSlots artifacts copied"
+        # Verify copy was successful
+        if [ ! -f dist/CasinoIdleSlots/index.html ]; then
+          echo "❌ Failed to copy CasinoIdleSlots index.html"
+          exit 1
+        fi
+        echo "✅ CasinoIdleSlots artifacts copied successfully"
+        echo "📁 Deployed files:"
+        ls -la dist/CasinoIdleSlots/
         echo "--- Preview of deployed CasinoIdleSlots/index.html ---"
         head -n 15 dist/CasinoIdleSlots/index.html || true
 
@@ -126,6 +175,7 @@ jobs:
         ls -la dist/AgeOfMax/ 2>/dev/null || echo "⚠️ AgeOfMax directory missing"
         ls -la dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle directory missing"
         ls -la dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline directory missing"
+        ls -la dist/CasinoIdleSlots/ 2>/dev/null || echo "⚠️ CasinoIdleSlots directory missing"
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
@@ -145,5 +195,6 @@ jobs:
         echo "   - AgeOfMax: ${{ steps.deploy.outputs.page_url }}AgeOfMax/"
         echo "   - FireCastle: ${{ steps.deploy.outputs.page_url }}FireCastle/"
         echo "   - AuTuneOnline: ${{ steps.deploy.outputs.page_url }}AuTuneOnline/"
+        echo "   - CasinoIdleSlots: ${{ steps.deploy.outputs.page_url }}CasinoIdleSlots/"
         echo "⏱️  Changes should be live in 1-2 minutes"
         echo "=============================================="
