@@ -154,13 +154,31 @@ nav .menu-toggle .bar {
     background-color: #00e676;
     color: #121212; /* Dunkler Text für besseren Kontrast */
     border-radius: 30px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 230, 118, 0.5); /* Schatten für 3D-Effekt */
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .hero-content .btn:hover {
     background-color: #00c853;
     color: #fff; /* Weißer Text beim Hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 230, 118, 0.6);
+}
+
+/* Größerer, prominenterer Hero-Button */
+.hero-content .btn-hero {
+    padding: 18px 42px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 35px;
+    box-shadow: 0 6px 30px rgba(0, 230, 118, 0.6);
+}
+
+.hero-content .btn-hero:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 35px rgba(0, 230, 118, 0.7);
 }
 
 /* Scroll-Indikator */
@@ -546,6 +564,11 @@ footer .footer-link:hover {
         height: 32px;
     }
 
+    .hero-content .btn-hero {
+        padding: 16px 36px;
+        font-size: 18px;
+    }
+
     /* Zusätzliche Anpassungen für albert.html */
     .albert-main .container {
         flex-direction: column;
@@ -577,6 +600,11 @@ footer .footer-link:hover {
     .hero-content h3 {
         font-size: 24px;
         height: 28px;
+    }
+
+    .hero-content .btn-hero {
+        padding: 14px 30px;
+        font-size: 16px;
     }
 
     /* Zusätzliche Anpassungen für albert.html */
