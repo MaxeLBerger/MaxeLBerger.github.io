@@ -301,6 +301,32 @@ After adding screenshots:
 
 ---
 
+## Placeholder Images for Testing
+
+If you want to test the page layout before taking actual screenshots, you can generate placeholder images:
+
+### Using Python (Recommended)
+```bash
+# Install Pillow if needed
+pip install pillow
+
+# Generate placeholders
+python create-placeholder-images.py
+```
+
+### Using Shell Script (Requires ImageMagick)
+```bash
+# Make script executable
+chmod +x create-placeholder-images.sh
+
+# Generate placeholders
+./create-placeholder-images.sh
+```
+
+This will create 27 colored placeholder images with text labels that you can use for testing. Replace them with actual screenshots for production.
+
+---
+
 ## Deployment
 
 Once screenshots are added:
