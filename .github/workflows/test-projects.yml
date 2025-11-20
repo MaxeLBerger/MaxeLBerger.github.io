@@ -72,6 +72,12 @@ jobs:
           exit 1
         fi
         
+        # Test TestoMax page
+        if [ ! -f "projects/testomax.html" ]; then
+          echo "❌ projects/testomax.html not found!"
+          exit 1
+        fi
+        
         echo "✅ All project landing pages exist"
     
     - name: Validate HTML syntax
@@ -310,6 +316,45 @@ jobs:
           fi
         fi
 
+  test-testomax:
+    name: Test TestoMax Project
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Check TestoMax submodule
+      run: |
+        echo "🧪 Testing TestoMax submodule..."
+        
+        if [ ! -d "TestoMax" ]; then
+          echo "❌ TestoMax directory not found!"
+          exit 1
+        fi
+        
+        echo "✅ TestoMax submodule exists"
+    
+    - name: Check TestoMax structure
+      run: |
+        echo "🧪 Checking TestoMax file structure..."
+        
+        # TestoMax can be either a built project or static project
+        # Check for various possible structures
+        if [ -f "TestoMax/index.html" ]; then
+          echo "✅ index.html found (static project)"
+        elif [ -f "TestoMax/public/index.html" ]; then
+          echo "✅ public/index.html found (public directory structure)"
+        elif [ -f "TestoMax/package.json" ]; then
+          echo "✅ package.json found (build project - will be built during deployment)"
+        else
+          echo "⚠️  TestoMax structure unclear - deployment will attempt flexible build/copy"
+        fi
+        
+        echo "✅ TestoMax structure check complete"
+
   test-external-links:
     name: Test External Project Links
     runs-on: ubuntu-latest
@@ -347,7 +392,7 @@ jobs:
   test-report:
     name: Generate Test Report
     runs-on: ubuntu-latest
-    needs: [test-portfolio, test-ageofmax, test-firecastle, test-autuneonline, test-external-links]
+    needs: [test-portfolio, test-ageofmax, test-firecastle, test-autuneonline, test-testomax, test-external-links]
     if: always()
     
     steps:
@@ -363,6 +408,7 @@ jobs:
         echo "| AgeOfMax | ${{ needs.test-ageofmax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| FireCastle | ${{ needs.test-firecastle.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| AuTuneOnline | ${{ needs.test-autuneonline.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| TestoMax | ${{ needs.test-testomax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| External Links | ${{ needs.test-external-links.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
