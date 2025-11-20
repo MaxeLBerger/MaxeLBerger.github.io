@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Meta-Tags für SEO und responsives Design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestoMax - Innovatives Web-Projekt | Maximilian Haak</title>
+    <meta name="description" content="TestoMax - Ein innovatives Web-Projekt mit modernen Technologien und interaktiven Features.">
+    <meta name="keywords" content="TestoMax, Web Development, JavaScript, TypeScript, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <!-- Verknüpfung der CSS-Dateien -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe ../script.js) -->
+
+    <!-- Favicon (unified) -->
+    <link rel="icon" href="../res/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/faviconwhitegreen.png" type="image/png">
+
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scroll Indikator -->
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <!-- Hauptinhalt -->
+    <main id="wrapper" class="project-main">
+        <!-- Hero Section -->
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">TestoMax</h1>
+                <p class="project-tagline">Innovatives Web-Projekt mit modernen Technologien</p>
+                <div class="project-actions">
+                    <a href="../TestoMax/" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i> Projekt öffnen
+                    </a>
+                    <a href="https://github.com/MaxeLBerger/TestoMax" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projektinhalt -->
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>TestoMax ist ein innovatives Web-Projekt, das moderne Webtechnologien nutzt um eine interaktive und performante Anwendung zu bieten.</p>
+                    <p>Das Projekt demonstriert Best Practices in der modernen Webentwicklung und bietet eine hervorragende User Experience.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Moderne Technologien</h3>
+                            <p>Entwickelt mit aktuellen Web-Standards und Best Practices</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Responsive Design</h3>
+                            <p>Optimiert für alle Geräte und Bildschirmgrößen</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h3>Hohe Performance</h3>
+                            <p>Schnelle Ladezeiten und optimierte Ressourcen</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Benutzerfreundlich</h3>
+                            <p>Intuitive Bedienung und klare Navigation</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Sicher & Zuverlässig</h3>
+                            <p>Implementiert mit Sicherheit im Fokus</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-code"></i>
+                            <h3>Clean Code</h3>
+                            <p>Wartbarer und gut dokumentierter Code</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section project-gallery">
+                    <h2><i class="fas fa-image"></i> Screenshots & Medien</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="placeholder"><i class="fas fa-camera"></i><span>Hauptansicht</span></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder"><i class="fas fa-camera"></i><span>Features Overview</span></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder"><i class="fas fa-camera"></i><span>Mobile View</span></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder"><i class="fas fa-camera"></i><span>Interaktive Elemente</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Responsive Design</span>
+                        <span class="tech-badge">Modern Web APIs</span>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-tasks"></i> Projektziele</h2>
+                    <ol class="game-steps">
+                        <li><strong>Moderne Standards:</strong> Nutzung aktueller Web-Technologien</li>
+                        <li><strong>Optimale UX:</strong> Benutzerfreundliche Oberfläche</li>
+                        <li><strong>Performance:</strong> Schnelle Ladezeiten und reaktive Interaktionen</li>
+                        <li><strong>Accessibility:</strong> Barrierefreier Zugang für alle Nutzer</li>
+                        <li><strong>Skalierbarkeit:</strong> Flexible Architektur für zukünftige Erweiterungen</li>
+                    </ol>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Projekt erkunden</h2>
+                    <p>Entdecke die Features und Funktionen von TestoMax!</p>
+                    <div class="cta-buttons">
+                        <a href="https://maximilianhaak.de/TestoMax/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fas fa-external-link-alt"></i> Projekt öffnen
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/TestoMax" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2024 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
+        </p>
+    </footer>
+
+    <!-- JavaScript-Dateien -->
+    <script src="../script.js" defer></script>
+</body>
+</html>

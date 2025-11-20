@@ -10,3 +10,6 @@
 [submodule "CasinoIdleSlots"]
 	path = CasinoIdleSlots
 	url = https://github.com/MaxeLBerger/casino-idle-slots.git
+[submodule "TestoMax"]
+	path = TestoMax
+	url = https://github.com/MaxeLBerger/TestoMax.git
