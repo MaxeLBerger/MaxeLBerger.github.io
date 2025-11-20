@@ -33,7 +33,6 @@ jobs:
         cache-dependency-path: |
           AgeOfMax/package-lock.json
           CasinoIdleSlots/package-lock.json
-          TestoMax/package-lock.json
 
     - name: Display submodule status
       run: |
@@ -196,62 +195,27 @@ jobs:
         echo "--- Preview of deployed CasinoIdleSlots/index.html ---"
         head -n 15 dist/CasinoIdleSlots/index.html || true
 
-    - name: Build or Copy TestoMax
+    - name: Copy TestoMax static files
       run: |
-        echo "🧪 Processing TestoMax..."
+        echo "🧪 Copying TestoMax static files..."
         mkdir -p dist/TestoMax
         
-        # Check if TestoMax has a package.json (needs building)
-        if [ -f TestoMax/package.json ]; then
-          echo "📦 TestoMax has package.json - attempting to build..."
-          cd TestoMax
-          
-          # Install dependencies
-          npm ci 2>/dev/null || npm install
-          
-          # Check if build script exists
-          if npm run | grep -q "build"; then
-            echo "🏗️ Building TestoMax..."
-            npm run build
-            
-            # Copy build artifacts
-            if [ -d dist ]; then
-              echo "✅ Copying TestoMax build artifacts from dist/..."
-              cp -r dist/* ../dist/TestoMax/
-            elif [ -d build ]; then
-              echo "✅ Copying TestoMax build artifacts from build/..."
-              cp -r build/* ../dist/TestoMax/
-            else
-              echo "⚠️ No dist or build directory found, copying all files..."
-              cp -r * ../dist/TestoMax/ 2>/dev/null || true
-            fi
-          else
-            echo "⚠️ No build script found, copying static files..."
-            cp -r * ../dist/TestoMax/ 2>/dev/null || true
-          fi
-          cd ..
-        else
-          # Static project - copy all files
-          echo "📄 TestoMax is a static project - copying files..."
-          if [ -d TestoMax/public ]; then
-            cp -r TestoMax/public/* dist/TestoMax/ 2>/dev/null || true
-          elif [ -f TestoMax/index.html ]; then
-            cp -r TestoMax/* dist/TestoMax/ 2>/dev/null || true
-          else
-            echo "⚠️ TestoMax structure unclear, copying all files..."
-            cp -r TestoMax/* dist/TestoMax/ 2>/dev/null || true
-          fi
-        fi
+        # Copy HTML files
+        cp TestoMax/*.html dist/TestoMax/ 2>/dev/null || echo "⚠️ No HTML files found in root"
         
-        # Verify at least index.html exists
+        # Copy assets folders
+        cp -r TestoMax/css dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/css not found"
+        cp -r TestoMax/js dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/js not found"
+        cp -r TestoMax/images dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/images not found"
+        
+        # Verify deployment
         if [ -f dist/TestoMax/index.html ]; then
           echo "✅ TestoMax deployed successfully"
           echo "📁 Deployed files:"
           ls -la dist/TestoMax/ | head -10
         else
-          echo "⚠️ Warning: No index.html found in TestoMax deployment"
-          echo "📁 Available files:"
-          ls -la dist/TestoMax/ 2>/dev/null || echo "No files copied"
+          echo "❌ Error: index.html not found in TestoMax deployment"
+          exit 1
         fi
 
     - name: Copy portfolio & shared assets
