@@ -167,6 +167,7 @@ jobs:
         cp AuTuneOnline/public/index.html dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/index.html not found"
         cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/style.css not found"
         cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/app.js not found"
+        cp -r AuTuneOnline/images dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/images not found"
         echo "✅ AuTuneOnline files copied"
 
     - name: Copy CasinoIdleSlots build artifacts
