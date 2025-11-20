@@ -22,6 +22,8 @@ MaxeLBerger.github.io/
 ├── FireCastle/            # Git Submodule - Clash of Clans website
 ├── AuTuneOnline/          # Git Submodule - Audio visualizer
 ├── CasinoIdleSlots/       # Git Submodule - Idle game
+├── TestoMax/              # Git Submodule - Web project
+├── mcp-portfolio-server/  # MCP server for portfolio optimization (local dev tool)
 ├── projects/              # Project landing pages
 ├── res/                   # Static resources (images, icons)
 ├── index.html             # Portfolio homepage
@@ -38,6 +40,7 @@ The repository uses Git Submodules to reference independent project repositories
 - **FireCastle**: JavaScript, Node.js, Express - Clan management website
 - **AuTuneOnline**: JavaScript, Web Audio API - Audio visualizer
 - **CasinoIdleSlots**: TypeScript, Vite - Idle slot game
+- **TestoMax**: HTML5, CSS3, JavaScript - Web project
 
 ## Tech Stack
 
@@ -60,6 +63,13 @@ The repository uses Git Submodules to reference independent project repositories
 - **Deployment Target**: GitHub Pages (`gh-pages` branch)
 - **Build Caching**: npm cache for faster builds
 
+### Development Tools (Optional)
+- **MCP Portfolio Server**: Model Context Protocol server for local portfolio optimization
+  - Location: `mcp-portfolio-server/`
+  - Provides tools for file operations, HTML/CSS analysis, and project structure inspection
+  - Used with Claude Desktop or other MCP-compatible tools
+  - Not required for basic portfolio development
+
 ## Important Rules & Best Practices
 
 ### ⚠️ Critical Rules
@@ -80,7 +90,7 @@ The repository uses Git Submodules to reference independent project repositories
 - **Handle errors gracefully**: Add appropriate error handling to JavaScript
 
 ### 🚫 Common Pitfalls to Avoid
-- Editing files inside submodule directories (AgeOfMax/, FireCastle/, etc.)
+- Editing files inside submodule directories (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/)
 - Using absolute URLs instead of relative paths
 - Forgetting to initialize submodules after cloning
 - Not checking browser console for errors
@@ -140,9 +150,10 @@ The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
 4. ✅ Builds **CasinoIdleSlots** (TypeScript → JavaScript via Vite)
 5. ✅ Copies static files for **FireCastle**
 6. ✅ Copies static files for **AuTuneOnline**
-7. ✅ Copies portfolio assets (HTML, CSS, JS, images)
-8. ✅ Deploys to GitHub Pages
-9. ✅ Makes it live at https://maximilianhaak.de
+7. ✅ Copies static files for **TestoMax**
+8. ✅ Copies portfolio assets (HTML, CSS, JS, images)
+9. ✅ Deploys to GitHub Pages
+10. ✅ Makes it live at https://maximilianhaak.de
 
 **Deployment Trigger**: Push to `main` branch or manual workflow dispatch
 
@@ -294,7 +305,7 @@ Before considering a task complete:
 ## File Modification Guidelines
 
 ### ⚠️ Files That Should NOT Be Modified Directly
-- **Submodule contents** (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/)
+- **Submodule contents** (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/)
   - These should be modified in their original repositories
   - Only update the submodule reference commit in this repo
 
