@@ -8,10 +8,11 @@
 4. ✅ Updated `.github/workflows/deploy.yml` with flexible build/copy logic for TestoMax
 5. ✅ Updated `.github/workflows/auto-update-submodules.yml` to include TestoMax
 6. ✅ Updated `README.md` documentation to include TestoMax
+7. ✅ TestoMax repository is now public at https://github.com/MaxeLBerger/TestoMax
 
-## Remaining Steps ⚠️
+## Optional Enhancements 💡
 
-### 1. Create Project Thumbnail Image
+### 1. Create Project Thumbnail Image (Optional)
 **File needed:** `res/TestoMax.jpg`
 
 The image should:
@@ -20,31 +21,25 @@ The image should:
 - Represent the TestoMax project visually
 - Be optimized for web (file size < 500KB)
 
-**Current status:** The project card currently uses `res/programming1.jpg` as a placeholder.
+**Current status:** The project card currently uses `res/programming1.jpg` as a generic placeholder, which is fine until a custom image is created.
 
-**To add the proper image:**
+**To add a custom image:**
 1. Create or obtain a TestoMax project image (screenshot, logo, or graphic)
 2. Save it as `res/TestoMax.jpg`
-3. Update `index.html` line ~190 to change from `programming1.jpg` to `TestoMax.jpg`
-4. Remove the TODO comment
+3. Update `index.html` line ~217 to change from `programming1.jpg` to `TestoMax.jpg`
 
-### 2. Initialize the Submodule
-Once the TestoMax repository exists at `https://github.com/MaxeLBerger/TestoMax`, initialize it:
+### 2. Verify Submodule Initialization
+The TestoMax repository is now public at `https://github.com/MaxeLBerger/TestoMax`. On the next deployment, GitHub Actions will automatically:
 
 ```bash
-git submodule update --init --recursive
+# This happens automatically in the deploy workflow
+git submodule update --init --recursive TestoMax
 ```
 
-Or if adding for the first time:
-```bash
-git submodule add https://github.com/MaxeLBerger/TestoMax.git TestoMax
-git add .gitmodules TestoMax
-git commit -m "Initialize TestoMax submodule"
-git push
-```
+The submodule is already configured in `.gitmodules`, so no manual initialization is needed.
 
-### 3. Configure TestoMax Repository (if needed)
-If you want automatic deployment when TestoMax is updated, add this workflow to the TestoMax repository:
+### 3. Configure Automatic Deployment (Recommended)
+To enable automatic portfolio deployment when TestoMax is updated, add this workflow to the TestoMax repository:
 
 **File:** `.github/workflows/notify-portfolio.yml`
 
@@ -68,7 +63,7 @@ jobs:
             -d '{"event_type":"update-submodule","client_payload":{"submodule":"TestoMax"}}'
 ```
 
-And add a `PORTFOLIO_TOKEN` secret to the TestoMax repository settings.
+Then add a `PORTFOLIO_TOKEN` secret to the TestoMax repository settings with a GitHub Personal Access Token that has `repo` permissions.
 
 ## Build Configuration
 
@@ -82,26 +77,29 @@ This means TestoMax can be any type of web project and will deploy correctly.
 
 ## Testing
 
-After completing the setup:
+TestoMax is now ready for deployment. The next time the portfolio is deployed, TestoMax will automatically be included.
 
-1. Verify the submodule is initialized:
-   ```bash
-   ls -la TestoMax/
-   ```
+### Verification Steps:
 
-2. Test the project page loads:
-   - Visit: `http://localhost:8000/projects/testomax.html` (or your local server)
+1. **Check deployment workflow:**
+   - Visit: https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions
+   - The deploy workflow will automatically initialize and build TestoMax
 
-3. Test the deployment workflow:
-   ```bash
-   git push origin main
-   ```
-   Then check: https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions
+2. **Test the project page:**
+   - Visit: http://localhost:8000/projects/testomax.html (local testing)
+   - Or: https://maximilianhaak.de/projects/testomax.html (after deployment)
 
-4. Verify the live site (after deployment):
+3. **Verify the live site (after deployment):**
    - Main portfolio: https://maximilianhaak.de
    - TestoMax project: https://maximilianhaak.de/TestoMax/
-   - TestoMax details: https://maximilianhaak.de/projects/testomax.html
+   - TestoMax details page: https://maximilianhaak.de/projects/testomax.html
+   - Project card appears on homepage
+
+4. **Check submodule status** (for developers):
+   ```bash
+   git submodule status
+   # Should show TestoMax with its current commit
+   ```
 
 ## Customization
 
