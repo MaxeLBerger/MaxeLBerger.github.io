@@ -60,6 +60,35 @@ The repository uses Git Submodules to reference independent project repositories
 - **Deployment Target**: GitHub Pages (`gh-pages` branch)
 - **Build Caching**: npm cache for faster builds
 
+## Important Rules & Best Practices
+
+### ⚠️ Critical Rules
+1. **NEVER modify submodule contents directly** - Always edit in the original repository
+2. **ALWAYS test locally** before pushing to main branch
+3. **ALWAYS check GitHub Actions** status after pushing
+4. **NEVER commit secrets** or API keys
+5. **ALWAYS use conventional commit messages** (feat/fix/docs/etc.)
+
+### 💡 Best Practices
+- **Start with understanding**: Read relevant docs before making changes
+- **Make minimal changes**: Only change what's necessary to fix the issue
+- **Test incrementally**: Test after each logical change
+- **Document significant changes**: Update README or relevant docs
+- **Verify links work**: Test all modified links and paths
+- **Check responsive design**: Test on multiple screen sizes
+- **Validate HTML/CSS**: Ensure no syntax errors
+- **Handle errors gracefully**: Add appropriate error handling to JavaScript
+
+### 🚫 Common Pitfalls to Avoid
+- Editing files inside submodule directories (AgeOfMax/, FireCastle/, etc.)
+- Using absolute URLs instead of relative paths
+- Forgetting to initialize submodules after cloning
+- Not checking browser console for errors
+- Pushing without testing locally first
+- Adding large files without optimizing them
+- Breaking existing functionality while adding new features
+- Modifying workflow files without understanding the full pipeline
+
 ## Development Workflow
 
 ### Working with the Portfolio Site
@@ -119,12 +148,58 @@ The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
 
 **Deployment Time**: ~3-5 minutes from push to live
 
+### Understanding the Deployment Pipeline
+
+**What happens on each push:**
+```
+Push to main
+    ↓
+GitHub Actions triggered
+    ↓
+Checkout repo + submodules
+    ↓
+Install Node.js & dependencies
+    ↓
+Build TypeScript projects (AgeOfMax, CasinoIdleSlots)
+    ↓
+Copy all project files to dist/
+    ↓
+Deploy dist/ to gh-pages branch
+    ↓
+GitHub Pages serves updated site
+    ↓
+Live at maximilianhaak.de
+```
+
+**Build Requirements:**
+- Each TypeScript project must have:
+  - `package.json` with build script
+  - `vite.config.js` or equivalent config
+  - Source files that compile without errors
+  - `dist/` output directory after build
+
+**Deployment Checklist:**
+- [ ] All submodules are at correct commits
+- [ ] TypeScript projects build successfully locally
+- [ ] No build errors in GitHub Actions logs
+- [ ] Deployment step completes successfully
+- [ ] Site is accessible at maximilianhaak.de
+- [ ] All project pages load correctly
+
 ## Testing
+
+### Testing Requirements
+**ALWAYS test your changes before committing:**
+- Test locally first with `python -m http.server 8000` or `npx serve .`
+- Run existing test scripts if your changes affect tested components
+- Verify in browser: check console for errors, test on mobile viewport
+- For submodule changes: Build the project and verify it works
 
 ### Automated Testing
 - **GitHub Actions**: `.github/workflows/test-projects.yml`
 - Tests run on every push and daily
 - Validates project availability, build success, and structure
+- **IMPORTANT**: Check workflow status after pushing changes
 
 ### Manual Testing Scripts
 ```bash
@@ -145,6 +220,16 @@ python -m http.server 8000
 npx serve .
 # Visit: http://localhost:8000
 ```
+
+### Testing Checklist
+Before considering a task complete:
+- [ ] Changes work locally
+- [ ] No console errors in browser
+- [ ] Responsive design works (mobile, tablet, desktop)
+- [ ] All links work correctly
+- [ ] No broken images or assets
+- [ ] Build succeeds (for submodule changes)
+- [ ] GitHub Actions workflows pass
 
 ## Key Documentation Files
 
@@ -255,19 +340,58 @@ npx serve .
 ### Troubleshooting Deployment Issues
 1. Check GitHub Actions tab: https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions
 2. Review workflow logs for specific errors
-3. Common issues:
-   - Submodule not initialized properly
-   - Build script failures in TypeScript projects
-   - Missing dependencies (npm install issues)
-   - File path errors in copy commands
+3. Look for failed steps in the workflow
+4. Check artifact uploads and deployment status
+5. Common issues:
+   - Submodule not initialized properly → Check `.gitmodules` and submodule paths
+   - Build script failures in TypeScript projects → Check `package.json` scripts
+   - Missing dependencies (npm install issues) → Verify `package-lock.json` exists
+   - File path errors in copy commands → Check paths are relative to repo root
+   - Deploy step fails → Check `gh-pages` branch and permissions
+
+**Debugging Workflow Failures:**
+```bash
+# Clone and check submodules locally
+git submodule status
+git submodule update --init --recursive
+
+# Try building a project locally
+cd AgeOfMax
+npm install
+npm run build
+
+# Check if dist/ directory is created
+ls -la dist/
+```
 
 ## Security & Privacy
 
-- **No API keys or secrets** should be committed
-- **Use GitHub Secrets** for sensitive data in workflows
+### Security Requirements
+- **NEVER commit API keys, tokens, or secrets** - Use GitHub Secrets instead
+- **Check dependencies for vulnerabilities** before adding new packages:
+  ```bash
+  npm audit
+  # Fix issues with:
+  npm audit fix
+  ```
+- **Validate user input** in any JavaScript that handles form data
+- **Use HTTPS** for all external resources (images, scripts, fonts)
+- **Review permissions** when adding GitHub Actions workflows
+
+### Privacy Compliance
 - **Cookie consent**: Implemented in script.js for GDPR compliance
 - **Privacy policy**: Available at datenschutz.html
 - **Legal information**: Available at impressum.html
+- **No tracking** without explicit user consent
+- **Data minimization**: Only collect necessary information
+
+### Security Checklist
+Before adding dependencies or external resources:
+- [ ] Check npm audit results
+- [ ] Verify package is from trusted source
+- [ ] Check for known vulnerabilities
+- [ ] Ensure HTTPS URLs for all external resources
+- [ ] Review permissions in package.json scripts
 
 ## Performance Optimization
 
@@ -294,6 +418,41 @@ Target browsers:
 - **Focus indicators**: Visible focus states for all interactive elements
 - **Alt text**: Descriptive alt text for all images
 
+## Tool Usage Guidelines
+
+### File Operations
+- **Use `view` first** to understand file structure before editing
+- **Use `edit` for precise changes** - provide enough context in `old_str`
+- **Use `create` for new files** - never create if file exists
+- **Check before modifying** - view the file to understand its current state
+
+### Bash Commands
+- **Test locally** before making changes to workflows or build scripts
+- **Use appropriate wait times** for long-running commands (builds, npm install)
+- **Chain commands** when they depend on each other: `cd dir && npm install && npm run build`
+- **Always check exit codes** and handle errors appropriately
+
+### Git Operations
+- **Don't commit** `.env` files, `node_modules/`, build artifacts
+- **Use `.gitignore`** to exclude generated files
+- **Check git status** before and after changes
+- **Verify submodule state** with `git submodule status`
+
+### Examples of Good Practices
+```bash
+# Good: Check before building
+cd AgeOfMax && npm install && npm run build && ls -la dist/
+
+# Good: Test locally before pushing
+python -m http.server 8000 &
+curl -I http://localhost:8000/index.html
+pkill -f "python -m http.server"
+
+# Good: Validate changes
+git diff
+git status
+```
+
 ## Custom Copilot Agents
 
 This repository has a custom agent:
@@ -304,6 +463,16 @@ Use the custom agent for:
 - Fixing embedded demo problems
 - Resolving UX/UI issues
 - Performance troubleshooting
+
+**When to delegate to portfolio-fix agent:**
+- Any issues with page loading or navigation
+- Broken links or 404 errors
+- JavaScript console errors
+- CSS layout issues
+- Asset loading problems
+
+**How to use the agent:**
+Provide clear context about the issue, what you've tried, and what the expected behavior is.
 
 ## Additional Notes
 
@@ -321,14 +490,57 @@ Use the custom agent for:
 - GitHub Actions: https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions
 - Live Website: https://maximilianhaak.de
 
+## Pre-Commit Checklist
+
+Before committing any changes, verify:
+
+### Code Quality
+- [ ] Code follows style guidelines (HTML semantic, CSS organized, JS ES6+)
+- [ ] No console.log() statements left in production code
+- [ ] All functions have appropriate error handling
+- [ ] Code is well-commented where necessary
+- [ ] Variable and function names are descriptive
+
+### Functionality
+- [ ] Changes work as expected locally
+- [ ] No errors in browser console
+- [ ] All existing functionality still works
+- [ ] New features are tested manually
+- [ ] Links and navigation work correctly
+
+### Assets & Resources
+- [ ] Images are optimized (compressed, appropriate format)
+- [ ] No broken links or missing assets
+- [ ] All paths are correct (relative vs absolute)
+- [ ] External resources use HTTPS
+
+### Git & Deployment
+- [ ] Changes are committed to correct files only
+- [ ] Commit message follows conventional format
+- [ ] No secrets or sensitive data committed
+- [ ] `.gitignore` properly excludes build artifacts
+- [ ] Submodules are in correct state (if modified)
+
+### Documentation
+- [ ] README updated if functionality changes
+- [ ] Comments added for complex logic
+- [ ] Relevant docs updated (if architectural changes)
+
 ## Getting Help
 
 1. **Check documentation first**: See DOCUMENTATION_INDEX.md for all docs
 2. **Review existing issues**: https://github.com/MaxeLBerger/MaxeLBerger.github.io/issues
 3. **Check workflow logs**: For deployment/build issues
 4. **Open a new issue**: For new problems or questions
+5. **Use portfolio-fix agent**: For loading/UX issues
+
+### Quick Documentation Links
+- **New to this repo?** Start with [START_HERE.md](../START_HERE.md)
+- **Need to add a project?** See [Common Tasks](#common-tasks) section above
+- **Workflow failing?** Check [Troubleshooting](#troubleshooting-deployment-issues)
+- **Want to contribute?** Read [CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
 
-**Last Updated**: 2025-01-17
+**Last Updated**: 2025-11-20
 **Maintained by**: Maximilian Haak (@MaxeLBerger)
