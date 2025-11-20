@@ -51,6 +51,14 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 | `test-projects.sh` | Automatisiertes Test-Script | Developer | - |
 | `test-firecastle-api.sh` | FireCastle API Test-Script | Developer | - |
 
+### Project Integration
+
+| Dokument | Zweck | Zielgruppe | Geschätzte Lesezeit |
+|----------|-------|------------|---------------------|
+| **[TESTOMAX_PUBLIC_INTEGRATION.md](TESTOMAX_PUBLIC_INTEGRATION.md)** | ✅ Complete TestoMax integration guide | All | 8 min |
+| [TESTOMAX_INTEGRATION_SUMMARY.md](TESTOMAX_INTEGRATION_SUMMARY.md) | TestoMax integration details | Developer | 10 min |
+| [TESTOMAX_SETUP_NOTES.md](TESTOMAX_SETUP_NOTES.md) | TestoMax setup instructions | Developer | 5 min |
+
 ### Troubleshooting & Fixes
 
 | Dokument | Zweck | Zielgruppe | Geschätzte Lesezeit |
@@ -194,6 +202,7 @@ Willkommen zur kompletten Dokumentation des Portfolio-Automation-Systems!
 - [AgeOfMax Actions](https://github.com/MaxeLBerger/AgeOfMax/actions)
 - [FireCastle Actions](https://github.com/MaxeLBerger/FireCastle/actions)
 - [AuTuneOnline Actions](https://github.com/MaxeLBerger/AuTuneOnline/actions)
+- [TestoMax Actions](https://github.com/MaxeLBerger/TestoMax/actions)
 
 ### Live Website
 - [maximilianhaak.de](https://maximilianhaak.de)
