@@ -58,6 +58,10 @@ jobs:
             echo "📦 New submodule commit:"
             git submodule status $SUBMODULE
             git commit -m "🤖 Auto-update $SUBMODULE to latest version" -m "Triggered by push to $SUBMODULE repository." -m "Updated via repository_dispatch event."
+            
+            # FIX: Pull latest changes to avoid conflicts
+            git pull --rebase origin main
+            
             git push
             echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
@@ -85,6 +89,10 @@ jobs:
             echo "📦 New submodule commit:"
             git submodule status $SUBMODULE
             git commit -m "🔄 Update $SUBMODULE to latest version" -m "Manually triggered via workflow_dispatch."
+            
+            # FIX: Pull latest changes to avoid conflicts
+            git pull --rebase origin main
+            
             git push
             echo "✅ Successfully updated and pushed $SUBMODULE"
           fi
