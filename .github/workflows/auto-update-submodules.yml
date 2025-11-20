@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       submodule:
-        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots)'
+        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax)'
         required: true
         type: choice
         options:
@@ -14,6 +14,7 @@ on:
           - FireCastle
           - AuTuneOnline
           - CasinoIdleSlots
+          - TestoMax
 
 permissions:
   contents: write
