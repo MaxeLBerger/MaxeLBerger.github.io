@@ -201,12 +201,12 @@ jobs:
         mkdir -p dist/TestoMax
         
         # Copy HTML files
-        cp TestoMax/*.html dist/TestoMax/ 2>/dev/null || echo "⚠️ No HTML files found in root"
+        cp TestoMax/public/*.html dist/TestoMax/ 2>/dev/null || echo "⚠️ No HTML files found in public"
         
         # Copy assets folders
-        cp -r TestoMax/css dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/css not found"
-        cp -r TestoMax/js dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/js not found"
-        cp -r TestoMax/images dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/images not found"
+        cp -r TestoMax/public/css dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/css not found"
+        cp -r TestoMax/public/js dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/js not found"
+        cp -r TestoMax/public/images dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/images not found"
         
         # Verify deployment
         if [ -f dist/TestoMax/index.html ]; then
