@@ -71,6 +71,12 @@ jobs:
           echo "❌ projects/soundoflvke.html not found!"
           exit 1
         fi
+
+        # Test TestoMax page
+        if [ ! -f "projects/testomax.html" ]; then
+          echo "❌ projects/testomax.html not found!"
+          exit 1
+        fi
         
         echo "✅ All project landing pages exist"
     
@@ -310,6 +316,35 @@ jobs:
           fi
         fi
 
+  test-testomax:
+    name: Test TestoMax
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Test project structure
+      run: |
+        echo "🧪 Testing TestoMax structure..."
+        
+        if [ -d "TestoMax" ]; then
+          echo "✅ TestoMax directory exists"
+          ls -la TestoMax/
+        else
+          echo "❌ TestoMax directory missing"
+          exit 1
+        fi
+        
+        # Check for key files
+        if [ -f "TestoMax/index.html" ] || [ -f "TestoMax/public/index.html" ]; then
+          echo "✅ Entry point found"
+        else
+          echo "⚠️  No index.html found in root or public/"
+        fi
+
   test-external-links:
     name: Test External Project Links
     runs-on: ubuntu-latest
@@ -347,7 +382,7 @@ jobs:
   test-report:
     name: Generate Test Report
     runs-on: ubuntu-latest
-    needs: [test-portfolio, test-ageofmax, test-firecastle, test-autuneonline, test-external-links]
+    needs: [test-portfolio, test-ageofmax, test-firecastle, test-autuneonline, test-testomax, test-external-links]
     if: always()
     
     steps:
@@ -363,6 +398,7 @@ jobs:
         echo "| AgeOfMax | ${{ needs.test-ageofmax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| FireCastle | ${{ needs.test-firecastle.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| AuTuneOnline | ${{ needs.test-autuneonline.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| TestoMax | ${{ needs.test-testomax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "| External Links | ${{ needs.test-external-links.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
