@@ -62,7 +62,7 @@ jobs:
         # Install dependencies
         npm ci 2>/dev/null || npm install
         # Build for production
-        npx vite build --mode production
+        npm run build
         echo "✅ AgeOfMax build complete"
 
     - name: Build CasinoIdleSlots (Vite production)
