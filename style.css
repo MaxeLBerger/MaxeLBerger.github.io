@@ -288,6 +288,9 @@ nav .menu-toggle .bar {
     text-align: center;
     width: 200px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .skill-card:hover {
@@ -295,14 +298,28 @@ nav .menu-toggle .bar {
     background-color: #00e676;
 }
 
-.skill-card img {
+.skill-card .icon-wrapper {
     width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
+}
+
+.skill-card img {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .skill-card h3 {
     font-size: 24px;
     color: #fff;
+    margin: 0;
+    min-height: 1.2em;
 }
 
 .skill-card:hover h3 {
