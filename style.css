@@ -318,6 +318,14 @@ nav .menu-toggle .bar {
     object-fit: contain;
 }
 
+/* Fix for icons with transparent backgrounds (TypeScript, Node.js) */
+.skill-card img[src*="typescript"],
+.skill-card img[src*="nodejs"] {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+}
+
 .skill-card h3 {
     font-size: 20px;
     color: #fff;
