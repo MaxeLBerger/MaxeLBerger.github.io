@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DL4J Graph Explorer - Neural Network Visualizer | Maximilian Haak</title>
+    <meta name="description" content="DL4J Graph Explorer - Read-only Visualisierungstool für DeepLearning4J Modelle mit Graph-View, Layer-Inspektion und Weight-Statistiken.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html#home">Maximilian Haak</a></div>
+        <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        <ul class="nav-list">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+    <div id="progress-bar"></div>
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">🧠 DL4J Graph Explorer</h1>
+                <p class="project-tagline">Visualisiere und analysiere DeepLearning4J Modelle</p>
+                <div class="project-actions">
+                    <a href="https://github.com/MaxeLBerger/dl4j-graph-explorer" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>DL4J Graph Explorer ist ein read-only Visualisierungstool für DeepLearning4J (DL4J) Computational Graph Modelle. Importiere deine trainierten Modelle und erkunde ihre Architektur visuell.</p>
+                    <p>Das Tool wurde mit einem Local-First Ansatz entwickelt - keine externen Backends, alle Daten werden lokal im Browser verarbeitet und in localStorage gespeichert.</p>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card"><i class="fas fa-file-import"></i><h3>Model Import</h3><p>DL4J JSON oder ZIP Model-Exporte importieren</p></div>
+                        <div class="feature-card"><i class="fas fa-project-diagram"></i><h3>Layer Topology</h3><p>Inbound/Outbound Connections inspizieren</p></div>
+                        <div class="feature-card"><i class="fas fa-calculator"></i><h3>Parameter Count</h3><p>Per-Layer Parameter-Anzahl anzeigen</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-bar"></i><h3>Weight Statistics</h3><p>Histogramme, Mean, Std Dev erkunden</p></div>
+                        <div class="feature-card"><i class="fas fa-sitemap"></i><h3>Graph View</h3><p>Interaktive Netzwerk-Visualisierung</p></div>
+                        <div class="feature-card"><i class="fas fa-table"></i><h3>Table View</h3><p>Tabellarische Weight-Übersicht</p></div>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-shield-alt"></i> Key Principles</h2>
+                    <div class="epochs-container">
+                        <div class="epoch-card">
+                            <h3><i class="fas fa-home"></i> Local-First</h3>
+                            <ul>
+                                <li>Kein externes Backend</li>
+                                <li>Daten bleiben lokal</li>
+                                <li>localStorage Persistenz</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3><i class="fas fa-eye"></i> Read-Only</h3>
+                            <ul>
+                                <li>Kein Training</li>
+                                <li>Keine Mutation</li>
+                                <li>Keine Inferenz</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3><i class="fas fa-bolt"></i> Fast Feedback</h3>
+                            <ul>
+                                <li>Schneller Import</li>
+                                <li>Import Summary</li>
+                                <li>Sofortige Visualisierung</li>
+                            </ul>
+                        </div>
+                        <div class="epoch-card">
+                            <h3><i class="fas fa-universal-access"></i> Accessible UI</h3>
+                            <ul>
+                                <li>Keyboard-Friendly</li>
+                                <li>Radix UI Primitives</li>
+                                <li>Klare Navigation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-lightbulb"></i> Wie es funktioniert</h2>
+                    <ol class="game-steps">
+                        <li>Exportiere dein DL4J Model als JSON oder ZIP</li>
+                        <li>Importiere die Datei in den Graph Explorer</li>
+                        <li>Erkunde die Layer-Topologie im Graph View</li>
+                        <li>Inspiziere Parameter und Verbindungen per Klick</li>
+                        <li>Analysiere Weight-Statistiken und Histogramme</li>
+                        <li>Wechsle zur Table View für detaillierte Übersicht</li>
+                    </ol>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Vite</span>
+                        <span class="tech-badge">D3.js</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">Radix UI</span>
+                        <span class="tech-badge">localStorage</span>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-rocket"></i> Geplante Erweiterungen</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;"><i class="fas fa-weight" style="color: #00e676; margin-right: 10px;"></i> Echte Weight-Arrays aus DL4J ZIP parsen (coefficients.bin)</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-file-export" style="color: #00e676; margin-right: 10px;"></i> Lightweight JSON Report Export</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-moon" style="color: #00e676; margin-right: 10px;"></i> Dark Mode Toggle</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-th" style="color: #00e676; margin-right: 10px;"></i> Graph Layout Presets (hierarchical, force-directed, compact)</li>
+                    </ul>
+                </section>
+                <section class="project-section">
+                    <h2><i class="fas fa-brain"></i> Unterstützte Layer-Typen</h2>
+                    <div class="features-grid">
+                        <div class="feature-card"><i class="fas fa-layer-group"></i><h3>Dense Layers</h3><p>Fully Connected Layers</p></div>
+                        <div class="feature-card"><i class="fas fa-th-large"></i><h3>Conv Layers</h3><p>Convolutional Networks</p></div>
+                        <div class="feature-card"><i class="fas fa-redo"></i><h3>RNN Layers</h3><p>Recurrent Networks</p></div>
+                        <div class="feature-card"><i class="fas fa-compress-arrows-alt"></i><h3>Pooling</h3><p>Max/Avg Pooling</p></div>
+                        <div class="feature-card"><i class="fas fa-random"></i><h3>Dropout</h3><p>Regularization Layers</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Activation</h3><p>ReLU, Sigmoid, etc.</p></div>
+                    </div>
+                </section>
+                <div class="project-cta">
+                    <h2>Erkunde deine Neural Networks!</h2>
+                    <p>Visualisiere und analysiere DL4J Modelle direkt im Browser</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/MaxeLBerger/dl4j-graph-explorer" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Projekt ansehen
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+    <footer>
+        <div class="social-media"><a href="https://github.com/MaxeLBerger/dl4j-graph-explorer" target="_blank"><i class="fab fa-github"></i></a></div>
+        <p>&copy; 2024 Maximilian Haak</p>
+        <p><a href="../impressum.html">Impressum</a> | <a href="../datenschutz.html">Datenschutz</a> | <a href="#" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a></p>
+    </footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>
