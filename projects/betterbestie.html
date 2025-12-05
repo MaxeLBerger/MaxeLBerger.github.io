@@ -1,43 +1,68 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <!-- Meta-Tags für SEO und responsives Design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BetterBestie - GlowUp Challenge | Maximilian Haak</title>
+    <title>BetterBestie - 30-Day GlowUp Challenge | Maximilian Haak</title>
     <meta name="description" content="BetterBestie - 30-Tage GlowUp Challenge App für Wellness und Selbstverbesserung mit täglichen Aufgaben und Fortschrittsverfolgung.">
+    <meta name="keywords" content="BetterBestie, GlowUp Challenge, Wellness App, React, TypeScript, Express, JWT, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <!-- Verknüpfung der CSS-Dateien -->
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe ../script.js) -->
+
+    <!-- Favicon (unified) -->
     <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
     <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+
+    <!-- Font Awesome für Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <div class="logo"><a href="../index.html#home">Maximilian Haak</a></div>
-        <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
-        <ul class="nav-list">
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
             <li><a href="../index.html#home" class="nav-link">Home</a></li>
             <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
             <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
             <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
         </ul>
     </nav>
-    <div id="progress-bar"></div>
+
+    <!-- Scroll Indikator -->
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <!-- Hauptinhalt -->
     <main id="wrapper" class="project-main">
+        <!-- Hero Section -->
         <section class="project-hero">
             <div class="container">
-                <h1 class="project-title">✨ BetterBestie</h1>
+                <h1 class="project-title">BetterBestie</h1>
                 <p class="project-tagline">30-Tage GlowUp Challenge für dein bestes Selbst</p>
                 <div class="project-actions">
                     <a href="../BetterBestie/" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fas fa-play"></i> Live Demo
+                        <i class="fas fa-play"></i> Demo starten
                     </a>
-                    <a href="https://github.com/MaxeLBerger/BetterBestie" class="btn btn-secondary" target="_blank">
+                    <a href="https://github.com/MaxeLBerger/BetterBestie" class="btn btn-secondary" target="_blank" rel="noopener">
                         <i class="fab fa-github"></i> Code ansehen
                     </a>
                 </div>
             </div>
         </section>
+
+        <!-- Projektinhalt -->
         <section class="project-detail-section">
             <div class="container">
                 <section class="project-section">
@@ -45,22 +70,48 @@
                     <p>BetterBestie ist eine TypeScript Full-Stack Web-Applikation für die 30-Tage GlowUp Challenge. Hilf Nutzern, ihre Wellness-Routine durch tägliche geführte Aufgaben in den Bereichen Hydration, Bewegung, Achtsamkeit, Ernährung, Lernen und Schlaf zu transformieren.</p>
                     <p>Die App wurde mit einem Mobile-First Ansatz entwickelt für ein optimales Erlebnis auf allen Geräten.</p>
                 </section>
+
                 <section class="project-section">
                     <h2><i class="fas fa-star"></i> Features</h2>
                     <div class="features-grid">
-                        <div class="feature-card"><i class="fas fa-home"></i><h3>Landing Page</h3><p>Marketing-Seite mit Challenge-Erklärung und klaren CTAs</p></div>
-                        <div class="feature-card"><i class="fas fa-calendar-alt"></i><h3>Kohorten-Auswahl</h3><p>Starte heute, nächsten Montag oder nächsten Monat</p></div>
-                        <div class="feature-card"><i class="fas fa-lock"></i><h3>Authentifizierung</h3><p>Sichere Email/Passwort-Auth mit JWT Tokens</p></div>
-                        <div class="feature-card"><i class="fas fa-tasks"></i><h3>Tagesansicht</h3><p>Aktuelle Aufgaben sehen und als erledigt markieren</p></div>
-                        <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Fortschritt</h3><p>Streaks, Achievements und Statistiken tracken</p></div>
-                        <div class="feature-card"><i class="fas fa-users"></i><h3>Besties</h3><p>Verbinde dich mit Freunden (Coming Soon)</p></div>
+                        <div class="feature-card">
+                            <i class="fas fa-home"></i>
+                            <h3>Landing Page</h3>
+                            <p>Marketing-Seite mit Challenge-Erklärung und CTAs</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Kohorten-Auswahl</h3>
+                            <p>Starte heute, nächsten Montag oder nächsten Monat</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-lock"></i>
+                            <h3>Authentifizierung</h3>
+                            <p>Sichere Email/Passwort-Auth mit JWT Tokens</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Tagesansicht</h3>
+                            <p>Aktuelle Aufgaben sehen und als erledigt markieren</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Fortschritt</h3>
+                            <p>Streaks, Achievements und Statistiken tracken</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Besties</h3>
+                            <p>Verbinde dich mit Freunden (Coming Soon)</p>
+                        </div>
                     </div>
                 </section>
+
                 <section class="project-section">
                     <h2><i class="fas fa-dumbbell"></i> Challenge-Kategorien</h2>
                     <div class="epochs-container">
                         <div class="epoch-card">
-                            <h3><i class="fas fa-tint"></i> Hydration</h3>
+                            <h3>Hydration</h3>
                             <ul>
                                 <li>Tägliche Wasserziele</li>
                                 <li>Trink-Erinnerungen</li>
@@ -68,7 +119,7 @@
                             </ul>
                         </div>
                         <div class="epoch-card">
-                            <h3><i class="fas fa-running"></i> Bewegung</h3>
+                            <h3>Bewegung</h3>
                             <ul>
                                 <li>Tägliche Übungen</li>
                                 <li>Von Basics bis Advanced</li>
@@ -76,7 +127,7 @@
                             </ul>
                         </div>
                         <div class="epoch-card">
-                            <h3><i class="fas fa-brain"></i> Achtsamkeit</h3>
+                            <h3>Achtsamkeit</h3>
                             <ul>
                                 <li>Meditation</li>
                                 <li>Atemübungen</li>
@@ -84,7 +135,7 @@
                             </ul>
                         </div>
                         <div class="epoch-card">
-                            <h3><i class="fas fa-apple-alt"></i> Ernährung</h3>
+                            <h3>Ernährung</h3>
                             <ul>
                                 <li>Gesunde Mahlzeiten</li>
                                 <li>Snack-Alternativen</li>
@@ -92,7 +143,7 @@
                             </ul>
                         </div>
                         <div class="epoch-card">
-                            <h3><i class="fas fa-book"></i> Lernen</h3>
+                            <h3>Lernen</h3>
                             <ul>
                                 <li>Tägliches Lesen</li>
                                 <li>Neue Skills</li>
@@ -100,7 +151,7 @@
                             </ul>
                         </div>
                         <div class="epoch-card">
-                            <h3><i class="fas fa-moon"></i> Schlaf</h3>
+                            <h3>Schlaf</h3>
                             <ul>
                                 <li>Schlaf-Routine</li>
                                 <li>Bildschirmzeit</li>
@@ -109,15 +160,17 @@
                         </div>
                     </div>
                 </section>
+
                 <section class="project-section">
-                    <h2><i class="fas fa-trophy"></i> Was ist inklusive (v1)</h2>
+                    <h2><i class="fas fa-road"></i> App-Inhalte (v1)</h2>
                     <ol class="game-steps">
-                        <li><strong>Landing & Signup Flow:</strong> Marketing-Landingpage, Registrierung, Kohorten-Auswahl</li>
-                        <li><strong>Today View:</strong> Aktueller Tag (z.B. "Tag 5 von 30"), 4-6 Tagesaufgaben, One-Click Completion</li>
-                        <li><strong>Progress View:</strong> Streak-Anzeige, Tage abgeschlossen (X/30), Achievement-Badges (7, 14, 21, 30 Tage)</li>
-                        <li><strong>Challenge Content:</strong> 30-Tage GlowUp Challenge vorgeladen, 150+ Wellness-Aufgaben in 6 Kategorien</li>
+                        <li><strong>Landing & Signup:</strong> Marketing-Landingpage, Registrierung, Kohorten-Auswahl</li>
+                        <li><strong>Today View:</strong> Aktueller Tag (z.B. "Tag 5 von 30"), 4-6 Tagesaufgaben</li>
+                        <li><strong>Progress View:</strong> Streak-Anzeige, Achievement-Badges (7, 14, 21, 30 Tage)</li>
+                        <li><strong>Challenge Content:</strong> 30-Tage GlowUp Challenge mit 150+ Wellness-Aufgaben</li>
                     </ol>
                 </section>
+
                 <section class="project-section">
                     <h2><i class="fas fa-code"></i> Technologien</h2>
                     <div class="tech-stack">
@@ -128,34 +181,15 @@
                         <span class="tech-badge">JWT Auth</span>
                         <span class="tech-badge">bcrypt</span>
                         <span class="tech-badge">React Router</span>
-                        <span class="tech-badge">Mobile-First CSS</span>
                     </div>
                 </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-mobile-alt"></i> Mobile-First Design</h2>
-                    <div class="features-grid">
-                        <div class="feature-card"><i class="fas fa-expand-arrows-alt"></i><h3>Responsive</h3><p>Adaptives Layout für alle Bildschirmgrößen</p></div>
-                        <div class="feature-card"><i class="fas fa-hand-pointer"></i><h3>Touch-Friendly</h3><p>Bottom Navigation für einfache Bedienung</p></div>
-                        <div class="feature-card"><i class="fas fa-bolt"></i><h3>Performance</h3><p>Optimiert für mobile Netzwerke</p></div>
-                    </div>
-                </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-rocket"></i> Geplante Features</h2>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 8px 0;"><i class="fas fa-users" style="color: #00e676; margin-right: 10px;"></i> Bestie/Accountability Features</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-share-alt" style="color: #00e676; margin-right: 10px;"></i> Social Sharing Cards</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-bell" style="color: #00e676; margin-right: 10px;"></i> Push Notifications</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-user-edit" style="color: #00e676; margin-right: 10px;"></i> Profile Editing</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-layer-group" style="color: #00e676; margin-right: 10px;"></i> Mehrere Challenge-Typen</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-crown" style="color: #00e676; margin-right: 10px;"></i> Premium Features</li>
-                    </ul>
-                </section>
+
                 <div class="project-cta">
                     <h2>Starte deine Transformation!</h2>
                     <p>30 Tage, 150+ Aufgaben, dein bestes Selbst</p>
                     <div class="cta-buttons">
-                        <a href="https://github.com/MaxeLBerger/BetterBestie" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i> Projekt ansehen
+                        <a href="../BetterBestie/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fas fa-play"></i> Jetzt ausprobieren
                         </a>
                         <a href="../index.html#projects" class="btn btn-secondary btn-lg">
                             <i class="fas fa-arrow-left"></i> Zurück zu Projekten
@@ -165,12 +199,24 @@
             </div>
         </section>
     </main>
-    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Footer -->
     <footer>
-        <div class="social-media"><a href="https://github.com/MaxeLBerger/BetterBestie" target="_blank"><i class="fab fa-github"></i></a></div>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/BetterBestie" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
         <p>&copy; 2024 Maximilian Haak</p>
-        <p><a href="../impressum.html">Impressum</a> | <a href="../datenschutz.html">Datenschutz</a> | <a href="#" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a></p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
+        </p>
     </footer>
+
+    <!-- JavaScript-Dateien -->
     <script src="../script.js" defer></script>
 </body>
 </html>
