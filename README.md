@@ -13,7 +13,7 @@ Professional portfolio website showcasing interactive software development proje
 
 ### AgeOfMax - Strategic Tower Defense Game
 
-![AgeOfMax Screenshot](res/AgeOfMax.png)
+![AgeOfMax Screenshot](res/projects/AgeOfMax.png)
 
 A strategic tower defense game spanning 5 historical epochs from the Stone Age to the Future. Build and upgrade units to defend your base!
 
@@ -26,7 +26,7 @@ A strategic tower defense game spanning 5 historical epochs from the Stone Age t
 
 ### FireCastle - Clash of Clans Management
 
-![FireCastle Screenshot](res/FireCastle.png)
+![FireCastle Screenshot](res/projects/FireCastle.png)
 
 Comprehensive clan management website with real-time statistics, player profiles, and war information using the Clash of Clans API.
 
@@ -39,7 +39,7 @@ Comprehensive clan management website with real-time statistics, player profiles
 
 ### AuTuneOnline - Audio Visualizer
 
-![AuTuneOnline Screenshot](res/AuTune.png)
+![AuTuneOnline Screenshot](res/projects/AuTune.png)
 
 Professional audio visualizer with real-time BPM detection, frequency analysis, and reactive particle effects. Upload your music and experience it visually!
 
@@ -52,7 +52,7 @@ Professional audio visualizer with real-time BPM detection, frequency analysis, 
 
 ### CasinoIdleSlots - Idle Casino Game
 
-![CasinoIdleSlots Screenshot](res/casinoIdleslots.png)
+![CasinoIdleSlots Screenshot](res/projects/casinoIdleslots.png)
 
 Idle slot machine casino game with GitHub integration. Collect coins, unlock upgrades, and climb the leaderboard!
 
@@ -65,7 +65,7 @@ Idle slot machine casino game with GitHub integration. Collect coins, unlock upg
 
 ### TestoMax - Modern Web Application
 
-![TestoMax Screenshot](res/TestoMax.png)
+![TestoMax Screenshot](res/projects/TestoMax.png)
 
 Innovative web project showcasing modern web technologies with interactive features and optimized performance.
 
