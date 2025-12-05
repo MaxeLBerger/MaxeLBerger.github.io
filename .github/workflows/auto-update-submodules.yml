@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       submodule:
-        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax)'
+        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer)'
         required: true
         type: choice
         options:
@@ -15,6 +15,8 @@ on:
           - AuTuneOnline
           - CasinoIdleSlots
           - TestoMax
+          - BetterBestie
+          - dl4j-graph-explorer
 
 permissions:
   contents: write

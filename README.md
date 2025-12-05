@@ -76,6 +76,32 @@ Innovative web project showcasing modern web technologies with interactive featu
 
 ---
 
+### BetterBestie - 30-Day GlowUp Challenge
+
+![BetterBestie Screenshot](res/projects/betterbestie.png)
+
+Full-stack wellness app for the 30-day GlowUp Challenge. Track daily tasks across hydration, movement, mindfulness, nutrition, learning, and sleep categories.
+
+- **Technologies:** TypeScript, React 19, Express, Vite, JWT Auth
+- **Features:** 150+ daily tasks, category tracking, mobile-first design, JWT authentication
+- **Try It:** [maximilianhaak.de/BetterBestie](https://maximilianhaak.de/BetterBestie)
+- **Repository:** [MaxeLBerger/BetterBestie](https://github.com/MaxeLBerger/BetterBestie)
+
+---
+
+### DL4J Graph Explorer - Neural Network Visualizer
+
+![DL4J Graph Explorer Screenshot](res/projects/dl4j-graph-explorer.png)
+
+Read-only visualization tool for DeepLearning4J computational graph models. Import trained models and explore their architecture visually with D3.js.
+
+- **Technologies:** TypeScript, React, D3.js, Tailwind CSS, Radix UI
+- **Features:** Layer topology visualization, weight statistics, local-first architecture
+- **Try It:** [maximilianhaak.de/dl4j-graph-explorer](https://maximilianhaak.de/dl4j-graph-explorer)
+- **Repository:** [MaxeLBerger/dl4j-graph-explorer](https://github.com/MaxeLBerger/dl4j-graph-explorer)
+
+---
+
 ## 🛠️ Technologies
 
 **Frontend:** HTML5, CSS3, JavaScript, TypeScript  

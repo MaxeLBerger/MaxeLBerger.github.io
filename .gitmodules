@@ -13,3 +13,9 @@
 [submodule "TestoMax"]
 	path = TestoMax
 	url = https://github.com/MaxeLBerger/TestoMax.git
+[submodule "BetterBestie"]
+	path = BetterBestie
+	url = https://github.com/MaxeLBerger/BetterBestie.git
+[submodule "dl4j-graph-explorer"]
+	path = dl4j-graph-explorer
+	url = https://github.com/MaxeLBerger/dl4j-graph-explorer.git

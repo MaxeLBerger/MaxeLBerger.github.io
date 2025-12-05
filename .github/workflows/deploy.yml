@@ -33,6 +33,8 @@ jobs:
         cache-dependency-path: |
           AgeOfMax/package-lock.json
           CasinoIdleSlots/package-lock.json
+          BetterBestie/package-lock.json
+          dl4j-graph-explorer/package-lock.json
 
     - name: Display submodule status
       run: |
@@ -54,6 +56,12 @@ jobs:
         echo ""
         echo "TestoMax files:"
         ls -la TestoMax/ | head -10
+        echo ""
+        echo "BetterBestie files:"
+        ls -la BetterBestie/ | head -10
+        echo ""
+        echo "dl4j-graph-explorer files:"
+        ls -la dl4j-graph-explorer/ | head -10
 
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
@@ -133,6 +141,41 @@ jobs:
           exit 1
         fi
         echo "✅ CasinoIdleSlots build complete"
+        echo "📄 Build output:"
+        ls -la dist/
+
+    - name: Build BetterBestie (Vite client only)
+      working-directory: BetterBestie
+      run: |
+        echo "🌟 Building BetterBestie client..."
+        # Install dependencies
+        npm ci 2>/dev/null || npm install
+        # Build only the client (frontend) for static hosting with base path
+        # Using vite directly with base flag since vite.config uses custom root
+        npx vite build --base=/BetterBestie/
+        # Verify build output
+        if [ ! -d dist/client ]; then
+          echo "❌ Build failed - dist/client directory not created"
+          exit 1
+        fi
+        echo "✅ BetterBestie client build complete"
+        echo "📄 Build output:"
+        ls -la dist/client/
+
+    - name: Build dl4j-graph-explorer (Vite production)
+      working-directory: dl4j-graph-explorer
+      run: |
+        echo "🧠 Building dl4j-graph-explorer..."
+        # Install dependencies
+        npm ci 2>/dev/null || npm install
+        # Build for production with base path for GitHub Pages subdirectory
+        npx vite build --base=/dl4j-graph-explorer/
+        # Verify build output
+        if [ ! -d dist ]; then
+          echo "❌ Build failed - dist directory not created"
+          exit 1
+        fi
+        echo "✅ dl4j-graph-explorer build complete"
         echo "📄 Build output:"
         ls -la dist/
 
@@ -218,6 +261,50 @@ jobs:
           exit 1
         fi
 
+    - name: Copy BetterBestie build artifacts
+      run: |
+        echo "🌟 Copying BetterBestie build artifacts..."
+        mkdir -p dist/BetterBestie
+        # Verify source directory exists
+        if [ ! -d BetterBestie/dist/client ]; then
+          echo "❌ BetterBestie/dist/client directory not found"
+          exit 1
+        fi
+        # Copy all build artifacts
+        cp -r BetterBestie/dist/client/* dist/BetterBestie/
+        # Verify copy was successful
+        if [ ! -f dist/BetterBestie/index.html ]; then
+          echo "❌ Failed to copy BetterBestie index.html"
+          exit 1
+        fi
+        echo "✅ BetterBestie artifacts copied successfully"
+        echo "📁 Deployed files:"
+        ls -la dist/BetterBestie/
+        echo "--- Preview of deployed BetterBestie/index.html ---"
+        head -n 15 dist/BetterBestie/index.html || true
+
+    - name: Copy dl4j-graph-explorer build artifacts
+      run: |
+        echo "🧠 Copying dl4j-graph-explorer build artifacts..."
+        mkdir -p dist/dl4j-graph-explorer
+        # Verify source directory exists
+        if [ ! -d dl4j-graph-explorer/dist ]; then
+          echo "❌ dl4j-graph-explorer/dist directory not found"
+          exit 1
+        fi
+        # Copy all build artifacts
+        cp -r dl4j-graph-explorer/dist/* dist/dl4j-graph-explorer/
+        # Verify copy was successful
+        if [ ! -f dist/dl4j-graph-explorer/index.html ]; then
+          echo "❌ Failed to copy dl4j-graph-explorer index.html"
+          exit 1
+        fi
+        echo "✅ dl4j-graph-explorer artifacts copied successfully"
+        echo "📁 Deployed files:"
+        ls -la dist/dl4j-graph-explorer/
+        echo "--- Preview of deployed dl4j-graph-explorer/index.html ---"
+        head -n 15 dist/dl4j-graph-explorer/index.html || true
+
     - name: Copy portfolio & shared assets
       run: |
         echo "🌐 Copying portfolio and shared assets..."
@@ -244,6 +331,8 @@ jobs:
         ls -la dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline directory missing"
         ls -la dist/CasinoIdleSlots/ 2>/dev/null || echo "⚠️ CasinoIdleSlots directory missing"
         ls -la dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax directory missing"
+        ls -la dist/BetterBestie/ 2>/dev/null || echo "⚠️ BetterBestie directory missing"
+        ls -la dist/dl4j-graph-explorer/ 2>/dev/null || echo "⚠️ dl4j-graph-explorer directory missing"
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
@@ -265,5 +354,7 @@ jobs:
         echo "   - AuTuneOnline: ${{ steps.deploy.outputs.page_url }}AuTuneOnline/"
         echo "   - CasinoIdleSlots: ${{ steps.deploy.outputs.page_url }}CasinoIdleSlots/"
         echo "   - TestoMax: ${{ steps.deploy.outputs.page_url }}TestoMax/"
+        echo "   - BetterBestie: ${{ steps.deploy.outputs.page_url }}BetterBestie/"
+        echo "   - dl4j-graph-explorer: ${{ steps.deploy.outputs.page_url }}dl4j-graph-explorer/"
         echo "⏱️  Changes should be live in 1-2 minutes"
         echo "=============================================="
