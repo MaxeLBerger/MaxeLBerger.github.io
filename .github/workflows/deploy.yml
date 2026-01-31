@@ -36,278 +36,118 @@ jobs:
           BetterBestie/package-lock.json
           dl4j-graph-explorer/package-lock.json
 
-    - name: Display submodule status
-      run: |
-        echo "📦 Submodule versions being deployed:"
-        git submodule status
-        echo ""
-        echo "🔍 Verifying submodule contents:"
-        echo "AgeOfMax files:"
-        ls -la AgeOfMax/ | head -10
-        echo ""
-        echo "CasinoIdleSlots files:"
-        ls -la CasinoIdleSlots/ | head -10
-        echo ""
-        echo "FireCastle files:"
-        ls -la FireCastle/ | head -10
-        echo ""
-        echo "AuTuneOnline files:"
-        ls -la AuTuneOnline/ | head -10
-        echo ""
-        echo "TestoMax files:"
-        ls -la TestoMax/ | head -10
-        echo ""
-        echo "BetterBestie files:"
-        ls -la BetterBestie/ | head -10
-        echo ""
-        echo "dl4j-graph-explorer files:"
-        ls -la dl4j-graph-explorer/ | head -10
-
     - name: Build AgeOfMax (Vite production)
       working-directory: AgeOfMax
       run: |
-        echo "🎮 Building AgeOfMax..."
-        # Install dependencies
         npm ci 2>/dev/null || npm install
-        # Build for production
         npm run build
-        echo "✅ AgeOfMax build complete"
 
     - name: Build CasinoIdleSlots (Vite production)
       working-directory: CasinoIdleSlots
       env:
-        # Supabase configuration (set these as GitHub Secrets)
         VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
         VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        # Fallback to demo mode if secrets not configured
         VITE_ENABLE_DEMO_MODE: ${{ secrets.VITE_SUPABASE_URL == '' && 'true' || 'false' }}
       run: |
-        echo "🎰 Building CasinoIdleSlots..."
-        # Check if package.json exists
-        if [ ! -f package.json ]; then
-          echo "❌ package.json not found in CasinoIdleSlots directory"
-          exit 1
-        fi
-        # Debug: Show secret status (without revealing values)
-        echo "🔍 Environment variable status:"
-        if [ -n "$VITE_SUPABASE_URL" ]; then
-          echo "  ✅ VITE_SUPABASE_URL is set (length: ${#VITE_SUPABASE_URL} characters)"
-        else
-          echo "  ❌ VITE_SUPABASE_URL is NOT set or empty"
-        fi
-        if [ -n "$VITE_SUPABASE_ANON_KEY" ]; then
-          echo "  ✅ VITE_SUPABASE_ANON_KEY is set (length: ${#VITE_SUPABASE_ANON_KEY} characters)"
-        else
-          echo "  ❌ VITE_SUPABASE_ANON_KEY is NOT set or empty"
-        fi
-        if [ -n "$VITE_ENABLE_DEMO_MODE" ]; then
-          echo "  ℹ️ VITE_ENABLE_DEMO_MODE=$VITE_ENABLE_DEMO_MODE"
-        fi
-        # Create .env file for Vite build (temporary, not committed)
-        echo "📝 Creating temporary .env file for build..."
         cat > .env << EOF
         VITE_SUPABASE_URL=$VITE_SUPABASE_URL
         VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
         EOF
-        echo "✅ .env file created for build process"
-        # Check if Supabase secrets are configured
-        if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_ANON_KEY" ]; then
-          echo "⚠️ Supabase secrets not configured - building in demo mode"
-          echo "ℹ️ To enable full features, add these secrets to GitHub:"
-          echo "   - VITE_SUPABASE_URL"
-          echo "   - VITE_SUPABASE_ANON_KEY"
-        else
-          echo "✅ Supabase configuration detected - building with full backend features"
-        fi
-        # Install dependencies with fallback
-        echo "📦 Installing dependencies..."
-        npm ci 2>/dev/null || {
-          echo "⚠️ npm ci failed, falling back to npm install"
-          npm install
-        }
-        # Verify TypeScript compilation
-        echo "🔍 Checking TypeScript compilation..."
-        npx tsc --noEmit --skipLibCheck || echo "⚠️ TypeScript check warnings (continuing...)"
-        # Build for production
-        echo "🏗️ Building for production..."
+        npm ci 2>/dev/null || npm install
         npm run build
-        # Verify build output
-        if [ ! -d dist ]; then
-          echo "❌ Build failed - dist directory not created"
-          exit 1
-        fi
         if [ ! -f dist/index.html ]; then
           echo "❌ Build failed - index.html not found in dist"
           exit 1
         fi
-        echo "✅ CasinoIdleSlots build complete"
-        echo "📄 Build output:"
-        ls -la dist/
 
     - name: Build BetterBestie (Vite client only)
       working-directory: BetterBestie
       run: |
-        echo "🌟 Building BetterBestie client..."
-        # Install dependencies
         npm ci 2>/dev/null || npm install
-        # Build only the client (frontend) for static hosting with base path
-        # Using vite directly with base flag since vite.config uses custom root
         npx vite build --base=/BetterBestie/
-        # Verify build output
         if [ ! -d dist/client ]; then
           echo "❌ Build failed - dist/client directory not created"
           exit 1
         fi
-        echo "✅ BetterBestie client build complete"
-        echo "📄 Build output:"
-        ls -la dist/client/
 
     - name: Build dl4j-graph-explorer (Vite production)
       working-directory: dl4j-graph-explorer
       run: |
-        echo "🧠 Building dl4j-graph-explorer..."
-        # Install dependencies
         npm ci 2>/dev/null || npm install
-        # Build for production with base path for GitHub Pages subdirectory
         npx vite build --base=/dl4j-graph-explorer/
-        # Verify build output
         if [ ! -d dist ]; then
           echo "❌ Build failed - dist directory not created"
           exit 1
         fi
-        echo "✅ dl4j-graph-explorer build complete"
-        echo "📄 Build output:"
-        ls -la dist/
 
     - name: Prepare distribution folder
       run: |
-        echo "🗂️ Preparing distribution folder..."
         rm -rf dist
         mkdir dist
-        echo "✅ Distribution folder ready"
 
     - name: Copy AgeOfMax build artifacts
       run: |
-        echo "📦 Copying AgeOfMax build artifacts..."
         mkdir -p dist/AgeOfMax
         cp -r AgeOfMax/dist/* dist/AgeOfMax/
-        echo "✅ AgeOfMax artifacts copied"
-        echo "--- Preview of deployed AgeOfMax/index.html ---"
-        head -n 15 dist/AgeOfMax/index.html || true
 
     - name: Copy FireCastle static files
       run: |
-        echo "🏰 Copying FireCastle static files..."
         mkdir -p dist/FireCastle
-        cp FireCastle/index.html dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/index.html not found"
-        cp -r FireCastle/css dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/css not found"
-        cp -r FireCastle/js dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/js not found"
-        cp -r FireCastle/images dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/images not found"
-        cp -r FireCastle/pages dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle/pages not found"
-        echo "✅ FireCastle files copied"
+        cp FireCastle/index.html dist/FireCastle/ 2>/dev/null || true
+        cp -r FireCastle/css dist/FireCastle/ 2>/dev/null || true
+        cp -r FireCastle/js dist/FireCastle/ 2>/dev/null || true
+        cp -r FireCastle/images dist/FireCastle/ 2>/dev/null || true
+        cp -r FireCastle/pages dist/FireCastle/ 2>/dev/null || true
 
     - name: Copy AuTuneOnline static files
       run: |
-        echo "🎵 Copying AuTuneOnline static files..."
         mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/index.html not found"
-        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/style.css not found"
-        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/public/app.js not found"
-        cp -r AuTuneOnline/images dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline/images not found"
-        echo "✅ AuTuneOnline files copied"
+        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ 2>/dev/null || true
+        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || true
+        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || true
+        cp -r AuTuneOnline/images dist/AuTuneOnline/ 2>/dev/null || true
 
     - name: Copy CasinoIdleSlots build artifacts
       run: |
-        echo "🎰 Copying CasinoIdleSlots build artifacts..."
         mkdir -p dist/CasinoIdleSlots
-        # Verify source directory exists
         if [ ! -d CasinoIdleSlots/dist ]; then
           echo "❌ CasinoIdleSlots/dist directory not found"
           exit 1
         fi
-        # Copy all build artifacts
         cp -r CasinoIdleSlots/dist/* dist/CasinoIdleSlots/
-        # Verify copy was successful
-        if [ ! -f dist/CasinoIdleSlots/index.html ]; then
-          echo "❌ Failed to copy CasinoIdleSlots index.html"
-          exit 1
-        fi
-        echo "✅ CasinoIdleSlots artifacts copied successfully"
-        echo "📁 Deployed files:"
-        ls -la dist/CasinoIdleSlots/
-        echo "--- Preview of deployed CasinoIdleSlots/index.html ---"
-        head -n 15 dist/CasinoIdleSlots/index.html || true
 
     - name: Copy TestoMax static files
       run: |
-        echo "🧪 Copying TestoMax static files..."
         mkdir -p dist/TestoMax
-        
-        # Copy HTML files
-        cp TestoMax/public/*.html dist/TestoMax/ 2>/dev/null || echo "⚠️ No HTML files found in public"
-        
-        # Copy assets folders
-        cp -r TestoMax/public/css dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/css not found"
-        cp -r TestoMax/public/js dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/js not found"
-        cp -r TestoMax/public/images dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax/public/images not found"
-        
-        # Verify deployment
-        if [ -f dist/TestoMax/index.html ]; then
-          echo "✅ TestoMax deployed successfully"
-          echo "📁 Deployed files:"
-          ls -la dist/TestoMax/ | head -10
-        else
+        cp TestoMax/public/*.html dist/TestoMax/ 2>/dev/null || true
+        cp -r TestoMax/public/css dist/TestoMax/ 2>/dev/null || true
+        cp -r TestoMax/public/js dist/TestoMax/ 2>/dev/null || true
+        cp -r TestoMax/public/images dist/TestoMax/ 2>/dev/null || true
+        if [ ! -f dist/TestoMax/index.html ]; then
           echo "❌ Error: index.html not found in TestoMax deployment"
           exit 1
         fi
 
     - name: Copy BetterBestie build artifacts
       run: |
-        echo "🌟 Copying BetterBestie build artifacts..."
         mkdir -p dist/BetterBestie
-        # Verify source directory exists
         if [ ! -d BetterBestie/dist/client ]; then
           echo "❌ BetterBestie/dist/client directory not found"
           exit 1
         fi
-        # Copy all build artifacts
         cp -r BetterBestie/dist/client/* dist/BetterBestie/
-        # Verify copy was successful
-        if [ ! -f dist/BetterBestie/index.html ]; then
-          echo "❌ Failed to copy BetterBestie index.html"
-          exit 1
-        fi
-        echo "✅ BetterBestie artifacts copied successfully"
-        echo "📁 Deployed files:"
-        ls -la dist/BetterBestie/
-        echo "--- Preview of deployed BetterBestie/index.html ---"
-        head -n 15 dist/BetterBestie/index.html || true
 
     - name: Copy dl4j-graph-explorer build artifacts
       run: |
-        echo "🧠 Copying dl4j-graph-explorer build artifacts..."
         mkdir -p dist/dl4j-graph-explorer
-        # Verify source directory exists
         if [ ! -d dl4j-graph-explorer/dist ]; then
           echo "❌ dl4j-graph-explorer/dist directory not found"
           exit 1
         fi
-        # Copy all build artifacts
         cp -r dl4j-graph-explorer/dist/* dist/dl4j-graph-explorer/
-        # Verify copy was successful
-        if [ ! -f dist/dl4j-graph-explorer/index.html ]; then
-          echo "❌ Failed to copy dl4j-graph-explorer index.html"
-          exit 1
-        fi
-        echo "✅ dl4j-graph-explorer artifacts copied successfully"
-        echo "📁 Deployed files:"
-        ls -la dist/dl4j-graph-explorer/
-        echo "--- Preview of deployed dl4j-graph-explorer/index.html ---"
-        head -n 15 dist/dl4j-graph-explorer/index.html || true
 
     - name: Copy portfolio & shared assets
       run: |
-        echo "🌐 Copying portfolio and shared assets..."
         cp index.html dist/
         cp style.css dist/
         cp script.js dist/
@@ -317,22 +157,6 @@ jobs:
         cp impressum.html dist/
         cp datenschutz.html dist/
         touch dist/.nojekyll
-        echo "✅ Portfolio assets copied"
-        
-    - name: Verify build output
-      run: |
-        echo "🔍 Verifying build output structure..."
-        echo "Main files:"
-        ls -la dist/
-        echo ""
-        echo "Project directories:"
-        ls -la dist/AgeOfMax/ 2>/dev/null || echo "⚠️ AgeOfMax directory missing"
-        ls -la dist/FireCastle/ 2>/dev/null || echo "⚠️ FireCastle directory missing"
-        ls -la dist/AuTuneOnline/ 2>/dev/null || echo "⚠️ AuTuneOnline directory missing"
-        ls -la dist/CasinoIdleSlots/ 2>/dev/null || echo "⚠️ CasinoIdleSlots directory missing"
-        ls -la dist/TestoMax/ 2>/dev/null || echo "⚠️ TestoMax directory missing"
-        ls -la dist/BetterBestie/ 2>/dev/null || echo "⚠️ BetterBestie directory missing"
-        ls -la dist/dl4j-graph-explorer/ 2>/dev/null || echo "⚠️ dl4j-graph-explorer directory missing"
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
@@ -345,16 +169,6 @@ jobs:
 
     - name: Deployment summary
       run: |
-        echo "🚀 ============================================"
         echo "✅ Deployment successful!"
-        echo "🌐 Website URL: ${{ steps.deploy.outputs.page_url }}"
-        echo "📦 Deployed projects:"
-        echo "   - AgeOfMax: ${{ steps.deploy.outputs.page_url }}AgeOfMax/"
-        echo "   - FireCastle: ${{ steps.deploy.outputs.page_url }}FireCastle/"
-        echo "   - AuTuneOnline: ${{ steps.deploy.outputs.page_url }}AuTuneOnline/"
-        echo "   - CasinoIdleSlots: ${{ steps.deploy.outputs.page_url }}CasinoIdleSlots/"
-        echo "   - TestoMax: ${{ steps.deploy.outputs.page_url }}TestoMax/"
-        echo "   - BetterBestie: ${{ steps.deploy.outputs.page_url }}BetterBestie/"
-        echo "   - dl4j-graph-explorer: ${{ steps.deploy.outputs.page_url }}dl4j-graph-explorer/"
-        echo "⏱️  Changes should be live in 1-2 minutes"
-        echo "=============================================="
+        echo "🌐 Website: ${{ steps.deploy.outputs.page_url }}"
+        echo "📦 Projects: AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer"

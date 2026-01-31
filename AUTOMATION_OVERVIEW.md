@@ -281,6 +281,105 @@ Verwende diese Checkliste um den Setup-Status zu tracken:
 
 ---
 
+## 🏗️ Detaillierte Architektur
+
+### Repository-Struktur
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  GitHub Account: MaxeLBerger                                     │
+│                                                                   │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  MaxeLBerger.github.io (Main Repository)                │   │
+│  │  ├── index.html, style.css, script.js                   │   │
+│  │  ├── projects/                                           │   │
+│  │  ├── res/                                                │   │
+│  │  ├── AgeOfMax/          ←── Submodule                   │   │
+│  │  ├── FireCastle/        ←── Submodule                   │   │
+│  │  ├── AuTuneOnline/      ←── Submodule                   │   │
+│  │  └── .github/                                            │   │
+│  │      ├── workflows/ (deploy.yml, auto-update-submodules)│   │
+│  │      └── agents/ (portfolio-fix.agent.md)               │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                   │
+│  ┌───────────────────────┐  ┌───────────────────────┐          │
+│  │  AgeOfMax             │  │  FireCastle           │          │
+│  │  ├── src/, public/    │  │  ├── index.html       │          │
+│  │  ├── package.json     │  │  ├── css/, js/        │          │
+│  │  └── .github/         │  │  └── .github/         │          │
+│  │      └── workflows/   │  │      └── workflows/   │          │
+│  └───────────────────────┘  └───────────────────────┘          │
+│                                                                   │
+│  ┌───────────────────────┐                                      │
+│  │  AuTuneOnline         │                                      │
+│  │  └── public/          │                                      │
+│  │      └── .github/     │                                      │
+│  └───────────────────────┘                                      │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Deployment-Architektur (gh-pages)
+
+```
+GitHub Pages (gh-pages branch)
+├── index.html           ← Portfolio homepage
+├── style.css, script.js
+├── CNAME               ← maximilianhaak.de
+├── .nojekyll           ← Disable Jekyll
+├── /projects/          ← Project landing pages
+├── /res/               ← Resources (images, etc.)
+├── /AgeOfMax/          ← Built from Vite
+│   ├── index.html
+│   └── assets/
+├── /FireCastle/        ← Static files
+└── /AuTuneOnline/      ← Static files
+```
+
+### State Diagram
+
+```
+┌──────────────┐
+│   Idle       │ ← Waiting for push/dispatch
+└──┬───────────┘
+   ↓ Event triggered
+┌──────────────┐
+│  Updating    │ ← auto-update-submodules.yml
+│  Submodule   │
+└──┬───────────┘
+   ↓ Commit & Push
+┌──────────────┐
+│  Building    │ ← deploy.yml
+│  Projects    │
+└──┬───────────┘
+   ↓ Build Success
+┌──────────────┐
+│  Deploying   │
+│  to Pages    │
+└──┬───────────┘
+   ↓ Deploy Success
+┌──────────────┐
+│  Live        │ → Back to Idle
+└──────────────┘
+```
+
+### Storage & Caching
+
+- **GitHub Actions Cache:** npm dependencies cached by package-lock.json hash
+- **GitHub Pages CDN:** Static files cached ~5 minutes, updates propagate in 1-2 minutes
+
+### Neues Projekt hinzufügen
+
+```
+1. Create new project repository
+2. Add as submodule: git submodule add https://github.com/MaxeLBerger/NewProject
+3. Add to deploy.yml workflow (build + copy steps)
+4. Add to auto-update-submodules.yml choices
+5. In NewProject repo: Add update-portfolio.yml, project-agent.md, PORTFOLIO_UPDATE_TOKEN
+6. Done!
+```
+
+---
+
 **Bereit loszulegen?** → [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)
 
 **Fragen?** → Öffne ein Issue im Repository

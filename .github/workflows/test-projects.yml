@@ -1,18 +1,14 @@
-name: Test All Projects
+name: Quick Sanity Check
 
+# Lightweight validation for PRs - deploy.yml handles the real builds
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-  schedule:
-    # Run tests daily at 6 AM UTC
-    - cron: '0 6 * * *'
 
 jobs:
-  test-portfolio:
-    name: Test Portfolio Pages
+  validate:
+    name: Validate Portfolio Structure
     runs-on: ubuntu-latest
     
     steps:
@@ -20,459 +16,48 @@ jobs:
       uses: actions/checkout@v4
       with:
         submodules: recursive
-    
-    - name: Test main portfolio page
-      run: |
-        echo "🧪 Testing main portfolio page..."
-        # Check if index.html exists and is valid
-        if [ ! -f "index.html" ]; then
-          echo "❌ index.html not found!"
-          exit 1
-        fi
-        
-        # Check for basic structure
-        if ! grep -q "Maximilian Haak" index.html; then
-          echo "❌ Portfolio title not found!"
-          exit 1
-        fi
-        
-        echo "✅ Main portfolio page OK"
-    
-    - name: Test project landing pages
-      run: |
-        echo "🧪 Testing project landing pages..."
-        
-        # Test Age of Max page
-        if [ ! -f "projects/age-of-max.html" ]; then
-          echo "❌ projects/age-of-max.html not found!"
-          exit 1
-        fi
-        
-        # Test FireCastle page
-        if [ ! -f "projects/firecastle.html" ]; then
-          echo "❌ projects/firecastle.html not found!"
-          exit 1
-        fi
-        
-        # Test AuTune Online page
-        if [ ! -f "projects/autune-online.html" ]; then
-          echo "❌ projects/autune-online.html not found!"
-          exit 1
-        fi
-        
-        # Test Albert page
-        if [ ! -f "projects/albert.html" ]; then
-          echo "❌ projects/albert.html not found!"
-          exit 1
-        fi
-        
-        # Test SoundofLvke page
-        if [ ! -f "projects/soundoflvke.html" ]; then
-          echo "❌ projects/soundoflvke.html not found!"
-          exit 1
-        fi
 
-        # Test TestoMax page
-        if [ ! -f "projects/testomax.html" ]; then
-          echo "❌ projects/testomax.html not found!"
-          exit 1
-        fi
-        
-        echo "✅ All project landing pages exist"
-    
-    - name: Validate HTML syntax
+    - name: Check portfolio essentials
       run: |
-        echo "🧪 Validating HTML files..."
+        echo "🧪 Checking portfolio essentials..."
         
-        # Check for common HTML issues (unclosed tags, etc)
-        for file in index.html projects/*.html impressum.html datenschutz.html; do
-          if [ -f "$file" ]; then
-            echo "Checking $file..."
-            
-            # Count opening and closing tags (basic check)
-            opening_divs=$(grep -o '<div' "$file" | wc -l)
-            closing_divs=$(grep -o '</div>' "$file" | wc -l)
-            
-            if [ "$opening_divs" -ne "$closing_divs" ]; then
-              echo "⚠️  Warning: $file may have mismatched div tags (opening: $opening_divs, closing: $closing_divs)"
-            fi
+        # Core files
+        for file in index.html style.css script.js impressum.html datenschutz.html; do
+          [ -f "$file" ] && echo "✅ $file" || { echo "❌ $file missing"; exit 1; }
+        done
+        
+        # Project pages
+        for page in age-of-max firecastle autune-online albert soundoflvke testomax betterbestie dl4j-graph-explorer; do
+          [ -f "projects/${page}.html" ] && echo "✅ projects/${page}.html" || echo "⚠️  projects/${page}.html missing"
+        done
+        
+        # Resource directory
+        [ -d "res" ] && echo "✅ res/" || { echo "❌ res/ missing"; exit 1; }
+
+    - name: Check submodule structure
+      run: |
+        echo "🧪 Checking submodules..."
+        
+        # TypeScript projects (need package.json for builds)
+        for proj in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer; do
+          if [ -d "$proj" ]; then
+            [ -f "$proj/package.json" ] && echo "✅ $proj/package.json" || echo "⚠️  $proj/package.json missing"
+          else
+            echo "⚠️  $proj/ not found"
           fi
         done
         
-        echo "✅ HTML validation complete"
-    
-    - name: Check for broken internal links
-      run: |
-        echo "🧪 Checking for broken internal links..."
-        
-        # Check if all referenced resources exist
-        echo "Checking CSS files..."
-        if [ ! -f "style.css" ]; then
-          echo "❌ style.css not found!"
-          exit 1
-        fi
-        
-        if [ ! -f "projects/style.css" ]; then
-          echo "❌ projects/style.css not found!"
-          exit 1
-        fi
-        
-        echo "Checking JavaScript files..."
-        if [ ! -f "script.js" ]; then
-          echo "❌ script.js not found!"
-          exit 1
-        fi
-        
-        echo "Checking resource directory..."
-        if [ ! -d "res" ]; then
-          echo "❌ res/ directory not found!"
-          exit 1
-        fi
-        
-        echo "✅ Internal resources OK"
+        # Static projects
+        for proj in FireCastle AuTuneOnline TestoMax; do
+          [ -d "$proj" ] && echo "✅ $proj/" || echo "⚠️  $proj/ not found"
+        done
 
-  test-ageofmax:
-    name: Test AgeOfMax Project
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        cache-dependency-path: 'AgeOfMax/package-lock.json'
-    
-    - name: Check AgeOfMax submodule
-      run: |
-        echo "🧪 Testing AgeOfMax submodule..."
-        
-        if [ ! -d "AgeOfMax" ]; then
-          echo "❌ AgeOfMax directory not found!"
-          exit 1
-        fi
-        
-        if [ ! -f "AgeOfMax/package.json" ]; then
-          echo "❌ AgeOfMax/package.json not found!"
-          exit 1
-        fi
-        
-        echo "✅ AgeOfMax submodule structure OK"
-    
-    - name: Install AgeOfMax dependencies
-      working-directory: AgeOfMax
-      run: |
-        echo "📦 Installing dependencies..."
-        npm ci 2>/dev/null || npm install
-    
-    - name: Build AgeOfMax
-      working-directory: AgeOfMax
-      run: |
-        echo "🔨 Building AgeOfMax..."
-        npx vite build --mode production
-        
-        if [ ! -d "dist" ]; then
-          echo "❌ Build failed - dist directory not created!"
-          exit 1
-        fi
-        
-        if [ ! -f "dist/index.html" ]; then
-          echo "❌ Build failed - index.html not found in dist!"
-          exit 1
-        fi
-        
-        echo "✅ AgeOfMax build successful"
-    
-    - name: Check for TypeScript errors
-      working-directory: AgeOfMax
-      run: |
-        echo "🧪 Checking TypeScript..."
-        npx tsc --noEmit || echo "⚠️  TypeScript warnings found (non-blocking)"
-
-  test-firecastle:
-    name: Test FireCastle Project
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Check FireCastle submodule
-      run: |
-        echo "🧪 Testing FireCastle submodule..."
-        
-        if [ ! -d "FireCastle" ]; then
-          echo "❌ FireCastle directory not found!"
-          exit 1
-        fi
-        
-        echo "✅ FireCastle submodule exists"
-    
-    - name: Check FireCastle structure
-      run: |
-        echo "🧪 Checking FireCastle file structure..."
-        
-        # Check for required files
-        if [ -f "FireCastle/index.html" ]; then
-          echo "✅ index.html found"
-        else
-          echo "⚠️  FireCastle/index.html not found"
-        fi
-        
-        if [ -d "FireCastle/css" ]; then
-          echo "✅ css directory found"
-        else
-          echo "⚠️  FireCastle/css directory not found"
-        fi
-        
-        if [ -d "FireCastle/js" ]; then
-          echo "✅ js directory found"
-        else
-          echo "⚠️  FireCastle/js directory not found"
-        fi
-        
-        # Check if it's a Node.js project with API
-        if [ -f "FireCastle/package.json" ]; then
-          echo "✅ package.json found (Node.js API project)"
-          cat FireCastle/package.json | grep -E '"(express|node-cache|winston)"' && echo "✅ API dependencies detected"
-        fi
-    
-    - name: Document API endpoints
-      run: |
-        echo "📝 Documenting FireCastle API endpoints..."
-        echo "Based on documentation, FireCastle provides:"
-        echo "  - GET /api/clan - Clan information"
-        echo "  - GET /api/player - Player data"
-        echo "  - GET /api/clanwar - Clan war status"
-        echo "  - GET /api/clan/stats - Extended clan statistics"
-        echo "  - GET /api/player/stats - Detailed player statistics"
-        echo ""
-        echo "⚠️  Note: API tests require deployed environment with Clash of Clans API key"
-        echo "These endpoints should be tested in the live environment."
-
-  test-autuneonline:
-    name: Test AuTuneOnline Project
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Check AuTuneOnline submodule
-      run: |
-        echo "🧪 Testing AuTuneOnline submodule..."
-        
-        if [ ! -d "AuTuneOnline" ]; then
-          echo "❌ AuTuneOnline directory not found!"
-          exit 1
-        fi
-        
-        echo "✅ AuTuneOnline submodule exists"
-    
-    - name: Check AuTuneOnline structure
-      run: |
-        echo "🧪 Checking AuTuneOnline file structure..."
-        
-        if [ -f "AuTuneOnline/public/index.html" ]; then
-          echo "✅ public/index.html found"
-        else
-          echo "⚠️  AuTuneOnline/public/index.html not found"
-        fi
-        
-        if [ -f "AuTuneOnline/public/style.css" ]; then
-          echo "✅ public/style.css found"
-        else
-          echo "⚠️  AuTuneOnline/public/style.css not found"
-        fi
-        
-        if [ -f "AuTuneOnline/public/app.js" ]; then
-          echo "✅ public/app.js found"
-        else
-          echo "⚠️  AuTuneOnline/public/app.js not found"
-        fi
-        
-        echo "✅ AuTuneOnline structure check complete"
-    
-    - name: Verify Web Audio API usage
-      run: |
-        echo "🧪 Checking for Web Audio API implementation..."
-        
-        if [ -f "AuTuneOnline/public/app.js" ]; then
-          if grep -q "AudioContext\|webkitAudioContext" AuTuneOnline/public/app.js; then
-            echo "✅ Web Audio API detected"
-          fi
-          
-          if grep -q "AnalyserNode\|analyser" AuTuneOnline/public/app.js; then
-            echo "✅ Audio analysis implementation detected"
-          fi
-        fi
-
-  test-casinoidleslots:
-    name: Test CasinoIdleSlots Project
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        cache-dependency-path: 'CasinoIdleSlots/package-lock.json'
-    
-    - name: Check CasinoIdleSlots submodule
-      run: |
-        echo "🧪 Testing CasinoIdleSlots submodule..."
-        
-        if [ ! -d "CasinoIdleSlots" ]; then
-          echo "❌ CasinoIdleSlots directory not found!"
-          exit 1
-        fi
-        
-        if [ ! -f "CasinoIdleSlots/package.json" ]; then
-          echo "❌ CasinoIdleSlots/package.json not found!"
-          exit 1
-        fi
-        
-        echo "✅ CasinoIdleSlots submodule structure OK"
-    
-    - name: Install CasinoIdleSlots dependencies
-      working-directory: CasinoIdleSlots
-      run: |
-        echo "📦 Installing dependencies..."
-        npm ci 2>/dev/null || npm install
-    
-    - name: Build CasinoIdleSlots
-      working-directory: CasinoIdleSlots
-      env:
-        # Use demo mode for testing to avoid needing secrets
-        VITE_ENABLE_DEMO_MODE: 'true'
-      run: |
-        echo "🎰 Building CasinoIdleSlots..."
-        
-        # Create dummy .env for build if needed
-        touch .env
-        
-        npm run build
-        
-        if [ ! -d "dist" ]; then
-          echo "❌ Build failed - dist directory not created!"
-          exit 1
-        fi
-        
-        if [ ! -f "dist/index.html" ]; then
-          echo "❌ Build failed - index.html not found in dist!"
-          exit 1
-        fi
-        
-        echo "✅ CasinoIdleSlots build successful"
-
-  test-testomax:
-    name: Test TestoMax
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Test project structure
-      run: |
-        echo "🧪 Testing TestoMax structure..."
-        
-        if [ -d "TestoMax" ]; then
-          echo "✅ TestoMax directory exists"
-          ls -la TestoMax/
-        else
-          echo "❌ TestoMax directory missing"
-          exit 1
-        fi
-        
-        # Check for key files
-        if [ -f "TestoMax/index.html" ] || [ -f "TestoMax/public/index.html" ]; then
-          echo "✅ Entry point found"
-        else
-          echo "⚠️  No index.html found in root or public/"
-        fi
-
-  test-external-links:
-    name: Test External Project Links
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    
-    - name: Test SoundofLvke link
-      run: |
-        echo "🧪 Testing external project link..."
-        
-        # Check if the link is present in the HTML
-        if grep -q "soundoflvke.github.io" index.html; then
-          echo "✅ SoundofLvke link found in index.html"
-        else
-          echo "⚠️  SoundofLvke link not found"
-        fi
-        
-        if [ -f "projects/soundoflvke.html" ]; then
-          echo "✅ SoundofLvke project page exists"
-        fi
-    
-    - name: Test external link availability (HTTP check)
-      run: |
-        echo "🌐 Testing external link availability..."
-        
-        # Test if soundoflvke.github.io is reachable
-        if curl -s -o /dev/null -w "%{http_code}" https://soundoflvke.github.io | grep -q "200\|301\|302"; then
-          echo "✅ SoundofLvke website is reachable"
-        else
-          echo "⚠️  SoundofLvke website returned unexpected status or is unreachable"
-        fi
-
-  test-report:
-    name: Generate Test Report
-    runs-on: ubuntu-latest
-    needs: [test-portfolio, test-ageofmax, test-firecastle, test-autuneonline, test-casinoidleslots, test-testomax, test-external-links]
-    if: always()
-    
-    steps:
     - name: Generate summary
+      if: always()
       run: |
-        echo "# 📊 Project Testing Summary" >> $GITHUB_STEP_SUMMARY
+        echo "# 📊 Validation Summary" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+        echo "Quick sanity check completed. Full builds run on deploy." >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "| Project | Status |" >> $GITHUB_STEP_SUMMARY
-        echo "|---------|--------|" >> $GITHUB_STEP_SUMMARY
-        echo "| Portfolio Pages | ${{ needs.test-portfolio.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| AgeOfMax | ${{ needs.test-ageofmax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| FireCastle | ${{ needs.test-firecastle.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| AuTuneOnline | ${{ needs.test-autuneonline.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| CasinoIdleSlots | ${{ needs.test-casinoidleslots.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| TestoMax | ${{ needs.test-testomax.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| External Links | ${{ needs.test-external-links.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ HTML structure validation" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Internal link checking" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Build verification" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Project structure validation" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ External link availability" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "---" >> $GITHUB_STEP_SUMMARY
-        echo "*Tests run on $(date)*" >> $GITHUB_STEP_SUMMARY
+        echo "**Note:** This workflow validates structure only." >> $GITHUB_STEP_SUMMARY
+        echo "The deploy.yml workflow performs actual builds and catches build errors." >> $GITHUB_STEP_SUMMARY

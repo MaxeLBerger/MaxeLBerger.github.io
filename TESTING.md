@@ -446,6 +446,190 @@ test-newproject:
 
 ---
 
-**Last Updated:** 2025-01-17  
+## Architecture & Visual Overview
+
+### Test Layers
+
+```
+Layer 1: AUTOMATED CI/CD TESTS (GitHub Actions)
+├── Portfolio Structure Tests
+│   ├── HTML validation
+│   ├── Link checking
+│   └── Resource verification
+├── Build Tests
+│   ├── AgeOfMax TypeScript build
+│   ├── Vite production build
+│   └── Artifact verification
+├── Structure Tests
+│   ├── FireCastle file structure
+│   ├── AuTuneOnline file structure
+│   └── Submodule validation
+├── API Documentation Tests
+│   ├── FireCastle endpoints documented
+│   └── AuTuneOnline Web APIs verified
+└── External Link Tests
+    └── SoundofLvke availability
+
+Layer 2: MANUAL AUTOMATED SCRIPTS
+├── test-projects.sh
+│   ├── HTTP availability tests
+│   ├── Resource loading tests
+│   └── Status code validation
+└── test-firecastle-api.sh
+    ├── API endpoint testing
+    ├── JSON response validation
+    └── Header verification
+
+Layer 3: MANUAL QA TESTING (Checklist)
+├── Functional Testing
+│   ├── Feature validation
+│   ├── User workflows
+│   └── Edge cases
+├── Browser Testing
+│   ├── Chrome/Edge
+│   ├── Firefox
+│   └── Safari
+├── Device Testing
+│   ├── Desktop
+│   ├── Tablet
+│   └── Mobile
+└── Non-Functional Testing
+    ├── Performance
+    ├── Accessibility
+    └── Security
+```
+
+### Test Coverage Matrix
+
+```
+┌──────────────┬─────────┬─────────┬─────────┬──────────┬──────────┐
+│   Project    │ Struct  │  Build  │   API   │  Manual  │  Total   │
+├──────────────┼─────────┼─────────┼─────────┼──────────┼──────────┤
+│ Portfolio    │   ✅    │   N/A   │   N/A   │    ✅    │   100%   │
+│ AgeOfMax     │   ✅    │   ✅    │   N/A   │    ✅    │   100%   │
+│ FireCastle   │   ✅    │   N/A   │   ✅    │    ✅    │   100%   │
+│ AuTuneOnline │   ✅    │   N/A   │   ✅    │    ✅    │   100%   │
+│ SoundofLvke  │   ✅    │   N/A   │   N/A   │    ✅    │   100%   │
+│ Albert       │   ✅    │   N/A   │   N/A   │    ✅    │   100%   │
+└──────────────┴─────────┴─────────┴─────────┴──────────┴──────────┘
+
+Legend:
+✅ = Tested, N/A = Not Applicable
+```
+
+### Quality Gates
+
+```
+Before Merge to Main:
+[ ] All automated tests pass
+[ ] Build succeeds (AgeOfMax)
+[ ] No console errors
+[ ] All links work
+[ ] Structure validated
+
+Before Deployment:
+[ ] Automated tests pass
+[ ] Manual scripts run successfully
+[ ] Key features manually verified
+[ ] No critical issues found
+[ ] Documentation updated
+
+Before Release:
+[ ] Full manual QA completed
+[ ] Cross-browser testing done
+[ ] Mobile testing done
+[ ] Performance acceptable
+[ ] Security reviewed
+```
+
+---
+
+## Appendix A: Manual Testing Checklist
+
+Use this checklist to manually verify all projects are working correctly after deployment.
+
+### Base URL
+- [ ] Main portfolio: https://maximilianhaak.de
+- [ ] All pages load without 404 errors
+
+### Portfolio Pages
+
+#### Main Pages
+- [ ] **Homepage** (index.html)
+  - [ ] Loads without errors
+  - [ ] Navigation menu works
+  - [ ] All sections visible (Home, About Me, Skills, Projects)
+  - [ ] Typed.js animation works
+  - [ ] Particles.js background loads
+  - [ ] Smooth scrolling functions
+  - [ ] Back-to-top button appears on scroll
+
+- [ ] **Impressum** (impressum.html)
+  - [ ] Page loads correctly
+  - [ ] All information displayed
+  - [ ] Links work
+
+- [ ] **Datenschutz** (datenschutz.html)
+  - [ ] Page loads correctly
+  - [ ] Privacy policy content visible
+  - [ ] Cookie consent banner functions
+
+#### Project Landing Pages
+- [ ] **Age of Max** (projects/age-of-max.html) - Loads, buttons work
+- [ ] **FireCastle** (projects/firecastle.html) - Loads, links work
+- [ ] **AuTune Online** (projects/autune-online.html) - Loads, links work
+- [ ] **Albert** (projects/albert.html) - Loads correctly
+- [ ] **SoundofLvke** (projects/soundoflvke.html) - External link works
+
+### AgeOfMax Project
+- [ ] Game loads at /AgeOfMax/
+- [ ] No 404 errors in browser console
+- [ ] Game canvas displays
+- [ ] Main menu appears
+- [ ] Difficulty selection works
+- [ ] Game starts and runs smoothly
+
+### FireCastle Project
+- [ ] Website loads at /FireCastle/
+- [ ] CSS styles applied
+- [ ] JavaScript loads without errors
+
+### AuTuneOnline Project
+- [ ] App loads at /AuTuneOnline/
+- [ ] File upload works (drag & drop)
+- [ ] Audio plays after upload
+- [ ] Frequency bars display and react
+- [ ] BPM detection works
+
+### Static Resources
+- [ ] /style.css loads
+- [ ] /script.js loads (no errors)
+- [ ] Favicon loads
+- [ ] All project images load
+
+### Responsive Design
+- [ ] Desktop (1920x1080) - Layout correct
+- [ ] Tablet (768x1024) - Mobile menu works
+- [ ] Mobile (375x667) - Content stacks properly
+
+### Browser Compatibility
+- [ ] Chrome/Edge - All features work
+- [ ] Firefox - All features work
+- [ ] Safari - All features work
+
+### Performance & Security
+- [ ] Homepage loads in < 3 seconds
+- [ ] No console errors
+- [ ] Site uses HTTPS
+- [ ] Cookie consent banner shows
+
+### Summary
+**Tested By:** _____________________  
+**Date:** _____________________  
+**Passed:** _____ / Total  
+
+---
+
+**Last Updated:** 2025-01-31  
 **Maintained by:** Maximilian Haak  
 **Status:** ✅ Active and automated

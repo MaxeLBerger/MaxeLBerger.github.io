@@ -1,3 +1,15 @@
+/* ========================================
+   GLOBAL VARIABLES
+   ======================================== */
+:root {
+    --color-primary: #00e676;
+    --color-secondary: #6c63ff;
+    --color-dark-green: #00c853;
+    --bg-dark: #121212;
+    --bg-card: rgba(42, 42, 42, 0.8);
+    --bg-container: rgba(30, 30, 30, 0.6);
+}
+
 /* Allgemeines Styling */
 body {
     margin: 0;
@@ -263,15 +275,24 @@ nav .menu-toggle .bar {
 
 /* Skills Section */
 .skills-section {
-    padding: 100px 20px;
-    background-color: transparent; /* Grauer Bereich entfernt */
+    padding: 80px 20px;
+    background-color: transparent;
 }
 
 .skills-section h2 {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     font-size: 36px;
     color: #00e676;
+}
+
+.skills-section > p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    color: #b0b0b0;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .skills-container {
@@ -282,7 +303,7 @@ nav .menu-toggle .bar {
 }
 
 .skill-card {
-    background-color: rgba(42, 42, 42, 0.8); /* Transparenter Hintergrund */
+    background-color: rgba(42, 42, 42, 0.8);
     padding: 40px 20px;
     border-radius: 16px;
     text-align: center;
@@ -336,6 +357,96 @@ nav .menu-toggle .bar {
 .skill-card:hover h3 {
     color: #121212;
 }
+
+/* AI Stack Compartments */
+.ai-stack-section {
+    padding-bottom: 60px;
+}
+
+.ai-compartment {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background-color: rgba(30, 30, 30, 0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 230, 118, 0.1);
+}
+
+.ai-compartment:last-child {
+    margin-bottom: 0;
+}
+
+.compartment-header {
+    text-align: center;
+    font-size: 24px;
+    color: #00e676;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.compartment-header i {
+    margin-right: 10px;
+}
+
+.ai-compartment .skills-container {
+    gap: 25px;
+}
+
+.ai-compartment .skill-card {
+    width: 160px;
+    height: 150px;
+    padding: 25px 15px;
+}
+
+.ai-compartment .skill-card .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.ai-compartment .skill-card img {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.ai-compartment .skill-card h3 {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .ai-compartment {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+    
+    .compartment-header {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .ai-compartment .skill-card {
+        width: 130px;
+        height: 130px;
+        padding: 20px 10px;
+    }
+    
+    .ai-compartment .skill-card .icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .ai-compartment .skill-card img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+    
+    .ai-compartment .skill-card h3 {
+        font-size: 12px;
+    }
+}
+
+
 
 /* Projekte Section */
 .projects-section {
@@ -570,10 +681,7 @@ footer .footer-link:hover {
         padding: 0;
     }
 
-    .skills-container {
-        flex-direction: column;
-        align-items: center;
-    }
+
 
     .hero-content {
         padding-top: 150px;
@@ -920,3 +1028,232 @@ footer .footer-link:hover {
 }
 
 .consent-link { color: #00e676; text-decoration: underline; }
+
+/* ========================================
+   AI STACK - CLEAN, CENTERED DESIGN
+   ======================================== */
+
+/* CATEGORY CONTAINER */
+.ai-category {
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    padding: 28px 32px;
+    background: rgba(30, 30, 30, 0.5);
+    border-radius: 16px;
+    border-left: 4px solid var(--category-color, var(--color-primary));
+}
+
+.ai-category.coding   { --category-color: #00e676; }
+.ai-category.models   { --category-color: #6c63ff; }
+.ai-category.tools    { --category-color: #00c853; }
+.ai-category.workflows { --category-color: #6c63ff; }
+
+/* CATEGORY HEADER */
+.ai-category-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: var(--category-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.ai-category-header i {
+    font-size: 1rem;
+}
+
+/* SKILL CARDS GRID - Centered flex */
+.ai-skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* INDIVIDUAL SKILL CARD - Clean pill style */
+.ai-skill-card {
+    background: rgba(42, 42, 42, 0.9);
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ai-skill-card:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 230, 118, 0.12);
+    border-color: rgba(0, 230, 118, 0.4);
+}
+
+.ai-skill-card:hover h4 {
+    color: #00e676;
+}
+
+.ai-skill-card img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.ai-skill-card i {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.ai-skill-card:hover i {
+    color: #00e676;
+}
+
+.ai-skill-card h4 {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #e0e0e0;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* SHOW MORE - CSS-ONLY ACCORDION */
+
+/* Hidden overflow items */
+.ai-skills-overflow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+}
+
+/* Checkbox hack for pure CSS toggle */
+.ai-toggle-checkbox {
+    display: none;
+}
+
+/* Toggle button styling */
+.ai-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    cursor: pointer;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.ai-toggle-label:hover {
+    color: var(--color-primary);
+    background: rgba(0, 230, 118, 0.1);
+}
+
+.ai-toggle-label i {
+    transition: transform 0.2s ease;
+}
+
+/* Expanded state */
+.ai-toggle-checkbox:checked ~ .ai-skills-overflow {
+    max-height: 500px; /* Increased to ensure all items fit */
+    margin-top: 16px;
+}
+
+.ai-toggle-checkbox:checked ~ .ai-toggle-label i {
+    transform: rotate(180deg);
+}
+
+.ai-toggle-checkbox:checked ~ .ai-toggle-label .toggle-text-more {
+    display: none;
+}
+
+.ai-toggle-checkbox:checked ~ .ai-toggle-label .toggle-text-less {
+    display: inline;
+}
+
+.toggle-text-less {
+    display: none;
+}
+
+/* EXPERTISE PILLS (Workflows Section) */
+.ai-expertise-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.expertise-pill {
+    background: rgba(108, 99, 255, 0.12);
+    border: 1px solid rgba(108, 99, 255, 0.25);
+    border-radius: 16px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+.expertise-pill:hover {
+    background: rgba(0, 230, 118, 0.12);
+    border-color: rgba(0, 230, 118, 0.25);
+    color: #fff;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    /* Auto-fill handles columns automatically */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .ai-skills-grid,
+    .ai-skills-overflow {
+        gap: 10px;
+    }
+    
+    .ai-category {
+        padding: 16px 12px;
+    }
+    
+    .ai-skill-card {
+        padding: 8px 12px;
+    }
+    
+    .ai-skill-card img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .ai-skill-card i {
+        font-size: 1.2rem;
+    }
+    
+    .ai-skill-card h4 {
+        font-size: 0.75rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .ai-skills-grid,
+    .ai-skills-overflow {
+        gap: 8px;
+    }
+    
+    .ai-skill-card {
+        padding: 6px 10px;
+    }
+}

@@ -331,7 +331,6 @@ Nach vollständigem Setup sollte gelten:
 
 ## 📚 Weitere Ressourcen
 
-- [PROJECT_REPOS_SETUP.md](PROJECT_REPOS_SETUP.md) - Detaillierte technische Dokumentation
 - [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md) - Alle Code-Templates zum Kopieren
 - [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md) - Workflow-Übersicht und Quick Commands
 - [README.md](README.md) - Repository-Hauptdokumentation
@@ -352,6 +351,88 @@ Nach vollständigem Setup sollte gelten:
 **Zeit bis Live:** 3-5 Minuten nach Push! 🚀
 
 **GitHub Copilot:** Nutzt automatisch die projekt-spezifischen Agents für intelligente Code-Assistenz!
+
+---
+
+## 🌐 GitHub Pages Setup für Projekt-Repositories
+
+Falls du GitHub Pages für die einzelnen Projekt-Repositories aktivieren musst:
+
+### Schritt 1: GitHub Pages in jedem Repository aktivieren
+
+Für **AgeOfMax, FireCastle, AuTuneOnline**:
+
+1. Öffne die Repository-Settings
+2. Scrolle zu "Pages" (linke Sidebar)
+3. Bei "Source" wähle: **main** branch
+4. Bei Folder wähle: **/ (root)** oder **/docs**
+5. Klicke "Save"
+
+**URLs nach Aktivierung:**
+- https://maxelberger.github.io/AgeOfMax
+- https://maxelberger.github.io/FireCastle
+- https://maxelberger.github.io/AuTuneOnline
+
+### Alternative: GitHub Actions Deploy Workflow
+
+Falls Projekte einen Build-Schritt brauchen (TypeScript, Vite, etc.):
+
+Erstelle `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # oder ./build je nach Projekt
+```
+
+### Custom Domain Setup (Optional)
+
+Falls du Subdomains verwenden möchtest:
+
+**Bei IONOS (DNS-Einstellungen):**
+```
+ageofmax.maximilianhaak.de → maxelberger.github.io
+firecastle.maximilianhaak.de → maxelberger.github.io
+autune.maximilianhaak.de → maxelberger.github.io
+```
+
+**In GitHub:**
+1. Settings → Pages → Custom domain eingeben
+2. "Enforce HTTPS" aktivieren
+3. `CNAME`-Datei im Root erstellen mit der Domain
+
+### GitHub Pages Troubleshooting
+
+| Problem | Lösung |
+|---------|--------|
+| 404 - Page not found | Prüfe ob GitHub Pages aktiviert ist, `index.html` vorhanden |
+| Build failed | Prüfe GitHub Actions Tab und Dependencies |
+| Site not updating | Warte 5-10 Min, lösche Browser-Cache |
 
 ---
 

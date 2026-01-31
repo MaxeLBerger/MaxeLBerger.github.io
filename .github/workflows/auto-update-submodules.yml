@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       submodule:
-        description: 'Submodule to update (AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer)'
+        description: 'Submodule to update'
         required: true
         type: choice
         options:
@@ -30,71 +30,29 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Configure Git
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          
-      - name: Update Submodule (Repository Dispatch)
-        if: github.event_name == 'repository_dispatch'
+
+      - name: Update Submodule
         run: |
-          SUBMODULE="${{ github.event.client_payload.submodule }}"
-          echo "🔄 Triggered by repository_dispatch from project: $SUBMODULE"
-          echo "📦 Current submodule commit:"
-          git submodule status $SUBMODULE || true
+          SUBMODULE="${{ github.event.client_payload.submodule || inputs.submodule }}"
+          echo "🔄 Updating submodule: $SUBMODULE"
           
-          echo "⬇️ Fetching latest changes from $SUBMODULE..."
           cd $SUBMODULE
           git fetch origin main
           git checkout origin/main
           cd ..
           
-          echo "📝 Staging changes..."
           git add $SUBMODULE
           
           if git diff --staged --quiet; then
-            echo "✅ No changes to commit - already up to date"
+            echo "✅ Already up to date"
           else
-            echo "📦 New submodule commit:"
-            git submodule status $SUBMODULE
-            git commit -m "🤖 Auto-update $SUBMODULE to latest version" -m "Triggered by push to $SUBMODULE repository." -m "Updated via repository_dispatch event."
-            
-            # FIX: Pull latest changes to avoid conflicts
+            git commit -m "🔄 Update $SUBMODULE to latest version"
             git pull --rebase origin main
-            
             git push
-            echo "✅ Successfully updated and pushed $SUBMODULE"
-          fi
-          
-      - name: Update Submodule (Manual Dispatch)
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          SUBMODULE="${{ inputs.submodule }}"
-          echo "🔄 Manual update triggered for: $SUBMODULE"
-          echo "📦 Current submodule commit:"
-          git submodule status $SUBMODULE || true
-          
-          echo "⬇️ Fetching latest changes from $SUBMODULE..."
-          cd $SUBMODULE
-          git fetch origin main
-          git checkout origin/main
-          cd ..
-          
-          echo "📝 Staging changes..."
-          git add $SUBMODULE
-          
-          if git diff --staged --quiet; then
-            echo "✅ No changes to commit - already up to date"
-          else
-            echo "📦 New submodule commit:"
-            git submodule status $SUBMODULE
-            git commit -m "🔄 Update $SUBMODULE to latest version" -m "Manually triggered via workflow_dispatch."
-            
-            # FIX: Pull latest changes to avoid conflicts
-            git pull --rebase origin main
-            
-            git push
-            echo "✅ Successfully updated and pushed $SUBMODULE"
+            echo "✅ Successfully updated $SUBMODULE"
           fi

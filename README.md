@@ -52,7 +52,7 @@ Professional audio visualizer with real-time BPM detection, frequency analysis, 
 
 ### CasinoIdleSlots - Idle Casino Game
 
-![CasinoIdleSlots Screenshot](res/projects/casinoIdleslots.png)
+![CasinoIdleSlots Screenshot](res/projects/CasinoIdleSlots.png)
 
 Idle slot machine casino game with GitHub integration. Collect coins, unlock upgrades, and climb the leaderboard!
 
@@ -78,7 +78,7 @@ Innovative web project showcasing modern web technologies with interactive featu
 
 ### BetterBestie - 30-Day GlowUp Challenge
 
-![BetterBestie Screenshot](res/projects/betterbestie.png)
+![BetterBestie Screenshot](res/projects/BetterBestie.png)
 
 Full-stack wellness app for the 30-day GlowUp Challenge. Track daily tasks across hydration, movement, mindfulness, nutrition, learning, and sleep categories.
 
@@ -126,14 +126,27 @@ This portfolio uses a fully automated CI/CD pipeline. Every push to any project 
 
 ---
 
+## � Getting Started
+
+1. **Understand the system** - Read [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md)
+2. **Set up automation** - Follow [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)
+3. **Daily reference** - Use [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for commands
+
+After setup: Push to any project repo → Automatic portfolio update → Live in 3-5 minutes!
+
+---
+
 ## 📖 Documentation
 
-For developers and contributors:
-
-- **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** - Complete setup instructions
-- **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** - Workflow and deployment guide
-- **[TESTING.md](TESTING.md)** - Testing documentation
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+| Document | Purpose |
+|----------|---------|
+| [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md) | System overview and architecture |
+| [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md) | Step-by-step setup instructions |
+| [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md) | Copy-paste workflow templates |
+| [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md) | Deployment workflow details |
+| [TESTING.md](TESTING.md) | Testing documentation |
+| [QUICK_REFERENCE.md](QUICK_REFERENCE.md) | Commands and troubleshooting |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines |
 
 ---
 
