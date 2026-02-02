@@ -1,8 +1,207 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ========================================
+    // PREMIUM SCROLL ANIMATIONS
+    // ========================================
+    function initScrollAnimations() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe skill cards
+        document.querySelectorAll('.skill-card').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Observe section headers
+        document.querySelectorAll('.skills-section h2, .ai-stack-section h2, .compartment-header').forEach(el => {
+            revealObserver.observe(el);
+        });
+    }
+
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // ========================================
+    // INFINITE LOOP CAROUSEL INITIALIZATION
+    // ========================================
+    function initCarousels() {
+        const carousels = document.querySelectorAll('.carousel-container');
+        
+        carousels.forEach(container => {
+            const track = container.querySelector('.carousel-track');
+            const leftArrow = container.querySelector('.carousel-arrow-left');
+            const rightArrow = container.querySelector('.carousel-arrow-right');
+            const originalCards = Array.from(track.querySelectorAll('.project-card'));
+            
+            if (!track || !leftArrow || !rightArrow || originalCards.length === 0) return;
+            
+            const totalOriginal = originalCards.length;
+            let isTransitioning = false;
+            
+            // Calculate visible cards based on viewport width
+            function getVisibleCards() {
+                const viewportWidth = window.innerWidth;
+                if (viewportWidth >= 1200) return 4;
+                if (viewportWidth >= 992) return 3;
+                if (viewportWidth >= 768) return 2;
+                return 1;
+            }
+            
+            // Check if carousel needs looping
+            function needsLoop() {
+                return totalOriginal > getVisibleCards();
+            }
+            
+            // Clone cards for infinite loop effect
+            function setupInfiniteLoop() {
+                // Remove any existing clones
+                track.querySelectorAll('.carousel-clone').forEach(clone => clone.remove());
+                
+                if (!needsLoop()) {
+                    leftArrow.classList.add('hidden');
+                    rightArrow.classList.add('hidden');
+                    track.style.transform = 'translateX(0)';
+                    return;
+                }
+                
+                leftArrow.classList.remove('hidden');
+                rightArrow.classList.remove('hidden');
+                
+                const visibleCards = getVisibleCards();
+                
+                // Clone cards at the end (first N cards cloned to end)
+                for (let i = 0; i < visibleCards; i++) {
+                    const clone = originalCards[i].cloneNode(true);
+                    clone.classList.add('carousel-clone');
+                    track.appendChild(clone);
+                }
+                
+                // Clone cards at the beginning (last N cards cloned to start)
+                for (let i = totalOriginal - 1; i >= totalOriginal - visibleCards; i--) {
+                    const clone = originalCards[i].cloneNode(true);
+                    clone.classList.add('carousel-clone');
+                    track.insertBefore(clone, track.firstChild);
+                }
+            }
+            
+            // Get card width including gap
+            function getCardWidth() {
+                const cards = track.querySelectorAll('.project-card');
+                if (cards.length === 0) return 0;
+                const cardWidth = cards[0].offsetWidth;
+                const trackStyle = window.getComputedStyle(track);
+                const gap = parseInt(trackStyle.gap) || 24;
+                return cardWidth + gap;
+            }
+            
+            // Current position (index in the cloned array, starting after prepended clones)
+            let currentIndex = 0;
+            
+            // Set initial position (after prepended clones)
+            function setInitialPosition() {
+                if (!needsLoop()) return;
+                const visibleCards = getVisibleCards();
+                currentIndex = visibleCards; // Start after prepended clones
+                const cardWidth = getCardWidth();
+                track.style.transition = 'none';
+                track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            }
+            
+            // Slide with smooth animation
+            function slideTo(index, smooth = true) {
+                if (isTransitioning) return;
+                
+                const cardWidth = getCardWidth();
+                
+                if (smooth) {
+                    track.style.transition = 'transform 0.4s ease';
+                } else {
+                    track.style.transition = 'none';
+                }
+                
+                currentIndex = index;
+                track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+                
+                if (smooth) {
+                    isTransitioning = true;
+                }
+            }
+            
+            // Handle loop reset after transition
+            function handleTransitionEnd() {
+                isTransitioning = false;
+                
+                if (!needsLoop()) return;
+                
+                const visibleCards = getVisibleCards();
+                const totalWithClones = totalOriginal + (visibleCards * 2);
+                
+                // If we're at the cloned end section, jump to real start
+                if (currentIndex >= totalOriginal + visibleCards) {
+                    currentIndex = visibleCards + (currentIndex - totalOriginal - visibleCards);
+                    slideTo(currentIndex, false);
+                }
+                
+                // If we're at the cloned start section, jump to real end
+                if (currentIndex < visibleCards) {
+                    currentIndex = totalOriginal + currentIndex;
+                    slideTo(currentIndex, false);
+                }
+            }
+            
+            // Event listeners
+            track.addEventListener('transitionend', handleTransitionEnd);
+            
+            leftArrow.addEventListener('click', () => {
+                if (!isTransitioning) {
+                    slideTo(currentIndex - 1);
+                }
+            });
+            
+            rightArrow.addEventListener('click', () => {
+                if (!isTransitioning) {
+                    slideTo(currentIndex + 1);
+                }
+            });
+            
+            // Handle resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    setupInfiniteLoop();
+                    setInitialPosition();
+                }, 150);
+            });
+            
+            // Initial setup
+            setupInfiniteLoop();
+            setInitialPosition();
+        });
+    }
+    
+    // Initialize carousels
+    initCarousels();
+    
+    // ========================================
+    // END CAROUSEL
+    // ========================================
+
     // Typed.js Animation (nur in der Home-Section)
     var heroSection = document.getElementById('home');
     if (heroSection) {
-        var typed = new Typed('.typing', {
+        new Typed('.typing', {
             strings: ["Software-Entwickler", "Web-Entwickler", "KI-Enthusiast"],
             typeSpeed: 60,
             backSpeed: 40,
