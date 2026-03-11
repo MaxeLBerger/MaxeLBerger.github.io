@@ -27,7 +27,7 @@ jobs:
         done
         
         # Project pages
-        for page in age-of-max firecastle autune-online albert soundoflvke testomax betterbestie dl4j-graph-explorer; do
+        for page in age-of-max firecastle autune-online albert soundoflvke testomax betterbestie dl4j-graph-explorer casino-idle-slots aicaptain acai-agents e46-studio imkerei-feuerstein shookroko; do
           [ -f "projects/${page}.html" ] && echo "✅ projects/${page}.html" || echo "⚠️  projects/${page}.html missing"
         done
         
