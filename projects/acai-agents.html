@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acai Agents - AI Development Agency | Maximilian Haak</title>
+    <meta name="description" content="Acai Agents - AI-Powered Software Development Agency mit modernem Design, Dark/Light Mode und GSAP Animationen.">
+    <meta name="keywords" content="Acai Agents, AI, Software Development, React, GSAP, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">Acai Agents</h1>
+                <p class="project-tagline">AI-Powered Software Development Agency</p>
+                <div class="project-actions">
+                    <a href="https://acai-agents.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fas fa-globe"></i> Website besuchen
+                    </a>
+                    <a href="https://github.com/MaxeLBerger/Acai-Agents" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>Acai Agents ist die Website einer AI-gestützten Software Development Agency. Das Projekt demonstriert modernes Webdesign mit React, fortschrittlichen GSAP-Animationen und einem durchdachten Dark/Light Mode System.</p>
+                    <p>Die Seite verbindet professionelles Enterprise-Design mit smoother UX und setzt auf Performance-Optimierung sowie Security Best Practices.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-moon"></i>
+                            <h3>Dark/Light Mode</h3>
+                            <p>Intelligentes Theme-System mit smooth Transitions und Systemeinstellung-Erkennung.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-magic"></i>
+                            <h3>GSAP Animationen</h3>
+                            <p>Professionelle Scroll-Triggered Animationen und Micro-Interactions für Premium-Feeling.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Enterprise Security</h3>
+                            <p>Security Best Practices und optimierte Performance für professionellen Einsatz.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Responsive Design</h3>
+                            <p>Optimiert für alle Geräte — vom Smartphone bis zum 4K-Desktop.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">GSAP</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">Vercel</span>
+                        <span class="tech-badge">Responsive Design</span>
+                    </div>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Überzeug dich selbst</h2>
+                    <p>Erlebe modernes AI-Agency Design in Aktion!</p>
+                    <div class="cta-buttons">
+                        <a href="https://acai-agents.vercel.app/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Live Website
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/Acai-Agents" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
+        </p>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+</html>

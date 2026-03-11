@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E46 Studio - BMW Diagnostic Tool | Maximilian Haak</title>
+    <meta name="description" content="E46 Studio - BMW E46 Diagnose- und Codiertool mit DS2-Protokoll über K-Line. Python Desktop-App mit sicherem 12-Schritt Schreibverfahren.">
+    <meta name="keywords" content="E46 Studio, BMW, E46, Diagnostic, DS2, K-Line, Python, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">E46 Studio</h1>
+                <p class="project-tagline">BMW E46 Diagnose- und Codiertool mit DS2-Protokoll</p>
+                <div class="project-actions">
+                    <a href="https://github.com/MaxeLBerger/E46_Coder" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>E46 Studio ist ein Python-basiertes Diagnose- und Codiertool für den BMW E46 (1998–2006). Es kommuniziert über das DS2-Protokoll via K-Line mit den Steuergeräten des Fahrzeugs und bietet eine intuitive GUI zum Auslesen und Löschen von Fehlercodes sowie zur GM5 Body-Codierung.</p>
+                    <p>Besonderes Augenmerk liegt auf Sicherheit: Ein 12-Schritt Verifikationsprozess mit automatischem Backup und Rollback schützt vor fehlerhaften Schreibvorgängen.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Fehlercodes lesen/löschen</h3>
+                            <p>Alle Module scannen mit Klartext-Beschreibungen der Fehlercodes.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-sliders-h"></i>
+                            <h3>GM5 Body Coding</h3>
+                            <p>38+ Parameter mit menschenlesbaren Labels für komfortable Fahrzeug-Konfiguration.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>12-Schritt Safe Write</h3>
+                            <p>Spannungsprüfung, Backup, Diff, Schreibvorgang und Readback-Verifikation mit Auto-Rollback.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-save"></i>
+                            <h3>Automatische Backups</h3>
+                            <p>SHA-256 verifizierte Backups vor jedem Schreibvorgang für maximale Sicherheit.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-usb"></i>
+                            <h3>Multi-Kabel Support</h3>
+                            <p>Automatische Erkennung von FTDI, CH340, PL2303 und CP2102 K+DCAN Kabeln.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-desktop"></i>
+                            <h3>CustomTkinter GUI</h3>
+                            <p>Moderne Desktop-Oberfläche — Pure Python, kein Web-Server oder Electron nötig.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python 3.11+</span>
+                        <span class="tech-badge">CustomTkinter</span>
+                        <span class="tech-badge">DS2 Protokoll</span>
+                        <span class="tech-badge">K-Line / OBD</span>
+                        <span class="tech-badge">SHA-256</span>
+                        <span class="tech-badge">pytest</span>
+                    </div>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Fahrzeug-Diagnose neu gedacht</h2>
+                    <p>Open-Source BMW E46 Diagnose mit Sicherheit an erster Stelle.</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/MaxeLBerger/E46_Coder" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub Repository
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/E46_Coder" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
+        </p>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+</html>

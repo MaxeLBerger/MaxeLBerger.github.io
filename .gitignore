@@ -46,3 +46,16 @@ __pycache__/
 *.tmp
 *.bak
 *.backup
+
+# Copilot agent/instruction/skill configs (local dev tooling)
+.github/agents/
+.github/instructions/
+.github/skills/
+
+# Internal planning documents (not for production)
+ARCHITECTURE_UI_REVIEW.md
+PORTFOLIO_REPO_PLAN.md
+LLM_REFACTORING_PLAN.md
+ANIMATION_PLAN.md
+UX_IMPROVEMENT_PLAN.md
+MARQUEE_IMPLEMENTATION.md

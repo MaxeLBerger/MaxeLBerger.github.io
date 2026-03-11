@@ -1,5 +1,19 @@
 ﻿name: Auto Update Submodules
 
+# Triggered automatically by project repos via repository_dispatch,
+# or manually via the Actions UI.
+#
+# To set up automatic triggers, add this to each project repo's CI:
+#
+#   - name: Notify portfolio
+#     if: github.ref == 'refs/heads/main'
+#     run: |
+#       curl -X POST \
+#         -H "Accept: application/vnd.github+json" \
+#         -H "Authorization: Bearer ${{ secrets.PORTFOLIO_PAT }}" \
+#         https://api.github.com/repos/MaxeLBerger/MaxeLBerger.github.io/dispatches \
+#         -d '{"event_type":"update-submodule","client_payload":{"submodule":"<PROJECT_NAME>"}}'
+
 on:
   repository_dispatch:
     types: [update-submodule]
@@ -17,6 +31,11 @@ on:
           - TestoMax
           - BetterBestie
           - dl4j-graph-explorer
+      all:
+        description: 'Update ALL submodules'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,23 +55,58 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-      - name: Update Submodule
+      - name: Determine submodules to update
+        id: targets
         run: |
-          SUBMODULE="${{ github.event.client_payload.submodule || inputs.submodule }}"
-          echo "🔄 Updating submodule: $SUBMODULE"
-          
-          cd $SUBMODULE
-          git fetch origin main
-          git checkout origin/main
-          cd ..
-          
-          git add $SUBMODULE
-          
-          if git diff --staged --quiet; then
-            echo "✅ Already up to date"
+          if [ "${{ inputs.all }}" = "true" ]; then
+            echo "submodules=AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer" >> $GITHUB_OUTPUT
           else
-            git commit -m "🔄 Update $SUBMODULE to latest version"
+            SUBMODULE="${{ github.event.client_payload.submodule || inputs.submodule }}"
+            if [ -z "$SUBMODULE" ]; then
+              echo "❌ No submodule specified"
+              exit 1
+            fi
+            echo "submodules=$SUBMODULE" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate submodule names
+        run: |
+          VALID="AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer"
+          for sub in ${{ steps.targets.outputs.submodules }}; do
+            if ! echo "$VALID" | grep -qw "$sub"; then
+              echo "❌ Unknown submodule: $sub"
+              exit 1
+            fi
+          done
+
+      - name: Update submodules
+        run: |
+          UPDATED=0
+          for SUBMODULE in ${{ steps.targets.outputs.submodules }}; do
+            echo "🔄 Updating: $SUBMODULE"
+
+            cd "$SUBMODULE"
+            git fetch origin main
+            BEFORE=$(git rev-parse HEAD)
+            git checkout origin/main
+            AFTER=$(git rev-parse HEAD)
+            cd ..
+
+            if [ "$BEFORE" != "$AFTER" ]; then
+              git add "$SUBMODULE"
+              echo "  📝 $BEFORE → $AFTER"
+              UPDATED=$((UPDATED + 1))
+            else
+              echo "  ✅ Already up to date"
+            fi
+          done
+
+          if git diff --staged --quiet; then
+            echo "✅ All submodules already up to date"
+          else
+            SUBJECTS="${{ steps.targets.outputs.submodules }}"
+            git commit -m "🔄 Update submodule(s): $SUBJECTS"
             git pull --rebase origin main
             git push
-            echo "✅ Successfully updated $SUBMODULE"
+            echo "✅ Pushed updates ($UPDATED submodule(s) changed)"
           fi
