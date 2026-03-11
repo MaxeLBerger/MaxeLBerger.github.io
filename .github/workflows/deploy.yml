@@ -33,10 +33,10 @@ jobs:
             needs_env: true
           - project: BetterBestie
             dist_path: dist/client
-            build_cmd: npx vite build --base=/BetterBestie/
+            build_cmd: npm run build
           - project: dl4j-graph-explorer
             dist_path: dist
-            build_cmd: npx vite build --base=/dl4j-graph-explorer/
+            build_cmd: npm run build
 
     steps:
       - name: Checkout with submodules
