@@ -15,160 +15,180 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # ──────────────────────────────────────────────
+  # Phase 1: Build all Vite/TS projects in parallel
+  # ──────────────────────────────────────────────
+  build-projects:
     runs-on: ubuntu-latest
-    
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - project: AgeOfMax
+            dist_path: dist
+            build_cmd: npm run build
+          - project: CasinoIdleSlots
+            dist_path: dist
+            build_cmd: npm run build
+            needs_env: true
+          - project: BetterBestie
+            dist_path: dist/client
+            build_cmd: npx vite build --base=/BetterBestie/
+          - project: dl4j-graph-explorer
+            dist_path: dist
+            build_cmd: npx vite build --base=/dl4j-graph-explorer/
+
     steps:
-    - name: Checkout main repo with submodules
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-        fetch-depth: 0
+      - name: Checkout with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
 
-    - name: Setup Node.js 20.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        cache-dependency-path: |
-          AgeOfMax/package-lock.json
-          CasinoIdleSlots/package-lock.json
-          BetterBestie/package-lock.json
-          dl4j-graph-explorer/package-lock.json
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
 
-    - name: Build AgeOfMax (Vite production)
-      working-directory: AgeOfMax
-      run: |
-        npm ci 2>/dev/null || npm install
-        npm run build
+      - name: Install dependencies
+        working-directory: ${{ matrix.project }}
+        run: npm ci || npm install
 
-    - name: Build CasinoIdleSlots (Vite production)
-      working-directory: CasinoIdleSlots
-      env:
-        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        VITE_ENABLE_DEMO_MODE: ${{ secrets.VITE_SUPABASE_URL == '' && 'true' || 'false' }}
-      run: |
-        cat > .env << EOF
-        VITE_SUPABASE_URL=$VITE_SUPABASE_URL
-        VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
-        EOF
-        npm ci 2>/dev/null || npm install
-        npm run build
-        if [ ! -f dist/index.html ]; then
-          echo "❌ Build failed - index.html not found in dist"
-          exit 1
-        fi
+      - name: Create environment file
+        if: matrix.needs_env
+        working-directory: ${{ matrix.project }}
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          cat > .env << EOF
+          VITE_SUPABASE_URL=$VITE_SUPABASE_URL
+          VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
+          EOF
 
-    - name: Build BetterBestie (Vite client only)
-      working-directory: BetterBestie
-      run: |
-        npm ci 2>/dev/null || npm install
-        npx vite build --base=/BetterBestie/
-        if [ ! -d dist/client ]; then
-          echo "❌ Build failed - dist/client directory not created"
-          exit 1
-        fi
+      - name: Build ${{ matrix.project }}
+        working-directory: ${{ matrix.project }}
+        run: ${{ matrix.build_cmd }}
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_ENABLE_DEMO_MODE: ${{ secrets.VITE_SUPABASE_URL == '' && 'true' || 'false' }}
 
-    - name: Build dl4j-graph-explorer (Vite production)
-      working-directory: dl4j-graph-explorer
-      run: |
-        npm ci 2>/dev/null || npm install
-        npx vite build --base=/dl4j-graph-explorer/
-        if [ ! -d dist ]; then
-          echo "❌ Build failed - dist directory not created"
-          exit 1
-        fi
+      - name: Verify build output
+        run: |
+          if [ ! -d "${{ matrix.project }}/${{ matrix.dist_path }}" ]; then
+            echo "❌ Build failed — output not found: ${{ matrix.project }}/${{ matrix.dist_path }}"
+            exit 1
+          fi
+          if [ ! -f "${{ matrix.project }}/${{ matrix.dist_path }}/index.html" ]; then
+            echo "❌ Build output missing index.html: ${{ matrix.project }}/${{ matrix.dist_path }}"
+            exit 1
+          fi
+          SIZE=$(du -sh "${{ matrix.project }}/${{ matrix.dist_path }}" | cut -f1)
+          echo "📦 ${{ matrix.project }} build: $SIZE"
 
-    - name: Prepare distribution folder
-      run: |
-        rm -rf dist
-        mkdir dist
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.project }}
+          path: ${{ matrix.project }}/${{ matrix.dist_path }}
+          retention-days: 1
 
-    - name: Copy AgeOfMax build artifacts
-      run: |
-        mkdir -p dist/AgeOfMax
-        cp -r AgeOfMax/dist/* dist/AgeOfMax/
+  # ──────────────────────────────────────────────
+  # Phase 2: Assemble all projects + deploy
+  # ──────────────────────────────────────────────
+  deploy:
+    needs: build-projects
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
 
-    - name: Copy FireCastle static files
-      run: |
-        mkdir -p dist/FireCastle
-        cp FireCastle/index.html dist/FireCastle/ 2>/dev/null || true
-        cp -r FireCastle/css dist/FireCastle/ 2>/dev/null || true
-        cp -r FireCastle/js dist/FireCastle/ 2>/dev/null || true
-        cp -r FireCastle/images dist/FireCastle/ 2>/dev/null || true
-        cp -r FireCastle/pages dist/FireCastle/ 2>/dev/null || true
+    steps:
+      - name: Checkout (portfolio files + static submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
 
-    - name: Copy AuTuneOnline static files
-      run: |
-        mkdir -p dist/AuTuneOnline
-        cp AuTuneOnline/public/index.html dist/AuTuneOnline/ 2>/dev/null || true
-        cp AuTuneOnline/public/style.css dist/AuTuneOnline/ 2>/dev/null || true
-        cp AuTuneOnline/public/app.js dist/AuTuneOnline/ 2>/dev/null || true
-        cp -r AuTuneOnline/images dist/AuTuneOnline/ 2>/dev/null || true
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
 
-    - name: Copy CasinoIdleSlots build artifacts
-      run: |
-        mkdir -p dist/CasinoIdleSlots
-        if [ ! -d CasinoIdleSlots/dist ]; then
-          echo "❌ CasinoIdleSlots/dist directory not found"
-          exit 1
-        fi
-        cp -r CasinoIdleSlots/dist/* dist/CasinoIdleSlots/
+      - name: Assemble distribution
+        run: |
+          mkdir dist
 
-    - name: Copy TestoMax static files
-      run: |
-        mkdir -p dist/TestoMax
-        cp TestoMax/public/*.html dist/TestoMax/ 2>/dev/null || true
-        cp -r TestoMax/public/css dist/TestoMax/ 2>/dev/null || true
-        cp -r TestoMax/public/js dist/TestoMax/ 2>/dev/null || true
-        cp -r TestoMax/public/images dist/TestoMax/ 2>/dev/null || true
-        if [ ! -f dist/TestoMax/index.html ]; then
-          echo "❌ Error: index.html not found in TestoMax deployment"
-          exit 1
-        fi
+          # ── Built projects (from parallel build artifacts) ──
+          for project in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer; do
+            mkdir -p "dist/$project"
+            cp -r "artifacts/build-$project/"* "dist/$project/"
+            echo "✅ $project (built)"
+          done
 
-    - name: Copy BetterBestie build artifacts
-      run: |
-        mkdir -p dist/BetterBestie
-        if [ ! -d BetterBestie/dist/client ]; then
-          echo "❌ BetterBestie/dist/client directory not found"
-          exit 1
-        fi
-        cp -r BetterBestie/dist/client/* dist/BetterBestie/
+          # ── FireCastle (static) ──
+          mkdir -p dist/FireCastle
+          [ -f FireCastle/index.html ] || { echo "❌ FireCastle/index.html not found"; exit 1; }
+          cp FireCastle/index.html dist/FireCastle/
+          for dir in css js images pages; do
+            [ -d "FireCastle/$dir" ] && cp -r "FireCastle/$dir" "dist/FireCastle/"
+          done
+          echo "✅ FireCastle (static)"
 
-    - name: Copy dl4j-graph-explorer build artifacts
-      run: |
-        mkdir -p dist/dl4j-graph-explorer
-        if [ ! -d dl4j-graph-explorer/dist ]; then
-          echo "❌ dl4j-graph-explorer/dist directory not found"
-          exit 1
-        fi
-        cp -r dl4j-graph-explorer/dist/* dist/dl4j-graph-explorer/
+          # ── AuTuneOnline (static) ──
+          mkdir -p dist/AuTuneOnline
+          [ -f AuTuneOnline/public/index.html ] || { echo "❌ AuTuneOnline/public/index.html not found"; exit 1; }
+          cp AuTuneOnline/public/index.html dist/AuTuneOnline/
+          [ -f AuTuneOnline/public/style.css ] && cp AuTuneOnline/public/style.css dist/AuTuneOnline/
+          [ -f AuTuneOnline/public/app.js ] && cp AuTuneOnline/public/app.js dist/AuTuneOnline/
+          [ -d AuTuneOnline/images ] && cp -r AuTuneOnline/images dist/AuTuneOnline/
+          echo "✅ AuTuneOnline (static)"
 
-    - name: Copy portfolio & shared assets
-      run: |
-        cp index.html dist/
-        cp style.css dist/
-        cp script.js dist/
-        cp CNAME dist/
-        cp -r projects dist/
-        cp -r res dist/
-        cp impressum.html dist/
-        cp datenschutz.html dist/
-        touch dist/.nojekyll
+          # ── TestoMax (static) ──
+          mkdir -p dist/TestoMax
+          [ -f TestoMax/public/index.html ] || { echo "❌ TestoMax/public/index.html not found"; exit 1; }
+          cp TestoMax/public/*.html dist/TestoMax/
+          for dir in css js images; do
+            [ -d "TestoMax/public/$dir" ] && cp -r "TestoMax/public/$dir" "dist/TestoMax/"
+          done
+          echo "✅ TestoMax (static)"
 
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: dist
+          # ── Portfolio assets ──
+          cp index.html style.css script.js CNAME impressum.html datenschutz.html dist/
+          cp -r projects res dist/
+          touch dist/.nojekyll
+          echo "✅ Portfolio assets"
 
-    - name: Deploy to GitHub Pages
-      id: deploy
-      uses: actions/deploy-pages@v4
+      - name: Build size report
+        run: |
+          echo "# 📦 Build Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Project | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|------|" >> $GITHUB_STEP_SUMMARY
+          for dir in dist/*/; do
+            name=$(basename "$dir")
+            size=$(du -sh "$dir" | cut -f1)
+            echo "| $name | $size |" >> $GITHUB_STEP_SUMMARY
+          done
+          total=$(du -sh dist | cut -f1)
+          echo "| **Total** | **$total** |" >> $GITHUB_STEP_SUMMARY
 
-    - name: Deployment summary
-      run: |
-        echo "✅ Deployment successful!"
-        echo "🌐 Website: ${{ steps.deploy.outputs.page_url }}"
-        echo "📦 Projects: AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment summary
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Deployed to:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Captain - VS Code Extension | Maximilian Haak</title>
+    <meta name="description" content="AI Captain - VS Code Chat Participant mit Copilot + Perplexity Web-Research für intelligentes Coding und Research.">
+    <meta name="keywords" content="AI Captain, VS Code Extension, Copilot, Perplexity, TypeScript, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">AI Captain</h1>
+                <p class="project-tagline">VS Code Chat Participant mit Copilot + Perplexity Web-Research</p>
+                <div class="project-actions">
+                    <a href="https://github.com/MaxeLBerger/AIAICaptain" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>AI Captain ist eine VS Code Extension, die als Chat Participant in GitHub Copilot Chat integriert wird. Mit <code>@aicaptain</code> in Copilot Chat kombiniert sie die Coding-Power von Copilot mit Perplexity Web-Research — für fundierte Code-Reviews, Feature-Implementierungen und Recherche direkt in der IDE.</p>
+                    <p>Das Tool vereint Code-Generierung, automatische Reviews und aktuelle Web-basierte Recherche in einem einzigen Workflow, optimiert für professionelle Softwareentwicklung.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-code"></i>
+                            <h3>/code Command</h3>
+                            <p>Feature-Implementierung mit automatischem Code-Review-Loop. Bis zu 5 Iterationen für optimale Ergebnisse.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-search"></i>
+                            <h3>/review Command</h3>
+                            <p>Code-Review der aktuellen Datei oder Selektion mit Web-gestützten Best Practices.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-globe"></i>
+                            <h3>/research Command</h3>
+                            <p>Tiefgreifende Web-Recherche zu beliebigen Themen direkt in VS Code mit Quellenangaben.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h3>/plan Command</h3>
+                            <p>Detaillierte Implementierungspläne erstellen mit Kontext aus dem Codebase und Web-Recherche.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-brain"></i>
+                            <h3>Multi-Model Architektur</h3>
+                            <p>Kombiniert Copilot (Coding) + Perplexity Sonar Pro (Research) für bestmögliche Ergebnisse.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-cog"></i>
+                            <h3>Konfigurierbar</h3>
+                            <p>Wählbare Perplexity-Modelle (Sonar, Sonar Pro, Sonar Reasoning Pro) und anpassbare Iterationslimits.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TypeScript 5.7</span>
+                        <span class="tech-badge">VS Code API</span>
+                        <span class="tech-badge">GitHub Copilot Chat API</span>
+                        <span class="tech-badge">Perplexity API</span>
+                        <span class="tech-badge">esbuild</span>
+                        <span class="tech-badge">Node.js 20</span>
+                    </div>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Interesse geweckt?</h2>
+                    <p>Schau dir den Code an und probiere AI Captain in deiner VS Code Umgebung aus!</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/MaxeLBerger/AIAICaptain" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub Repository
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
+        </p>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+</html>

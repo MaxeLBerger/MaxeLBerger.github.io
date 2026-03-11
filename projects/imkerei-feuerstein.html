@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imkerei Feuerstein - Online-Shop | Maximilian Haak</title>
+    <meta name="description" content="Imkerei Feuerstein - Modernes Astro-Frontend für eine traditionsreiche Familienimkerei seit 1982.">
+    <meta name="keywords" content="Imkerei Feuerstein, Astro, Frontend, E-Commerce, Vercel, Maximilian Haak">
+    <meta name="author" content="Maximilian Haak">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="../index.html#home">Maximilian Haak</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" role="navigation">
+            <li><a href="../index.html#home" class="nav-link">Home</a></li>
+            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
+            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
+        </ul>
+    </nav>
+
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <main id="wrapper" class="project-main">
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="project-title">Imkerei Feuerstein</h1>
+                <p class="project-tagline">Modernes Frontend für eine traditionsreiche Familienimkerei seit 1982</p>
+                <div class="project-actions">
+                    <a href="https://imkerei-feuerstein.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fas fa-globe"></i> Website besuchen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <section class="project-section">
+                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
+                    <p>Ein modernes Astro-Frontend für die Familienimkerei Feuerstein, die seit 1982 hochwertigen Honig produziert. Die Website vereint traditionelle Werte mit moderner Web-Technologie und bietet einen vollständigen Online-Shop mit Warenkorb-System.</p>
+                    <p>Gebaut mit Astro für optimale Performance durch Static Site Generation, gehostet auf Vercel mit automatischen Deployments und bereit für Backend-Integration.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-star"></i> Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Online-Shop</h3>
+                            <p>Vollständiges Warenkorb-System mit Produktkatalog und Bestellfunktion.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Astro SSG</h3>
+                            <p>Static Site Generation für blitzschnelle Ladezeiten und optimale SEO.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-image"></i>
+                            <h3>Optimierte Bilder</h3>
+                            <p>Automatische Bildoptimierung und responsives Laden für beste Performance.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Responsive Design</h3>
+                            <p>Perfekte Darstellung auf allen Geräten — vom Smartphone bis zum Desktop.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2><i class="fas fa-code"></i> Technologien</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Astro</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Vercel</span>
+                        <span class="tech-badge">Responsive Design</span>
+                        <span class="tech-badge">SEO</span>
+                    </div>
+                </section>
+
+                <div class="project-cta">
+                    <h2>Tradition trifft Moderne</h2>
+                    <p>Entdecke den Online-Shop der Imkerei Feuerstein!</p>
+                    <div class="cta-buttons">
+                        <a href="https://imkerei-feuerstein.vercel.app/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Shop besuchen
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://github.com/MaxeLBerger" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Maximilian Haak</p>
+        <p>
+            <a href="../impressum.html" class="footer-link">Impressum</a> | 
+            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
+            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
+        </p>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+</html>
