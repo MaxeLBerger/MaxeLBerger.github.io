@@ -8,6 +8,7 @@
 | **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** | Schritt-für-Schritt Setup | Ersteinrichtung |
 | [PROJECT_TEMPLATES.md](PROJECT_TEMPLATES.md) | Copy-Paste Code | Schnell kopieren |
 | [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md) | Workflow-Erklärung | Verstehen wie's funktioniert |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Beitrags-Richtlinien | Wie Änderungen machen |
 | [README.md](README.md) | Repository-Hauptdoku | Allgemeine Infos |
 
 ## ⚡ Quick Commands
@@ -17,17 +18,17 @@
 cd MaxeLBerger.github.io
 # Dateien ändern
 git add .
-git commit -m "Update portfolio"
+git commit -m "feat(portfolio): update design"
 git push
 # → Automatisch deployed in 2-3 Minuten
 ```
 
-### Projekt ändern (nach Setup)
+### Submodule-Projekt ändern
 ```bash
-cd AgeOfMax  # oder FireCastle / AuTuneOnline / CasinoIdleSlots
+cd AgeOfMax  # oder FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer
 # Dateien ändern
 git add .
-git commit -m "Add feature"
+git commit -m "feat: add feature"
 git push
 # → Automatisch Portfolio-Update + Deploy in 3-5 Minuten
 ```
@@ -37,7 +38,7 @@ git push
 cd MaxeLBerger.github.io
 git submodule update --remote --merge
 git add .
-git commit -m "Update all projects"
+git commit -m "chore: update all submodules"
 git push
 ```
 
@@ -46,51 +47,65 @@ git push
 cd MaxeLBerger.github.io
 git submodule update --remote AgeOfMax
 git add AgeOfMax
-git commit -m "Update AgeOfMax"
+git commit -m "chore: update AgeOfMax"
 git push
 ```
 
-## 🔧 Setup Checklist (Pro Projekt)
+## 📦 Projekt-Übersicht
 
-Für **AgeOfMax** / **FireCastle** / **AuTuneOnline** / **CasinoIdleSlots**:
+### Submodules (7 — gebaut/deployed via CI)
+
+| Projekt | Typ | Repo |
+|---------|-----|------|
+| AgeOfMax | Vite Build | MaxeLBerger/AgeOfMax |
+| CasinoIdleSlots | Vite Build | MaxeLBerger/casino-idle-slots |
+| BetterBestie | Vite Build | MaxeLBerger/BetterBestie |
+| dl4j-graph-explorer | Vite Build | MaxeLBerger/dl4j-graph-explorer |
+| FireCastle | Static Copy | MaxeLBerger/FireCastle |
+| AuTuneOnline | Static Copy | MaxeLBerger/AuTuneOnline |
+| TestoMax | Static Copy | MaxeLBerger/TestoMax |
+
+### Externe Projekte (6 — Detail-Seiten in `projects/`)
+
+| Projekt | Kategorie | Status |
+|---------|-----------|--------|
+| AI Captain | AI Agents | VS Code Extension |
+| Acai Agents | AI Agents | Public Repo |
+| AI Chatbot | AI Agents | In Entwicklung |
+| E46 Studio | Websites | Privat |
+| Imkerei Feuerstein | Websites | Vercel-hosted |
+| Shookroko | Games | Privat |
+
+## 🔧 Setup Checklist (Pro Submodule)
+
+Für alle 7 Submodules:
 
 ```
-1. [ ] Erstelle .github/workflows/update-portfolio.yml
-       → Code aus PROJECT_TEMPLATES.md kopieren
+1. [x] .github/workflows/update-portfolio.yml erstellt
+       → repository_dispatch zu Portfolio-Repo
        
-2. [ ] Erstelle .github/agents/project-agent.md
-       → Code aus PROJECT_TEMPLATES.md kopieren
+2. [x] PORTFOLIO_UPDATE_TOKEN Secret gesetzt
+       → GitHub PAT mit 'repo' + 'workflow' scopes
        
-3. [ ] GitHub Token erstellen (einmalig)
-       → GitHub Settings → Developer settings → Tokens
-       → Generate token (classic) mit 'repo' scope
-       
-4. [ ] Secret im Projekt-Repo hinzufügen
-       → Settings → Secrets → New secret
-       → Name: PORTFOLIO_UPDATE_TOKEN
-       → Value: [Token einfügen]
-       
-5. [ ] Testen
-       → Kleine Änderung machen
-       → git push
-       → Prüfe GitHub Actions
+3. [x] Für Vite-Projekte: base in vite.config.ts gesetzt
+       → base: '/<project-name>/'
 ```
 
 ## 🎯 Was passiert bei einem Push?
 
 ### Push zu Portfolio-Repo
 ```
-Push → Build Projects → Copy Files → Deploy → Live (2-3 min)
+Push → Phase 1: 4 Vite-Projekte parallel bauen → Phase 2: Assemblieren + Deploy → Live (3-5 min)
 ```
 
-### Push zu Projekt-Repo (MIT Setup)
+### Push zu Submodule-Repo (mit Auto-Update)
 ```
-Push → Trigger Portfolio → Update Submodule → Build → Deploy → Live (3-5 min)
+Push → update-portfolio.yml → repository_dispatch → auto-update-submodules.yml → deploy.yml → Live (3-5 min)
 ```
 
-### Push zu Projekt-Repo (OHNE Setup)
+### Externe Projekte
 ```
-Push → ⚠️ Nichts passiert ⚠️ → Manuelles Submodule-Update nötig
+Kein CI-Build nötig — Detail-Seiten werden als statische HTML mit Portfolio deployed
 ```
 
 ## 📊 Monitoring URLs
@@ -103,67 +118,49 @@ Push → ⚠️ Nichts passiert ⚠️ → Manuelles Submodule-Update nötig
 | FireCastle Actions | https://github.com/MaxeLBerger/FireCastle/actions |
 | AuTuneOnline Actions | https://github.com/MaxeLBerger/AuTuneOnline/actions |
 | CasinoIdleSlots Actions | https://github.com/MaxeLBerger/casino-idle-slots/actions |
+| BetterBestie Actions | https://github.com/MaxeLBerger/BetterBestie/actions |
+| dl4j-graph-explorer Actions | https://github.com/MaxeLBerger/dl4j-graph-explorer/actions |
+| TestoMax Actions | https://github.com/MaxeLBerger/TestoMax/actions |
 
 ## 🐛 Quick Troubleshooting
 
 | Problem | Lösung |
 |---------|---------|
-| "Repository dispatch failed" | Secret PORTFOLIO_UPDATE_TOKEN fehlt oder ungültig |
+| "Repository dispatch failed" | Secret `PORTFOLIO_UPDATE_TOKEN` fehlt oder ungültig |
 | "Submodule not updated" | Falscher Name im client-payload (case-sensitive!) |
 | "Build failed" | Prüfe Logs im Portfolio Actions Tab |
 | "Website nicht aktualisiert" | Warte 5 Min, lösche Browser-Cache |
-| "Workflow läuft nicht" | Datei im falschen Pfad oder Branch nicht 'main' |
+| "Workflow läuft nicht" | Datei im falschen Pfad oder Branch nicht `main` |
+| "dist/index.html missing" | Prüfe `vite.config.ts` und `npm run build` lokal |
 
-## 📝 Workflow-Dateien Locations
+## 📝 Workflow-Dateien
 
 ### Portfolio-Repo
 ```
 MaxeLBerger.github.io/
 └── .github/
     ├── workflows/
-    │   ├── deploy.yml                    ✅ Deployed Portfolio
-    │   └── auto-update-submodules.yml    ✅ Updated Submodules
+    │   ├── deploy.yml                    ✅ Parallel Matrix Build + Deploy
+    │   ├── auto-update-submodules.yml    ✅ Auto-Update via repository_dispatch
+    │   └── test-projects.yml             ✅ Sanity Checks
     └── agents/
-        └── portfolio-fix.agent.md        ✅ Portfolio Agent
+        └── portfolio-fix.agent.md        ✅ Portfolio Fix Agent
 ```
 
-### Projekt-Repos (zu erstellen)
+### Submodule-Repos (alle eingerichtet)
 ```
-AgeOfMax/
+<Submodule>/
 └── .github/
-    ├── workflows/
-    │   └── update-portfolio.yml          ⚠️ Zu erstellen
-    └── agents/
-        └── project-agent.md              ⚠️ Zu erstellen
-
-FireCastle/
-└── .github/
-    ├── workflows/
-    │   └── update-portfolio.yml          ⚠️ Zu erstellen
-    └── agents/
-        └── project-agent.md              ⚠️ Zu erstellen
-
-AuTuneOnline/
-└── .github/
-    ├── workflows/
-    │   └── update-portfolio.yml          ⚠️ Zu erstellen
-    └── agents/
-        └── project-agent.md              ⚠️ Zu erstellen
-
-CasinoIdleSlots/
-└── .github/
-    ├── workflows/
-    │   └── update-portfolio.yml          ⚠️ Zu erstellen
-    └── agents/
-        └── project-agent.md              ⚠️ Zu erstellen
+    └── workflows/
+        └── update-portfolio.yml          ✅ repository_dispatch Trigger
 ```
 
 ## 🔑 Secret Name
 
-Für alle vier Projekt-Repos:
+Für alle 7 Submodule-Repos:
 ```
 Name:  PORTFOLIO_UPDATE_TOKEN
-Scope: repo
+Scope: repo + workflow
 ```
 
 ## 🚦 Status Indicators
@@ -177,9 +174,9 @@ Scope: repo
 
 ## 💡 Pro-Tipps
 
-1. **Erst testen, dann deployen:** Mache lokale Tests bevor du pushst
+1. **Erst testen, dann deployen:** Lokale Tests mit `python -m http.server 8000`
 2. **Kleine Commits:** Lieber öfter kleine Änderungen als seltene große
-3. **Klare Messages:** Commit-Messages erscheinen in Portfolio-Updates
+3. **Conventional Commits:** `feat`, `fix`, `docs`, `chore` Prefixes nutzen
 4. **Actions beobachten:** Schau in GitHub Actions nach jedem Push
 5. **Docs aktuell halten:** Update Docs wenn du Änderungen machst
 

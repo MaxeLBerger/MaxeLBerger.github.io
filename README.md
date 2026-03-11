@@ -5,134 +5,101 @@
 
 **🌐 Live Website:** [maximilianhaak.de](https://maximilianhaak.de)
 
-Professional portfolio website showcasing interactive software development projects with automated CI/CD deployment to GitHub Pages.
+Professional portfolio website showcasing 13+ software development projects across AI, web, machine learning, and games — with automated CI/CD deployment to GitHub Pages.
 
 ---
 
-## 🎮 Featured Projects
+## 🎮 Projects
 
-### AgeOfMax - Strategic Tower Defense Game
+### AI Agents
 
-![AgeOfMax Screenshot](res/projects/AgeOfMax.png)
+| Project | Description | Technologies |
+|---------|-------------|-------------|
+| **[AI Captain](https://maximilianhaak.de/projects/aicaptain.html)** | VS Code extension for AI-assisted development | TypeScript, VS Code API |
+| **[Acai Agents](https://maximilianhaak.de/projects/acai-agents.html)** | Multi-agent AI framework | Python, LangChain, FastAPI |
+| **AI Chatbot** | Conversational AI chatbot (in development) | Python, NLP |
 
-A strategic tower defense game spanning 5 historical epochs from the Stone Age to the Future. Build and upgrade units to defend your base!
+### Websites
 
-- **Technologies:** TypeScript, Phaser 3, Vite
-- **Features:** Multiple epochs, strategic gameplay, responsive controls
-- **Play Now:** [maximilianhaak.de/AgeOfMax](https://maximilianhaak.de/AgeOfMax)
-- **Repository:** [MaxeLBerger/AgeOfMax](https://github.com/MaxeLBerger/AgeOfMax)
+| Project | Description | Technologies |
+|---------|-------------|-------------|
+| **[FireCastle](https://maximilianhaak.de/FireCastle)** | Clash of Clans clan management | JavaScript, Node.js, Express |
+| **[AuTuneOnline](https://maximilianhaak.de/AuTuneOnline)** | Real-time audio visualizer | JavaScript, Web Audio API, Canvas |
+| **[BetterBestie](https://maximilianhaak.de/BetterBestie)** | 30-Day GlowUp Challenge app | TypeScript, React 19, Express, Vite |
+| **[TestoMax](https://maximilianhaak.de/TestoMax)** | Modern web application | HTML5, CSS3, JavaScript |
+| **[Imkerei Feuerstein](https://maximilianhaak.de/projects/imkerei-feuerstein.html)** | Beekeeper website | Astro, TypeScript |
+| **[E46 Studio](https://maximilianhaak.de/projects/e46-studio.html)** | BMW E46 tuning platform | React, TypeScript |
 
----
+### Machine Learning
 
-### FireCastle - Clash of Clans Management
+| Project | Description | Technologies |
+|---------|-------------|-------------|
+| **[DL4J Graph Explorer](https://maximilianhaak.de/dl4j-graph-explorer)** | Neural network model visualizer | TypeScript, React, D3.js, Tailwind CSS |
 
-![FireCastle Screenshot](res/projects/FireCastle.png)
+### Games
 
-Comprehensive clan management website with real-time statistics, player profiles, and war information using the Clash of Clans API.
-
-- **Technologies:** JavaScript, Node.js, Express, REST API
-- **Features:** Live clan stats, player tracking, caching, logging
-- **Visit:** [maximilianhaak.de/FireCastle](https://maximilianhaak.de/FireCastle)
-- **Repository:** [MaxeLBerger/FireCastle](https://github.com/MaxeLBerger/FireCastle)
-
----
-
-### AuTuneOnline - Audio Visualizer
-
-![AuTuneOnline Screenshot](res/projects/AuTune.png)
-
-Professional audio visualizer with real-time BPM detection, frequency analysis, and reactive particle effects. Upload your music and experience it visually!
-
-- **Technologies:** JavaScript, Web Audio API, Canvas
-- **Features:** BPM detection, frequency analysis, particle effects
-- **Try It:** [maximilianhaak.de/AuTuneOnline](https://maximilianhaak.de/AuTuneOnline)
-- **Repository:** [MaxeLBerger/AuTuneOnline](https://github.com/MaxeLBerger/AuTuneOnline)
+| Project | Description | Technologies |
+|---------|-------------|-------------|
+| **[AgeOfMax](https://maximilianhaak.de/AgeOfMax)** | Strategic tower defense across 5 epochs | TypeScript, Phaser 3, Vite |
+| **[CasinoIdleSlots](https://maximilianhaak.de/CasinoIdleSlots)** | Idle casino slot game | TypeScript, React, Tailwind, Vite |
+| **[Shookroko](https://maximilianhaak.de/projects/shookroko.html)** | Browser-based party game | TypeScript, React |
 
 ---
 
-### CasinoIdleSlots - Idle Casino Game
+## 🏗️ Architecture
 
-![CasinoIdleSlots Screenshot](res/projects/CasinoIdleSlots.png)
+The portfolio combines **7 Git Submodules** (built/deployed via CI) with **6 External Projects** (linked via detail pages).
 
-Idle slot machine casino game with GitHub integration. Collect coins, unlock upgrades, and climb the leaderboard!
+### Submodules (CI/CD built)
 
-- **Technologies:** TypeScript, Vite, Local Storage
-- **Features:** Idle gameplay, upgrades, achievements, leaderboard
-- **Play Now:** [maximilianhaak.de/CasinoIdleSlots](https://maximilianhaak.de/CasinoIdleSlots)
-- **Repository:** [MaxeLBerger/casino-idle-slots](https://github.com/MaxeLBerger/casino-idle-slots)
+| Submodule | Type | Build |
+|-----------|------|-------|
+| AgeOfMax | Vite/TypeScript | Parallel matrix |
+| CasinoIdleSlots | Vite/TypeScript | Parallel matrix |
+| BetterBestie | Vite/TypeScript | Parallel matrix |
+| dl4j-graph-explorer | Vite/TypeScript | Parallel matrix |
+| FireCastle | Static | Copy |
+| AuTuneOnline | Static | Copy |
+| TestoMax | Static | Copy |
 
----
+### External Projects
 
-### TestoMax - Modern Web Application
-
-![TestoMax Screenshot](res/projects/TestoMax.png)
-
-Innovative web project showcasing modern web technologies with interactive features and optimized performance.
-
-- **Technologies:** HTML5, CSS3, JavaScript
-- **Features:** Interactive UI, responsive design, modern architecture
-- **View Project:** [maximilianhaak.de/TestoMax](https://maximilianhaak.de/TestoMax)
-- **Repository:** [MaxeLBerger/TestoMax](https://github.com/MaxeLBerger/TestoMax)
-
----
-
-### BetterBestie - 30-Day GlowUp Challenge
-
-![BetterBestie Screenshot](res/projects/BetterBestie.png)
-
-Full-stack wellness app for the 30-day GlowUp Challenge. Track daily tasks across hydration, movement, mindfulness, nutrition, learning, and sleep categories.
-
-- **Technologies:** TypeScript, React 19, Express, Vite, JWT Auth
-- **Features:** 150+ daily tasks, category tracking, mobile-first design, JWT authentication
-- **Try It:** [maximilianhaak.de/BetterBestie](https://maximilianhaak.de/BetterBestie)
-- **Repository:** [MaxeLBerger/BetterBestie](https://github.com/MaxeLBerger/BetterBestie)
-
----
-
-### DL4J Graph Explorer - Neural Network Visualizer
-
-![DL4J Graph Explorer Screenshot](res/projects/dl4j-graph-explorer.png)
-
-Read-only visualization tool for DeepLearning4J computational graph models. Import trained models and explore their architecture visually with D3.js.
-
-- **Technologies:** TypeScript, React, D3.js, Tailwind CSS, Radix UI
-- **Features:** Layer topology visualization, weight statistics, local-first architecture
-- **Try It:** [maximilianhaak.de/dl4j-graph-explorer](https://maximilianhaak.de/dl4j-graph-explorer)
-- **Repository:** [MaxeLBerger/dl4j-graph-explorer](https://github.com/MaxeLBerger/dl4j-graph-explorer)
+AI Captain, Acai Agents, AI Chatbot, Imkerei Feuerstein, E46 Studio, and Shookroko are hosted externally or are private repositories. They are showcased via detail pages in `projects/` — no build step required.
 
 ---
 
 ## 🛠️ Technologies
 
 **Frontend:** HTML5, CSS3, JavaScript, TypeScript  
-**Frameworks:** Phaser 3, Node.js, Express  
+**Frameworks:** React, Phaser 3, Astro, Express, Node.js  
+**AI/ML:** Python, LangChain, FastAPI, D3.js, DL4J  
 **Build Tools:** Vite, npm  
-**CI/CD:** GitHub Actions  
-**Hosting:** GitHub Pages  
+**CI/CD:** GitHub Actions (parallel matrix builds)  
+**Hosting:** GitHub Pages, Vercel  
 **Version Control:** Git with Submodules
 
 ---
 
 ## 🚀 Automated Deployment
 
-This portfolio uses a fully automated CI/CD pipeline. Every push to any project repository automatically:
+Every push to any submodule repository automatically:
 
-1. Triggers a workflow in the main portfolio repository
-2. Updates the project submodule to the latest commit
-3. Builds all TypeScript/Vite projects
-4. Deploys the complete site to GitHub Pages
+1. Triggers `repository_dispatch` to the portfolio repo
+2. Updates the submodule reference
+3. Builds all 4 Vite/TypeScript projects in parallel
+4. Copies 3 static projects
+5. Assembles portfolio assets + project detail pages
+6. Deploys to GitHub Pages
 
-**Result:** Code changes go live in ~3 minutes! 🚀
+**Result:** Code changes go live in ~3-5 minutes!
 
 ---
 
-## � Getting Started
+## 📖 Getting Started
 
-1. **Understand the system** - Read [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md)
-2. **Set up automation** - Follow [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)
-3. **Daily reference** - Use [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for commands
-
-After setup: Push to any project repo → Automatic portfolio update → Live in 3-5 minutes!
+1. **Understand the system** — Read [AUTOMATION_OVERVIEW.md](AUTOMATION_OVERVIEW.md)
+2. **Set up automation** — Follow [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)
+3. **Daily reference** — Use [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
 
 ---
 

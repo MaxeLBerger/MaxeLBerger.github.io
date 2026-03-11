@@ -191,4 +191,6 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "✅ **Deployed to:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📦 **Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **Submodule Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **External Projects:** AI Captain, Acai Agents, E46 Studio, Imkerei Feuerstein, Shookroko, AI Chatbot" >> $GITHUB_STEP_SUMMARY

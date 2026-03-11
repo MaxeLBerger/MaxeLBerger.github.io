@@ -13,18 +13,20 @@ This is a professional portfolio website for Maximilian Haak, showcasing softwar
 MaxeLBerger.github.io/
 ├── .github/
 │   ├── workflows/          # CI/CD automation
-│   │   ├── deploy.yml      # Main deployment workflow
-│   │   ├── auto-update-submodules.yml
-│   │   └── test-projects.yml
+│   │   ├── deploy.yml      # Main deployment (parallel matrix builds)
+│   │   ├── auto-update-submodules.yml  # Auto-update via repository_dispatch
+│   │   └── test-projects.yml           # PR sanity checks
 │   └── agents/             # Custom Copilot agents
 │       └── portfolio-fix.agent.md
 ├── AgeOfMax/              # Git Submodule - TypeScript tower defense game
 ├── FireCastle/            # Git Submodule - Clash of Clans website
 ├── AuTuneOnline/          # Git Submodule - Audio visualizer
 ├── CasinoIdleSlots/       # Git Submodule - Idle game
+├── BetterBestie/          # Git Submodule - Full-stack challenge app
+├── dl4j-graph-explorer/   # Git Submodule - DL4J visualization tool
 ├── TestoMax/              # Git Submodule - Web project
 ├── mcp-portfolio-server/  # MCP server for portfolio optimization (local dev tool)
-├── projects/              # Project landing pages
+├── projects/              # Project detail pages (14 pages, submodules + external)
 ├── res/                   # Static resources (images, icons)
 ├── index.html             # Portfolio homepage
 ├── style.css              # Main stylesheet
@@ -34,13 +36,19 @@ MaxeLBerger.github.io/
 └── *.md                   # Extensive documentation
 ```
 
-### Git Submodules
-The repository uses Git Submodules to reference independent project repositories:
-- **AgeOfMax**: TypeScript, Phaser 3, Vite - Tower defense game
-- **FireCastle**: JavaScript, Node.js, Express - Clan management website
-- **AuTuneOnline**: JavaScript, Web Audio API - Audio visualizer
-- **CasinoIdleSlots**: TypeScript, Vite - Idle slot game
-- **TestoMax**: HTML5, CSS3, JavaScript - Web project
+### Git Submodules (7 total)
+The repository uses Git Submodules to reference independent project repositories.
+
+**Built projects (Vite/TypeScript — parallel matrix builds in CI):**
+- **AgeOfMax**: TypeScript, Phaser 3, Vite — Tower defense game
+- **CasinoIdleSlots**: TypeScript, React, Tailwind, Vite — Idle slot game (needs Supabase secrets)
+- **BetterBestie**: TypeScript, React, Express, Vite — Full-stack challenge app
+- **dl4j-graph-explorer**: TypeScript, React, D3.js, Vite — Neural network visualization
+
+**Static projects (copied as-is, no build step):**
+- **FireCastle**: JavaScript, Node.js, Express — Clan management website
+- **AuTuneOnline**: JavaScript, Web Audio API — Audio visualizer
+- **TestoMax**: HTML5, CSS3, JavaScript — Web project
 
 ## Tech Stack
 
@@ -54,14 +62,16 @@ The repository uses Git Submodules to reference independent project repositories
 
 ### Build Tools (for Submodules)
 - **Node.js**: 20.x
-- **Vite**: For TypeScript project builds (AgeOfMax, CasinoIdleSlots)
-- **TypeScript**: For type-safe game development
+- **Vite**: For TypeScript project builds (AgeOfMax, CasinoIdleSlots, BetterBestie, dl4j-graph-explorer)
+- **TypeScript**: For type-safe development
 - **Git Submodules**: For project separation
 
 ### CI/CD
 - **GitHub Actions**: Automated builds and deployment
-- **Deployment Target**: GitHub Pages (`gh-pages` branch)
-- **Build Caching**: npm cache for faster builds
+- **Deployment Target**: GitHub Pages (via `actions/deploy-pages`)
+- **Build Strategy**: Parallel matrix builds (4 Vite projects build simultaneously)
+- **Build Caching**: npm cache per project via `cache-dependency-path`
+- **Auto-update**: `repository_dispatch` from each submodule repo triggers `auto-update-submodules.yml`
 
 ### Development Tools (Optional)
 - **MCP Portfolio Server**: Model Context Protocol server for local portfolio optimization
@@ -73,11 +83,14 @@ The repository uses Git Submodules to reference independent project repositories
 ## Important Rules & Best Practices
 
 ### ⚠️ Critical Rules
-1. **NEVER modify submodule contents directly** - Always edit in the original repository
+1. **NEVER modify submodule contents directly in this repo** — Always edit in the original repository, push there, then update the submodule ref here
 2. **ALWAYS test locally** before pushing to main branch
 3. **ALWAYS check GitHub Actions** status after pushing
-4. **NEVER commit secrets** or API keys
+4. **NEVER commit secrets** or API keys — Use GitHub Secrets
 5. **ALWAYS use conventional commit messages** (feat/fix/docs/etc.)
+6. **Every submodule MUST have** `update-portfolio.yml` in `.github/workflows/` and `PORTFOLIO_UPDATE_TOKEN` secret
+7. **Every Vite submodule MUST set `base: '/<project-name>/'`** in its `vite.config.ts` — NEVER pass `--base` from deploy.yml
+8. **NEVER use `2>/dev/null || true`** in deploy.yml copy steps — use explicit existence checks that fail fast
 
 ### 💡 Best Practices
 - **Start with understanding**: Read relevant docs before making changes
@@ -90,7 +103,7 @@ The repository uses Git Submodules to reference independent project repositories
 - **Handle errors gracefully**: Add appropriate error handling to JavaScript
 
 ### 🚫 Common Pitfalls to Avoid
-- Editing files inside submodule directories (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/)
+- Editing files inside submodule directories (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/, BetterBestie/, dl4j-graph-explorer/)
 - Using absolute URLs instead of relative paths
 - Forgetting to initialize submodules after cloning
 - Not checking browser console for errors
@@ -98,6 +111,9 @@ The repository uses Git Submodules to reference independent project repositories
 - Adding large files without optimizing them
 - Breaking existing functionality while adding new features
 - Modifying workflow files without understanding the full pipeline
+- Forgetting to add `update-portfolio.yml` and `PORTFOLIO_UPDATE_TOKEN` when adding a new submodule
+- Putting `--base` CLI flags in deploy.yml instead of in the project's `vite.config.ts`
+- Suppressing errors with `2>/dev/null || true` in deploy scripts
 
 ## Development Workflow
 
@@ -142,57 +158,87 @@ git push
 
 ## Build & Deployment Process
 
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
+The deployment uses a **two-phase pipeline** in `.github/workflows/deploy.yml`:
 
-1. ✅ Checks out repository with all submodules
-2. ✅ Sets up Node.js 20.x
-3. ✅ Builds **AgeOfMax** (TypeScript → JavaScript via Vite)
-4. ✅ Builds **CasinoIdleSlots** (TypeScript → JavaScript via Vite)
-5. ✅ Copies static files for **FireCastle**
-6. ✅ Copies static files for **AuTuneOnline**
-7. ✅ Copies static files for **TestoMax**
-8. ✅ Copies portfolio assets (HTML, CSS, JS, images)
-9. ✅ Deploys to GitHub Pages
-10. ✅ Makes it live at https://maximilianhaak.de
+### Phase 1: Parallel Matrix Builds
+All 4 Vite/TypeScript projects build **simultaneously** in separate runners:
+
+| Project | Build command | Output path | Notes |
+|---------|-------------|-------------|-------|
+| AgeOfMax | `npm run build` | `dist/` | Phaser 3 game |
+| CasinoIdleSlots | `npm run build` | `dist/` | Needs Supabase secrets (fallback: demo mode) |
+| BetterBestie | `npm run build` | `dist/client/` | Full-stack, only client is deployed |
+| dl4j-graph-explorer | `npm run build` | `dist/` | React + D3 visualization |
+
+Each build:
+- Runs `npm ci` (falls back to `npm install`)
+- Executes the project's own `npm run build`
+- Verifies `dist/` exists and contains `index.html`
+- Uploads build artifact for the deploy phase
+
+### Phase 2: Assembly & Deploy
+- Downloads all 4 build artifacts
+- Copies 3 static projects (FireCastle, AuTuneOnline, TestoMax) with explicit file checks
+- Copies portfolio assets (HTML, CSS, JS, images, legal pages)
+- Generates a **build size report** in the GitHub Actions Step Summary
+- Deploys to GitHub Pages
 
 **Deployment Trigger**: Push to `main` branch or manual workflow dispatch
 
-**Deployment Time**: ~3-5 minutes from push to live
+**Deployment Time**: ~3-5 minutes (parallel builds cut ~60% vs sequential)
 
-### Understanding the Deployment Pipeline
-
-**What happens on each push:**
+### Pipeline Flow
 ```
 Push to main
     ↓
-GitHub Actions triggered
+┌─── Phase 1: Parallel Builds ───────┐
+│ AgeOfMax    → build → artifact     │
+│ CasinoIdleSlots → build → artifact │
+│ BetterBestie → build → artifact    │
+│ dl4j-graph-explorer → build → art. │
+└────────────────────────────────────┘
     ↓
-Checkout repo + submodules
+Phase 2: Assemble dist/
     ↓
-Install Node.js & dependencies
+├─ Download build artifacts
+├─ Copy static projects (FireCastle, AuTuneOnline, TestoMax)
+├─ Copy portfolio assets
+├─ Build size report
     ↓
-Build TypeScript projects (AgeOfMax, CasinoIdleSlots)
-    ↓
-Copy all project files to dist/
-    ↓
-Deploy dist/ to gh-pages branch
-    ↓
-GitHub Pages serves updated site
+Deploy to GitHub Pages
     ↓
 Live at maximilianhaak.de
 ```
 
-**Build Requirements:**
-- Each TypeScript project must have:
-  - `package.json` with build script
-  - `vite.config.js` or equivalent config
+### Submodule Auto-Update Flow
+When a project repo pushes to `main`:
+```
+Project repo push → update-portfolio.yml fires
+    ↓
+repository_dispatch → portfolio's auto-update-submodules.yml
+    ↓
+Updates submodule ref → pushes to portfolio main
+    ↓
+deploy.yml triggers → site rebuilt & deployed
+```
+
+**Requirements for each submodule:**
+- `.github/workflows/update-portfolio.yml` using `peter-evans/repository-dispatch@v2`
+- `PORTFOLIO_UPDATE_TOKEN` repository secret (GitHub PAT with `repo` + `workflow` scopes)
+- For Vite projects: `base: '/<project-name>/'` in `vite.config.ts`
+
+### Build Requirements
+- Each Vite project must have:
+  - `package.json` with `build` script
+  - `vite.config.ts` with `base: '/<project-name>/'`
   - Source files that compile without errors
-  - `dist/` output directory after build
+  - `dist/` output directory after build (or `dist/client/` for BetterBestie)
 
 **Deployment Checklist:**
 - [ ] All submodules are at correct commits
 - [ ] TypeScript projects build successfully locally
 - [ ] No build errors in GitHub Actions logs
+- [ ] Build size report looks reasonable
 - [ ] Deployment step completes successfully
 - [ ] Site is accessible at maximilianhaak.de
 - [ ] All project pages load correctly
@@ -305,7 +351,7 @@ Before considering a task complete:
 ## File Modification Guidelines
 
 ### ⚠️ Files That Should NOT Be Modified Directly
-- **Submodule contents** (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/)
+- **Submodule contents** (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/, BetterBestie/, dl4j-graph-explorer/)
   - These should be modified in their original repositories
   - Only update the submodule reference commit in this repo
 
@@ -326,13 +372,39 @@ Before considering a task complete:
 
 ## Common Tasks
 
-### Adding a New Project
+### Adding a New Submodule Project
 1. Create the project in a separate repository
 2. Add it as a submodule: `git submodule add <repo-url> <directory>`
-3. Update `.github/workflows/deploy.yml` to build/copy the new project
-4. Add project card to `index.html` in the projects section
-5. Create a project page in `projects/` directory
-6. Update README.md with project information
+3. **In the project repo:**
+   a. If Vite project: add `base: '/<directory>/'` to `vite.config.ts`
+   b. Create `.github/workflows/update-portfolio.yml`:
+      ```yaml
+      name: Update Portfolio on Push
+      on:
+        push:
+          branches: [ main ]
+      jobs:
+        trigger-portfolio-update:
+          runs-on: ubuntu-latest
+          steps:
+            - name: Trigger Portfolio Submodule Update
+              uses: peter-evans/repository-dispatch@v2
+              with:
+                token: ${{ secrets.PORTFOLIO_UPDATE_TOKEN }}
+                repository: MaxeLBerger/MaxeLBerger.github.io
+                event-type: update-submodule
+                client-payload: '{"submodule": "<DIRECTORY_NAME>"}'
+      ```
+   c. Set `PORTFOLIO_UPDATE_TOKEN` secret: `gh secret set PORTFOLIO_UPDATE_TOKEN --repo MaxeLBerger/<repo>`
+4. **In the portfolio repo:**
+   a. Update `.github/workflows/deploy.yml`:
+      - For Vite projects: add entry to `build-projects` matrix
+      - For static projects: add copy block in the `Assemble distribution` step
+   b. Update `.github/workflows/auto-update-submodules.yml`: add to the `options` list
+   c. Update `.github/workflows/test-projects.yml`: add structure checks
+5. Add project card to `index.html` in the projects section
+6. Create a project page in `projects/` directory
+7. Update this instructions file with the new submodule entry
 
 ### Updating Portfolio Design
 1. Edit `style.css` for styling changes
@@ -551,7 +623,51 @@ Before committing any changes, verify:
 - **Workflow failing?** Check [Troubleshooting](#troubleshooting-deployment-issues)
 - **Want to contribute?** Read [CONTRIBUTING.md](../CONTRIBUTING.md)
 
+## Submodule CI/CD Architecture Rules
+
+These rules are **mandatory** for all current and future submodules:
+
+### Every submodule MUST have:
+1. **`.github/workflows/update-portfolio.yml`** — triggers `repository_dispatch` to this portfolio repo on push to `main`
+2. **`PORTFOLIO_UPDATE_TOKEN` GitHub secret** — PAT with `repo` + `workflow` scopes, set via `gh secret set`
+
+### Every Vite/TypeScript submodule MUST have:
+3. **`base: '/<directory-name>/'`** in `vite.config.ts` — so the build output uses correct asset paths for deployment under the subpath
+4. **`npm run build`** that produces a `dist/` (or `dist/client/` for full-stack) directory with `index.html`
+
+### deploy.yml rules:
+5. **Parallel matrix builds** — all Vite projects build simultaneously via `strategy.matrix`
+6. **No `--base` CLI overrides** — base paths belong in `vite.config.ts`
+7. **No error suppression** — never use `2>/dev/null || true`; use explicit `[ -f ... ] || { echo "❌ ..."; exit 1; }`
+8. **Build verification** — every build step must verify `dist/index.html` exists before uploading artifacts
+9. **Build size report** — the deploy job writes a size table to `$GITHUB_STEP_SUMMARY`
+
+### Current submodule inventory (2026-03):
+
+| Submodule | Repo | Type | dispatch | base | Secret |
+|-----------|------|------|----------|------|--------|
+| AgeOfMax | MaxeLBerger/AgeOfMax | Vite build | ✅ | ✅ | ✅ |
+| CasinoIdleSlots | MaxeLBerger/casino-idle-slots | Vite build | ✅ | ✅ | ✅ |
+| BetterBestie | MaxeLBerger/BetterBestie | Vite build | ✅ | ✅ | ✅ |
+| dl4j-graph-explorer | MaxeLBerger/dl4j-graph-explorer | Vite build | ✅ | ✅ | ✅ |
+| FireCastle | MaxeLBerger/FireCastle | Static | ✅ | N/A | ✅ |
+| AuTuneOnline | MaxeLBerger/AuTuneOnline | Static | ✅ | N/A | ✅ |
+| TestoMax | MaxeLBerger/TestoMax | Static | ✅ | N/A | ✅ |
+
+### External projects (not submodules — showcased via detail pages in `projects/`):
+
+| Project | Repo | Visibility | Hosting | Category |
+|---------|------|------------|---------|----------|
+| AI Captain | MaxeLBerger/AIAICaptain | Private | VS Code Marketplace | AI Agents |
+| Acai Agents | MaxeLBerger/Acai-Agents | Public | GitHub | AI Agents |
+| AI Chatbot | — | In development | — | AI Agents |
+| E46 Studio | MaxeLBerger/E46_Coder | Private | — | Websites |
+| Imkerei Feuerstein | MaxeLBerger/imkerei-feuerstein-frontend | Private | Vercel | Websites |
+| Shookroko | MaxeLBerger/shookroko | Private | — | Games |
+
+These projects do NOT require CI/CD build steps, submodule configuration, or `update-portfolio.yml`. Their detail pages are static HTML files deployed with the portfolio assets.
+
 ---
 
-**Last Updated**: 2025-11-20
+**Last Updated**: 2026-03-16
 **Maintained by**: Maximilian Haak (@MaxeLBerger)
