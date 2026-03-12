@@ -87,13 +87,19 @@
                 <div class="about-text">
                     <h2>Über mich</h2>
                     <p>
-                        2020 begann ich mit der Programmierung, startete 2022 meine Ausbildung in Softwareentwicklung mit Delphi und Java. Dabei entdeckte ich meine Faszination für <span class="highlight">Künstliche Intelligenz</span>.
+                        2020 hab ich mit Programmieren angefangen, 2022 startete meine Ausbildung als Softwareentwickler - mit Delphi und Java. Da hat mich <span class="highlight">Künstliche Intelligenz</span> richtig gepackt.
                     </p>
                     <p>
-                        Heute arbeite ich <span class="highlight">AI-first</span>: GitHub Copilot Pro, ChatGPT, eigene Agents, RAG-Systeme und lokale LLMs automatisieren Routinearbeit, während ich mich auf Architektur und Qualität konzentriere. Ich teste täglich neue AI-Tools, evaluiere ihren Nutzen für reale Projekte und integriere die besten in meinen Workflow. Studien zeigen 20–45% Produktivitätssteigerung durch AI-Pair-Programming. Diesen Hebel nutze ich gezielt, ohne Codequalität oder Sicherheit zu kompromittieren.
+                        Heute arbeite ich <span class="highlight">AI-first</span>: GitHub Copilot Pro, Claude, meine eigene AI Captain Extension (VS Code Marketplace), RAG-Systeme und lokale LLMs übernehmen den Routinekram. Ich konzentrier mich aufs Große Ganze – Architektur, Systemdesign, Qualität. Ob Full-Stack Web Apps mit React und TypeScript, Games mit Phaser 3, ein produktionsreifer Chatbot mit Python und Docker oder agentische Workflows: Ich bau für echte Anforderungen, echte Systeme, echte Nutzer.
                     </p>
                     <p>
-                        Für Unternehmen heißt das: Kein „Vibe Coder", sondern ein Entwickler, der AI als <strong>Teamkollegen</strong> einsetzt – mit klaren Rollen und ebenso klaren Grenzen.
+                        Mein Wissen behalte ich nicht für mich, in internen Workshops habe ich Kollegen den produktiven Einsatz von AI Agents in VS Code bereits erfolgreich vermittelt.
+                    </p>
+                    <p>
+                        Privat schärfe ich mein analytisches Denken durch Marktbeobachtung - das hilft mir, datengetrieben zu priorisieren und Risiken früh zu erkennen.
+                    </p>
+                    <p>
+                        Für Unternehmen heißt das: Kein „Vibe Coder", sondern ein Entwickler, der AI als <strong>Teamkollegen</strong> einsetzt - mit klaren Rollen, echten Ergebnissen und festen Grenzen.
                     </p>
                     <p style="margin-top:20px">
                         <a href="#skills" class="btn"><i class="fas fa-robot"></i> Mein AI Stack ansehen</a>
@@ -149,60 +155,60 @@
                 </div>
             </div>
             
-            <!-- Premium flowing light strings -->
+            <!-- Premium flowing light strings (no SVG filters — pure stroke + opacity for performance) -->
             <svg class="ai-strings-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
                 <defs>
                     <linearGradient id="str-g1" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="40%" stop-color="#6c63ff" stop-opacity="0.9"/>
-                        <stop offset="60%" stop-color="#00e676" stop-opacity="0.9"/>
+                        <stop offset="30%" stop-color="#6c63ff" stop-opacity="0.8"/>
+                        <stop offset="70%" stop-color="#00e676" stop-opacity="0.8"/>
                         <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="str-g2" x1="100%" y1="0%" x2="0%" y2="0%">
                         <stop offset="0%" stop-color="#00e676" stop-opacity="0"/>
-                        <stop offset="40%" stop-color="#00e676" stop-opacity="0.85"/>
-                        <stop offset="60%" stop-color="#6c63ff" stop-opacity="0.85"/>
+                        <stop offset="35%" stop-color="#00e676" stop-opacity="0.7"/>
+                        <stop offset="65%" stop-color="#6c63ff" stop-opacity="0.7"/>
                         <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="str-g3" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#8b83ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.7"/>
                         <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="str-g4" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#00c853" stop-opacity="0"/>
-                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.75"/>
+                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.65"/>
                         <stop offset="100%" stop-color="#8b83ff" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="str-g5" x1="100%" y1="0%" x2="0%" y2="0%">
                         <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.7"/>
+                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.6"/>
                         <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
                     </linearGradient>
-                    <filter id="str-glow" x="-10%" y="-50%" width="120%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
-                        <feMerge>
-                            <feMergeNode in="blur"/>
-                            <feMergeNode in="blur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
                 </defs>
-                <!-- Base glow strings (always visible) -->
-                <g filter="url(#str-glow)" class="ai-strings-base">
+                <!-- Wide soft glow layer (thick, low opacity — faked glow without filter) -->
+                <g class="ai-strings-glow" opacity="0.15">
+                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="url(#str-g1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="url(#str-g2)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="url(#str-g3)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="url(#str-g4)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="url(#str-g5)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                </g>
+                <!-- Core visible strings -->
+                <g class="ai-strings-base" opacity="0.4">
                     <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="url(#str-g1)" stroke-width="1.5" fill="none"/>
                     <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="url(#str-g2)" stroke-width="1.5" fill="none"/>
                     <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="url(#str-g3)" stroke-width="1.5" fill="none"/>
                     <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="url(#str-g4)" stroke-width="1.5" fill="none"/>
                     <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="url(#str-g5)" stroke-width="1.5" fill="none"/>
                 </g>
-                <!-- Animated light pulses traveling along strings -->
-                <g filter="url(#str-glow)" class="ai-strings-pulses">
-                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="#6c63ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: 0s; --pulse-dur: 8s"/>
-                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="#00e676" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -3s; --pulse-dur: 11s"/>
-                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="#8b83ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -7s; --pulse-dur: 14s"/>
-                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="#00c853" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 10s"/>
-                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="#6c63ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 13s"/>
+                <!-- Animated light pulses -->
+                <g class="ai-strings-pulses">
+                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: 0s; --pulse-dur: 8s"/>
+                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="#00e676" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -3s; --pulse-dur: 11s"/>
+                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="#8b83ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -7s; --pulse-dur: 14s"/>
+                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="#00c853" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 10s"/>
+                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 13s"/>
                 </g>
             </svg>
 
@@ -290,6 +296,59 @@
 
         <!-- Projekte Bereich -->
         <section id="projects" class="projects-section">
+            <!-- Flowing light strings -->
+            <svg class="ai-strings-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="p-g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
+                        <stop offset="30%" stop-color="#6c63ff" stop-opacity="0.8"/>
+                        <stop offset="70%" stop-color="#00e676" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="p-g2" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#00e676" stop-opacity="0"/>
+                        <stop offset="35%" stop-color="#00e676" stop-opacity="0.7"/>
+                        <stop offset="65%" stop-color="#6c63ff" stop-opacity="0.7"/>
+                        <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="p-g3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#8b83ff" stop-opacity="0"/>
+                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.7"/>
+                        <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="p-g4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00c853" stop-opacity="0"/>
+                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.65"/>
+                        <stop offset="100%" stop-color="#8b83ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="p-g5" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
+                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <g class="ai-strings-glow" opacity="0.15">
+                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="url(#p-g1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="url(#p-g2)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="url(#p-g3)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="url(#p-g4)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="url(#p-g5)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                </g>
+                <g class="ai-strings-base" opacity="0.4">
+                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="url(#p-g1)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="url(#p-g2)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="url(#p-g3)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="url(#p-g4)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="url(#p-g5)" stroke-width="1.5" fill="none"/>
+                </g>
+                <g class="ai-strings-pulses">
+                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 9s"/>
+                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="#00e676" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 12s"/>
+                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="#8b83ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -8s; --pulse-dur: 14s"/>
+                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="#00c853" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -1s; --pulse-dur: 10s"/>
+                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -6s; --pulse-dur: 13s"/>
+                </g>
+            </svg>
             <h2>Projekte</h2>
 
             <!-- Kategorie: AI Agents -->

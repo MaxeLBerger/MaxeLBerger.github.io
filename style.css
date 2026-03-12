@@ -155,6 +155,63 @@
     text-align: center;
 }
 
+/* ========================================
+   AI STRINGS - Premium Flowing Light Effect
+   No SVG filters — performance-safe
+   ======================================== */
+.skills-section,
+.projects-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-strings-svg {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+    top: 0;
+    height: 100%;
+    opacity: 0.7;
+}
+
+.ai-string-pulse {
+    stroke-dasharray: 120 1600;
+    stroke-dashoffset: 1720;
+    animation: string-pulse-flow var(--pulse-dur, 10s) linear infinite;
+    animation-delay: var(--pulse-delay, 0s);
+    opacity: 0.85;
+    will-change: stroke-dashoffset;
+}
+
+@keyframes string-pulse-flow {
+    to {
+        stroke-dashoffset: -1720;
+    }
+}
+
+/* Ensure all section content stays above strings */
+.skills-section > *:not(.ai-strings-svg),
+.projects-section > *:not(.ai-strings-svg) {
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-string-pulse {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-strings-svg {
+        opacity: 0.5;
+        height: 50%;
+    }
+}
+
 /* AI Stack - Purple accent */
 .ai-stack .skills-category-title {
     color: var(--color-secondary);
@@ -544,10 +601,10 @@ nav .menu-toggle .bar {
     line-height: 1.8; /* Erhöhter Zeilenabstand */
 }
 
-/* Skills Section */
+/* Skills Section — subtle green-to-transparent tint */
 .skills-section {
     padding: 80px 20px;
-    background-color: transparent;
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.03) 0%, transparent 40%, rgba(108, 99, 255, 0.02) 100%);
 }
 
 .skills-section h2 {
@@ -584,8 +641,11 @@ nav .menu-toggle .bar {
 }
 
 /* AI Stack Compartments */
+/* AI Stack Section — subtle purple tint */
 .ai-stack-section {
     padding-bottom: 60px;
+    background: linear-gradient(180deg, transparent 0%, rgba(108, 99, 255, 0.03) 30%, rgba(108, 99, 255, 0.04) 70%, transparent 100%);
+    border-radius: 8px;
 }
 
 .ai-stack-section h2 {
@@ -724,10 +784,10 @@ nav .menu-toggle .bar {
 
 
 
-/* Projekte Section */
+/* Projekte Section — subtle purple-to-transparent tint */
 .projects-section {
     padding: 100px 20px;
-    background-color: rgba(18, 18, 18, 0.8);
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.04) 0%, rgba(18, 18, 18, 0.8) 35%, rgba(18, 18, 18, 0.8) 65%, rgba(0, 230, 118, 0.03) 100%);
 }
 
 .projects-section h2 {
