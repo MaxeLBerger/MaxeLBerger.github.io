@@ -149,6 +149,63 @@
                 </div>
             </div>
             
+            <!-- Premium flowing light strings -->
+            <svg class="ai-strings-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="str-g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
+                        <stop offset="40%" stop-color="#6c63ff" stop-opacity="0.9"/>
+                        <stop offset="60%" stop-color="#00e676" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="str-g2" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#00e676" stop-opacity="0"/>
+                        <stop offset="40%" stop-color="#00e676" stop-opacity="0.85"/>
+                        <stop offset="60%" stop-color="#6c63ff" stop-opacity="0.85"/>
+                        <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="str-g3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#8b83ff" stop-opacity="0"/>
+                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="str-g4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00c853" stop-opacity="0"/>
+                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.75"/>
+                        <stop offset="100%" stop-color="#8b83ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="str-g5" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
+                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.7"/>
+                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+                    </linearGradient>
+                    <filter id="str-glow" x="-10%" y="-50%" width="120%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Base glow strings (always visible) -->
+                <g filter="url(#str-glow)" class="ai-strings-base">
+                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="url(#str-g1)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="url(#str-g2)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="url(#str-g3)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="url(#str-g4)" stroke-width="1.5" fill="none"/>
+                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="url(#str-g5)" stroke-width="1.5" fill="none"/>
+                </g>
+                <!-- Animated light pulses traveling along strings -->
+                <g filter="url(#str-glow)" class="ai-strings-pulses">
+                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="#6c63ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: 0s; --pulse-dur: 8s"/>
+                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="#00e676" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -3s; --pulse-dur: 11s"/>
+                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="#8b83ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -7s; --pulse-dur: 14s"/>
+                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="#00c853" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 10s"/>
+                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="#6c63ff" stroke-width="2.5" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 13s"/>
+                </g>
+            </svg>
+
             <!-- AI Stack -->
             <div id="ai-stack" class="skills-category ai-stack">
                 <h3 class="skills-category-title"><i class="fas fa-robot"></i> AI Stack</h3>
@@ -524,8 +581,8 @@
                             <p>Browser-basiertes Survivors-Game mit 6 Umgebungen, Wave-System, Customization und prozeduralem Audio. React + Canvas + TypeScript.</p>
                             <div class="project-links">
                                 <a href="projects/shookroko.html" class="btn">Details ansehen</a>
-                                <a href="https://github.com/MaxeLBerger/shookroko" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
+                                <a href="https://shookroko.pages.dev/" class="btn btn-primary" target="_blank" rel="noopener">
+                                    <i class="fas fa-play"></i> Live Demo
                                 </a>
                             </div>
                         </div>
