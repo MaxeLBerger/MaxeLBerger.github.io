@@ -429,11 +429,6 @@ document.addEventListener('DOMContentLoaded', function () {
             function hideBanner() { banner.classList.remove('show'); }
             window.showConsentManager = showBanner;
 
-            document.getElementById('cookie-settings')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                showBanner();
-            });
-
             return { showBanner, hideBanner };
         }
 
