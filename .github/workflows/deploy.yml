@@ -37,6 +37,9 @@ jobs:
           - project: dl4j-graph-explorer
             dist_path: dist
             build_cmd: npm run build
+          - project: Acai-Agents
+            dist_path: dist
+            build_cmd: npm run build
 
     steps:
       - name: Checkout with submodules
@@ -121,7 +124,7 @@ jobs:
           mkdir dist
 
           # ── Built projects (from parallel build artifacts) ──
-          for project in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer; do
+          for project in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer Acai-Agents; do
             mkdir -p "dist/$project"
             cp -r "artifacts/build-$project/"* "dist/$project/"
             echo "✅ $project (built)"
@@ -189,6 +192,6 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "✅ **Deployed to:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📦 **Submodule Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **Submodule Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer, Acai-Agents" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 **External Projects:** AI Captain, Acai Agents, E46 Studio, Imkerei Feuerstein, Shookroko, AI Chatbot" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **External Projects:** AI Captain, E46 Studio, Imkerei Feuerstein, Shookroko, AI Chatbot" >> $GITHUB_STEP_SUMMARY

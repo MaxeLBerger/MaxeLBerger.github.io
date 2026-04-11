@@ -44,6 +44,7 @@ The repository uses Git Submodules to reference independent project repositories
 - **CasinoIdleSlots**: TypeScript, React, Tailwind, Vite — Idle slot game (needs Supabase secrets)
 - **BetterBestie**: TypeScript, React, Express, Vite — Full-stack challenge app
 - **dl4j-graph-explorer**: TypeScript, React, D3.js, Vite — Neural network visualization
+- **Acai-Agents**: HTML5, CSS3, JavaScript, PostCSS, Terser — AI agency website (custom build)
 
 **Static projects (copied as-is, no build step):**
 - **FireCastle**: JavaScript, Node.js, Express — Clan management website
@@ -103,7 +104,7 @@ The repository uses Git Submodules to reference independent project repositories
 - **Handle errors gracefully**: Add appropriate error handling to JavaScript
 
 ### 🚫 Common Pitfalls to Avoid
-- Editing files inside submodule directories (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/, BetterBestie/, dl4j-graph-explorer/)
+- Editing files inside submodule directories (AgeOfMax/, FireCastle/, AuTuneOnline/, CasinoIdleSlots/, TestoMax/, BetterBestie/, dl4j-graph-explorer/, Acai-Agents/)
 - Using absolute URLs instead of relative paths
 - Forgetting to initialize submodules after cloning
 - Not checking browser console for errors
@@ -169,6 +170,7 @@ All 4 Vite/TypeScript projects build **simultaneously** in separate runners:
 | CasinoIdleSlots | `npm run build` | `dist/` | Needs Supabase secrets (fallback: demo mode) |
 | BetterBestie | `npm run build` | `dist/client/` | Full-stack, only client is deployed |
 | dl4j-graph-explorer | `npm run build` | `dist/` | React + D3 visualization |
+| Acai-Agents | `npm run build` | `dist/` | PostCSS + Terser custom build |
 
 Each build:
 - Runs `npm ci` (falls back to `npm install`)
@@ -642,7 +644,7 @@ These rules are **mandatory** for all current and future submodules:
 8. **Build verification** — every build step must verify `dist/index.html` exists before uploading artifacts
 9. **Build size report** — the deploy job writes a size table to `$GITHUB_STEP_SUMMARY`
 
-### Current submodule inventory (2026-03):
+### Current submodule inventory (2026-04):
 
 | Submodule | Repo | Type | dispatch | base | Secret |
 |-----------|------|------|----------|------|--------|
@@ -650,6 +652,7 @@ These rules are **mandatory** for all current and future submodules:
 | CasinoIdleSlots | MaxeLBerger/casino-idle-slots | Vite build | ✅ | ✅ | ✅ |
 | BetterBestie | MaxeLBerger/BetterBestie | Vite build | ✅ | ✅ | ✅ |
 | dl4j-graph-explorer | MaxeLBerger/dl4j-graph-explorer | Vite build | ✅ | ✅ | ✅ |
+| Acai-Agents | MaxeLBerger/Acai-Agents | Custom build | ✅ | N/A | ⚠️ |
 | FireCastle | MaxeLBerger/FireCastle | Static | ✅ | N/A | ✅ |
 | AuTuneOnline | MaxeLBerger/AuTuneOnline | Static | ✅ | N/A | ✅ |
 | TestoMax | MaxeLBerger/TestoMax | Static | ✅ | N/A | ✅ |
@@ -659,7 +662,6 @@ These rules are **mandatory** for all current and future submodules:
 | Project | Repo | Visibility | Hosting | Category |
 |---------|------|------------|---------|----------|
 | AI Captain | MaxeLBerger/AIAICaptain | Private | VS Code Marketplace | AI Agents |
-| Acai Agents | MaxeLBerger/Acai-Agents | Public | GitHub | AI Agents |
 | AI Chatbot | — | In development | — | AI Agents |
 | E46 Studio | MaxeLBerger/E46_Coder | Private | — | Websites |
 | Imkerei Feuerstein | MaxeLBerger/imkerei-feuerstein-frontend | Private | Vercel | Websites |
@@ -669,5 +671,5 @@ These projects do NOT require CI/CD build steps, submodule configuration, or `up
 
 ---
 
-**Last Updated**: 2026-03-16
+**Last Updated**: 2026-04-11
 **Maintained by**: Maximilian Haak (@MaxeLBerger)

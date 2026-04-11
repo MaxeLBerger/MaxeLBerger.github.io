@@ -31,6 +31,7 @@ on:
           - TestoMax
           - BetterBestie
           - dl4j-graph-explorer
+          - Acai-Agents
       all:
         description: 'Update ALL submodules'
         required: false
@@ -59,7 +60,7 @@ jobs:
         id: targets
         run: |
           if [ "${{ inputs.all }}" = "true" ]; then
-            echo "submodules=AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer" >> $GITHUB_OUTPUT
+            echo "submodules=AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer Acai-Agents" >> $GITHUB_OUTPUT
           else
             SUBMODULE="${{ github.event.client_payload.submodule || inputs.submodule }}"
             if [ -z "$SUBMODULE" ]; then
@@ -71,7 +72,7 @@ jobs:
 
       - name: Validate submodule names
         run: |
-          VALID="AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer"
+          VALID="AgeOfMax FireCastle AuTuneOnline CasinoIdleSlots TestoMax BetterBestie dl4j-graph-explorer Acai-Agents"
           for sub in ${{ steps.targets.outputs.submodules }}; do
             if ! echo "$VALID" | grep -qw "$sub"; then
               echo "❌ Unknown submodule: $sub"

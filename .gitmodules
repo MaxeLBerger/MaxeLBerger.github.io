@@ -19,3 +19,6 @@
 [submodule "dl4j-graph-explorer"]
 	path = dl4j-graph-explorer
 	url = https://github.com/MaxeLBerger/dl4j-graph-explorer.git
+[submodule "Acai-Agents"]
+	path = Acai-Agents
+	url = https://github.com/MaxeLBerger/Acai-Agents.git

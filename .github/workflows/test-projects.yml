@@ -38,8 +38,8 @@ jobs:
       run: |
         echo "🧪 Checking submodules..."
         
-        # TypeScript projects (need package.json for builds)
-        for proj in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer; do
+        # TypeScript/Build projects (need package.json for builds)
+        for proj in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer Acai-Agents; do
           if [ -d "$proj" ]; then
             [ -f "$proj/package.json" ] && echo "✅ $proj/package.json" || echo "⚠️  $proj/package.json missing"
           else
