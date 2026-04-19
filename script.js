@@ -1296,25 +1296,9 @@
         };
     }
 
-    /* ═══ HERO PHOTO CROSSFADE ═══ */
-    function initHeroPhotoSwap() {
-        const swap = document.querySelector('.hero-photo-swap');
-        if (!swap) return;
-        const imgs = Array.from(swap.querySelectorAll('.hero-photo-img'));
-        if (imgs.length < 2) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        let current = imgs.findIndex(img => img.classList.contains('is-active'));
-        if (current < 0) current = 0;
-
-        setInterval(() => {
-            // Skip when tab is hidden — saves CPU and avoids flicker on resume.
-            if (document.hidden) return;
-            imgs[current].classList.remove('is-active');
-            current = (current + 1) % imgs.length;
-            imgs[current].classList.add('is-active');
-        }, 4500);
-    }
+    /* ═══ HERO PHOTO ═══ */
+    // Single static photo — crossfade removed by request.
+    function initHeroPhotoSwap() {}
 
     /* ═══ INIT ═══ */
     function init() {
