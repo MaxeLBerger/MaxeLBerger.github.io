@@ -407,9 +407,12 @@ html[data-color-scheme="light"] .btn-icon:hover {
     right: 0;
     z-index: 1000;
     height: var(--nav-height);
-    background: rgba(10, 10, 15, 0.78);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    background: rgba(10, 10, 15, 0.82);
+    /* Reduced from blur(24px) saturate(160%): backdrop-filter on a 100vw fixed
+       element is one of the most expensive composite ops on every scroll frame.
+       12px+120% looks visually identical at this density. */
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
     border-bottom: 1px solid var(--color-border);
     transition: background var(--duration-base), box-shadow var(--duration-base), border-color var(--duration-base);
 }
@@ -954,7 +957,8 @@ html[data-color-scheme="light"] .hero-section::after {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    /* dvh avoids the iOS address-bar reflow that 100vh forces on every scroll. */
+    height: 100dvh;
     opacity: 0.03;
     pointer-events: none;
     z-index: 0;
@@ -1222,9 +1226,11 @@ html[data-color-scheme="light"] .hero-section::after {
 @media (hover: hover) {
     .showcase-link:hover .showcase-frame {
         transform: rotateY(-3deg) rotateX(1deg) scale(1.04) translateY(-6px);
+        /* Reduced shadow blur from 80/40 → 32/16: blur >30px on a hovered+animated
+           element forces full GPU re-blur every paint frame. */
         box-shadow:
-            0 40px 80px rgba(var(--theme-primary), 0.3),
-            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 24px 32px rgba(var(--theme-primary), 0.28),
+            0 8px 16px rgba(0, 0, 0, 0.35),
             inset 0 0 0 1px rgba(var(--theme-primary), 0.2);
         border-color: rgba(var(--theme-primary), 0.35);
     }
@@ -1239,14 +1245,16 @@ html[data-color-scheme="light"] .hero-section::after {
 
     .showcase-link:hover ~ .showcase-glow {
         background: rgba(var(--theme-primary), 0.3);
-        filter: blur(80px);
+        /* Reduced from 80px — animated blur on hover state is GPU-heavy. */
+        filter: blur(45px);
         transform: scale(1.15);
     }
 
     .showcase-link:hover .hero-photo-float {
+        /* Reduced from 80/40 → 28/14. */
         box-shadow:
-            0 40px 80px rgba(var(--theme-primary), 0.35),
-            0 20px 40px rgba(0, 0, 0, 0.4);
+            0 20px 28px rgba(var(--theme-primary), 0.32),
+            0 6px 14px rgba(0, 0, 0, 0.35);
     }
 }
 
@@ -1277,9 +1285,12 @@ html[data-color-scheme="light"] .hero-section::after {
     z-index: 2;
     width: 100%;
     max-width: 420px;
+    /* Reduced shadow blur 100/40 → 32/16. The original 100px blur was the
+       single most expensive paint op on the page: it was re-evaluated on
+       every frame of the heroFloat animation AND every mouse-parallax tween. */
     box-shadow:
-        0 32px 100px rgba(var(--theme-primary), 0.25),
-        0 10px 40px rgba(0, 0, 0, 0.40);
+        0 18px 32px rgba(var(--theme-primary), 0.22),
+        0 6px 16px rgba(0, 0, 0, 0.38);
     border-radius: 1.75rem;
     animation: heroFloat 7s ease-in-out infinite;
     transform-origin: center center;
@@ -1431,7 +1442,8 @@ html[data-color-scheme="light"] .hero-section::after {
     left: 10%;
     border-radius: 50%;
     background: rgba(var(--theme-primary), 0.15);
-    filter: blur(60px);
+    /* 60 → 35: still soft, ~half the GPU cost. */
+    filter: blur(35px);
     z-index: 1;
     transition: background 0.4s ease, filter 0.4s ease, transform 0.4s ease;
 }
@@ -1540,7 +1552,9 @@ html[data-color-scheme="light"] .hero-section::after {
     position: absolute;
     pointer-events: none;
     border-radius: 50%;
-    filter: blur(80px);
+    /* 80 → 50: animated blobs were re-blurring every frame even with
+       transform-only keyframes. 50px is still visually soft. */
+    filter: blur(50px);
     opacity: 0.55;
     z-index: -1;
     transition: background var(--theme-transition), opacity var(--theme-transition);

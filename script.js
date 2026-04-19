@@ -570,15 +570,25 @@
 
         updateContainerHeight() {
             if (!this.slidesContainer || this.slides.length === 0) return;
-            let maxHeight = 0;
+            // Avoid layout thrashing: do all writes (unhide), then all reads
+            // (scrollHeight), then all restoring writes. Keeps the browser to
+            // a single forced layout per resize instead of one per slide.
+            const prev = this.slides.map(slide => ({
+                hidden: slide.hidden,
+                vis: slide.style.visibility,
+            }));
             this.slides.forEach(slide => {
-                const prev = { hidden: slide.hidden, vis: slide.style.visibility };
                 slide.hidden = false;
                 slide.style.visibility = 'visible';
+            });
+            let maxHeight = 0;
+            this.slides.forEach(slide => {
                 const h = slide.scrollHeight;
                 if (h > maxHeight) maxHeight = h;
-                slide.hidden = prev.hidden;
-                slide.style.visibility = prev.vis;
+            });
+            this.slides.forEach((slide, i) => {
+                slide.hidden = prev[i].hidden;
+                slide.style.visibility = prev[i].vis;
             });
             if (maxHeight > 0) {
                 this.slidesContainer.style.minHeight = `${maxHeight}px`;
@@ -731,6 +741,7 @@
                     if (newContent.text) gsap.set(newContent.text, { x: 0, opacity: 1 });
                     if (newContent.visual) gsap.set(newContent.visual, { x: 0, opacity: 1, scale: 1 });
 
+                    document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: newSlide } }));
                     this.isAnimating = false;
                 },
             });
@@ -944,6 +955,7 @@
                 oldSlide.style.cssText = '';
                 newSlide.classList.add('active');
                 newSlide.style.cssText = '';
+                document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: newSlide } }));
                 this.isAnimating = false;
             }, 500);
         }
@@ -1100,13 +1112,18 @@
         let parallaxTargetsVisible = true;
 
         if (heroSection && heroOrbs.length) {
+            // Pause both the orb float animations AND the heroFloat keyframe
+            // on the profile photo when the hero is off-screen. The photo's
+            // animation kept running (and re-blurring its shadow) even from
+            // the contact section.
+            const heroPhotoFloats = document.querySelectorAll('#hero .hero-photo-float, .hero-slide.active .hero-photo-float');
             const orbObserver = new IntersectionObserver(
                 (entries) => {
                     const isVisible = entries[0].isIntersecting;
                     parallaxTargetsVisible = isVisible || !!document.querySelector('#projects.in-view');
-                    heroOrbs.forEach(orb => {
-                        orb.style.animationPlayState = isVisible ? 'running' : 'paused';
-                    });
+                    const state = isVisible ? 'running' : 'paused';
+                    heroOrbs.forEach(orb => { orb.style.animationPlayState = state; });
+                    heroPhotoFloats.forEach(el => { el.style.animationPlayState = state; });
                 },
                 { threshold: 0 }
             );
@@ -1163,6 +1180,19 @@
                 }
             };
 
+            // Cache the active parallax targets. Recomputed only when the slide
+            // actually changes (event from ProjectSlider) instead of on every
+            // mousemove frame, which used to do two full DOM queries 60×/sec.
+            let cachedFrame = null;
+            let cachedFloat = null;
+            const refreshTargets = () => {
+                cachedFrame = document.querySelector('.hero-slide.active .showcase-frame');
+                cachedFloat = document.querySelector('.hero-slide.active .hero-photo-float')
+                    || document.querySelector('#hero .hero-photo-float');
+            };
+            refreshTargets();
+            document.addEventListener('slide:change', refreshTargets);
+
             let mouseTicking = false;
             document.addEventListener('mousemove', (e) => {
                 if (mouseTicking || !parallaxTargetsVisible) return;
@@ -1172,15 +1202,12 @@
                     const normY = (e.clientY / window.innerHeight - 0.5);
                     const ry = -5 + normX * 10;
                     const rx = 2 - normY * 6;
-                    const activeFrame = document.querySelector('.hero-slide.active .showcase-frame');
-                    const activeFloat = document.querySelector('.hero-slide.active .hero-photo-float')
-                        || document.querySelector('#hero .hero-photo-float');
-                    if (activeFrame) {
-                        if (activeFrame !== lastFrame) bindQuickTo(activeFrame, 'frame');
+                    if (cachedFrame) {
+                        if (cachedFrame !== lastFrame) bindQuickTo(cachedFrame, 'frame');
                         frameRotY(ry); frameRotX(rx);
                     }
-                    if (activeFloat) {
-                        if (activeFloat !== lastFloat) bindQuickTo(activeFloat, 'float');
+                    if (cachedFloat) {
+                        if (cachedFloat !== lastFloat) bindQuickTo(cachedFloat, 'float');
                         floatRotY(ry); floatRotX(rx);
                     }
                     mouseTicking = false;

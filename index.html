@@ -86,6 +86,12 @@
     <link rel="icon" href="res/favicons/faviconwhitegreen.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 
+    <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- LCP image: prioritise it ahead of the deferred scripts. -->
+    <link rel="preload" as="image" href="res/profile/maxlerseite.webp" fetchpriority="high">
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -171,7 +177,7 @@
                                     <span data-i18n="slide.maxhaak.badge">VERFÜGBAR FÜR PROJEKTE</span>
                                 </div>
                                 <div class="hero-photo-clip">
-                                    <img class="hero-photo-img is-active" src="res/profile/maxlerseite.webp" alt="Maximilian Haak" loading="eager">
+                                    <img class="hero-photo-img is-active" src="res/profile/maxlerseite.webp" alt="Maximilian Haak" loading="eager" decoding="async" fetchpriority="high" width="420" height="560">
                                 </div>
                                 <div class="hero-photo-ring"></div>
                             </div>
