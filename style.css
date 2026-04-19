@@ -421,11 +421,18 @@ html[data-color-scheme="light"] .btn-icon:hover {
         );
     backdrop-filter: blur(6px) saturate(110%);
     -webkit-backdrop-filter: blur(6px) saturate(110%);
+    /* Fade the backdrop-filter itself so it doesn't leave a hard edge where
+       the blurred nav meets the unblurred hero below. The mask matches the
+       background gradient so tint + blur fade out together. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
     border-bottom: 1px solid transparent;
     transition: background var(--duration-base),
                 backdrop-filter var(--duration-base),
                 box-shadow var(--duration-base),
-                border-color var(--duration-base);
+                border-color var(--duration-base),
+                -webkit-mask-image var(--duration-base),
+                mask-image var(--duration-base);
 }
 
 html[data-color-scheme="light"] #navbar {
@@ -444,6 +451,9 @@ html[data-color-scheme="light"] #navbar {
     background: rgba(10, 10, 15, 0.72);
     backdrop-filter: blur(14px) saturate(130%);
     -webkit-backdrop-filter: blur(14px) saturate(130%);
+    /* Drop the fade mask so the solid bar has a crisp bottom edge again. */
+    -webkit-mask-image: none;
+            mask-image: none;
     border-bottom-color: var(--color-border);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
