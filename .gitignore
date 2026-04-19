@@ -62,3 +62,9 @@ MARQUEE_IMPLEMENTATION.md
 
 # Debug Outputs
 git_log_output.txt
+diff.txt
+*.diff.txt
+
+# Windows folder metadata
+desktop.ini
+[Dd]esktop.ini
