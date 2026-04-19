@@ -1,4 +1,87 @@
-﻿# Maximilian Haak - Portfolio
+﻿# Maximilian Haak — Portfolio
+
+[![Deploy](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml)
+
+**Live:** [maximilianhaak.de](https://maximilianhaak.de)
+
+Static portfolio site for Maximilian Haak — Fullstack developer & AI specialist from Bruckmühl/Rosenheim. Built with vanilla HTML, CSS, and JavaScript. Deployed to GitHub Pages on every push to `main`.
+
+---
+
+## Featured Projects
+
+All projects are showcased on the homepage and have detail pages under [projects/](projects/):
+
+| Project | Type | Detail page |
+|---------|------|-------------|
+| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
+| Imkerei Feuerstein | Customer website | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
+| CoHa | Startup MVP | [coha.html](projects/coha.html) |
+| E46 Studio | Desktop app | [e46-studio.html](projects/e46-studio.html) |
+| SoundOfLvke | Artist website | [soundoflvke.html](projects/soundoflvke.html) |
+| Shookroko | Browser game | [shookroko.html](projects/shookroko.html) |
+
+---
+
+## Tech Stack
+
+- **Frontend:** HTML5, CSS3 (custom design tokens), vanilla JavaScript (ES6+)
+- **Animations:** GSAP 3.12 + ScrollTrigger (CDN)
+- **Fonts:** Inter (Google Fonts, loaded after consent)
+- **Hosting:** GitHub Pages, custom domain via CNAME
+- **i18n:** Custom DE/EN dictionary in [script.js](script.js) — no framework
+
+---
+
+## Repository Structure
+
+```
+.
+├── index.html              # Homepage
+├── style.css               # Main stylesheet
+├── script.js               # Slider, theme, i18n, animations
+├── impressum.html          # Legal info
+├── datenschutz.html        # Privacy policy
+├── projects/               # Project detail pages
+├── res/                    # Static assets (images, icons, favicons)
+├── mcp-portfolio-server/   # Local MCP dev tool (not deployed)
+└── .github/workflows/      # CI: deploy.yml
+```
+
+---
+
+## Local Development
+
+```bash
+# Serve locally
+python -m http.server 8000
+# or
+npx serve .
+```
+
+Visit http://localhost:8000.
+
+No build step required — files are served as-is.
+
+---
+
+## Deployment
+
+Push to `main` triggers [.github/workflows/deploy.yml](.github/workflows/deploy.yml):
+
+1. Checkout
+2. Copy portfolio files into `dist/`
+3. Upload as Pages artifact
+4. Deploy to GitHub Pages
+
+Live in ~1–2 minutes.
+
+---
+
+## License
+
+© Maximilian Haak. All rights reserved.
+# Maximilian Haak - Portfolio
 
 [![Deploy Status](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/deploy.yml)
 [![Test Projects](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/test-projects.yml/badge.svg)](https://github.com/MaxeLBerger/MaxeLBerger.github.io/actions/workflows/test-projects.yml)
