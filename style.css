@@ -409,26 +409,48 @@ html[data-color-scheme="light"] .btn-icon:hover {
     right: 0;
     z-index: 1000;
     height: var(--nav-height);
-    background: rgba(10, 10, 15, 0.82);
-    /* Reduced from blur(24px) saturate(160%): backdrop-filter on a 100vw fixed
-       element is one of the most expensive composite ops on every scroll frame.
-       12px+120% looks visually identical at this density. */
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
-    border-bottom: 1px solid var(--color-border);
-    transition: background var(--duration-base), box-shadow var(--duration-base), border-color var(--duration-base);
+    /* Transparent at the top of the page. A very soft blur + a thin
+       top-to-bottom gradient keeps the nav items legible against any hero
+       background without showing a visible bar. The tint only appears once
+       the user scrolls (.scrolled) so the hero reads edge-to-edge. */
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(10, 10, 15, 0.35) 0%,
+            rgba(10, 10, 15, 0) 100%
+        );
+    backdrop-filter: blur(6px) saturate(110%);
+    -webkit-backdrop-filter: blur(6px) saturate(110%);
+    border-bottom: 1px solid transparent;
+    transition: background var(--duration-base),
+                backdrop-filter var(--duration-base),
+                box-shadow var(--duration-base),
+                border-color var(--duration-base);
 }
 
 html[data-color-scheme="light"] #navbar {
-    background: rgba(255, 255, 255, 0.82);
-    border-bottom-color: rgba(0, 0, 0, 0.06);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.45) 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
+    border-bottom-color: transparent;
 }
 
+/* After the user scrolls past the hero, fade in the solid glass look so the
+   nav stays readable against the page body content. */
 #navbar.scrolled {
+    background: rgba(10, 10, 15, 0.72);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    border-bottom-color: var(--color-border);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
 
 html[data-color-scheme="light"] #navbar.scrolled {
+    background: rgba(255, 255, 255, 0.78);
+    border-bottom-color: rgba(0, 0, 0, 0.06);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
@@ -2410,13 +2432,19 @@ html[data-color-scheme="light"] .cookie-content p {
     }
 
     #navbar {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        background: rgba(10, 10, 15, 0.92);
+        /* Same transparent-at-top pattern on mobile — just a cheaper blur. */
+        backdrop-filter: blur(5px) saturate(105%);
+        -webkit-backdrop-filter: blur(5px) saturate(105%);
     }
 
-    html[data-color-scheme="light"] #navbar {
-        background: rgba(245, 245, 250, 0.95);
+    #navbar.scrolled {
+        background: rgba(10, 10, 15, 0.86);
+        backdrop-filter: blur(10px) saturate(120%);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+    }
+
+    html[data-color-scheme="light"] #navbar.scrolled {
+        background: rgba(245, 245, 250, 0.92);
     }
 
     .hero-slides-container {
