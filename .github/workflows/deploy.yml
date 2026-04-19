@@ -1,4 +1,4 @@
-﻿name: Deploy Portfolio with Project Builds
+name: Deploy Portfolio
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,167 +15,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # ──────────────────────────────────────────────
-  # Phase 1: Build all Vite/TS projects in parallel
-  # ──────────────────────────────────────────────
-  build-projects:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - project: AgeOfMax
-            dist_path: dist
-            build_cmd: npm run build
-          - project: CasinoIdleSlots
-            dist_path: dist
-            build_cmd: npm run build
-            needs_env: true
-          - project: BetterBestie
-            dist_path: dist/client
-            build_cmd: npm run build:client
-          - project: dl4j-graph-explorer
-            dist_path: dist
-            build_cmd: npm run build
-          - project: Acai-Agents
-            dist_path: dist
-            build_cmd: npm run build
-
-    steps:
-      - name: Checkout with submodules
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 1
-
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package*.json
-
-      - name: Install dependencies
-        working-directory: ${{ matrix.project }}
-        run: npm ci || npm install
-
-      - name: Create environment file
-        if: matrix.needs_env
-        working-directory: ${{ matrix.project }}
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: |
-          echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL" > .env
-          echo "VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY" >> .env
-
-      - name: Build ${{ matrix.project }}
-        working-directory: ${{ matrix.project }}
-        run: ${{ matrix.build_cmd }}
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-          VITE_ENABLE_DEMO_MODE: ${{ secrets.VITE_SUPABASE_URL == '' && 'true' || 'false' }}
-
-      - name: Verify build output
-        run: |
-          if [ ! -d "${{ matrix.project }}/${{ matrix.dist_path }}" ]; then
-            echo "❌ Build failed — output not found: ${{ matrix.project }}/${{ matrix.dist_path }}"
-            exit 1
-          fi
-          if [ ! -f "${{ matrix.project }}/${{ matrix.dist_path }}/index.html" ]; then
-            echo "❌ Build output missing index.html: ${{ matrix.project }}/${{ matrix.dist_path }}"
-            exit 1
-          fi
-          SIZE=$(du -sh "${{ matrix.project }}/${{ matrix.dist_path }}" | cut -f1)
-          echo "📦 ${{ matrix.project }} build: $SIZE"
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-${{ matrix.project }}
-          path: ${{ matrix.project }}/${{ matrix.dist_path }}
-          retention-days: 1
-
-  # ──────────────────────────────────────────────
-  # Phase 2: Assemble all projects + deploy
-  # ──────────────────────────────────────────────
   deploy:
-    needs: build-projects
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      - name: Checkout (portfolio files + static submodules)
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 1
-
-      - name: Download all build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
 
       - name: Assemble distribution
         run: |
           mkdir dist
-
-          # ── Built projects (from parallel build artifacts) ──
-          for project in AgeOfMax CasinoIdleSlots BetterBestie dl4j-graph-explorer Acai-Agents; do
-            mkdir -p "dist/$project"
-            cp -r "artifacts/build-$project/"* "dist/$project/"
-            echo "✅ $project (built)"
-          done
-
-          # ── FireCastle (static) ──
-          mkdir -p dist/FireCastle
-          [ -f FireCastle/index.html ] || { echo "❌ FireCastle/index.html not found"; exit 1; }
-          cp FireCastle/index.html dist/FireCastle/
-          for dir in css js images pages; do
-            [ -d "FireCastle/$dir" ] && cp -r "FireCastle/$dir" "dist/FireCastle/"
-          done
-          echo "✅ FireCastle (static)"
-
-          # ── AuTuneOnline (static) ──
-          mkdir -p dist/AuTuneOnline
-          [ -f AuTuneOnline/public/index.html ] || { echo "❌ AuTuneOnline/public/index.html not found"; exit 1; }
-          cp AuTuneOnline/public/index.html dist/AuTuneOnline/
-          [ -f AuTuneOnline/public/style.css ] && cp AuTuneOnline/public/style.css dist/AuTuneOnline/
-          [ -f AuTuneOnline/public/app.js ] && cp AuTuneOnline/public/app.js dist/AuTuneOnline/
-          [ -d AuTuneOnline/images ] && cp -r AuTuneOnline/images dist/AuTuneOnline/
-          echo "✅ AuTuneOnline (static)"
-
-          # ── TestoMax (static) ──
-          mkdir -p dist/TestoMax
-          [ -f TestoMax/public/index.html ] || { echo "❌ TestoMax/public/index.html not found"; exit 1; }
-          cp TestoMax/public/*.html dist/TestoMax/
-          for dir in css js images; do
-            [ -d "TestoMax/public/$dir" ] && cp -r "TestoMax/public/$dir" "dist/TestoMax/"
-          done
-          echo "✅ TestoMax (static)"
-
-          # ── Portfolio assets ──
-          cp index.html style.css script.js CNAME impressum.html datenschutz.html dist/
-          cp -r projects res dist/
+          cp index.html style.css script.js CNAME dist/
+          cp impressum.html datenschutz.html dist/
+          [ -d res ] && cp -r res dist/
+          [ -d projects ] && cp -r projects dist/
           touch dist/.nojekyll
-          echo "✅ Portfolio assets"
+          echo "✅ Portfolio assets copied"
 
       - name: Build size report
         run: |
           echo "# 📦 Build Size Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Project | Size |" >> $GITHUB_STEP_SUMMARY
-          echo "|---------|------|" >> $GITHUB_STEP_SUMMARY
-          for dir in dist/*/; do
-            name=$(basename "$dir")
-            size=$(du -sh "$dir" | cut -f1)
-            echo "| $name | $size |" >> $GITHUB_STEP_SUMMARY
-          done
           total=$(du -sh dist | cut -f1)
-          echo "| **Total** | **$total** |" >> $GITHUB_STEP_SUMMARY
+          echo "**Total size:** $total" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -191,7 +56,3 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "✅ **Deployed to:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📦 **Submodule Projects:** AgeOfMax, FireCastle, AuTuneOnline, CasinoIdleSlots, TestoMax, BetterBestie, dl4j-graph-explorer, Acai-Agents" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 **External Projects:** AI Captain, E46 Studio, Imkerei Feuerstein, Shookroko, AI Chatbot" >> $GITHUB_STEP_SUMMARY
