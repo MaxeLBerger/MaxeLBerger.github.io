@@ -1,445 +1,1366 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // ========================================
-    // PREMIUM SCROLL ANIMATIONS
-    // ========================================
-    function initScrollAnimations() {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.1
-        };
+﻿/* ═══════════════════════════════════════════════
+   script.js — Portfolio Interactions
+   ProjectSlider, GSAP Animations, Theme, i18n
+   ═══════════════════════════════════════════════ */
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+(function () {
+    'use strict';
 
-        // Observe skill cards
-        document.querySelectorAll('.skill-card').forEach(el => {
-            revealObserver.observe(el);
+    /* ═══ i18n TRANSLATIONS ═══ */
+    const translations = {
+        de: {
+            'nav.services': 'Leistungen',
+            'nav.portfolio': 'Portfolio',
+            'nav.pricing': 'Pakete',
+            'nav.tech': 'Tech Stack',
+            'nav.testimonials': 'Referenzen',
+            'nav.contact': 'Kontakt',
+            'nav.projects': 'Projekte',
+            'services.tag': 'Leistungen',
+            'services.title': 'Was ich für Sie baue',
+            'services.web.title': 'Websites & Online-Auftritte',
+            'services.web.desc': 'Vom One-Pager bis zur mehrsprachigen Firmenseite. Schnell, sauber programmiert, auf jedem Gerät scharf — und für Suchmaschinen vorbereitet.',
+            'services.web.link': 'Projekt anfragen',
+            'services.ai.title': 'KI & Automatisierung',
+            'services.ai.desc': 'Chatbots, Terminbuchung, automatisierte E-Mails, Datenauswertung mit LLMs. Ich verbinde Ihr Tagesgeschäft mit aktuellen KI-Modellen — pragmatisch, nicht überengineert.',
+            'services.ai.link': 'Anwendungsfall besprechen',
+            'services.apps.title': 'Web-Anwendungen',
+            'services.apps.desc': 'Wenn eine Website nicht reicht: Dashboards, Kundenportale, interne Tools. TypeScript, React, Node — getestet, dokumentiert, bei Bedarf mit Datenbank.',
+            'services.apps.link': 'Idee skizzieren',
+            'services.design.title': 'Beratung & Code-Review',
+            'services.design.desc': 'Sie haben bereits ein Projekt und brauchen einen zweiten Blick? Ich prüfe Code, Architektur oder UX und liefere konkrete, umsetzbare Empfehlungen.',
+            'services.design.link': 'Termin vereinbaren',
+            'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
+            'services.cta.button': 'Kostenloses Erstgespräch →',
+            'skills.tag': 'Tech Stack',
+            'skills.title': 'Mit welchen Tools ich arbeite',
+            'projects.tag': 'Ausgewählte Arbeiten',
+            'projects.title': 'Portfolio',
+            'about.tag': 'Über mich',
+            'about.title': 'Maximilian Haak',
+            'about.p1': 'Ich bin Maximilian — Fullstack-Webentwickler und KI-Spezialist aus Bruckmühl bei Rosenheim. Ich entwickle moderne Websites, Web-Apps und KI-gestützte Automatisierungen für kleine und mittelständische Unternehmen in der Region.',
+            'about.p2': 'Von der schnellen Firmenwebsite bis zum maßgeschneiderten AI Agent — ich bringe Ihr Projekt von der Idee zum Go-Live. Mein Fokus: Sauberer Code, faire Preise und persönliche Betreuung ohne Agentur-Overhead.',
+            'about.stat1': 'Jahre Erfahrung',
+            'about.stat2': 'Projekte umgesetzt',
+            'about.stat3': 'Kundenzufriedenheit',
+            'testimonials.tag': 'Referenzen',
+            'testimonials.title': 'Was Kunden sagen',
+            'testimonials.coha.quote': '„Max hat unser MVP an einem Wochenende gebaut. Drei Stunden Briefing, danach lief die Seite. Genau die unkomplizierte Umsetzung, die wir als Startup gebraucht haben.“',
+            'testimonials.coha.name': 'CoHa Gründerteam',
+            'testimonials.coha.role': 'Startup — Gastronomie',
+            'testimonials.imkerei.quote': '„Unsere alte Seite war zehn Jahre alt. Jetzt verkaufen wir Honig direkt online — und ich kann die Inhalte selbst pflegen, ohne jedes Mal nachfragen zu müssen.“',
+            'testimonials.imkerei.name': 'Imkerei Feuerstein',
+            'testimonials.imkerei.role': 'Lokales Unternehmen — Bruckmühl',
+            'testimonials.soundoflvke.quote': '„Ich wollte keine 0815-Musiker-Seite. Max hat das verstanden, mit Audio-Player und Tour-Daten. Sieht aus wie ein großes Label — ohne deren Aufwand.“',
+            'testimonials.soundoflvke.name': 'SoundOfLvke',
+            'testimonials.soundoflvke.role': 'Künstler & Musiker',
+            'contact.tag': 'Kontakt',
+            'contact.title': 'Lassen Sie uns sprechen',
+            'contact.intro': 'Erzählen Sie mir von Ihrem Vorhaben — ganz unverbindlich. Ich melde mich persönlich bei Ihnen zurück, in der Regel innerhalb eines Werktags.',
+            'contact.name': 'Name',
+            'contact.email': 'E-Mail',
+            'contact.message': 'Nachricht',
+            'contact.send': 'Nachricht senden',
+            'footer.impressum': 'Impressum',
+            'footer.datenschutz': 'Datenschutz',
+            'hero.scroll': 'Scrollen und entdecken',
+            // Slide 1 - Maximilian Haak (Personal)
+            'slide.maxhaak.t1': 'Maximilian',
+            'slide.maxhaak.t2': 'Haak.',
+            'slide.maxhaak.t3': 'Software Entwickler.',
+            'slide.maxhaak.desc': 'Full-Stack Entwickler aus Bruckmühl bei Rosenheim. Websites, Web-Apps und KI-Lösungen — mit TypeScript, React und modernen Cloud-Technologien. Über 5 Jahre Erfahrung, persönlich und zuverlässig.',
+            'slide.maxhaak.cta1': 'Kostenlose Beratung',
+            'slide.maxhaak.cta2': 'Projekte ansehen',
+            'slide.maxhaak.badge': 'VERFÜGBAR FÜR PROJEKTE',
+            'slide.maxhaak.tag1': 'Full-Stack',
+            'slide.maxhaak.tag2': 'TypeScript & React',
+            'slide.maxhaak.tag3': 'KI & Automatisierung',
+            // Slide 2 - Imkerei Feuerstein
+            'slide.imkerei.t1': 'Ihre Idee.',
+            'slide.imkerei.t2': 'Mein Code.',
+            'slide.imkerei.t3': 'Ihr Erfolg.',
+            'slide.imkerei.desc': 'Imkerei Feuerstein: React-Website mit Online-Shop — persönlich besprochen, in 3 Wochen umgesetzt, auf Vercel deployed. Responsive Design, SEO-optimiert und ein begeisterter Kunde.',
+            'slide.imkerei.cta1': 'Live ansehen',
+            'slide.imkerei.cta2': 'Projekt-Details',
+            'slide.imkerei.tag1': 'React & Vercel',
+            'slide.imkerei.tag2': '3 Wochen',
+            'slide.imkerei.tag3': 'E-Commerce',
+            // Slide 3 - AI Captain
+            'slide.aicaptain.t1': 'AI Captain.',
+            'slide.aicaptain.t2': 'VS Code',
+            'slide.aicaptain.t3': 'Extension.',
+            'slide.aicaptain.desc': 'Mein eigenes Produkt im VS Code Marketplace: Ein KI-Agent für intelligente Code-Generierung, Debugging und Review. Gebaut mit TypeScript, LLM-APIs und der VS Code Extension API.',
+            'slide.aicaptain.cta1': 'Mehr erfahren',
+            'slide.aicaptain.cta2': 'Projekt-Details',
+            'slide.aicaptain.tag1': 'VS Code Marketplace',
+            'slide.aicaptain.tag2': 'TypeScript',
+            'slide.aicaptain.tag3': 'LLM APIs',
+            // Slide 4 - E46 Studio
+            'slide.e46.t1': 'Desktop App.',
+            'slide.e46.t2': 'BMW E46.',
+            'slide.e46.t3': 'Steuergeräte-Coding.',
+            'slide.e46.desc': 'E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation — für eine spezialisierte Automotive-Community.',
+            'slide.e46.cta1': 'Live ansehen',
+            'slide.e46.cta2': 'Projekt-Details',
+            'slide.e46.tag1': 'Electron',
+            'slide.e46.tag2': 'TypeScript',
+            'slide.e46.tag3': 'Serial API',
+            // Slide 5 - CoHa
+            'slide.coha.t1': 'Startup.',
+            'slide.coha.t2': 'Website.',
+            'slide.coha.t3': 'Mehr Kunden.',
+            'slide.coha.desc': 'Für ein Startup aus Bayern: Modernes Full-Stack Webdesign mit React und TypeScript. Schnelle Ladezeiten, Conversion-Optimierung und responsive auf allen Geräten.',
+            'slide.coha.cta1': 'Live ansehen',
+            'slide.coha.cta2': 'Projekt-Details',
+            'slide.coha.tag1': 'React & TypeScript',
+            'slide.coha.tag2': 'Full-Stack',
+            'slide.coha.tag3': 'Conversion-Optimierung',
+            // Slide 6 - SoundOfLvke
+            'slide.soundoflvke.t1': 'Sound.',
+            'slide.soundoflvke.t2': 'Design.',
+            'slide.soundoflvke.t3': 'Identität.',
+            'slide.soundoflvke.desc': 'Portfolio-Website für einen Musik-Künstler — integrierter Audio-Player, Release-Übersicht und individuelles responsive Design. Kreative Webentwicklung, die Marken zum Leben erweckt.',
+            'slide.soundoflvke.cta1': 'Live ansehen',
+            'slide.soundoflvke.cta2': 'Projekt-Details',
+            'slide.soundoflvke.tag1': 'Künstler-Branding',
+            'slide.soundoflvke.tag2': 'Audio Integration',
+            'slide.soundoflvke.tag3': 'Responsive Design',
+            // Slide badges
+            'slide.imkerei.badge': 'KUNDENPROJEKT',
+            'slide.aicaptain.badge': 'AI AGENT',
+            'slide.e46.badge': 'DESKTOP APP',
+            'slide.coha.badge': 'KUNDENREFERENZ',
+            'slide.soundoflvke.badge': 'KÜNSTLER-WEBSITE',
+            // Slide 7 - Shookroko
+            'slide.shookroko.t1': 'Browser-Spiel.',
+            'slide.shookroko.t2': 'Phaser 3.',
+            'slide.shookroko.t3': 'TypeScript.',
+            'slide.shookroko.desc': 'Shookroko: Ein Action-Browsergame, gebaut mit Phaser 3 und TypeScript. Eigene Game-Loop, Asset-Pipeline und ein responsive Canvas — Game Development trifft modernes Web.',
+            'slide.shookroko.cta1': 'Live spielen',
+            'slide.shookroko.cta2': 'Projekt-Details',
+            'slide.shookroko.tag1': 'Phaser 3',
+            'slide.shookroko.tag2': 'TypeScript',
+            'slide.shookroko.tag3': 'Game Dev',
+            'slide.shookroko.badge': 'BROWSER GAME',
+            // About section (extra keys)
+            'about.available': 'Verfügbar für Projekte & Festanstellung',
+            'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
+            'about.h1': 'Moderne Technologien & AI-first',
+            'about.h2': 'Faire Preise & klare Kommunikation',
+            'about.h3': 'Von Konzept bis Go-Live aus einer Hand',
+            'about.skills.frontend': 'Frontend',
+            'about.skills.backend': 'Backend & Tools',
+            'about.skills.ai': 'KI & Automatisierung',
+            'about.cta': 'Projekt besprechen',
+            // Pricing section
+            'pricing.tag': 'Pakete',
+            'pricing.title': 'Klare Preise, kein Kleingedrucktes',
+            'pricing.popular': 'BELIEBT',
+            'pricing.cta': 'Jetzt anfragen',
+            'pricing.note': 'Alle Preise zzgl. MwSt. Jedes Projekt ist individuell — kontaktieren Sie mich für ein unverbindliches Angebot.',
+            'pricing.starter.name': 'Starter',
+            'pricing.starter.desc': 'Perfekt für den ersten Online-Auftritt',
+            'pricing.starter.price': 'ab 1.500 €',
+            'pricing.starter.f1': '✓ Landingpage / One-Pager',
+            'pricing.starter.f2': '✓ Responsive Design (Mobil-optimiert)',
+            'pricing.starter.f3': '✓ Kontaktformular & Google Maps',
+            'pricing.starter.f4': '✓ SEO-Grundoptimierung',
+            'pricing.starter.f5': '✓ Fertig in 1–2 Wochen',
+            'pricing.business.name': 'Business',
+            'pricing.business.desc': 'Für Firmen, die mehr wollen',
+            'pricing.business.price': 'ab 2.500 €',
+            'pricing.business.f1': '✓ Mehrseitige Website (bis 8 Seiten)',
+            'pricing.business.f2': '✓ CMS / Inhaltspflege durch Sie',
+            'pricing.business.f3': '✓ Terminbuchung & Automatisierungen',
+            'pricing.business.f4': '✓ Google My Business-Optimierung',
+            'pricing.business.f5': '✓ Analytics & Performance-Tracking',
+            'pricing.business.f6': '✓ Fertig in 2–4 Wochen',
+            'pricing.premium.name': 'Premium',
+            'pricing.premium.desc': 'Maßgeschneiderte Lösungen',
+            'pricing.premium.price': 'Auf Anfrage',
+            'pricing.premium.f1': '✓ Fullstack Web-Applikation',
+            'pricing.premium.f2': '✓ AI-Integration & Chatbots',
+            'pricing.premium.f3': '✓ Individuelle Automatisierungen',
+            'pricing.premium.f4': '✓ API-Anbindungen & Datenbanken',
+            'pricing.premium.f5': '✓ Laufende Betreuung & Support',
+            // Cookie consent
+            'cookie.text': 'Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.',
+            'cookie.accept': 'Verstanden',
+            'cookie.more': 'Datenschutz',
+        },
+        en: {
+            'nav.services': 'Services',
+            'nav.portfolio': 'Portfolio',
+            'nav.pricing': 'Pricing',
+            'nav.tech': 'Tech Stack',
+            'nav.testimonials': 'Reviews',
+            'nav.contact': 'Contact',
+            'nav.projects': 'Projects',
+            'services.tag': 'Services',
+            'services.title': 'What I build for you',
+            'services.web.title': 'Websites & Online Presence',
+            'services.web.desc': 'From a one-pager to a multilingual corporate site. Fast, cleanly coded, sharp on every device — and search-engine ready.',
+            'services.web.link': 'Request a project',
+            'services.ai.title': 'AI & Automation',
+            'services.ai.desc': 'Chatbots, appointment booking, automated emails, data analysis with LLMs. I connect your daily operations with current AI models — pragmatic, not over-engineered.',
+            'services.ai.link': 'Discuss your use case',
+            'services.apps.title': 'Web Applications',
+            'services.apps.desc': 'When a website isn\'t enough: dashboards, customer portals, internal tools. TypeScript, React, Node — tested, documented, with a database when needed.',
+            'services.apps.link': 'Sketch your idea',
+            'services.design.title': 'Consulting & Code Review',
+            'services.design.desc': 'Already have a project and need a second pair of eyes? I review code, architecture or UX and deliver concrete, actionable recommendations.',
+            'services.design.link': 'Book a slot',
+            'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
+            'services.cta.button': 'Free intro call →',
+            'skills.tag': 'Tech Stack',
+            'skills.title': 'Tools I work with',
+            'projects.tag': 'Selected Work',
+            'projects.title': 'Portfolio',
+            'about.tag': 'About me',
+            'about.title': 'Maximilian Haak',
+            'about.p1': 'I\'m Maximilian — a fullstack web developer and AI specialist based in Bruckmühl near Rosenheim, Bavaria. I build modern websites, web apps, and AI-powered automations for small and medium businesses in the region.',
+            'about.p2': 'From a quick business website to a custom AI agent — I take your project from idea to go-live. My focus: clean code, fair pricing, and personal support without agency overhead.',
+            'about.stat1': 'Years Experience',
+            'about.stat2': 'Projects Delivered',
+            'about.stat3': 'Client Satisfaction',
+            'testimonials.tag': 'References',
+            'testimonials.title': 'What Clients Say',
+            'testimonials.coha.quote': '“Max built our MVP over a weekend. Three hours of briefing, then the site was live. Exactly the no-fuss execution we needed as a startup.”',
+            'testimonials.coha.name': 'CoHa Founding Team',
+            'testimonials.coha.role': 'Startup — Gastronomy',
+            'testimonials.imkerei.quote': '“Our old site was ten years old. Now we sell honey directly online — and I can update content myself without having to ask every time.”',
+            'testimonials.imkerei.name': 'Imkerei Feuerstein',
+            'testimonials.imkerei.role': 'Local Business — Bruckmühl',
+            'testimonials.soundoflvke.quote': '“I didn\'t want a generic musician page. Max got that, with audio player and tour data. Looks like a major label site — without their overhead.”',
+            'testimonials.soundoflvke.name': 'SoundOfLvke',
+            'testimonials.soundoflvke.role': 'Artist & Musician',
+            'contact.tag': 'Contact',
+            'contact.title': 'Let\'s talk',
+            'contact.intro': "Tell me about your project — no strings attached. I'll get back to you personally, usually within one business day.",
+            'contact.name': 'Name',
+            'contact.email': 'Email',
+            'contact.message': 'Message',
+            'contact.send': 'Send message',
+            'footer.impressum': 'Legal Notice',
+            'footer.datenschutz': 'Privacy Policy',
+            'hero.scroll': 'Scroll to explore',
+            // Slide 1 - Maximilian Haak (Personal)
+            'slide.maxhaak.t1': 'Maximilian',
+            'slide.maxhaak.t2': 'Haak.',
+            'slide.maxhaak.t3': 'Software Developer.',
+            'slide.maxhaak.desc': 'Full-stack developer based in Bruckmühl near Rosenheim. Websites, web apps, and AI solutions — with TypeScript, React, and modern cloud technologies. 5+ years of experience, personal and reliable.',
+            'slide.maxhaak.cta1': 'Free Consultation',
+            'slide.maxhaak.cta2': 'View Projects',
+            'slide.maxhaak.badge': 'AVAILABLE FOR PROJECTS',
+            'slide.maxhaak.tag1': 'Full-Stack',
+            'slide.maxhaak.tag2': 'TypeScript & React',
+            'slide.maxhaak.tag3': 'AI & Automation',
+            // Slide 2 - Imkerei Feuerstein
+            'slide.imkerei.t1': 'Your Idea.',
+            'slide.imkerei.t2': 'My Code.',
+            'slide.imkerei.t3': 'Your Success.',
+            'slide.imkerei.desc': 'Imkerei Feuerstein: React website with online shop — discussed personally, delivered in 3 weeks, deployed on Vercel. Responsive design, SEO-optimized, and a thrilled client.',
+            'slide.imkerei.cta1': 'View Live',
+            'slide.imkerei.cta2': 'Project Details',
+            'slide.imkerei.tag1': 'React & Vercel',
+            'slide.imkerei.tag2': '3 Weeks',
+            'slide.imkerei.tag3': 'E-Commerce',
+            // Slide 3 - AI Captain
+            'slide.aicaptain.t1': 'AI Captain.',
+            'slide.aicaptain.t2': 'VS Code',
+            'slide.aicaptain.t3': 'Extension.',
+            'slide.aicaptain.desc': 'My own product on the VS Code Marketplace: An AI agent for intelligent code generation, debugging, and review. Built with TypeScript, LLM APIs, and the VS Code Extension API.',
+            'slide.aicaptain.cta1': 'Learn More',
+            'slide.aicaptain.cta2': 'Project Details',
+            'slide.aicaptain.tag1': 'VS Code Marketplace',
+            'slide.aicaptain.tag2': 'TypeScript',
+            'slide.aicaptain.tag3': 'LLM APIs',
+            // Slide 4 - E46 Studio
+            'slide.e46.t1': 'Desktop App.',
+            'slide.e46.t2': 'BMW E46.',
+            'slide.e46.t3': 'ECU Coding.',
+            'slide.e46.desc': 'E46 Studio: An Electron app for BMW E46 ECU coding via serial interface. TypeScript, Node.js, and low-level communication — for a specialized automotive community.',
+            'slide.e46.cta1': 'View Live',
+            'slide.e46.cta2': 'Project Details',
+            'slide.e46.tag1': 'Electron',
+            'slide.e46.tag2': 'TypeScript',
+            'slide.e46.tag3': 'Serial API',
+            // Slide 5 - CoHa
+            'slide.coha.t1': 'Startup.',
+            'slide.coha.t2': 'Website.',
+            'slide.coha.t3': 'More Clients.',
+            'slide.coha.desc': 'For a Bavarian startup: Modern full-stack web design with React and TypeScript. Fast loading, conversion optimization, and responsive on all devices.',
+            'slide.coha.cta1': 'View Live',
+            'slide.coha.cta2': 'Project Details',
+            'slide.coha.tag1': 'React & TypeScript',
+            'slide.coha.tag2': 'Full-Stack',
+            'slide.coha.tag3': 'Conversion Optimization',
+            // Slide 6 - SoundOfLvke
+            'slide.soundoflvke.t1': 'Sound.',
+            'slide.soundoflvke.t2': 'Design.',
+            'slide.soundoflvke.t3': 'Identity.',
+            'slide.soundoflvke.desc': 'Portfolio website for a music artist — integrated audio player, release overview, and custom responsive design. Creative web development that brings brands to life.',
+            'slide.soundoflvke.cta1': 'View Live',
+            'slide.soundoflvke.cta2': 'Project Details',
+            'slide.soundoflvke.tag1': 'Artist Branding',
+            'slide.soundoflvke.tag2': 'Audio Integration',
+            'slide.soundoflvke.tag3': 'Responsive Design',
+            // Slide badges
+            'slide.imkerei.badge': 'CLIENT PROJECT',
+            'slide.aicaptain.badge': 'AI AGENT',
+            'slide.e46.badge': 'DESKTOP APP',
+            'slide.coha.badge': 'CLIENT REFERENCE',
+            'slide.soundoflvke.badge': 'ARTIST WEBSITE',
+            // Slide 7 - Shookroko
+            'slide.shookroko.t1': 'Browser Game.',
+            'slide.shookroko.t2': 'Phaser 3.',
+            'slide.shookroko.t3': 'TypeScript.',
+            'slide.shookroko.desc': 'Shookroko: An action browser game built with Phaser 3 and TypeScript. Custom game loop, asset pipeline, and a responsive canvas — game development meets the modern web.',
+            'slide.shookroko.cta1': 'Play live',
+            'slide.shookroko.cta2': 'Project Details',
+            'slide.shookroko.tag1': 'Phaser 3',
+            'slide.shookroko.tag2': 'TypeScript',
+            'slide.shookroko.tag3': 'Game Dev',
+            'slide.shookroko.badge': 'BROWSER GAME',
+            // About section (extra keys)
+            'about.available': 'Available for Projects & Employment',
+            'about.lead': 'Web Developer & AI Specialist from Bavaria',
+            'about.h1': 'Modern Technologies & AI-first',
+            'about.h2': 'Fair Prices & Clear Communication',
+            'about.h3': 'From Concept to Go-Live in One Hand',
+            'about.skills.frontend': 'Frontend',
+            'about.skills.backend': 'Backend & Tools',
+            'about.skills.ai': 'AI & Automation',
+            'about.cta': 'Discuss Your Project',
+            // Pricing section
+            'pricing.tag': 'Packages',
+            'pricing.title': 'Clear pricing, no fine print',
+            'pricing.popular': 'POPULAR',
+            'pricing.cta': 'Get in Touch',
+            'pricing.note': 'All prices excl. VAT. Every project is unique — contact me for a free, no-obligation quote.',
+            'pricing.starter.name': 'Starter',
+            'pricing.starter.desc': 'Perfect for your first online presence',
+            'pricing.starter.price': 'from €1,500',
+            'pricing.starter.f1': '✓ Landing page / One-Pager',
+            'pricing.starter.f2': '✓ Responsive design (mobile-optimized)',
+            'pricing.starter.f3': '✓ Contact form & Google Maps',
+            'pricing.starter.f4': '✓ Basic SEO optimization',
+            'pricing.starter.f5': '✓ Ready in 1–2 weeks',
+            'pricing.business.name': 'Business',
+            'pricing.business.desc': 'For companies that want more',
+            'pricing.business.price': 'from €2,500',
+            'pricing.business.f1': '✓ Multi-page website (up to 8 pages)',
+            'pricing.business.f2': '✓ CMS / Content management by you',
+            'pricing.business.f3': '✓ Booking system & automations',
+            'pricing.business.f4': '✓ Google My Business optimization',
+            'pricing.business.f5': '✓ Analytics & performance tracking',
+            'pricing.business.f6': '✓ Ready in 2–4 weeks',
+            'pricing.premium.name': 'Premium',
+            'pricing.premium.desc': 'Tailored solutions',
+            'pricing.premium.price': 'On Request',
+            'pricing.premium.f1': '✓ Fullstack web application',
+            'pricing.premium.f2': '✓ AI integration & chatbots',
+            'pricing.premium.f3': '✓ Custom automations',
+            'pricing.premium.f4': '✓ API connections & databases',
+            'pricing.premium.f5': '✓ Ongoing support & maintenance',
+            // Cookie consent
+            'cookie.text': 'This website uses only technically necessary cookies. No tracking cookies.',
+            'cookie.accept': 'Understood',
+            'cookie.more': 'Privacy Policy',
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'de';
+
+    function applyTranslations(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) el.textContent = dict[key];
         });
-
-        // Observe section headers
-        document.querySelectorAll('.skills-section h2, .ai-stack-section h2, .compartment-header').forEach(el => {
-            revealObserver.observe(el);
-        });
+        document.documentElement.lang = lang;
     }
 
-    // Initialize scroll animations
-    initScrollAnimations();
-    
-    // ========================================
-    // INFINITE LOOP CAROUSEL INITIALIZATION
-    // ========================================
-    function initCarousels() {
-        const carousels = document.querySelectorAll('.carousel-container');
-        
-        carousels.forEach(container => {
-            const track = container.querySelector('.carousel-track');
-            const leftArrow = container.querySelector('.carousel-arrow-left');
-            const rightArrow = container.querySelector('.carousel-arrow-right');
-            const originalCards = Array.from(track.querySelectorAll('.project-card'));
-            
-            if (!track || !leftArrow || !rightArrow || originalCards.length === 0) return;
-            
-            const totalOriginal = originalCards.length;
-            let isTransitioning = false;
-            
-            // Calculate visible cards based on viewport width
-            function getVisibleCards() {
-                const viewportWidth = window.innerWidth;
-                if (viewportWidth >= 1200) return 4;
-                if (viewportWidth >= 992) return 3;
-                if (viewportWidth >= 768) return 2;
-                return 1;
+    /* ═══ COLOR SCHEME TOGGLE ═══ */
+    function getStoredTheme() {
+        return localStorage.getItem('color-scheme') || 'dark';
+    }
+
+    function setColorScheme(scheme) {
+        document.documentElement.setAttribute('data-color-scheme', scheme);
+        localStorage.setItem('color-scheme', scheme);
+    }
+
+    /* ═══ COLOR THEME PICKER ═══ */
+    const COLOR_THEMES = ['maxhaak', 'imkerei', 'coha', 'aicaptain', 'soundoflvke', 'shookroko'];
+
+    /**
+     * Theme controller — single source of truth for `data-project-theme`.
+     *
+     * Three writers compete for the attribute: the color picker (manual
+     * override), the project slider (active slide → theme), and a scroll
+     * observer (section enter → resync to active slide). Without coordination
+     * the scroll observer's `onLeaveBack` previously hard-reset the theme,
+     * silently undoing both slide- and user-driven colours.
+     *
+     * Design:
+     *   - Every writer goes through `setProjectTheme(theme, source)`.
+     *   - Slides remain authoritative: navigating projects always updates the
+     *     site colour (`source: 'slider'`).
+     *   - The picker is a transient manual override (`source: 'picker'`) and
+     *     is persisted to localStorage so a hard reload remembers the choice
+     *     until the next slide change reasserts the slide's colour.
+     *   - The scroll observer (`source: 'scroll'`) only resyncs to the active
+     *     slide on enter — there is no hard-reset on leave-back.
+     *   - Writes are cached: identical themes do not retrigger the 0.6s
+     *     CSS transitions on every theme-aware section.
+     */
+    const themeController = (() => {
+        const root = document.documentElement;
+        const stored = localStorage.getItem('themeColor');
+        const validStored = COLOR_THEMES.includes(stored) ? stored : null;
+
+        let currentTheme = validStored || root.getAttribute('data-project-theme') || 'maxhaak';
+
+        if (validStored && validStored !== root.getAttribute('data-project-theme')) {
+            root.setAttribute('data-project-theme', validStored);
+        }
+
+        function syncSwatches(theme) {
+            // The e46 slide shares maxhaak's blue and has no dedicated swatch.
+            const swatchKey = theme === 'e46' ? 'maxhaak' : theme;
+            // Cache swatches on first call — they don't change after init.
+            if (!syncSwatches.cache) {
+                syncSwatches.cache = document.querySelectorAll('.color-swatch[data-color-theme]');
             }
-            
-            // Check if carousel needs looping
-            function needsLoop() {
-                return totalOriginal > getVisibleCards();
+            syncSwatches.cache.forEach(s => s.classList.toggle('active', s.dataset.colorTheme === swatchKey));
+        }
+
+        function setProjectTheme(theme, source) {
+            if (!theme) return;
+            if (source === 'picker') {
+                try {
+                    localStorage.setItem('themeColor', theme);
+                } catch (_) { /* ignore quota / private mode errors */ }
             }
-            
-            // Clone cards for infinite loop effect
-            function setupInfiniteLoop() {
-                // Remove any existing clones
-                track.querySelectorAll('.carousel-clone').forEach(clone => clone.remove());
-                
-                if (!needsLoop()) {
-                    leftArrow.classList.add('hidden');
-                    rightArrow.classList.add('hidden');
-                    track.style.transform = 'translateX(0)';
-                    return;
-                }
-                
-                leftArrow.classList.remove('hidden');
-                rightArrow.classList.remove('hidden');
-                
-                const visibleCards = getVisibleCards();
-                
-                // Clone cards at the end (first N cards cloned to end)
-                for (let i = 0; i < visibleCards; i++) {
-                    const clone = originalCards[i].cloneNode(true);
-                    clone.classList.add('carousel-clone');
-                    track.appendChild(clone);
-                }
-                
-                // Clone cards at the beginning (last N cards cloned to start)
-                for (let i = totalOriginal - 1; i >= totalOriginal - visibleCards; i--) {
-                    const clone = originalCards[i].cloneNode(true);
-                    clone.classList.add('carousel-clone');
-                    track.insertBefore(clone, track.firstChild);
-                }
+            if (theme === currentTheme) {
+                syncSwatches(theme);
+                return;
             }
-            
-            // Get card width including gap
-            function getCardWidth() {
-                const cards = track.querySelectorAll('.project-card');
-                if (cards.length === 0) return 0;
-                const cardWidth = cards[0].offsetWidth;
-                const trackStyle = window.getComputedStyle(track);
-                const gap = parseInt(trackStyle.gap) || 24;
-                return cardWidth + gap;
-            }
-            
-            // Current position (index in the cloned array, starting after prepended clones)
-            let currentIndex = 0;
-            
-            // Set initial position (after prepended clones)
-            function setInitialPosition() {
-                if (!needsLoop()) return;
-                const visibleCards = getVisibleCards();
-                currentIndex = visibleCards; // Start after prepended clones
-                const cardWidth = getCardWidth();
-                track.style.transition = 'none';
-                track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
-            }
-            
-            // Slide with smooth animation
-            function slideTo(index, smooth = true) {
-                if (isTransitioning) return;
-                
-                const cardWidth = getCardWidth();
-                
-                if (smooth) {
-                    track.style.transition = 'transform 0.4s ease';
+            currentTheme = theme;
+            root.setAttribute('data-project-theme', theme);
+            syncSwatches(theme);
+        }
+
+        syncSwatches(currentTheme);
+
+        return { setProjectTheme };
+    })();
+
+    function initColorPicker() {
+        const wrap = document.querySelector('.color-picker');
+        if (!wrap) return;
+        const trigger = wrap.querySelector('.color-picker-trigger');
+        const popover = wrap.querySelector('.color-picker-popover');
+        const swatches = wrap.querySelectorAll('.color-swatch[data-color-theme]');
+
+        function openPopover() {
+            if (!popover || !trigger) return;
+            popover.hidden = false;
+            // Force reflow so the [data-open] transition animates from hidden state.
+            void popover.offsetWidth;
+            popover.dataset.open = 'true';
+            trigger.setAttribute('aria-expanded', 'true');
+        }
+
+        function closePopover() {
+            if (!popover || !trigger) return;
+            popover.dataset.open = 'false';
+            trigger.setAttribute('aria-expanded', 'false');
+            // Hide after the CSS transition ends so it leaves the tab order.
+            const onEnd = () => {
+                popover.removeEventListener('transitionend', onEnd);
+                if (popover.dataset.open !== 'true') popover.hidden = true;
+            };
+            popover.addEventListener('transitionend', onEnd);
+        }
+
+        if (trigger && popover) {
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (trigger.getAttribute('aria-expanded') === 'true') {
+                    closePopover();
                 } else {
-                    track.style.transition = 'none';
-                }
-                
-                currentIndex = index;
-                track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
-                
-                if (smooth) {
-                    isTransitioning = true;
-                }
-            }
-            
-            // Handle loop reset after transition
-            function handleTransitionEnd() {
-                isTransitioning = false;
-                
-                if (!needsLoop()) return;
-                
-                const visibleCards = getVisibleCards();
-                const totalWithClones = totalOriginal + (visibleCards * 2);
-                
-                // If we're at the cloned end section, jump to real start
-                if (currentIndex >= totalOriginal + visibleCards) {
-                    currentIndex = visibleCards + (currentIndex - totalOriginal - visibleCards);
-                    slideTo(currentIndex, false);
-                }
-                
-                // If we're at the cloned start section, jump to real end
-                if (currentIndex < visibleCards) {
-                    currentIndex = totalOriginal + currentIndex;
-                    slideTo(currentIndex, false);
-                }
-            }
-            
-            // Event listeners
-            track.addEventListener('transitionend', handleTransitionEnd);
-            
-            leftArrow.addEventListener('click', () => {
-                if (!isTransitioning) {
-                    slideTo(currentIndex - 1);
+                    openPopover();
                 }
             });
-            
-            rightArrow.addEventListener('click', () => {
-                if (!isTransitioning) {
-                    slideTo(currentIndex + 1);
+
+            document.addEventListener('click', (e) => {
+                if (trigger.getAttribute('aria-expanded') !== 'true') return;
+                if (!wrap.contains(e.target)) closePopover();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+                    closePopover();
+                    trigger.focus();
                 }
             });
-            
-            // Handle resize
-            let resizeTimeout;
+        }
+
+        swatches.forEach(sw => {
+            sw.addEventListener('click', () => {
+                themeController.setProjectTheme(sw.dataset.colorTheme, 'picker');
+                closePopover();
+            });
+        });
+    }
+
+    /* ═══ MOBILE MENU ═══ */
+    function initMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const links = document.getElementById('navLinks');
+        if (!toggle || !links) return;
+
+        toggle.addEventListener('click', () => {
+            const open = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!open));
+            toggle.classList.toggle('active', !open);
+            links.classList.toggle('open', !open);
+        });
+
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.classList.remove('active');
+                links.classList.remove('open');
+            });
+        });
+    }
+
+    /* ═══ NAVBAR SCROLL STATE ═══ */
+    function initNavbarScroll() {
+        const nav = document.getElementById('navbar');
+        if (!nav) return;
+        const check = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+        window.addEventListener('scroll', check, { passive: true });
+        check();
+    }
+
+    /* ═══ PROJECT SLIDER ═══ */
+    class ProjectSlider {
+        constructor() {
+            this.section = document.querySelector('#projects');
+            if (!this.section) return;
+
+            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
+            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'));
+            this.arrowLeft = this.section.querySelector('.slider-arrow-left');
+            this.arrowRight = this.section.querySelector('.slider-arrow-right');
+            this.slidesContainer = this.section.querySelector('.hero-slides-container');
+            this.currentIndex = 0;
+            this.isAnimating = false;
+
+            if (this.slides.length === 0) return;
+
+            this.bindEvents();
+            this.updateContainerHeight();
+        }
+
+        updateContainerHeight() {
+            if (!this.slidesContainer || this.slides.length === 0) return;
+            let maxHeight = 0;
+            this.slides.forEach(slide => {
+                const prev = { hidden: slide.hidden, vis: slide.style.visibility };
+                slide.hidden = false;
+                slide.style.visibility = 'visible';
+                const h = slide.scrollHeight;
+                if (h > maxHeight) maxHeight = h;
+                slide.hidden = prev.hidden;
+                slide.style.visibility = prev.vis;
+            });
+            if (maxHeight > 0) {
+                this.slidesContainer.style.minHeight = `${maxHeight}px`;
+            }
+        }
+
+        bindEvents() {
+            this.navBtns.forEach((btn, i) => {
+                btn.addEventListener('click', () => this.goToSlide(i));
+            });
+            if (this.arrowLeft) {
+                this.arrowLeft.addEventListener('click', () => this.navigate(-1));
+            }
+            if (this.arrowRight) {
+                this.arrowRight.addEventListener('click', () => this.navigate(1));
+            }
+
+            // Touch / swipe support
+            let touchStartX = 0;
+            let touchStartY = 0;
+            const swipeTarget = this.slidesContainer || this.section;
+            if (swipeTarget) {
+                swipeTarget.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+                swipeTarget.addEventListener('touchend', (e) => {
+                    const dx = e.changedTouches[0].screenX - touchStartX;
+                    const dy = e.changedTouches[0].screenY - touchStartY;
+                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                        this.navigate(dx < 0 ? 1 : -1);
+                    }
+                }, { passive: true });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                const tag = document.activeElement.tagName;
+                if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable) return;
+                if (e.key === 'ArrowLeft') this.navigate(-1);
+                if (e.key === 'ArrowRight') this.navigate(1);
+            });
+
+            // Recalculate container height on resize (debounced)
+            let resizeTimer;
             window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    setupInfiniteLoop();
-                    setInitialPosition();
-                }, 150);
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => this.updateContainerHeight(), 100);
             });
-            
-            // Initial setup
-            setupInfiniteLoop();
-            setInitialPosition();
-        });
-    }
-    
-    // Initialize carousels
-    initCarousels();
-    
-    // ========================================
-    // END CAROUSEL
-    // ========================================
+        }
 
-    // Typed.js Animation (nur in der Home-Section)
-    var heroSection = document.getElementById('home');
-    if (heroSection) {
-        new Typed('.typing', {
-            strings: ["Software-Entwickler", "Web-Entwickler", "KI-Enthusiast"],
-            typeSpeed: 60,
-            backSpeed: 40,
-            loop: true,
-            showCursor: false
-        });
-    }
+        navigate(direction) {
+            const nextIndex = (this.currentIndex + direction + this.slides.length) % this.slides.length;
+            this.goToSlide(nextIndex);
+        }
 
-    // Navigation Elemente
-    const nav = document.querySelector('nav');
-    let navHeight = nav.offsetHeight;
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
+        goToSlide(index) {
+            if (index === this.currentIndex || this.isAnimating) return;
+            this.isAnimating = true;
 
-    // Smooth Scrolling
-    document.querySelectorAll('.nav-link, .scroll-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            // Prüfen, ob der Link zu einer Sektion auf der aktuellen Seite zeigt
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                navHeight = nav.offsetHeight; // Aktualisiere navHeight
-                const targetId = href.split('#')[1];
-                const targetElement = document.getElementById(targetId);
+            const direction = index > this.currentIndex ? 1 : -1;
+            const oldSlide = this.slides[this.currentIndex];
+            const newSlide = this.slides[index];
 
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop - navHeight;
+            // Update nav buttons
+            this.navBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+                btn.setAttribute('aria-selected', String(i === index));
+            });
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            // Update project theme on <html> via the central controller.
+            // Slider writes are gated by the user lock — if the user picked a
+            // colour from the picker, slide changes will not override it.
+            const theme = newSlide.getAttribute('data-theme');
+            if (theme) {
+                themeController.setProjectTheme(theme, 'slider');
+            }
+
+            this.currentIndex = index;
+            this.animatePremiumTransition(oldSlide, newSlide, direction);
+        }
+
+        animatePremiumTransition(oldSlide, newSlide, direction) {
+            if (typeof gsap === 'undefined') {
+                this.animateWithCSS(oldSlide, newSlide, direction);
+                return;
+            }
+
+            const config = {
+                duration: 0.7,
+                stagger: 0.05,
+                xOffset: 120,
+                parallaxRatio: 0.5,
+            };
+
+            const xOut = direction === 1 ? -config.xOffset : config.xOffset;
+            const xIn = direction === 1 ? config.xOffset : -config.xOffset;
+
+            // Kill any running tweens
+            gsap.killTweensOf([oldSlide, newSlide]);
+            gsap.killTweensOf(oldSlide.querySelectorAll('*'));
+            gsap.killTweensOf(newSlide.querySelectorAll('*'));
+
+            // Prepare new slide (visible but offset)
+            newSlide.hidden = false;
+            oldSlide.style.pointerEvents = 'none';
+            newSlide.style.pointerEvents = 'auto';
+            gsap.set(newSlide, {
+                x: xIn,
+                opacity: 0,
+                visibility: 'visible',
+                zIndex: 3,
+            });
+
+            const oldContent = {
+                text: oldSlide.querySelector('.slide-text'),
+                visual: oldSlide.querySelector('.slide-visual'),
+            };
+
+            const newContent = {
+                text: newSlide.querySelector('.slide-text'),
+                visual: newSlide.querySelector('.slide-visual'),
+                titleLines: newSlide.querySelectorAll('.title-line'),
+                desc: newSlide.querySelector('.slide-description'),
+                cta: newSlide.querySelectorAll('.slide-cta .btn'),
+                tags: newSlide.querySelector('.slide-tags'),
+            };
+
+            // Set initial states for new slide inner elements
+            if (newContent.text) {
+                gsap.set(newContent.text, { x: xIn * config.parallaxRatio, opacity: 0 });
+            }
+            if (newContent.visual) {
+                gsap.set(newContent.visual, { x: xIn * 1.2, opacity: 0, scale: 0.95 });
+            }
+
+            // Master timeline
+            const master = gsap.timeline({
+                onComplete: () => {
+                    oldSlide.classList.remove('active');
+                    oldSlide.hidden = true;
+                    oldSlide.style.pointerEvents = '';
+                    gsap.set(oldSlide, { x: 0, opacity: 0, visibility: 'hidden', zIndex: 1 });
+                    if (oldContent.text) gsap.set(oldContent.text, { x: 0, opacity: 1 });
+                    if (oldContent.visual) gsap.set(oldContent.visual, { x: 0, opacity: 1, scale: 1 });
+
+                    newSlide.classList.add('active');
+                    newSlide.style.pointerEvents = '';
+                    gsap.set(newSlide, { x: 0, opacity: 1, visibility: 'visible', zIndex: 2 });
+                    if (newContent.text) gsap.set(newContent.text, { x: 0, opacity: 1 });
+                    if (newContent.visual) gsap.set(newContent.visual, { x: 0, opacity: 1, scale: 1 });
+
+                    this.isAnimating = false;
+                },
+            });
+
+            // === OLD SLIDE OUT ===
+
+            // Visual exits first (faster — parallax)
+            if (oldContent.visual) {
+                master.to(oldContent.visual, {
+                    x: xOut * 1.2,
+                    opacity: 0,
+                    scale: 0.95,
+                    duration: config.duration * 0.8,
+                    ease: 'power2.inOut',
+                }, 0);
+            }
+
+            // Text exits (slower — parallax)
+            if (oldContent.text) {
+                master.to(oldContent.text, {
+                    x: xOut * config.parallaxRatio,
+                    opacity: 0,
+                    duration: config.duration * 0.7,
+                    ease: 'power2.inOut',
+                }, 0.05);
+            }
+
+            // Fade out old slide container
+            master.to(oldSlide, {
+                opacity: 0,
+                duration: config.duration * 0.5,
+                ease: 'power2.in',
+            }, 0.1);
+
+            // === NEW SLIDE IN ===
+
+            // Slide container enters
+            master.to(newSlide, {
+                x: 0,
+                opacity: 1,
+                duration: config.duration,
+                ease: 'power3.out',
+            }, 0.2);
+
+            // Text enters (parallax — slower offset)
+            if (newContent.text) {
+                master.to(newContent.text, {
+                    x: 0,
+                    opacity: 1,
+                    duration: config.duration * 0.9,
+                    ease: 'power4.out',
+                }, 0.25);
+            }
+
+            // Visual enters (parallax — faster offset)
+            if (newContent.visual) {
+                master.to(newContent.visual, {
+                    x: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: config.duration,
+                    ease: 'power4.out',
+                }, 0.3);
+            }
+
+            // === CONTENT REVEAL ===
+
+            // Title lines — clip-path bottom-up reveal
+            if (newContent.titleLines.length) {
+                master.fromTo(newContent.titleLines,
+                    { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+                    {
+                        y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)',
+                        stagger: 0.1,
+                        duration: 0.6,
+                        ease: 'power4.out',
+                    },
+                    0.35
+                );
+            }
+
+            // Description
+            if (newContent.desc) {
+                master.fromTo(newContent.desc,
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
+                    0.55
+                );
+            }
+
+            // CTA buttons — staggered with bounce
+            if (newContent.cta.length) {
+                master.fromTo(newContent.cta,
+                    { y: 15, opacity: 0, scale: 0.95 },
+                    {
+                        y: 0, opacity: 1, scale: 1,
+                        stagger: 0.08,
+                        duration: 0.4,
+                        ease: 'back.out(1.4)',
+                    },
+                    0.65
+                );
+            }
+
+            // Tags
+            if (newContent.tags) {
+                master.fromTo(newContent.tags,
+                    { y: 10, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+                    0.75
+                );
+            }
+
+            // Showcase elements
+            this.animateShowcaseElements(newSlide, master);
+        }
+
+        animateShowcaseElements(slide, timeline) {
+            const frame = slide.querySelector('.showcase-frame');
+            const floatPhoto = slide.querySelector('.hero-photo-float');
+            const placeholder = slide.querySelector('.placeholder-content');
+            const badge = slide.querySelector('.showcase-badge');
+
+            if (floatPhoto) {
+                // 3D tilt entrance — matches browser frame animation style
+                timeline.fromTo(floatPhoto,
+                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                    { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
+                    0.4
+                );
+            }
+
+            if (frame) {
+                // Browser mockup — 3D tilt entrance
+                timeline.fromTo(frame,
+                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                    {
+                        opacity: 1, rotateY: -5, rotateX: 2, scale: 1,
+                        duration: 0.8,
+                        ease: 'power4.out',
+                    },
+                    0.4
+                );
+
+                // Browser dots — elastic scale pop
+                const dots = frame.querySelectorAll('.browser-bar .dot');
+                if (dots.length) {
+                    timeline.fromTo(dots,
+                        { opacity: 0, scale: 0 },
+                        {
+                            opacity: 1, scale: 1,
+                            stagger: 0.06,
+                            duration: 0.3,
+                            ease: 'elastic.out(1, 0.5)',
+                        },
+                        0.7
+                    );
+                }
+
+                // Screenshot image — scale reveal
+                const img = frame.querySelector('img');
+                if (img) {
+                    timeline.fromTo(img,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' },
+                        0.5
+                    );
                 }
             }
 
-            // Entferne aktive Klasse und schließe das mobile Menü
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-            navList.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        });
-    });
+            if (placeholder) {
+                timeline.fromTo(placeholder,
+                    { opacity: 0, scale: 0.9 },
+                    { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' },
+                    0.4
+                );
+            }
 
-    // Back-to-Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
+            if (badge) {
+                timeline.fromTo(badge,
+                    { opacity: 0, y: -20, scale: 0.7, z: 40 },
+                    {
+                        opacity: 1, y: 0, scale: 1, z: 40,
+                        duration: 0.5,
+                        ease: 'back.out(1.4)',
+                    },
+                    0.8
+                );
+            }
         }
-    });
 
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        animateWithCSS(oldSlide, newSlide, direction) {
+            newSlide.hidden = false;
+            oldSlide.style.pointerEvents = 'none';
+            newSlide.style.pointerEvents = 'auto';
+            newSlide.style.opacity = '0';
+            newSlide.style.transform = `translateX(${direction === 1 ? 60 : -60}px)`;
 
-    // Intersection Observer für Scroll-Erkennung
-    if (sections.length > 0 && navLinks.length > 0) {
-        const options = {
-            root: null,
-            rootMargin: `-${navHeight}px 0px 0px 0px`, // Verhindert das Überdecken durch die Nav
-            threshold: 0.6 // 60% des Elements müssen sichtbar sein
-        };
+            requestAnimationFrame(() => {
+                newSlide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                oldSlide.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                newSlide.style.opacity = '1';
+                newSlide.style.transform = 'translateX(0)';
+                oldSlide.style.opacity = '0';
+                oldSlide.style.transform = `translateX(${direction === 1 ? -60 : 60}px)`;
+            });
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        const href = link.getAttribute('href');
-                        if (href.startsWith('#') && href.split('#')[1] === entry.target.id) {
-                            link.classList.add('active');
-                        }
+            setTimeout(() => {
+                oldSlide.classList.remove('active');
+                oldSlide.hidden = true;
+                oldSlide.style.cssText = '';
+                newSlide.classList.add('active');
+                newSlide.style.cssText = '';
+                this.isAnimating = false;
+            }, 500);
+        }
+
+        playEntrance() {
+            if (typeof gsap === 'undefined') return;
+
+            // Animate static hero content
+            const heroSection = document.querySelector('#hero');
+            if (!heroSection) return;
+
+            const titleLines = heroSection.querySelectorAll('.title-line');
+            const desc = heroSection.querySelector('.slide-description');
+            const ctaButtons = heroSection.querySelectorAll('.slide-cta .btn');
+            const tags = heroSection.querySelector('.slide-tags');
+            const visual = heroSection.querySelector('.hero-visual');
+            const details = heroSection.querySelector('.hero-details');
+
+            // Set initial hidden states
+            gsap.set(titleLines, { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+            if (desc) gsap.set(desc, { y: 20, opacity: 0 });
+            gsap.set(ctaButtons, { y: 15, opacity: 0, scale: 0.95 });
+            if (tags) gsap.set(tags, { y: 10, opacity: 0 });
+            if (visual) gsap.set(visual, { y: 40, opacity: 0 });
+            if (details) gsap.set(details, { y: 30, opacity: 0 });
+
+            const tl = gsap.timeline({ delay: 0.3 });
+
+            // Visual rises up
+            if (visual) {
+                tl.to(visual, {
+                    y: 0, opacity: 1,
+                    duration: 0.8, ease: 'power3.out',
+                }, 0.1);
+            }
+
+            // Title lines — bottom-up clip reveal
+            tl.to(titleLines, {
+                y: 0, opacity: 1,
+                clipPath: 'inset(0 0 0% 0)',
+                stagger: 0.1,
+                duration: 0.6,
+                ease: 'power4.out',
+            }, 0.2);
+
+            // Description
+            if (desc) {
+                tl.to(desc, {
+                    y: 0, opacity: 1,
+                    duration: 0.5, ease: 'power3.out',
+                }, 0.5);
+            }
+
+            // CTA buttons — staggered bounce
+            if (ctaButtons.length) {
+                tl.to(ctaButtons, {
+                    y: 0, opacity: 1, scale: 1,
+                    stagger: 0.08,
+                    duration: 0.4,
+                    ease: 'back.out(1.4)',
+                }, 0.65);
+            }
+
+            // Tags
+            if (tags) {
+                tl.to(tags, {
+                    y: 0, opacity: 1,
+                    duration: 0.4, ease: 'power3.out',
+                }, 0.75);
+            }
+
+            // Hero photo float entrance
+            const heroPhoto = heroSection.querySelector('.hero-photo-float');
+            if (heroPhoto) {
+                tl.fromTo(heroPhoto,
+                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                    { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
+                    0.4
+                );
+            }
+
+            // Hero photo badge
+            const heroBadge = heroSection.querySelector('.showcase-badge');
+            if (heroBadge) {
+                tl.fromTo(heroBadge,
+                    { opacity: 0, y: -20, scale: 0.7 },
+                    { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)' },
+                    0.8
+                );
+            }
+
+            // Details section (skills + stats) — scroll-triggered
+            if (details && typeof ScrollTrigger !== 'undefined') {
+                gsap.to(details, {
+                    y: 0, opacity: 1,
+                    duration: 0.7, ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: details,
+                        start: 'top 85%',
+                        once: true,
+                    },
+                });
+            }
+
+            // Scroll hint
+            const scrollHint = document.querySelector('.scroll-hint');
+            if (scrollHint) {
+                tl.from(scrollHint, { opacity: 0, duration: 0.5 }, 0.9);
+            }
+        }
+    }
+
+    /* ═══ GSAP ANIMATIONS ═══ */
+    function initAnimations() {
+        if (typeof gsap === 'undefined') {
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+            return;
+        }
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // Hero orb scroll parallax
+        const heroOrbs = document.querySelectorAll('.hero-orb');
+        if (typeof ScrollTrigger !== 'undefined') {
+            const orbSpeeds = [100, 150, 80];
+            heroOrbs.forEach((orb, i) => {
+                gsap.to(orb, {
+                    y: -orbSpeeds[i],
+                    scrollTrigger: {
+                        trigger: '.hero-section',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1,
+                    },
+                });
+            });
+        }
+
+        // Theme sync — when the projects section enters the viewport, align
+        // the global theme with the active slide. Going back up no longer
+        // hard-resets to a default colour: that previously clobbered both the
+        // user's picker choice and any other slide-derived theme. The shared
+        // controller also no-ops when the user has locked a colour.
+        const projectsSection = document.querySelector('#projects');
+        if (projectsSection) {
+            ScrollTrigger.create({
+                trigger: projectsSection,
+                start: 'top center',
+                end: 'bottom center',
+                onEnter: () => {
+                    const activeSlide = projectsSection.querySelector('.hero-slide.active');
+                    const theme = activeSlide && activeSlide.getAttribute('data-theme');
+                    if (theme) themeController.setProjectTheme(theme, 'scroll');
+                },
+            });
+        }
+
+        // Track hero/projects visibility — used to pause orbs and parallax.
+        const heroSection = document.querySelector('.hero-section');
+        let parallaxTargetsVisible = true;
+
+        if (heroSection && heroOrbs.length) {
+            const orbObserver = new IntersectionObserver(
+                (entries) => {
+                    const isVisible = entries[0].isIntersecting;
+                    parallaxTargetsVisible = isVisible || !!document.querySelector('#projects.in-view');
+                    heroOrbs.forEach(orb => {
+                        orb.style.animationPlayState = isVisible ? 'running' : 'paused';
+                    });
+                },
+                { threshold: 0 }
+            );
+            orbObserver.observe(heroSection);
+        }
+
+        // Also track projects section visibility (hero-photo-float lives in #hero,
+        // but slide showcase frames are in #projects).
+        if (projectsSection) {
+            const projObserver = new IntersectionObserver(
+                (entries) => {
+                    if (entries[0].isIntersecting) {
+                        projectsSection.classList.add('in-view');
+                        parallaxTargetsVisible = true;
+                    } else {
+                        projectsSection.classList.remove('in-view');
+                        // Recompute visibility: still active if hero is visible.
+                        const heroVisible = heroSection
+                            ? heroSection.getBoundingClientRect().bottom > 0
+                              && heroSection.getBoundingClientRect().top < window.innerHeight
+                            : false;
+                        parallaxTargetsVisible = heroVisible;
+                    }
+                },
+                { threshold: 0 }
+            );
+            projObserver.observe(projectsSection);
+        }
+
+        // Showcase mouse parallax — skip work when targets are off-screen.
+        let mouseTicking = false;
+        document.addEventListener('mousemove', (e) => {
+            if (mouseTicking || !parallaxTargetsVisible) return;
+            mouseTicking = true;
+            requestAnimationFrame(() => {
+                const normX = (e.clientX / window.innerWidth - 0.5);
+                const normY = (e.clientY / window.innerHeight - 0.5);
+                const activeFrame = document.querySelector('.hero-slide.active .showcase-frame');
+                const activeFloat = document.querySelector('.hero-slide.active .hero-photo-float') || document.querySelector('#hero .hero-photo-float');
+                if (activeFrame) {
+                    gsap.to(activeFrame, {
+                        rotateY: -5 + normX * 10,
+                        rotateX: 2 - normY * 6,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        overwrite: 'auto',
                     });
                 }
+                if (activeFloat) {
+                    gsap.to(activeFloat, {
+                        rotateY: -5 + normX * 10,
+                        rotateX: 2 - normY * 6,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        overwrite: 'auto',
+                    });
+                }
+                mouseTicking = false;
             });
-        }, options);
+        }, { passive: true });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    }
-
-    // Mobile Navigation
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-    }
-
-    // Scroll Indikator
-    window.addEventListener('scroll', () => {
-        const scrollTotal = document.body.scrollHeight - window.innerHeight;
-        const scrollProgress = (window.scrollY / scrollTotal) * 100;
-        const progressBar = document.getElementById('progress-bar');
-        if (progressBar) {
-            progressBar.style.width = `${scrollProgress}%`;
+        // Scroll reveal batch
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.batch('.scroll-reveal', {
+                onEnter: (batch) => {
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.7,
+                        ease: 'power2.out',
+                        stagger: 0.1,
+                        overwrite: true,
+                    });
+                },
+                start: 'top 85%',
+                once: true,
+            });
         }
-    });
+    }
 
-    // Particles.js Konfiguration (nur in der Home-Section)
-    if (heroSection) {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 60,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#00e676"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.3
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#00e676",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2
+    /* ═══ CONTACT FORM ═══ */
+    function initContactForm() {
+        const form = document.querySelector('.contact-form');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-primary');
+            const originalText = btn.textContent;
+            const action = form.getAttribute('action') || '';
+
+            const resetBtn = (delay) => {
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('is-success', 'is-error');
+                    btn.disabled = false;
+                }, delay);
+            };
+
+            // Mailto fallback (no backend) — build a pre-filled email and open the user's mail client
+            if (action.startsWith('mailto:')) {
+                const name = (form.querySelector('#name')?.value || '').trim();
+                const email = (form.querySelector('#email')?.value || '').trim();
+                const message = (form.querySelector('#message')?.value || '').trim();
+                const subject = currentLang === 'de'
+                    ? `Anfrage über maximilianhaak.de — ${name}`
+                    : `Inquiry via maximilianhaak.de — ${name}`;
+                const body = `${message}\n\n—\n${name}\n${email}`;
+                const target = `${action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = target;
+                btn.textContent = currentLang === 'de' ? '✓ E-Mail-Programm geöffnet' : '✓ Mail client opened';
+                btn.classList.add('is-success');
+                resetBtn(4000);
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    btn.textContent = currentLang === 'de' ? '✓ Gesendet!' : '✓ Sent!';
+                    btn.classList.add('is-success');
+                    form.reset();
+                    resetBtn(3000);
+                } else {
+                    throw new Error('Form submission failed');
                 }
-            },
-            "interactivity": {
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    }
-                }
-            },
-            "retina_detect": true
+            } catch (error) {
+                btn.textContent = currentLang === 'de' ? '✗ Fehler — bitte per E-Mail' : '✗ Error — please use email';
+                btn.classList.add('is-error');
+                resetBtn(4000);
+            }
         });
     }
-    
-    // --- Consent Management (Cookie/Tracking Einwilligung) ---
-    (function initConsent() {
-        const GA_ID = 'G-QFHRSY5Z0C';
 
-        function getConsent() {
-            try { return localStorage.getItem('site_consent'); } catch (_) { return null; }
-        }
+    /* ═══ COOKIE CONSENT ═══ */
+    function initCookieConsent() {
+        const banner = document.getElementById('cookieConsent');
+        const acceptBtn = document.getElementById('cookieAccept');
+        if (!banner || !acceptBtn) return;
 
-        function setConsent(value) {
-            try { localStorage.setItem('site_consent', value); } catch (_) {}
-        }
-
+        // Load Google Fonts only after consent (GDPR compliance)
         function loadGoogleFonts() {
-            if (document.getElementById('gf-roboto')) return;
+            if (document.querySelector('link[data-google-fonts]')) return;
             const link = document.createElement('link');
-            link.id = 'gf-roboto';
             link.rel = 'stylesheet';
-            link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+            link.setAttribute('data-google-fonts', 'true');
+            link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap';
             document.head.appendChild(link);
         }
 
-        function loadAnalytics() {
-            if (!GA_ID) return;
-            if (window.gtag) return; // already loaded
-            const s = document.createElement('script');
-            s.async = true;
-            s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-            s.onload = function () {
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                window.gtag = gtag;
-                gtag('js', new Date());
-                // Consent Mode basic: only analytics if granted
-                gtag('consent', 'update', { ad_storage: 'denied', analytics_storage: 'granted' });
-                gtag('config', GA_ID);
+        // If already consented, load fonts immediately
+        if (localStorage.getItem('cookieConsent') === 'accepted') {
+            loadGoogleFonts();
+        }
+
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => { banner.style.display = ''; }, 1000);
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.style.display = 'none';
+            loadGoogleFonts();
+        });
+
+        window.showConsentManager = function () {
+            banner.style.display = '';
+        };
+    }
+
+    /* ═══ HERO PHOTO CROSSFADE ═══ */
+    function initHeroPhotoSwap() {
+        const swap = document.querySelector('.hero-photo-swap');
+        if (!swap) return;
+        const imgs = Array.from(swap.querySelectorAll('.hero-photo-img'));
+        if (imgs.length < 2) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        let current = imgs.findIndex(img => img.classList.contains('is-active'));
+        if (current < 0) current = 0;
+
+        setInterval(() => {
+            // Skip when tab is hidden — saves CPU and avoids flicker on resume.
+            if (document.hidden) return;
+            imgs[current].classList.remove('is-active');
+            current = (current + 1) % imgs.length;
+            imgs[current].classList.add('is-active');
+        }, 4500);
+    }
+
+    /* ═══ INIT ═══ */
+    function init() {
+        // Color scheme
+        setColorScheme(getStoredTheme());
+        const themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-color-scheme');
+                setColorScheme(current === 'dark' ? 'light' : 'dark');
+            });
+        }
+
+        // Language
+        applyTranslations(currentLang);
+        const langBtn = document.getElementById('langToggle');
+        if (langBtn) {
+            const updateLangLabel = () => {
+                const label = langBtn.querySelector('.lang-label');
+                if (label) label.textContent = currentLang === 'de' ? 'EN' : 'DE';
             };
-            document.head.appendChild(s);
-        }
-
-        function applyConsent(state) {
-            if (state === 'granted') {
-                loadGoogleFonts();
-                loadAnalytics();
-            }
-        }
-
-        function buildBanner() {
-            if (document.getElementById('consent-banner')) return;
-            const banner = document.createElement('div');
-            banner.id = 'consent-banner';
-            banner.className = 'consent-banner';
-            banner.innerHTML = `
-                <h3>Cookies & Dienste</h3>
-                <p>Wir verwenden optionale Dienste für Statistik (Google Analytics) und externe Schriftarten (Google Fonts). Diese werden nur nach Ihrer Einwilligung geladen. Mehr dazu in der <a class="consent-link" href="/datenschutz.html">Datenschutzerklärung</a>.</p>
-                <div class="consent-actions">
-                    <button class="consent-btn" id="consent-accept">Akzeptieren</button>
-                    <button class="consent-btn secondary" id="consent-decline">Ablehnen</button>
-                </div>
-            `;
-            document.body.appendChild(banner);
-
-            document.getElementById('consent-accept').addEventListener('click', function() {
-                setConsent('granted');
-                hideBanner();
-                applyConsent('granted');
+            updateLangLabel();
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'de' ? 'en' : 'de';
+                localStorage.setItem('lang', currentLang);
+                applyTranslations(currentLang);
+                updateLangLabel();
             });
-            document.getElementById('consent-decline').addEventListener('click', function() {
-                setConsent('denied');
-                hideBanner();
-            });
-
-            function showBanner() { banner.classList.add('show'); }
-            function hideBanner() { banner.classList.remove('show'); }
-            window.showConsentManager = showBanner;
-
-            return { showBanner, hideBanner };
         }
 
-        const bannerAPI = buildBanner();
-        const consent = getConsent();
-        if (consent === 'granted') {
-            applyConsent('granted');
-        } else if (consent === 'denied') {
-            // do nothing
-        } else {
-            bannerAPI && bannerAPI.showBanner();
-        }
-    })();
-});
+        initMobileMenu();
+        initNavbarScroll();
+        initContactForm();
+        initCookieConsent();
+        initAnimations();
+        initHeroPhotoSwap();
+        initColorPicker();
+
+        // Project slider
+        const slider = new ProjectSlider();
+        slider.playEntrance();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

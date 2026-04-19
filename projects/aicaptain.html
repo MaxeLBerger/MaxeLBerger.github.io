@@ -1,138 +1,173 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-color-scheme="dark" data-project-theme="aicaptain">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Captain - VS Code Extension | Maximilian Haak</title>
-    <meta name="description" content="AI Captain - VS Code Chat Participant mit Copilot + Perplexity Web-Research für intelligentes Coding und Research.">
-    <meta name="keywords" content="AI Captain, VS Code Extension, Copilot, Perplexity, TypeScript, Maximilian Haak">
+    <title>AI Captain — VS Code Extension | Maximilian Haak</title>
+    <meta name="description" content="AI Captain: Intelligente VS Code Extension mit Multi-Model-Support, Code-Generierung, Review-Automatisierung und Web-Recherche.">
     <meta name="author" content="Maximilian Haak">
-
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
-
-    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <a href="../index.html#home">Maximilian Haak</a>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Startseite">
+                <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Leistungen</a>
+                <a href="../index.html#portfolio">Portfolio</a>
+                <a href="../index.html#about">Über mich</a>
+                <a href="../index.html#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
-        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list" role="navigation">
-            <li><a href="../index.html#home" class="nav-link">Home</a></li>
-            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
-            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
-        </ul>
     </nav>
 
-    <div id="progress-bar" aria-hidden="true"></div>
-
-    <main id="wrapper" class="project-main">
+    <main class="project-page">
         <section class="project-hero">
             <div class="container">
-                <h1 class="project-title">AI Captain</h1>
-                <p class="project-tagline">VS Code Chat Participant mit Copilot + Perplexity Web-Research</p>
+                <a href="../index.html#portfolio" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Zurück zum Portfolio
+                </a>
+                <div class="project-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4zM20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87"/></svg>
+                    AI Agent
+                </div>
+                <h1 class="project-title">AI <span class="gradient-text">Captain</span></h1>
+                <p class="project-tagline">Dein intelligenter Coding-Copilot: VS Code Extension mit Multi-Model-Support, autonomer Code-Generierung, Review-Automatisierung und integrierter Web-Recherche.</p>
                 <div class="project-actions">
-                    <a href="https://github.com/MaxeLBerger/AIAICaptain" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i> Code ansehen
-                    </a>
+                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Ihr Projekt starten</a>
+                </div>
+                <div class="project-screenshot">
+                    <img src="../res/projects/aicaptain.webp" alt="AI Captain VS Code Extension Screenshot" loading="eager">
                 </div>
             </div>
         </section>
 
-        <section class="project-detail-section">
-            <div class="container">
-                <section class="project-section">
-                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
-                    <p>AI Captain ist eine VS Code Extension, die als Chat Participant in GitHub Copilot Chat integriert wird. Mit <code>@aicaptain</code> in Copilot Chat kombiniert sie die Coding-Power von Copilot mit Perplexity Web-Research — für fundierte Code-Reviews, Feature-Implementierungen und Recherche direkt in der IDE.</p>
-                    <p>Das Tool vereint Code-Generierung, automatische Reviews und aktuelle Web-basierte Recherche in einem einzigen Workflow, optimiert für professionelle Softwareentwicklung.</p>
-                </section>
+        <div class="project-content">
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Über das Projekt
+                </span>
+                <h2 class="section-title">KI-gestützte Softwareentwicklung</h2>
+                <p class="section-text">AI Captain ist eine VS Code Extension, die die Softwareentwicklung mit KI-Automatisierung auf ein neues Level hebt. Mit Slash-Commands wie /code, /review, /research und /plan wird der gesamte Entwicklungs-Workflow beschleunigt.</p>
+                <p class="section-text">Das Multi-Model-System unterstützt GPT-4o, Claude und Perplexity — je nach Aufgabe wird automatisch das beste Modell gewählt. Vollständig konfigurierbar und erweiterbar.</p>
+            </section>
 
-                <section class="project-section">
-                    <h2><i class="fas fa-star"></i> Features</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-code"></i>
-                            <h3>/code Command</h3>
-                            <p>Feature-Implementierung mit automatischem Code-Review-Loop. Bis zu 5 Iterationen für optimale Ergebnisse.</p>
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                    Features
+                </span>
+                <h2 class="section-title">Was AI Captain kann</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-search"></i>
-                            <h3>/review Command</h3>
-                            <p>Code-Review der aktuellen Datei oder Selektion mit Web-gestützten Best Practices.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-globe"></i>
-                            <h3>/research Command</h3>
-                            <p>Tiefgreifende Web-Recherche zu beliebigen Themen direkt in VS Code mit Quellenangaben.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-clipboard-list"></i>
-                            <h3>/plan Command</h3>
-                            <p>Detaillierte Implementierungspläne erstellen mit Kontext aus dem Codebase und Web-Recherche.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-brain"></i>
-                            <h3>Multi-Model Architektur</h3>
-                            <p>Kombiniert Copilot (Coding) + Perplexity Sonar Pro (Research) für bestmögliche Ergebnisse.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-cog"></i>
-                            <h3>Konfigurierbar</h3>
-                            <p>Wählbare Perplexity-Modelle (Sonar, Sonar Pro, Sonar Reasoning Pro) und anpassbare Iterationslimits.</p>
-                        </div>
+                        <h3>/code</h3>
+                        <p>Autonome Code-Generierung — beschreibe was du brauchst, AI Captain schreibt den Code.</p>
                     </div>
-                </section>
-
-                <section class="project-section">
-                    <h2><i class="fas fa-code"></i> Technologien</h2>
-                    <div class="tech-stack">
-                        <span class="tech-badge">TypeScript 5.7</span>
-                        <span class="tech-badge">VS Code API</span>
-                        <span class="tech-badge">GitHub Copilot Chat API</span>
-                        <span class="tech-badge">Perplexity API</span>
-                        <span class="tech-badge">esbuild</span>
-                        <span class="tech-badge">Node.js 20</span>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h3>/review</h3>
+                        <p>Automatisches Code-Review mit Verbesserungsvorschlägen und Best Practices.</p>
                     </div>
-                </section>
-
-                <div class="project-cta">
-                    <h2>Interesse geweckt?</h2>
-                    <p>Schau dir den Code an und probiere AI Captain in deiner VS Code Umgebung aus!</p>
-                    <div class="cta-buttons">
-                        <a href="https://github.com/MaxeLBerger/AIAICaptain" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i> GitHub Repository
-                        </a>
-                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
-                        </a>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <h3>/research</h3>
+                        <p>Integrierte Web-Recherche via Perplexity API — aktuelle Informationen direkt in VS Code.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <h3>/plan</h3>
+                        <p>Strukturierte Implementierungspläne mit Abhängigkeiten und Risiko-Analyse.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        </div>
+                        <h3>Multi-Model</h3>
+                        <p>GPT-4o, Claude und Perplexity — automatische Modellwahl je nach Aufgabe.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3>Konfigurierbar</h3>
+                        <p>Vollständig anpassbar — eigene Prompts, Modell-Einstellungen und Workflow-Regeln.</p>
                     </div>
                 </div>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Tech Stack
+                </span>
+                <h2 class="section-title">Technologien</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">TypeScript 5.7</span>
+                    <span class="tech-badge">VS Code API</span>
+                    <span class="tech-badge">Copilot Chat API</span>
+                    <span class="tech-badge">Perplexity API</span>
+                    <span class="tech-badge">esbuild</span>
+                    <span class="tech-badge">Node.js 20</span>
+                </div>
+            </section>
+
+            <div class="project-cta">
+                <h2>Interesse an AI-gestützter Entwicklung?</h2>
+                <p>Entdecken Sie AI Captain auf GitHub — oder lassen Sie sich eine maßgeschneiderte AI-Lösung entwickeln.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
-
-    <footer>
-        <div class="social-media">
-            <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-links">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2025 Maximilian Haak</p>
-        <p>
-            <a href="../impressum.html" class="footer-link">Impressum</a> | 
-            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
-            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
-        </p>
     </footer>
 
     <script src="../script.js" defer></script>

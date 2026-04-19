@@ -1,706 +1,809 @@
 ﻿<!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-color-scheme="dark" data-project-theme="maxhaak">
 <head>
-    <!-- Meta-Tags für SEO und responsives Design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximilian Haak - Softwareentwickler</title>
-    <meta name="description" content="Portfolio von Maximilian Haak, Softwareentwickler und KI-Enthusiast.">
-    <meta name="keywords" content="Maximilian Haak, Softwareentwickler, KI, Webentwicklung, Portfolio">
+    <title>Maximilian Haak — Webdesign & Entwicklung aus Bruckmühl</title>
+    <meta name="description" content="Professionelle Websites für lokale Unternehmen im Raum Rosenheim, Bruckmühl & Oberbayern. Persönlich, schnell, modern — von Konzept bis Go-Live.">
+    <meta name="keywords" content="Webdesign Rosenheim, Website erstellen Bruckmühl, Webentwicklung Oberbayern, Homepage erstellen lassen, Freelancer Bayern">
     <meta name="author" content="Maximilian Haak">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Maximilian Haak - Softwareentwickler & KI-Enthusiast">
-    <meta property="og:description" content="Portfolio von Maximilian Haak. AI-first Developer mit Fokus auf Architektur und Codequalität.">
+    <meta property="og:title" content="Maximilian Haak — Webdesign & Entwicklung aus Bruckmühl">
+    <meta property="og:description" content="Professionelle Websites für lokale Unternehmen im Raum Rosenheim & Oberbayern. Persönlich, modern, auf den Punkt.">
     <meta property="og:image" content="https://maximilianhaak.de/res/profile/maxlervorne.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://maximilianhaak.de">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://maximilianhaak.de/">
 
-    <!-- Google Analytics wird nur nach Einwilligung geladen (siehe script.js) -->
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="DE-BY">
+    <meta name="geo.placename" content="Bruckmühl">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Maximilian Haak — Webdesign & Entwicklung",
+        "description": "Webdesign, Webentwicklung und KI-Automatisierung für KMU in Bruckmühl, Rosenheim und Oberbayern.",
+        "url": "https://maximilianhaak.de",
+        "image": "https://maximilianhaak.de/res/profile/maxlervorne.png",
+        "email": "kontakt@maximilianhaak.de",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bruckmühl",
+            "postalCode": "83052",
+            "addressRegion": "Bayern",
+            "addressCountry": "DE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.8833,
+            "longitude": 11.9167
+        },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Bruckmühl"
+            },
+            {
+                "@type": "City",
+                "name": "Rosenheim"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Oberbayern"
+            }
+        ],
+        "priceRange": "€€",
+        "knowsLanguage": ["de", "en"],
+        "sameAs": [
+            "https://github.com/MaxeLBerger",
+            "https://www.linkedin.com/in/maximilian-haak-69531739a/"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Webdesign-Pakete",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "name": "Starter — Landingpage",
+                    "description": "Landingpage / One-Pager mit Responsive Design, Kontaktformular und SEO",
+                    "price": "1500",
+                    "priceCurrency": "EUR"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Business — Mehrseitige Website",
+                    "description": "Bis 8 Seiten mit CMS, Terminbuchung, Google My Business-Optimierung",
+                    "price": "2500",
+                    "priceCurrency": "EUR"
+                }
+            ]
+        }
+    }
+    </script>
 
-    <!-- Verknüpfung der CSS-Datei -->
+    <link rel="icon" href="res/favicons/faviconwhitegreen.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe script.js) -->
-
-    <!-- Favicon -->
-    <link rel="icon" href="res/favicons/faviconwhitegreen.png" type="image/png">
-
-    <!-- Font Awesome für Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
+    <!-- Global background effects -->
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <a href="#home">Maximilian Haak</a>
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="Startseite">
+                <span class="logo-text">Maximilian&#160;<span class="logo-accent gradient-text">Haak</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#projects" data-i18n="nav.portfolio">Portfolio</a>
+                <a href="#pricing" data-i18n="nav.pricing">Pakete</a>
+                <a href="#skills" data-i18n="nav.tech">Tech Stack</a>
+                <a href="#services" data-i18n="nav.services">Leistungen</a>
+                <a href="#testimonials" data-i18n="nav.testimonials">Referenzen</a>
+                <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <div class="color-picker" role="group" aria-label="Farbschema wählen">
+                    <button id="colorPickerToggle" class="color-picker-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="colorPickerPopover" aria-label="Farbschema wählen" title="Farbschema wählen">
+                        <span class="color-picker-current" aria-hidden="true"></span>
+                    </button>
+                    <div id="colorPickerPopover" class="color-picker-popover" role="menu" hidden>
+                        <button class="color-swatch" data-color-theme="maxhaak" aria-label="Blau" title="Blau"><span style="background: linear-gradient(135deg, #60a5fa, #6366f1);"></span></button>
+                        <button class="color-swatch" data-color-theme="imkerei" aria-label="Amber" title="Amber"><span style="background: linear-gradient(135deg, #fbbf24, #d97706);"></span></button>
+                        <button class="color-swatch" data-color-theme="coha" aria-label="Gold-Braun" title="Gold-Braun"><span style="background: linear-gradient(135deg, #e6ac5a, #8b4513);"></span></button>
+                        <button class="color-swatch" data-color-theme="aicaptain" aria-label="Lila" title="Lila"><span style="background: linear-gradient(135deg, #a78bfa, #7c3aed);"></span></button>
+                        <button class="color-swatch" data-color-theme="soundoflvke" aria-label="Pink" title="Pink"><span style="background: linear-gradient(135deg, #fb7185, #e11d48);"></span></button>
+                        <button class="color-swatch" data-color-theme="shookroko" aria-label="Limette" title="Limette"><span style="background: linear-gradient(135deg, #a3e635, #65a30d);"></span></button>
+                    </div>
+                </div>
+                <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" aria-label="Hell/Dunkel umschalten" title="Hell / Dunkel">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
-        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list" role="navigation">
-            <li><a href="#home" class="nav-link">Startseite</a></li>
-            <li><a href="#aboutMe" class="nav-link">Über mich</a></li>
-            <li><a href="#skills" class="nav-link">Skills & Tools</a></li>
-            <li><a href="#projects" class="nav-link">Projekte</a></li>
-            <li><a href="#contact" class="nav-link">Kontakt</a></li>
-        </ul>
     </nav>
 
-    <!-- Scroll Indikator -->
-    <div id="progress-bar" aria-hidden="true"></div>
-
-    <!-- Hauptinhalt -->
-    <main id="wrapper">
+    <main>
         <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <!-- Particles.js Hintergrund -->
-            <div id="particles-js"></div>
-            
+        <section id="hero" class="hero-section">
+            <div class="hero-background" aria-hidden="true">
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-orb hero-orb-3"></div>
+            </div>
+
             <div class="hero-content">
-                <h2>Hallo, ich bin</h2>
-                <h1><span class="highlight">Maximilian Haak</span></h1>
-                <h3><span class="typing"></span></h3>
-                <div class="hero-buttons">
-                    <a href="#aboutMe" class="btn btn-hero scroll-link">Mehr erfahren</a>
-                    <a href="#projects" class="btn btn-secondary scroll-link">Projekte ansehen</a>
+                <div class="hero-text">
+                    <h1 class="slide-title">
+                        <span class="title-line" data-i18n="slide.maxhaak.t1">Maximilian</span>
+                        <span class="title-line"><span class="gradient-text" data-i18n="slide.maxhaak.t2">Haak.</span></span>
+                        <span class="title-line" data-i18n="slide.maxhaak.t3">Software Entwickler.</span>
+                    </h1>
+                    <p class="slide-description" data-i18n="slide.maxhaak.desc">Full-Stack Entwickler aus Bruckmühl bei Rosenheim. Websites, Web-Apps und KI-Lösungen — mit TypeScript, React und modernen Cloud-Technologien. Über 5 Jahre Erfahrung, persönlich und zuverlässig.</p>
+                    <div class="slide-cta">
+                        <a href="#contact" class="btn btn-primary" data-i18n="slide.maxhaak.cta1">Kostenlose Beratung</a>
+                        <a href="#projects" class="btn btn-outline" data-i18n="slide.maxhaak.cta2">Projekte ansehen</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="showcase-container">
+                        <a href="#contact" class="showcase-link" aria-label="Kontakt aufnehmen">
+                            <div class="hero-photo-float">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                                    <span data-i18n="slide.maxhaak.badge">VERFÜGBAR FÜR PROJEKTE</span>
+                                </div>
+                                <div class="hero-photo-clip hero-photo-swap">
+                                    <img class="hero-photo-img is-active" src="res/profile/maxlerseite.png" alt="Maximilian Haak" loading="eager">
+                                    <img class="hero-photo-img" src="res/profile/maxlervorne.png" alt="" loading="eager" aria-hidden="true">
+                                </div>
+                                <div class="hero-photo-ring"></div>
+                            </div>
+                        </a>
+                        <div class="showcase-glow"></div>
+                    </div>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <a href="#aboutMe" class="scroll-link" aria-label="Mehr erfahren"><i class="fas fa-chevron-down"></i></a>
-            </div>
-        </section>
 
-        <!-- Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- Über mich Bereich -->
-        <section id="aboutMe" class="about-section">
-            <div class="container">
-                <div class="about-image">
-                    <img src="res/profile/maxlervorne.png" alt="Portrait von Maximilian Haak" loading="lazy">
-                </div>
-                <div class="about-text">
-                    <h2>Über mich</h2>
-                    <p>
-                        2020 hab ich mit Programmieren angefangen, 2022 startete meine Ausbildung als Softwareentwickler - mit Delphi und Java. Da hat mich <span class="highlight">Künstliche Intelligenz</span> richtig gepackt.
-                    </p>
-                    <p>
-                        Heute arbeite ich <span class="highlight">AI-first</span>: GitHub Copilot Pro, Claude, meine eigene AI Captain Extension (VS Code Marketplace), RAG-Systeme und lokale LLMs übernehmen den Routinekram. Ich konzentrier mich aufs Große Ganze – Architektur, Systemdesign, Qualität. Ob Full-Stack Web Apps mit React und TypeScript, Games mit Phaser 3, ein produktionsreifer Chatbot mit Python und Docker oder agentische Workflows: Ich bau für echte Anforderungen, echte Systeme, echte Nutzer.
-                    </p>
-                    <p>
-                        Mein Wissen behalte ich nicht für mich, in internen Workshops habe ich Kollegen den produktiven Einsatz von AI Agents in VS Code bereits erfolgreich vermittelt.
-                    </p>
-                    <p>
-                        Privat schärfe ich mein analytisches Denken durch Marktbeobachtung - das hilft mir, datengetrieben zu priorisieren und Risiken früh zu erkennen.
-                    </p>
-                    <p>
-                        Für Unternehmen heißt das: Kein „Vibe Coder", sondern ein Entwickler, der AI als <strong>Teamkollegen</strong> einsetzt - mit klaren Rollen, echten Ergebnissen und festen Grenzen.
-                    </p>
-                    <p style="margin-top:20px">
-                        <a href="#skills" class="btn"><i class="fas fa-robot"></i> Mein AI Stack ansehen</a>
-                    </p>
-                </div>
+            <div class="scroll-hint" aria-hidden="true">
+                <span data-i18n="hero.scroll">Scrollen und entdecken</span>
+                <div class="scroll-line"></div>
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- Skills & Tools Bereich -->
-        <section id="skills" class="skills-section">
-            <h2>Skills & Tools</h2>
-            
-            <!-- Development Skills -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Development Skills</h3>
-                
-                <div class="skills-row">
-                    <div class="skill-card">
-                        <img src="res/icons/java-icon.png" alt="Java">
-                        <span>Java</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/delphi-icon.png" alt="Delphi">
-                        <span>Delphi</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/javascript-icon.png" alt="JavaScript">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/html-icon.png" alt="HTML">
-                        <span>HTML</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/css-icon.png" alt="CSS">
-                        <span>CSS</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/postgres-icon.png" alt="PostgreSQL">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/typescript.png" alt="TypeScript">
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="skill-card">
-                        <img src="res/icons/nodejs.png" alt="Node.js">
-                        <span>Node.js</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Premium flowing light strings (no SVG filters — pure stroke + opacity for performance) -->
-            <svg class="ai-strings-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                    <linearGradient id="str-g1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="30%" stop-color="#6c63ff" stop-opacity="0.8"/>
-                        <stop offset="70%" stop-color="#00e676" stop-opacity="0.8"/>
-                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="str-g2" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stop-color="#00e676" stop-opacity="0"/>
-                        <stop offset="35%" stop-color="#00e676" stop-opacity="0.7"/>
-                        <stop offset="65%" stop-color="#6c63ff" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="str-g3" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#8b83ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="str-g4" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#00c853" stop-opacity="0"/>
-                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.65"/>
-                        <stop offset="100%" stop-color="#8b83ff" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="str-g5" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
-                <!-- Wide soft glow layer (thick, low opacity — faked glow without filter) -->
-                <g class="ai-strings-glow" opacity="0.15">
-                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="url(#str-g1)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="url(#str-g2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="url(#str-g3)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="url(#str-g4)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="url(#str-g5)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                </g>
-                <!-- Core visible strings -->
-                <g class="ai-strings-base" opacity="0.4">
-                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="url(#str-g1)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="url(#str-g2)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="url(#str-g3)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="url(#str-g4)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="url(#str-g5)" stroke-width="1.5" fill="none"/>
-                </g>
-                <!-- Animated light pulses -->
-                <g class="ai-strings-pulses">
-                    <path d="M -50,60 C 200,20 400,140 600,80 S 950,30 1250,100" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: 0s; --pulse-dur: 8s"/>
-                    <path d="M -50,170 C 300,210 450,90 700,190 S 1000,140 1250,210" stroke="#00e676" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -3s; --pulse-dur: 11s"/>
-                    <path d="M -50,290 C 180,250 420,340 660,270 S 920,310 1250,260" stroke="#8b83ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -7s; --pulse-dur: 14s"/>
-                    <path d="M -50,400 C 280,360 500,440 720,370 S 980,420 1250,380" stroke="#00c853" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 10s"/>
-                    <path d="M -50,510 C 220,480 400,550 640,490 S 900,530 1250,490" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 13s"/>
-                </g>
-            </svg>
-
-            <!-- AI Stack -->
-            <div id="ai-stack" class="skills-category ai-stack">
-                <h3 class="skills-category-title"><i class="fas fa-robot"></i> AI Stack</h3>
-                
-                <!-- AI Models -->
-                <div class="ai-subcategory">
-                    <h4 class="subcategory-title">AI Models</h4>
-                    <div class="skills-row">
-                        <div class="skill-card">
-                            <img src="res/icons/chatgpt.png" alt="ChatGPT">
-                            <span>ChatGPT</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/claude_code.png" alt="Claude">
-                            <span>Claude</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/gemini_3pro.png" alt="Gemini">
-                            <span>Gemini</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/ollama.png" alt="Ollama">
-                            <span>Ollama</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Dev Tools -->
-                <div class="ai-subcategory">
-                    <h4 class="subcategory-title">Dev Tools</h4>
-                    <div class="skills-row">
-                        <div class="skill-card">
-                            <img src="res/icons/github_copilot.png" alt="GitHub Copilot">
-                            <span>Copilot</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/cursor.png" alt="Cursor">
-                            <span>Cursor</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/claude_code.png" alt="Claude Code">
-                            <span>Claude Code</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/lovable.png" alt="Lovable">
-                            <span>Lovable</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/github_spark.png" alt="GitHub Spark">
-                            <span>Spark</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Workflows -->
-                <div class="ai-subcategory">
-                    <h4 class="subcategory-title">Workflows</h4>
-                    <div class="skills-row">
-                        <div class="skill-card">
-                            <img src="res/icons/n8n.png" alt="n8n">
-                            <span>n8n</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/dify.png" alt="Dify">
-                            <span>Dify</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/mcpserver.png" alt="MCP Server">
-                            <span>MCP</span>
-                        </div>
-                        <div class="skill-card">
-                            <img src="res/icons/supabase.png" alt="Supabase">
-                            <span>Supabase</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- Projekte Bereich -->
+        <!-- Projects Showcase Section -->
         <section id="projects" class="projects-section">
-            <!-- Flowing light strings -->
-            <svg class="ai-strings-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                    <linearGradient id="p-g1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="30%" stop-color="#6c63ff" stop-opacity="0.8"/>
-                        <stop offset="70%" stop-color="#00e676" stop-opacity="0.8"/>
-                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="p-g2" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stop-color="#00e676" stop-opacity="0"/>
-                        <stop offset="35%" stop-color="#00e676" stop-opacity="0.7"/>
-                        <stop offset="65%" stop-color="#6c63ff" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="p-g3" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#8b83ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#8b83ff" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="p-g4" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#00c853" stop-opacity="0"/>
-                        <stop offset="45%" stop-color="#00e676" stop-opacity="0.65"/>
-                        <stop offset="100%" stop-color="#8b83ff" stop-opacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="p-g5" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#6c63ff" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
-                <g class="ai-strings-glow" opacity="0.15">
-                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="url(#p-g1)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="url(#p-g2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="url(#p-g3)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="url(#p-g4)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="url(#p-g5)" stroke-width="8" fill="none" stroke-linecap="round"/>
-                </g>
-                <g class="ai-strings-base" opacity="0.4">
-                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="url(#p-g1)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="url(#p-g2)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="url(#p-g3)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="url(#p-g4)" stroke-width="1.5" fill="none"/>
-                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="url(#p-g5)" stroke-width="1.5" fill="none"/>
-                </g>
-                <g class="ai-strings-pulses">
-                    <path d="M -50,50 C 180,90 380,20 600,70 S 920,110 1250,40" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -2s; --pulse-dur: 9s"/>
-                    <path d="M -50,160 C 280,120 480,200 700,150 S 960,190 1250,140" stroke="#00e676" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -5s; --pulse-dur: 12s"/>
-                    <path d="M -50,280 C 220,320 420,250 660,310 S 900,270 1250,300" stroke="#8b83ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -8s; --pulse-dur: 14s"/>
-                    <path d="M -50,390 C 260,350 480,420 720,380 S 980,410 1250,370" stroke="#00c853" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -1s; --pulse-dur: 10s"/>
-                    <path d="M -50,520 C 200,490 440,560 680,510 S 940,550 1250,500" stroke="#6c63ff" stroke-width="2" fill="none" class="ai-string-pulse" style="--pulse-delay: -6s; --pulse-dur: 13s"/>
-                </g>
-            </svg>
-            <h2>Projekte</h2>
-
-            <!-- Kategorie: AI Agents -->
-            <div class="project-category">
-                <h3 class="category-title"><i class="fas fa-robot"></i> AI Agents</h3>
-                <div class="carousel-container">
-                    <button class="carousel-arrow carousel-arrow-left" aria-label="Vorherige Projekte"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-viewport">
-                        <div class="projects-grid carousel-track">
-
-                    <!-- Acai Agents -->
-                    <div class="project-card">
-                        <img src="res/projects/acai_agents.png" alt="Acai Agents" loading="lazy">
-                        <div class="project-info">
-                            <h3>Acai Agents</h3>
-                            <p>AI-Powered Software Development Agency mit modernem Design, Dark/Light Mode, GSAP Animationen und Enterprise-Grade Security.</p>
-                            <div class="project-links">
-                                <a href="projects/acai-agents.html" class="btn">Details ansehen</a>
-                                <a href="https://acai-agents.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-globe"></i> Website besuchen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Enterprise AI Experience -->
-                    <div class="project-card">
-                        <img src="res/projects/RAG.png" alt="Enterprise AI" loading="lazy">
-                        <div class="project-info">
-                            <h3>Enterprise AI</h3>
-                            <p>Berufliche Erfahrung mit modernen Retrieval-Technologien und KI-gestützten Informationssystemen im Unternehmenskontext.</p>
-                            <div class="project-links">
-                                <span class="btn btn-disabled">
-                                    <i class="fas fa-lock"></i> Vertraulich
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HieroGlyph Decoder -->
-                    <div class="project-card">
-                        <img src="res/projects/hieroglyph.png" alt="HieroGlyph Decoder" loading="lazy">
-                        <div class="project-info">
-                            <h3>HieroGlyph Decoder</h3>
-                            <p>LLM-basierter Decoder für ägyptische Hieroglyphen. Kombiniert Computer Vision mit Language Models zur Übersetzung antiker Texte.</p>
-                            <div class="project-links">
-                                <span class="btn btn-disabled">
-                                    <i class="fas fa-clock"></i> In Entwicklung
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI Captain -->
-                    <div class="project-card">
-                        <img src="res/projects/aicaptain.png" alt="AI Captain VS Code Extension" loading="lazy">
-                        <div class="project-info">
-                            <h3>AI Captain</h3>
-                            <p>VS Code Extension: Chat Participant mit Copilot + Perplexity Web-Research. Code-Reviews, Feature-Implementierung und Research in einem Tool.</p>
-                            <div class="project-links">
-                                <a href="projects/aicaptain.html" class="btn">Details ansehen</a>
-                                <a href="https://github.com/MaxeLBerger/AIAICaptain" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI Chatbot -->
-                    <div class="project-card">
-                        <img src="res/projects/ai-chatbot.png" alt="AI Chatbot" loading="lazy">
-                        <div class="project-info">
-                            <h3>AI Chatbot</h3>
-                            <p>Intelligenter Chatbot mit RAG-Pipeline und Multi-Model-Architektur. Kontextbewusste Konversation mit Wissensdatenbank-Integration.</p>
-                            <div class="project-links">
-                                <span class="btn btn-disabled">
-                                    <i class="fas fa-clock"></i> In Entwicklung
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </div>
-                    <button class="carousel-arrow carousel-arrow-right" aria-label="Nächste Projekte"><i class="fas fa-chevron-right"></i></button>
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
+                    <h2 class="section-title" data-i18n="projects.title">Portfolio</h2>
                 </div>
             </div>
 
-            <!-- Kategorie: Websites -->
-            <div class="project-category">
-                <h3 class="category-title"><i class="fas fa-globe"></i> Websites</h3>
-                <div class="carousel-container">
-                    <button class="carousel-arrow carousel-arrow-left" aria-label="Vorherige Projekte"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-viewport">
-                        <div class="projects-grid carousel-track">
-
-                    <!-- Imkerei Feuerstein -->
-                    <div class="project-card">
-                        <img src="res/projects/imkerei-feuerstein.png" alt="Imkerei Feuerstein" loading="lazy">
-                        <div class="project-info">
-                            <h3>Imkerei Feuerstein</h3>
-                            <p>Modernes Astro-Frontend für eine traditionsreiche Familienimkerei seit 1982. Astro SSG mit optimierten Bildern, Warenkorb und responsive Design.</p>
-                            <div class="project-links">
-                                <a href="projects/imkerei-feuerstein.html" class="btn">Details ansehen</a>
-                                <a href="https://imkerei-feuerstein.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-globe"></i> Website besuchen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- TestoMax -->
-                    <div class="project-card">
-                        <img src="res/projects/TestoMax.png" alt="TestoMax" loading="lazy">
-                        <div class="project-info">
-                            <h3>TestoMax</h3>
-                            <p>Innovatives Web-Projekt mit modernen Technologien. Erlebe interaktive Features und optimale Performance.</p>
-                            <div class="project-links">
-                                <a href="projects/testomax.html" class="btn">Details ansehen</a>
-                                <a href="TestoMax/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Projekt öffnen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SoundofLvke -->
-                    <div class="project-card">
-                        <img src="res/projects/SoundOfLvke.jpg" alt="SoundofLvke Beat Shop" loading="lazy">
-                        <div class="project-info">
-                            <h3>SoundofLvke</h3>
-                            <p>Portfolio-Website für einen Musikproduzenten mit Beat-Shop, Projekt-Showcase und Integration zu allen wichtigen Musik-Plattformen.</p>
-                            <div class="project-links">
-                                <a href="projects/soundoflvke.html" class="btn">Details ansehen</a>
-                                <a href="https://soundoflvke.github.io" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-music"></i> Website besuchen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <!-- FireCastle -->
-                    <div class="project-card">
-                        <img src="res/projects/FireCastle.jpg" alt="FireCastle Clash of Clans" loading="lazy">
-                        <div class="project-info">
-                            <h3>FireCastle</h3>
-                            <p>Node.js Website mit API für Clash of Clans. Clan-Statistiken, Spieler-Profile und Live-Kriegsinformationen mit Caching und Logging.</p>
-                            <div class="project-links">
-                                <a href="projects/firecastle.html" class="btn">Details ansehen</a>
-                                <a href="FireCastle/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-globe"></i> Website öffnen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BetterBestie -->
-                    <div class="project-card">
-                        <img src="res/projects/BetterBestie.png" alt="BetterBestie GlowUp Challenge" loading="lazy">
-                        <div class="project-info">
-                            <h3>BetterBestie</h3>
-                            <p>30-Tage GlowUp Challenge App mit täglichen Wellness-Aufgaben. React + Express Full-Stack mit JWT Auth.</p>
-                            <div class="project-links">
-                                <a href="projects/betterbestie.html" class="btn">Details ansehen</a>
-                                <a href="BetterBestie/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-play"></i> Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- E46 Studio -->
-                    <div class="project-card">
-                        <img src="res/projects/e46-studio.webp" alt="E46 Studio BMW Diagnostic Tool" loading="lazy">
-                        <div class="project-info">
-                            <h3>E46 Studio</h3>
-                            <p>BMW E46 Diagnose- und Codiertool mit DS2-Protokoll über K-Line. Python Desktop-App mit GUI, Fehlercodes lesen und GM5 Body Coding.</p>
-                            <div class="project-links">
-                                <a href="projects/e46-studio.html" class="btn">Details ansehen</a>
-                                <a href="https://github.com/MaxeLBerger/E46_Coder" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </div>
-                    <button class="carousel-arrow carousel-arrow-right" aria-label="Nächste Projekte"><i class="fas fa-chevron-right"></i></button>
-                </div>
+            <div class="project-nav" role="tablist">
+                <button class="project-nav-btn active" data-project="e46" role="tab" aria-selected="true">
+                    <span class="nav-dot"></span>
+                    <span>E46 Studio</span>
+                </button>
+                <button class="project-nav-btn" data-project="imkerei" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Imkerei Feuerstein</span>
+                </button>
+                <button class="project-nav-btn" data-project="coha" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>CoHa</span>
+                </button>
+                <button class="project-nav-btn" data-project="soundoflvke" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>SoundOfLvke</span>
+                </button>
+                <button class="project-nav-btn" data-project="aicaptain" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>AI Captain</span>
+                </button>
+                <button class="project-nav-btn" data-project="shookroko" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Shookroko</span>
+                </button>
             </div>
 
-            <!-- Kategorie: Machine Learning -->
-            <div class="project-category">
-                <h3 class="category-title"><i class="fas fa-brain"></i> Machine Learning</h3>
-                <div class="carousel-container">
-                    <button class="carousel-arrow carousel-arrow-left" aria-label="Vorherige Projekte"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-viewport">
-                        <div class="projects-grid carousel-track">
-                    <!-- AuTune Online -->
-                    <div class="project-card">
-                        <img src="res/projects/AuTune.jpg" alt="AuTune Audio Visualizer" loading="lazy">
-                        <div class="project-info">
-                            <h3>AuTune Online</h3>
-                            <p>Professioneller Audio Visualizer mit BPM-Erkennung, Frequenzanalyse und reaktiven Partikeleffekten. Upload deine Musik und erlebe sie neu!</p>
-                            <div class="project-links">
-                                <a href="projects/autune-online.html" class="btn">Details ansehen</a>
-                                <a href="AuTuneOnline/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-music"></i> App starten
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="hero-slides-container">
 
-                    <!-- DL4J Graph Explorer -->
-                    <div class="project-card">
-                        <img src="res/projects/dl4j-graph-explorer.png" alt="DL4J Graph Explorer" loading="lazy">
-                        <div class="project-info">
-                            <h3>DL4J Graph Explorer</h3>
-                            <p>Visualisierungstool für DeepLearning4J Modelle. Erkunde Layer-Topologie und Weight-Statistiken mit D3.js.</p>
-                            <div class="project-links">
-                                <a href="projects/dl4j-graph-explorer.html" class="btn">Details ansehen</a>
-                                <a href="dl4j-graph-explorer/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-play"></i> Demo
-                                </a>
+                <!-- Slide 1: E46 Studio -->
+                <div class="hero-slide active" id="slide-e46" data-theme="e46" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.e46.t1">Desktop App.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46.t2">BMW E46.</span></span>
+                                <span class="title-line" data-i18n="slide.e46.t3">Steuergeräte-Coding.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.e46.desc">E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation — für eine spezialisierte Automotive-Community.</p>
+                            <div class="slide-cta">
+                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.e46.cta1">Live ansehen</a>
+                                <a href="projects/e46-studio.html" class="btn btn-outline" data-i18n="slide.e46.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.e46.tag1">Electron</span>
+                                <span class="slide-tag" data-i18n="slide.e46.tag2">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.e46.tag3">Serial API</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+                                    <span data-i18n="slide.e46.badge">DESKTOP APP</span>
+                                </div>
+                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="E46 Studio Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">E46 Studio — DolphinCode</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/e46studio.webp" alt="E46 Studio / DolphinCode" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Albert -->
-                    <div class="project-card">
-                        <img src="res/projects/albert.png" alt="Albert KI Evolution" loading="lazy">
-                        <div class="project-info">
-                            <h3>Albert</h3>
-                            <p>KI-Evolution-Simulation mit 100 Kreaturen. Natürliche Selektion und neuronale Anpassung in einer dynamischen Umgebung.</p>
-                            <div class="project-links">
-                                <a href="projects/albert.html" class="btn">Details ansehen</a>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </div>
-                    <button class="carousel-arrow carousel-arrow-right" aria-label="Nächste Projekte"><i class="fas fa-chevron-right"></i></button>
                 </div>
+
+                <!-- Slide 2: Imkerei Feuerstein -->
+                <div class="hero-slide" id="slide-imkerei" data-theme="imkerei" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.imkerei.t1">Ihre Idee.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.imkerei.t2">Mein Code.</span></span>
+                                <span class="title-line" data-i18n="slide.imkerei.t3">Ihr Erfolg.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.imkerei.desc">Imkerei Feuerstein: React-Website mit Online-Shop — persönlich besprochen, in 3 Wochen umgesetzt, auf Vercel deployed. Responsive Design, SEO-optimiert und ein begeisterter Kunde.</p>
+                            <div class="slide-cta">
+                                <a href="https://imkerei-feuerstein.vercel.app" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.imkerei.cta1">Live ansehen</a>
+                                <a href="projects/imkerei-feuerstein.html" class="btn btn-outline" data-i18n="slide.imkerei.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag1">React &amp; Vercel</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag2">3 Wochen</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag3">E-Commerce</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span data-i18n="slide.imkerei.badge">KUNDENPROJEKT</span>
+                                </div>
+                                <a href="https://imkerei-feuerstein.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Imkerei Feuerstein Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">imkerei-feuerstein.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/imkerei-feuerstein.webp" alt="Imkerei Feuerstein Website" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: CoHa -->
+                <div class="hero-slide" id="slide-coha" data-theme="coha" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.coha.t1">Startup.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.coha.t2">Website.</span></span>
+                                <span class="title-line" data-i18n="slide.coha.t3">Mehr Kunden.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.coha.desc">Für ein Startup aus Bayern: Modernes Full-Stack Webdesign mit React und TypeScript. Schnelle Ladezeiten, Conversion-Optimierung und responsive auf allen Geräten.</p>
+                            <div class="slide-cta">
+                                <a href="https://coha.vercel.app" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.coha.cta1">Live ansehen</a>
+                                <a href="projects/coha.html" class="btn btn-outline" data-i18n="slide.coha.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.coha.tag1">React &amp; TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.coha.tag2">Full-Stack</span>
+                                <span class="slide-tag" data-i18n="slide.coha.tag3">Conversion-Optimierung</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                                    <span data-i18n="slide.coha.badge">KUNDENREFERENZ</span>
+                                </div>
+                                <a href="https://coha.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="CoHa Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">coha.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/coha.webp" alt="CoHa Website" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: SoundOfLvke -->
+                <div class="hero-slide" id="slide-soundoflvke" data-theme="soundoflvke" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.soundoflvke.t1">Sound.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.soundoflvke.t2">Design.</span></span>
+                                <span class="title-line" data-i18n="slide.soundoflvke.t3">Identität.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.soundoflvke.desc">Portfolio-Website für einen Musik-Künstler — integrierter Audio-Player, Release-Übersicht und individuelles responsive Design. Kreative Webentwicklung, die Marken zum Leben erweckt.</p>
+                            <div class="slide-cta">
+                                <a href="https://soundoflvke.github.io/index.html" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.soundoflvke.cta1">Live ansehen</a>
+                                <a href="projects/soundoflvke.html" class="btn btn-outline" data-i18n="slide.soundoflvke.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.soundoflvke.tag1">Künstler-Branding</span>
+                                <span class="slide-tag" data-i18n="slide.soundoflvke.tag2">Audio Integration</span>
+                                <span class="slide-tag" data-i18n="slide.soundoflvke.tag3">Responsive Design</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                    <span data-i18n="slide.soundoflvke.badge">KÜNSTLER-WEBSITE</span>
+                                </div>
+                                <a href="https://soundoflvke.github.io/index.html" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="SoundOfLvke Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">soundoflvke.github.io</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/soundoflvke.webp" alt="SoundOfLvke" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: AI Captain -->
+                <div class="hero-slide" id="slide-aicaptain" data-theme="aicaptain" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.aicaptain.t1">AI Captain.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.aicaptain.t2">VS Code</span></span>
+                                <span class="title-line" data-i18n="slide.aicaptain.t3">Extension.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.aicaptain.desc">Mein eigenes Produkt im VS Code Marketplace: Ein KI-Agent für intelligente Code-Generierung, Debugging und Review. Gebaut mit TypeScript, LLM-APIs und der VS Code Extension API.</p>
+                            <div class="slide-cta">
+                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.aicaptain.cta1">Mehr erfahren</a>
+                                <a href="projects/aicaptain.html" class="btn btn-outline" data-i18n="slide.aicaptain.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag1">VS Code Marketplace</span>
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag2">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag3">LLM APIs</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+                                    <span data-i18n="slide.aicaptain.badge">AI AGENT</span>
+                                </div>
+                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="AI Captain Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">ai-captain-delta.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/aicaptain.webp" alt="AI Captain" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 7: Shookroko -->
+                <div class="hero-slide" id="slide-shookroko" data-theme="shookroko" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.shookroko.t1">Browser-Spiel.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.shookroko.t2">Phaser 3.</span></span>
+                                <span class="title-line" data-i18n="slide.shookroko.t3">TypeScript.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.shookroko.desc">Shookroko: Ein Action-Browsergame, gebaut mit Phaser 3 und TypeScript. Eigene Game-Loop, Asset-Pipeline und ein responsive Canvas — Game Development trifft modernes Web.</p>
+                            <div class="slide-cta">
+                                <a href="https://shookroko.pages.dev/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.shookroko.cta1">Live spielen</a>
+                                <a href="projects/shookroko.html" class="btn btn-outline" data-i18n="slide.shookroko.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.shookroko.tag1">Phaser 3</span>
+                                <span class="slide-tag" data-i18n="slide.shookroko.tag2">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.shookroko.tag3">Game Dev</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    <span data-i18n="slide.shookroko.badge">BROWSER GAME</span>
+                                </div>
+                                <a href="https://shookroko.pages.dev/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Shookroko spielen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">shookroko.pages.dev</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/shookroko.webp" alt="Shookroko Browsergame" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
-            <!-- Kategorie: Games -->
-            <div class="project-category">
-                <h3 class="category-title"><i class="fas fa-gamepad"></i> Games</h3>
-                <div class="carousel-container">
-                    <button class="carousel-arrow carousel-arrow-left" aria-label="Vorherige Projekte"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-viewport">
-                        <div class="projects-grid carousel-track">
-                    <!-- Age of Max -->
-                    <div class="project-card">
-                        <img src="res/projects/AgeOfMax.jpg" alt="Age of Max Tower Defense" loading="lazy">
-                        <div class="project-info">
-                            <h3>Age of Max</h3>
-                            <p>Strategisches Tower Defense Spiel mit 5 historischen Epochen. Von der Steinzeit bis zur Zukunft - baue Einheiten und verteidige deine Basis!</p>
-                            <div class="project-links">
-                                <a href="projects/age-of-max.html" class="btn">Details ansehen</a>
-                                <a href="AgeOfMax/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-gamepad"></i> Jetzt spielen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Casino Idle Slots -->
-                    <div class="project-card">
-                        <img src="res/projects/CasinoIdleSlots.png" alt="Casino Idle Slots" loading="lazy">
-                        <div class="project-info">
-                            <h3>Casino Idle Slots</h3>
-                            <p>Idle Slot Machine Casino Game mit GitHub Integration. Sammle Coins, schalte Upgrades frei und steige im Ranking auf!</p>
-                            <div class="project-links">
-                                <a href="projects/casino-idle-slots.html" class="btn">Details ansehen</a>
-                                <a href="CasinoIdleSlots/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-dice"></i> Jetzt spielen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <button class="slider-arrow slider-arrow-left" aria-label="Vorheriges Projekt">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="slider-arrow slider-arrow-right" aria-label="Nächstes Projekt">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+        </section>
 
-                    <!-- Shookroko -->
-                    <div class="project-card">
-                        <img src="res/projects/shookroko.webp" alt="Shookroko Survivors Game" loading="lazy">
-                        <div class="project-info">
-                            <h3>Shookroko</h3>
-                            <p>Browser-basiertes Survivors-Game mit 6 Umgebungen, Wave-System, Customization und prozeduralem Audio. React + Canvas + TypeScript.</p>
-                            <div class="project-links">
-                                <a href="projects/shookroko.html" class="btn">Details ansehen</a>
-                                <a href="https://shookroko.pages.dev/" class="btn btn-primary" target="_blank" rel="noopener">
-                                    <i class="fas fa-play"></i> Live Demo
-                                </a>
-                            </div>
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag" data-i18n="pricing.tag">Pakete &amp; Preise</p>
+                <h2 class="section-title" data-i18n="pricing.title">Transparent &amp; fair</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card scroll-reveal">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name" data-i18n="pricing.starter.name">Starter</h3>
+                        <p class="pricing-desc" data-i18n="pricing.starter.desc">Perfekt für den ersten Online-Auftritt</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="pricing-amount" data-i18n="pricing.starter.price">ab 1.500 €</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="pricing.starter.f1">✓ Landingpage / One-Pager</li>
+                        <li data-i18n="pricing.starter.f2">✓ Responsive Design (Mobil-optimiert)</li>
+                        <li data-i18n="pricing.starter.f3">✓ Kontaktformular & Google Maps</li>
+                        <li data-i18n="pricing.starter.f4">✓ SEO-Grundoptimierung</li>
+                        <li data-i18n="pricing.starter.f5">✓ Fertig in 1–2 Wochen</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline pricing-cta" data-i18n="pricing.cta">Jetzt anfragen</a>
+                </div>
+                <div class="pricing-card featured scroll-reveal">
+                    <div class="pricing-badge" data-i18n="pricing.popular">BELIEBT</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name" data-i18n="pricing.business.name">Business</h3>
+                        <p class="pricing-desc" data-i18n="pricing.business.desc">Für Firmen, die mehr wollen</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="pricing-amount" data-i18n="pricing.business.price">ab 2.500 €</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="pricing.business.f1">✓ Mehrseitige Website (bis 8 Seiten)</li>
+                        <li data-i18n="pricing.business.f2">✓ CMS / Inhaltspflege durch Sie</li>
+                        <li data-i18n="pricing.business.f3">✓ Terminbuchung & Automatisierungen</li>
+                        <li data-i18n="pricing.business.f4">✓ Google My Business-Optimierung</li>
+                        <li data-i18n="pricing.business.f5">✓ Analytics & Performance-Tracking</li>
+                        <li data-i18n="pricing.business.f6">✓ Fertig in 2–4 Wochen</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-cta" data-i18n="pricing.cta">Jetzt anfragen</a>
+                </div>
+                <div class="pricing-card scroll-reveal">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name" data-i18n="pricing.premium.name">Premium</h3>
+                        <p class="pricing-desc" data-i18n="pricing.premium.desc">Maßgeschneiderte Lösungen</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="pricing-amount" data-i18n="pricing.premium.price">Auf Anfrage</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="pricing.premium.f1">✓ Fullstack Web-Applikation</li>
+                        <li data-i18n="pricing.premium.f2">✓ AI-Integration & Chatbots</li>
+                        <li data-i18n="pricing.premium.f3">✓ Individuelle Automatisierungen</li>
+                        <li data-i18n="pricing.premium.f4">✓ API-Anbindungen & Datenbanken</li>
+                        <li data-i18n="pricing.premium.f5">✓ Laufende Betreuung & Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline pricing-cta" data-i18n="pricing.cta">Jetzt anfragen</a>
+                </div>
+            </div>
+            <p class="pricing-note scroll-reveal" data-i18n="pricing.note">Alle Preise zzgl. MwSt. Jedes Projekt ist individuell — kontaktieren Sie mich für ein unverbindliches Angebot.</p>
+        </div>
+    </section>
+
+        <!-- Skills & Stats Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-tag" data-i18n="skills.tag">Tech Stack</p>
+                    <h2 class="section-title" data-i18n="skills.title">Mit welchen Tools ich arbeite</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4 class="skill-category-title" data-i18n="about.skills.frontend">Frontend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/typescript.png" alt="" loading="lazy" decoding="async">TypeScript</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/html-icon.png" alt="" loading="lazy" decoding="async"><img class="skill-icon" src="res/icons/css-icon.png" alt="" loading="lazy" decoding="async">HTML5 / CSS3</span>
+                            <span class="skill-tag">Tailwind</span>
+                            <span class="skill-tag">GSAP</span>
                         </div>
                     </div>
+                    <div class="skill-category">
+                        <h4 class="skill-category-title" data-i18n="about.skills.backend">Backend &amp; Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/nodejs.png" alt="" loading="lazy" decoding="async">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/python.png" alt="" loading="lazy" decoding="async">Python</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/supabase.png" alt="" loading="lazy" decoding="async">Supabase</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/Docker.png" alt="" loading="lazy" decoding="async">Docker</span>
                         </div>
                     </div>
-                    <button class="carousel-arrow carousel-arrow-right" aria-label="Nächste Projekte"><i class="fas fa-chevron-right"></i></button>
+                    <div class="skill-category">
+                        <h4 class="skill-category-title" data-i18n="about.skills.ai">AI &amp; Automation</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/chatgpt.png" alt="" loading="lazy" decoding="async">LLM APIs</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/claude_code.png" alt="" loading="lazy" decoding="async">AI Agents</span>
+                            <span class="skill-tag highlight">RAG</span>
+                            <span class="skill-tag highlight">Prompt Engineering</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/github_copilot.png" alt="" loading="lazy" decoding="async">VS Code Extensions</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/n8n.png" alt="" loading="lazy" decoding="async">Workflow Automation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label" data-i18n="about.stat1">Jahre Erfahrung</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label" data-i18n="about.stat2">Projekte umgesetzt</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label" data-i18n="about.stat3">Kundenzufriedenheit</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="section-divider section-divider-full" aria-hidden="true"></div>
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-tag" data-i18n="services.tag">Leistungen</p>
+                    <h2 class="section-title" data-i18n="services.title">Was ich für Sie baue</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card scroll-reveal">
+                        <span class="service-number">01</span>
+                        <h3 data-i18n="services.web.title">Websites &amp; Online-Auftritte</h3>
+                        <p data-i18n="services.web.desc">Vom One-Pager bis zur mehrsprachigen Firmenseite. Schnell, sauber programmiert, auf jedem Gerät scharf — und für Suchmaschinen vorbereitet.</p>
+                        <a href="#contact" class="service-link" data-i18n="services.web.link">Projekt anfragen</a>
+                    </div>
+                    <div class="service-card scroll-reveal">
+                        <span class="service-number">02</span>
+                        <h3 data-i18n="services.ai.title">KI &amp; Automatisierung</h3>
+                        <p data-i18n="services.ai.desc">Chatbots, Terminbuchung, automatisierte E-Mails, Datenauswertung mit LLMs. Ich verbinde Ihr Tagesgeschäft mit aktuellen KI-Modellen — pragmatisch, nicht überengineert.</p>
+                        <a href="#contact" class="service-link" data-i18n="services.ai.link">Anwendungsfall besprechen</a>
+                    </div>
+                    <div class="service-card scroll-reveal">
+                        <span class="service-number">03</span>
+                        <h3 data-i18n="services.apps.title">Web-Anwendungen</h3>
+                        <p data-i18n="services.apps.desc">Wenn eine Website nicht reicht: Dashboards, Kundenportale, interne Tools. TypeScript, React, Node — getestet, dokumentiert, bei Bedarf mit Datenbank.</p>
+                        <a href="#contact" class="service-link" data-i18n="services.apps.link">Idee skizzieren</a>
+                    </div>
+                    <div class="service-card scroll-reveal">
+                        <span class="service-number">04</span>
+                        <h3 data-i18n="services.design.title">Beratung &amp; Code-Review</h3>
+                        <p data-i18n="services.design.desc">Sie haben bereits ein Projekt und brauchen einen zweiten Blick? Ich prüfe Code, Architektur oder UX und liefere konkrete, umsetzbare Empfehlungen.</p>
+                        <a href="#contact" class="service-link" data-i18n="services.design.link">Termin vereinbaren</a>
+                    </div>
+                </div>
+                <div class="services-cta">
+                    <p data-i18n="services.cta.text">Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.</p>
+                    <a href="#contact" class="btn btn-primary" data-i18n="services.cta.button">Kostenloses Erstgespräch →</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- Kontakt Bereich -->
+    <!-- Testimonials / References -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag" data-i18n="testimonials.tag">Referenzen</p>
+                <h2 class="section-title" data-i18n="testimonials.title">Was Kunden sagen</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <blockquote class="testimonial-quote" data-i18n="testimonials.coha.quote">„Max hat unser MVP an einem Wochenende gebaut. Drei Stunden Briefing, danach lief die Seite. Genau die unkomplizierte Umsetzung, die wir als Startup gebraucht haben.“</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CH</div>
+                        <div>
+                            <div class="testimonial-name" data-i18n="testimonials.coha.name">CoHa Gründerteam</div>
+                            <div class="testimonial-role" data-i18n="testimonials.coha.role">Startup — Gastronomie</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <blockquote class="testimonial-quote" data-i18n="testimonials.imkerei.quote">„Unsere alte Seite war zehn Jahre alt. Jetzt verkaufen wir Honig direkt online — und ich kann die Inhalte selbst pflegen, ohne jedes Mal nachfragen zu müssen.“</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">IF</div>
+                        <div>
+                            <div class="testimonial-name" data-i18n="testimonials.imkerei.name">Imkerei Feuerstein</div>
+                            <div class="testimonial-role" data-i18n="testimonials.imkerei.role">Lokales Unternehmen — Bruckmühl</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <blockquote class="testimonial-quote" data-i18n="testimonials.soundoflvke.quote">„Ich wollte keine 0815-Musiker-Seite. Max hat das verstanden, mit Audio-Player und Tour-Daten. Sieht aus wie ein großes Label — ohne deren Aufwand.“</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div>
+                            <div class="testimonial-name" data-i18n="testimonials.soundoflvke.name">SoundOfLvke</div>
+                            <div class="testimonial-role" data-i18n="testimonials.soundoflvke.role">Künstler & Musiker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2>Kontakt</h2>
-                <p class="contact-subtitle">Interesse an einer Zusammenarbeit?</p>
-                <div class="contact-buttons">
-                    <a href="mailto:maximilian@haak.in" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i> E-Mail schreiben
-                    </a>
-                    <a href="https://www.linkedin.com/in/maximilian-haak-69531739a/" target="_blank" rel="noopener" class="btn">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/MaxeLBerger" target="_blank" rel="noopener" class="btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
+                <div class="section-header">
+                    <p class="section-tag" data-i18n="contact.tag">Kontakt</p>
+                    <h2 class="section-title" data-i18n="contact.title">Lassen Sie uns sprechen</h2>
                 </div>
-                <p class="contact-email">maximilian@haak.in</p>
+                <div class="contact-layout">
+                    <div class="contact-info scroll-reveal">
+                        <p data-i18n="contact.intro">Erzählen Sie mir von Ihrem Vorhaben und ich melde mich zeitnah mit konkreten Ideen zurück.</p>
+                        <div class="contact-links">
+                            <a href="mailto:kontakt@maximilianhaak.de" class="contact-link">
+                                <span class="contact-link-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </span>
+                                kontakt@maximilianhaak.de
+                            </a>
+                            <a href="https://github.com/MaxeLBerger" target="_blank" rel="noopener" class="contact-link">
+                                <span class="contact-link-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                </span>
+                                GitHub — MaxeLBerger
+                            </a>
+                            <a href="https://www.linkedin.com/in/maximilian-haak-69531739a/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                <span class="contact-link-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                </span>
+                                LinkedIn
+                            </a>
+                        </div>
+                        <div class="contact-map">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43263.75!2d11.89!3d47.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479d9f3b0c3834a3%3A0x41e57a1f4d5d6b0!2sBruckm%C3%BChl!5e0!3m2!1sde!2sde!4v1"
+                                width="100%" 
+                                height="200" 
+                                style="border:0; border-radius: 12px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Standort Bruckmühl">
+                            </iframe>
+                        </div>
+                    </div>
+                    <form class="contact-form scroll-reveal" id="contactForm" action="mailto:kontakt@maximilianhaak.de" method="POST" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name" data-i18n="contact.name">Name</label>
+                            <input type="text" id="name" name="name" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="contact.email">E-Mail</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="contact.message">Nachricht</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-i18n="contact.send">Nachricht senden</button>
+                    </form>
+                </div>
             </div>
         </section>
-        <!-- Force deploy rebuild: referencing AgeOfMax commit 8628132 for latest game version -->
     </main>
 
-    <!-- Back-to-Top Button -->
-    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
-
-    <!-- Footer mit Social-Media-Links und Impressum/Datenschutz -->
-    <footer>
-        <div class="social-media">
-            <a href="https://github.com/MaxeLBerger" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-social">
+                    <a href="https://github.com/MaxeLBerger" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maximilian-haak-69531739a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
+                    <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 Maximilian Haak</p>
-        <p>
-            <a href="impressum.html" class="footer-link">Impressum</a> | 
-            <a href="datenschutz.html" class="footer-link">Datenschutz</a> | 
-            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
-        </p>
     </footer>
 
-    <!-- JavaScript-Dateien -->
-    <!-- particles.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Typed.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- Eigene JavaScript-Datei -->
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p data-i18n="cookie.text">Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-primary btn-sm" id="cookieAccept" data-i18n="cookie.accept">Verstanden</button>
+                <a href="datenschutz.html" class="cookie-link" data-i18n="cookie.more">Datenschutz</a>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js" defer></script>
 </body>
 </html>
-

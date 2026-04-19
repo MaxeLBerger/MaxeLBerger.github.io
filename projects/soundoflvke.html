@@ -1,119 +1,200 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-color-scheme="dark" data-project-theme="soundoflvke">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoundofLvke - Musik Portfolio | Maximilian Haak</title>
-    <meta name="description" content="SoundofLvke - Portfolio-Website für hochwertige Beats und Musikproduktionen.">
+    <title>SoundOfLvke — Künstler-Website | Maximilian Haak</title>
+    <meta name="description" content="SoundOfLvke: Professionelle Künstler-Website mit Beat-Shop, Portfolio und Social-Media-Integration für einen Musikproduzenten.">
+    <meta name="author" content="Maximilian Haak">
+    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe ../script.js) -->
-    <link rel="icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="shortcut icon" href="../res/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <nav>
-        <div class="logo"><a href="../index.html#home">Maximilian Haak</a></div>
-        <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
-        <ul class="nav-list">
-            <li><a href="../index.html#home" class="nav-link">Home</a></li>
-            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
-            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
-        </ul>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Startseite">
+                <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Leistungen</a>
+                <a href="../index.html#portfolio">Portfolio</a>
+                <a href="../index.html#about">Über mich</a>
+                <a href="../index.html#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
     </nav>
-    <div id="progress-bar"></div>
-    <main id="wrapper" class="project-main">
+
+    <main class="project-page">
         <section class="project-hero">
             <div class="container">
-                <h1 class="project-title">SoundofLvke</h1>
-                <p class="project-tagline">Portfolio & Beat-Shop für hochwertige Musikproduktionen</p>
+                <a href="../index.html#portfolio" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Zurück zum Portfolio
+                </a>
+                <div class="project-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    Künstler-Website
+                </div>
+                <h1 class="project-title">Sound <span class="gradient-text">Of Lvke</span></h1>
+                <p class="project-tagline">Professionelle Künstler-Website mit Beat-Shop, Portfolio und Social-Media-Integration. Designed für maximale Reichweite und Fan-Engagement.</p>
                 <div class="project-actions">
-                    <a href="https://soundoflvke.github.io" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-music"></i> Website besuchen
-                    </a>
-                    <a href="https://github.com/SoundofLvke/SoundofLvke.github.io" class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code ansehen
-                    </a>
+                    <a href="https://soundoflvke.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Ihr Projekt starten</a>
+                </div>
+                <div class="project-screenshot">
+                    <img src="../res/projects/soundoflvke.webp" alt="SoundOfLvke Website Screenshot" loading="eager">
                 </div>
             </div>
         </section>
-        <section class="project-detail-section">
-            <div class="container">
-                <section class="project-section">
-                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
-                    <p>SoundofLvke ist die offizielle Website eines Musikproduzenten, die hochwertige Beats für Musikproduktionen anbietet. Die Seite bietet Informationen über den Künstler, einen Beat-Shop, ein Portfolio und Kontaktmöglichkeiten.</p>
-                </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-list"></i> Website-Inhalte</h2>
-                    <div class="features-grid">
-                        <div class="feature-card"><i class="fas fa-home"></i><h3>Home</h3><p>Vorstellung des Künstlers und seiner Arbeit</p></div>
-                        <div class="feature-card"><i class="fas fa-briefcase"></i><h3>Portfolio</h3><p>Auswahl bisheriger Projekte und Referenzen</p></div>
-                        <div class="feature-card"><i class="fas fa-shopping-cart"></i><h3>Beat-Shop</h3><p>Verkauf von Beats mit Preisangaben</p></div>
-                        <div class="feature-card"><i class="fas fa-envelope"></i><h3>Kontakt</h3><p>Kontaktformular und Social Media Links</p></div>
-                        <div class="feature-card"><i class="fas fa-file-alt"></i><h3>Impressum</h3><p>Rechtliche Informationen</p></div>
-                        <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Datenschutz</h3><p>Datenschutzrichtlinien</p></div>
+
+        <div class="project-content">
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Über das Projekt
+                </span>
+                <h2 class="section-title">Musik braucht eine Bühne</h2>
+                <p class="section-text">SoundOfLvke ist die offizielle Website eines Musikproduzenten und Beatmakers. Die Seite dient als zentrale Plattform für Beats, Portfolio und Künstler-Branding — mit direkter Anbindung an alle wichtigen Musik-Plattformen.</p>
+                <p class="section-text">Das Design setzt auf dunkle Ästhetik mit leuchtenden Akzenten — perfekt abgestimmt auf die Identität des Künstlers. Jede Seite ist auf Fan-Engagement und Beat-Verkäufe optimiert.</p>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                    Features
+                </span>
+                <h2 class="section-title">Was die Website kann</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3>Home</h3>
+                        <p>Eindrucksvolle Landing Page mit Hero-Section und Künstler-Branding.</p>
                     </div>
-                </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-link"></i> Social Media & Plattformen</h2>
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@soundoflvke" class="social-link youtube" target="_blank">
-                            <i class="fab fa-youtube"></i> YouTube
-                        </a>
-                        <a href="https://soundcloud.com/user-460157054" class="social-link soundcloud" target="_blank">
-                            <i class="fab fa-soundcloud"></i> SoundCloud
-                        </a>
-                        <a href="https://www.tiktok.com/@beatsbylvke" class="social-link tiktok" target="_blank">
-                            <i class="fab fa-tiktok"></i> TikTok
-                        </a>
-                        <a href="https://www.beatstars.com/soundoflvke" class="social-link beatstars" target="_blank">
-                            <i class="fas fa-music"></i> BeatStars
-                        </a>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h3>Portfolio</h3>
+                        <p>Showcase der besten Produktionen und Referenzen des Künstlers.</p>
                     </div>
-                </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-code"></i> Technologien</h2>
-                    <div class="tech-stack">
-                        <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">CSS3</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">GitHub Pages</span>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        </div>
+                        <h3>Beat-Shop</h3>
+                        <p>Direkte Beat-Verkäufe mit Anbindung an BeatStars und Streaming-Plattformen.</p>
                     </div>
-                </section>
-                <section class="project-section">
-                    <h2><i class="fas fa-fire"></i> Features</h2>
-                    <ul>
-                        <li><strong>Responsive Design:</strong> Optimiert für alle Geräte</li>
-                        <li><strong>Beat-Shop Integration:</strong> Direkter Verkauf von Musikproduktionen</li>
-                        <li><strong>Portfolio-Showcase:</strong> Präsentation bisheriger Arbeiten</li>
-                        <li><strong>Multi-Platform:</strong> Verlinkung zu allen wichtigen Musik-Plattformen</li>
-                        <li><strong>Kontaktformular:</strong> Direkte Kommunikation mit dem Künstler</li>
-                        <li><strong>DSGVO-konform:</strong> Vollständiges Impressum und Datenschutz</li>
-                    </ul>
-                </section>
-                <div class="project-cta">
-                    <h2>Entdecke professionelle Beats!</h2>
-                    <p>Besuche SoundofLvke für hochwertige Musikproduktionen</p>
-                    <div class="cta-buttons">
-                        <a href="https://soundoflvke.github.io" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                            <i class="fas fa-external-link-alt"></i> Website öffnen
-                        </a>
-                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
-                        </a>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <h3>Kontakt</h3>
+                        <p>Einfacher Kontaktweg für Booking-Anfragen und Kollaborationen.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        </div>
+                        <h3>Social-Media Integration</h3>
+                        <p>Direkte Links zu YouTube, SoundCloud, TikTok und BeatStars.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Impressum & Datenschutz</h3>
+                        <p>DSGVO-konforme Rechtstexte für einen professionellen Auftritt.</p>
                     </div>
                 </div>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    Plattformen
+                </span>
+                <h2 class="section-title">Social Media</h2>
+                <div class="social-grid">
+                    <a href="https://www.youtube.com/@soundoflvke" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://soundcloud.com/soundoflvke" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                        <span>SoundCloud</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@soundoflvke" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://www.beatstars.com/soundoflvke" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        <span>BeatStars</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Tech Stack
+                </span>
+                <h2 class="section-title">Technologien</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                    <span class="tech-badge">Responsive Design</span>
+                </div>
+            </section>
+
+            <div class="project-cta">
+                <h2>Brauchen Sie eine Künstler-Website?</h2>
+                <p>Besuchen Sie SoundOfLvke live — oder lassen Sie sich Ihre eigene Website erstellen.</p>
+                <div class="project-actions">
+                    <a href="https://soundoflvke.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
-    <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
-    <footer>
-        <div class="social-media"><a href="https://github.com/SoundofLvke/SoundofLvke.github.io" target="_blank"><i class="fab fa-github"></i></a></div>
-        <p>&copy; 2024 Maximilian Haak</p>
-        <p><a href="../impressum.html">Impressum</a> | <a href="../datenschutz.html">Datenschutz</a> | <a href="#" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a></p>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-links">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
     <script src="../script.js" defer></script>
 </body>
 </html>

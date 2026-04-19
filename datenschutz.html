@@ -1,204 +1,183 @@
-<!DOCTYPE html>
-<html lang="de">
+﻿<!DOCTYPE html>
+<html lang="de" data-color-scheme="dark" data-project-theme="maxhaak">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutz - Maximilian Haak</title>
+    <title>Datenschutz — Maximilian Haak</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="res/favicons/faviconwhitegreen.png">
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts werden nur nach Einwilligung geladen (siehe script.js) -->
-    <link rel="icon" href="res/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <a href="index.html#home">Maximilian Haak</a>
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Startseite">Maximilian&#160;<span class="logo-accent">Haak</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#services">Leistungen</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#about">Über mich</a>
+                <a href="index.html#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-icon" id="themeToggle" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
         </div>
-        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list" role="navigation">
-            <li><a href="index.html#home" class="nav-link">Home</a></li>
-            <li><a href="index.html#aboutMe" class="nav-link">About Me</a></li>
-            <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="index.html#projects" class="nav-link">Projekte</a></li>
-            <!-- "Impressum" und "Datenschutz" wurden entfernt -->
-        </ul>
     </nav>
 
-    <!-- Scroll Indikator -->
-    <div id="progress-bar" aria-hidden="true"></div>
+    <main class="legal-page">
+        <div class="container">
+            <h1>Datenschutzerklärung</h1>
 
-    <!-- Hauptinhalt -->
-    <main class="datenschutz-main">
-        <section class="datenschutz-section">
-            <div class="container">
-                <h1 class="datenschutz-headline">Datenschutzerklärung</h1>
+            <h2>1. Datenschutz auf einen Blick</h2>
 
-                <h2>1. Datenschutz auf einen Blick</h2>
+            <h3>Allgemeine Hinweise</h3>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
 
-                <h3>Allgemeine Hinweise</h3>
-                <p>
-                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-                </p>
+            <h3>Datenerfassung auf unserer Webseite</h3>
 
-                <h3>Datenerfassung auf unserer Webseite</h3>
+            <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Webseite?</h4>
+            <p>
+                Verantwortlich für die Datenverarbeitung auf dieser Webseite ist:<br>
+                Maximilian Haak<br>
+                83052 Bruckmühl<br>
+                E-Mail: <a href="mailto:kontakt@maximilianhaak.de">kontakt@maximilianhaak.de</a>
+            </p>
 
-                <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Webseite?</h4>
-                <p>
-                    Verantwortlich für die Datenverarbeitung auf dieser Webseite ist:<br>
-                    Maximilian Haak<br>
-                    Ladungsfähige Anschrift folgt.<br>
-                    E-Mail: <a href="mailto:maximilian@haak.in">maximilian@haak.in</a>
-                </p>
+            <h4>Wie erfassen wir Ihre Daten?</h4>
+            <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese ggf. per E-Mail mitteilen. Weiterhin können Sie uns über das Kontaktformular auf der Hauptseite eine Nachricht senden; dabei werden Name, E-Mail-Adresse und Ihre Nachricht an Formspree (Formspree, Inc., USA) übermittelt und verarbeitet. Formspree agiert als Auftragsverarbeiter gem. Art. 28 DSGVO.</p>
+            <p>Zum anderen werden Daten automatisch beim Besuch der Webseite durch unsere IT-Systeme erfasst (z. B. technische Zugriffsdaten). Optional können – ausschließlich nach Ihrer Einwilligung – Analyse-Daten mit Google Analytics erhoben werden.</p>
 
-                <h4>Wie erfassen wir Ihre Daten?</h4>
-                <p>
-                    Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese ggf. per E-Mail mitteilen. Ein Kontaktformular gibt es auf dieser Website nicht.<br><br>
-                    Zum anderen werden Daten automatisch beim Besuch der Webseite durch unsere IT-Systeme erfasst (z. B. technische Zugriffsdaten). Optional können – ausschließlich nach Ihrer Einwilligung – Analyse-Daten mit Google Analytics erhoben werden.
-                </p>
+            <h4>Welche Daten werden erhoben?</h4>
+            <p><strong>Personenbezogene Daten, die Sie uns mitteilen</strong><br>
+            Dazu gehören Name, Adresse, E-Mail-Adresse, Telefonnummer und ähnliche Daten.</p>
+            <p><strong>Daten, die automatisch beim Besuch der Webseite entstehen</strong><br>
+            Dazu gehören Informationen über Ihren Browser, Ihr Betriebssystem, die IP-Adresse, Uhrzeit des Zugriffs und ähnliche Daten.</p>
 
-                <h4>Welche Daten werden erhoben?</h4>
-                <p>
-                    <strong>Personenbezogene Daten, die Sie uns mitteilen</strong><br>
-                    Dazu gehören Name, Adresse, E-Mail-Adresse, Telefonnummer und ähnliche Daten.
-                </p>
-                <p>
-                    <strong>Daten, die automatisch beim Besuch der Webseite entstehen</strong><br>
-                    Dazu gehören Informationen über Ihren Browser, Ihr Betriebssystem, die IP-Adresse, Uhrzeit des Zugriffs und ähnliche Daten.
-                </p>
+            <h4>Rechtsgrundlagen der Verarbeitung</h4>
+            <p>Wir verarbeiten Ihre Daten auf Grundlage von:</p>
+            <ul>
+                <li>Art. 6 Abs. 1 lit. a DSGVO: Einwilligung</li>
+                <li>Art. 6 Abs. 1 lit. b DSGVO: Vertragserfüllung</li>
+                <li>Art. 6 Abs. 1 lit. f DSGVO: Berechtigtes Interesse</li>
+            </ul>
 
-                <h4>Rechtsgrundlagen der Verarbeitung</h4>
-                <p>
-                    Wir verarbeiten Ihre Daten auf Grundlage von:
-                </p>
-                <ul>
-                    <li>Art. 6 Abs. 1 lit. a DSGVO: Einwilligung</li>
-                    <li>Art. 6 Abs. 1 lit. b DSGVO: Vertragserfüllung</li>
-                    <li>Art. 6 Abs. 1 lit. f DSGVO: Berechtigtes Interesse</li>
-                </ul>
+            <h4>Datenaufbewahrung</h4>
+            <p>Wir speichern Ihre personenbezogenen Daten nur so lange, wie es für die Erfüllung der oben genannten Zwecke erforderlich ist oder wie es die gesetzlichen Aufbewahrungsfristen vorsehen.</p>
 
-                <h4>Datenaufbewahrung</h4>
-                <p>
-                    Wir speichern Ihre personenbezogenen Daten nur so lange, wie es für die Erfüllung der oben genannten Zwecke erforderlich ist oder wie es die gesetzlichen Aufbewahrungsfristen vorsehen.
-                </p>
+            <h4>SSL- bzw. TLS-Verschlüsselung</h4>
+            <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+            <p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
 
-                <h4>SSL- bzw. TLS-Verschlüsselung</h4>
-                <p>
-                    Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
-                </p>
-                <p>
-                    Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
-                </p>
+            <h4>Cookies</h4>
+            <p>Unsere Website verwendet Cookies nur, wenn Sie hierfür Ihre Einwilligung erteilen (z. B. für Statistik mit Google Analytics). Notwendige Cookies für den Betrieb werden nicht gesetzt. Sie können Ihre Entscheidung jederzeit über die „Cookie-Einstellungen" am Seitenende ändern.</p>
 
-                <h4>Cookies</h4>
-                <p>
-                    Unsere Website verwendet Cookies nur, wenn Sie hierfür Ihre Einwilligung erteilen (z. B. für Statistik mit Google Analytics). Notwendige Cookies für den Betrieb werden nicht gesetzt. Sie können Ihre Entscheidung jederzeit über die „Cookie-Einstellungen“ am Seitenende ändern.
-                </p>
+            <h4>Google Analytics (GA4) – nur nach Einwilligung</h4>
+            <p>Wir nutzen Google Analytics 4 (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) ausschließlich nach Ihrer Einwilligung. Google Analytics setzt Cookies, um die Nutzung der Website zu analysieren. In GA4 werden IP-Adressen in der EU nicht gespeichert; es können dennoch Daten in die USA übertragen werden. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
+            <p>Sie können Ihre Entscheidung jederzeit über den Link „Cookie-Einstellungen" im Footer ändern. Zusätzlich können Sie das Browser-Add-on zur Deaktivierung von Google Analytics installieren: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a>.</p>
+            <p>Weitere Informationen zum Datenschutz bei Google finden Sie unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>.</p>
 
-                <h4>Google Analytics (GA4) – nur nach Einwilligung</h4>
-                <p>
-                    Wir nutzen Google Analytics 4 (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) ausschließlich nach Ihrer Einwilligung. Google Analytics setzt Cookies, um die Nutzung der Website zu analysieren. In GA4 werden IP-Adressen in der EU nicht gespeichert; es können dennoch Daten in die USA übertragen werden. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
-                </p>
-                <p>
-                    Sie können Ihre Entscheidung jederzeit über den Link „Cookie-Einstellungen“ im Footer ändern. Zusätzlich können Sie das Browser-Add-on zur Deaktivierung von Google Analytics installieren: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a>.
-                </p>
-                <p>
-                    Weitere Informationen zum Datenschutz bei Google finden Sie unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>.
-                </p>
+            <h4>Externe Schriftarten (Google Fonts) – nur nach Einwilligung</h4>
+            <p>Zur ansprechenden Darstellung verwenden wir optional Google Fonts. Beim Laden der Schriftarten kann Ihre IP-Adresse an Server von Google übertragen werden. Daher laden wir Google Fonts nur nach Ihrer Einwilligung; ohne Einwilligung wird eine systemeigene Schrift verwendet.</p>
 
-                <h4>Externe Schriftarten (Google Fonts) – nur nach Einwilligung</h4>
-                <p>
-                    Zur ansprechenden Darstellung verwenden wir optional Google Fonts. Beim Laden der Schriftarten kann Ihre IP-Adresse an Server von Google übertragen werden. Daher laden wir Google Fonts nur nach Ihrer Einwilligung; ohne Einwilligung wird eine systemeigene Schrift verwendet.
-                </p>
+            <h2>2. Allgemeine Hinweise und Pflichtinformationen</h2>
 
-                <h2>2. Allgemeine Hinweise und Pflichtinformationen</h2>
+            <h3>Datenschutz</h3>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
 
-                <h3>Datenschutz</h3>
-                <p>
-                    Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
-                </p>
+            <h3>Rechte des Nutzers</h3>
+            <p>Sie haben das Recht:</p>
+            <ul>
+                <li>gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.</li>
+                <li>gemäß Art. 16 DSGVO unverzüglich die Berichtigung unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li>
+                <li>gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li>
+                <li>gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+                <li>gemäß Art. 20 DSGVO Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder die Übermittlung an einen anderen Verantwortlichen zu verlangen.</li>
+                <li>gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten einzulegen.</li>
+            </ul>
+            <p>Weitere Informationen zu Ihren Rechten finden Sie in der vollständigen Datenschutzerklärung auf <a href="https://www.e-recht24.de/datenschutzerklaerung-generator.html" target="_blank" rel="noopener noreferrer">e-recht24.de Datenschutz Generator</a>.</p>
 
-                <h3>Rechte des Nutzers</h3>
-                <p>
-                    Sie haben das Recht:
-                </p>
-                <ul>
-                    <li>gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.</li>
-                    <li>gemäß Art. 16 DSGVO unverzüglich die Berichtigung unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li>
-                    <li>gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li>
-                    <li>gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
-                    <li>gemäß Art. 20 DSGVO Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder die Übermittlung an einen anderen Verantwortlichen zu verlangen.</li>
-                    <li>gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten einzulegen.</li>
-                </ul>
-                <p>
-                    Weitere Informationen zu Ihren Rechten finden Sie in der vollständigen Datenschutzerklärung auf <a href="https://www.e-recht24.de/datenschutzerklaerung-generator.html" target="_blank">e-recht24.de Datenschutz Generator</a>.
-                </p>
+            <h3>Beschwerderecht bei der Aufsichtsbehörde</h3>
+            <p>Im Falle von Verstößen gegen die DSGVO haben Sie das Recht, eine Beschwerde bei einer Aufsichtsbehörde einzureichen.</p>
 
-                <h3>Beschwerderecht bei der Aufsichtsbehörde</h3>
-                <p>
-                    Im Falle von Verstößen gegen die DSGVO haben Sie das Recht, eine Beschwerde bei einer Aufsichtsbehörde einzureichen.
-                </p>
+            <h2>3. Datenerfassung auf unserer Webseite</h2>
 
-                <h2>3. Datenerfassung auf unserer Webseite</h2>
+            <h3>Cookies und ähnliche Technologien</h3>
+            <p>Wir setzen auf unserer Webseite Cookies ein, um die Benutzerfreundlichkeit zu erhöhen und die Nutzung unserer Dienste zu analysieren. Dabei setzen wir folgende Arten von Cookies ein:</p>
+            <ul>
+                <li><strong>Notwendige Cookies:</strong> Diese Cookies sind unerlässlich für den Betrieb der Webseite und ermöglichen grundlegende Funktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Webseite.</li>
+                <li><strong>Präferenz-Cookies:</strong> Diese Cookies ermöglichen es der Webseite, sich an Informationen zu erinnern, die das Verhalten oder das Aussehen der Webseite beeinflussen, wie z.B. Ihre bevorzugte Sprache.</li>
+                <li><strong>Statistik-Cookies:</strong> Diese Cookies helfen uns, die Leistung der Webseite zu analysieren und zu verbessern, indem sie Informationen über die Nutzung der Webseite sammeln.</li>
+                <li><strong>Marketing-Cookies:</strong> Diese Cookies werden verwendet, um Besucher über verschiedene Webseiten hinweg zu verfolgen und relevante Anzeigen anzuzeigen.</li>
+            </ul>
+            <p>Sie können die Verwendung von Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Webseite vollumfänglich nutzen können.</p>
 
-                <h3>Cookies und ähnliche Technologien</h3>
-                <p>
-                    Wir setzen auf unserer Webseite Cookies ein, um die Benutzerfreundlichkeit zu erhöhen und die Nutzung unserer Dienste zu analysieren. Dabei setzen wir folgende Arten von Cookies ein:
-                </p>
-                <ul>
-                    <li><strong>Notwendige Cookies:</strong> Diese Cookies sind unerlässlich für den Betrieb der Webseite und ermöglichen grundlegende Funktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Webseite.</li>
-                    <li><strong>Präferenz-Cookies:</strong> Diese Cookies ermöglichen es der Webseite, sich an Informationen zu erinnern, die das Verhalten oder das Aussehen der Webseite beeinflussen, wie z.B. Ihre bevorzugte Sprache.</li>
-                    <li><strong>Statistik-Cookies:</strong> Diese Cookies helfen uns, die Leistung der Webseite zu analysieren und zu verbessern, indem sie Informationen über die Nutzung der Webseite sammeln.</li>
-                    <li><strong>Marketing-Cookies:</strong> Diese Cookies werden verwendet, um Besucher über verschiedene Webseiten hinweg zu verfolgen und relevante Anzeigen anzuzeigen.</li>
-                </ul>
-                <p>
-                    Sie können die Verwendung von Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Webseite vollumfänglich nutzen können.
-                </p>
+            <h2>4. Sicherheit Ihrer Daten</h2>
+            <p>Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. In der Regel handelt es sich dabei um eine 256 Bit Verschlüsselung. Falls Ihr Browser keine 256-Bit Verschlüsselung unterstützt, greifen wir stattdessen auf 128-Bit v3 Technologie zurück. Ob eine einzelne Seite unseres Internetauftrittes verschlüsselt übertragen wird, erkennen Sie an der geschlossenen Darstellung des Schlüssel- beziehungsweise Schloss-Symbols in der unteren Statusleiste Ihres Browsers.</p>
+            <p>Wir bedienen uns im Übrigen geeigneter technischer und organisatorischer Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert.</p>
 
-                <!-- Kontaktformular existiert nicht; Abschnitt entfernt -->
-
-                <h2>4. Sicherheit Ihrer Daten</h2>
-                <p>
-                    Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. In der Regel handelt es sich dabei um eine 256 Bit Verschlüsselung. Falls Ihr Browser keine 256-Bit Verschlüsselung unterstützt, greifen wir stattdessen auf 128-Bit v3 Technologie zurück. Ob eine einzelne Seite unseres Internetauftrittes verschlüsselt übertragen wird, erkennen Sie an der geschlossenen Darstellung des Schlüssel- beziehungsweise Schloss-Symbols in der unteren Statusleiste Ihres Browsers.
-                </p>
-                <p>
-                    Wir bedienen uns im Übrigen geeigneter technischer und organisatorischer Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert.
-                </p>
-
-                <h2>5. Aktualität und Änderung dieser Datenschutzerklärung</h2>
-                <p>
-                    Diese Datenschutzerklärung ist aktuell gültig und hat den Stand <strong>November 2024</strong>.
-                </p>
-                <p>
-                    Durch die Weiterentwicklung unserer Webseite und Angebote darüber oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf dieser Webseite von Ihnen abgerufen und ausgedruckt werden.
-                </p>
-            </div>
-        </section>
+            <h2>5. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+            <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand <strong>April 2026</strong>.</p>
+            <p>Durch die Weiterentwicklung unserer Webseite und Angebote darüber oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf dieser Webseite von Ihnen abgerufen und ausgedruckt werden.</p>
+        </div>
     </main>
 
-    <!-- Back-to-Top Button -->
-    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
-
-    <!-- Footer mit Social-Media-Links und Impressum/Datenschutz -->
-    <footer>
-        <div class="social-media">
-            <!-- <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a> -->
-            <!-- <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-social">
+                    <a href="https://github.com/MaxeLBerger" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maximilian-haak-69531739a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="#" data-action="cookie-settings">Cookie-Einstellungen</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2024 Maximilian Haak</p>
-        <p>
-            <a href="impressum.html" class="footer-link">Impressum</a> | 
-            <a href="datenschutz.html" class="footer-link">Datenschutz</a> | 
-            <a href="#" class="footer-link" onclick="window.showConsentManager && window.showConsentManager(); return false;">Cookie-Einstellungen</a>
-        </p>
     </footer>
 
-    <!-- JavaScript-Dateien -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="script.js" defer></script>
+    <script>
+        // Theme toggle for legal pages
+        const stored = localStorage.getItem('color-scheme');
+        if (stored) document.documentElement.setAttribute('data-color-scheme', stored);
+
+        const toggle = document.getElementById('themeToggle');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-color-scheme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-color-scheme', next);
+                localStorage.setItem('color-scheme', next);
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Cookie consent manager (minimal for legal pages)
+        window.showConsentManager = function() {
+            alert('Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.');
+        };
+
+        // Cookie settings link — no inline onclick
+        const cookieLink = document.querySelector('[data-action="cookie-settings"]');
+        if (cookieLink) {
+            cookieLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.showConsentManager();
+            });
+        }
+    </script>
 </body>
 </html>
