@@ -1070,22 +1070,11 @@
             gsap.registerPlugin(ScrollTrigger);
         }
 
-        // Hero orb scroll parallax
+        // Hero orb scroll parallax — intentionally disabled.
+        // The orbs already animate via CSS @keyframes (float-slow, pulse-glow).
+        // Adding a scroll-tied GSAP tween on top doubled the compositor work
+        // for no real visual gain and was a major contributor to scroll lag.
         const heroOrbs = document.querySelectorAll('.hero-orb');
-        if (typeof ScrollTrigger !== 'undefined') {
-            const orbSpeeds = [100, 150, 80];
-            heroOrbs.forEach((orb, i) => {
-                gsap.to(orb, {
-                    y: -orbSpeeds[i],
-                    scrollTrigger: {
-                        trigger: '.hero-section',
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: 1,
-                    },
-                });
-            });
-        }
 
         // Theme sync — when the projects section enters the viewport, align
         // the global theme with the active slide. Going back up no longer
@@ -1147,37 +1136,57 @@
             projObserver.observe(projectsSection);
         }
 
-        // Showcase mouse parallax — skip work when targets are off-screen.
-        let mouseTicking = false;
-        document.addEventListener('mousemove', (e) => {
-            if (mouseTicking || !parallaxTargetsVisible) return;
-            mouseTicking = true;
-            requestAnimationFrame(() => {
-                const normX = (e.clientX / window.innerWidth - 0.5);
-                const normY = (e.clientY / window.innerHeight - 0.5);
-                const activeFrame = document.querySelector('.hero-slide.active .showcase-frame');
-                const activeFloat = document.querySelector('.hero-slide.active .hero-photo-float') || document.querySelector('#hero .hero-photo-float');
-                if (activeFrame) {
-                    gsap.to(activeFrame, {
-                        rotateY: -5 + normX * 10,
-                        rotateX: 2 - normY * 6,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        overwrite: 'auto',
-                    });
+        // Showcase mouse parallax.
+        // Disabled entirely on coarse pointers (touch devices) where it does
+        // nothing useful and just wastes battery. Uses gsap.quickTo so we
+        // reuse a single tween per target instead of spawning a new tween
+        // on every mousemove (which was the main source of scroll/move lag).
+        const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!isCoarsePointer && !reducedMotion) {
+            // quickTo binds to a specific element + property. We rebind whenever
+            // the active slide changes so the tween targets the visible frame.
+            let frameRotY = null, frameRotX = null;
+            let floatRotY = null, floatRotX = null;
+            let lastFrame = null, lastFloat = null;
+
+            const bindQuickTo = (el, target) => {
+                const opts = { duration: 0.6, ease: 'power2.out' };
+                if (target === 'frame') {
+                    frameRotY = gsap.quickTo(el, 'rotateY', opts);
+                    frameRotX = gsap.quickTo(el, 'rotateX', opts);
+                    lastFrame = el;
+                } else {
+                    floatRotY = gsap.quickTo(el, 'rotateY', opts);
+                    floatRotX = gsap.quickTo(el, 'rotateX', opts);
+                    lastFloat = el;
                 }
-                if (activeFloat) {
-                    gsap.to(activeFloat, {
-                        rotateY: -5 + normX * 10,
-                        rotateX: 2 - normY * 6,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        overwrite: 'auto',
-                    });
-                }
-                mouseTicking = false;
-            });
-        }, { passive: true });
+            };
+
+            let mouseTicking = false;
+            document.addEventListener('mousemove', (e) => {
+                if (mouseTicking || !parallaxTargetsVisible) return;
+                mouseTicking = true;
+                requestAnimationFrame(() => {
+                    const normX = (e.clientX / window.innerWidth - 0.5);
+                    const normY = (e.clientY / window.innerHeight - 0.5);
+                    const ry = -5 + normX * 10;
+                    const rx = 2 - normY * 6;
+                    const activeFrame = document.querySelector('.hero-slide.active .showcase-frame');
+                    const activeFloat = document.querySelector('.hero-slide.active .hero-photo-float')
+                        || document.querySelector('#hero .hero-photo-float');
+                    if (activeFrame) {
+                        if (activeFrame !== lastFrame) bindQuickTo(activeFrame, 'frame');
+                        frameRotY(ry); frameRotX(rx);
+                    }
+                    if (activeFloat) {
+                        if (activeFloat !== lastFloat) bindQuickTo(activeFloat, 'float');
+                        floatRotY(ry); floatRotX(rx);
+                    }
+                    mouseTicking = false;
+                });
+            }, { passive: true });
+        }
 
         // Scroll reveal batch
         if (typeof ScrollTrigger !== 'undefined') {

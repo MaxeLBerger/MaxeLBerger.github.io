@@ -2713,3 +2713,48 @@ html[data-color-scheme="light"] .cookie-content p {
         transform: none;
     }
 }
+
+/* ═══════════════════════════════════════════════
+   PERFORMANCE
+   - content-visibility lets the browser skip layout/paint for sections
+     that aren't on screen yet. Massive scroll-perf win on long pages.
+     The contain-intrinsic-size keeps the scrollbar honest.
+   - Pause the projects-section blob animations while the section is
+     off-screen; the IntersectionObserver in script.js toggles .in-view.
+   - Reduce backdrop-filter blur on small screens — backdrop-filter is
+     one of the most expensive paints; halving the radius materially
+     reduces compositor cost on mobile/older GPUs.
+   ═══════════════════════════════════════════════ */
+.skills-section,
+.services-section,
+.pricing-section,
+.testimonials-section,
+.contact-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+}
+
+.projects-section:not(.in-view)::before,
+.projects-section:not(.in-view)::after {
+    animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    /* Cheaper blurs on phones — barely visible difference, large GPU win. */
+    .navbar,
+    .color-picker-popover,
+    .mobile-menu {
+        backdrop-filter: blur(10px) saturate(140%);
+        -webkit-backdrop-filter: blur(10px) saturate(140%);
+    }
+
+    /* The third hero orb is decorative; drop it on phones to free a layer. */
+    .hero-orb-3 { display: none; }
+    .hero-orb-1 { width: 360px; height: 360px; }
+    .hero-orb-2 { width: 260px; height: 260px; }
+
+    /* Smaller blob radii = smaller blur surface = much cheaper. */
+    .projects-section::before { width: 320px; height: 320px; filter: blur(60px); }
+    .projects-section::after  { width: 280px; height: 280px; filter: blur(60px); }
+}
