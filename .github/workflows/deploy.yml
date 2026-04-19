@@ -1,4 +1,4 @@
-name: Deploy Portfolio
+﻿name: Deploy Portfolio
 
 on:
   push:
@@ -126,15 +126,15 @@ jobs:
             echo
             echo "## Top-level"
             du -sh dist/*.html dist/*.css dist/*.js 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s` â€” %s\n", $2, $1 }'
             echo
             echo "## Folders"
             du -sh dist/res dist/projects 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s` â€” %s\n", $2, $1 }'
             echo
             echo "## 10 largest files"
             find dist -type f -printf '%s\t%p\n' | sort -rn | head -10 \
-              | awk -F'\t' '{ printf "- `%s` — %.0f KB\n", $2, $1/1024 }'
+              | awk -F'\t' '{ printf "- `%s` â€” %.0f KB\n", $2, $1/1024 }'
           } >> "$GITHUB_STEP_SUMMARY"
           echo "total=$(du -sb dist | cut -f1)" >> "$GITHUB_OUTPUT"
 
@@ -164,61 +164,3 @@ jobs:
             echo "- **URL:** ${{ steps.deploy.outputs.page_url }}"
             echo "- **Bytes shipped:** ${{ needs.build.outputs.total_size }}"
           } >> "$GITHUB_STEP_SUMMARY"
-name: Deploy Portfolio
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Assemble distribution
-        run: |
-          mkdir dist
-          cp index.html style.css script.js CNAME dist/
-          cp impressum.html datenschutz.html dist/
-          [ -d res ] && cp -r res dist/
-          [ -d projects ] && cp -r projects dist/
-          touch dist/.nojekyll
-          echo "✅ Portfolio assets copied"
-
-      - name: Build size report
-        run: |
-          echo "# 📦 Build Size Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          total=$(du -sh dist | cut -f1)
-          echo "**Total size:** $total" >> $GITHUB_STEP_SUMMARY
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
-
-      - name: Deployment summary
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "✅ **Deployed to:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
