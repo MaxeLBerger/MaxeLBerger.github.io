@@ -69,8 +69,10 @@
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-    /* Layout */
-    --container-max: 1200px;
+    /* Layout — clamp() lets the container breathe on wide screens without
+       letting it grow unbounded on ultra-wide. Bumped from a flat 1200px so
+       the 2-column slide layout no longer looks cramped at 1440/1920/2560+. */
+    --container-max: clamp(1200px, 92vw, 1480px);
     --nav-height: 84px;
 }
 
@@ -2425,9 +2427,25 @@ html[data-color-scheme="light"] .cookie-content p {
         display: none;
     }
 
-    /* Hide inline color picker on mobile to save space */
-    .color-picker {
-        display: none;
+    /* Color picker stays on mobile — just trim it down so it fits next to
+       the theme toggle + menu button. The popover already renders relative
+       to the trigger so it works in tight nav layouts. */
+    .color-picker-trigger {
+        width: 36px;
+        height: 36px;
+        min-height: 36px;
+        padding: 0;
+    }
+
+    .color-picker-current {
+        width: 18px;
+        height: 18px;
+    }
+
+    .color-picker-popover {
+        right: -4px;
+        padding: 6px 10px;
+        gap: 4px;
     }
 
     .nav-links.open {
@@ -2615,10 +2633,25 @@ html[data-color-scheme="light"] .cookie-content p {
         padding: 5px 10px;
     }
 
-    /* Hide browser frames on mobile — only profile photo stays */
-    .showcase-frame,
-    .showcase-link:has(.showcase-frame) {
-        display: none;
+    /* Project showcase frames stay visible on mobile — just smaller and
+       without the perspective tilt so the whole browser mock-up fits the
+       viewport width without being clipped. */
+    .showcase-container {
+        max-width: min(360px, 90vw);
+    }
+
+    .showcase-frame {
+        transform: none;
+        box-shadow:
+            0 12px 24px rgba(var(--theme-primary), 0.18),
+            0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .showcase-badge {
+        top: -8px;
+        right: -8px;
+        font-size: 0.6rem;
+        padding: 5px 10px;
     }
 
     .project-nav {
