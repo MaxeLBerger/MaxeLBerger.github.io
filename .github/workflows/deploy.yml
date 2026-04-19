@@ -3,6 +3,172 @@ name: Deploy Portfolio
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # Hard cap for any single shipped binary asset (KB).
+  # Largest current legitimate file: res/backgrounds/hero-mountains.jpg ~310 KB.
+  # 600 leaves headroom but still catches an accidentally committed 2 MB PNG.
+  MAX_ASSET_KB: 600
+
+jobs:
+  build:
+    name: Validate and assemble
+    runs-on: ubuntu-latest
+    outputs:
+      total_size: ${{ steps.size.outputs.total }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required entry points exist
+        run: |
+          set -e
+          required=(index.html style.css script.js CNAME impressum.html datenschutz.html)
+          missing=0
+          for f in "${required[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "::error file=$f::Required file is missing"
+              missing=1
+            fi
+          done
+          [ $missing -eq 0 ] || exit 1
+          echo "All required entry points present."
+
+      - name: Guard against oversized assets
+        run: |
+          set -e
+          limit_kb="${MAX_ASSET_KB}"
+          mapfile -t big < <(find res projects -type f \
+            \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
+               -o -iname '*.webp' -o -iname '*.gif' -o -iname '*.svg' \
+               -o -iname '*.mp4' -o -iname '*.webm' \) \
+            -size +"${limit_kb}"k -printf '%s\t%p\n' 2>/dev/null || true)
+          if [ "${#big[@]}" -gt 0 ]; then
+            echo "::error::Found assets larger than ${limit_kb} KB. Optimize them (WebP, compression) before merging."
+            printf '%s\n' "${big[@]}" | awk -F'\t' '{ printf "  %6.0f KB  %s\n", $1/1024, $2 }'
+            exit 1
+          fi
+          echo "All shipped assets are <= ${limit_kb} KB."
+
+      - name: Assemble distribution
+        run: |
+          set -e
+          mkdir -p dist
+          cp ./*.html dist/
+          cp style.css script.js CNAME dist/
+          [ -d res ] && cp -r res dist/
+          [ -d projects ] && cp -r projects dist/
+          # Disable Jekyll on Pages (we ship plain static files).
+          touch dist/.nojekyll
+          echo "Assembled dist/:"
+          ls -la dist | head -40
+
+      - name: Check internal asset references
+        run: |
+          set -e
+          python3 - <<'PY'
+          import os, re, sys, urllib.parse
+
+          ROOT = "dist"
+          SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "data:", "javascript:", "//")
+          # Match src="..." and href="..." with double or single quotes.
+          PATTERN = re.compile(r'(?:src|href)\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
+
+          missing = []
+          for dirpath, _, files in os.walk(ROOT):
+              for name in files:
+                  if not name.endswith(".html"):
+                      continue
+                  path = os.path.join(dirpath, name)
+                  with open(path, encoding="utf-8", errors="ignore") as fh:
+                      html = fh.read()
+                  for ref in PATTERN.findall(html):
+                      if ref.startswith(SKIP_SCHEMES) or ref.startswith("#") or not ref.strip():
+                          continue
+                      target = urllib.parse.urlparse(ref).path
+                      if not target or target.startswith("/"):
+                          # Pages serves from /, so map root-relative to dist/.
+                          full = os.path.normpath(os.path.join(ROOT, target.lstrip("/")))
+                      else:
+                          full = os.path.normpath(os.path.join(os.path.dirname(path), target))
+                      if not os.path.exists(full):
+                          rel = os.path.relpath(path, ROOT)
+                          missing.append((rel, ref))
+
+          if missing:
+              for rel, ref in missing:
+                  print(f"::error file={rel}::Broken internal reference: {ref}")
+              print(f"\n{len(missing)} broken reference(s). Fix them before merging.")
+              sys.exit(1)
+          print("All internal references resolve.")
+          PY
+
+      - name: Build size report
+        id: size
+        run: |
+          set -e
+          {
+            echo "# Build Size Report"
+            echo
+            echo "**Total:** $(du -sh dist | cut -f1)"
+            echo
+            echo "## Top-level"
+            du -sh dist/*.html dist/*.css dist/*.js 2>/dev/null \
+              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+            echo
+            echo "## Folders"
+            du -sh dist/res dist/projects 2>/dev/null \
+              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+            echo
+            echo "## 10 largest files"
+            find dist -type f -printf '%s\t%p\n' | sort -rn | head -10 \
+              | awk -F'\t' '{ printf "- `%s` — %.0f KB\n", $2, $1/1024 }'
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "total=$(du -sb dist | cut -f1)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment summary
+        run: |
+          {
+            echo "## Deployment"
+            echo "- **URL:** ${{ steps.deploy.outputs.page_url }}"
+            echo "- **Bytes shipped:** ${{ needs.build.outputs.total_size }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+name: Deploy Portfolio
+
+on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
