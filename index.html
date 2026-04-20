@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de" data-color-scheme="dark" data-project-theme="maxhaak">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0a0a0e" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
     <title>Maximilian Haak — Webdesign & Entwicklung aus Bruckmühl</title>
     <meta name="description" content="Professionelle Websites für lokale Unternehmen im Raum Rosenheim, Bruckmühl & Oberbayern. Persönlich, schnell, modern — von Konzept bis Go-Live.">
     <meta name="keywords" content="Webdesign Rosenheim, Website erstellen Bruckmühl, Webentwicklung Oberbayern, Homepage erstellen lassen, Freelancer Bayern">
@@ -91,6 +94,8 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <!-- LCP image: prioritise it ahead of the deferred scripts. -->
     <link rel="preload" as="image" href="res/profile/maxler_transparent.webp" fetchpriority="high">
+    <!-- First hero background slide is also visible on initial paint. -->
+    <link rel="preload" as="image" href="res/backgrounds/hero-01.webp">
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -270,7 +275,7 @@
                                         <span class="browser-url">E46 Studio — DolphinCode</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/e46studio.webp" alt="E46 Studio / DolphinCode" loading="lazy">
+                                        <img src="res/projects/e46studio.webp" alt="E46 Studio / DolphinCode" loading="lazy" decoding="async" width="1600" height="796">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -313,7 +318,7 @@
                                         <span class="browser-url">imkerei-feuerstein.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/imkerei-feuerstein.webp" alt="Imkerei Feuerstein Website" loading="lazy">
+                                        <img src="res/projects/imkerei-feuerstein.webp" alt="Imkerei Feuerstein Website" loading="lazy" decoding="async" width="1600" height="902">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -356,7 +361,7 @@
                                         <span class="browser-url">coha.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/coha.webp" alt="CoHa Website" loading="lazy">
+                                        <img src="res/projects/coha.webp" alt="CoHa Website" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -399,7 +404,7 @@
                                         <span class="browser-url">soundoflvke.github.io</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/soundoflvke.webp" alt="SoundOfLvke" loading="lazy">
+                                        <img src="res/projects/soundoflvke.webp" alt="SoundOfLvke" loading="lazy" decoding="async" width="1600" height="798">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -442,7 +447,7 @@
                                         <span class="browser-url">ai-captain-delta.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/aicaptain.webp" alt="AI Captain" loading="lazy">
+                                        <img src="res/projects/aicaptain.webp" alt="AI Captain" loading="lazy" decoding="async" width="1600" height="768">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -485,7 +490,7 @@
                                         <span class="browser-url">shookroko.pages.dev</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/shookroko.webp" alt="Shookroko Browsergame" loading="lazy">
+                                        <img src="res/projects/shookroko.webp" alt="Shookroko Browsergame" loading="lazy" decoding="async" width="2048" height="2048">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -528,7 +533,7 @@
                                         <span class="browser-url">mittel-alte.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="res/projects/medieval.webp" alt="Medieval Tower Defense" loading="lazy">
+                                        <img src="res/projects/medieval.webp" alt="Medieval Tower Defense" loading="lazy" decoding="async" width="1600" height="896">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>
@@ -625,9 +630,9 @@
                         <h4 class="skill-category-title" data-i18n="about.skills.frontend">Frontend</h4>
                         <div class="skill-tags">
                             <span class="skill-tag">React</span>
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/typescript.png" alt="" loading="lazy" decoding="async">TypeScript</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/typescript.png" alt="" loading="lazy" decoding="async" width="16" height="16">TypeScript</span>
                             <span class="skill-tag">Next.js</span>
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/html-icon.png" alt="" loading="lazy" decoding="async"><img class="skill-icon" src="res/icons/css-icon.png" alt="" loading="lazy" decoding="async">HTML5 / CSS3</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/html-icon.png" alt="" loading="lazy" decoding="async" width="16" height="16"><img class="skill-icon" src="res/icons/css-icon.png" alt="" loading="lazy" decoding="async" width="16" height="16">HTML5 / CSS3</span>
                             <span class="skill-tag">Tailwind</span>
                             <span class="skill-tag">GSAP</span>
                         </div>
@@ -635,23 +640,23 @@
                     <div class="skill-category">
                         <h4 class="skill-category-title" data-i18n="about.skills.backend">Backend &amp; Tools</h4>
                         <div class="skill-tags">
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/nodejs.png" alt="" loading="lazy" decoding="async">Node.js</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/nodejs.png" alt="" loading="lazy" decoding="async" width="16" height="16">Node.js</span>
                             <span class="skill-tag">Express</span>
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/python.png" alt="" loading="lazy" decoding="async">Python</span>
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/supabase.png" alt="" loading="lazy" decoding="async">Supabase</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/python.png" alt="" loading="lazy" decoding="async" width="16" height="16">Python</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/supabase.png" alt="" loading="lazy" decoding="async" width="16" height="16">Supabase</span>
                             <span class="skill-tag">Git</span>
-                            <span class="skill-tag"><img class="skill-icon" src="res/icons/Docker.webp" alt="" loading="lazy" decoding="async">Docker</span>
+                            <span class="skill-tag"><img class="skill-icon" src="res/icons/Docker.webp" alt="" loading="lazy" decoding="async" width="16" height="16">Docker</span>
                         </div>
                     </div>
                     <div class="skill-category">
                         <h4 class="skill-category-title" data-i18n="about.skills.ai">AI &amp; Automation</h4>
                         <div class="skill-tags">
-                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/chatgpt.png" alt="" loading="lazy" decoding="async">LLM APIs</span>
-                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/claude_code.png" alt="" loading="lazy" decoding="async">AI Agents</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/chatgpt.png" alt="" loading="lazy" decoding="async" width="16" height="16">LLM APIs</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/claude_code.png" alt="" loading="lazy" decoding="async" width="16" height="16">AI Agents</span>
                             <span class="skill-tag highlight">RAG</span>
                             <span class="skill-tag highlight">Prompt Engineering</span>
-                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/github_copilot.png" alt="" loading="lazy" decoding="async">VS Code Extensions</span>
-                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/n8n.png" alt="" loading="lazy" decoding="async">Workflow Automation</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/github_copilot.png" alt="" loading="lazy" decoding="async" width="16" height="16">VS Code Extensions</span>
+                            <span class="skill-tag highlight"><img class="skill-icon" src="res/icons/n8n.png" alt="" loading="lazy" decoding="async" width="16" height="16">Workflow Automation</span>
                         </div>
                     </div>
                 </div>
