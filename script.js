@@ -16,19 +16,55 @@
             'nav.testimonials': 'Referenzen',
             'nav.contact': 'Kontakt',
             'nav.projects': 'Projekte',
-            'services.tag': 'Leistungen',
-            'services.title': 'Was ich für Sie baue',
+            'services.tag': 'Pakete & Preise',
+            'services.title': 'Transparent & fair — wählen Sie Ihren Weg',
+            'services.badge': '⭐ Empfohlen',
+            'services.label.for': 'Perfekt für',
+            'services.label.deliver': 'Sie bekommen',
+            'services.label.examples': 'Beispiele',
             'services.web.title': 'Websites & Online-Auftritte',
-            'services.web.desc': 'Vom One-Pager bis zur mehrsprachigen Firmenseite. Schnell, sauber programmiert, auf jedem Gerät scharf — und für Suchmaschinen vorbereitet.',
-            'services.web.link': 'Projekt anfragen',
+            'services.web.sub': 'Schnelle, saubere Websites die ranken und konvertieren.',
+            'services.web.meta': '2–4 Wochen · ab 1.500 €',
+            'services.web.for1': 'Handwerk, Selbstständige, KMU',
+            'services.web.for2': 'Relaunch alter Websites',
+            'services.web.for3': 'Landing Pages für Kampagnen',
+            'services.web.d1': 'Mobile-optimierte Website (1–8 Seiten)',
+            'services.web.d2': 'SEO-Setup & Lighthouse 90+',
+            'services.web.d3': 'DSGVO-konform, Hosting eingerichtet',
+            'services.web.d4': '30 Tage Support nach Launch',
+            'services.web.link': 'Erstgespräch anfragen',
             'services.ai.title': 'KI & Automatisierung',
-            'services.ai.desc': 'Chatbots, Terminbuchung, automatisierte E-Mails, Datenauswertung mit LLMs. Ich verbinde Ihr Tagesgeschäft mit aktuellen KI-Modellen — pragmatisch, nicht überengineert.',
+            'services.ai.sub': 'Pragmatische KI, die Ihrem Team echte Stunden zurückgibt.',
+            'services.ai.meta': '1–3 Wochen · ab 1.990 €',
+            'services.ai.for1': 'Wiederkehrende manuelle Aufgaben',
+            'services.ai.for2': 'Kunden-Chatbots & Support-Automation',
+            'services.ai.for3': 'Datenauswertung mit LLMs / RAG',
+            'services.ai.d1': 'Lauffähigen Workflow oder AI-Agent',
+            'services.ai.d2': 'Anbindung an OpenAI / Claude / Ollama',
+            'services.ai.d3': 'Dokumentation & Schulung Ihres Teams',
+            'services.ai.d4': '60 Tage Support & Tuning',
             'services.ai.link': 'Anwendungsfall besprechen',
-            'services.apps.title': 'Web-Anwendungen',
-            'services.apps.desc': 'Wenn eine Website nicht reicht: Dashboards, Kundenportale, interne Tools. TypeScript, React, Node — getestet, dokumentiert, bei Bedarf mit Datenbank.',
+            'services.apps.title': 'Web-Anwendungen & Tools',
+            'services.apps.sub': 'Dashboards, Kundenportale, interne Tools — fullstack.',
+            'services.apps.meta': '4–12 Wochen · ab 4.990 €',
+            'services.apps.for1': 'Internes Dashboard / Kundenportal',
+            'services.apps.for2': 'Buchungs- oder Verwaltungssystem',
+            'services.apps.for3': 'API-Integrationen & CRM-Anbindung',
+            'services.apps.d1': 'Voll funktionsfähige Web-App (Frontend + Backend)',
+            'services.apps.d2': 'Datenbank, Auth & Rollen',
+            'services.apps.d3': 'CI/CD, Hosting & Monitoring',
+            'services.apps.d4': 'Technische Dokumentation',
             'services.apps.link': 'Idee skizzieren',
             'services.design.title': 'Beratung & Code-Review',
-            'services.design.desc': 'Sie haben bereits ein Projekt und brauchen einen zweiten Blick? Ich prüfe Code, Architektur oder UX und liefere konkrete, umsetzbare Empfehlungen.',
+            'services.design.sub': 'Zweite Meinung, ehrliches Feedback, klare nächste Schritte.',
+            'services.design.meta': 'flexibel · ab 120 €/h',
+            'services.design.for1': 'Bestehende Projekte mit Tech-Schulden',
+            'services.design.for2': 'Architektur- oder Stack-Entscheidungen',
+            'services.design.for3': 'KI-Strategie für Ihr Unternehmen',
+            'services.design.d1': 'Schriftlichen Review-Report mit Priorisierung',
+            'services.design.d2': 'Konkrete, umsetzbare Empfehlungen',
+            'services.design.d3': '1:1-Gespräch zur Diskussion',
+            'services.design.d4': 'Optional: Pair-Programming-Session',
             'services.design.link': 'Termin vereinbaren',
             'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
             'services.cta.button': 'Kostenloses Erstgespräch →',
@@ -160,40 +196,9 @@
             'about.h2': 'Faire Preise & klare Kommunikation',
             'about.h3': 'Von Konzept bis Go-Live aus einer Hand',
             'about.skills.frontend': 'Frontend',
-            'about.skills.backend': 'Backend & Tools',
-            'about.skills.ai': 'KI & Automatisierung',
+            'about.skills.backend': 'Backend & Data',
+            'about.skills.ai': 'KI & Automation',
             'about.cta': 'Projekt besprechen',
-            // Pricing section
-            'pricing.tag': 'Pakete',
-            'pricing.title': 'Klare Preise, kein Kleingedrucktes',
-            'pricing.popular': 'BELIEBT',
-            'pricing.cta': 'Jetzt anfragen',
-            'pricing.note': 'Alle Preise zzgl. MwSt. Jedes Projekt ist individuell — kontaktieren Sie mich für ein unverbindliches Angebot.',
-            'pricing.starter.name': 'Starter',
-            'pricing.starter.desc': 'Perfekt für den ersten Online-Auftritt',
-            'pricing.starter.price': 'ab 1.500 €',
-            'pricing.starter.f1': '✓ Landingpage / One-Pager',
-            'pricing.starter.f2': '✓ Responsive Design (Mobil-optimiert)',
-            'pricing.starter.f3': '✓ Kontaktformular & Google Maps',
-            'pricing.starter.f4': '✓ SEO-Grundoptimierung',
-            'pricing.starter.f5': '✓ Fertig in 1–2 Wochen',
-            'pricing.business.name': 'Business',
-            'pricing.business.desc': 'Für Firmen, die mehr wollen',
-            'pricing.business.price': 'ab 2.500 €',
-            'pricing.business.f1': '✓ Mehrseitige Website (bis 8 Seiten)',
-            'pricing.business.f2': '✓ CMS / Inhaltspflege durch Sie',
-            'pricing.business.f3': '✓ Terminbuchung & Automatisierungen',
-            'pricing.business.f4': '✓ Google My Business-Optimierung',
-            'pricing.business.f5': '✓ Analytics & Performance-Tracking',
-            'pricing.business.f6': '✓ Fertig in 2–4 Wochen',
-            'pricing.premium.name': 'Premium',
-            'pricing.premium.desc': 'Maßgeschneiderte Lösungen',
-            'pricing.premium.price': 'Auf Anfrage',
-            'pricing.premium.f1': '✓ Fullstack Web-Applikation',
-            'pricing.premium.f2': '✓ AI-Integration & Chatbots',
-            'pricing.premium.f3': '✓ Individuelle Automatisierungen',
-            'pricing.premium.f4': '✓ API-Anbindungen & Datenbanken',
-            'pricing.premium.f5': '✓ Laufende Betreuung & Support',
             // Cookie consent
             'cookie.text': 'Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.',
             'cookie.accept': 'Verstanden',
@@ -207,19 +212,55 @@
             'nav.testimonials': 'Reviews',
             'nav.contact': 'Contact',
             'nav.projects': 'Projects',
-            'services.tag': 'Services',
-            'services.title': 'What I build for you',
+            'services.tag': 'Packages & Pricing',
+            'services.title': 'Transparent & fair — pick your path',
+            'services.badge': '⭐ Recommended',
+            'services.label.for': 'Perfect for',
+            'services.label.deliver': 'You get',
+            'services.label.examples': 'Examples',
             'services.web.title': 'Websites & Online Presence',
-            'services.web.desc': 'From a one-pager to a multilingual corporate site. Fast, cleanly coded, sharp on every device — and search-engine ready.',
-            'services.web.link': 'Request a project',
+            'services.web.sub': 'Fast, clean websites that rank and convert.',
+            'services.web.meta': '2–4 weeks · from €1,500',
+            'services.web.for1': 'Trades, freelancers, SMBs',
+            'services.web.for2': 'Relaunch of outdated sites',
+            'services.web.for3': 'Landing pages for campaigns',
+            'services.web.d1': 'Mobile-optimised website (1–8 pages)',
+            'services.web.d2': 'SEO setup & Lighthouse 90+',
+            'services.web.d3': 'GDPR-compliant, hosting configured',
+            'services.web.d4': '30 days post-launch support',
+            'services.web.link': 'Book intro call',
             'services.ai.title': 'AI & Automation',
-            'services.ai.desc': 'Chatbots, appointment booking, automated emails, data analysis with LLMs. I connect your daily operations with current AI models — pragmatic, not over-engineered.',
+            'services.ai.sub': 'Pragmatic AI that gives your team real hours back.',
+            'services.ai.meta': '1–3 weeks · from €1,990',
+            'services.ai.for1': 'Recurring manual tasks',
+            'services.ai.for2': 'Customer chatbots & support automation',
+            'services.ai.for3': 'Data analysis with LLMs / RAG',
+            'services.ai.d1': 'Production-ready workflow or AI agent',
+            'services.ai.d2': 'Integration with OpenAI / Claude / Ollama',
+            'services.ai.d3': 'Documentation & team training',
+            'services.ai.d4': '60 days support & tuning',
             'services.ai.link': 'Discuss your use case',
-            'services.apps.title': 'Web Applications',
-            'services.apps.desc': 'When a website isn\'t enough: dashboards, customer portals, internal tools. TypeScript, React, Node — tested, documented, with a database when needed.',
+            'services.apps.title': 'Web Applications & Tools',
+            'services.apps.sub': 'Dashboards, customer portals, internal tools — fullstack.',
+            'services.apps.meta': '4–12 weeks · from €4,990',
+            'services.apps.for1': 'Internal dashboard / customer portal',
+            'services.apps.for2': 'Booking or admin systems',
+            'services.apps.for3': 'API integrations & CRM hookups',
+            'services.apps.d1': 'Full-featured web app (frontend + backend)',
+            'services.apps.d2': 'Database, auth & roles',
+            'services.apps.d3': 'CI/CD, hosting & monitoring',
+            'services.apps.d4': 'Technical documentation',
             'services.apps.link': 'Sketch your idea',
             'services.design.title': 'Consulting & Code Review',
-            'services.design.desc': 'Already have a project and need a second pair of eyes? I review code, architecture or UX and deliver concrete, actionable recommendations.',
+            'services.design.sub': 'A second opinion, honest feedback, clear next steps.',
+            'services.design.meta': 'flexible · from €120/h',
+            'services.design.for1': 'Existing projects with tech debt',
+            'services.design.for2': 'Architecture or stack decisions',
+            'services.design.for3': 'AI strategy for your business',
+            'services.design.d1': 'Written review report with priorities',
+            'services.design.d2': 'Concrete, actionable recommendations',
+            'services.design.d3': '1:1 call to discuss',
+            'services.design.d4': 'Optional: pair-programming session',
             'services.design.link': 'Book a slot',
             'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
             'services.cta.button': 'Free intro call →',
@@ -351,40 +392,9 @@
             'about.h2': 'Fair Prices & Clear Communication',
             'about.h3': 'From Concept to Go-Live in One Hand',
             'about.skills.frontend': 'Frontend',
-            'about.skills.backend': 'Backend & Tools',
+            'about.skills.backend': 'Backend & Data',
             'about.skills.ai': 'AI & Automation',
             'about.cta': 'Discuss Your Project',
-            // Pricing section
-            'pricing.tag': 'Packages',
-            'pricing.title': 'Clear pricing, no fine print',
-            'pricing.popular': 'POPULAR',
-            'pricing.cta': 'Get in Touch',
-            'pricing.note': 'All prices excl. VAT. Every project is unique — contact me for a free, no-obligation quote.',
-            'pricing.starter.name': 'Starter',
-            'pricing.starter.desc': 'Perfect for your first online presence',
-            'pricing.starter.price': 'from €1,500',
-            'pricing.starter.f1': '✓ Landing page / One-Pager',
-            'pricing.starter.f2': '✓ Responsive design (mobile-optimized)',
-            'pricing.starter.f3': '✓ Contact form & Google Maps',
-            'pricing.starter.f4': '✓ Basic SEO optimization',
-            'pricing.starter.f5': '✓ Ready in 1–2 weeks',
-            'pricing.business.name': 'Business',
-            'pricing.business.desc': 'For companies that want more',
-            'pricing.business.price': 'from €2,500',
-            'pricing.business.f1': '✓ Multi-page website (up to 8 pages)',
-            'pricing.business.f2': '✓ CMS / Content management by you',
-            'pricing.business.f3': '✓ Booking system & automations',
-            'pricing.business.f4': '✓ Google My Business optimization',
-            'pricing.business.f5': '✓ Analytics & performance tracking',
-            'pricing.business.f6': '✓ Ready in 2–4 weeks',
-            'pricing.premium.name': 'Premium',
-            'pricing.premium.desc': 'Tailored solutions',
-            'pricing.premium.price': 'On Request',
-            'pricing.premium.f1': '✓ Fullstack web application',
-            'pricing.premium.f2': '✓ AI integration & chatbots',
-            'pricing.premium.f3': '✓ Custom automations',
-            'pricing.premium.f4': '✓ API connections & databases',
-            'pricing.premium.f5': '✓ Ongoing support & maintenance',
             // Cookie consent
             'cookie.text': 'This website uses only technically necessary cookies. No tracking cookies.',
             'cookie.accept': 'Understood',
@@ -1274,6 +1284,145 @@
                 start: 'top 85%',
                 once: true,
             });
+        }
+
+        initSkillsAnimation();
+    }
+
+    /* ═══ SKILLS SECTION ANIMATION ═══
+       Constellation-cascade reveal for the Tech Stack section. Drives:
+       - column titles fading + underline reveal
+       - per-column staggered tag pop-in with rotation
+       - icon pop-in inside tags
+       - continuous pulse on highlight tags (AI column), paused when off-screen
+       - count-up for the .stat-number values below the grid */
+    function initSkillsAnimation() {
+        const section = document.querySelector('.skills-section');
+        if (!section) return;
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const titles = section.querySelectorAll('.skill-category-title');
+        const categories = section.querySelectorAll('.skill-category');
+        const stats = section.querySelectorAll('.stat-number');
+        const highlightTags = section.querySelectorAll('.skill-tag.highlight');
+
+        const reveal = () => {
+            section.classList.add('is-animated');
+
+            if (prefersReduced || typeof gsap === 'undefined') {
+                section.querySelectorAll('.skill-tag, .skill-category-title')
+                    .forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; });
+                stats.forEach((el) => {
+                    const m = el.textContent.trim().match(/^(\d+)(.*)$/);
+                    if (m) el.textContent = m[1] + m[2];
+                });
+                highlightTags.forEach((t) => t.classList.add('is-pulsing'));
+                return;
+            }
+
+            // Column titles fade + slide
+            gsap.to(titles, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out',
+                stagger: 0.12,
+            });
+
+            // Per-column tag cascade with column offset
+            categories.forEach((cat, colIdx) => {
+                const tags = cat.querySelectorAll('.skill-tag');
+                if (!tags.length) return;
+                gsap.fromTo(tags, {
+                    opacity: 0,
+                    y: 24,
+                    scale: 0.85,
+                    rotation: () => (Math.random() * 6 - 3),
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.55,
+                    ease: 'back.out(1.6)',
+                    stagger: 0.045,
+                    delay: 0.15 + colIdx * 0.12,
+                    onComplete: () => {
+                        if (colIdx === categories.length - 1) startPulse();
+                    },
+                });
+
+                // Icon pop-in
+                const icons = cat.querySelectorAll('.skill-icon');
+                if (icons.length) {
+                    gsap.fromTo(icons, {
+                        scale: 0,
+                    }, {
+                        scale: 1,
+                        duration: 0.4,
+                        ease: 'back.out(2)',
+                        stagger: 0.04,
+                        delay: 0.3 + colIdx * 0.12,
+                    });
+                }
+            });
+
+            // Stat counters
+            stats.forEach((el) => {
+                const raw = el.textContent.trim();
+                const m = raw.match(/^(\d+)(.*)$/);
+                if (!m) return;
+                const target = parseInt(m[1], 10);
+                const suffix = m[2];
+                const obj = { val: 0 };
+                el.textContent = '0' + suffix;
+                gsap.to(obj, {
+                    val: target,
+                    duration: 1.2,
+                    ease: 'power2.out',
+                    delay: 0.4,
+                    onUpdate: () => {
+                        el.textContent = Math.round(obj.val) + suffix;
+                    },
+                });
+            });
+        };
+
+        // Pulse loop on highlight tags, gated by viewport visibility.
+        // Arming happens inside startPulse() so the loop never fires before
+        // the cascade animation finishes.
+        const startPulse = () => {
+            if (prefersReduced) return;
+            highlightTags.forEach((t) => {
+                t.dataset.pulseArmed = '1';
+                t.classList.add('is-pulsing');
+            });
+        };
+        if ('IntersectionObserver' in window && highlightTags.length) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    highlightTags.forEach((t) => {
+                        if (t.dataset.pulseArmed !== '1') return;
+                        if (entry.isIntersecting) {
+                            t.classList.add('is-pulsing');
+                        } else {
+                            t.classList.remove('is-pulsing');
+                        }
+                    });
+                });
+            }, { rootMargin: '0px 0px -10% 0px' });
+            io.observe(section);
+        }
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 75%',
+                once: true,
+                onEnter: reveal,
+            });
+        } else {
+            reveal();
         }
     }
 

@@ -2004,12 +2004,15 @@ html[data-color-scheme="light"] .projects-section::after {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
+    align-items: stretch;
 }
 
 .service-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
     padding: var(--space-2xl);
-    padding-top: calc(var(--space-2xl) + var(--space-md));
     border-radius: var(--radius-lg);
     background: linear-gradient(
         160deg,
@@ -2054,6 +2057,244 @@ html[data-color-scheme="light"] .projects-section::after {
     transform: scaleX(1);
 }
 
+/* ─── Featured (recommended) card ─── */
+.service-card--featured {
+    background: linear-gradient(
+        160deg,
+        rgba(var(--theme-primary), 0.08) 0%,
+        rgba(var(--theme-primary), 0.02) 100%
+    );
+    border-color: rgba(var(--theme-primary), 0.28);
+    box-shadow: 0 0 32px rgba(var(--theme-primary), 0.06);
+}
+.service-card--featured::before {
+    transform: scaleX(1);
+}
+
+.service-card__badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgb(var(--theme-primary));
+    background: rgba(var(--theme-primary), 0.15);
+    border: 1px solid rgba(var(--theme-primary), 0.3);
+    border-radius: var(--radius-full);
+    z-index: 2;
+}
+
+/* ─── Header row: icon + meta (price/duration) ─── */
+.service-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.service-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(var(--theme-primary), 0.1);
+    color: rgb(var(--theme-primary));
+    flex-shrink: 0;
+}
+
+.service-card__meta {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* Featured card pushes meta away from the badge */
+.service-card--featured .service-card__head {
+    padding-right: 7rem;
+}
+
+.service-card__title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.service-card__sub {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ─── Bullet & check blocks ─── */
+.service-card__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.service-card__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.service-card__bullets,
+.service-card__checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.service-card__bullets li,
+.service-card__checks li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+}
+
+.service-card__bullets li::before {
+    content: '•';
+    position: absolute;
+    left: 0.4rem;
+    top: 0;
+    color: rgb(var(--theme-primary));
+    font-weight: 700;
+}
+
+.service-card__checks li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(var(--theme-primary));
+    font-weight: 700;
+}
+
+/* ─── Tech tag pills ─── */
+.service-card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: var(--space-xs);
+}
+
+.service-card__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.6rem;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+}
+
+.service-card--featured .service-card__tag {
+    color: rgb(var(--theme-primary));
+    background: rgba(var(--theme-primary), 0.08);
+    border-color: rgba(var(--theme-primary), 0.18);
+}
+
+/* ─── Footer with CTA + project examples ─── */
+.service-card__foot {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.service-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    padding: 0.7rem 1rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: rgb(var(--theme-primary));
+    background: rgba(var(--theme-primary), 0.08);
+    border: 1px solid rgba(var(--theme-primary), 0.2);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                transform var(--duration-base) var(--ease-out);
+}
+
+.service-card__cta:hover {
+    background: rgba(var(--theme-primary), 0.16);
+    border-color: rgba(var(--theme-primary), 0.4);
+    transform: translateX(2px);
+}
+
+.service-card--featured .service-card__cta {
+    background: rgb(var(--theme-primary));
+    color: var(--color-bg);
+    border-color: rgb(var(--theme-primary));
+}
+
+.service-card--featured .service-card__cta:hover {
+    background: rgba(var(--theme-primary), 0.85);
+    border-color: rgba(var(--theme-primary), 0.85);
+}
+
+.service-card__examples {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+.service-card__examples a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-muted);
+    transition: color var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out);
+}
+
+.service-card__examples a:hover {
+    color: rgb(var(--theme-primary));
+    border-color: rgb(var(--theme-primary));
+}
+
+/* Light-mode tweaks */
+html[data-color-scheme="light"] .service-card__tag {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: var(--color-text-secondary);
+}
+html[data-color-scheme="light"] .service-card--featured .service-card__cta {
+    color: #fff;
+}
+
+/* ═══ Legacy classes kept for back-compat (old layout still exists in
+   project sub-pages) — restore originals here so nothing else breaks. */
 .service-number {
     display: block;
     font-size: var(--font-size-sm);
@@ -2070,13 +2311,6 @@ html[data-color-scheme="light"] .projects-section::after {
     margin-bottom: var(--space-md);
     letter-spacing: -0.01em;
     line-height: 1.2;
-}
-
-.service-card p {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: 1.65;
-    margin-bottom: var(--space-lg);
 }
 
 .service-link {
@@ -2335,13 +2569,71 @@ html[data-color-scheme="light"] .projects-section::after {
     font-weight: 500;
 }
 
-/* Skills Grid */
+/* Skills Grid — Variant A: hero column layout
+   Frontend (left) · KI featured (center, wider) · Backend (right).
+   Featured column is explicitly placed in column 2 so DOM order can
+   stay logical (Frontend → Backend → AI). */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 1.25rem;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
+    align-items: stretch;
+}
+
+.skill-category {
+    padding: 1.25rem 1.1rem;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: border-color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out);
+}
+
+.skill-category:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.skill-category--featured {
+    grid-column: 2;
+    grid-row: 1;
+    background: linear-gradient(180deg,
+        rgba(var(--theme-primary), 0.07),
+        rgba(var(--theme-primary), 0.02));
+    border-color: rgba(var(--theme-primary), 0.22);
+    box-shadow: 0 0 32px rgba(var(--theme-primary), 0.08);
+}
+
+.skill-category--featured:hover {
+    border-color: rgba(var(--theme-primary), 0.35);
+    background: linear-gradient(180deg,
+        rgba(var(--theme-primary), 0.1),
+        rgba(var(--theme-primary), 0.03));
+}
+
+.skill-category--featured .skill-category-title {
+    color: rgb(var(--theme-primary));
+}
+
+.skill-category--featured .skill-tag {
+    padding: 0.8rem 0.45rem 0.6rem;
+    font-size: 11px;
+}
+.skill-category--featured .skill-tag .skill-icon {
+    width: 36px;
+    height: 36px;
+}
+
+html[data-color-scheme="light"] .skill-category {
+    background: rgba(0, 0, 0, 0.015);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+html[data-color-scheme="light"] .skill-category:hover {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .skill-category-title {
@@ -2354,59 +2646,169 @@ html[data-color-scheme="light"] .projects-section::after {
 }
 
 .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+    gap: 0.6rem;
 }
 
 .skill-tag {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.35rem 0.75rem;
-    font-size: var(--font-size-xs);
+    justify-content: flex-start;
+    gap: 0.45rem;
+    padding: 0.7rem 0.4rem 0.55rem;
+    font-size: 11px;
     font-weight: 500;
+    text-align: center;
     color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-full);
-    transition: all var(--duration-base) var(--ease-out);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    transition: transform var(--duration-base) var(--ease-out),
+                color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
 }
 
-/* Real-tech-icons inside skill badges. Stay crisp on retina, dim slightly
-   so the colour of the badge wins, brighten on hover. */
+/* Real-tech-icons sit ABOVE the name. White-tinted icons (typescript, etc.)
+   stay crisp on retina; the icon brightens + lifts slightly on hover. */
 .skill-tag .skill-icon {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     flex-shrink: 0;
-    opacity: 0.9;
-    transition: opacity var(--duration-base) var(--ease-out);
+    opacity: 0.95;
+    transition: opacity var(--duration-base) var(--ease-out),
+                transform var(--duration-base) var(--ease-out);
 }
 
 .skill-tag:hover .skill-icon {
     opacity: 1;
+    transform: scale(1.08);
 }
 
-.skill-tag .skill-icon + .skill-icon {
-    margin-left: -0.2rem;
+/* Stacked dual-icon (e.g. HTML5 + CSS3) sits in the icon row. */
+.skill-tag .skill-icon-pair {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+}
+.skill-tag .skill-icon-pair .skill-icon {
+    width: 26px;
+    height: 26px;
+}
+.skill-tag .skill-icon-pair .skill-icon + .skill-icon {
+    margin-left: -0.35rem;
+}
+
+/* Text-glyph fallback for skills without a real icon (Stripe, GSAP, Prompts). */
+.skill-tag .skill-icon-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-text);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.skill-tag .skill-name {
+    display: block;
+    line-height: 1.15;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .skill-tag:hover {
     color: var(--color-text);
     background: rgba(var(--theme-primary), 0.1);
     border-color: rgba(var(--theme-primary), 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .skill-tag.highlight {
     color: rgb(var(--theme-primary));
     background: rgba(var(--theme-primary), 0.1);
-    border-color: rgba(var(--theme-primary), 0.2);
+    border-color: rgba(var(--theme-primary), 0.22);
+}
+
+.skill-tag.highlight .skill-icon-fallback {
+    background: rgba(var(--theme-primary), 0.18);
+    color: rgb(var(--theme-primary));
 }
 
 .skill-tag.highlight:hover {
-    background: rgba(var(--theme-primary), 0.2);
+    background: rgba(var(--theme-primary), 0.18);
     border-color: rgba(var(--theme-primary), 0.4);
+}
+
+/* ─── Skills section entry animation ───
+   Initial state: tags hidden + slightly offset; revealed by JS via
+   `.is-animated` class on the section once it scrolls into view.
+   When JS is unavailable, `.no-anim` fallback shows everything. */
+.skills-section .skill-tag {
+    opacity: 0;
+    transform: translateY(24px) scale(0.85);
+    will-change: opacity, transform;
+}
+
+.skills-section .skill-category-title {
+    position: relative;
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.skills-section .skill-category-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, rgb(var(--theme-primary)), transparent);
+    transition: width 0.6s var(--ease-out) 0.1s;
+}
+
+.skills-section.is-animated .skill-category-title::after {
+    width: 40px;
+}
+
+/* Pulse loop for AI/highlight tags — paused via JS when off-screen. */
+.skill-tag.highlight.is-pulsing {
+    animation: skillPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes skillPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(var(--theme-primary), 0);
+    }
+    50% {
+        box-shadow: 0 0 14px 2px rgba(var(--theme-primary), 0.28);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-section .skill-tag,
+    .skills-section .skill-category-title {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .skills-section .skill-category-title::after {
+        width: 40px !important;
+        transition: none !important;
+    }
+    .skill-tag.highlight.is-pulsing {
+        animation: none !important;
+    }
 }
 
 /* ═══════════════════════════════════════════════
@@ -2728,6 +3130,10 @@ html[data-color-scheme="light"] .cookie-content p {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .skill-category--featured {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
 
     .pricing-grid {
         grid-template-columns: 1fr 1fr;
@@ -2857,6 +3263,21 @@ html[data-color-scheme="light"] .cookie-content p {
         grid-template-columns: 1fr;
     }
 
+    .service-card {
+        padding: var(--space-xl);
+    }
+
+    .service-card--featured .service-card__head {
+        padding-right: 0;
+        flex-wrap: wrap;
+    }
+
+    .service-card__badge {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: var(--space-xs);
+    }
+
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 420px;
@@ -2896,6 +3317,11 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-category--featured {
+        grid-column: 1 / -1;
+        grid-row: auto;
     }
 
     .showcase-container {
@@ -3026,6 +3452,11 @@ html[data-color-scheme="light"] .cookie-content p {
     .skills-grid {
         gap: 1rem;
         grid-template-columns: 1fr;
+    }
+
+    .skill-category--featured {
+        grid-column: auto;
+        grid-row: auto;
     }
 
     .service-card {
