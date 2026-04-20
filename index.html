@@ -90,7 +90,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <!-- LCP image: prioritise it ahead of the deferred scripts. -->
-    <link rel="preload" as="image" href="res/profile/maxlerseite.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="res/profile/maxler_transparent.webp" fetchpriority="high">
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -149,6 +149,11 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <div class="hero-bg-slides" aria-hidden="true">
+                <div class="hero-bg-slide hero-bg-1 is-active"></div>
+                <div class="hero-bg-slide hero-bg-6"></div>
+                <div class="hero-bg-slide hero-bg-7"></div>
+            </div>
             <div class="hero-background" aria-hidden="true">
                 <div class="hero-orb hero-orb-1"></div>
                 <div class="hero-orb hero-orb-2"></div>
@@ -171,13 +176,9 @@
                 <div class="hero-visual">
                     <div class="showcase-container">
                         <a href="#contact" class="showcase-link" aria-label="Kontakt aufnehmen">
-                            <div class="hero-photo-float">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                                    <span data-i18n="slide.maxhaak.badge">VERFÜGBAR FÜR PROJEKTE</span>
-                                </div>
+                            <div class="hero-photo-float is-cutout">
                                 <div class="hero-photo-clip">
-                                    <img class="hero-photo-img is-active" src="res/profile/maxlerseite.webp" alt="Maximilian Haak" loading="eager" decoding="async" fetchpriority="high" width="420" height="560">
+                                    <img class="hero-photo-img is-active" src="res/profile/maxler_transparent.webp" alt="Maximilian Haak" loading="eager" decoding="async" fetchpriority="high" width="734" height="1049">
                                 </div>
                                 <div class="hero-photo-ring"></div>
                             </div>
@@ -226,6 +227,10 @@
                 <button class="project-nav-btn" data-project="shookroko" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
                     <span>Shookroko</span>
+                </button>
+                <button class="project-nav-btn" data-project="medieval" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Medieval TD</span>
                 </button>
             </div>
 
@@ -489,6 +494,48 @@
                     </div>
                 </div>
 
+                <!-- Slide 8: Medieval Tower Defense -->
+                <div class="hero-slide" id="slide-medieval" data-theme="medieval" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.medieval.t1">Medieval.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.medieval.t2">Tower</span></span>
+                                <span class="title-line" data-i18n="slide.medieval.t3">Defense.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.medieval.desc">Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art — gebaut für die Vercel-Edge mit modernem Web-Stack.</p>
+                            <div class="slide-cta">
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.medieval.cta1">Live spielen</a>
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="slide.medieval.cta2">Zum Spiel</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.medieval.tag1">Browser Game</span>
+                                <span class="slide-tag" data-i18n="slide.medieval.tag2">Tower Defense</span>
+                                <span class="slide-tag" data-i18n="slide.medieval.tag3">Vercel</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-4 7 4v11M9 21v-6h6v6"/></svg>
+                                    <span data-i18n="slide.medieval.badge">TOWER DEFENSE</span>
+                                </div>
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Medieval Tower Defense spielen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">mittel-alte.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="res/projects/medieval.webp" alt="Medieval Tower Defense" loading="lazy">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

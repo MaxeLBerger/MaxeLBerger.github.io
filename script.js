@@ -142,6 +142,17 @@
             'slide.shookroko.tag2': 'TypeScript',
             'slide.shookroko.tag3': 'Game Dev',
             'slide.shookroko.badge': 'BROWSER GAME',
+            // Slide 8 - Medieval Tower Defense
+            'slide.medieval.t1': 'Medieval.',
+            'slide.medieval.t2': 'Tower',
+            'slide.medieval.t3': 'Defense.',
+            'slide.medieval.desc': 'Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art — gebaut für die Vercel-Edge mit modernem Web-Stack.',
+            'slide.medieval.cta1': 'Live spielen',
+            'slide.medieval.cta2': 'Zum Spiel',
+            'slide.medieval.tag1': 'Browser Game',
+            'slide.medieval.tag2': 'Tower Defense',
+            'slide.medieval.tag3': 'Vercel',
+            'slide.medieval.badge': 'TOWER DEFENSE',
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -322,6 +333,17 @@
             'slide.shookroko.tag2': 'TypeScript',
             'slide.shookroko.tag3': 'Game Dev',
             'slide.shookroko.badge': 'BROWSER GAME',
+            // Slide 8 - Medieval Tower Defense
+            'slide.medieval.t1': 'Medieval.',
+            'slide.medieval.t2': 'Tower',
+            'slide.medieval.t3': 'Defense.',
+            'slide.medieval.desc': 'Medieval Tower Defense: A browser-playable strategy game in a medieval setting. Custom mechanics, wave system, and pixel art — built for the Vercel edge with a modern web stack.',
+            'slide.medieval.cta1': 'Play live',
+            'slide.medieval.cta2': 'Open Game',
+            'slide.medieval.tag1': 'Browser Game',
+            'slide.medieval.tag2': 'Tower Defense',
+            'slide.medieval.tag3': 'Vercel',
+            'slide.medieval.badge': 'TOWER DEFENSE',
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -866,12 +888,21 @@
             const badge = slide.querySelector('.showcase-badge');
 
             if (floatPhoto) {
-                // 3D tilt entrance — matches browser frame animation style
-                timeline.fromTo(floatPhoto,
-                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
-                    { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
-                    0.4
-                );
+                // Cutout hero portrait stays flat — only fade in.
+                if (floatPhoto.classList.contains('is-cutout')) {
+                    timeline.fromTo(floatPhoto,
+                        { opacity: 0, y: 16 },
+                        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+                        0.4
+                    );
+                } else {
+                    // 3D tilt entrance — matches browser frame animation style
+                    timeline.fromTo(floatPhoto,
+                        { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                        { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
+                        0.4
+                    );
+                }
             }
 
             if (frame) {
@@ -1030,11 +1061,19 @@
             // Hero photo float entrance
             const heroPhoto = heroSection.querySelector('.hero-photo-float');
             if (heroPhoto) {
-                tl.fromTo(heroPhoto,
-                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
-                    { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
-                    0.4
-                );
+                if (heroPhoto.classList.contains('is-cutout')) {
+                    tl.fromTo(heroPhoto,
+                        { opacity: 0, y: 16 },
+                        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+                        0.4
+                    );
+                } else {
+                    tl.fromTo(heroPhoto,
+                        { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                        { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
+                        0.4
+                    );
+                }
             }
 
             // Hero photo badge
@@ -1187,8 +1226,12 @@
             let cachedFloat = null;
             const refreshTargets = () => {
                 cachedFrame = document.querySelector('.hero-slide.active .showcase-frame');
-                cachedFloat = document.querySelector('.hero-slide.active .hero-photo-float')
+                const candidate = document.querySelector('.hero-slide.active .hero-photo-float')
                     || document.querySelector('#hero .hero-photo-float');
+                // Skip mouse parallax tilt for the transparent cutout portrait.
+                cachedFloat = (candidate && !candidate.classList.contains('is-cutout'))
+                    ? candidate
+                    : null;
             };
             refreshTargets();
             document.addEventListener('slide:change', refreshTargets);
@@ -1336,6 +1379,48 @@
     // Single static photo — crossfade removed by request.
     function initHeroPhotoSwap() {}
 
+    /* ═══ HERO BACKGROUND SLIDESHOW ═══
+       Crossfades through .hero-bg-slide elements. Pauses while the tab
+       is hidden or the user prefers reduced motion. The first slide is
+       already marked .is-active in HTML so first paint is instant. */
+    function initHeroBgSlideshow() {
+        const slides = Array.from(document.querySelectorAll('.hero-bg-slide'));
+        if (slides.length < 2) return;
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) return;
+
+        const intervalMs = 7000;
+        let index = slides.findIndex(s => s.classList.contains('is-active'));
+        if (index < 0) {
+            index = 0;
+            slides[0].classList.add('is-active');
+        }
+
+        let timerId = null;
+        const tick = () => {
+            const next = (index + 1) % slides.length;
+            slides[index].classList.remove('is-active');
+            slides[next].classList.add('is-active');
+            index = next;
+        };
+        const start = () => {
+            if (timerId === null) timerId = window.setInterval(tick, intervalMs);
+        };
+        const stop = () => {
+            if (timerId !== null) {
+                window.clearInterval(timerId);
+                timerId = null;
+            }
+        };
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stop(); else start();
+        });
+
+        start();
+    }
+
     /* ═══ INIT ═══ */
     function init() {
         // Color scheme
@@ -1371,6 +1456,7 @@
         initCookieConsent();
         initAnimations();
         initHeroPhotoSwap();
+        initHeroBgSlideshow();
         initColorPicker();
 
         // Project slider

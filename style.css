@@ -157,6 +157,17 @@
     --theme-glow: rgba(132, 204, 22, 0.3);
 }
 
+/* Medieval Tower Defense: Heraldisches Burgund/Wein-Rot */
+[data-project-theme="medieval"] {
+    --theme-primary: 185, 28, 28;
+    --theme-secondary: 127, 29, 29;
+    --theme-accent: 251, 191, 36;
+    --theme-gradient-start: #ef4444;
+    --theme-gradient-mid: #b91c1c;
+    --theme-gradient-end: #7f1d1d;
+    --theme-glow: rgba(185, 28, 28, 0.32);
+}
+
 /* Theme transition on all theme-aware elements */
 [data-project-theme] {
     transition:
@@ -203,52 +214,176 @@ footer a {
    LIGHT MODE
    ═══════════════════════════════════════════════ */
 html[data-color-scheme="light"] {
-    --color-bg: #f5f5fa;
+    --color-bg: #f3f4f8;
     --color-bg-elevated: #ffffff;
     --color-bg-elevated-rgb: 255, 255, 255;
     --color-bg-card: #ffffff;
-    --color-bg-card-hover: #f0f0f5;
-    --color-surface: rgba(0, 0, 0, 0.02);
-    --color-border: rgba(0, 0, 0, 0.08);
-    --color-border-hover: rgba(0, 0, 0, 0.15);
-    --color-text: #1a1a2e;
-    --color-text-secondary: #4a4a5a;
-    --color-text-muted: #8a8a9a;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
-    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
+    --color-bg-card-hover: #eef0f6;
+    --color-surface: rgba(15, 23, 42, 0.03);
+    --color-border: rgba(15, 23, 42, 0.12);
+    --color-border-hover: rgba(15, 23, 42, 0.22);
+    --color-text: #0f172a;
+    --color-text-secondary: #3f4658;
+    --color-text-muted: #6b7280;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 18px 48px rgba(15, 23, 42, 0.14);
+    --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+html[data-color-scheme="light"] body {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(var(--theme-primary), 0.10), transparent 55%),
+        radial-gradient(circle at 92% 92%, rgba(var(--theme-secondary), 0.08), transparent 55%),
+        var(--color-bg);
 }
 
 html[data-color-scheme="light"] .hero-orb {
-    opacity: 0.08;
+    opacity: 0.14;
+    /* mix-blend-mode: multiply was visually nicer but forced Chrome to
+       composite the entire hero on every animation frame. */
 }
 
+/* Tags / chips ------------------------------------------------------------ */
 html[data-color-scheme="light"] .skill-tag {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
     color: var(--color-text-secondary);
 }
-
-html[data-color-scheme="light"] .testimonial-card {
-    border-color: rgba(0, 0, 0, 0.08);
+html[data-color-scheme="light"] .section-tag,
+html[data-color-scheme="light"] .badge {
+    background: rgba(var(--theme-primary), 0.10);
+    border-color: rgba(var(--theme-primary), 0.28);
+    color: rgb(var(--theme-primary));
 }
-html[data-color-scheme="light"] .testimonial-card:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-}
 
+/* Cards ------------------------------------------------------------------- */
+html[data-color-scheme="light"] .testimonial-card,
 html[data-color-scheme="light"] .pricing-card {
-    border-color: rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.10);
+    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
+}
+html[data-color-scheme="light"] .testimonial-card:hover,
+html[data-color-scheme="light"] .pricing-card:hover {
+    border-color: rgba(var(--theme-primary), 0.35);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
 }
 html[data-color-scheme="light"] .pricing-price {
-    border-bottom-color: rgba(0, 0, 0, 0.06);
+    border-bottom-color: rgba(15, 23, 42, 0.08);
 }
 html[data-color-scheme="light"] .contact-map iframe {
-    border-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(15, 23, 42, 0.10);
 }
+
+/* Footer / cookie -------------------------------------------------------- */
 html[data-color-scheme="light"] .footer-social-link {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
+    color: var(--color-text);
+}
+html[data-color-scheme="light"] .footer-social-link:hover {
+    background: rgba(var(--theme-primary), 0.10);
+    border-color: rgba(var(--theme-primary), 0.40);
+    color: rgb(var(--theme-primary));
+}
+
+/* Buttons ---------------------------------------------------------------- */
+html[data-color-scheme="light"] .btn-outline,
+html[data-color-scheme="light"] .btn-secondary {
+    border-color: rgba(15, 23, 42, 0.18);
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--color-text);
+}
+html[data-color-scheme="light"] .btn-outline:hover,
+html[data-color-scheme="light"] .btn-secondary:hover {
+    border-color: rgb(var(--theme-primary));
+    color: rgb(var(--theme-primary));
+    background: rgba(var(--theme-primary), 0.08);
+}
+
+/* Forms ------------------------------------------------------------------ */
+html[data-color-scheme="light"] .form-input,
+html[data-color-scheme="light"] .form-textarea,
+html[data-color-scheme="light"] .form-select {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.14);
+    color: var(--color-text);
+}
+html[data-color-scheme="light"] .form-input:focus,
+html[data-color-scheme="light"] .form-textarea:focus,
+html[data-color-scheme="light"] .form-select:focus {
+    border-color: rgb(var(--theme-primary));
+    box-shadow: 0 0 0 4px rgba(var(--theme-primary), 0.15);
+}
+
+/* Hero photo ring -------------------------------------------------------- */
+html[data-color-scheme="light"] .hero-photo-ring {
+    border-color: rgba(15, 23, 42, 0.14);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.10);
+}
+
+/* Cutout silhouette gets a softer, slate-tinted drop-shadow on light bg */
+html[data-color-scheme="light"] .hero-photo-float.is-cutout {
+    filter:
+        drop-shadow(0 18px 28px rgba(var(--theme-primary), 0.22))
+        drop-shadow(0 6px 14px rgba(15, 23, 42, 0.18));
+}
+html[data-color-scheme="light"] .hero-photo-float.is-cutout::before {
+    background: radial-gradient(
+        ellipse at 50% 55%,
+        rgba(var(--theme-primary), 0.22) 0%,
+        rgba(var(--theme-primary), 0.08) 35%,
+        transparent 65%
+    );
+}
+html[data-color-scheme="light"] .showcase-link:hover .hero-photo-float.is-cutout {
+    filter:
+        drop-shadow(0 22px 34px rgba(var(--theme-primary), 0.32))
+        drop-shadow(0 8px 16px rgba(15, 23, 42, 0.22));
+}
+
+/* Slider arrows ---------------------------------------------------------- */
+html[data-color-scheme="light"] .slider-arrow {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(var(--theme-primary), 0.45);
+    color: var(--color-text);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+}
+html[data-color-scheme="light"] .slider-arrow:hover {
+    background: rgba(var(--theme-primary), 0.12);
+    color: rgb(var(--theme-primary));
+}
+
+/* Scroll hint ------------------------------------------------------------ */
+html[data-color-scheme="light"] .scroll-hint {
+    color: var(--color-text-secondary);
+}
+html[data-color-scheme="light"] .scroll-line {
+    background: var(--color-text-secondary);
+    opacity: 0.45;
+}
+
+/* Service cards ---------------------------------------------------------- */
+html[data-color-scheme="light"] .service-card {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.10);
+    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
+}
+html[data-color-scheme="light"] .service-card:hover {
+    border-color: rgba(var(--theme-primary), 0.35);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+}
+
+/* Section dividers / separators ----------------------------------------- */
+html[data-color-scheme="light"] .footer {
+    border-top-color: rgba(15, 23, 42, 0.10);
+}
+
+/* Selection -------------------------------------------------------------- */
+html[data-color-scheme="light"] ::selection {
+    background: rgba(var(--theme-primary), 0.25);
+    color: var(--color-text);
 }
 
 /* ═══════════════════════════════════════════════
@@ -427,12 +562,12 @@ html[data-color-scheme="light"] .btn-icon:hover {
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
             mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
     border-bottom: 1px solid transparent;
+    /* Only transition cheap properties. backdrop-filter and mask-image are
+       extremely expensive to animate in Chrome and caused visible jank on
+       scroll past the 50px .scrolled threshold. They now snap instantly. */
     transition: background var(--duration-base),
-                backdrop-filter var(--duration-base),
                 box-shadow var(--duration-base),
-                border-color var(--duration-base),
-                -webkit-mask-image var(--duration-base),
-                mask-image var(--duration-base);
+                border-color var(--duration-base);
 }
 
 html[data-color-scheme="light"] #navbar {
@@ -443,6 +578,13 @@ html[data-color-scheme="light"] #navbar {
             rgba(255, 255, 255, 0) 100%
         );
     border-bottom-color: transparent;
+}
+
+/* Remove the bottom-fade mask while the colour-picker popover is open so the
+   dropdown is not clipped by the gradient mask. */
+#navbar:has(.color-picker-popover[data-open="true"]) {
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 /* After the user scrolls past the hero, fade in the solid glass look so the
@@ -818,54 +960,82 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 }
 
 .hero-section::before {
-    /* Modern browsers pick the WebP (~170 KB); JPEG (~310 KB) is the
-       fallback for the few engines that still skip image-set(type). */
-    background:
-        url('res/backgrounds/hero-mountains.jpg') center/cover no-repeat;
-    background-image:
-        image-set(
-            url('res/backgrounds/hero-mountains.webp') type('image/webp'),
-            url('res/backgrounds/hero-mountains.jpg') type('image/jpeg')
-        );
+    /* Reserved for theme-tinted layering above the bg slides. */
+    background: transparent;
+    z-index: -3;
+}
+
+/* ── Hero background slideshow ──────────────────────────────────────
+   Eight real photos taken by Max around Bruckmühl. They crossfade
+   slowly behind the hero content. The dim/desaturate filter keeps text
+   and theme colours readable, matching the previous static treatment.
+   The first slide is preloaded eagerly via .is-active; subsequent
+   slides load on first activation (background-image only). */
+.hero-bg-slides {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero-bg-slide {
+    position: absolute;
+    inset: 0;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* Tone-down so text and theme colours stay readable. */
-    filter: brightness(0.42) saturate(0.85) hue-rotate(-6deg);
-    z-index: -3;
-    transform: scale(1.04); /* avoid hairline edges from filter blur */
-    transition: filter var(--theme-transition);
+    filter: brightness(0.72) saturate(1.0) hue-rotate(-4deg);
+    transform: scale(1.04);
+    opacity: 0;
+    transition: opacity 1600ms ease-in-out;
+    will-change: opacity;
+}
+
+.hero-bg-slide.is-active {
+    opacity: 1;
+}
+
+.hero-bg-1 { background-image: url('res/backgrounds/hero-01.webp'); }
+.hero-bg-6 { background-image: url('res/backgrounds/hero-06.webp'); }
+.hero-bg-7 { background-image: url('res/backgrounds/hero-07.webp'); }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg-slide {
+        transition: none;
+    }
 }
 
 .hero-section::after {
     background:
         radial-gradient(
             ellipse 80% 60% at 30% 35%,
-            rgba(var(--theme-primary), 0.35) 0%,
-            rgba(var(--theme-primary), 0.10) 40%,
+            rgba(var(--theme-primary), 0.20) 0%,
+            rgba(var(--theme-primary), 0.06) 40%,
             transparent 70%
         ),
         radial-gradient(
             ellipse 70% 50% at 75% 70%,
-            rgba(var(--theme-secondary, var(--theme-primary)), 0.25) 0%,
+            rgba(var(--theme-secondary, var(--theme-primary)), 0.14) 0%,
             transparent 65%
         ),
         linear-gradient(
             180deg,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.55) 0%,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.35) 35%,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.75) 60%,
-            var(--color-bg) 80%,
+            rgba(var(--color-bg-rgb, 10, 10, 14), 0.25) 0%,
+            rgba(var(--color-bg-rgb, 10, 10, 14), 0.10) 35%,
+            rgba(var(--color-bg-rgb, 10, 10, 14), 0.55) 70%,
+            var(--color-bg) 92%,
             var(--color-bg) 100%
         );
     z-index: -2;
-    transition: background var(--theme-transition);
+    /* No transition on background — animating multi-stop gradients across
+       the full hero is a Chrome paint hot spot on theme changes. */
 }
 
 /* Light mode: lift the photo slightly and use a brighter veil so it
    reads as airy rather than washed out. */
-html[data-color-scheme="light"] .hero-section::before {
-    filter: brightness(0.78) saturate(0.95) hue-rotate(-4deg);
+html[data-color-scheme="light"] .hero-bg-slide {
+    filter: brightness(0.92) saturate(1.0) hue-rotate(-2deg);
 }
 
 html[data-color-scheme="light"] .hero-section::after {
@@ -1326,9 +1496,6 @@ html[data-color-scheme="light"] .hero-section::after {
         0 18px 32px rgba(var(--theme-primary), 0.22),
         0 6px 16px rgba(0, 0, 0, 0.38);
     border-radius: 1.75rem;
-    animation: heroFloat 7s ease-in-out infinite;
-    transform-origin: center center;
-    transform: rotateY(-5deg) rotateX(2deg);
     transition: box-shadow var(--theme-transition);
 }
 
@@ -1377,6 +1544,17 @@ html[data-color-scheme="light"] .hero-section::after {
     opacity: 1;
 }
 
+/* Mobile: shrink the floating profile photo so it doesn't dominate
+   the hero on narrow viewports. Targets the cutout variant explicitly
+   to win specificity against the desktop max-width: 380px. */
+@media (max-width: 700px) {
+    .hero-photo-float,
+    .hero-photo-float.is-cutout {
+        max-width: 200px;
+        margin-inline: auto;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .hero-photo-swap .hero-photo-img {
         transition: none;
@@ -1391,6 +1569,176 @@ html[data-color-scheme="light"] .hero-section::after {
     border: 1px solid rgba(255, 255, 255, 0.06);
     pointer-events: none;
     z-index: 5;
+}
+
+/* ─── Transparent cutout variant ──────────────────────────────────────────
+   Used when the hero image is a background-less PNG of the figure.
+   Drops the rounded-card chrome (clip background, ring, rectangular shadow)
+   and replaces the box-shadow with a silhouette-following drop-shadow plus
+   a soft theme-tinted backdrop glow. */
+.hero-photo-float.is-cutout {
+    max-width: 380px;
+    margin-inline: auto;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    /* drop-shadow follows the alpha channel of the PNG, so the silhouette
+       gets a real shadow instead of a rectangle. Kept conservative for
+       Chrome paint cost (single pass, no animation on the filter). */
+    filter:
+        drop-shadow(0 18px 28px rgba(var(--theme-primary), 0.28))
+        drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+    transition: filter var(--theme-transition);
+}
+
+/* Soft radial backdrop glow behind the silhouette to give it depth on the
+   hero photo. Sits behind the image, follows the active theme. */
+.hero-photo-float.is-cutout::before {
+    content: '';
+    position: absolute;
+    inset: 5% 0 0 0;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse at 50% 55%,
+        rgba(var(--theme-primary), 0.32) 0%,
+        rgba(var(--theme-primary), 0.12) 35%,
+        transparent 65%
+    );
+    z-index: -1;
+    pointer-events: none;
+    transition: background var(--theme-transition);
+}
+
+.hero-photo-float.is-cutout .hero-photo-clip {
+    /* Match the actual asset ratio (734 / 1049) so .object-fit: contain has
+       no whitespace and the badge anchors directly to the top of the head. */
+    aspect-ratio: 734 / 1049;
+    border-radius: 0;
+    overflow: visible;
+    background: transparent;
+}
+
+.hero-photo-float.is-cutout .hero-photo-clip img {
+    object-fit: contain;
+    object-position: center bottom;
+    background: transparent;
+}
+
+/* Pin the badge to the actual top of the silhouette rather than letting it
+   float above the (now non-existent) card chrome. */
+.hero-photo-float.is-cutout .showcase-badge {
+    top: 4%;
+    right: 0;
+}
+
+/* No decorative ring on a transparent cutout — would float in mid-air. */
+.hero-photo-float.is-cutout .hero-photo-ring {
+    display: none;
+}
+
+/* Viewfinder corner brackets — small L-shaped markers in the active theme
+   colour at each corner of the photo column. Frames the silhouette so the
+   bottom edge no longer reads as "cut off" and gives the cutout a deliberate,
+   composed look. The element itself is invisible; the four corners are drawn
+   with two pseudo-elements + two backgrounds each via gradient masks. */
+.hero-photo-float.is-cutout .showcase-corners {
+    position: absolute;
+    inset: -14px -14px -8px -14px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.hero-photo-float.is-cutout .showcase-corners::before,
+.hero-photo-float.is-cutout .showcase-corners::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgb(var(--theme-primary));
+    border-style: solid;
+    border-width: 0;
+    transition: border-color var(--theme-transition);
+}
+
+/* top-left + bottom-right via ::before, top-right + bottom-left via ::after.
+   We use box-shadow trick with a single pseudo? Cleaner: keep ::before for
+   the top-left corner and ::after for the bottom-right; add two extra spans
+   on the markup or use additional element. Here we use background-image
+   linear gradients to draw all four with one element. */
+.hero-photo-float.is-cutout .showcase-corners::before {
+    top: 0;
+    left: 0;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 4px;
+}
+
+.hero-photo-float.is-cutout .showcase-corners::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Second pair: top-right + bottom-left, drawn on the parent wrapper itself
+   via additional pseudo-element layering through the badge container is not
+   possible — instead, use box-shadow on the corners element to fake the
+   second pair. We draw two more corners with a wrapper class. */
+.hero-photo-float.is-cutout .showcase-corners-2 {
+    position: absolute;
+    inset: -14px -14px -8px -14px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.hero-photo-float.is-cutout .showcase-corners-2::before,
+.hero-photo-float.is-cutout .showcase-corners-2::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgb(var(--theme-primary));
+    border-style: solid;
+    border-width: 0;
+    transition: border-color var(--theme-transition);
+}
+
+.hero-photo-float.is-cutout .showcase-corners-2::before {
+    top: 0;
+    right: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-top-right-radius: 4px;
+}
+
+.hero-photo-float.is-cutout .showcase-corners-2::after {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-bottom-left-radius: 4px;
+}
+
+/* Subtle hover emphasis */
+.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners::before,
+.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners::after,
+.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners-2::before,
+.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners-2::after {
+    width: 34px;
+    height: 34px;
+    border-color: rgb(var(--theme-primary));
+    transition: width 0.3s ease, height 0.3s ease, border-color var(--theme-transition);
+}
+
+/* Hover override: keep the box-shadow rule from .showcase-link:hover from
+   re-appearing on the cutout (it would draw a rectangle behind the figure). */
+.showcase-link:hover .hero-photo-float.is-cutout {
+    box-shadow: none;
+    filter:
+        drop-shadow(0 22px 34px rgba(var(--theme-primary), 0.38))
+        drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
 }
 
 @keyframes heroFloat {
@@ -1577,43 +1925,11 @@ html[data-color-scheme="light"] .hero-section::after {
     background: var(--color-bg);
 }
 
-/* Two soft theme-coloured blobs — that's it. No grid, no spotlight,
-   no overlay. They sit deep in the background, change colour with
-   the active slide via CSS vars, and drift slowly. */
+/* No decorative blobs — the section sits flat on --color-bg so the hero's
+   bottom fade flows in seamlessly. */
 .projects-section::before,
 .projects-section::after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    border-radius: 50%;
-    /* 80 → 50: animated blobs were re-blurring every frame even with
-       transform-only keyframes. 50px is still visually soft. */
-    filter: blur(50px);
-    opacity: 0.55;
-    z-index: -1;
-    transition: background var(--theme-transition), opacity var(--theme-transition);
-    will-change: transform;
-}
-
-/* Blob A — middle-right, primary colour. Pushed well below the section
-   top so it never creates a bright edge against the hero. */
-.projects-section::before {
-    width: 520px;
-    height: 520px;
-    top: 30%;
-    right: -160px;
-    background: rgb(var(--theme-primary));
-    animation: projectsBlobA 22s ease-in-out infinite alternate;
-}
-
-/* Blob B — bottom-left, secondary colour */
-.projects-section::after {
-    width: 460px;
-    height: 460px;
-    bottom: -140px;
-    left: -120px;
-    background: rgb(var(--theme-secondary, var(--theme-primary)));
-    animation: projectsBlobB 26s ease-in-out infinite alternate;
+    content: none;
 }
 
 @keyframes projectsBlobA {
@@ -1705,14 +2021,6 @@ html[data-color-scheme="light"] .projects-section::after {
                 border-color var(--duration-base) var(--ease-out),
                 box-shadow var(--duration-base) var(--ease-out);
     overflow: hidden;
-}
-
-html[data-color-scheme="light"] .service-card {
-    background: linear-gradient(
-        160deg,
-        rgba(0, 0, 0, 0.02) 0%,
-        rgba(0, 0, 0, 0.005) 100%
-    );
 }
 
 /* Top accent bar — slides in on hover */

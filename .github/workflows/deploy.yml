@@ -18,8 +18,9 @@ concurrency:
 
 env:
   # Hard cap for any single shipped binary asset (KB).
-  # Largest current legitimate file: res/backgrounds/hero-mountains.jpg ~310 KB.
-  # 600 leaves headroom but still catches an accidentally committed 2 MB PNG.
+  # Largest current legitimate file: res/backgrounds/hero-08.webp ~494 KB
+  # (real hero photo, optimized WebP). 600 leaves headroom but still
+  # catches an accidentally committed 2 MB PNG.
   MAX_ASSET_KB: 600
 
 jobs:
