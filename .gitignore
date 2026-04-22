@@ -52,17 +52,6 @@ __pycache__/
 .github/instructions/
 .github/skills/
 
-# Internal planning documents (not for production)
-ARCHITECTURE_UI_REVIEW.md
-PORTFOLIO_REPO_PLAN.md
-LLM_REFACTORING_PLAN.md
-ANIMATION_PLAN.md
-UX_IMPROVEMENT_PLAN.md
-MARQUEE_IMPLEMENTATION.md
-
-# Jekyll config not used (custom GH Pages workflow handles deploy)
-_config.yml
-
 # Debug Outputs
 git_log_output.txt
 diff.txt
