@@ -996,9 +996,9 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     opacity: 1;
 }
 
-.hero-bg-1 { background-image: url('assets/img/backgrounds/hero-01.webp'); }
-.hero-bg-6 { background-image: url('assets/img/backgrounds/hero-06.webp'); }
-.hero-bg-7 { background-image: url('assets/img/backgrounds/hero-07.webp'); }
+.hero-bg-1 { background-image: url('../img/backgrounds/hero-01.webp'); }
+.hero-bg-6 { background-image: url('../img/backgrounds/hero-06.webp'); }
+.hero-bg-7 { background-image: url('../img/backgrounds/hero-07.webp'); }
 
 @media (prefers-reduced-motion: reduce) {
     .hero-bg-slide {
