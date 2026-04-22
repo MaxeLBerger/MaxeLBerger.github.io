@@ -64,7 +64,7 @@ Zeige mir alle Dateien im Root-Verzeichnis
 📄 index.html
 📄 style.css
 📄 script.js
-📁 res/
+📁 assets/img/
 ```
 
 ---
@@ -109,7 +109,7 @@ Zeige mir alle Links in impressum.html
   "links": ["#home", "#aboutMe", "#skills", "#projects"],
   "scripts": ["https://cdn.example.com/script.js"],
   "stylesheets": ["style.css"],
-  "images": ["res/faviconwhitegreen.png"]
+  "images": ["assets/img/favicons/faviconwhitegreen.png"]
 }
 ```
 
@@ -191,7 +191,7 @@ Portfolio-Projektstruktur:
 📁 projects/
   📄 albert.html
   📄 style.css
-📁 res/
+📁 assets/img/
   📄 faviconwhitegreen.png
   📄 logo.png
 📄 index.html

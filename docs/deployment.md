@@ -8,11 +8,11 @@ push to `main` and on PRs.
 ### Jobs
 
 1. **build** (always)
-   - Verify required entry points exist (`index.html`, `style.css`, `script.js`,
+   - Verify required entry points exist (`index.html`, `assets/css/main.css`, `assets/js/main.js`,
      `CNAME`, `impressum.html`, `datenschutz.html`).
    - Guard against oversized assets — fail if any image/video in `assets/img/` or
      `projects/` exceeds **600 KB**.
-   - Assemble `dist/` by copying root HTML, `style.css`, `script.js`, `CNAME`,
+   - Assemble `dist/` by copying root HTML, `assets/css/main.css`, `assets/js/main.js`, `CNAME`,
      `assets/img/`, `projects/`, plus `.nojekyll`.
    - Walk every HTML file in `dist/` and validate every internal `src=`/`href=`
      resolves to an existing file. Fail on broken references.
@@ -28,7 +28,7 @@ push to `main` and on PRs.
 | Source | In `dist/`? |
 |---|---|
 | `*.html` at root | ✅ |
-| `style.css`, `script.js` | ✅ |
+| `assets/css/main.css`, `assets/js/main.js` | ✅ |
 | `CNAME` | ✅ |
 | `assets/img/` | ✅ |
 | `projects/` | ✅ |

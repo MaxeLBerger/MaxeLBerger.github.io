@@ -31,7 +31,7 @@ Open <http://localhost:8000>.
 ### JavaScript
 
 - ES6+ (const/let, arrow functions, template literals, optional chaining).
-- All module-level code lives in the existing IIFE in `script.js`.
+- All module-level code lives in the existing IIFE in `assets/js/main.js`.
 - Cache DOM lookups; prefer event delegation.
 - Use `IntersectionObserver` to gate scroll-driven work.
 - Use `transitionend` / `animationend` instead of `setTimeout` magic numbers.
@@ -49,7 +49,7 @@ When adding or changing visible text:
 
 1. Set `data-i18n="section.key"` and put the German text inline in HTML.
 2. Add the same key to **both** `translations.de` and `translations.en` in
-   `script.js`.
+   `assets/js/main.js`.
 
 ## Common tasks
 
@@ -59,11 +59,11 @@ When adding or changing visible text:
    a new `data-theme`.
 2. Add a new `.project-nav-btn` to the slider tablist.
 3. Add the project image to `assets/img/projects/` (WebP, < 300 KB).
-4. Add a color theme block to [style.css](../assets/css/main.css) under
+4. Add a color theme block to [assets/css/main.css](../assets/css/main.css) under
    `[data-project-theme="..."]`.
 5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys
-   to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js).
-6. Add the project slug to `COLOR_THEMES` in `script.js` if it gets a picker
+   to both `translations.de` and `translations.en` in [assets/js/main.js](../assets/js/main.js).
+6. Add the project slug to `COLOR_THEMES` in `assets/js/main.js` if it gets a picker
    swatch.
 7. Create `projects/<slug>.html` for the detail page.
 8. Test locally and push.
@@ -77,7 +77,7 @@ When adding or changing visible text:
 ### Change a translation
 
 Update **both** the inline HTML default **and** both language objects in
-`script.js`.
+`assets/js/main.js`.
 
 ## What NOT to do
 

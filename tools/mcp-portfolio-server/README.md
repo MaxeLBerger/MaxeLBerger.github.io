@@ -161,7 +161,7 @@ Der Server bietet folgende Tools:
 ### 1. `read_file`
 Liest den Inhalt einer Datei aus dem Portfolio-Projekt.
 - **Parameter**: `filePath` - Relativer oder absoluter Pfad zur Datei
-- **Beispiel**: Lese `index.html`, `style.css`, `script.js`
+- **Beispiel**: Lese `index.html`, `assets/css/main.css`, `assets/js/main.js`
 
 ### 2. `write_file`
 Schreibt oder überschreibt eine Datei im Portfolio-Projekt.

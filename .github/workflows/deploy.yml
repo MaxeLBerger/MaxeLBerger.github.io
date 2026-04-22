@@ -69,6 +69,8 @@ jobs:
           mkdir -p dist
           cp ./*.html dist/
           cp CNAME dist/
+          [ -f robots.txt ] && cp robots.txt dist/
+          [ -f sitemap.xml ] && cp sitemap.xml dist/
           [ -d assets ] && cp -r assets dist/
           [ -d projects ] && cp -r projects dist/
           # Disable Jekyll on Pages (we ship plain static files).

@@ -29,7 +29,7 @@ All projects are showcased on the homepage and have detail pages under [projects
 - **Animations:** GSAP 3.12 + ScrollTrigger (CDN)
 - **Fonts:** Inter (Google Fonts, loaded after consent)
 - **Hosting:** GitHub Pages, custom domain via `CNAME`
-- **i18n:** Custom DE/EN dictionary in [script.js](script.js) — no framework
+- **i18n:** Custom DE/EN dictionary in [assets/js/main.js](assets/js/main.js) — no framework
 
 ---
 
@@ -72,7 +72,7 @@ Open <http://localhost:8000>. No build step.
 
 | Step | Fails the build when… |
 |------|-----------------------|
-| **Verify required entry points** | `index.html`, `style.css`, `script.js`, `CNAME`, `impressum.html`, or `datenschutz.html` is missing |
+| **Verify required entry points** | `index.html`, `assets/css/main.css`, `assets/js/main.js`, `CNAME`, `impressum.html`, or `datenschutz.html` is missing |
 | **Asset size guard** | Any image/video under `assets/img/` or `projects/` exceeds **`MAX_ASSET_KB` (600 KB)** — bump only with a real reason |
 | **Assemble dist/** | — (globs all top-level `*.html`, copies `assets/`, `projects/`, writes `.nojekyll`) |
 | **Internal-link check** | Any `src=` / `href=` in a shipped HTML file points at a local target that doesn't exist in `dist/` |
@@ -92,8 +92,8 @@ PRs run the validators but never publish.
 When adding/changing things, keep these in mind (full rules in [`.github/copilot-instructions.md`](.github/copilot-instructions.md)):
 
 - **Images:** convert to WebP first, keep each file ≤ 600 KB (CI will fail otherwise).
-- **i18n:** every visible string uses `data-i18n="key"`; update both `translations.de` and `translations.en` in [script.js](script.js).
-- **Theming:** `data-color-scheme` (light/dark) and `data-project-theme` (per-project palette) on `<html>`. Single writer is `themeController` in [script.js](script.js).
+- **i18n:** every visible string uses `data-i18n="key"`; update both `translations.de` and `translations.en` in [assets/js/main.js](assets/js/main.js).
+- **Theming:** `data-color-scheme` (light/dark) and `data-project-theme` (per-project palette) on `<html>`. Single writer is `themeController` in [assets/js/main.js](assets/js/main.js).
 - **No inline `style="..."`** for state — use CSS classes (`.is-success`, `.is-error`, `.active`, …).
 - **No build tools, no analytics, no third-party scripts** without updating [datenschutz.html](datenschutz.html).
 

@@ -64,7 +64,7 @@ Two independent attributes on `<html>`:
 | `data-color-scheme` | `dark` (default), `light` | Theme toggle button (`#themeToggle`) |
 | `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider, scroll observer, and color picker |
 
-The `themeController` IIFE in `script.js` is the **single writer** for `data-project-theme`. All callers go through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider writes are not.
+The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider writes are not.
 
 `e46` slides reuse the `maxhaak` swatch (no dedicated picker option).
 
@@ -78,7 +78,7 @@ Language is persisted in `localStorage('lang')`.
 
 ### Performance gates
 
-- **Mouse parallax** in `script.js` skips work when both `#hero` and `#projects` are off-screen (`parallaxTargetsVisible` flag, fed by two `IntersectionObserver`s).
+- **Mouse parallax** in `assets/js/main.js` skips work when both `#hero` and `#projects` are off-screen (`parallaxTargetsVisible` flag, fed by two `IntersectionObserver`s).
 - **Hero orb CSS animations** are paused via `animationPlayState` when `#hero` leaves the viewport.
 - **Hero photo crossfade** (`setInterval`) skips work when `document.hidden`.
 - **Google Fonts** are only loaded after the user accepts the cookie banner.
@@ -124,7 +124,7 @@ Push to `main` → live in ~1–2 minutes. There is **no build step** and **no m
 ### JavaScript
 
 - ES6+ (const/let, arrow functions, template literals, optional chaining)
-- Wrap all module-level code in the existing IIFE in `script.js`
+- Wrap all module-level code in the existing IIFE in `assets/js/main.js`
 - Cache DOM lookups; prefer event delegation
 - Use `IntersectionObserver` to gate scroll-driven work
 - Use `transitionend` / `animationend` instead of `setTimeout` magic numbers
@@ -134,7 +134,7 @@ Push to `main` → live in ~1–2 minutes. There is **no build step** and **no m
 When adding or changing visible text:
 
 1. Set `data-i18n="section.key"` and put the German text inline in HTML
-2. Add the same key to both `translations.de` and `translations.en` in `script.js`
+2. Add the same key to both `translations.de` and `translations.en` in `assets/js/main.js`
 
 ## Files NOT Tracked in Git
 
@@ -157,7 +157,7 @@ See [.gitignore](../.gitignore). Important exclusions:
 3. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB)
 4. Add a color theme block to [style.css](../assets/css/main.css) under `[data-project-theme="..."]`
 5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js)
-6. Add the project slug to `COLOR_THEMES` in `script.js` if it gets a picker swatch
+6. Add the project slug to `COLOR_THEMES` in `assets/js/main.js` if it gets a picker swatch
 7. Create `projects/<slug>.html` for the detail page
 8. Test locally and push
 
@@ -169,7 +169,7 @@ See [.gitignore](../.gitignore). Important exclusions:
 
 ### Change a translation
 
-- Update both the inline HTML default and both language objects in `script.js`
+- Update both the inline HTML default and both language objects in `assets/js/main.js`
 
 ## Local Development
 
