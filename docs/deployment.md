@@ -1,4 +1,4 @@
-# Deployment
+﻿# Deployment
 
 ## Pipeline
 
@@ -10,10 +10,10 @@ push to `main` and on PRs.
 1. **build** (always)
    - Verify required entry points exist (`index.html`, `style.css`, `script.js`,
      `CNAME`, `impressum.html`, `datenschutz.html`).
-   - Guard against oversized assets — fail if any image/video in `res/` or
+   - Guard against oversized assets — fail if any image/video in `assets/img/` or
      `projects/` exceeds **600 KB**.
    - Assemble `dist/` by copying root HTML, `style.css`, `script.js`, `CNAME`,
-     `res/`, `projects/`, plus `.nojekyll`.
+     `assets/img/`, `projects/`, plus `.nojekyll`.
    - Walk every HTML file in `dist/` and validate every internal `src=`/`href=`
      resolves to an existing file. Fail on broken references.
    - Emit a build size report to the GitHub Actions step summary.
@@ -30,7 +30,7 @@ push to `main` and on PRs.
 | `*.html` at root | ✅ |
 | `style.css`, `script.js` | ✅ |
 | `CNAME` | ✅ |
-| `res/` | ✅ |
+| `assets/img/` | ✅ |
 | `projects/` | ✅ |
 | `tools/` | ❌ (local dev only) |
 | `docs/` | ❌ |

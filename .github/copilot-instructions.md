@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions for MaxeLBerger.github.io
+﻿# GitHub Copilot Instructions for MaxeLBerger.github.io
 
 ## Overview
 
@@ -13,26 +13,25 @@ Plain static site — **no build step**, no submodules, no frameworks.
 ```
 .
 ├── index.html              # Homepage (hero slider + sections)
-├── style.css               # Main stylesheet (~2700 lines, design tokens + theming)
-├── script.js               # Slider, theme, i18n, animations (~1340 lines)
 ├── impressum.html          # Legal info
 ├── datenschutz.html        # Privacy policy
+├── assets/
+│   ├── css/
+│   │   └── main.css        # Stylesheet (~2700 lines, design tokens + theming)
+│   ├── js/
+│   │   └── main.js         # Slider, theme, i18n, animations (~1340 lines)
+│   └── img/                # Backgrounds, favicons, icons, profile, projects, screenshots
 ├── projects/               # Project detail pages
-│   ├── style.css
+│   ├── main.css            # Project-page-specific styles
 │   ├── aicaptain.html
 │   ├── coha.html
 │   ├── e46-studio.html
 │   ├── imkerei-feuerstein.html
 │   ├── shookroko.html
 │   └── soundoflvke.html
-├── res/                    # Static assets
-│   ├── backgrounds/
-│   ├── favicons/
-│   ├── icons/
-│   ├── profile/
-│   ├── projects/
-│   └── screenshots/
-├── tools/mcp-portfolio-server/   # Local MCP dev tool — not deployed, not required
+├── docs/                   # architecture / development / deployment guides
+├── tools/                  # Local dev tooling (NOT deployed)
+│   └── mcp-portfolio-server/   # Local MCP dev tool
 └── .github/workflows/
     └── deploy.yml          # Single-job deploy to GitHub Pages
 ```
@@ -42,14 +41,14 @@ Plain static site — **no build step**, no submodules, no frameworks.
 - **HTML5 / CSS3 / vanilla JavaScript (ES6+)** — no React, no Vue, no bundler
 - **GSAP 3.12 + ScrollTrigger** via CDN for animations
 - **Inter** (Google Fonts) — loaded after cookie consent (GDPR)
-- **i18n**: custom DE/EN dictionary in `script.js` (DE is default)
+- **i18n**: custom DE/EN dictionary in [assets/js/main.js](../assets/js/main.js) (DE is default)
 - **Hosting**: GitHub Pages with custom domain (`CNAME` → `maximilianhaak.de`)
 
 ## Core Architectural Concepts
 
 ### Hero project slider
 
-`#projects` contains 6 `.hero-slide` elements. The `ProjectSlider` class in [script.js](../script.js) handles:
+`#projects` contains 6 `.hero-slide` elements. The `ProjectSlider` class in [script.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
 - Touch/swipe + keyboard navigation
@@ -71,7 +70,7 @@ The `themeController` IIFE in `script.js` is the **single writer** for `data-pro
 
 ### i18n
 
-All user-visible text uses `data-i18n="key"` attributes. The dictionary lives in `translations.de` and `translations.en` inside [script.js](../script.js). On `init()` and on language toggle, `applyTranslations(lang)` overwrites the inline HTML text.
+All user-visible text uses `data-i18n="key"` attributes. The dictionary lives in `translations.de` and `translations.en` inside [script.js](../assets/js/main.js). On `init()` and on language toggle, `applyTranslations(lang)` overwrites the inline HTML text.
 
 **Critical:** when changing visible text, update **both** the inline HTML default **and** the matching key in both language objects, or the JS will overwrite your HTML change on next load.
 
@@ -91,14 +90,14 @@ Two modes detected from the form's `action` attribute:
 - `mailto:` → builds a pre-filled email and opens the user's mail client
 - HTTP URL → POSTs `FormData` to the endpoint (e.g. Formspree)
 
-Status feedback uses `.is-success` / `.is-error` classes on `.btn-primary` (defined in [style.css](../style.css)).
+Status feedback uses `.is-success` / `.is-error` classes on `.btn-primary` (defined in [style.css](../assets/css/main.css)).
 
 ## Deployment
 
 [.github/workflows/deploy.yml](workflows/deploy.yml) — single job:
 
 1. Checkout
-2. Copy `index.html`, `style.css`, `script.js`, `CNAME`, `impressum.html`, `datenschutz.html`, `projects/`, `res/` into `dist/`
+2. Copy `index.html`, `*.html`, `CNAME`, `assets/`, `projects/` into `dist/`
 3. Upload as Pages artifact
 4. Deploy to `github-pages` environment
 
@@ -155,9 +154,9 @@ See [.gitignore](../.gitignore). Important exclusions:
 
 1. Add a new `.hero-slide` to `#projects` in [index.html](../index.html) with a new `data-theme`
 2. Add a new `.project-nav-btn` to the slider tablist
-3. Add the project image to `res/projects/` (optimize to WebP, <300 KB)
-4. Add a color theme block to [style.css](../style.css) under `[data-project-theme="..."]`
-5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [script.js](../script.js)
+3. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB)
+4. Add a color theme block to [style.css](../assets/css/main.css) under `[data-project-theme="..."]`
+5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js)
 6. Add the project slug to `COLOR_THEMES` in `script.js` if it gets a picker swatch
 7. Create `projects/<slug>.html` for the detail page
 8. Test locally and push
@@ -166,7 +165,7 @@ See [.gitignore](../.gitignore). Important exclusions:
 
 - Always optimize first (WebP, <300 KB target)
 - Update the `<img src>` reference in `index.html` and any project detail page
-- Delete the old image from `res/projects/`
+- Delete the old image from `assets/img/projects/`
 
 ### Change a translation
 

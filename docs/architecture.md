@@ -1,4 +1,4 @@
-# Architecture
+﻿# Architecture
 
 Static portfolio site. **No build step**, no submodules, no frameworks.
 Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
@@ -13,7 +13,7 @@ Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
 ├── CNAME                   maximilianhaak.de
 ├── projects/               Project detail pages (one HTML per project)
 │   └── style.css           Detail-page-specific styles
-├── res/                    Static assets (images only)
+├── assets/                    Static assets (images only)
 │   ├── backgrounds/        Hero backgrounds (WebP)
 │   ├── favicons/           Site favicon
 │   ├── icons/              Tech-stack icons (PNG/WebP)
@@ -33,7 +33,7 @@ Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
 ### Hero project slider
 
 `#projects` contains 8 `.hero-slide` elements. The `ProjectSlider` class in
-[script.js](../script.js) handles:
+[script.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
 - Touch/swipe + keyboard navigation
@@ -57,7 +57,7 @@ are not.
 ### i18n
 
 All user-visible text uses `data-i18n="key"` attributes. The dictionary lives in
-`translations.de` and `translations.en` inside [script.js](../script.js).
+`translations.de` and `translations.en` inside [script.js](../assets/js/main.js).
 
 **Critical:** When changing visible text, update **both** the inline HTML
 default **and** the matching key in both language objects. Otherwise the JS

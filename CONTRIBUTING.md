@@ -1,4 +1,4 @@
-# Contributing
+﻿# Contributing
 
 This repo is a personal portfolio site. PRs from outside contributors are unlikely, but the workflow below applies to anyone making changes.
 
@@ -45,7 +45,7 @@ The JS dictionary overrides the HTML on page load, so inconsistent updates show 
 
 1. Add a new card to the portfolio grid in [index.html](index.html)
 2. Create `projects/<slug>.html` (copy an existing one as a template)
-3. Add the project image to `res/projects/` (WebP preferred, <300 KB)
+3. Add the project image to `assets/img/projects/` (WebP preferred, <300 KB)
 4. Add a new slide to the hero slider in `index.html`
 5. Add slide translation keys to both language objects in `script.js`
 6. Add a color theme entry to `style.css` under `[data-project-theme="..."]` if needed

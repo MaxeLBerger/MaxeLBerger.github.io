@@ -1,4 +1,4 @@
-# Development Guide
+﻿# Development Guide
 
 ## Local development
 
@@ -58,11 +58,11 @@ When adding or changing visible text:
 1. Add a new `.hero-slide` to `#projects` in [index.html](../index.html) with
    a new `data-theme`.
 2. Add a new `.project-nav-btn` to the slider tablist.
-3. Add the project image to `res/projects/` (WebP, < 300 KB).
-4. Add a color theme block to [style.css](../style.css) under
+3. Add the project image to `assets/img/projects/` (WebP, < 300 KB).
+4. Add a color theme block to [style.css](../assets/css/main.css) under
    `[data-project-theme="..."]`.
 5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys
-   to both `translations.de` and `translations.en` in [script.js](../script.js).
+   to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js).
 6. Add the project slug to `COLOR_THEMES` in `script.js` if it gets a picker
    swatch.
 7. Create `projects/<slug>.html` for the detail page.
@@ -72,7 +72,7 @@ When adding or changing visible text:
 
 - Optimize first (WebP, < 300 KB).
 - Update the `<img src>` reference in `index.html` and any project detail page.
-- Delete the old image from `res/`.
+- Delete the old image from `assets/img/`.
 
 ### Change a translation
 

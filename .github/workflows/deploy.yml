@@ -18,7 +18,7 @@ concurrency:
 
 env:
   # Hard cap for any single shipped binary asset (KB).
-  # Largest current legitimate file: res/backgrounds/hero-08.webp ~494 KB
+  # Largest current legitimate file: assets/img/backgrounds/hero-08.webp ~494 KB
   # (real hero photo, optimized WebP). 600 leaves headroom but still
   # catches an accidentally committed 2 MB PNG.
   MAX_ASSET_KB: 600
@@ -36,7 +36,7 @@ jobs:
       - name: Verify required entry points exist
         run: |
           set -e
-          required=(index.html style.css script.js CNAME impressum.html datenschutz.html)
+          required=(index.html assets/css/main.css assets/js/main.js CNAME impressum.html datenschutz.html)
           missing=0
           for f in "${required[@]}"; do
             if [ ! -f "$f" ]; then
@@ -51,7 +51,7 @@ jobs:
         run: |
           set -e
           limit_kb="${MAX_ASSET_KB}"
-          mapfile -t big < <(find res projects -type f \
+          mapfile -t big < <(find assets projects -type f \
             \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
                -o -iname '*.webp' -o -iname '*.gif' -o -iname '*.svg' \
                -o -iname '*.mp4' -o -iname '*.webm' \) \
@@ -68,8 +68,8 @@ jobs:
           set -e
           mkdir -p dist
           cp ./*.html dist/
-          cp style.css script.js CNAME dist/
-          [ -d res ] && cp -r res dist/
+          cp CNAME dist/
+          [ -d assets ] && cp -r assets dist/
           [ -d projects ] && cp -r projects dist/
           # Disable Jekyll on Pages (we ship plain static files).
           touch dist/.nojekyll
@@ -126,16 +126,16 @@ jobs:
             echo "**Total:** $(du -sh dist | cut -f1)"
             echo
             echo "## Top-level"
-            du -sh dist/*.html dist/*.css dist/*.js 2>/dev/null \
-              | awk '{ printf "- `%s` â€” %s\n", $2, $1 }'
+            du -sh dist/*.html 2>/dev/null \
+              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
             echo
             echo "## Folders"
-            du -sh dist/res dist/projects 2>/dev/null \
-              | awk '{ printf "- `%s` â€” %s\n", $2, $1 }'
+            du -sh dist/assets dist/projects 2>/dev/null \
+              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
             echo
             echo "## 10 largest files"
             find dist -type f -printf '%s\t%p\n' | sort -rn | head -10 \
-              | awk -F'\t' '{ printf "- `%s` â€” %.0f KB\n", $2, $1/1024 }'
+              | awk -F'\t' '{ printf "- `%s` — %.0f KB\n", $2, $1/1024 }'
           } >> "$GITHUB_STEP_SUMMARY"
           echo "total=$(du -sb dist | cut -f1)" >> "$GITHUB_OUTPUT"
 

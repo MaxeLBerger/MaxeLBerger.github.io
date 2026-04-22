@@ -1,9 +1,9 @@
-# tools/
+﻿# tools/
 
 Local development tooling. **Nothing in this folder is shipped to production.**
 
 The deploy workflow ([../.github/workflows/deploy.yml](../.github/workflows/deploy.yml))
-only copies `*.html`, `style.css`, `script.js`, `CNAME`, `res/`, and `projects/`
+only copies `*.html`, `CNAME`, `assets/`, and `projects/`
 into `dist/`. Everything in `tools/` is excluded.
 
 ## Contents

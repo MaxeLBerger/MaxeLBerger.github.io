@@ -38,13 +38,15 @@ All projects are showcased on the homepage and have detail pages under [projects
 ```
 .
 ├── index.html              # Homepage (hero slider + sections)
-├── style.css               # Main stylesheet (design tokens + theming)
-├── script.js               # Slider, theme, i18n, animations
 ├── impressum.html          # Legal info
 ├── datenschutz.html        # Privacy policy
-├── projects/               # Project detail pages
-├── res/                    # Static assets (backgrounds, icons, profile, projects)
-├── tools/mcp-portfolio-server/ # Local MCP dev tool — not deployed
+├── assets/
+│   ├── css/main.css        # Stylesheet (design tokens + theming)
+│   ├── js/main.js          # Slider, theme, i18n, animations
+│   └── img/                # Backgrounds, icons, profile, project shots
+├── projects/               # Project detail pages (one HTML per project)
+├── docs/                   # Architecture / development / deployment guides
+├── tools/                  # Local dev tooling (NOT deployed)
 └── .github/workflows/      # CI: deploy.yml
 ```
 
@@ -71,8 +73,8 @@ Open <http://localhost:8000>. No build step.
 | Step | Fails the build when… |
 |------|-----------------------|
 | **Verify required entry points** | `index.html`, `style.css`, `script.js`, `CNAME`, `impressum.html`, or `datenschutz.html` is missing |
-| **Asset size guard** | Any image/video under `res/` or `projects/` exceeds **`MAX_ASSET_KB` (600 KB)** — bump only with a real reason |
-| **Assemble dist/** | — (globs all top-level `*.html`, copies `res/`, `projects/`, writes `.nojekyll`) |
+| **Asset size guard** | Any image/video under `assets/img/` or `projects/` exceeds **`MAX_ASSET_KB` (600 KB)** — bump only with a real reason |
+| **Assemble dist/** | — (globs all top-level `*.html`, copies `assets/`, `projects/`, writes `.nojekyll`) |
 | **Internal-link check** | Any `src=` / `href=` in a shipped HTML file points at a local target that doesn't exist in `dist/` |
 | **Build size report** | — (writes a per-folder + top-10-largest summary to the job page) |
 | **Upload Pages artifact** | (skipped on PRs) |

@@ -1,4 +1,4 @@
-{
+﻿{
   "personal": {
     "name": "Maximilian Haak",
     "title": "Softwareentwickler",
@@ -42,37 +42,37 @@
     {
       "name": "Java",
       "category": "Programming Language",
-      "icon": "res/java-icon.png",
+      "icon": "assets/img/java-icon.png",
       "level": "Advanced"
     },
     {
       "name": "Delphi",
       "category": "Programming Language",
-      "icon": "res/delphi-icon.png",
+      "icon": "assets/img/delphi-icon.png",
       "level": "Advanced"
     },
     {
       "name": "JavaScript",
       "category": "Programming Language",
-      "icon": "res/javascript-icon.png",
+      "icon": "assets/img/javascript-icon.png",
       "level": "Advanced"
     },
     {
       "name": "HTML",
       "category": "Markup Language",
-      "icon": "res/html-icon.png",
+      "icon": "assets/img/html-icon.png",
       "level": "Expert"
     },
     {
       "name": "CSS",
       "category": "Styling",
-      "icon": "res/css-icon.png",
+      "icon": "assets/img/css-icon.png",
       "level": "Advanced"
     },
     {
       "name": "PostgreSQL",
       "category": "Database",
-      "icon": "res/postgres-icon.png",
+      "icon": "assets/img/postgres-icon.png",
       "level": "Intermediate"
     }
   ],
@@ -93,7 +93,7 @@
       ],
       "liveUrl": "https://maximilianhaak.de/AgeOfMax",
       "detailsUrl": "projects/age-of-max.html",
-      "image": "res/programming1.jpg",
+      "image": "assets/img/programming1.jpg",
       "status": "completed",
       "year": 2023
     },
@@ -114,7 +114,7 @@
       ],
       "liveUrl": "https://maximilianhaak.de/FireCastle",
       "detailsUrl": "projects/firecastle.html",
-      "image": "res/programming1.jpg",
+      "image": "assets/img/programming1.jpg",
       "status": "completed",
       "year": 2023
     },
@@ -135,7 +135,7 @@
       ],
       "liveUrl": "https://maximilianhaak.de/AuTuneOnline",
       "detailsUrl": "projects/autune-online.html",
-      "image": "res/programming1.jpg",
+      "image": "assets/img/programming1.jpg",
       "status": "completed",
       "year": 2024
     },
@@ -156,7 +156,7 @@
       ],
       "liveUrl": "https://soundoflvke.github.io",
       "detailsUrl": "projects/soundoflvke.html",
-      "image": "res/programming1.jpg",
+      "image": "assets/img/programming1.jpg",
       "status": "completed",
       "year": 2024
     },
@@ -177,7 +177,7 @@
         "Generations-Tracking"
       ],
       "detailsUrl": "projects/albert.html",
-      "image": "res/albert.png",
+      "image": "assets/img/albert.png",
       "status": "completed",
       "year": 2024
     }
