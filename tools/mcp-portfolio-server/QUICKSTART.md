@@ -18,7 +18,7 @@ Starte Claude Desktop auf deinem Computer.
     "portfolio-optimizer": {
       "command": "node",
       "args": [
-        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\build\\index.js"
+        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\build\\index.js"
       ]
     }
   }

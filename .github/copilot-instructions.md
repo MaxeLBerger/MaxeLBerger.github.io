@@ -32,7 +32,7 @@ Plain static site — **no build step**, no submodules, no frameworks.
 │   ├── profile/
 │   ├── projects/
 │   └── screenshots/
-├── mcp-portfolio-server/   # Local MCP dev tool — not deployed, not required
+├── tools/mcp-portfolio-server/   # Local MCP dev tool — not deployed, not required
 └── .github/workflows/
     └── deploy.yml          # Single-job deploy to GitHub Pages
 ```

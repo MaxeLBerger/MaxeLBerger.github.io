@@ -44,7 +44,7 @@ All projects are showcased on the homepage and have detail pages under [projects
 ├── datenschutz.html        # Privacy policy
 ├── projects/               # Project detail pages
 ├── res/                    # Static assets (backgrounds, icons, profile, projects)
-├── mcp-portfolio-server/   # Local MCP dev tool — not deployed
+├── tools/mcp-portfolio-server/ # Local MCP dev tool — not deployed
 └── .github/workflows/      # CI: deploy.yml
 ```
 

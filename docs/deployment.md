@@ -34,7 +34,6 @@ push to `main` and on PRs.
 | `projects/` | ✅ |
 | `tools/` | ❌ (local dev only) |
 | `docs/` | ❌ |
-| `mcp-portfolio-server/` (legacy) | ❌ |
 | `.github/`, `.gitignore`, `README.md` | ❌ |
 
 ### Domain

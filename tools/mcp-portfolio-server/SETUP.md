@@ -5,7 +5,7 @@
 Der Server wurde bereits gebaut! Falls du ihn neu bauen musst:
 
 ```bash
-cd mcp-portfolio-server
+cd tools/mcp-portfolio-server
 npm run build
 ```
 
@@ -37,7 +37,7 @@ npm run build
        "portfolio-optimizer": {
          "command": "node",
          "args": [
-           "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\build\\index.js"
+           "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\build\\index.js"
          ]
        }
      }
@@ -99,7 +99,7 @@ Für die Entwicklung kannst du auch die TypeScript-Datei direkt verwenden:
       "command": "npx",
       "args": [
         "tsx",
-        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\src\\index.ts"
+        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\src\\index.ts"
       ]
     }
   }

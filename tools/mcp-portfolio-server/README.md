@@ -58,7 +58,7 @@ Inhalt:
     "portfolio-optimizer": {
       "command": "node",
       "args": [
-        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\build\\index.js"
+        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\build\\index.js"
       ]
     }
   }
@@ -200,7 +200,7 @@ Gibt eine vollständige Übersicht über die Portfolio-Projektstruktur.
 ## Installation
 
 ```bash
-cd mcp-portfolio-server
+cd tools/mcp-portfolio-server
 npm install
 ```
 
@@ -237,7 +237,7 @@ Bearbeite `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings
     "portfolio-optimizer": {
       "command": "node",
       "args": [
-        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\build\\index.js"
+        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\build\\index.js"
       ]
     }
   }
@@ -252,7 +252,7 @@ Bearbeite `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings
       "command": "npx",
       "args": [
         "tsx",
-        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\mcp-portfolio-server\\src\\index.ts"
+        "c:\\Users\\maxih\\Documents\\Repositories\\MaximilianHaak\\MaxeLBerger.github.io\\tools\\mcp-portfolio-server\\src\\index.ts"
       ]
     }
   }
