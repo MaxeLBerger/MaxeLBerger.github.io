@@ -72,6 +72,9 @@
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
             'projects.title': 'Portfolio',
+            'projects.note': 'Hinweis: Viele dieser Projekte sind Prototypen und Eigenentwicklungen. Aktuell bin ich in Festanstellung als Software-Entwickler tätig und biete keine kommerziellen Web-Dienstleistungen an. Künftig ist eine selbstständige Tätigkeit nebenberuflich oder hauptberuflich denkbar.',
+            'projects.group.websites': 'Websites & Apps',
+            'projects.group.games': 'Games',
             'about.tag': 'Über mich',
             'about.title': 'Maximilian Haak',
             'about.p1': 'Ich bin Maximilian — Fullstack-Webentwickler und KI-Spezialist aus Bruckmühl bei Rosenheim. Ich entwickle moderne Websites, Web-Apps und KI-gestützte Automatisierungen für kleine und mittelständische Unternehmen in der Region.',
@@ -189,6 +192,39 @@
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
             'slide.medieval.badge': 'TOWER DEFENSE',
+            // Slide 9 - Daniel Brecheis (Human Bridges Consulting)
+            'slide.danielbrecheis.t1': 'HR Coaching.',
+            'slide.danielbrecheis.t2': 'Human',
+            'slide.danielbrecheis.t3': 'Bridges.',
+            'slide.danielbrecheis.desc': 'Daniel Brecheis — Human Bridges Consulting: Markenwebsite für HR-Coaching, Workshops und Interim-Management. Klare Typografie, ruhige Bildsprache und ein wertiges Erscheinungsbild für 25+ Jahre HR-Erfahrung.',
+            'slide.danielbrecheis.cta1': 'Live ansehen',
+            'slide.danielbrecheis.cta2': 'Projekt-Details',
+            'slide.danielbrecheis.tag1': 'Coaching',
+            'slide.danielbrecheis.tag2': 'Branding',
+            'slide.danielbrecheis.tag3': 'Vercel',
+            'slide.danielbrecheis.badge': 'CONSULTING',
+            // Slide 10 - Kaya Seeds
+            'slide.kayaseeds.t1': 'Premium.',
+            'slide.kayaseeds.t2': 'Cannabis',
+            'slide.kayaseeds.t3': 'Seeds.',
+            'slide.kayaseeds.desc': 'Kaya Seeds: E-Commerce-Website für eine bayerische Cannabis-Samenmarke. Editoriales Layout, Produkt-Grid, Warenkorb-Flow und ein Markenauftritt zwischen 70er-Vibe und moderner Frische.',
+            'slide.kayaseeds.cta1': 'Live ansehen',
+            'slide.kayaseeds.cta2': 'Projekt-Details',
+            'slide.kayaseeds.tag1': 'E-Commerce',
+            'slide.kayaseeds.tag2': 'Branding',
+            'slide.kayaseeds.tag3': 'Shopify',
+            'slide.kayaseeds.badge': 'ONLINE-SHOP',
+            // Slide 11 - JK Entertainment
+            'slide.jkentertainment.t1': 'TCG-Shop.',
+            'slide.jkentertainment.t2': 'Magic, Pokémon',
+            'slide.jkentertainment.t3': '& mehr.',
+            'slide.jkentertainment.desc': 'JK Entertainment: Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! & 6 weitere). Next.js Storefront, Produktkatalog mit über 4.000 Artikeln, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.',
+            'slide.jkentertainment.cta1': 'Live ansehen',
+            'slide.jkentertainment.cta2': 'Projekt-Details',
+            'slide.jkentertainment.tag1': 'Next.js',
+            'slide.jkentertainment.tag2': 'E-Commerce',
+            'slide.jkentertainment.tag3': 'TCG',
+            'slide.jkentertainment.badge': 'TCG STORE',
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -268,6 +304,9 @@
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
             'projects.title': 'Portfolio',
+            'projects.note': 'Note: Many of these projects are prototypes and personal builds. I currently work as a full-time employed software developer and do not offer commercial web services at the moment. Going freelance — part-time or full-time — is something I may consider in the future.',
+            'projects.group.websites': 'Websites & Apps',
+            'projects.group.games': 'Games',
             'about.tag': 'About me',
             'about.title': 'Maximilian Haak',
             'about.p1': 'I\'m Maximilian — a fullstack web developer and AI specialist based in Bruckmühl near Rosenheim, Bavaria. I build modern websites, web apps, and AI-powered automations for small and medium businesses in the region.',
@@ -385,6 +424,39 @@
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
             'slide.medieval.badge': 'TOWER DEFENSE',
+            // Slide 9 - Daniel Brecheis
+            'slide.danielbrecheis.t1': 'HR Coaching.',
+            'slide.danielbrecheis.t2': 'Human',
+            'slide.danielbrecheis.t3': 'Bridges.',
+            'slide.danielbrecheis.desc': 'Daniel Brecheis — Human Bridges Consulting: Brand website for HR coaching, workshops and interim management. Clear typography, calm imagery and a premium presence for 25+ years of HR experience.',
+            'slide.danielbrecheis.cta1': 'View Live',
+            'slide.danielbrecheis.cta2': 'Project Details',
+            'slide.danielbrecheis.tag1': 'Coaching',
+            'slide.danielbrecheis.tag2': 'Branding',
+            'slide.danielbrecheis.tag3': 'Vercel',
+            'slide.danielbrecheis.badge': 'CONSULTING',
+            // Slide 10 - Kaya Seeds
+            'slide.kayaseeds.t1': 'Premium.',
+            'slide.kayaseeds.t2': 'Cannabis',
+            'slide.kayaseeds.t3': 'Seeds.',
+            'slide.kayaseeds.desc': 'Kaya Seeds: e-commerce website for a Bavarian cannabis seed brand. Editorial layout, product grid, cart flow and a brand identity between 70s vibe and modern freshness.',
+            'slide.kayaseeds.cta1': 'View Live',
+            'slide.kayaseeds.cta2': 'Project Details',
+            'slide.kayaseeds.tag1': 'E-Commerce',
+            'slide.kayaseeds.tag2': 'Branding',
+            'slide.kayaseeds.tag3': 'Shopify',
+            'slide.kayaseeds.badge': 'ONLINE STORE',
+            // Slide 11 - JK Entertainment
+            'slide.jkentertainment.t1': 'TCG Shop.',
+            'slide.jkentertainment.t2': 'Magic, Pokémon',
+            'slide.jkentertainment.t3': '& more.',
+            'slide.jkentertainment.desc': 'JK Entertainment: online shop for Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! & 6 more). Next.js storefront, product catalog with 4,000+ items, pre-order system and community link to two stores in Frankfurt and Darmstadt.',
+            'slide.jkentertainment.cta1': 'View Live',
+            'slide.jkentertainment.cta2': 'Project Details',
+            'slide.jkentertainment.tag1': 'Next.js',
+            'slide.jkentertainment.tag2': 'E-Commerce',
+            'slide.jkentertainment.tag3': 'TCG',
+            'slide.jkentertainment.badge': 'TCG STORE',
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -425,7 +497,7 @@
     }
 
     /* ═══ COLOR THEME PICKER ═══ */
-    const COLOR_THEMES = ['maxhaak', 'imkerei', 'coha', 'aicaptain', 'soundoflvke', 'shookroko'];
+    const COLOR_THEMES = ['maxhaak', 'imkerei', 'coha', 'aicaptain', 'soundoflvke', 'shookroko', 'danielbrecheis', 'kayaseeds', 'jkentertainment'];
 
     /**
      * Theme controller — single source of truth for `data-project-theme`.
@@ -588,6 +660,17 @@
 
             this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
             this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'));
+
+            // Re-sort slides to match nav button order (data-project ↔ data-theme)
+            // so that index-based pairing in goToSlide() stays in sync after the
+            // nav has been grouped/re-ordered visually.
+            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
+            const ordered = this.navBtns
+                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
+                .filter(Boolean);
+            if (ordered.length === this.slides.length) {
+                this.slides = ordered;
+            }
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');

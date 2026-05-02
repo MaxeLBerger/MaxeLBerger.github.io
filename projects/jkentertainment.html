@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de" data-color-scheme="dark" data-project-theme="jkentertainment">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK Entertainment — TCG Online-Shop | Maximilian Haak</title>
+    <meta name="description" content="JK Entertainment: Next.js Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! u.v.m.) mit Vorbestell-System und Anbindung an zwei Stores in Frankfurt und Darmstadt.">
+    <meta name="author" content="Maximilian Haak">
+    <link rel="icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Startseite">
+                <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#pricing">Leistungen</a>
+                <a href="../index.html#portfolio">Portfolio</a>
+                <a href="../index.html#about">Über mich</a>
+                <a href="../index.html#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-page">
+        <section class="project-hero">
+            <div class="container">
+                <a href="../index.html#portfolio" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Zurück zum Portfolio
+                </a>
+                <div class="project-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                    TCG E-Commerce
+                </div>
+                <h1 class="project-title">TCG-Shop. <span class="gradient-text">Magic, Pokémon &amp; mehr.</span></h1>
+                <p class="project-tagline">JK Entertainment: Next.js-Storefront für Trading Card Games — neun Spielesysteme, über 4.000 Produkte, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.</p>
+                <div class="project-actions">
+                    <a href="https://jk-entertainment.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Ihr Projekt starten</a>
+                </div>
+                <div class="project-screenshot">
+                    <img src="../assets/img/projects/jkentertainment.webp" alt="JK Entertainment TCG-Shop Screenshot" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <div class="project-content">
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Über das Projekt
+                </span>
+                <h2 class="section-title">20+ Jahre TCG-Erfahrung — online skaliert</h2>
+                <p class="section-text">JK Entertainment ist seit über zwei Jahrzehnten erste Adresse für Trading Card Games in Deutschland — mit zwei Stores in Frankfurt und Darmstadt, regelmäßigen Turnieren und einer großen Community. Die neue Website überträgt dieses Erlebnis ins Web.</p>
+                <p class="section-text">Gebaut als Next.js-Storefront: Shop-Kategorien für Magic, Pokémon, Yu-Gi-Oh!, One Piece, Lorcana, Digimon, Dragonball, Flesh and Blood und Riftbound; Highlights- und Vorbestell-Slider; sortierbare Produktlisten; ein schneller Warenkorb mit Stripe/PayPal-Anbindung; sowie Event-, FAQ- und Storefinder-Seiten.</p>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                    Features
+                </span>
+                <h2 class="section-title">Was die Website kann</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+                        </div>
+                        <h3>9 TCG-Kategorien</h3>
+                        <p>Magic, Pokémon, Yu-Gi-Oh!, One Piece, Lorcana, Digimon, Dragonball, Flesh &amp; Blood, Riftbound — eigenes Routing pro Kategorie.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg>
+                        </div>
+                        <h3>Vorbestell-System</h3>
+                        <p>Pre-Order-Boxen mit garantiertem Versand am Release-Tag — ein zentrales Verkaufsargument im TCG-Markt.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h3>Storefinder</h3>
+                        <p>Anbindung an die zwei stationären Stores in Frankfurt und Darmstadt — inkl. Events und Turnierplänen.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3>Performance</h3>
+                        <p>Next.js Image Optimization, statische Kategorieseiten und schnelle Hydration — auch bei 4.000+ Produkten.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <span class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Tech Stack
+                </span>
+                <h2 class="section-title">Technologien</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">Next.js</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Stripe</span>
+                    <span class="tech-badge">PayPal</span>
+                    <span class="tech-badge">Vercel</span>
+                    <span class="tech-badge">SEO</span>
+                </div>
+            </section>
+
+            <div class="project-cta">
+                <h2>Sie planen einen eigenen Online-Shop?</h2>
+                <p>Schauen Sie sich JK Entertainment live an — oder lassen Sie uns über Ihre eigene Storefront sprechen.</p>
+                <div class="project-actions">
+                    <a href="https://jk-entertainment.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-links">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

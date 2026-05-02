@@ -36,6 +36,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maximilianhaak.de/projects/danielbrecheis.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maximilianhaak.de/projects/kayaseeds.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maximilianhaak.de/projects/jkentertainment.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maximilianhaak.de/impressum.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

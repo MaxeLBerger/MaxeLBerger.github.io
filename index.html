@@ -132,6 +132,9 @@
                         <button class="color-swatch" data-color-theme="aicaptain" aria-label="Lila" title="Lila"><span style="background: linear-gradient(135deg, #a78bfa, #7c3aed);"></span></button>
                         <button class="color-swatch" data-color-theme="soundoflvke" aria-label="Pink" title="Pink"><span style="background: linear-gradient(135deg, #fb7185, #e11d48);"></span></button>
                         <button class="color-swatch" data-color-theme="shookroko" aria-label="Limette" title="Limette"><span style="background: linear-gradient(135deg, #a3e635, #65a30d);"></span></button>
+                        <button class="color-swatch" data-color-theme="danielbrecheis" aria-label="Navy" title="Navy"><span style="background: linear-gradient(135deg, #3b82f6, #1e3a8a);"></span></button>
+                        <button class="color-swatch" data-color-theme="kayaseeds" aria-label="Smaragd" title="Smaragd"><span style="background: linear-gradient(135deg, #34d399, #047857);"></span></button>
+                        <button class="color-swatch" data-color-theme="jkentertainment" aria-label="TCG Orange" title="TCG Orange"><span style="background: linear-gradient(135deg, #fb923c, #c2410c);"></span></button>
                     </div>
                 </div>
                 <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
@@ -204,37 +207,52 @@
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
                     <h2 class="section-title" data-i18n="projects.title">Portfolio</h2>
+                    <p class="section-note" data-i18n="projects.note">Hinweis: Viele dieser Projekte sind Prototypen und Eigenentwicklungen. Aktuell bin ich in Festanstellung als Software-Entwickler tätig und biete keine kommerziellen Web-Dienstleistungen an. Künftig ist eine selbstständige Tätigkeit nebenberuflich oder hauptberuflich denkbar.</p>
                 </div>
             </div>
 
             <div class="project-nav" role="tablist">
-                <button class="project-nav-btn active" data-project="e46" role="tab" aria-selected="true">
+                <h3 class="project-nav-group" data-i18n="projects.group.websites">Websites &amp; Apps</h3>
+                <button class="project-nav-btn active" data-project="e46" data-category="web" role="tab" aria-selected="true">
                     <span class="nav-dot"></span>
                     <span>E46 Studio</span>
                 </button>
-                <button class="project-nav-btn" data-project="imkerei" role="tab" aria-selected="false">
+                <button class="project-nav-btn" data-project="imkerei" data-category="web" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
                     <span>Imkerei Feuerstein</span>
                 </button>
-                <button class="project-nav-btn" data-project="coha" role="tab" aria-selected="false">
+                <button class="project-nav-btn" data-project="danielbrecheis" data-category="web" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Daniel Brecheis</span>
+                </button>
+                <button class="project-nav-btn" data-project="kayaseeds" data-category="web" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Kaya Seeds</span>
+                </button>
+                <button class="project-nav-btn" data-project="jkentertainment" data-category="web" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>JK Entertainment</span>
+                </button>
+                <button class="project-nav-btn" data-project="coha" data-category="web" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
                     <span>CoHa</span>
                 </button>
-                <button class="project-nav-btn" data-project="soundoflvke" role="tab" aria-selected="false">
-                    <span class="nav-dot"></span>
-                    <span>SoundOfLvke</span>
-                </button>
-                <button class="project-nav-btn" data-project="aicaptain" role="tab" aria-selected="false">
+                <button class="project-nav-btn" data-project="aicaptain" data-category="web" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
                     <span>AI Captain</span>
                 </button>
-                <button class="project-nav-btn" data-project="shookroko" role="tab" aria-selected="false">
+                <button class="project-nav-btn" data-project="soundoflvke" data-category="web" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
-                    <span>Shookroko</span>
+                    <span>SoundOfLvke</span>
                 </button>
-                <button class="project-nav-btn" data-project="medieval" role="tab" aria-selected="false">
+                <h3 class="project-nav-group" data-i18n="projects.group.games">Games</h3>
+                <button class="project-nav-btn" data-project="medieval" data-category="game" role="tab" aria-selected="false">
                     <span class="nav-dot"></span>
                     <span>Medieval TD</span>
+                </button>
+                <button class="project-nav-btn" data-project="shookroko" data-category="game" role="tab" aria-selected="false">
+                    <span class="nav-dot"></span>
+                    <span>Shookroko</span>
                 </button>
             </div>
 
@@ -533,6 +551,135 @@
                                     </div>
                                     <div class="showcase-image-wrap">
                                         <img src="assets/img/projects/medieval.webp" alt="Medieval Tower Defense" loading="lazy" decoding="async" width="1600" height="896">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 9: Daniel Brecheis — Human Bridges Consulting -->
+                <div class="hero-slide" id="slide-danielbrecheis" data-theme="danielbrecheis" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.danielbrecheis.t1">HR Coaching.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.danielbrecheis.t2">Human</span></span>
+                                <span class="title-line" data-i18n="slide.danielbrecheis.t3">Bridges.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.danielbrecheis.desc">Daniel Brecheis — Human Bridges Consulting: Markenwebsite für HR-Coaching, Workshops und Interim-Management. Klare Typografie, ruhige Bildsprache und ein wertiges Erscheinungsbild für 25+ Jahre HR-Erfahrung.</p>
+                            <div class="slide-cta">
+                                <a href="https://danielbrecheis.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.danielbrecheis.cta1">Live ansehen</a>
+                                <a href="projects/danielbrecheis.html" class="btn btn-outline" data-i18n="slide.danielbrecheis.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag1">Coaching</span>
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag2">Branding</span>
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag3">Vercel</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    <span data-i18n="slide.danielbrecheis.badge">CONSULTING</span>
+                                </div>
+                                <a href="https://danielbrecheis.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Daniel Brecheis Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">danielbrecheis.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/danielbrecheis.webp" alt="Daniel Brecheis — Human Bridges Consulting" loading="lazy" decoding="async" width="1600" height="802">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 10: Kaya Seeds -->
+                <div class="hero-slide" id="slide-kayaseeds" data-theme="kayaseeds" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.kayaseeds.t1">Premium.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.kayaseeds.t2">Cannabis</span></span>
+                                <span class="title-line" data-i18n="slide.kayaseeds.t3">Seeds.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.kayaseeds.desc">Kaya Seeds: E-Commerce-Website für eine bayerische Cannabis-Samenmarke. Editoriales Layout, Produkt-Grid, Warenkorb-Flow und ein Markenauftritt zwischen 70er-Vibe und moderner Frische.</p>
+                            <div class="slide-cta">
+                                <a href="https://kayaseeds.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.kayaseeds.cta1">Live ansehen</a>
+                                <a href="projects/kayaseeds.html" class="btn btn-outline" data-i18n="slide.kayaseeds.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.kayaseeds.tag1">E-Commerce</span>
+                                <span class="slide-tag" data-i18n="slide.kayaseeds.tag2">Branding</span>
+                                <span class="slide-tag" data-i18n="slide.kayaseeds.tag3">Shopify</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 9V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3"/><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M9 13h6"/></svg>
+                                    <span data-i18n="slide.kayaseeds.badge">ONLINE-SHOP</span>
+                                </div>
+                                <a href="https://kayaseeds.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Kaya Seeds Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">kayaseeds.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/kayaseeds.webp" alt="Kaya Seeds — Cannabis Seeds Online-Shop" loading="lazy" decoding="async" width="1600" height="774">
+                                    </div>
+                                </div></a>
+                                <div class="showcase-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 11: JK Entertainment -->
+                <div class="hero-slide" id="slide-jkentertainment" data-theme="jkentertainment" role="tabpanel">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.jkentertainment.t1">TCG-Shop.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.jkentertainment.t2">Magic, Pokémon</span></span>
+                                <span class="title-line" data-i18n="slide.jkentertainment.t3">&amp; mehr.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.jkentertainment.desc">JK Entertainment: Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! &amp; 6 weitere). Next.js Storefront, Produktkatalog mit über 4.000 Artikeln, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.</p>
+                            <div class="slide-cta">
+                                <a href="https://jk-entertainment.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.jkentertainment.cta1">Live ansehen</a>
+                                <a href="projects/jkentertainment.html" class="btn btn-outline" data-i18n="slide.jkentertainment.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.jkentertainment.tag1">Next.js</span>
+                                <span class="slide-tag" data-i18n="slide.jkentertainment.tag2">E-Commerce</span>
+                                <span class="slide-tag" data-i18n="slide.jkentertainment.tag3">TCG</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                                    <span data-i18n="slide.jkentertainment.badge">TCG STORE</span>
+                                </div>
+                                <a href="https://jk-entertainment.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="JK Entertainment Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="browser-url">jk-entertainment.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/jkentertainment.webp" alt="JK Entertainment — TCG Online-Shop" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                                 <div class="showcase-glow"></div>

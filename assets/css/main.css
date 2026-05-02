@@ -168,6 +168,39 @@
     --theme-glow: rgba(185, 28, 28, 0.32);
 }
 
+/* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire — wertig, vertrauensvoll */
+[data-project-theme="danielbrecheis"] {
+    --theme-primary: 30, 64, 175;
+    --theme-secondary: 30, 58, 138;
+    --theme-accent: 59, 130, 246;
+    --theme-gradient-start: #3b82f6;
+    --theme-gradient-mid: #1e40af;
+    --theme-gradient-end: #1e3a8a;
+    --theme-glow: rgba(30, 64, 175, 0.3);
+}
+
+/* Kaya Seeds: Emerald — natürlich, lebendig */
+[data-project-theme="kayaseeds"] {
+    --theme-primary: 16, 185, 129;
+    --theme-secondary: 5, 150, 105;
+    --theme-accent: 52, 211, 153;
+    --theme-gradient-start: #34d399;
+    --theme-gradient-mid: #10b981;
+    --theme-gradient-end: #047857;
+    --theme-glow: rgba(16, 185, 129, 0.3);
+}
+
+/* JK Entertainment: Trading-Card-Orange — energetisch, spielerisch (matches Logo + CTA) */
+[data-project-theme="jkentertainment"] {
+    --theme-primary: 249, 115, 22;
+    --theme-secondary: 234, 88, 12;
+    --theme-accent: 251, 146, 60;
+    --theme-gradient-start: #fb923c;
+    --theme-gradient-mid: #f97316;
+    --theme-gradient-end: #c2410c;
+    --theme-glow: rgba(249, 115, 22, 0.32);
+}
+
 /* Theme transition on all theme-aware elements */
 [data-project-theme] {
     transition:
@@ -1249,6 +1282,21 @@ html[data-color-scheme="light"] .hero-section::after {
     z-index: 5;
 }
 
+.project-nav-group {
+    flex-basis: 100%;
+    text-align: center;
+    margin: var(--space-md) 0 var(--space-xs);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.project-nav-group:first-child {
+    margin-top: 0;
+}
+
 .project-nav-btn {
     display: inline-flex;
     align-items: center;
@@ -1967,6 +2015,19 @@ html[data-color-scheme="light"] .projects-section::after {
 .section-header {
     text-align: center;
     margin-bottom: var(--space-3xl);
+}
+
+.section-note {
+    max-width: 760px;
+    margin: var(--space-lg) auto 0;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(var(--theme-primary), 0.18);
+    background: rgba(var(--theme-primary), 0.04);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    transition: border-color var(--theme-transition), background var(--theme-transition);
 }
 
 .section-tag {
