@@ -1629,9 +1629,20 @@
             slides[0].classList.add('is-active');
         }
 
+        // Lazy-load background-image for the deferred slides only when needed.
+        // hero-06/07 are NOT visible on first paint and would otherwise eat
+        // ~140 KB of bandwidth that competes with the LCP image.
+        const ensureBg = (slide) => {
+            const url = slide.dataset.bg;
+            if (!url) return;
+            slide.style.backgroundImage = `url('${url}')`;
+            delete slide.dataset.bg;
+        };
+
         let timerId = null;
         const tick = () => {
             const next = (index + 1) % slides.length;
+            ensureBg(slides[next]);
             slides[index].classList.remove('is-active');
             slides[next].classList.add('is-active');
             index = next;
