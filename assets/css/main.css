@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    DESIGN TOKENS
    ═══════════════════════════════════════════════ */
 :root {
@@ -168,6 +168,17 @@
     --theme-glow: rgba(185, 28, 28, 0.32);
 }
 
+/* dog-kennel-online: Teal mit warmem Akzent — ruhig, operativ */
+[data-project-theme="dogkennel"] {
+    --theme-primary: 13, 148, 136;
+    --theme-secondary: 15, 118, 110;
+    --theme-accent: 251, 146, 60;
+    --theme-gradient-start: #2dd4bf;
+    --theme-gradient-mid: #0d9488;
+    --theme-gradient-end: #115e59;
+    --theme-glow: rgba(13, 148, 136, 0.3);
+}
+
 /* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire — wertig, vertrauensvoll */
 [data-project-theme="danielbrecheis"] {
     --theme-primary: 30, 64, 175;
@@ -271,10 +282,10 @@ html[data-color-scheme="light"] body {
         var(--color-bg);
 }
 
-html[data-color-scheme="light"] .hero-orb {
-    opacity: 0.14;
+html[data-color-scheme="light"] .project-orb {
+    opacity: 0.16;
     /* mix-blend-mode: multiply was visually nicer but forced Chrome to
-       composite the entire hero on every animation frame. */
+       composite the entire section on every animation frame. */
 }
 
 /* Tags / chips ------------------------------------------------------------ */
@@ -305,7 +316,7 @@ html[data-color-scheme="light"] .pricing-card:hover {
 html[data-color-scheme="light"] .pricing-price {
     border-bottom-color: rgba(15, 23, 42, 0.08);
 }
-html[data-color-scheme="light"] .contact-map iframe {
+html[data-color-scheme="light"] .contact-map-link {
     border-color: rgba(15, 23, 42, 0.10);
 }
 
@@ -348,32 +359,6 @@ html[data-color-scheme="light"] .form-textarea:focus,
 html[data-color-scheme="light"] .form-select:focus {
     border-color: rgb(var(--theme-primary));
     box-shadow: 0 0 0 4px rgba(var(--theme-primary), 0.15);
-}
-
-/* Hero photo ring -------------------------------------------------------- */
-html[data-color-scheme="light"] .hero-photo-ring {
-    border-color: rgba(15, 23, 42, 0.14);
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.10);
-}
-
-/* Cutout silhouette gets a softer, slate-tinted drop-shadow on light bg */
-html[data-color-scheme="light"] .hero-photo-float.is-cutout {
-    filter:
-        drop-shadow(0 18px 28px rgba(var(--theme-primary), 0.22))
-        drop-shadow(0 6px 14px rgba(15, 23, 42, 0.18));
-}
-html[data-color-scheme="light"] .hero-photo-float.is-cutout::before {
-    background: radial-gradient(
-        ellipse at 50% 55%,
-        rgba(var(--theme-primary), 0.22) 0%,
-        rgba(var(--theme-primary), 0.08) 35%,
-        transparent 65%
-    );
-}
-html[data-color-scheme="light"] .showcase-link:hover .hero-photo-float.is-cutout {
-    filter:
-        drop-shadow(0 22px 34px rgba(var(--theme-primary), 0.32))
-        drop-shadow(0 8px 16px rgba(15, 23, 42, 0.22));
 }
 
 /* Slider arrows ---------------------------------------------------------- */
@@ -828,6 +813,42 @@ html[data-color-scheme="light"] .color-picker-popover {
                 box-shadow var(--duration-base) var(--ease-out);
 }
 
+.color-swatch[data-color-theme="maxhaak"] span {
+    background: linear-gradient(135deg, #60a5fa, #6366f1);
+}
+
+.color-swatch[data-color-theme="imkerei"] span {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.color-swatch[data-color-theme="coha"] span {
+    background: linear-gradient(135deg, #e6ac5a, #8b4513);
+}
+
+.color-swatch[data-color-theme="aicaptain"] span {
+    background: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+.color-swatch[data-color-theme="soundoflvke"] span {
+    background: linear-gradient(135deg, #fb7185, #e11d48);
+}
+
+.color-swatch[data-color-theme="shookroko"] span {
+    background: linear-gradient(135deg, #a3e635, #65a30d);
+}
+
+.color-swatch[data-color-theme="danielbrecheis"] span {
+    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+}
+
+.color-swatch[data-color-theme="kayaseeds"] span {
+    background: linear-gradient(135deg, #34d399, #047857);
+}
+
+.color-swatch[data-color-theme="jkentertainment"] span {
+    background: linear-gradient(135deg, #fb923c, #c2410c);
+}
+
 .color-swatch:hover {
     opacity: 1;
     transform: scale(1.15);
@@ -979,11 +1000,10 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 /* Layered hero backdrop:
    1. Mountain photo, dimmed and slightly desaturated, sits at z=-3.
-   2. Theme-tinted gradient veil at z=-2 keeps the photo on-brand and
-      transitions colour with the active project theme.
-   3. Bottom-fade gradient at z=-1 blends seamlessly into the page
-      background so neighbouring sections remain edge-less.
-   The orbs (.hero-background) keep working on top at z=0. */
+    2. Theme-tinted gradient veil at z=-2 keeps the photo on-brand and
+        transitions colour with the active project theme.
+    3. Bottom-fade gradient at z=-1 blends seamlessly into the page
+        background so neighbouring sections remain edge-less. */
 .hero-section::before,
 .hero-section::after {
     content: '';
@@ -1015,9 +1035,6 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 .hero-bg-slide {
     position: absolute;
     inset: 0;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     filter: brightness(0.72) saturate(1.0) hue-rotate(-4deg);
     transform: scale(1.04);
     opacity: 0;
@@ -1029,7 +1046,33 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     opacity: 1;
 }
 
-.hero-bg-1 { background-image: url('../img/backgrounds/hero-01.webp'); }
+.hero-bg-squared {
+    transform: none;
+    filter: brightness(0.58) saturate(1.04) contrast(1.02);
+}
+
+.hero-bg-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 35% 70%;
+}
+@media (min-width: 1200px) {
+    .hero-bg-image {
+        /* Wider landscape — keep cover, just nudge subject left of the
+           text column on big screens. */
+        object-position: 32% 68%;
+    }
+}
+@media (min-width: 1600px) {
+    .hero-bg-image {
+        object-position: 30% 65%;
+    }
+}
+html[data-color-scheme="light"] .hero-bg-slide.hero-bg-squared {
+    filter: brightness(0.72) saturate(1.02) contrast(1.01);
+}
 /* hero-bg-6 / hero-bg-7 background-image is set via JS after first paint
    so they don't compete with the LCP image for bandwidth. */
 
@@ -1106,21 +1149,222 @@ html[data-color-scheme="light"] .hero-section::after {
     z-index: 2;
 }
 
+/* Single-column variant — right-aligned over the calmer right portion of
+   the hero photo so the subject (car + person) on the LEFT stays fully
+   visible and the headline never lands on top of him. */
+.hero-section--single .hero-content {
+    width: 100%;
+    /* Cap the hero band on wide screens so the text column doesn't drift
+       to the far right edge — keeps the headline near the visual center
+       of the photo subject without overlapping it. */
+    max-width: 1280px;
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
+    justify-content: end;
+    text-align: left;
+    padding-left: var(--space-xl);
+    padding-right: clamp(var(--space-lg), 4vw, 4rem);
+}
+
+.hero-section--single .hero-text {
+    align-items: flex-start;
+    grid-column: 2;
+    max-width: 520px;
+    margin-left: auto;
+}
+
+.hero-section--single .slide-title {
+    color: #ffffff;
+    font-size: clamp(3.1rem, 4.7vw, 4.35rem);
+    line-height: 0.96;
+    letter-spacing: 0;
+}
+
+.hero-section--single .slide-description {
+    max-width: 500px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 0.5vw + 0.9rem, 1.16rem);
+    line-height: 1.62;
+}
+
+.hero-section--single .slide-cta {
+    justify-content: flex-start;
+}
+
+/* Soft directional veil over the right side of the hero. Uses a wide,
+   gently-curved gradient (no hard color stops) so it blends into the
+   photo instead of reading as a visible "box" behind the text. */
+.hero-section--single::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: linear-gradient(
+        270deg,
+        rgba(8, 10, 18, 0.55) 0%,
+        rgba(8, 10, 18, 0.42) 18%,
+        rgba(8, 10, 18, 0.22) 38%,
+        rgba(8, 10, 18, 0.08) 58%,
+        rgba(8, 10, 18, 0) 75%
+    );
+}
+html[data-color-scheme="light"] .hero-section--single::before {
+    background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.40) 18%,
+        rgba(255, 255, 255, 0.20) 38%,
+        rgba(255, 255, 255, 0.06) 58%,
+        rgba(255, 255, 255, 0) 75%
+    );
+}
+
+.hero-section--square::before {
+    background: linear-gradient(
+        270deg,
+        rgba(8, 10, 18, 0.78) 0%,
+        rgba(8, 10, 18, 0.66) 26%,
+        rgba(8, 10, 18, 0.42) 46%,
+        rgba(8, 10, 18, 0.16) 68%,
+        rgba(8, 10, 18, 0) 88%
+    );
+}
+html[data-color-scheme="light"] .hero-section--square::before {
+    background: linear-gradient(
+        270deg,
+        rgba(8, 10, 18, 0.66) 0%,
+        rgba(8, 10, 18, 0.54) 26%,
+        rgba(8, 10, 18, 0.32) 46%,
+        rgba(8, 10, 18, 0.12) 68%,
+        rgba(8, 10, 18, 0) 88%
+    );
+}
+
+/* No localized box-shaped backdrop behind the text — the wide section
+   veil above + the per-text shadow below carry contrast cleanly without
+   producing a visible rectangle. */
+.hero-section--single .hero-text {
+    position: relative;
+}
+
+/* Layered, very soft text shadow — a tight close shadow for crispness
+   plus a wider diffuse one for atmospheric separation from the photo.
+   Both are subtle enough to look natural, never blocky. */
+.hero-section--single .slide-title,
+.hero-section--single .slide-description {
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.45),
+        0 6px 24px rgba(0, 0, 0, 0.35);
+}
+html[data-color-scheme="light"] .hero-section--single .slide-title,
+html[data-color-scheme="light"] .hero-section--single .slide-description {
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.34),
+        0 7px 26px rgba(0, 0, 0, 0.24);
+}
+
+/* Gradient text (e.g. "Haak.") uses a transparent fill + background-clip,
+   so a regular text-shadow leaks through and muddies the colors. Strip
+   the shadow on the gradient span and reproduce the depth with a
+   drop-shadow filter that respects the painted (gradient) pixels only. */
+.hero-section--single .slide-title .gradient-text {
+    text-shadow: none;
+    filter:
+        drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45))
+        drop-shadow(0 6px 24px rgba(0, 0, 0, 0.35));
+}
+html[data-color-scheme="light"] .hero-section--single .slide-title .gradient-text {
+    filter:
+        drop-shadow(0 1px 2px rgba(0, 0, 0, 0.34))
+        drop-shadow(0 7px 26px rgba(0, 0, 0, 0.24));
+}
+
+@media (max-width: 1100px) {
+    .hero-section--single .hero-content {
+        grid-template-columns: minmax(0, 1fr) minmax(380px, 460px);
+        padding-right: var(--space-xl);
+    }
+
+    .hero-section--single .hero-text {
+        max-width: 460px;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+    HERO BADGES — standalone white SVG icons with text labels
+    ═══════════════════════════════════════════════ */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: center;
+    width: auto;
+}
+
+.hero-badge {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: auto;
+    min-height: 34px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: #ffffff;
+    white-space: nowrap;
+    transform: translateZ(0);
+}
+
+html[data-color-scheme="light"] .hero-badge {
+    background: transparent;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.hero-badge .badge-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+}
+
+html[data-color-scheme="light"] .hero-badge .badge-icon-wrapper {
+    background: transparent;
+}
+
+.hero-badge svg {
+    width: 30px;
+    height: 30px;
+}
+
+.badge-label {
+    color: #ffffff;
+    font-size: clamp(0.84rem, 0.28vw + 0.78rem, 0.96rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.1;
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.45),
+        0 5px 18px rgba(0, 0, 0, 0.35);
+}
+
 .hero-text {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
 }
 
-.hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Skills section — separate block below hero */
 .skills-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
     position: relative;
 }
 
@@ -1128,8 +1372,8 @@ html[data-color-scheme="light"] .hero-section::after {
     margin-bottom: var(--space-2xl);
 }
 
-/* Background orbs */
-.hero-background {
+/* Portfolio ambient color orbs */
+.projects-background {
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -1137,55 +1381,55 @@ html[data-color-scheme="light"] .hero-section::after {
     z-index: 0;
 }
 
-.hero-orb {
+.project-orb {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.4;
+    opacity: 0.28;
     will-change: transform;
     contain: layout style;
 }
 
-.hero-orb-1 {
-    width: 600px;
-    height: 600px;
-    top: -200px;
-    right: -200px;
+.project-orb-1 {
+    width: 560px;
+    height: 560px;
+    top: clamp(1rem, 7vw, 6rem);
+    right: max(-180px, -9vw);
     background: radial-gradient(
         circle,
-        rgba(var(--theme-primary), 0.4) 0%,
-        rgba(var(--theme-primary), 0.15) 30%,
+        rgba(var(--theme-primary), 0.36) 0%,
+        rgba(var(--theme-primary), 0.12) 34%,
         transparent 70%
     );
-    animation: float-slow 20s ease-in-out infinite;
+    animation: float-slow 24s ease-in-out infinite;
 }
 
-.hero-orb-2 {
-    width: 400px;
-    height: 400px;
-    bottom: -100px;
-    left: -100px;
+.project-orb-2 {
+    width: 440px;
+    height: 440px;
+    bottom: clamp(1rem, 6vw, 5rem);
+    left: max(-160px, -8vw);
     background: radial-gradient(
         circle,
-        rgba(var(--theme-secondary), 0.35) 0%,
-        rgba(var(--theme-secondary), 0.12) 30%,
+        rgba(var(--theme-secondary), 0.30) 0%,
+        rgba(var(--theme-secondary), 0.10) 34%,
         transparent 70%
     );
-    animation: float-slow 25s ease-in-out infinite reverse;
+    animation: float-slow 28s ease-in-out infinite reverse;
 }
 
-.hero-orb-3 {
-    width: 300px;
-    height: 300px;
-    top: 50%;
-    left: 50%;
+.project-orb-3 {
+    width: 320px;
+    height: 320px;
+    top: 44%;
+    left: 55%;
     transform: translate(-50%, -50%);
     background: radial-gradient(
         circle,
-        rgba(var(--theme-accent, var(--theme-primary)), 0.3) 0%,
-        rgba(var(--theme-accent, var(--theme-primary)), 0.1) 30%,
+        rgba(var(--theme-accent, var(--theme-primary)), 0.24) 0%,
+        rgba(var(--theme-accent, var(--theme-primary)), 0.08) 34%,
         transparent 70%
     );
-    animation: pulse-glow 10s ease-in-out infinite;
+    animation: pulse-glow 12s ease-in-out infinite;
 }
 
 /* Global grid overlay */
@@ -1338,6 +1582,161 @@ html[data-color-scheme="light"] .hero-section::after {
     box-shadow: 0 0 8px rgba(var(--theme-primary), 0.5);
 }
 
+/* Project pagination — sits BELOW the slider, replaces the old grouped nav */
+.project-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin: var(--space-2xl) auto var(--space-lg);
+    position: relative;
+    z-index: 5;
+}
+
+.project-pag-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.55rem 1.1rem;
+    background: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.project-pag-btn .project-pag-index {
+    flex: 0 0 auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+    transition: color var(--duration-base);
+}
+
+.project-pag-btn .project-pag-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.project-pag-btn:hover {
+    background: var(--color-bg-elevated);
+}
+
+.project-pag-btn.active {
+    background: rgba(var(--theme-primary), 0.1);
+}
+
+.project-pag-btn.active .project-pag-index {
+    color: rgb(var(--theme-primary));
+}
+
+.project-pag-btn:focus-visible {
+    border-color: rgb(var(--theme-primary));
+    box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.2);
+}
+
+/* Project mode selector — segmented pill above the slider nav */
+.project-mode-selector {
+    display: inline-flex;
+    margin: var(--space-lg) auto var(--space-xl);
+    padding: 4px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    gap: 4px;
+    position: relative;
+    z-index: 5;
+}
+
+.projects-section .container .section-header + .project-mode-selector {
+    display: flex;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-mode-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-width: 180px;
+    min-height: 44px;
+    padding: 0.5rem 1.25rem;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family);
+    font-weight: 500;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+}
+
+.project-mode-btn:not(.is-locked):hover {
+    color: var(--color-text);
+}
+
+.project-mode-btn.is-active {
+    background: rgba(var(--theme-primary), 0.12);
+    color: var(--color-text);
+    box-shadow: 0 0 18px var(--theme-glow),
+                inset 0 0 0 1px rgba(var(--theme-primary), 0.45);
+}
+
+.project-mode-btn.is-locked {
+    color: var(--color-text-muted);
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.project-mode-btn.is-locked:hover,
+.project-mode-btn.is-locked:focus {
+    color: var(--color-text-muted);
+    background: transparent;
+    box-shadow: none;
+}
+
+.project-mode-lock {
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+.project-mode-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    .project-mode-btn {
+        min-width: 0;
+        flex: 1 1 50%;
+        padding: 0.5rem 0.75rem;
+        font-size: var(--font-size-xs);
+    }
+
+    .projects-section .container .section-header + .project-mode-selector {
+        width: 100%;
+    }
+}
+
 /* Hero slides */
 .hero-slides-container {
     position: relative;
@@ -1353,6 +1752,7 @@ html[data-color-scheme="light"] .hero-section::after {
 .hero-slide {
     position: absolute;
     inset: 0;
+    padding: 0 var(--space-xl);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -1388,7 +1788,7 @@ html[data-color-scheme="light"] .hero-section::after {
     font-size: clamp(1.5rem, 4.5vw + 0.25rem, 3.25rem);
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     overflow: visible;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -1441,7 +1841,7 @@ html[data-color-scheme="light"] .hero-section::after {
     max-width: 520px;
 }
 
-/* Badge — positioned relative to parent (.showcase-container or .hero-photo-float) */
+/* Badge — positioned relative to parent (.showcase-container) */
 .showcase-badge {
     position: absolute;
     top: -12px;
@@ -1501,13 +1901,6 @@ html[data-color-scheme="light"] .hero-section::after {
         filter: blur(45px);
         transform: scale(1.15);
     }
-
-    .showcase-link:hover .hero-photo-float {
-        /* Reduced from 80/40 → 28/14. */
-        box-shadow:
-            0 20px 28px rgba(var(--theme-primary), 0.32),
-            0 6px 14px rgba(0, 0, 0, 0.35);
-    }
 }
 
 .showcase-frame {
@@ -1529,270 +1922,6 @@ html[data-color-scheme="light"] .hero-section::after {
 
 .showcase-frame .browser-bar {
     transition: background 0.4s ease;
-}
-
-/* Freely floating profile photo — slide 1 (maxhaak) only */
-.hero-photo-float {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 420px;
-    /* Reduced shadow blur 100/40 → 32/16. The original 100px blur was the
-       single most expensive paint op on the page: it was re-evaluated on
-       every frame of the heroFloat animation AND every mouse-parallax tween. */
-    box-shadow:
-        0 18px 32px rgba(var(--theme-primary), 0.22),
-        0 6px 16px rgba(0, 0, 0, 0.38);
-    border-radius: 1.75rem;
-    transition: box-shadow var(--theme-transition);
-}
-
-/* Inner clip — handles overflow + aspect ratio crop */
-.hero-photo-clip {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3/4;
-    border-radius: 1.75rem;
-    overflow: hidden;
-}
-
-.hero-photo-clip img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
-}
-
-/* Crossfade swap — both images stacked, alternating with opacity.
-   The swap container must fill the aspect-ratio'd .hero-photo-clip itself,
-   otherwise its absolute children collapse to zero height and the
-   ::after gradient shows the page background as a flickering white bar
-   during the 1.2s transition. */
-.hero-photo-swap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.hero-photo-swap .hero-photo-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-    will-change: opacity;
-    backface-visibility: hidden;
-}
-
-.hero-photo-swap .hero-photo-img.is-active {
-    opacity: 1;
-}
-
-/* Mobile: shrink the floating profile photo so it doesn't dominate
-   the hero on narrow viewports. Targets the cutout variant explicitly
-   to win specificity against the desktop max-width: 380px. */
-@media (max-width: 700px) {
-    .hero-photo-float,
-    .hero-photo-float.is-cutout {
-        max-width: 200px;
-        margin-inline: auto;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-photo-swap .hero-photo-img {
-        transition: none;
-    }
-}
-
-/* Decorative glow ring */
-.hero-photo-ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 1.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    pointer-events: none;
-    z-index: 5;
-}
-
-/* ─── Transparent cutout variant ──────────────────────────────────────────
-   Used when the hero image is a background-less PNG of the figure.
-   Drops the rounded-card chrome (clip background, ring, rectangular shadow)
-   and replaces the box-shadow with a silhouette-following drop-shadow plus
-   a soft theme-tinted backdrop glow. */
-.hero-photo-float.is-cutout {
-    max-width: 380px;
-    margin-inline: auto;
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    overflow: visible;
-    /* drop-shadow follows the alpha channel of the PNG, so the silhouette
-       gets a real shadow instead of a rectangle. Kept conservative for
-       Chrome paint cost (single pass, no animation on the filter). */
-    filter:
-        drop-shadow(0 18px 28px rgba(var(--theme-primary), 0.28))
-        drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
-    transition: filter var(--theme-transition);
-}
-
-/* Soft radial backdrop glow behind the silhouette to give it depth on the
-   hero photo. Sits behind the image, follows the active theme. */
-.hero-photo-float.is-cutout::before {
-    content: '';
-    position: absolute;
-    inset: 5% 0 0 0;
-    border-radius: 50%;
-    background: radial-gradient(
-        ellipse at 50% 55%,
-        rgba(var(--theme-primary), 0.32) 0%,
-        rgba(var(--theme-primary), 0.12) 35%,
-        transparent 65%
-    );
-    z-index: -1;
-    pointer-events: none;
-    transition: background var(--theme-transition);
-}
-
-.hero-photo-float.is-cutout .hero-photo-clip {
-    /* Match the actual asset ratio (734 / 1049) so .object-fit: contain has
-       no whitespace and the badge anchors directly to the top of the head. */
-    aspect-ratio: 734 / 1049;
-    border-radius: 0;
-    overflow: visible;
-    background: transparent;
-}
-
-.hero-photo-float.is-cutout .hero-photo-clip img {
-    object-fit: contain;
-    object-position: center bottom;
-    background: transparent;
-}
-
-/* Pin the badge to the actual top of the silhouette rather than letting it
-   float above the (now non-existent) card chrome. */
-.hero-photo-float.is-cutout .showcase-badge {
-    top: 4%;
-    right: 0;
-}
-
-/* No decorative ring on a transparent cutout — would float in mid-air. */
-.hero-photo-float.is-cutout .hero-photo-ring {
-    display: none;
-}
-
-/* Viewfinder corner brackets — small L-shaped markers in the active theme
-   colour at each corner of the photo column. Frames the silhouette so the
-   bottom edge no longer reads as "cut off" and gives the cutout a deliberate,
-   composed look. The element itself is invisible; the four corners are drawn
-   with two pseudo-elements + two backgrounds each via gradient masks. */
-.hero-photo-float.is-cutout .showcase-corners {
-    position: absolute;
-    inset: -14px -14px -8px -14px;
-    pointer-events: none;
-    z-index: 4;
-}
-
-.hero-photo-float.is-cutout .showcase-corners::before,
-.hero-photo-float.is-cutout .showcase-corners::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border-color: rgb(var(--theme-primary));
-    border-style: solid;
-    border-width: 0;
-    transition: border-color var(--theme-transition);
-}
-
-/* top-left + bottom-right via ::before, top-right + bottom-left via ::after.
-   We use box-shadow trick with a single pseudo? Cleaner: keep ::before for
-   the top-left corner and ::after for the bottom-right; add two extra spans
-   on the markup or use additional element. Here we use background-image
-   linear gradients to draw all four with one element. */
-.hero-photo-float.is-cutout .showcase-corners::before {
-    top: 0;
-    left: 0;
-    border-top-width: 2px;
-    border-left-width: 2px;
-    border-top-left-radius: 4px;
-}
-
-.hero-photo-float.is-cutout .showcase-corners::after {
-    bottom: 0;
-    right: 0;
-    border-bottom-width: 2px;
-    border-right-width: 2px;
-    border-bottom-right-radius: 4px;
-}
-
-/* Second pair: top-right + bottom-left, drawn on the parent wrapper itself
-   via additional pseudo-element layering through the badge container is not
-   possible — instead, use box-shadow on the corners element to fake the
-   second pair. We draw two more corners with a wrapper class. */
-.hero-photo-float.is-cutout .showcase-corners-2 {
-    position: absolute;
-    inset: -14px -14px -8px -14px;
-    pointer-events: none;
-    z-index: 4;
-}
-
-.hero-photo-float.is-cutout .showcase-corners-2::before,
-.hero-photo-float.is-cutout .showcase-corners-2::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border-color: rgb(var(--theme-primary));
-    border-style: solid;
-    border-width: 0;
-    transition: border-color var(--theme-transition);
-}
-
-.hero-photo-float.is-cutout .showcase-corners-2::before {
-    top: 0;
-    right: 0;
-    border-top-width: 2px;
-    border-right-width: 2px;
-    border-top-right-radius: 4px;
-}
-
-.hero-photo-float.is-cutout .showcase-corners-2::after {
-    bottom: 0;
-    left: 0;
-    border-bottom-width: 2px;
-    border-left-width: 2px;
-    border-bottom-left-radius: 4px;
-}
-
-/* Subtle hover emphasis */
-.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners::before,
-.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners::after,
-.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners-2::before,
-.showcase-link:hover .hero-photo-float.is-cutout .showcase-corners-2::after {
-    width: 34px;
-    height: 34px;
-    border-color: rgb(var(--theme-primary));
-    transition: width 0.3s ease, height 0.3s ease, border-color var(--theme-transition);
-}
-
-/* Hover override: keep the box-shadow rule from .showcase-link:hover from
-   re-appearing on the cutout (it would draw a rectangle behind the figure). */
-.showcase-link:hover .hero-photo-float.is-cutout {
-    box-shadow: none;
-    filter:
-        drop-shadow(0 22px 34px rgba(var(--theme-primary), 0.38))
-        drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
-}
-
-@keyframes heroFloat {
-    0%, 100% { transform: translateY(0px) rotateY(-5deg) rotateX(2deg); }
-    30%       { transform: translateY(-14px) rotateY(-4.6deg) rotateX(2.4deg); }
-    60%       { transform: translateY(-8px) rotateY(-5.3deg) rotateX(1.7deg); }
 }
 
 .browser-bar {
@@ -1839,28 +1968,50 @@ html[data-color-scheme="light"] .hero-section::after {
     object-fit: cover;
 }
 
-.placeholder-visual {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* dog-kennel-online: image-less browser mock for the in-progress slide */
+.showcase-frame--kennel {
+    cursor: default;
+}
+
+.kennel-mock {
+    aspect-ratio: 16 / 10;
+    display: grid;
+    align-content: start;
     gap: var(--space-md);
-    background: var(--color-bg-card);
-    color: var(--color-text-muted);
-    min-height: 280px;
+    padding: var(--space-xl);
+    background: linear-gradient(160deg,
+        rgba(var(--theme-primary), 0.08) 0%,
+        rgba(var(--theme-primary), 0.02) 60%,
+        var(--color-bg-card) 100%);
 }
 
-.placeholder-visual svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.3;
+.kennel-mock-line {
+    display: block;
+    height: 14px;
+    border-radius: var(--radius-sm);
+    background: rgba(var(--theme-primary), 0.18);
 }
 
-.placeholder-visual span {
-    font-size: var(--font-size-sm);
-    opacity: 0.5;
+.kennel-mock-line--lg {
+    width: 60%;
+    height: 22px;
+    background: rgba(var(--theme-primary), 0.32);
+}
+
+.kennel-mock-line--sm {
+    width: 35%;
+    background: rgba(var(--theme-primary), 0.12);
+}
+
+.kennel-mock-grid {
+    display: block;
+    margin-top: var(--space-md);
+    height: 110px;
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(var(--theme-primary), 0.35);
+    background:
+        repeating-linear-gradient(0deg, rgba(var(--theme-primary), 0.06) 0 1px, transparent 1px 28px),
+        repeating-linear-gradient(90deg, rgba(var(--theme-primary), 0.06) 0 1px, transparent 1px 28px);
 }
 
 /* Showcase glow behind frame */
@@ -1948,13 +2099,6 @@ html[data-color-scheme="light"] .hero-section::after {
     opacity: 0.3;
 }
 
-.placeholder-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
 @keyframes scrollBounce {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(8px); }
@@ -1964,13 +2108,19 @@ html[data-color-scheme="light"] .hero-section::after {
    PROJECTS SHOWCASE SECTION
    ═══════════════════════════════════════════════ */
 .projects-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
     position: relative;
     overflow: hidden;
     isolation: isolate;
     /* Section sits flat on --color-bg so the hero's bottom fade
        (which ends in solid --color-bg) flows in without any seam. */
     background: var(--color-bg);
+}
+
+.projects-section > .container,
+.projects-section .hero-slides-container {
+    position: relative;
+    z-index: 1;
 }
 
 /* No decorative blobs — the section sits flat on --color-bg so the hero's
@@ -2014,7 +2164,7 @@ html[data-color-scheme="light"] .projects-section::after {
    ═══════════════════════════════════════════════ */
 .section-header {
     text-align: center;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
 }
 
 .section-note {
@@ -2028,6 +2178,11 @@ html[data-color-scheme="light"] .projects-section::after {
     font-size: var(--font-size-sm);
     line-height: 1.6;
     transition: border-color var(--theme-transition), background var(--theme-transition);
+}
+
+.section-note--footer {
+    margin-top: var(--space-2xl);
+    text-align: center;
 }
 
 .section-tag {
@@ -2055,10 +2210,150 @@ html[data-color-scheme="light"] .projects-section::after {
 }
 
 /* ═══════════════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════════════ */
+.about-section {
+    position: relative;
+    padding: var(--space-4xl) 0;
+    overflow: hidden;
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(340px, 0.95fr) minmax(0, 0.9fr);
+    gap: clamp(var(--space-xl), 5vw, var(--space-4xl));
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.about-media {
+    justify-self: center;
+    margin: 0;
+    width: min(100%, clamp(420px, 34vw, 520px));
+}
+
+.about-image-frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 5 / 6;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--theme-primary), 0.22);
+    background:
+        linear-gradient(135deg, rgba(var(--theme-primary), 0.06), rgba(var(--theme-secondary), 0.03)),
+        var(--color-bg-card);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.04) inset,
+        0 18px 40px rgba(0, 0, 0, 0.28);
+    transition: border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+.about-image-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 62%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+.about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+    background: var(--color-bg-elevated);
+}
+
+.about-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    justify-self: start;
+    max-width: 58ch;
+}
+
+.about-copy p {
+    max-width: 54ch;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: 1.68;
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+}
+
+.about-highlight {
+    min-height: 96px;
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.035);
+    transition: border-color var(--theme-transition), background var(--theme-transition), transform var(--transition-base);
+}
+
+.about-highlight:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--theme-primary), 0.38);
+    background: rgba(var(--theme-primary), 0.06);
+}
+
+.about-highlight-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    color: rgb(var(--theme-primary));
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.about-highlight strong {
+    display: block;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    line-height: 1.35;
+}
+
+html[data-color-scheme="light"] .about-highlight {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 980px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+    }
+
+    .about-media,
+    .about-copy {
+        justify-self: center;
+    }
+
+    .about-media {
+        width: min(100%, 520px);
+    }
+}
+
+@media (max-width: 560px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .about-copy p {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ═══════════════════════════════════════════════
    SERVICES SECTION
    ═══════════════════════════════════════════════ */
 .services-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
 }
 
 .services-grid {
@@ -2415,7 +2710,7 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
    PRICING SECTION
    ═══════════════════════════════════════════════ */
 .pricing-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
     background: var(--color-bg-elevated);
     position: relative;
 }
@@ -2526,7 +2821,7 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
    TESTIMONIALS
    ============================================ */
 .testimonials-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
     position: relative;
 }
 
@@ -2876,7 +3171,7 @@ html[data-color-scheme="light"] .skill-category:hover {
    CONTACT SECTION
    ═══════════════════════════════════════════════ */
 .contact-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-4xl) 0;
     background: var(--color-bg-elevated);
 }
 
@@ -2930,16 +3225,78 @@ html[data-color-scheme="light"] .skill-category:hover {
     margin-top: 1.5rem;
 }
 
-.contact-map iframe {
+.contact-map-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
     width: 100%;
+    min-height: 96px;
+    padding: var(--space-lg);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    background: rgba(var(--theme-primary), 0.08);
+    border: 1px solid rgba(var(--theme-primary), 0.22);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: border-color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out),
+                transform var(--duration-base) var(--ease-out);
+}
+
+.contact-map-link:hover {
+    background: rgba(var(--theme-primary), 0.13);
+    border-color: rgba(var(--theme-primary), 0.38);
+    transform: translateY(-1px);
+}
+
+.contact-map-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    color: rgb(var(--theme-primary));
+    background: rgba(var(--theme-primary), 0.12);
+    border-radius: 50%;
+}
+
+.contact-map-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.contact-map-title {
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.contact-map-action {
+    font-size: var(--font-size-sm);
+    color: rgb(var(--theme-primary));
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+}
+
+.contact-form-status {
+    min-height: 1.4em;
+    margin: calc(var(--space-sm) * -1) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+}
+
+.contact-form-status.is-success {
+    color: rgb(var(--theme-primary));
+}
+
+.contact-form-status.is-error {
+    color: #f87171;
 }
 
 .form-group {
@@ -3130,6 +3487,10 @@ html[data-color-scheme="light"] .skill-category:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.cookie-consent[hidden] {
+    display: none;
+}
+
 .cookie-content {
     max-width: var(--container-max);
     margin: 0 auto;
@@ -3304,6 +3665,48 @@ html[data-color-scheme="light"] .cookie-content p {
         max-width: 100%;
     }
 
+        /* On mobile the square-derived photo needs a centered text column and
+             a full-width veil for solid contrast. */
+    .hero-section--single .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: center;
+    }
+    .hero-section--single .hero-text {
+        align-items: center;
+        grid-column: auto;
+    }
+    .hero-section--single .slide-cta {
+        justify-content: center;
+    }
+    .hero-section--single::before {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.45) 50%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+    }
+    html[data-color-scheme="light"] .hero-section--single::before {
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.55) 0%,
+            rgba(255, 255, 255, 0.40) 50%,
+            rgba(255, 255, 255, 0.55) 100%
+        );
+    }
+    .hero-section--square::before,
+    html[data-color-scheme="light"] .hero-section--square::before {
+        background: linear-gradient(
+            180deg,
+            rgba(8, 10, 18, 0.34) 0%,
+            rgba(8, 10, 18, 0.56) 48%,
+            rgba(8, 10, 18, 0.76) 100%
+        );
+    }
+    .hero-bg-image {
+        object-position: 48% 78%;
+    }
+
     .slide-cta {
         justify-content: center;
     }
@@ -3364,10 +3767,6 @@ html[data-color-scheme="light"] .cookie-content p {
         align-items: center;
     }
 
-    .hero-visual {
-        order: -1;
-    }
-
     .contact-layout {
         grid-template-columns: 1fr;
     }
@@ -3395,13 +3794,6 @@ html[data-color-scheme="light"] .cookie-content p {
         top: -10px;
     }
 
-    /* Floating profile photo — tablet: smaller, no 3D tilt */
-    .hero-photo-float {
-        max-width: 260px;
-        animation: none;
-        transform: none;
-    }
-
     .pricing-features li {
         font-size: var(--font-size-base);
     }
@@ -3424,46 +3816,6 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .hero-slides-container {
         min-height: clamp(640px, calc(100dvh - var(--nav-height) - 60px), 720px);
-    }
-
-    /* Show profile photo on mobile but smaller + horizontal layout */
-    .slide-visual {
-        order: -1;
-    }
-
-    .hero-photo-float {
-        max-width: 180px;
-        border-radius: 50%;
-        animation: none;
-        transform: none;
-        box-shadow:
-            0 12px 40px rgba(var(--theme-primary), 0.25),
-            0 4px 16px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero-photo-clip {
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-    }
-
-    .hero-photo-clip::after {
-        display: none;
-    }
-
-    .hero-photo-clip img {
-        object-position: center 20%;
-    }
-
-    .hero-photo-ring {
-        border-radius: 50%;
-    }
-
-    /* Badge on circular photo — top right of circle */
-    .hero-photo-float .showcase-badge {
-        top: 4px;
-        right: -8px;
-        font-size: 0.6rem;
-        padding: 5px 10px;
     }
 
     /* Project showcase frames stay visible on mobile — just smaller and
@@ -3580,10 +3932,9 @@ html[data-color-scheme="light"] .cookie-content p {
    ACCESSIBILITY — REDUCED MOTION
    ═══════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-    .hero-orb,
+    .project-orb,
     .scroll-hint,
-    .availability-dot,
-    .hero-photo-float {
+    .availability-dot {
         animation: none;
     }
 
@@ -3620,8 +3971,7 @@ html[data-color-scheme="light"] .cookie-content p {
     contain-intrinsic-size: 1px 800px;
 }
 
-.projects-section:not(.in-view)::before,
-.projects-section:not(.in-view)::after {
+.projects-section:not(.in-view) .project-orb {
     animation-play-state: paused;
 }
 
@@ -3634,12 +3984,350 @@ html[data-color-scheme="light"] .cookie-content p {
         -webkit-backdrop-filter: blur(10px) saturate(140%);
     }
 
-    /* The third hero orb is decorative; drop it on phones to free a layer. */
-    .hero-orb-3 { display: none; }
-    .hero-orb-1 { width: 360px; height: 360px; }
-    .hero-orb-2 { width: 260px; height: 260px; }
+    /* The third portfolio orb is decorative; drop it on phones to free a layer. */
+    .project-orb-3 { display: none; }
+    .project-orb-1 { width: 360px; height: 360px; }
+    .project-orb-2 { width: 280px; height: 280px; }
+}
 
-    /* Smaller blob radii = smaller blur surface = much cheaper. */
-    .projects-section::before { width: 320px; height: 320px; filter: blur(60px); }
-    .projects-section::after  { width: 280px; height: 280px; filter: blur(60px); }
+/* ═══════════════════════════════════════════════
+   POLISH PASS — responsive, a11y, touch, typography
+   - Additive overrides only. Targets weak spots found in the audit
+     without rewriting existing components.
+   ═══════════════════════════════════════════════ */
+
+/* Fluid section title across the whole site so headings stop being 32px
+   on a 360 px phone (where they collide with the 60ch limit). */
+.section-title {
+    font-size: clamp(1.5rem, 1rem + 2.4vw, 2.25rem);
+}
+
+/* Section note: shorter line length for comfortable reading. */
+.section-note {
+    max-width: min(60ch, 100%);
+}
+
+/* Section header rhythm — less aggressive bottom margin on phones. */
+.section-header {
+    margin-bottom: clamp(var(--space-lg), 3vw, var(--space-2xl));
+}
+
+/* Section vertical padding becomes fluid so 128 px tops on phones
+   don't waste real estate. Keeps the existing rhythm on desktop. */
+.services-section,
+.about-section,
+.skills-section,
+.pricing-section,
+.testimonials-section,
+.contact-section {
+    padding-top: clamp(var(--space-2xl), 6vw, var(--space-4xl));
+    padding-bottom: clamp(var(--space-2xl), 6vw, var(--space-4xl));
+}
+
+/* Tap targets ≥ 44px without changing visual size of the dot. */
+.color-picker-trigger {
+    width: 44px;
+    height: 44px;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+}
+
+/* Generic icon button hit area — most theme/lang toggles already use this. */
+.btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Form: prevent iOS zoom on focus + visible keyboard focus. */
+.form-group input,
+.form-group textarea {
+    font-size: 16px;
+}
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 2px solid rgb(var(--theme-primary));
+    outline-offset: 2px;
+}
+
+/* Universal keyboard focus ring — currently only inputs have one. */
+:where(a, button, [role="button"]):focus-visible {
+    outline: 2px solid rgb(var(--theme-primary));
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Hero text never narrower than the headline can break to. Prevents
+   a 380 px right column from overflowing on a 360 px phone. */
+@media (max-width: 768px) {
+    .hero-section--single .hero-content {
+        grid-template-columns: 1fr;
+        max-width: none;
+        padding-inline: clamp(1rem, 6vw, 2rem);
+        text-align: left;
+    }
+    .hero-section--single .hero-text {
+        max-width: 100%;
+        margin-left: 0;
+    }
+    .hero-section--single .slide-cta {
+        justify-content: flex-start;
+    }
+    .hero-section--single::before {
+        background: linear-gradient(
+            180deg,
+            rgba(8, 10, 18, 0.20) 0%,
+            rgba(8, 10, 18, 0.45) 55%,
+            rgba(8, 10, 18, 0.70) 100%
+        );
+    }
+    html[data-color-scheme="light"] .hero-section--single::before {
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.20) 0%,
+            rgba(255, 255, 255, 0.50) 55%,
+            rgba(255, 255, 255, 0.70) 100%
+        );
+    }
+    .hero-section--square::before,
+    html[data-color-scheme="light"] .hero-section--square::before {
+        background: linear-gradient(
+            180deg,
+            rgba(8, 10, 18, 0.24) 0%,
+            rgba(8, 10, 18, 0.54) 55%,
+            rgba(8, 10, 18, 0.76) 100%
+        );
+    }
+    .hero-bg-image {
+        object-position: 47% 82%;
+    }
+}
+
+/* Testimonials: explicit mobile single column (was relying on auto-fit). */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+
+/* Skill / service / pricing cards — gentler padding on phones. */
+@media (max-width: 480px) {
+    .skill-category,
+    .service-card,
+    .pricing-card,
+    .testimonial-card {
+        padding: var(--space-lg);
+    }
+    .pricing-card.featured {
+        padding: var(--space-lg);
+    }
+}
+
+/* Light mode: lift secondary text contrast. The existing #3f4658 already
+   passes AA against #f3f4f8, but section notes were rendering with the
+   undefined --text-secondary. Force a real, readable colour. */
+.section-note {
+    color: var(--color-text-secondary);
+}
+
+/* Smooth, accessible motion fallback for the hero veil. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-section--single::before,
+    .hero-section--single .slide-title,
+    .hero-section--single .slide-description {
+        transition: none;
+    }
+}
+
+/* Production polish — compact project tabs and small-viewport stability. */
+.hero-slides-container,
+.slide-content,
+.showcase-container,
+.slide-cta,
+.slide-tags {
+    min-width: 0;
+}
+
+.slide-cta .btn,
+.slide-tags span {
+    max-width: 100%;
+    white-space: normal;
+}
+
+.slide-tags span {
+    overflow-wrap: anywhere;
+}
+
+.showcase-container {
+    max-width: min(520px, 100%);
+}
+
+.showcase-frame,
+.showcase-image-wrap,
+.showcase-image-wrap img {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero-slides-container,
+    .projects-section .hero-slides-container {
+        min-height: 640px;
+        padding-inline: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .hero-slide {
+        padding-inline: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .slide-content {
+        gap: clamp(var(--space-xl), 5vw, var(--space-2xl));
+    }
+
+    .slide-description {
+        font-size: var(--font-size-base);
+        line-height: 1.62;
+    }
+
+    .project-pagination {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-padding-inline: var(--space-xl);
+        -webkit-overflow-scrolling: touch;
+        padding: 0 var(--space-xl) var(--space-xs);
+        margin-inline: calc(var(--space-xl) * -1);
+        scrollbar-width: thin;
+    }
+
+    .project-pag-btn {
+        flex: 0 0 auto;
+        min-width: max-content;
+        padding-inline: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-section {
+        padding-block: clamp(3rem, 10vw, var(--space-4xl));
+    }
+
+    .about-layout,
+    .services-grid,
+    .skills-grid,
+    .testimonials-grid,
+    .contact-layout {
+        gap: var(--space-xl);
+    }
+
+    .contact-info p {
+        margin-bottom: var(--space-lg);
+    }
+
+    .contact-form {
+        gap: var(--space-md);
+    }
+
+    .cookie-consent {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .cookie-content {
+        align-items: stretch;
+        gap: var(--space-md);
+    }
+
+    .cookie-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slides-container,
+    .projects-section .hero-slides-container {
+        min-height: 600px;
+    }
+
+    .project-mode-selector {
+        border-radius: var(--radius-lg);
+    }
+
+    .project-mode-btn {
+        min-height: 44px;
+        padding-inline: 0.65rem;
+    }
+
+    .project-pag-btn {
+        gap: 0.45rem;
+        padding: 0.55rem 0.75rem;
+    }
+
+    .project-pag-btn .project-pag-index {
+        font-size: 0.66rem;
+    }
+
+    .project-pag-btn .project-pag-name {
+        font-size: 0.8rem;
+    }
+
+    .slide-cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .slide-cta .btn {
+        flex: 1 1 min(100%, 13rem);
+        justify-content: center;
+        min-height: 44px;
+        text-align: center;
+    }
+
+    .slide-tags {
+        justify-content: center;
+        gap: 0.45rem;
+    }
+
+    .showcase-container {
+        max-width: min(330px, 100%);
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-slides-container,
+    .projects-section .hero-slides-container {
+        min-height: 580px;
+    }
+
+    .project-pag-btn span:not(.nav-dot) {
+        display: inline;
+    }
+
+    .project-pag-btn .project-pag-name {
+        white-space: nowrap;
+    }
+
+    .project-pag-btn .project-pag-index {
+        display: inline-block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide,
+    .project-pag-btn,
+    .project-mode-btn,
+    .showcase-frame,
+    .showcase-badge {
+        transition: none !important;
+    }
+
+    .project-pag-btn:hover,
+    .showcase-frame:hover,
+    .color-swatch:hover {
+        transform: none !important;
+    }
 }

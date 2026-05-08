@@ -46,14 +46,55 @@ Plain static site — **no build step**, no submodules, no frameworks.
 
 ## Core Architectural Concepts
 
+### Homepage hero
+
+The top `#hero` uses the E46 photo as the single full-bleed background. Keep the responsive
+`assets/img/backgrounds/hero-e46-640.webp`, `hero-e46-960.webp`, `hero-e46-1440.webp`, and full
+`hero-e46.webp` variants wired through the `.hero-bg-squared` `<picture>` sources; the active image is the LCP element,
+so keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads;
+do not switch back to the older `herosquared` hero. Keep the dedicated `.hero-section--square` and
+`.hero-bg-squared` crop/veil rules. Place the hero text in the right-side grid column (`.hero-section--single`) on
+wide screens and use the darker right-side/bottom contrast veil for readability over the E46 photo.
+Hero credibility badges belong inside `.hero-text` below the headline as normal `.hero-badges` flex content. Keep them
+as standalone white SVG icons with short text labels and without pill/card backgrounds; do not position them as absolute
+overlays over the photo. Keep the `Haak.` word in the hero headline as themed `.gradient-text` using the active color
+palette, with only a subtle drop-shadow for photo contrast. Animate these `.hero-badge` items as part of the homepage
+hero entrance sequence.
+
+### About section
+
+`#about` sits directly after `#projects` and before the tech stack. Keep it as a personal editorial section with an
+E46 media frame, short biographical copy, and compact facts. The current media asset is the optimized
+`assets/img/profile/uebermich.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
+lower focus so the car/person stay visible. Keep this image large and cleanly cropped in a restrained 5:6 media frame
+with subtle border/shadow and no visible caption. The copy column should stay intentionally narrow for comfortable
+reading (about 54ch max), rather than stretching across the available grid width. Use
+`Über mich` / `About me` as the real section heading, not as an eyebrow; section-note/hint callouts belong only to
+`#projects`. If this later becomes video, use
+`assets/video/e46-about.mp4` with a poster fallback. All visible copy still goes through `data-i18n` keys in
+`assets/js/main.js`; translated image alt text uses `data-i18n-alt`.
+
 ### Hero project slider
 
-`#projects` contains 6 `.hero-slide` elements. The `ProjectSlider` class in [script.js](../assets/js/main.js) handles:
+`#projects` contains exactly ONE `.hero-slides-container` dedicated to own projects: E46 Studio, AI Captain,
+Medieval TD, Shookroko, and dog-kennel-online. Above the slider sits a two-option `.project-mode-selector`
+segmented pill with
+`Kundenprojekte` (left) and `Eigene Projekte` (right). `Eigene Projekte` is the active, enabled option and controls
+the single slider. `Kundenprojekte` is intentionally locked (`disabled`, `aria-disabled="true"`, `tabindex="-1"`,
+`.is-locked` modifier with a small lock SVG and a visually-hidden `.project-mode-status`) until paid customer work
+exists; do NOT wire it up or render customer slides on the homepage. The customer i18n keys (`slide.imkerei.*`,
+`slide.coha.*`, `slide.soundoflvke.*`, `slide.danielbrecheis.*`, `slide.kayaseeds.*`, `slide.jkentertainment.*`) are
+intentionally retained in [assets/js/main.js](../assets/js/main.js) for future use.
+
+The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
 - Touch/swipe + keyboard navigation
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
 - Container height calculation (slides have varying heights)
+
+`ProjectSlider` filters `.project-nav-btn` elements that are `disabled` or have `aria-disabled="true"` out of
+`this.navBtns`, so any locked nav option (e.g. the future customer-mode tab) cannot become an active index.
 
 ### Theming
 
@@ -62,9 +103,12 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |-----------|--------|---------------|
 | `data-color-scheme` | `dark` (default), `light` | Theme toggle button (`#themeToggle`) |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider, scroll observer, and color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko` | Slider, scroll observer, and color picker |
 
-The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider writes are not.
+The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go
+through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider
+writes are not. Picker writes also dispatch the internal theme-change event consumed by `ProjectSlider`, so selecting a
+swatch before scrolling to `#projects` activates the matching project slide instead of falling back to the first slide.
 
 `e46` slides reuse the `maxhaak` swatch (no dedicated picker option).
 
@@ -74,14 +118,19 @@ All user-visible text uses `data-i18n="key"` attributes. The dictionary lives in
 
 **Critical:** when changing visible text, update **both** the inline HTML default **and** the matching key in both language objects, or the JS will overwrite your HTML change on next load.
 
+Language-neutral technology, product, and tool names in `.skill-tag` / `.tech-badge` labels stay inline as brand
+labels. Keep i18n keys for surrounding headings, descriptions, and copy that changes between DE and EN.
+
 Language is persisted in `localStorage('lang')`.
 
 ### Performance gates
 
-- **Mouse parallax** in `assets/js/main.js` skips work when both `#hero` and `#projects` are off-screen (`parallaxTargetsVisible` flag, fed by two `IntersectionObserver`s).
-- **Hero orb CSS animations** are paused via `animationPlayState` when `#hero` leaves the viewport.
+- **Mouse parallax** in `assets/js/main.js` skips work when `#projects` is off-screen (`parallaxTargetsVisible` flag, fed by an `IntersectionObserver`).
+- **Portfolio orb CSS animations** live in `#projects` as `.project-orb` elements and are paused while the section lacks `.in-view`.
 - **Hero photo crossfade** (`setInterval`) skips work when `document.hidden`.
 - **Google Fonts** are only loaded after the user accepts the cookie banner.
+- **Contact location** uses a lightweight external Google Maps link card, not an embedded iframe. Do not reintroduce a
+    map iframe on the homepage unless there is a strong product reason and it remains opt-in/lazy.
 
 ### Contact form
 
@@ -110,6 +159,7 @@ Push to `main` → live in ~1–2 minutes. There is **no build step** and **no m
 - Keep it simple — vanilla HTML/CSS/JS only
 - Mobile-first responsive design
 - Optimize images: WebP preferred, target <300 KB each
+- Asset paths must match the exact on-disk filename casing; GitHub Pages is case-sensitive even if local Windows dev is not
 - Use semantic HTML and ARIA where appropriate
 - No `console.log` in production code
 - No inline `style="..."` for state changes — use CSS classes (`.is-success`, `.is-error`, `.active`, etc.)
@@ -193,4 +243,4 @@ Open http://localhost:8000.
 
 ---
 
-**Last updated:** April 2026
+**Last updated:** May 2026

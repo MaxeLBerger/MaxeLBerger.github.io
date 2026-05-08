@@ -11,6 +11,7 @@
         de: {
             'nav.services': 'Leistungen',
             'nav.portfolio': 'Portfolio',
+            'nav.about': 'Über mich',
             'nav.pricing': 'Pakete',
             'nav.tech': 'Tech Stack',
             'nav.testimonials': 'Referenzen',
@@ -71,14 +72,26 @@
             'skills.tag': 'Tech Stack',
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
-            'projects.title': 'Portfolio',
+            'projects.title': 'Projekte / Portfolio',
             'projects.note': 'Hinweis: Viele dieser Projekte sind Prototypen und Eigenentwicklungen. Aktuell bin ich in Festanstellung als Software-Entwickler tätig und biete keine kommerziellen Web-Dienstleistungen an. Künftig ist eine selbstständige Tätigkeit nebenberuflich oder hauptberuflich denkbar.',
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
-            'about.tag': 'Über mich',
-            'about.title': 'Maximilian Haak',
-            'about.p1': 'Ich bin Maximilian — Fullstack-Webentwickler und KI-Spezialist aus Bruckmühl bei Rosenheim. Ich entwickle moderne Websites, Web-Apps und KI-gestützte Automatisierungen für kleine und mittelständische Unternehmen in der Region.',
-            'about.p2': 'Von der schnellen Firmenwebsite bis zum maßgeschneiderten AI Agent — ich bringe Ihr Projekt von der Idee zum Go-Live. Mein Fokus: Sauberer Code, faire Preise und persönliche Betreuung ohne Agentur-Overhead.',
+            'projects.mode.customers': 'Kundenprojekte',
+            'projects.mode.customers.lock': 'Bald verfügbar',
+            'projects.mode.own': 'Eigene Projekte',
+            'about.title': 'Über mich',
+            'about.eyebrow': 'Persönlich',
+            'about.imageAlt': 'Maximilian Haak vor seinem BMW E46 mit Alpenpanorama',
+            'about.p1': 'Aufgewachsen in Bruckmühl, irgendwo zwischen Vereinsplatz, Werkstatt und Alpenpanorama. Familie und ein paar enge Freunde halten mich geerdet, und ein großer Teil meiner Geduld kommt vermutlich daher, dass ich früh angefangen habe, an einem alten BMW selbst rumzuschrauben.',
+            'about.p2': 'Im Alltag findet man mich meistens auf dem Fußballplatz oder im Gym, und danach läuft Musik. Mal sitze ich an eigenen Beats, mal an der Percussion, manchmal ist es auch einfach laute Musik im Auto auf dem Heimweg.',
+            'about.highlight.ageLabel': 'Alter',
+            'about.highlight.age': '25 Jahre',
+            'about.highlight.codeLabel': 'Heimat',
+            'about.highlight.code': 'Bruckmühl · Oberbayern',
+            'about.highlight.lifeLabel': 'Ausgleich',
+            'about.highlight.life': 'Fußball · Gym · E46',
+            'about.highlight.musicLabel': 'Musik',
+            'about.highlight.music': 'Percussion · Cajon · Rap · Beats',
             'about.stat1': 'Jahre Erfahrung',
             'about.stat2': 'Projekte umgesetzt',
             'about.stat3': 'Kundenzufriedenheit',
@@ -100,6 +113,12 @@
             'contact.email': 'E-Mail',
             'contact.message': 'Nachricht',
             'contact.send': 'Nachricht senden',
+            'contact.map.title': 'Bruckmühl / Rosenheim',
+            'contact.map.open': 'Karte öffnen',
+            'contact.status.sending': 'Wird gesendet...',
+            'contact.status.success': 'Danke, Ihre Nachricht wurde gesendet.',
+            'contact.status.error': 'Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt per E-Mail.',
+            'contact.status.mailClient': 'Ihr E-Mail-Programm wurde geöffnet.',
             'footer.impressum': 'Impressum',
             'footer.datenschutz': 'Datenschutz',
             'hero.scroll': 'Scrollen und entdecken',
@@ -111,6 +130,8 @@
             'slide.maxhaak.cta1': 'Kostenlose Beratung',
             'slide.maxhaak.cta2': 'Projekte ansehen',
             'slide.maxhaak.badge': 'VERFÜGBAR FÜR PROJEKTE',
+            'slide.maxhaak.badge.years': '5 Jahre + Erfahrung',
+            'slide.maxhaak.badge.ai': 'AI Expert',
             'slide.maxhaak.tag1': 'Full-Stack',
             'slide.maxhaak.tag2': 'TypeScript & React',
             'slide.maxhaak.tag3': 'KI & Automatisierung',
@@ -192,6 +213,17 @@
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
             'slide.medieval.badge': 'TOWER DEFENSE',
+            // dog-kennel-online (in Arbeit, ohne Bild/Detailseite)
+            'slide.dogkennel.t1': 'dog-kennel-online.',
+            'slide.dogkennel.t2': 'Kennel',
+            'slide.dogkennel.t3': 'Management.',
+            'slide.dogkennel.desc': 'dog-kennel-online: Eine Web-Plattform für Hundepensionen — Buchungen, Belegung, Hunde- und Halterprofile sowie tägliche Abläufe an einem Ort. Aktuell in Entwicklung; Detailseite folgt.',
+            'slide.dogkennel.cta1': 'Anfragen',
+            'slide.dogkennel.cta2': 'Detailseite folgt',
+            'slide.dogkennel.tag1': 'Web App',
+            'slide.dogkennel.tag2': 'Booking',
+            'slide.dogkennel.tag3': 'In Arbeit',
+            'slide.dogkennel.badge': 'IN ARBEIT',
             // Slide 9 - Daniel Brecheis (Human Bridges Consulting)
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
@@ -243,6 +275,7 @@
         en: {
             'nav.services': 'Services',
             'nav.portfolio': 'Portfolio',
+            'nav.about': 'About me',
             'nav.pricing': 'Pricing',
             'nav.tech': 'Tech Stack',
             'nav.testimonials': 'Reviews',
@@ -303,14 +336,26 @@
             'skills.tag': 'Tech Stack',
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
-            'projects.title': 'Portfolio',
+            'projects.title': 'Projects / Portfolio',
             'projects.note': 'Note: Many of these projects are prototypes and personal builds. I currently work as a full-time employed software developer and do not offer commercial web services at the moment. Going freelance — part-time or full-time — is something I may consider in the future.',
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
-            'about.tag': 'About me',
-            'about.title': 'Maximilian Haak',
-            'about.p1': 'I\'m Maximilian — a fullstack web developer and AI specialist based in Bruckmühl near Rosenheim, Bavaria. I build modern websites, web apps, and AI-powered automations for small and medium businesses in the region.',
-            'about.p2': 'From a quick business website to a custom AI agent — I take your project from idea to go-live. My focus: clean code, fair pricing, and personal support without agency overhead.',
+            'projects.mode.customers': 'Customer projects',
+            'projects.mode.customers.lock': 'Coming soon',
+            'projects.mode.own': 'Own projects',
+            'about.title': 'About me',
+            'about.eyebrow': 'Personal',
+            'about.imageAlt': 'Maximilian Haak in front of his BMW E46 with an alpine backdrop',
+            'about.p1': 'I grew up in Bruckmühl, somewhere between the football pitch, the garage and the Alps. Family and a few close friends keep me grounded, and a lot of my patience probably comes from spending early years wrenching on an old BMW.',
+            'about.p2': 'Day to day you will usually find me on the football pitch or at the gym, and after that there is music. Sometimes I am working on my own beats, sometimes on percussion, sometimes it is just loud music in the car on the way home.',
+            'about.highlight.ageLabel': 'Age',
+            'about.highlight.age': '25 years',
+            'about.highlight.codeLabel': 'Home',
+            'about.highlight.code': 'Bruckmühl · Upper Bavaria',
+            'about.highlight.lifeLabel': 'Balance',
+            'about.highlight.life': 'Football · Gym · E46',
+            'about.highlight.musicLabel': 'Music',
+            'about.highlight.music': 'Percussion · Cajon · Rap · Beats',
             'about.stat1': 'Years Experience',
             'about.stat2': 'Projects Delivered',
             'about.stat3': 'Client Satisfaction',
@@ -332,6 +377,12 @@
             'contact.email': 'Email',
             'contact.message': 'Message',
             'contact.send': 'Send message',
+            'contact.map.title': 'Bruckmühl / Rosenheim',
+            'contact.map.open': 'Open map',
+            'contact.status.sending': 'Sending...',
+            'contact.status.success': 'Thanks, your message has been sent.',
+            'contact.status.error': 'Something went wrong. Please email me directly instead.',
+            'contact.status.mailClient': 'Your mail client has been opened.',
             'footer.impressum': 'Legal Notice',
             'footer.datenschutz': 'Privacy Policy',
             'hero.scroll': 'Scroll to explore',
@@ -343,6 +394,8 @@
             'slide.maxhaak.cta1': 'Free Consultation',
             'slide.maxhaak.cta2': 'View Projects',
             'slide.maxhaak.badge': 'AVAILABLE FOR PROJECTS',
+            'slide.maxhaak.badge.years': '5+ Years Experience',
+            'slide.maxhaak.badge.ai': 'AI Expert',
             'slide.maxhaak.tag1': 'Full-Stack',
             'slide.maxhaak.tag2': 'TypeScript & React',
             'slide.maxhaak.tag3': 'AI & Automation',
@@ -424,6 +477,17 @@
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
             'slide.medieval.badge': 'TOWER DEFENSE',
+            // dog-kennel-online (work in progress, no image/detail page)
+            'slide.dogkennel.t1': 'dog-kennel-online.',
+            'slide.dogkennel.t2': 'Kennel',
+            'slide.dogkennel.t3': 'Management.',
+            'slide.dogkennel.desc': 'dog-kennel-online: A web platform for dog boarding kennels — bookings, occupancy, dog and owner profiles, and daily routines in one place. Currently in development; a detail page will follow.',
+            'slide.dogkennel.cta1': 'Get in touch',
+            'slide.dogkennel.cta2': 'Detail page coming',
+            'slide.dogkennel.tag1': 'Web App',
+            'slide.dogkennel.tag2': 'Booking',
+            'slide.dogkennel.tag3': 'In progress',
+            'slide.dogkennel.badge': 'WORK IN PROGRESS',
             // Slide 9 - Daniel Brecheis
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
@@ -475,6 +539,7 @@
     };
 
     let currentLang = localStorage.getItem('lang') || 'de';
+    const retainedObservers = [];
 
     function applyTranslations(lang) {
         const dict = translations[lang];
@@ -482,6 +547,18 @@
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dict[key]) el.textContent = dict[key];
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const key = el.getAttribute('data-i18n-alt');
+            if (dict[key]) el.setAttribute('alt', dict[key]);
+        });
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+            const key = el.getAttribute('data-i18n-aria-label');
+            if (dict[key]) el.setAttribute('aria-label', dict[key]);
+        });
+        document.querySelectorAll('[data-i18n-title]').forEach(el => {
+            const key = el.getAttribute('data-i18n-title');
+            if (dict[key]) el.setAttribute('title', dict[key]);
         });
         document.documentElement.lang = lang;
     }
@@ -512,9 +589,10 @@
      *   - Every writer goes through `setProjectTheme(theme, source)`.
      *   - Slides remain authoritative: navigating projects always updates the
      *     site colour (`source: 'slider'`).
-     *   - The picker is a transient manual override (`source: 'picker'`) and
-     *     is persisted to localStorage so a hard reload remembers the choice
-     *     until the next slide change reasserts the slide's colour.
+        *   - The picker is a transient manual override (`source: 'picker'`) and
+        *     is persisted to localStorage so a hard reload remembers the choice.
+        *     Picker writes also notify the project slider, so scrolling down lands
+        *     on the project that owns the selected colour.
      *   - The scroll observer (`source: 'scroll'`) only resyncs to the active
      *     slide on enter — there is no hard-reset on leave-back.
      *   - Writes are cached: identical themes do not retrigger the 0.6s
@@ -548,18 +626,25 @@
                     localStorage.setItem('themeColor', theme);
                 } catch (_) { /* ignore quota / private mode errors */ }
             }
+            const detail = { theme, source };
             if (theme === currentTheme) {
                 syncSwatches(theme);
+                document.dispatchEvent(new CustomEvent('project-theme:change', { detail }));
                 return;
             }
             currentTheme = theme;
             root.setAttribute('data-project-theme', theme);
             syncSwatches(theme);
+            document.dispatchEvent(new CustomEvent('project-theme:change', { detail }));
+        }
+
+        function getProjectTheme() {
+            return currentTheme;
         }
 
         syncSwatches(currentTheme);
 
-        return { setProjectTheme };
+        return { setProjectTheme, getProjectTheme };
     })();
 
     function initColorPicker() {
@@ -659,7 +744,10 @@
             if (!this.section) return;
 
             this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
-            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'));
+            // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
+            // and any nav button explicitly marked disabled or aria-disabled.
+            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+                .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
 
             // Re-sort slides to match nav button order (data-project ↔ data-theme)
             // so that index-based pairing in goToSlide() stays in sync after the
@@ -674,13 +762,103 @@
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');
-            this.currentIndex = 0;
+            this.pagination = this.section.querySelector('.project-pagination');
+            this.currentIndex = Math.max(this.slides.findIndex(slide => slide.classList.contains('active')), 0);
             this.isAnimating = false;
+            this.animationGuardTimer = null;
+            this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const onMotionChange = (event) => { this.prefersReducedMotion = event.matches; };
+            if (typeof motionQuery.addEventListener === 'function') {
+                motionQuery.addEventListener('change', onMotionChange);
+            } else if (typeof motionQuery.addListener === 'function') {
+                motionQuery.addListener(onMotionChange);
+            }
 
             if (this.slides.length === 0) return;
 
             this.bindEvents();
+            this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
+            this.syncToTheme(themeController.getProjectTheme(), { animate: false });
+        }
+
+        getSlideIndexForTheme(theme) {
+            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+            return this.slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
+        }
+
+        isSectionVisible() {
+            const rect = this.section.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom > 0;
+        }
+
+        resetSlideInlineState(slide) {
+            if (!slide) return;
+            ['pointerEvents', 'opacity', 'transform', 'transition', 'visibility', 'zIndex', 'willChange']
+                .forEach(prop => { slide.style[prop] = ''; });
+
+            slide.querySelectorAll([
+                '.slide-text',
+                '.slide-visual',
+                '.title-line',
+                '.slide-description',
+                '.slide-cta .btn',
+                '.slide-tags',
+                '.showcase-frame',
+                '.showcase-badge',
+                '.browser-bar .dot',
+                '.showcase-image-wrap img',
+            ].join(',')).forEach(el => {
+                ['opacity', 'transform', 'transition', 'visibility', 'zIndex', 'willChange', 'clipPath']
+                    .forEach(prop => { el.style[prop] = ''; });
+                el.style.removeProperty('clip-path');
+            });
+        }
+
+        setActiveSlide(index, options = {}) {
+            if (index < 0 || index >= this.slides.length) return;
+
+            const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
+            const activeSlide = this.slides[index];
+
+            if (updateTheme) {
+                const theme = activeSlide.getAttribute('data-theme');
+                if (theme) themeController.setProjectTheme(theme, themeSource);
+            }
+
+            this.navBtns.forEach((btn, i) => {
+                const isActive = i === index;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', String(isActive));
+                btn.tabIndex = isActive ? 0 : -1;
+            });
+
+            this.slides.forEach((slide, i) => {
+                const isActive = i === index;
+                this.resetSlideInlineState(slide);
+                slide.classList.toggle('active', isActive);
+                slide.hidden = !isActive;
+            });
+
+            this.currentIndex = index;
             this.updateContainerHeight();
+
+            if (dispatchEvent) {
+                document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: activeSlide } }));
+            }
+        }
+
+        syncToTheme(theme, options = {}) {
+            const index = this.getSlideIndexForTheme(theme);
+            if (index === -1 || index === this.currentIndex) return;
+
+            if (options.animate && this.isSectionVisible()) {
+                this.goToSlide(index);
+                return;
+            }
+
+            this.setActiveSlide(index);
         }
 
         updateContainerHeight() {
@@ -714,6 +892,10 @@
             this.navBtns.forEach((btn, i) => {
                 btn.addEventListener('click', () => this.goToSlide(i));
             });
+            document.addEventListener('project-theme:change', (e) => {
+                if (e.detail?.source !== 'picker') return;
+                this.syncToTheme(e.detail.theme, { animate: true });
+            });
             if (this.arrowLeft) {
                 this.arrowLeft.addEventListener('click', () => this.navigate(-1));
             }
@@ -739,13 +921,31 @@
                 }, { passive: true });
             }
 
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                const tag = document.activeElement.tagName;
-                if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable) return;
-                if (e.key === 'ArrowLeft') this.navigate(-1);
-                if (e.key === 'ArrowRight') this.navigate(1);
-            });
+            if (this.pagination) {
+                this.pagination.addEventListener('keydown', (e) => {
+                    const focusedTab = e.target.closest('.project-pag-btn');
+                    const focusedIndex = this.navBtns.indexOf(focusedTab);
+                    if (focusedIndex === -1) return;
+
+                    let nextIndex = null;
+                    if (e.key === 'ArrowLeft') nextIndex = (focusedIndex - 1 + this.navBtns.length) % this.navBtns.length;
+                    if (e.key === 'ArrowRight') nextIndex = (focusedIndex + 1) % this.navBtns.length;
+                    if (e.key === 'Home') nextIndex = 0;
+                    if (e.key === 'End') nextIndex = this.navBtns.length - 1;
+
+                    if (nextIndex !== null) {
+                        e.preventDefault();
+                        this.navBtns[nextIndex].focus();
+                        this.goToSlide(nextIndex);
+                        return;
+                    }
+
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.goToSlide(focusedIndex);
+                    }
+                });
+            }
 
             // Recalculate container height on resize (debounced)
             let resizeTimer;
@@ -761,6 +961,7 @@
         }
 
         goToSlide(index) {
+            if (index < 0 || index >= this.slides.length) return;
             if (index === this.currentIndex || this.isAnimating) return;
             this.isAnimating = true;
 
@@ -768,27 +969,36 @@
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
 
-            // Update nav buttons
-            this.navBtns.forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-                btn.setAttribute('aria-selected', String(i === index));
-            });
+            let settled = false;
+            const settle = () => {
+                if (settled) return;
+                settled = true;
+                if (this.animationGuardTimer !== null) {
+                    window.clearTimeout(this.animationGuardTimer);
+                    this.animationGuardTimer = null;
+                }
+                if (typeof gsap !== 'undefined') {
+                    gsap.killTweensOf([oldSlide, newSlide]);
+                    gsap.killTweensOf(oldSlide.querySelectorAll('*'));
+                    gsap.killTweensOf(newSlide.querySelectorAll('*'));
+                }
+                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
+                this.isAnimating = false;
+            };
 
-            // Update project theme on <html> via the central controller.
-            // Slider writes are gated by the user lock — if the user picked a
-            // colour from the picker, slide changes will not override it.
-            const theme = newSlide.getAttribute('data-theme');
-            if (theme) {
-                themeController.setProjectTheme(theme, 'slider');
+            this.animationGuardTimer = window.setTimeout(settle, this.prefersReducedMotion ? 80 : 1800);
+
+            if (this.prefersReducedMotion) {
+                settle();
+                return;
             }
 
-            this.currentIndex = index;
-            this.animatePremiumTransition(oldSlide, newSlide, direction);
+            this.animatePremiumTransition(oldSlide, newSlide, direction, settle);
         }
 
-        animatePremiumTransition(oldSlide, newSlide, direction) {
+        animatePremiumTransition(oldSlide, newSlide, direction, settle) {
             if (typeof gsap === 'undefined') {
-                this.animateWithCSS(oldSlide, newSlide, direction);
+                this.animateWithCSS(oldSlide, newSlide, direction, settle);
                 return;
             }
 
@@ -842,23 +1052,8 @@
 
             // Master timeline
             const master = gsap.timeline({
-                onComplete: () => {
-                    oldSlide.classList.remove('active');
-                    oldSlide.hidden = true;
-                    oldSlide.style.pointerEvents = '';
-                    gsap.set(oldSlide, { x: 0, opacity: 0, visibility: 'hidden', zIndex: 1 });
-                    if (oldContent.text) gsap.set(oldContent.text, { x: 0, opacity: 1 });
-                    if (oldContent.visual) gsap.set(oldContent.visual, { x: 0, opacity: 1, scale: 1 });
-
-                    newSlide.classList.add('active');
-                    newSlide.style.pointerEvents = '';
-                    gsap.set(newSlide, { x: 0, opacity: 1, visibility: 'visible', zIndex: 2 });
-                    if (newContent.text) gsap.set(newContent.text, { x: 0, opacity: 1 });
-                    if (newContent.visual) gsap.set(newContent.visual, { x: 0, opacity: 1, scale: 1 });
-
-                    document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: newSlide } }));
-                    this.isAnimating = false;
-                },
+                onComplete: settle,
+                onInterrupt: settle,
             });
 
             // === OLD SLIDE OUT ===
@@ -976,34 +1171,14 @@
 
         animateShowcaseElements(slide, timeline) {
             const frame = slide.querySelector('.showcase-frame');
-            const floatPhoto = slide.querySelector('.hero-photo-float');
-            const placeholder = slide.querySelector('.placeholder-content');
             const badge = slide.querySelector('.showcase-badge');
-
-            if (floatPhoto) {
-                // Cutout hero portrait stays flat — only fade in.
-                if (floatPhoto.classList.contains('is-cutout')) {
-                    timeline.fromTo(floatPhoto,
-                        { opacity: 0, y: 16 },
-                        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-                        0.4
-                    );
-                } else {
-                    // 3D tilt entrance — matches browser frame animation style
-                    timeline.fromTo(floatPhoto,
-                        { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
-                        { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
-                        0.4
-                    );
-                }
-            }
 
             if (frame) {
                 // Browser mockup — 3D tilt entrance
                 timeline.fromTo(frame,
-                    { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
+                    { opacity: 0, rotationY: -15, rotationX: 8, scale: 0.9, transformPerspective: 1200 },
                     {
-                        opacity: 1, rotateY: -5, rotateX: 2, scale: 1,
+                        opacity: 1, rotationY: -5, rotationX: 2, scale: 1,
                         duration: 0.8,
                         ease: 'power4.out',
                     },
@@ -1036,14 +1211,6 @@
                 }
             }
 
-            if (placeholder) {
-                timeline.fromTo(placeholder,
-                    { opacity: 0, scale: 0.9 },
-                    { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' },
-                    0.4
-                );
-            }
-
             if (badge) {
                 timeline.fromTo(badge,
                     { opacity: 0, y: -20, scale: 0.7, z: 40 },
@@ -1057,12 +1224,27 @@
             }
         }
 
-        animateWithCSS(oldSlide, newSlide, direction) {
+        animateWithCSS(oldSlide, newSlide, direction, settle) {
             newSlide.hidden = false;
             oldSlide.style.pointerEvents = 'none';
             newSlide.style.pointerEvents = 'auto';
             newSlide.style.opacity = '0';
             newSlide.style.transform = `translateX(${direction === 1 ? 60 : -60}px)`;
+
+            let finished = false;
+            let guardTimer = null;
+            const finish = () => {
+                if (finished) return;
+                finished = true;
+                if (guardTimer !== null) window.clearTimeout(guardTimer);
+                newSlide.removeEventListener('transitionend', onTransitionEnd);
+                settle();
+            };
+            const onTransitionEnd = (event) => {
+                if (event.target === newSlide && event.propertyName === 'opacity') finish();
+            };
+
+            newSlide.addEventListener('transitionend', onTransitionEnd);
 
             requestAnimationFrame(() => {
                 newSlide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1073,15 +1255,7 @@
                 oldSlide.style.transform = `translateX(${direction === 1 ? -60 : 60}px)`;
             });
 
-            setTimeout(() => {
-                oldSlide.classList.remove('active');
-                oldSlide.hidden = true;
-                oldSlide.style.cssText = '';
-                newSlide.classList.add('active');
-                newSlide.style.cssText = '';
-                document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: newSlide } }));
-                this.isAnimating = false;
-            }, 500);
+            guardTimer = window.setTimeout(finish, 700);
         }
 
         playEntrance() {
@@ -1093,28 +1267,18 @@
 
             const titleLines = heroSection.querySelectorAll('.title-line');
             const desc = heroSection.querySelector('.slide-description');
+            const heroBadges = heroSection.querySelectorAll('.hero-badge');
             const ctaButtons = heroSection.querySelectorAll('.slide-cta .btn');
             const tags = heroSection.querySelector('.slide-tags');
-            const visual = heroSection.querySelector('.hero-visual');
-            const details = heroSection.querySelector('.hero-details');
 
             // Set initial hidden states
             gsap.set(titleLines, { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
             if (desc) gsap.set(desc, { y: 20, opacity: 0 });
+            if (heroBadges.length) gsap.set(heroBadges, { y: 14, opacity: 0, scale: 0.92 });
             gsap.set(ctaButtons, { y: 15, opacity: 0, scale: 0.95 });
             if (tags) gsap.set(tags, { y: 10, opacity: 0 });
-            if (visual) gsap.set(visual, { y: 40, opacity: 0 });
-            if (details) gsap.set(details, { y: 30, opacity: 0 });
 
             const tl = gsap.timeline({ delay: 0.3 });
-
-            // Visual rises up
-            if (visual) {
-                tl.to(visual, {
-                    y: 0, opacity: 1,
-                    duration: 0.8, ease: 'power3.out',
-                }, 0.1);
-            }
 
             // Title lines — bottom-up clip reveal
             tl.to(titleLines, {
@@ -1131,6 +1295,16 @@
                     y: 0, opacity: 1,
                     duration: 0.5, ease: 'power3.out',
                 }, 0.5);
+            }
+
+            // Hero credibility badges — icon and label enter as one unit.
+            if (heroBadges.length) {
+                tl.to(heroBadges, {
+                    y: 0, opacity: 1, scale: 1,
+                    stagger: 0.08,
+                    duration: 0.4,
+                    ease: 'back.out(1.35)',
+                }, 0.58);
             }
 
             // CTA buttons — staggered bounce
@@ -1151,24 +1325,6 @@
                 }, 0.75);
             }
 
-            // Hero photo float entrance
-            const heroPhoto = heroSection.querySelector('.hero-photo-float');
-            if (heroPhoto) {
-                if (heroPhoto.classList.contains('is-cutout')) {
-                    tl.fromTo(heroPhoto,
-                        { opacity: 0, y: 16 },
-                        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-                        0.4
-                    );
-                } else {
-                    tl.fromTo(heroPhoto,
-                        { opacity: 0, rotateY: -15, rotateX: 8, scale: 0.9, transformPerspective: 1200 },
-                        { opacity: 1, rotateY: -5, rotateX: 2, scale: 1, duration: 0.8, ease: 'power4.out' },
-                        0.4
-                    );
-                }
-            }
-
             // Hero photo badge
             const heroBadge = heroSection.querySelector('.showcase-badge');
             if (heroBadge) {
@@ -1177,19 +1333,6 @@
                     { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)' },
                     0.8
                 );
-            }
-
-            // Details section (skills + stats) — scroll-triggered
-            if (details && typeof ScrollTrigger !== 'undefined') {
-                gsap.to(details, {
-                    y: 0, opacity: 1,
-                    duration: 0.7, ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: details,
-                        start: 'top 85%',
-                        once: true,
-                    },
-                });
             }
 
             // Scroll hint
@@ -1202,6 +1345,31 @@
 
     /* ═══ GSAP ANIMATIONS ═══ */
     function initAnimations() {
+        const projectsSection = document.querySelector('#projects');
+        let parallaxTargetsVisible = false;
+
+        // Track projects section visibility. CSS uses .in-view to run/pause
+        // the portfolio ambient orbs, and mouse parallax only runs while the
+        // showcase is actually in view.
+        if (projectsSection) {
+            const updateProjectsVisibility = (isVisible) => {
+                projectsSection.classList.toggle('in-view', isVisible);
+                parallaxTargetsVisible = isVisible;
+            };
+
+            const projObserver = new IntersectionObserver(
+                (entries) => {
+                    updateProjectsVisibility(entries[0].isIntersecting);
+                },
+                { threshold: 0 }
+            );
+            projObserver.observe(projectsSection);
+            retainedObservers.push(projObserver);
+
+            const projectsRect = projectsSection.getBoundingClientRect();
+            updateProjectsVisibility(projectsRect.bottom > 0 && projectsRect.top < window.innerHeight);
+        }
+
         if (typeof gsap === 'undefined') {
             document.querySelectorAll('.scroll-reveal').forEach(el => {
                 el.style.opacity = '1';
@@ -1214,18 +1382,11 @@
             gsap.registerPlugin(ScrollTrigger);
         }
 
-        // Hero orb scroll parallax — intentionally disabled.
-        // The orbs already animate via CSS @keyframes (float-slow, pulse-glow).
-        // Adding a scroll-tied GSAP tween on top doubled the compositor work
-        // for no real visual gain and was a major contributor to scroll lag.
-        const heroOrbs = document.querySelectorAll('.hero-orb');
-
         // Theme sync — when the projects section enters the viewport, align
         // the global theme with the active slide. Going back up no longer
         // hard-resets to a default colour: that previously clobbered both the
         // user's picker choice and any other slide-derived theme. The shared
         // controller also no-ops when the user has locked a colour.
-        const projectsSection = document.querySelector('#projects');
         if (projectsSection) {
             ScrollTrigger.create({
                 trigger: projectsSection,
@@ -1233,56 +1394,16 @@
                 end: 'bottom center',
                 onEnter: () => {
                     const activeSlide = projectsSection.querySelector('.hero-slide.active');
-                    const theme = activeSlide && activeSlide.getAttribute('data-theme');
-                    if (theme) themeController.setProjectTheme(theme, 'scroll');
+                    const activeTheme = activeSlide && activeSlide.getAttribute('data-theme');
+                    const currentTheme = themeController.getProjectTheme();
+                    const currentProjectTheme = currentTheme === 'maxhaak' ? 'e46' : currentTheme;
+                    const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
+                        .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
+
+                    if (currentThemeHasSlide && activeTheme !== currentProjectTheme) return;
+                    if (activeTheme) themeController.setProjectTheme(activeTheme, 'scroll');
                 },
             });
-        }
-
-        // Track hero/projects visibility — used to pause orbs and parallax.
-        const heroSection = document.querySelector('.hero-section');
-        let parallaxTargetsVisible = true;
-
-        if (heroSection && heroOrbs.length) {
-            // Pause both the orb float animations AND the heroFloat keyframe
-            // on the profile photo when the hero is off-screen. The photo's
-            // animation kept running (and re-blurring its shadow) even from
-            // the contact section.
-            const heroPhotoFloats = document.querySelectorAll('#hero .hero-photo-float, .hero-slide.active .hero-photo-float');
-            const orbObserver = new IntersectionObserver(
-                (entries) => {
-                    const isVisible = entries[0].isIntersecting;
-                    parallaxTargetsVisible = isVisible || !!document.querySelector('#projects.in-view');
-                    const state = isVisible ? 'running' : 'paused';
-                    heroOrbs.forEach(orb => { orb.style.animationPlayState = state; });
-                    heroPhotoFloats.forEach(el => { el.style.animationPlayState = state; });
-                },
-                { threshold: 0 }
-            );
-            orbObserver.observe(heroSection);
-        }
-
-        // Also track projects section visibility (hero-photo-float lives in #hero,
-        // but slide showcase frames are in #projects).
-        if (projectsSection) {
-            const projObserver = new IntersectionObserver(
-                (entries) => {
-                    if (entries[0].isIntersecting) {
-                        projectsSection.classList.add('in-view');
-                        parallaxTargetsVisible = true;
-                    } else {
-                        projectsSection.classList.remove('in-view');
-                        // Recompute visibility: still active if hero is visible.
-                        const heroVisible = heroSection
-                            ? heroSection.getBoundingClientRect().bottom > 0
-                              && heroSection.getBoundingClientRect().top < window.innerHeight
-                            : false;
-                        parallaxTargetsVisible = heroVisible;
-                    }
-                },
-                { threshold: 0 }
-            );
-            projObserver.observe(projectsSection);
         }
 
         // Showcase mouse parallax.
@@ -1296,35 +1417,21 @@
             // quickTo binds to a specific element + property. We rebind whenever
             // the active slide changes so the tween targets the visible frame.
             let frameRotY = null, frameRotX = null;
-            let floatRotY = null, floatRotX = null;
-            let lastFrame = null, lastFloat = null;
+            let lastFrame = null;
 
-            const bindQuickTo = (el, target) => {
+            const bindQuickTo = (el) => {
                 const opts = { duration: 0.6, ease: 'power2.out' };
-                if (target === 'frame') {
-                    frameRotY = gsap.quickTo(el, 'rotateY', opts);
-                    frameRotX = gsap.quickTo(el, 'rotateX', opts);
-                    lastFrame = el;
-                } else {
-                    floatRotY = gsap.quickTo(el, 'rotateY', opts);
-                    floatRotX = gsap.quickTo(el, 'rotateX', opts);
-                    lastFloat = el;
-                }
+                frameRotY = gsap.quickTo(el, 'rotationY', opts);
+                frameRotX = gsap.quickTo(el, 'rotationX', opts);
+                lastFrame = el;
             };
 
-            // Cache the active parallax targets. Recomputed only when the slide
+            // Cache the active parallax target. Recomputed only when the slide
             // actually changes (event from ProjectSlider) instead of on every
-            // mousemove frame, which used to do two full DOM queries 60×/sec.
+            // mousemove frame, which used to do a full DOM query 60×/sec.
             let cachedFrame = null;
-            let cachedFloat = null;
             const refreshTargets = () => {
                 cachedFrame = document.querySelector('.hero-slide.active .showcase-frame');
-                const candidate = document.querySelector('.hero-slide.active .hero-photo-float')
-                    || document.querySelector('#hero .hero-photo-float');
-                // Skip mouse parallax tilt for the transparent cutout portrait.
-                cachedFloat = (candidate && !candidate.classList.contains('is-cutout'))
-                    ? candidate
-                    : null;
             };
             refreshTargets();
             document.addEventListener('slide:change', refreshTargets);
@@ -1339,12 +1446,8 @@
                     const ry = -5 + normX * 10;
                     const rx = 2 - normY * 6;
                     if (cachedFrame) {
-                        if (cachedFrame !== lastFrame) bindQuickTo(cachedFrame, 'frame');
+                        if (cachedFrame !== lastFrame) bindQuickTo(cachedFrame);
                         frameRotY(ry); frameRotX(rx);
-                    }
-                    if (cachedFloat) {
-                        if (cachedFloat !== lastFloat) bindQuickTo(cachedFloat, 'float');
-                        floatRotY(ry); floatRotX(rx);
                     }
                     mouseTicking = false;
                 });
@@ -1514,19 +1617,37 @@
         const form = document.querySelector('.contact-form');
         if (!form) return;
 
+        const status = form.querySelector('.contact-form-status');
+        const btn = form.querySelector('button[type="submit"]');
+        if (!btn) return;
+
+        const getText = (key) => translations[currentLang]?.[key] || translations.de[key] || '';
+        const setStatus = (key, state) => {
+            const message = getText(key);
+            if (status) {
+                status.textContent = message;
+                status.classList.toggle('is-success', state === 'success');
+                status.classList.toggle('is-error', state === 'error');
+            }
+            return message;
+        };
+
+        const resetFeedback = (delay) => {
+            window.setTimeout(() => {
+                btn.textContent = getText('contact.send');
+                btn.classList.remove('is-success', 'is-error');
+                btn.disabled = false;
+            }, delay);
+        };
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = form.querySelector('.btn-primary');
-            const originalText = btn.textContent;
             const action = form.getAttribute('action') || '';
 
-            const resetBtn = (delay) => {
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('is-success', 'is-error');
-                    btn.disabled = false;
-                }, delay);
-            };
+            if (status) {
+                status.textContent = '';
+                status.classList.remove('is-success', 'is-error');
+            }
 
             // Mailto fallback (no backend) — build a pre-filled email and open the user's mail client
             if (action.startsWith('mailto:')) {
@@ -1539,14 +1660,14 @@
                 const body = `${message}\n\n—\n${name}\n${email}`;
                 const target = `${action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 window.location.href = target;
-                btn.textContent = currentLang === 'de' ? '✓ E-Mail-Programm geöffnet' : '✓ Mail client opened';
+                btn.textContent = setStatus('contact.status.mailClient', 'success');
                 btn.classList.add('is-success');
-                resetBtn(4000);
+                resetFeedback(4000);
                 return;
             }
 
             btn.disabled = true;
-            btn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+            btn.textContent = setStatus('contact.status.sending');
 
             try {
                 const response = await fetch(form.action, {
@@ -1556,17 +1677,17 @@
                 });
 
                 if (response.ok) {
-                    btn.textContent = currentLang === 'de' ? '✓ Gesendet!' : '✓ Sent!';
+                    btn.textContent = setStatus('contact.status.success', 'success');
                     btn.classList.add('is-success');
                     form.reset();
-                    resetBtn(3000);
+                    resetFeedback(3000);
                 } else {
                     throw new Error('Form submission failed');
                 }
-            } catch (error) {
-                btn.textContent = currentLang === 'de' ? '✗ Fehler — bitte per E-Mail' : '✗ Error — please use email';
+            } catch (_) {
+                btn.textContent = setStatus('contact.status.error', 'error');
                 btn.classList.add('is-error');
-                resetBtn(4000);
+                resetFeedback(4000);
             }
         });
     }
@@ -1593,23 +1714,19 @@
         }
 
         if (!localStorage.getItem('cookieConsent')) {
-            setTimeout(() => { banner.style.display = ''; }, 1000);
+            window.setTimeout(() => { banner.hidden = false; }, 1000);
         }
 
         acceptBtn.addEventListener('click', () => {
             localStorage.setItem('cookieConsent', 'accepted');
-            banner.style.display = 'none';
+            banner.hidden = true;
             loadGoogleFonts();
         });
 
         window.showConsentManager = function () {
-            banner.style.display = '';
+            banner.hidden = false;
         };
     }
-
-    /* ═══ HERO PHOTO ═══ */
-    // Single static photo — crossfade removed by request.
-    function initHeroPhotoSwap() {}
 
     /* ═══ HERO BACKGROUND SLIDESHOW ═══
        Crossfades through .hero-bg-slide elements. Pauses while the tab
@@ -1698,7 +1815,6 @@
         initContactForm();
         initCookieConsent();
         initAnimations();
-        initHeroPhotoSwap();
         initHeroBgSlideshow();
         initColorPicker();
 

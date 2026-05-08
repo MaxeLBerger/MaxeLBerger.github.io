@@ -46,6 +46,8 @@ __pycache__/
 *.tmp
 *.bak
 *.backup
+assets/img/backgrounds/*.png
+assets/img/backgrounds/herosquared-hero.webp
 
 # Copilot agent/instruction/skill configs (local dev tooling)
 .github/agents/

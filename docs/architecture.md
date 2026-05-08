@@ -69,11 +69,10 @@ Language is persisted in `localStorage('lang')`.
 
 ### Performance gates
 
-- **Mouse parallax** in `assets/js/main.js` skips work when both `#hero` and
-  `#projects` are off-screen (`parallaxTargetsVisible` flag, fed by two
-  `IntersectionObserver`s).
-- **Hero orb CSS animations** are paused via `animationPlayState` when
-  `#hero` leaves the viewport.
+- **Mouse parallax** in `assets/js/main.js` skips work when `#projects` is
+  off-screen (`parallaxTargetsVisible` flag, fed by an `IntersectionObserver`).
+- **Portfolio orb CSS animations** live in `#projects` as `.project-orb`
+  elements and are paused while the section lacks `.in-view`.
 - **Hero photo crossfade** (`setInterval`) skips work when `document.hidden`.
 - **Google Fonts** load only after the user accepts the cookie banner.
 
