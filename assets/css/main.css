@@ -562,27 +562,25 @@ html[data-color-scheme="light"] .btn-icon:hover {
     right: 0;
     z-index: 1000;
     height: var(--nav-height);
-    /* Transparent at the top of the page. A very soft blur + a thin
-       top-to-bottom gradient keeps the nav items legible against any hero
-       background without showing a visible bar. The tint only appears once
-       the user scrolls (.scrolled) so the hero reads edge-to-edge. */
+    /* Transparent at the top of the page. A short top-to-bottom dark
+       gradient keeps the nav items legible against any hero background
+       without showing a visible bar. The tint only intensifies once the
+       user scrolls (.scrolled) so the hero reads edge-to-edge.
+
+       Performance: backdrop-filter + mask-image on a full-width fixed
+       element forced Chrome to re-rasterize the entire navbar tile on
+       every scroll frame, which made scrolling visibly laggy on Windows
+       Chrome. Both effects are now omitted in the unscrolled state and
+       only the .scrolled state opts back into a single backdrop-filter
+       (without a mask) where it actually adds polish. */
     background:
         linear-gradient(
             to bottom,
-            rgba(10, 10, 15, 0.35) 0%,
+            rgba(10, 10, 15, 0.45) 0%,
+            rgba(10, 10, 15, 0.15) 70%,
             rgba(10, 10, 15, 0) 100%
         );
-    backdrop-filter: blur(6px) saturate(110%);
-    -webkit-backdrop-filter: blur(6px) saturate(110%);
-    /* Fade the backdrop-filter itself so it doesn't leave a hard edge where
-       the blurred nav meets the unblurred hero below. The mask matches the
-       background gradient so tint + blur fade out together. */
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
     border-bottom: 1px solid transparent;
-    /* Only transition cheap properties. backdrop-filter and mask-image are
-       extremely expensive to animate in Chrome and caused visible jank on
-       scroll past the 50px .scrolled threshold. They now snap instantly. */
     transition: background var(--duration-base),
                 box-shadow var(--duration-base),
                 border-color var(--duration-base);
@@ -592,28 +590,21 @@ html[data-color-scheme="light"] #navbar {
     background:
         linear-gradient(
             to bottom,
-            rgba(255, 255, 255, 0.45) 0%,
+            rgba(255, 255, 255, 0.55) 0%,
+            rgba(255, 255, 255, 0.20) 70%,
             rgba(255, 255, 255, 0) 100%
         );
     border-bottom-color: transparent;
 }
 
-/* Remove the bottom-fade mask while the colour-picker popover is open so the
-   dropdown is not clipped by the gradient mask. */
-#navbar:has(.color-picker-popover[data-open="true"]) {
-    -webkit-mask-image: none;
-    mask-image: none;
-}
-
 /* After the user scrolls past the hero, fade in the solid glass look so the
-   nav stays readable against the page body content. */
+   nav stays readable against the page body content. A single moderate
+   backdrop-filter is acceptable here because the navbar background is now
+   ~82% opaque, so Chrome can mostly skip behind-pixel sampling. */
 #navbar.scrolled {
-    background: rgba(10, 10, 15, 0.72);
-    backdrop-filter: blur(14px) saturate(130%);
-    -webkit-backdrop-filter: blur(14px) saturate(130%);
-    /* Drop the fade mask so the solid bar has a crisp bottom edge again. */
-    -webkit-mask-image: none;
-            mask-image: none;
+    background: rgba(10, 10, 15, 0.82);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
     border-bottom-color: var(--color-border);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
@@ -3577,16 +3568,10 @@ html[data-color-scheme="light"] .cookie-content p {
         --space-5xl: 5rem;
     }
 
-    #navbar {
-        /* Same transparent-at-top pattern on mobile — just a cheaper blur. */
-        backdrop-filter: blur(5px) saturate(105%);
-        -webkit-backdrop-filter: blur(5px) saturate(105%);
-    }
-
     #navbar.scrolled {
-        background: rgba(10, 10, 15, 0.86);
-        backdrop-filter: blur(10px) saturate(120%);
-        -webkit-backdrop-filter: blur(10px) saturate(120%);
+        background: rgba(10, 10, 15, 0.9);
+        backdrop-filter: blur(8px) saturate(115%);
+        -webkit-backdrop-filter: blur(8px) saturate(115%);
     }
 
     html[data-color-scheme="light"] #navbar.scrolled {
@@ -3973,6 +3958,16 @@ html[data-color-scheme="light"] .cookie-content p {
 
 .projects-section:not(.in-view) .project-orb {
     animation-play-state: paused;
+}
+
+/* Pause the hero scroll-hint bounce once the user has scrolled past the
+   hero. The animation is cheap on its own, but combined with everything
+   else off-screen it adds avoidable compositor work on every frame.
+   #navbar gains .scrolled past 50px of scroll, so this acts as a
+   pure-CSS "did the user start scrolling" check. */
+#navbar.scrolled ~ main .scroll-hint {
+    animation: none;
+    opacity: 0;
 }
 
 @media (max-width: 768px) {
