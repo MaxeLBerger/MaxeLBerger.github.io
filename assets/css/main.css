@@ -236,8 +236,6 @@
 .pricing-section,
 .pricing-card,
 .pricing-card.featured,
-.testimonials-section,
-.testimonial-card,
 .contact-section,
 .contact-link,
 .contact-form input,
@@ -302,13 +300,11 @@ html[data-color-scheme="light"] .badge {
 }
 
 /* Cards ------------------------------------------------------------------- */
-html[data-color-scheme="light"] .testimonial-card,
 html[data-color-scheme="light"] .pricing-card {
     background: #ffffff;
     border-color: rgba(15, 23, 42, 0.10);
     box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
 }
-html[data-color-scheme="light"] .testimonial-card:hover,
 html[data-color-scheme="light"] .pricing-card:hover {
     border-color: rgba(var(--theme-primary), 0.35);
     box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
@@ -2808,82 +2804,6 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
     margin-top: 3rem;
 }
 
-/* ============================================
-   TESTIMONIALS
-   ============================================ */
-.testimonials-section {
-    padding: var(--space-4xl) 0;
-    position: relative;
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.testimonial-card {
-    background: var(--color-bg-elevated);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: var(--radius-xl);
-    padding: 2rem;
-    transition: all var(--duration-base) var(--ease-out);
-    position: relative;
-}
-
-.testimonial-card:hover {
-    border-color: rgba(var(--theme-primary), 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.testimonial-stars {
-    color: rgb(var(--theme-primary));
-    font-size: var(--font-size-lg);
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-}
-
-.testimonial-quote {
-    font-size: var(--font-size-base);
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    margin: 0 0 1.5rem 0;
-    font-style: italic;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.testimonial-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgb(var(--theme-primary)), rgb(var(--theme-secondary)));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    color: white;
-    flex-shrink: 0;
-}
-
-.testimonial-name {
-    font-weight: 600;
-    color: var(--color-text);
-    font-size: var(--font-size-sm);
-}
-
-.testimonial-role {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-xs);
-}
-
 /* Stats row */
 .about-stats {
     display: grid;
@@ -3738,9 +3658,6 @@ html[data-color-scheme="light"] .cookie-content p {
         grid-column: unset;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -3949,7 +3866,6 @@ html[data-color-scheme="light"] .cookie-content p {
 .skills-section,
 .services-section,
 .pricing-section,
-.testimonials-section,
 .contact-section,
 .site-footer {
     content-visibility: auto;
@@ -4013,7 +3929,6 @@ html[data-color-scheme="light"] .cookie-content p {
 .about-section,
 .skills-section,
 .pricing-section,
-.testimonials-section,
 .contact-section {
     padding-top: clamp(var(--space-2xl), 6vw, var(--space-4xl));
     padding-bottom: clamp(var(--space-2xl), 6vw, var(--space-4xl));
@@ -4101,20 +4016,12 @@ html[data-color-scheme="light"] .cookie-content p {
     }
 }
 
-/* Testimonials: explicit mobile single column (was relying on auto-fit). */
-@media (max-width: 768px) {
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-    }
-}
 
 /* Skill / service / pricing cards — gentler padding on phones. */
 @media (max-width: 480px) {
     .skill-category,
     .service-card,
-    .pricing-card,
-    .testimonial-card {
+    .pricing-card {
         padding: var(--space-lg);
     }
     .pricing-card.featured {
@@ -4214,7 +4121,6 @@ html[data-color-scheme="light"] .cookie-content p {
     .about-layout,
     .services-grid,
     .skills-grid,
-    .testimonials-grid,
     .contact-layout {
         gap: var(--space-xl);
     }
