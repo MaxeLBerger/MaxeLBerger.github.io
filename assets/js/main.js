@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    script.js — Portfolio Interactions
    ProjectSlider, GSAP Animations, Theme, i18n
    ═══════════════════════════════════════════════ */
@@ -106,6 +106,12 @@
             'testimonials.soundoflvke.quote': '„Ich wollte keine 0815-Musiker-Seite. Max hat das verstanden, mit Audio-Player und Tour-Daten. Sieht aus wie ein großes Label — ohne deren Aufwand.“',
             'testimonials.soundoflvke.name': 'SoundOfLvke',
             'testimonials.soundoflvke.role': 'Künstler & Musiker',
+            'testimonials.aicaptain.quote': '„AI Captain hat meinen Workflow komplett verändert. Als Entwickler war ich anfangs skeptisch gegenüber KI-Assistenten, aber die Qualität der Codegenerierung und die VS-Code-Integration sind einfach unschlagbar.“',
+            'testimonials.aicaptain.name': 'Tobias M.',
+            'testimonials.aicaptain.role': 'Senior Frontend Engineer',
+            'testimonials.e46.quote': '„Endlich eine moderne Coding-Software für den E46! Kein Frust mehr mit alten Windows-XP-Laptops oder komplizierten Setups. Anschließen, starten, codieren. Genial einfach.“',
+            'testimonials.e46.name': 'Michael K.',
+            'testimonials.e46.role': 'BMW Enthusiast & DIY-Coder',
             'contact.tag': 'Kontakt',
             'contact.title': 'Lassen Sie uns sprechen',
             'contact.intro': 'Erzählen Sie mir von Ihrem Vorhaben — ganz unverbindlich. Ich melde mich persönlich bei Ihnen zurück, in der Regel innerhalb eines Werktags.',
@@ -370,6 +376,12 @@
             'testimonials.soundoflvke.quote': '“I didn\'t want a generic musician page. Max got that, with audio player and tour data. Looks like a major label site — without their overhead.”',
             'testimonials.soundoflvke.name': 'SoundOfLvke',
             'testimonials.soundoflvke.role': 'Artist & Musician',
+            'testimonials.aicaptain.quote': '“AI Captain completely changed my workflow. As a developer, I was skeptical about AI assistants at first, but the quality of code generation and the VS Code integration are simply unbeatable.”',
+            'testimonials.aicaptain.name': 'Tobias M.',
+            'testimonials.aicaptain.role': 'Senior Frontend Engineer',
+            'testimonials.e46.quote': '“Finally a modern coding software for the E46! No more frustration with old Windows XP laptops or complicated setups. Plug in, launch, code. Ingeniously simple.”',
+            'testimonials.e46.name': 'Michael K.',
+            'testimonials.e46.role': 'BMW Enthusiast & DIY Coder',
             'contact.tag': 'Contact',
             'contact.title': 'Let\'s talk',
             'contact.intro': "Tell me about your project — no strings attached. I'll get back to you personally, usually within one business day.",
