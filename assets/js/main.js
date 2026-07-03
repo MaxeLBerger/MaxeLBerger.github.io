@@ -14,7 +14,6 @@
             'nav.about': 'Über mich',
             'nav.pricing': 'Pakete',
             'nav.tech': 'Tech Stack',
-            'nav.testimonials': 'Referenzen',
             'nav.contact': 'Kontakt',
             'nav.projects': 'Projekte',
             'services.tag': 'Pakete & Preise',
@@ -95,17 +94,6 @@
             'about.stat1': 'Jahre Erfahrung',
             'about.stat2': 'Projekte umgesetzt',
             'about.stat3': 'Kundenzufriedenheit',
-            'testimonials.tag': 'Referenzen',
-            'testimonials.title': 'Was Kunden sagen',
-            'testimonials.coha.quote': '„Max hat unser MVP an einem einzigen Wochenende von Grund auf neu aufgebaut. Nach nur einem kurzen Briefing-Gespräch von drei Stunden hat er unsere Vision perfekt verstanden und direkt umgesetzt. Das Ergebnis lief fehlerfrei, war extrem performant und hat uns in der ersten Pitch-Runde entscheidende Vorteile gebracht. Genau diese pragmatische, unkomplizierte und verlässliche Umsetzung ist genau das, was man als dynamisches Startup in der Frühphase braucht.“',
-            'testimonials.coha.name': 'CoHa Gründerteam',
-            'testimonials.coha.role': 'Startup — Gastronomie',
-            'testimonials.imkerei.quote': '„Unsere alte Website war über zehn Jahre alt und nicht für Smartphones optimiert. Max hat uns einen modernen, responsiven Online-Shop aufgesetzt, über den wir unseren Honig nun endlich direkt und unkompliziert online vertreiben können. Besonders wertvoll für uns im Alltag: Dank des intuitiven Content-Management-Systems können wir neue Honigsorten, Preise und Fotos komplett selbst pflegen und anpassen, ohne jedes Mal einen Programmierer kontaktieren zu müssen.“',
-            'testimonials.imkerei.name': 'Imkerei Feuerstein',
-            'testimonials.imkerei.role': 'Lokales Unternehmen — Bruckmühl',
-            'testimonials.soundoflvke.quote': '„Als Musiker wollte ich eine individuelle Webpräsenz, die aus der Masse heraussticht. Max hat meine Wünsche sofort verstanden und ein maßgeschneidertes Design entworfen, das mit einem voll integrierten Audio-Player, dynamischen Tour-Daten und interaktiven Elementen glänzt. Die Seite fühlt sich extrem hochwertig an – fast wie der Auftritt eines großen Musiklabels, aber ohne den sonst üblichen administrativen und finanziellen Overhead. Die Resonanz der Fans ist durchweg positiv.“',
-            'testimonials.soundoflvke.name': 'SoundOfLvke',
-            'testimonials.soundoflvke.role': 'Künstler & Musiker',
             'contact.tag': 'Kontakt',
             'contact.title': 'Lassen Sie uns sprechen',
             'contact.intro': 'Erzählen Sie mir von Ihrem Vorhaben — ganz unverbindlich. Ich melde mich persönlich bei Ihnen zurück, in der Regel innerhalb eines Werktags.',
@@ -121,20 +109,14 @@
             'contact.status.mailClient': 'Ihr E-Mail-Programm wurde geöffnet.',
             'footer.impressum': 'Impressum',
             'footer.datenschutz': 'Datenschutz',
-            'hero.scroll': 'Scrollen und entdecken',
-            // Slide 1 - Maximilian Haak (Personal)
-            'slide.maxhaak.t1': 'Maximilian',
-            'slide.maxhaak.t2': 'Haak.',
-            'slide.maxhaak.t3': 'Software Entwickler.',
-            'slide.maxhaak.desc': 'Full-Stack Entwickler aus Bruckmühl bei Rosenheim. Websites, Web-Apps und KI-Lösungen — mit TypeScript, React und modernen Cloud-Technologien. Über 5 Jahre Erfahrung, persönlich und zuverlässig.',
-            'slide.maxhaak.cta1': 'Kostenlose Beratung',
-            'slide.maxhaak.cta2': 'Projekte ansehen',
-            'slide.maxhaak.badge': 'VERFÜGBAR FÜR PROJEKTE',
-            'slide.maxhaak.badge.years': '5 Jahre + Erfahrung',
-            'slide.maxhaak.badge.ai': 'AI Expert',
-            'slide.maxhaak.tag1': 'Full-Stack',
-            'slide.maxhaak.tag2': 'TypeScript & React',
-            'slide.maxhaak.tag3': 'KI & Automatisierung',
+            // Hero (statisch, Foto-first)
+            'hero.eyebrow': 'Maximilian Haak — Softwareentwickler',
+            'hero.title1': 'Websites, Web\u2011Apps',
+            'hero.title2': 'und KI-Lösungen.',
+            'hero.title3': 'Sauber gebaut.',
+            'hero.desc': 'Seit über fünf Jahren entwickle ich Software mit TypeScript, React und modernen Cloud-Technologien — aus Bruckmühl bei Rosenheim, persönlich und direkt.',
+            'hero.cta1': 'Projekte ansehen',
+            'hero.cta2': 'Kontakt aufnehmen',
             // Slide 2 - Imkerei Feuerstein
             'slide.imkerei.t1': 'Honig-Shop.',
             'slide.imkerei.t2': 'Familienimkerei.',
@@ -278,7 +260,6 @@
             'nav.about': 'About me',
             'nav.pricing': 'Pricing',
             'nav.tech': 'Tech Stack',
-            'nav.testimonials': 'Reviews',
             'nav.contact': 'Contact',
             'nav.projects': 'Projects',
             'services.tag': 'Packages & Pricing',
@@ -359,17 +340,6 @@
             'about.stat1': 'Years Experience',
             'about.stat2': 'Projects Delivered',
             'about.stat3': 'Client Satisfaction',
-            'testimonials.tag': 'References',
-            'testimonials.title': 'What Clients Say',
-            'testimonials.coha.quote': '“Max built our MVP from scratch in a single weekend. After just a brief three-hour briefing session, he perfectly captured our vision and executed it flawlessly. The resulting site was fast, stable, and gave us a massive advantage during our initial pitch rounds. This level of pragmatic, straightforward, and highly reliable execution is exactly what early-stage startups need to move fast.”',
-            'testimonials.coha.name': 'CoHa Founding Team',
-            'testimonials.coha.role': 'Startup — Gastronomy',
-            'testimonials.imkerei.quote': '“Our old website was over ten years old and completely outdated. Max built us a modern, fully responsive online shop that finally allows us to sell our honey directly online. The best part for our daily business: thanks to the intuitive content management system, we can update products, prices, and news ourselves without having to call a developer for every tiny change.”',
-            'testimonials.imkerei.name': 'Imkerei Feuerstein',
-            'testimonials.imkerei.role': 'Local Business — Bruckmühl',
-            'testimonials.soundoflvke.quote': '“I didn\'t want a generic cookie-cutter musician website. Max immediately understood my aesthetic and technical needs, delivering a bespoke platform featuring a custom audio player, tour date integration, and sleek animations. It feels premium and professional—just like a major label\'s official site, but without all the administrative and financial overhead. Fan response has been incredible.”',
-            'testimonials.soundoflvke.name': 'SoundOfLvke',
-            'testimonials.soundoflvke.role': 'Artist & Musician',
             'contact.tag': 'Contact',
             'contact.title': 'Let\'s talk',
             'contact.intro': "Tell me about your project — no strings attached. I'll get back to you personally, usually within one business day.",
@@ -385,20 +355,14 @@
             'contact.status.mailClient': 'Your mail client has been opened.',
             'footer.impressum': 'Legal Notice',
             'footer.datenschutz': 'Privacy Policy',
-            'hero.scroll': 'Scroll to explore',
-            // Slide 1 - Maximilian Haak (Personal)
-            'slide.maxhaak.t1': 'Maximilian',
-            'slide.maxhaak.t2': 'Haak.',
-            'slide.maxhaak.t3': 'Software Developer.',
-            'slide.maxhaak.desc': 'Full-stack developer based in Bruckmühl near Rosenheim. Websites, web apps, and AI solutions — with TypeScript, React, and modern cloud technologies. 5+ years of experience, personal and reliable.',
-            'slide.maxhaak.cta1': 'Free Consultation',
-            'slide.maxhaak.cta2': 'View Projects',
-            'slide.maxhaak.badge': 'AVAILABLE FOR PROJECTS',
-            'slide.maxhaak.badge.years': '5+ Years Experience',
-            'slide.maxhaak.badge.ai': 'AI Expert',
-            'slide.maxhaak.tag1': 'Full-Stack',
-            'slide.maxhaak.tag2': 'TypeScript & React',
-            'slide.maxhaak.tag3': 'AI & Automation',
+            // Hero (static, photo-first)
+            'hero.eyebrow': 'Maximilian Haak — Software Developer',
+            'hero.title1': 'Websites, web apps',
+            'hero.title2': 'and AI solutions.',
+            'hero.title3': 'Built properly.',
+            'hero.desc': 'I\'ve been building software for over five years with TypeScript, React and modern cloud technologies — based in Bruckmühl near Rosenheim, personal and direct.',
+            'hero.cta1': 'View projects',
+            'hero.cta2': 'Get in touch',
             // Slide 2 - Imkerei Feuerstein
             'slide.imkerei.t1': 'Honey Shop.',
             'slide.imkerei.t2': 'Family Beekeeping.',
@@ -1265,20 +1229,28 @@
             const heroSection = document.querySelector('#hero');
             if (!heroSection) return;
 
+            const eyebrow = heroSection.querySelector('.hero-eyebrow');
             const titleLines = heroSection.querySelectorAll('.title-line');
             const desc = heroSection.querySelector('.slide-description');
-            const heroBadges = heroSection.querySelectorAll('.hero-badge');
-            const ctaButtons = heroSection.querySelectorAll('.slide-cta .btn');
+            const ctaItems = heroSection.querySelectorAll('.slide-cta .btn, .slide-cta .hero-link');
             const tags = heroSection.querySelector('.slide-tags');
 
             // Set initial hidden states
+            if (eyebrow) gsap.set(eyebrow, { y: 12, opacity: 0 });
             gsap.set(titleLines, { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
             if (desc) gsap.set(desc, { y: 20, opacity: 0 });
-            if (heroBadges.length) gsap.set(heroBadges, { y: 14, opacity: 0, scale: 0.92 });
-            gsap.set(ctaButtons, { y: 15, opacity: 0, scale: 0.95 });
+            gsap.set(ctaItems, { y: 15, opacity: 0 });
             if (tags) gsap.set(tags, { y: 10, opacity: 0 });
 
             const tl = gsap.timeline({ delay: 0.3 });
+
+            // Eyebrow — quiet fade-up before the headline
+            if (eyebrow) {
+                tl.to(eyebrow, {
+                    y: 0, opacity: 1,
+                    duration: 0.45, ease: 'power3.out',
+                }, 0.05);
+            }
 
             // Title lines — bottom-up clip reveal
             tl.to(titleLines, {
@@ -1287,34 +1259,24 @@
                 stagger: 0.1,
                 duration: 0.6,
                 ease: 'power4.out',
-            }, 0.2);
+            }, 0.25);
 
             // Description
             if (desc) {
                 tl.to(desc, {
                     y: 0, opacity: 1,
                     duration: 0.5, ease: 'power3.out',
-                }, 0.5);
+                }, 0.55);
             }
 
-            // Hero credibility badges — icon and label enter as one unit.
-            if (heroBadges.length) {
-                tl.to(heroBadges, {
-                    y: 0, opacity: 1, scale: 1,
+            // CTAs — button and text link enter together, no bounce
+            if (ctaItems.length) {
+                tl.to(ctaItems, {
+                    y: 0, opacity: 1,
                     stagger: 0.08,
-                    duration: 0.4,
-                    ease: 'back.out(1.35)',
-                }, 0.58);
-            }
-
-            // CTA buttons — staggered bounce
-            if (ctaButtons.length) {
-                tl.to(ctaButtons, {
-                    y: 0, opacity: 1, scale: 1,
-                    stagger: 0.08,
-                    duration: 0.4,
-                    ease: 'back.out(1.4)',
-                }, 0.65);
+                    duration: 0.45,
+                    ease: 'power3.out',
+                }, 0.68);
             }
 
             // Tags
@@ -1322,23 +1284,7 @@
                 tl.to(tags, {
                     y: 0, opacity: 1,
                     duration: 0.4, ease: 'power3.out',
-                }, 0.75);
-            }
-
-            // Hero photo badge
-            const heroBadge = heroSection.querySelector('.showcase-badge');
-            if (heroBadge) {
-                tl.fromTo(heroBadge,
-                    { opacity: 0, y: -20, scale: 0.7 },
-                    { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)' },
-                    0.8
-                );
-            }
-
-            // Scroll hint
-            const scrollHint = document.querySelector('.scroll-hint');
-            if (scrollHint) {
-                tl.from(scrollHint, { opacity: 0, duration: 0.5 }, 0.9);
+                }, 0.78);
             }
         }
     }

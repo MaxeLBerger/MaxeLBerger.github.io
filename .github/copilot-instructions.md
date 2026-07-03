@@ -54,12 +54,18 @@ The top `#hero` uses the E46 photo as the single full-bleed background. Keep the
 so keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads;
 do not switch back to the older `herosquared` hero. Keep the dedicated `.hero-section--square` and
 `.hero-bg-squared` crop/veil rules. Place the hero text in the right-side grid column (`.hero-section--single`) on
-wide screens and use the darker right-side/bottom contrast veil for readability over the E46 photo.
-Hero credibility badges belong inside `.hero-text` below the headline as normal `.hero-badges` flex content. Keep them
-as standalone white SVG icons with short text labels and without pill/card backgrounds; do not position them as absolute
-overlays over the photo. Keep the `Haak.` word in the hero headline as themed `.gradient-text` using the active color
-palette, with only a subtle drop-shadow for photo contrast. Animate these `.hero-badge` items as part of the homepage
-hero entrance sequence.
+wide screens.
+
+The hero is intentionally **photo-first and editorial** (redesigned July 2026): the photo is only lightly dimmed
+(`brightness(0.82)`), contrast for the text comes from the reduced directional `--square::before` veil plus layered
+text-shadows — do not reintroduce heavy flat dim layers or theme-colored radial tints over the photo. The text column
+is: `.hero-eyebrow` (uppercase name + role line) → `h1.slide-title` with three `.title-line` spans carrying the value
+proposition (third line uses `.title-line--quiet` for a muted typographic accent) → `.slide-description` →
+`.slide-cta` with ONE white primary button (scoped `.hero-section--single .btn-primary` override) linking to
+`#projects` and ONE `.hero-link` text link (arrow via `::after`) linking to `#contact`. Do NOT add gradient text,
+self-awarded credibility badges, a second pill button, or a scroll hint to the hero — these were deliberately removed
+as part of the de-templating redesign. i18n keys are `hero.eyebrow`, `hero.title1..3`, `hero.desc`, `hero.cta1/cta2`.
+The GSAP entrance sequence in `playEntrance()` animates eyebrow → title lines → description → CTAs.
 
 ### About section
 
