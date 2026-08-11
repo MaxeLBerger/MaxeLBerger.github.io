@@ -68,10 +68,6 @@
             'services.design.link': 'Termin vereinbaren',
             'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
             'services.cta.button': 'Kostenloses Erstgespräch →',
-            'services.availability.badge': 'Ab 01.10.2026',
-            'services.availability.title': 'Angebote & Dienstleistungen gibt es ab dem 1. Oktober 2026.',
-            'services.availability.text': 'Bis dahin nehme ich Anfragen entgegen und erstelle unverbindliche Angebote — die Umsetzung startet ab dem 1.10.',
-            'services.availability.cta': 'Jetzt Platz sichern →',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
@@ -80,52 +76,13 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Kundenprojekte',
+            'projects.mode.customers.lock': 'Bald verfügbar',
             'projects.mode.own': 'Eigene Projekte',
-            // Alle-Projekte-Grid
-            'projects.all.title': 'Alle Projekte',
-            'projects.all.hint': 'Vollständige Übersicht — die Auswahl folgt dem Modus oben.',
-            'grid.status.live': 'Live',
-            'grid.status.done': 'Fertig',
-            'grid.status.wip': 'In Arbeit',
-            'grid.coha.desc': 'Vietnamesisches Restaurant in Bruckmühl — Speisekarte, Galerie, Reservierung.',
-            'grid.imkerei.desc': 'Honig-Onlineshop der Familienimkerei aus Elchingen.',
-            'grid.jkentertainment.desc': 'TCG-Onlineshop mit über 4.000 Artikeln, zwei Stores in Frankfurt und Darmstadt.',
-            'grid.kayaseeds.desc': 'E-Commerce für eine bayerische Cannabis-Samenmarke.',
-            'grid.danielbrecheis.desc': 'Human Bridges Consulting — HR-Coaching, Workshops, Interim-Management.',
-            'grid.soundoflvke.desc': 'Künstler-Website mit Audio-Player und Release-Übersicht.',
-            'grid.casteldelmonte.desc': 'Italienisches Restaurant in Vagen — Karte, Öffnungszeiten, Kontakt.',
-            'grid.kaess.desc': 'Lackschadenfreie Dellenreparatur — Leistungen, Ablauf, Galerie, Kontakt.',
-            'grid.wkdk.desc': 'Ankauf-Plattform für Sammelkarten — Collectibles-Hub GmbH, Rosenheim.',
-            'grid.bbspiele.desc': 'Marketing-Website für den Spiele- und Collectibles-Händler aus Rosenheim.',
-            'grid.nolte.desc': 'Markenauftritt für Klassiker-Fahrzeuge.',
-            'grid.jaeggl.desc': 'Redesign eines bestehenden Firmenauftritts.',
-            'grid.e46.desc': 'Desktop-App für BMW E46 Steuergeräte-Coding über serielle Schnittstelle.',
-            'grid.aicaptain.desc': 'KI-Agent als VS Code Extension — Code-Generierung, Debugging, Review.',
-            'grid.medieval.desc': 'Browser-Strategiespiel im Mittelalter-Setting mit eigenem Wave-System.',
-            'grid.shookroko.desc': 'Action-Browsergame mit Phaser 3, eigener Game-Loop und Asset-Pipeline.',
-            'grid.e46viola.desc': 'Fahrzeug-Showcase aus dem E46-Umfeld.',
-            'grid.teamkickoff.desc': 'Interaktives Meeting-Board für neun Personen mit geteiltem Zustand.',
-            'grid.dogkennel.desc': 'Plattform für Hundepensionen — Buchungen, Belegung, Hunde- und Halterprofile.',
-            'grid.teahop.desc': 'Bio-Tee-Shop als eigenes Shopify-Theme, Online Store 2.0.',
-            'grid.teekompass.desc': 'Bio-Tee-Abo mit KI-Personalisierung: Box, Bewertung, bessere nächste Box.',
-            'grid.glowcan.desc': '3D-gedruckter LED-Deckel für Energy-Dosen — Shopify-Theme, mobile-first.',
-            'grid.bierbrauen.desc': 'Web-App rund ums Bierbrauen — Rezepte und Prozessbegleitung.',
-            'grid.senihelp24.desc': 'Digitale Plattform für Alltagshilfe und Seniorenunterstützung.',
-            'grid.albert.desc': 'Evolutionssimulation mit neuronalen Netzen, plus 3D-Battle-Royale-Ableger.',
-            'grid.kundenkalender.desc': 'Lokaler Terminkalender als Desktop-App — Serientermine, ICS/CSV-Export.',
-            'grid.maxorchester.desc': 'Orchestrierung mehrerer KI-Agenten über ein gemeinsames Frontend.',
-            'grid.vibeide.desc': 'Experimentelle Entwicklungsumgebung mit KI-gestütztem Workflow.',
-            'grid.moneydash.desc': 'Dashboard für Finanzdaten und Auswertungen.',
-            'grid.assetkit.desc': 'Toolchain für Spiel-Assets — Generierung, Freistellen, Normalisierung.',
             'about.title': 'Über mich',
             'about.eyebrow': 'Persönlich',
             'about.imageAlt': 'Maximilian Haak vor seinem BMW E46 mit Alpenpanorama',
             'about.p1': 'Aufgewachsen in Bruckmühl, irgendwo zwischen Vereinsplatz, Werkstatt und Alpenpanorama. Familie und ein paar enge Freunde halten mich geerdet, und ein großer Teil meiner Geduld kommt vermutlich daher, dass ich früh angefangen habe, an einem alten BMW selbst rumzuschrauben.',
             'about.p2': 'Im Alltag findet man mich meistens auf dem Fußballplatz oder im Gym, und danach läuft Musik. Mal sitze ich an eigenen Beats, mal an der Percussion, manchmal ist es auch einfach laute Musik im Auto auf dem Heimweg.',
-            'about.p3': 'Die größte Konstante sind aber die zwei E46. Beide gehören mir, beide haben ihre Eigenheiten, und beide haben mir beigebracht, dass man Dinge auch dann fertig macht, wenn sie beim dritten Anlauf immer noch nicht passen. Genau diese Geduld nehme ich mit in jedes Projekt.',
-            'about.passion.label': 'Meine beiden E46',
-            'about.passion.text': 'Zwei BMW E46, beide meine, beide mit eigener Geschichte. Weil das mehr Hobby ist als Fortbewegung, haben die zwei eine eigene Seite bekommen.',
-            'about.passion.imageAlt': 'Meine beiden BMW E46 nebeneinander am Feldrand im Abendlicht',
             'about.highlight.ageLabel': 'Alter',
             'about.highlight.age': '25 Jahre',
             'about.highlight.codeLabel': 'Heimat',
@@ -282,29 +239,6 @@
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
             'slide.jkentertainment.badge': 'TCG STORE',
-
-            'slide.senihelp24.t1': 'Senihelp24.',
-            'slide.senihelp24.t2': '24h-Pflege',
-            'slide.senihelp24.t3': 'zu Hause.',
-            'slide.senihelp24.desc': 'Senihelp24 vermittelt keine Betreuungskräfte, sondern stellt sie selbst an — 24h-Pflege für Angehörige zu Hause. Ich baue dafür den neuen Web-Auftritt: Leistungen, Kostenrechner und ein Anfrage-Flow, der Familien in einer schwierigen Situation schnell zu einer klaren Antwort führt. Aktuell in Entwicklung.',
-            'slide.senihelp24.cta1': 'Anfragen',
-            'slide.senihelp24.cta2': 'Bald live',
-            'slide.senihelp24.tag1': 'Next.js & Vercel',
-            'slide.senihelp24.tag2': 'Pflege & Betreuung',
-            'slide.senihelp24.tag3': 'In Arbeit',
-            'slide.senihelp24.badge': 'IN ARBEIT',
-
-            'slide.albert.t1': 'Albert Royale.',
-            'slide.albert.t2': 'Dein Albert',
-            'slide.albert.t3': 'lernt von dir.',
-            'slide.albert.desc': 'Ein 3D-Battle-Royale mit einem neuronalen Netz als Gegner-Gehirn: In Phase 1 spielst du selbst — jede deiner Aktionen wird aufgezeichnet und per Behavior Cloning in einem Web Worker trainiert. In Phase 2 tritt dein Albert allein gegen fünfzehn andere an, und du schaust nur noch zu.',
-            'slide.albert.cta1': 'Projekt ansehen',
-            'slide.albert.cta2': 'Auf GitHub',
-            'slide.albert.tag1': 'Three.js & TypeScript',
-            'slide.albert.tag2': 'Neuronale Netze',
-            'slide.albert.tag3': 'Behavior Cloning',
-            'slide.albert.badge': 'KI-SPIEL',
-
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -380,10 +314,6 @@
             'services.design.link': 'Book a slot',
             'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
             'services.cta.button': 'Free intro call →',
-            'services.availability.badge': 'From 01 Oct 2026',
-            'services.availability.title': 'Offers and services are available from 1 October 2026.',
-            'services.availability.text': 'Until then I take enquiries and prepare non-binding quotes — delivery starts on 1 October.',
-            'services.availability.cta': 'Reserve your slot →',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
@@ -392,52 +322,13 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Customer projects',
+            'projects.mode.customers.lock': 'Coming soon',
             'projects.mode.own': 'Own projects',
-            // All-projects grid
-            'projects.all.title': 'All projects',
-            'projects.all.hint': 'Full overview — follows the mode selected above.',
-            'grid.status.live': 'Live',
-            'grid.status.done': 'Shipped',
-            'grid.status.wip': 'In progress',
-            'grid.coha.desc': 'Vietnamese restaurant in Bruckmühl — menu, gallery, reservations.',
-            'grid.imkerei.desc': 'Honey online shop for the Feuerstein family apiary in Elchingen.',
-            'grid.jkentertainment.desc': 'TCG online store with 4,000+ items and two stores in Frankfurt and Darmstadt.',
-            'grid.kayaseeds.desc': 'E-commerce for a Bavarian cannabis seed brand.',
-            'grid.danielbrecheis.desc': 'Human Bridges Consulting — HR coaching, workshops, interim management.',
-            'grid.soundoflvke.desc': 'Artist website with audio player and release overview.',
-            'grid.casteldelmonte.desc': 'Italian restaurant in Vagen — menu, opening hours, contact.',
-            'grid.kaess.desc': 'Paintless dent repair — services, process, gallery, contact.',
-            'grid.wkdk.desc': 'Trading card buy-back platform — Collectibles-Hub GmbH, Rosenheim.',
-            'grid.bbspiele.desc': 'Marketing site for the games and collectibles retailer in Rosenheim.',
-            'grid.nolte.desc': 'Brand presence for classic cars.',
-            'grid.jaeggl.desc': 'Redesign of an existing company website.',
-            'grid.e46.desc': 'Desktop app for BMW E46 ECU coding over a serial interface.',
-            'grid.aicaptain.desc': 'AI agent as a VS Code extension — code generation, debugging, review.',
-            'grid.medieval.desc': 'Browser strategy game in a medieval setting with a custom wave system.',
-            'grid.shookroko.desc': 'Action browser game built with Phaser 3, custom game loop and asset pipeline.',
-            'grid.e46viola.desc': 'Vehicle showcase from the E46 world.',
-            'grid.teamkickoff.desc': 'Interactive meeting board for nine people with shared state.',
-            'grid.dogkennel.desc': 'Platform for dog boarding kennels — bookings, occupancy, dog and owner profiles.',
-            'grid.teahop.desc': 'Organic tea shop as a custom Shopify theme, Online Store 2.0.',
-            'grid.teekompass.desc': 'Organic tea subscription with AI personalisation: box, rating, better next box.',
-            'grid.glowcan.desc': '3D-printed LED lid for energy drink cans — Shopify theme, mobile-first.',
-            'grid.bierbrauen.desc': 'Web app for home brewing — recipes and process guidance.',
-            'grid.senihelp24.desc': 'Digital platform for everyday assistance and senior support.',
-            'grid.albert.desc': 'Evolution simulation with neural networks, plus a 3D battle royale spin-off.',
-            'grid.kundenkalender.desc': 'Local appointment calendar as a desktop app — recurring events, ICS/CSV export.',
-            'grid.maxorchester.desc': 'Orchestrating multiple AI agents through a shared frontend.',
-            'grid.vibeide.desc': 'Experimental development environment with an AI-assisted workflow.',
-            'grid.moneydash.desc': 'Dashboard for financial data and analysis.',
-            'grid.assetkit.desc': 'Toolchain for game assets — generation, background removal, normalisation.',
             'about.title': 'About me',
             'about.eyebrow': 'Personal',
             'about.imageAlt': 'Maximilian Haak in front of his BMW E46 with an alpine backdrop',
             'about.p1': 'I grew up in Bruckmühl, somewhere between the football pitch, the garage and the Alps. Family and a few close friends keep me grounded, and a lot of my patience probably comes from spending early years wrenching on an old BMW.',
             'about.p2': 'Day to day you will usually find me on the football pitch or at the gym, and after that there is music. Sometimes I am working on my own beats, sometimes on percussion, sometimes it is just loud music in the car on the way home.',
-            'about.p3': 'The biggest constant, though, are the two E46s. Both are mine, both have their quirks, and both taught me to finish things even when they still do not fit on the third attempt. That patience goes into every project.',
-            'about.passion.label': 'My two E46s',
-            'about.passion.text': 'Two BMW E46, both mine, both with their own story. Because this is more hobby than transport, the two of them got a site of their own.',
-            'about.passion.imageAlt': 'My two BMW E46s parked side by side at the edge of a field in evening light',
             'about.highlight.ageLabel': 'Age',
             'about.highlight.age': '25 years',
             'about.highlight.codeLabel': 'Home',
@@ -594,29 +485,6 @@
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
             'slide.jkentertainment.badge': 'TCG STORE',
-
-            'slide.senihelp24.t1': 'Senihelp24.',
-            'slide.senihelp24.t2': '24h Care',
-            'slide.senihelp24.t3': 'At Home.',
-            'slide.senihelp24.desc': 'Senihelp24 does not broker caregivers — it employs them directly, providing round-the-clock care for relatives at home. I am building their new web presence: services, a cost calculator and an enquiry flow that gets families a clear answer fast, in a difficult moment. Currently in development.',
-            'slide.senihelp24.cta1': 'Get in touch',
-            'slide.senihelp24.cta2': 'Live soon',
-            'slide.senihelp24.tag1': 'Next.js & Vercel',
-            'slide.senihelp24.tag2': 'Care & Support',
-            'slide.senihelp24.tag3': 'In Progress',
-            'slide.senihelp24.badge': 'IN PROGRESS',
-
-            'slide.albert.t1': 'Albert Royale.',
-            'slide.albert.t2': 'Your Albert',
-            'slide.albert.t3': 'learns from you.',
-            'slide.albert.desc': 'A 3D battle royale with a neural network as the opponents’ brain: in phase 1 you play yourself — every action you take is recorded and trained via behavior cloning inside a web worker. In phase 2 your Albert faces fifteen others on his own, and you just watch.',
-            'slide.albert.cta1': 'View project',
-            'slide.albert.cta2': 'On GitHub',
-            'slide.albert.tag1': 'Three.js & TypeScript',
-            'slide.albert.tag2': 'Neural Networks',
-            'slide.albert.tag3': 'Behavior Cloning',
-            'slide.albert.badge': 'AI GAME',
-
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -839,31 +707,28 @@
             this.section = document.querySelector('#projects');
             if (!this.section) return;
 
-            // The slider holds two independent sets of slides — customer work and
-            // own projects — switched by the segmented pill above it. Everything
-            // index-based below (`this.slides` ↔ `this.navBtns`) operates on the
-            // *active* mode only; `allSlides` / `allNavBtns` keep the full set so
-            // a theme belonging to the other mode can still be resolved.
-            this.allSlides = Array.from(this.section.querySelectorAll('.hero-slide'));
-            // Exclude any nav button explicitly marked disabled or aria-disabled.
-            this.allNavBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
+            // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
+            // and any nav button explicitly marked disabled or aria-disabled.
+            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
                 .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
-            this.modeBtns = Array.from(this.section.querySelectorAll('.project-mode-btn'))
-                .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
-            this.gridCards = Array.from(this.section.querySelectorAll('.project-card'));
 
-            const activeModeBtn = this.modeBtns.find(btn => btn.classList.contains('is-active'));
-            this.mode = activeModeBtn ? activeModeBtn.dataset.mode : (this.allSlides[0]?.dataset.mode || 'own');
-
-            this.slides = [];
-            this.navBtns = [];
+            // Re-sort slides to match nav button order (data-project ↔ data-theme)
+            // so that index-based pairing in goToSlide() stays in sync after the
+            // nav has been grouped/re-ordered visually.
+            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
+            const ordered = this.navBtns
+                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
+                .filter(Boolean);
+            if (ordered.length === this.slides.length) {
+                this.slides = ordered;
+            }
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');
             this.pagination = this.section.querySelector('.project-pagination');
-            this.currentIndex = 0;
+            this.currentIndex = Math.max(this.slides.findIndex(slide => slide.classList.contains('active')), 0);
             this.isAnimating = false;
-            this.isModeSwitching = false;
             this.animationGuardTimer = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -875,115 +740,11 @@
                 motionQuery.addListener(onMotionChange);
             }
 
-            if (this.allSlides.length === 0) return;
-
-            // A colour the visitor picked earlier may belong to the other mode —
-            // start there so the slide that owns it is the one on screen. Read
-            // localStorage rather than the controller: its fallback is the
-            // document default ('maxhaak'), which would always drag a first-time
-            // visitor into "own projects" and override the markup's chosen mode.
-            let storedTheme = null;
-            try { storedTheme = localStorage.getItem('themeColor'); } catch (_) { /* private mode */ }
-            const stored = storedTheme ? this.locateTheme(storedTheme) : null;
-            if (stored) this.mode = stored.mode;
+            if (this.slides.length === 0) return;
 
             this.bindEvents();
-            this.applyMode(this.mode, {
-                index: stored ? stored.index : 0,
-                dispatchEvent: false,
-                updateTheme: true,
-            });
-        }
-
-        /**
-         * Collect the slides + nav buttons of one mode, in nav-button order, so
-         * that index-based pairing in goToSlide() stays in sync.
-         */
-        collectMode(mode) {
-            const navBtns = this.allNavBtns.filter(btn => btn.dataset.mode === mode);
-            const slideByTheme = new Map(
-                this.allSlides
-                    .filter(slide => slide.dataset.mode === mode)
-                    .map(slide => [slide.getAttribute('data-theme'), slide])
-            );
-            const slides = navBtns
-                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
-                .filter(Boolean);
-            return { navBtns, slides };
-        }
-
-        /** Find a theme across *both* modes. Returns null when nothing matches. */
-        locateTheme(theme) {
-            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
-            for (const mode of ['customers', 'own']) {
-                const { slides } = this.collectMode(mode);
-                const index = slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
-                if (index !== -1) return { mode, index };
-            }
-            return null;
-        }
-
-        applyMode(mode, options = {}) {
-            const { index = 0, dispatchEvent = true, updateTheme = false } = options;
-            const { navBtns, slides } = this.collectMode(mode);
-            if (slides.length === 0) return;
-
-            this.mode = mode;
-            this.navBtns = navBtns;
-            this.slides = slides;
-
-            this.modeBtns.forEach(btn => {
-                const isActive = btn.dataset.mode === mode;
-                btn.classList.toggle('is-active', isActive);
-                btn.setAttribute('aria-pressed', String(isActive));
-            });
-
-            // Tabs and slides of the other mode leave the tab order entirely.
-            this.allNavBtns.forEach(btn => {
-                if (btn.dataset.mode === mode) {
-                    btn.hidden = false;
-                    return;
-                }
-                btn.hidden = true;
-                btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
-                btn.tabIndex = -1;
-            });
-            this.allSlides.forEach(slide => {
-                if (slide.dataset.mode === mode) return;
-                this.resetSlideInlineState(slide);
-                slide.classList.remove('active');
-                slide.hidden = true;
-            });
-            this.gridCards.forEach(card => {
-                card.hidden = card.dataset.mode !== mode;
-            });
-
-            this.currentIndex = -1;
-            this.setActiveSlide(Math.min(Math.max(index, 0), slides.length - 1), { dispatchEvent, updateTheme });
-        }
-
-        /** Mode switch with a short crossfade so the swap doesn't snap. */
-        switchMode(mode) {
-            if (!mode || mode === this.mode || this.isAnimating || this.isModeSwitching) return;
-
-            if (this.prefersReducedMotion || !this.slidesContainer) {
-                this.applyMode(mode, { updateTheme: true });
-                return;
-            }
-
-            this.isModeSwitching = true;
-            this.slidesContainer.classList.add('is-mode-switching');
-            window.setTimeout(() => {
-                this.applyMode(mode, { updateTheme: true });
-                // Force the new layout to be committed before fading back in.
-                // Deliberately not requestAnimationFrame: it is throttled to a
-                // standstill in a backgrounded tab, which would strand the
-                // section at opacity 0 and lock the switch for good.
-                void this.slidesContainer.offsetHeight;
-                this.slidesContainer.classList.remove('is-mode-switching');
-                this.isModeSwitching = false;
-            }, 180);
+            this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
+            this.syncToTheme(themeController.getProjectTheme(), { animate: false });
         }
 
         getSlideIndexForTheme(theme) {
@@ -1019,23 +780,11 @@
             });
         }
 
-        /**
-         * Images inside hidden slides can remain indefinitely deferred in Chrome.
-         * Promote only the slide being revealed so screenshots still load on demand.
-         */
-        primeSlideImages(slide) {
-            if (!slide) return;
-            slide.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                img.loading = 'eager';
-            });
-        }
-
         setActiveSlide(index, options = {}) {
             if (index < 0 || index >= this.slides.length) return;
 
             const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
             const activeSlide = this.slides[index];
-            this.primeSlideImages(activeSlide);
 
             if (updateTheme) {
                 const theme = activeSlide.getAttribute('data-theme');
@@ -1058,7 +807,6 @@
 
             this.currentIndex = index;
             this.updateContainerHeight();
-            this.revealActiveTab(index);
 
             if (dispatchEvent) {
                 document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: activeSlide } }));
@@ -1066,18 +814,8 @@
         }
 
         syncToTheme(theme, options = {}) {
-            const located = this.locateTheme(theme);
-            if (!located) return;
-
-            // Picking a colour that belongs to the other mode flips the pill too,
-            // otherwise the swatch would select a slide nobody can see.
-            if (located.mode !== this.mode) {
-                this.applyMode(located.mode, { index: located.index });
-                return;
-            }
-
-            const index = located.index;
-            if (index === this.currentIndex) return;
+            const index = this.getSlideIndexForTheme(theme);
+            if (index === -1 || index === this.currentIndex) return;
 
             if (options.animate && this.isSectionVisible()) {
                 this.goToSlide(index);
@@ -1085,24 +823,6 @@
             }
 
             this.setActiveSlide(index);
-        }
-
-        /**
-         * On narrow screens the pagination is a horizontally scrolling strip —
-         * with seven customer tabs the active one is often off-screen. Scroll the
-         * strip itself (never the page) so the current project stays visible.
-         */
-        revealActiveTab(index) {
-            const btn = this.navBtns[index];
-            const strip = this.pagination;
-            if (!btn || !strip || strip.scrollWidth <= strip.clientWidth) return;
-            const target = btn.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
-            const left = Math.max(0, Math.min(target, strip.scrollWidth - strip.clientWidth));
-            if (typeof strip.scrollTo === 'function') {
-                strip.scrollTo({ left, behavior: this.prefersReducedMotion ? 'auto' : 'smooth' });
-            } else {
-                strip.scrollLeft = left;
-            }
         }
 
         updateContainerHeight() {
@@ -1114,20 +834,13 @@
                 hidden: slide.hidden,
                 vis: slide.style.visibility,
             }));
-            this.slidesContainer.style.minHeight = '';
             this.slides.forEach(slide => {
                 slide.hidden = false;
                 slide.style.visibility = 'visible';
             });
             let maxHeight = 0;
             this.slides.forEach(slide => {
-                // Measure `.slide-content`, not the slide: slides are
-                // `position: absolute; inset: 0` and therefore stretch to whatever
-                // min-height the container already has, which would make the value
-                // grow-only. The two modes have different tallest slides, so it
-                // has to be able to shrink again.
-                const inner = slide.querySelector('.slide-content');
-                const h = inner ? inner.scrollHeight : slide.scrollHeight;
+                const h = slide.scrollHeight;
                 if (h > maxHeight) maxHeight = h;
             });
             this.slides.forEach((slide, i) => {
@@ -1140,16 +853,8 @@
         }
 
         bindEvents() {
-            // Bound once over the full set — the index is resolved at click time
-            // because `this.navBtns` is re-collected on every mode switch.
-            this.allNavBtns.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const i = this.navBtns.indexOf(btn);
-                    if (i !== -1) this.goToSlide(i);
-                });
-            });
-            this.modeBtns.forEach((btn) => {
-                btn.addEventListener('click', () => this.switchMode(btn.dataset.mode));
+            this.navBtns.forEach((btn, i) => {
+                btn.addEventListener('click', () => this.goToSlide(i));
             });
             document.addEventListener('project-theme:change', (e) => {
                 if (e.detail?.source !== 'picker') return;
@@ -1227,9 +932,6 @@
             const direction = index > this.currentIndex ? 1 : -1;
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
-            this.primeSlideImages(newSlide);
-            const newTheme = newSlide.getAttribute('data-theme');
-            if (newTheme) themeController.setProjectTheme(newTheme, 'slider');
 
             let settled = false;
             const settle = () => {
@@ -1244,7 +946,7 @@
                     gsap.killTweensOf(oldSlide.querySelectorAll('*'));
                     gsap.killTweensOf(newSlide.querySelectorAll('*'));
                 }
-                this.setActiveSlide(index);
+                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
                 this.isAnimating = false;
             };
 
