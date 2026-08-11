@@ -196,12 +196,14 @@
                             data-mode="customers"
                             aria-pressed="true">
                         <span class="project-mode-label" data-i18n="projects.mode.customers">Kundenprojekte</span>
+                        <span class="project-mode-count" aria-hidden="true">13</span>
                     </button>
                     <button type="button"
                             class="project-mode-btn"
                             data-mode="own"
                             aria-pressed="false">
                         <span class="project-mode-label" data-i18n="projects.mode.own">Eigene Projekte</span>
+                        <span class="project-mode-count" aria-hidden="true">17</span>
                     </button>
                 </div>
             </div>
@@ -844,6 +846,320 @@
                         <span class="project-pag-name">dog-kennel-online</span>
                     </button>
                 </nav>
+
+                <div class="all-projects scroll-reveal">
+                    <div class="all-projects__head">
+                        <h3 class="all-projects__title" data-i18n="projects.all.title">Alle Projekte</h3>
+                        <p class="all-projects__hint" data-i18n="projects.all.hint">Vollständige Übersicht — die Auswahl folgt dem Modus oben.</p>
+                    </div>
+
+                    <ul class="project-grid" role="list">
+                        <!-- ── Kundenprojekte ── -->
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/coha.html">
+                                <span class="project-card__name">Co Ha</span>
+                                <span class="project-card__desc" data-i18n="grid.coha.desc">Vietnamesisches Restaurant in Bruckmühl — Speisekarte, Galerie, Reservierung.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/imkerei-feuerstein.html">
+                                <span class="project-card__name">Imkerei Feuerstein</span>
+                                <span class="project-card__desc" data-i18n="grid.imkerei.desc">Honig-Onlineshop der Familienimkerei aus Elchingen.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/jkentertainment.html">
+                                <span class="project-card__name">JK Entertainment</span>
+                                <span class="project-card__desc" data-i18n="grid.jkentertainment.desc">TCG-Onlineshop mit über 4.000 Artikeln, zwei Stores in Frankfurt und Darmstadt.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/kayaseeds.html">
+                                <span class="project-card__name">Kaya Seeds</span>
+                                <span class="project-card__desc" data-i18n="grid.kayaseeds.desc">E-Commerce für eine bayerische Cannabis-Samenmarke.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">E-Commerce</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/danielbrecheis.html">
+                                <span class="project-card__name">Daniel Brecheis</span>
+                                <span class="project-card__desc" data-i18n="grid.danielbrecheis.desc">Human Bridges Consulting — HR-Coaching, Workshops, Interim-Management.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Astro</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="projects/soundoflvke.html">
+                                <span class="project-card__name">Sound of Lvke</span>
+                                <span class="project-card__desc" data-i18n="grid.soundoflvke.desc">Künstler-Website mit Audio-Player und Release-Übersicht.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Web</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <a class="project-card__link" href="https://pizza-vagen.de" target="_blank" rel="noopener noreferrer">
+                                <span class="project-card__name">Castel Del Monte</span>
+                                <span class="project-card__desc" data-i18n="grid.casteldelmonte.desc">Italienisches Restaurant in Vagen — Karte, Öffnungszeiten, Kontakt.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">HTML/CSS/JS</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Käss Dellentechnik</span>
+                                <span class="project-card__desc" data-i18n="grid.kaess.desc">Lackschadenfreie Dellenreparatur — Leistungen, Ablauf, Galerie, Kontakt.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">HTML/CSS/JS</span>
+                                <span class="project-card__status is-done" data-i18n="grid.status.done">Fertig</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Wir kaufen deine Karten</span>
+                                <span class="project-card__desc" data-i18n="grid.wkdk.desc">Ankauf-Plattform für Sammelkarten — Collectibles-Hub GmbH, Rosenheim.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Astro</span>
+                                <span class="project-card__status is-done" data-i18n="grid.status.done">Fertig</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">BB-Spiele</span>
+                                <span class="project-card__desc" data-i18n="grid.bbspiele.desc">Marketing-Website für den Spiele- und Collectibles-Händler aus Rosenheim.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Astro</span>
+                                <span class="project-card__status is-done" data-i18n="grid.status.done">Fertig</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Nolte Classics</span>
+                                <span class="project-card__desc" data-i18n="grid.nolte.desc">Markenauftritt für Klassiker-Fahrzeuge.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Jäggl</span>
+                                <span class="project-card__desc" data-i18n="grid.jaeggl.desc">Redesign eines bestehenden Firmenauftritts.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">React</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+
+                        <li class="project-card" data-mode="customers">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Senihelp24</span>
+                                <span class="project-card__desc" data-i18n="grid.senihelp24.desc">Digitale Plattform für Alltagshilfe und Seniorenunterstützung.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Web App</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+
+                        <!-- ── Eigene Projekte ── -->
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="projects/e46-studio.html">
+                                <span class="project-card__name">E46 Studio</span>
+                                <span class="project-card__desc" data-i18n="grid.e46.desc">Desktop-App für BMW E46 Steuergeräte-Coding über serielle Schnittstelle.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Electron</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="projects/aicaptain.html">
+                                <span class="project-card__name">AI Captain</span>
+                                <span class="project-card__desc" data-i18n="grid.aicaptain.desc">KI-Agent als VS Code Extension — Code-Generierung, Debugging, Review.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">TypeScript</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer">
+                                <span class="project-card__name">Medieval Tower Defense</span>
+                                <span class="project-card__desc" data-i18n="grid.medieval.desc">Browser-Strategiespiel im Mittelalter-Setting mit eigenem Wave-System.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Browser Game</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="projects/shookroko.html">
+                                <span class="project-card__name">Shookroko</span>
+                                <span class="project-card__desc" data-i18n="grid.shookroko.desc">Action-Browsergame mit Phaser 3, eigener Game-Loop und Asset-Pipeline.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Phaser 3</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="https://e46-viola.vercel.app" target="_blank" rel="noopener noreferrer">
+                                <span class="project-card__name">E46 Viola</span>
+                                <span class="project-card__desc" data-i18n="grid.e46viola.desc">Fahrzeug-Showcase aus dem E46-Umfeld.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">HTML/CSS/JS</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="https://team-kickoff.vercel.app" target="_blank" rel="noopener noreferrer">
+                                <span class="project-card__name">Team Kickoff</span>
+                                <span class="project-card__desc" data-i18n="grid.teamkickoff.desc">Interaktives Meeting-Board für neun Personen mit geteiltem Zustand.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Vercel Functions</span>
+                                <span class="project-card__status is-live" data-i18n="grid.status.live">Live</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">dog-kennel-online</span>
+                                <span class="project-card__desc" data-i18n="grid.dogkennel.desc">Plattform für Hundepensionen — Buchungen, Belegung, Hunde- und Halterprofile.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Web App</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Teahop</span>
+                                <span class="project-card__desc" data-i18n="grid.teahop.desc">Bio-Tee-Shop als eigenes Shopify-Theme, Online Store 2.0.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Shopify</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">TeeKompass</span>
+                                <span class="project-card__desc" data-i18n="grid.teekompass.desc">Bio-Tee-Abo mit KI-Personalisierung: Box, Bewertung, bessere nächste Box.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js &amp; Supabase</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">GLOWCAN</span>
+                                <span class="project-card__desc" data-i18n="grid.glowcan.desc">3D-gedruckter LED-Deckel für Energy-Dosen — Shopify-Theme, mobile-first.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Shopify</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Bierbrauen</span>
+                                <span class="project-card__desc" data-i18n="grid.bierbrauen.desc">Web-App rund ums Bierbrauen — Rezepte und Prozessbegleitung.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Next.js</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <a class="project-card__link" href="projects/albert.html">
+                                <span class="project-card__name">Albert</span>
+                                <span class="project-card__desc" data-i18n="grid.albert.desc">Evolutionssimulation mit neuronalen Netzen, plus 3D-Battle-Royale-Ableger.</span>
+                            </a>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Java &amp; TypeScript</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Kundenkalender</span>
+                                <span class="project-card__desc" data-i18n="grid.kundenkalender.desc">Lokaler Terminkalender als Desktop-App — Serientermine, ICS/CSV-Export.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">React &amp; Tauri</span>
+                                <span class="project-card__status is-done" data-i18n="grid.status.done">Fertig</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">Maxorchester</span>
+                                <span class="project-card__desc" data-i18n="grid.maxorchester.desc">Orchestrierung mehrerer KI-Agenten über ein gemeinsames Frontend.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">TypeScript</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">VibeIDE</span>
+                                <span class="project-card__desc" data-i18n="grid.vibeide.desc">Experimentelle Entwicklungsumgebung mit KI-gestütztem Workflow.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">TypeScript</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">MoneyDash</span>
+                                <span class="project-card__desc" data-i18n="grid.moneydash.desc">Dashboard für Finanzdaten und Auswertungen.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">TypeScript</span>
+                                <span class="project-card__status is-wip" data-i18n="grid.status.wip">In Arbeit</span>
+                            </div>
+                        </li>
+                        <li class="project-card" data-mode="own">
+                            <div class="project-card__link">
+                                <span class="project-card__name">assetkit</span>
+                                <span class="project-card__desc" data-i18n="grid.assetkit.desc">Toolchain für Spiel-Assets — Generierung, Freistellen, Normalisierung.</span>
+                            </div>
+                            <div class="project-card__meta">
+                                <span class="project-card__stack">Python</span>
+                                <span class="project-card__status is-done" data-i18n="grid.status.done">Fertig</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
