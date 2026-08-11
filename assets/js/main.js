@@ -1224,6 +1224,8 @@
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
             this.primeSlideImages(newSlide);
+            const newTheme = newSlide.getAttribute('data-theme');
+            if (newTheme) themeController.setProjectTheme(newTheme, 'slider');
 
             let settled = false;
             const settle = () => {
@@ -1238,7 +1240,7 @@
                     gsap.killTweensOf(oldSlide.querySelectorAll('*'));
                     gsap.killTweensOf(newSlide.querySelectorAll('*'));
                 }
-                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
+                this.setActiveSlide(index);
                 this.isAnimating = false;
             };
 
