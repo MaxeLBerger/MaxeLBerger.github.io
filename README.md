@@ -10,16 +10,28 @@ Static portfolio site for Maximilian Haak — fullstack developer & AI specialis
 
 ## Featured Projects
 
-All projects are showcased on the homepage and have detail pages under [projects/](projects/):
+The homepage slider shows two sets, switched by the `Kundenprojekte` / `Eigene Projekte` segmented pill above it.
+
+**Eigene Projekte** (`#projectSlides-own`)
 
 | Project | Type | Detail page |
 |---------|------|-------------|
-| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
-| Imkerei Feuerstein | Customer website | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
-| CoHa | Startup MVP | [coha.html](projects/coha.html) |
 | E46 Studio | Desktop app | [e46-studio.html](projects/e46-studio.html) |
-| SoundOfLvke | Artist website | [soundoflvke.html](projects/soundoflvke.html) |
+| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
+| Medieval TD | Browser game | — (external only) |
 | Shookroko | Browser game | [shookroko.html](projects/shookroko.html) |
+| dog-kennel-online | Web app (in progress) | — (detail page pending) |
+
+**Kundenprojekte** (`#projectSlides-customers`)
+
+| Project | Type | Detail page |
+|---------|------|-------------|
+| Imkerei Feuerstein | Online shop | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
+| JK Entertainment | TCG online shop | [jkentertainment.html](projects/jkentertainment.html) |
+| Kaya Seeds | E-commerce | [kayaseeds.html](projects/kayaseeds.html) |
+| Daniel Brecheis | Consulting brand site | [danielbrecheis.html](projects/danielbrecheis.html) |
+| Co Ha | Restaurant website | [coha.html](projects/coha.html) |
+| SoundOfLvke | Artist website | [soundoflvke.html](projects/soundoflvke.html) |
 
 ---
 

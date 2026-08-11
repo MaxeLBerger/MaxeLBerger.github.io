@@ -76,7 +76,6 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Kundenprojekte',
-            'projects.mode.customers.lock': 'Bald verfügbar',
             'projects.mode.own': 'Eigene Projekte',
             'about.title': 'Über mich',
             'about.eyebrow': 'Persönlich',
@@ -322,7 +321,6 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Customer projects',
-            'projects.mode.customers.lock': 'Coming soon',
             'projects.mode.own': 'Own projects',
             'about.title': 'About me',
             'about.eyebrow': 'Personal',
@@ -707,28 +705,54 @@
             this.section = document.querySelector('#projects');
             if (!this.section) return;
 
-            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
-            // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
-            // and any nav button explicitly marked disabled or aria-disabled.
-            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
-                .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
+            // Two project sets — "own" and "customers" — share one slider chrome.
+            // Each set owns a `.hero-slides-container[data-mode]` plus its own
+            // `.project-pagination[data-mode]` tablist. The inactive set carries
+            // the `hidden` attribute, so its slides and tabs stay out of both the
+            // layout and the tab order, and exactly one `.hero-slide.active`
+            // exists site-wide (the global parallax/theme lookups rely on that).
+            this.modes = new Map();
+            this.section.querySelectorAll('.hero-slides-container[data-mode]').forEach(container => {
+                const mode = container.dataset.mode;
+                const pagination = this.section.querySelector(`.project-pagination[data-mode="${mode}"]`);
+                if (!pagination) return;
 
-            // Re-sort slides to match nav button order (data-project ↔ data-theme)
-            // so that index-based pairing in goToSlide() stays in sync after the
-            // nav has been grouped/re-ordered visually.
-            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
-            const ordered = this.navBtns
-                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
-                .filter(Boolean);
-            if (ordered.length === this.slides.length) {
-                this.slides = ordered;
-            }
+                // Exclude any nav button explicitly marked disabled or aria-disabled.
+                const navBtns = Array.from(pagination.querySelectorAll('.project-nav-btn'))
+                    .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
+                const slides = Array.from(container.querySelectorAll('.hero-slide'));
+                if (!slides.length || !navBtns.length) return;
+
+                // Re-sort slides to match nav button order (data-project ↔ data-theme)
+                // so that index-based pairing in goToSlide() stays in sync after the
+                // nav has been grouped/re-ordered visually.
+                const slideByTheme = new Map(slides.map(s => [s.getAttribute('data-theme'), s]));
+                const ordered = navBtns
+                    .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
+                    .filter(Boolean);
+
+                this.modes.set(mode, {
+                    mode,
+                    container,
+                    pagination,
+                    navBtns,
+                    slides: ordered.length === slides.length ? ordered : slides,
+                });
+            });
+            if (this.modes.size === 0) return;
+
+            this.modeBtns = Array.from(this.section.querySelectorAll('.project-mode-btn[data-mode]'))
+                .filter(btn => this.modes.has(btn.dataset.mode));
+
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
-            this.slidesContainer = this.section.querySelector('.hero-slides-container');
-            this.pagination = this.section.querySelector('.project-pagination');
+
+            const modeEntries = Array.from(this.modes.values());
+            this.useMode(modeEntries.find(entry => !entry.container.hidden) || modeEntries[0]);
+
             this.currentIndex = Math.max(this.slides.findIndex(slide => slide.classList.contains('active')), 0);
             this.isAnimating = false;
+            this.isSwitchingMode = false;
             this.animationGuardTimer = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -743,13 +767,29 @@
             if (this.slides.length === 0) return;
 
             this.bindEvents();
+            this.syncModeButtons();
             this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
             this.syncToTheme(themeController.getProjectTheme(), { animate: false });
         }
 
-        getSlideIndexForTheme(theme) {
+        /** Point the slider's working refs at one project set. */
+        useMode(entry) {
+            this.currentMode = entry.mode;
+            this.slides = entry.slides;
+            this.navBtns = entry.navBtns;
+            this.slidesContainer = entry.container;
+            this.pagination = entry.pagination;
+        }
+
+        /** Locate a theme's slide across *both* sets, so the colour picker can
+         *  reach a customer project while the own-projects set is showing. */
+        findSlideForTheme(theme) {
             const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
-            return this.slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
+            for (const entry of this.modes.values()) {
+                const index = entry.slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
+                if (index !== -1) return { entry, index };
+            }
+            return null;
         }
 
         isSectionVisible() {
@@ -780,11 +820,44 @@
             });
         }
 
+        /** Start loading a slide's screenshot.
+         *
+         *  Inactive slides live in a `hidden` subtree, and Chrome keeps a
+         *  `loading="lazy"` image whose ancestor was `display: none` in the
+         *  deferred state — revealing the slide does not resume the fetch, not
+         *  even on the next scroll. Without this promotion every slide except
+         *  the one active on load renders an empty browser frame. Flipping the
+         *  attribute to `eager` resumes the load, so slides still cost nothing
+         *  until they are actually shown. */
+        primeSlideImages(slide) {
+            if (!slide) return;
+            slide.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                img.loading = 'eager';
+            });
+        }
+
+        /** Keep the active tab visible in the pagination strip, which becomes a
+         *  horizontal scroller on narrow screens. Sets `scrollLeft` directly
+         *  rather than calling scrollIntoView(), which would also yank the
+         *  page's vertical scroll position. */
+        scrollActiveTabIntoView(btn) {
+            const strip = this.pagination;
+            if (!btn || !strip) return;
+            const overflow = strip.scrollWidth - strip.clientWidth;
+            if (overflow <= 0) return;
+            const centered = btn.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
+            strip.scrollTo({
+                left: Math.max(0, Math.min(centered, overflow)),
+                behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
+            });
+        }
+
         setActiveSlide(index, options = {}) {
             if (index < 0 || index >= this.slides.length) return;
 
             const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
             const activeSlide = this.slides[index];
+            this.primeSlideImages(activeSlide);
 
             if (updateTheme) {
                 const theme = activeSlide.getAttribute('data-theme');
@@ -797,6 +870,7 @@
                 btn.setAttribute('aria-selected', String(isActive));
                 btn.tabIndex = isActive ? 0 : -1;
             });
+            this.scrollActiveTabIntoView(this.navBtns[index]);
 
             this.slides.forEach((slide, i) => {
                 const isActive = i === index;
@@ -814,15 +888,115 @@
         }
 
         syncToTheme(theme, options = {}) {
-            const index = this.getSlideIndexForTheme(theme);
-            if (index === -1 || index === this.currentIndex) return;
+            const match = this.findSlideForTheme(theme);
+            if (!match) return;
+
+            if (match.entry.mode !== this.currentMode) {
+                this.setMode(match.entry.mode, { index: match.index, animate: !!options.animate });
+                return;
+            }
+            if (match.index === this.currentIndex) return;
 
             if (options.animate && this.isSectionVisible()) {
-                this.goToSlide(index);
+                this.goToSlide(match.index);
                 return;
             }
 
-            this.setActiveSlide(index);
+            this.setActiveSlide(match.index);
+        }
+
+        syncModeButtons() {
+            this.modeBtns.forEach(btn => {
+                const isActive = btn.dataset.mode === this.currentMode;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+        }
+
+        /** Swap the visible project set. `index` picks the slide to land on
+         *  (defaults to the first of the incoming set). */
+        setMode(mode, options = {}) {
+            const entry = this.modes.get(mode);
+            if (!entry || mode === this.currentMode || this.isSwitchingMode) return;
+
+            const { index = 0, animate = true } = options;
+            const outgoing = this.modes.get(this.currentMode);
+            const shouldAnimate = animate && !this.prefersReducedMotion;
+
+            const swap = () => {
+                // Abandon any slide transition still in flight: its settle()
+                // would otherwise index into the *new* set with an old index.
+                if (this.animationGuardTimer !== null) {
+                    window.clearTimeout(this.animationGuardTimer);
+                    this.animationGuardTimer = null;
+                }
+                this.isAnimating = false;
+
+                outgoing.slides.forEach(slide => {
+                    if (typeof gsap !== 'undefined') {
+                        gsap.killTweensOf(slide);
+                        gsap.killTweensOf(slide.querySelectorAll('*'));
+                    }
+                    this.resetSlideInlineState(slide);
+                    slide.classList.remove('active');
+                    slide.hidden = true;
+                });
+                outgoing.navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                    btn.tabIndex = -1;
+                });
+                outgoing.container.hidden = true;
+                outgoing.pagination.hidden = true;
+
+                entry.container.hidden = false;
+                entry.pagination.hidden = false;
+                this.useMode(entry);
+                this.syncModeButtons();
+                this.setActiveSlide(
+                    Math.min(Math.max(index, 0), entry.slides.length - 1),
+                    { updateTheme: true, themeSource: 'slider' }
+                );
+
+                if (shouldAnimate) {
+                    entry.container.classList.add('is-mode-in');
+                    entry.pagination.classList.add('is-mode-in');
+                    // Force a reflow so the enter transition starts from the
+                    // offset state instead of being collapsed into one frame.
+                    void entry.container.offsetWidth;
+                    entry.container.classList.remove('is-mode-in');
+                    entry.pagination.classList.remove('is-mode-in');
+                }
+                this.isSwitchingMode = false;
+            };
+
+            this.isSwitchingMode = true;
+
+            if (!shouldAnimate) {
+                swap();
+                return;
+            }
+
+            outgoing.container.classList.add('is-mode-out');
+            outgoing.pagination.classList.add('is-mode-out');
+
+            let settled = false;
+            let guard = null;
+            const finishOut = (event) => {
+                // transitionend bubbles up from the slides inside the container.
+                if (event && event.target !== outgoing.container) return;
+                if (settled) return;
+                settled = true;
+                window.clearTimeout(guard);
+                outgoing.container.removeEventListener('transitionend', finishOut);
+                outgoing.container.classList.remove('is-mode-out');
+                outgoing.pagination.classList.remove('is-mode-out');
+                swap();
+            };
+            // Fallback for the case where the fade never reports a transitionend
+            // (interrupted transition, container hidden by something else).
+            guard = window.setTimeout(finishOut, 400);
+            outgoing.container.addEventListener('transitionend', finishOut);
         }
 
         updateContainerHeight() {
@@ -853,53 +1027,38 @@
         }
 
         bindEvents() {
-            this.navBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => this.goToSlide(i));
+            this.modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => this.setMode(btn.dataset.mode));
             });
-            document.addEventListener('project-theme:change', (e) => {
-                if (e.detail?.source !== 'picker') return;
-                this.syncToTheme(e.detail.theme, { animate: true });
-            });
-            if (this.arrowLeft) {
-                this.arrowLeft.addEventListener('click', () => this.navigate(-1));
-            }
-            if (this.arrowRight) {
-                this.arrowRight.addEventListener('click', () => this.navigate(1));
-            }
 
-            // Touch / swipe support
-            let touchStartX = 0;
-            let touchStartY = 0;
-            const swipeTarget = this.slidesContainer || this.section;
-            if (swipeTarget) {
-                swipeTarget.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    touchStartY = e.changedTouches[0].screenY;
-                }, { passive: true });
-                swipeTarget.addEventListener('touchend', (e) => {
-                    const dx = e.changedTouches[0].screenX - touchStartX;
-                    const dy = e.changedTouches[0].screenY - touchStartY;
-                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-                        this.navigate(dx < 0 ? 1 : -1);
+            // Tab clicks and keyboard nav are delegated per set, so an index
+            // always resolves against the slides of the set it was clicked in.
+            this.modes.forEach(entry => {
+                entry.pagination.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.project-pag-btn');
+                    const index = btn ? entry.navBtns.indexOf(btn) : -1;
+                    if (index === -1) return;
+                    if (entry.mode !== this.currentMode) {
+                        this.setMode(entry.mode, { index });
+                        return;
                     }
-                }, { passive: true });
-            }
+                    this.goToSlide(index);
+                });
 
-            if (this.pagination) {
-                this.pagination.addEventListener('keydown', (e) => {
+                entry.pagination.addEventListener('keydown', (e) => {
                     const focusedTab = e.target.closest('.project-pag-btn');
-                    const focusedIndex = this.navBtns.indexOf(focusedTab);
+                    const focusedIndex = entry.navBtns.indexOf(focusedTab);
                     if (focusedIndex === -1) return;
 
                     let nextIndex = null;
-                    if (e.key === 'ArrowLeft') nextIndex = (focusedIndex - 1 + this.navBtns.length) % this.navBtns.length;
-                    if (e.key === 'ArrowRight') nextIndex = (focusedIndex + 1) % this.navBtns.length;
+                    if (e.key === 'ArrowLeft') nextIndex = (focusedIndex - 1 + entry.navBtns.length) % entry.navBtns.length;
+                    if (e.key === 'ArrowRight') nextIndex = (focusedIndex + 1) % entry.navBtns.length;
                     if (e.key === 'Home') nextIndex = 0;
-                    if (e.key === 'End') nextIndex = this.navBtns.length - 1;
+                    if (e.key === 'End') nextIndex = entry.navBtns.length - 1;
 
                     if (nextIndex !== null) {
                         e.preventDefault();
-                        this.navBtns[nextIndex].focus();
+                        entry.navBtns[nextIndex].focus();
                         this.goToSlide(nextIndex);
                         return;
                     }
@@ -909,6 +1068,32 @@
                         this.goToSlide(focusedIndex);
                     }
                 });
+
+                // Touch / swipe support
+                let touchStartX = 0;
+                let touchStartY = 0;
+                entry.container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+                entry.container.addEventListener('touchend', (e) => {
+                    const dx = e.changedTouches[0].screenX - touchStartX;
+                    const dy = e.changedTouches[0].screenY - touchStartY;
+                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                        this.navigate(dx < 0 ? 1 : -1);
+                    }
+                }, { passive: true });
+            });
+
+            document.addEventListener('project-theme:change', (e) => {
+                if (e.detail?.source !== 'picker') return;
+                this.syncToTheme(e.detail.theme, { animate: true });
+            });
+            if (this.arrowLeft) {
+                this.arrowLeft.addEventListener('click', () => this.navigate(-1));
+            }
+            if (this.arrowRight) {
+                this.arrowRight.addEventListener('click', () => this.navigate(1));
             }
 
             // Recalculate container height on resize (debounced)
@@ -932,6 +1117,9 @@
             const direction = index > this.currentIndex ? 1 : -1;
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
+            // Promote before the transition, not after, so the screenshot has
+            // the full animation to arrive instead of popping in afterwards.
+            this.primeSlideImages(newSlide);
 
             let settled = false;
             const settle = () => {
@@ -946,8 +1134,11 @@
                     gsap.killTweensOf(oldSlide.querySelectorAll('*'));
                     gsap.killTweensOf(newSlide.querySelectorAll('*'));
                 }
-                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
                 this.isAnimating = false;
+                // A mode switch during the transition already painted the new
+                // set; applying this stale index would activate the wrong slide.
+                if (this.slides[index] !== newSlide) return;
+                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
             };
 
             this.animationGuardTimer = window.setTimeout(settle, this.prefersReducedMotion ? 80 : 1800);

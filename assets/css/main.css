@@ -1637,7 +1637,7 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
                 box-shadow var(--duration-base) var(--ease-out);
 }
 
-.project-mode-btn:not(.is-locked):hover {
+.project-mode-btn:hover {
     color: var(--color-text);
 }
 
@@ -1648,34 +1648,66 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
                 inset 0 0 0 1px rgba(var(--theme-primary), 0.45);
 }
 
-.project-mode-btn.is-locked {
+.project-mode-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.35),
+                inset 0 0 0 1px rgba(var(--theme-primary), 0.45);
+}
+
+/* Count badge — tells visitors how many projects sit behind each option
+   before they click it. */
+.project-mode-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 0.35rem;
+    border-radius: var(--radius-full);
+    background: var(--color-border);
     color: var(--color-text-muted);
-    opacity: 0.55;
-    cursor: not-allowed;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    transition: background var(--duration-base) var(--ease-out),
+                color var(--duration-base) var(--ease-out);
 }
 
-.project-mode-btn.is-locked:hover,
-.project-mode-btn.is-locked:focus {
-    color: var(--color-text-muted);
-    background: transparent;
-    box-shadow: none;
+.project-mode-btn.is-active .project-mode-count {
+    background: rgba(var(--theme-primary), 0.22);
+    color: rgb(var(--theme-primary));
 }
 
-.project-mode-lock {
-    flex-shrink: 0;
-    opacity: 0.85;
+/* Mode crossfade — the inactive set carries `hidden`, and both elements set an
+   explicit `display`, so the attribute needs an explicit rule to win. */
+.hero-slides-container[hidden],
+.project-pagination[hidden] {
+    display: none;
 }
 
-.project-mode-status {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+.hero-slides-container[data-mode],
+.project-pagination[data-mode] {
+    transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+
+.hero-slides-container.is-mode-out,
+.project-pagination.is-mode-out {
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+}
+
+.hero-slides-container.is-mode-in,
+.project-pagination.is-mode-in {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slides-container[data-mode],
+    .project-pagination[data-mode] {
+        transition: none;
+    }
 }
 
 @media (max-width: 600px) {

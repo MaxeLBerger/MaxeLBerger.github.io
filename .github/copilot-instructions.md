@@ -82,25 +82,44 @@ reading (about 54ch max), rather than stretching across the available grid width
 
 ### Hero project slider
 
-`#projects` contains exactly ONE `.hero-slides-container` dedicated to own projects: E46 Studio, AI Captain,
-Medieval TD, Shookroko, and dog-kennel-online. Above the slider sits a two-option `.project-mode-selector`
-segmented pill with
-`Kundenprojekte` (left) and `Eigene Projekte` (right). `Eigene Projekte` is the active, enabled option and controls
-the single slider. `Kundenprojekte` is intentionally locked (`disabled`, `aria-disabled="true"`, `tabindex="-1"`,
-`.is-locked` modifier with a small lock SVG and a visually-hidden `.project-mode-status`) until paid customer work
-exists; do NOT wire it up or render customer slides on the homepage. The customer i18n keys (`slide.imkerei.*`,
-`slide.coha.*`, `slide.soundoflvke.*`, `slide.danielbrecheis.*`, `slide.kayaseeds.*`, `slide.jkentertainment.*`) are
-intentionally retained in [assets/js/main.js](../assets/js/main.js) for future use.
+`#projects` holds TWO project sets that share one slider chrome (arrows, transitions, theming). Above them sits the
+two-option `.project-mode-selector` segmented pill with `Kundenprojekte` (left) and `Eigene Projekte` (right); each
+button carries `data-mode`, `aria-pressed`, `aria-controls`, and a `.project-mode-count` badge with the number of
+projects behind it.
+
+| `data-mode` | Slides | Container / tablist |
+|-------------|--------|---------------------|
+| `own` (default active) | E46 Studio, AI Captain, Medieval TD, Shookroko, dog-kennel-online | `#projectSlides-own` + `.project-pagination[data-mode="own"]` |
+| `customers` | Imkerei Feuerstein, JK Entertainment, Kaya Seeds, Daniel Brecheis, Co Ha, SoundOfLvke | `#projectSlides-customers` + `.project-pagination[data-mode="customers"]` |
+
+Each set owns one `.hero-slides-container[data-mode]` plus its own `.project-pagination[data-mode]` tablist. The
+inactive set carries the `hidden` attribute — both elements set an explicit `display`, so `.hero-slides-container[hidden]`
+/ `.project-pagination[hidden]` rules in CSS are what actually hide them. **Invariant: exactly one
+`.hero-slide.active` exists site-wide**, because the mouse-parallax target and the scroll theme sync both resolve
+`document.querySelector('.hero-slide.active')`. `setMode()` enforces it by stripping `.active` from the outgoing set.
+
+`own` stays the default so the landing view keeps the E46/blue continuity from the hero. Customer slides link to both
+the live site (`.btn-primary`, `target="_blank"`) and the local detail page under `projects/` (`.btn-outline`).
 
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
-- Touch/swipe + keyboard navigation
+- Mode switching (`setMode()`) with a CSS crossfade driven by `.is-mode-out` / `.is-mode-in`
+- Touch/swipe + keyboard navigation, delegated per set so an index always resolves against the right slide list
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
 - Container height calculation (slides have varying heights)
+- `primeSlideImages()` — flips a revealed slide's `loading="lazy"` screenshot to `eager`. Chrome keeps a lazy image
+    whose ancestor was `display: none` deferred *forever*, even after the slide is shown and the user scrolls, so
+    without this every slide except the one active on load renders an empty browser frame. Keep the call in both
+    `goToSlide()` (start of the transition) and `setActiveSlide()` (init + mode switch).
+- `scrollActiveTabIntoView()` — centers the active tab in the pagination strip, which becomes a horizontal scroller
+    below 768px. It writes `scrollLeft` instead of calling `scrollIntoView()` so page scroll is never disturbed.
 
-`ProjectSlider` filters `.project-nav-btn` elements that are `disabled` or have `aria-disabled="true"` out of
-`this.navBtns`, so any locked nav option (e.g. the future customer-mode tab) cannot become an active index.
+`ProjectSlider` filters `.project-nav-btn` elements that are `disabled` or have `aria-disabled="true"` out of each
+set's `navBtns`, so a locked nav option cannot become an active index.
+
+When the colour picker selects a theme that belongs to the *other* set, `syncToTheme()` switches mode first and then
+lands on that project — every picker swatch maps to a real slide.
 
 ### Theming
 
@@ -109,7 +128,7 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |-----------|--------|---------------|
 | `data-color-scheme` | `dark` (default), `light` | Theme toggle button (`#themeToggle`) |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko` | Slider, scroll observer, and color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment` | Slider, scroll observer, and color picker |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go
 through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider
@@ -208,14 +227,17 @@ See [.gitignore](../.gitignore). Important exclusions:
 
 ### Add a new project
 
-1. Add a new `.hero-slide` to `#projects` in [index.html](../index.html) with a new `data-theme`
-2. Add a new `.project-nav-btn` to the slider tablist
-3. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB)
-4. Add a color theme block to [style.css](../assets/css/main.css) under `[data-project-theme="..."]`
-5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js)
-6. Add the project slug to `COLOR_THEMES` in `assets/js/main.js` if it gets a picker swatch
-7. Create `projects/<slug>.html` for the detail page
-8. Test locally and push
+1. Pick the set: own work → `#projectSlides-own`, client work → `#projectSlides-customers`
+2. Add a new `.hero-slide` to that container in [index.html](../index.html) with a new `data-theme`, `role="tabpanel"`,
+     `aria-labelledby="tab-<slug>"` and the `hidden` attribute (only the active slide of the active set is unhidden)
+3. Add a matching `.project-nav-btn.project-pag-btn` to the *same set's* `.project-pagination[data-mode="…"]`, renumber
+     the `.project-pag-index` labels, and bump that mode button's `.project-mode-count`
+4. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB) and set real `width`/`height` on the `<img>`
+5. Add a color theme block to [main.css](../assets/css/main.css) under `[data-project-theme="..."]`
+6. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [main.js](../assets/js/main.js)
+7. Add the project slug to `COLOR_THEMES` in `assets/js/main.js` if it gets a picker swatch
+8. Create `projects/<slug>.html` for the detail page
+9. Test locally — click every tab in both modes and confirm the screenshot actually renders (see `primeSlideImages()`) — then push
 
 ### Update an image
 

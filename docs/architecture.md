@@ -34,13 +34,20 @@ Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
 
 ### Hero project slider
 
-`#projects` contains 8 `.hero-slide` elements. The `ProjectSlider` class in
-[assets/js/main.js](../assets/js/main.js) handles:
+`#projects` contains 11 `.hero-slide` elements, split across two sets that share
+one slider chrome: `#projectSlides-own` (5 slides) and `#projectSlides-customers`
+(6 slides). The `.project-mode-selector` pill switches between them; the inactive
+set is `hidden`, so exactly one `.hero-slide.active` exists at any time.
+
+The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
-- Touch/swipe + keyboard navigation
+- Mode switching with a CSS crossfade (`.is-mode-out` / `.is-mode-in`)
+- Touch/swipe + keyboard navigation, delegated per set
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
 - Container height calculation (slides have varying heights)
+- Promoting a revealed slide's `loading="lazy"` screenshot to `eager`, without
+  which Chrome leaves it deferred forever and the browser frame stays empty
 
 ### Theming
 
@@ -49,7 +56,7 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |---|---|---|
 | `data-color-scheme` | `dark` (default), `light` | `#themeToggle` button |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider, scroll observer, color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment` | Slider, scroll observer, color picker |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for
 `data-project-theme`. All callers go through `setProjectTheme(theme, source)`.
