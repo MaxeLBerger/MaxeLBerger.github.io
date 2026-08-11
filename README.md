@@ -15,8 +15,12 @@ All projects are showcased on the homepage and have detail pages under [projects
 | Project | Type | Detail page |
 |---------|------|-------------|
 | AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
+| Albert Royale | 3D battle royale with a learning AI | [albert.html](projects/albert.html) |
 | Imkerei Feuerstein | Customer website | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
 | CoHa | Startup MVP | [coha.html](projects/coha.html) |
+| Daniel Brecheis | Customer website (HR consulting) | [danielbrecheis.html](projects/danielbrecheis.html) |
+| Kaya Seeds | Customer website (online shop) | [kayaseeds.html](projects/kayaseeds.html) |
+| JK Entertainment | Customer website (TCG shop) | [jkentertainment.html](projects/jkentertainment.html) |
 | E46 Studio | Desktop app | [e46-studio.html](projects/e46-studio.html) |
 | SoundOfLvke | Artist website | [soundoflvke.html](projects/soundoflvke.html) |
 | Shookroko | Browser game | [shookroko.html](projects/shookroko.html) |
