@@ -1015,11 +1015,23 @@
             });
         }
 
+        /**
+         * Images inside hidden slides can remain indefinitely deferred in Chrome.
+         * Promote only the slide being revealed so screenshots still load on demand.
+         */
+        primeSlideImages(slide) {
+            if (!slide) return;
+            slide.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                img.loading = 'eager';
+            });
+        }
+
         setActiveSlide(index, options = {}) {
             if (index < 0 || index >= this.slides.length) return;
 
             const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
             const activeSlide = this.slides[index];
+            this.primeSlideImages(activeSlide);
 
             if (updateTheme) {
                 const theme = activeSlide.getAttribute('data-theme');
@@ -1211,6 +1223,7 @@
             const direction = index > this.currentIndex ? 1 : -1;
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
+            this.primeSlideImages(newSlide);
 
             let settled = false;
             const settle = () => {

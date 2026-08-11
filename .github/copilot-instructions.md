@@ -104,6 +104,10 @@ Tabs of the inactive mode get the `hidden` attribute (`.project-pag-btn[hidden] 
 The `.project-pag-index` numbering restarts at `01` per mode. When adding a project, add the slide, the tab and the
 i18n keys together, and give both the same `data-mode`.
 
+Below the highlighted slider, `.project-grid` contains the complete overview: 13 customer projects and 17 own
+projects. Each `.project-card` carries the same `data-mode`; `ProjectSlider.applyMode()` hides cards from the inactive
+mode. Keep the two `.project-mode-count` badges synchronized with the card totals.
+
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
@@ -115,6 +119,8 @@ The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 - Container height calculation. It measures `.slide-content`, not `.hero-slide`: slides are
   `position: absolute; inset: 0` and would otherwise inherit the container's current `min-height`, making the value
   grow-only — which breaks the moment the two modes have differently tall slides.
+- `primeSlideImages()` promotes lazy screenshots only when their slide is revealed. Without this, Chrome can leave
+  images inside formerly hidden slides deferred indefinitely.
 
 The initial mode comes from whichever `.project-mode-btn` carries `.is-active` in the markup, unless
 `localStorage('themeColor')` names a project in the other mode. Do not read `themeController.getProjectTheme()` for
@@ -235,14 +241,16 @@ See [.gitignore](../.gitignore). Important exclusions:
 
 ### Add a new project
 
-1. Add a new `.hero-slide` to `#projects` in [index.html](../index.html) with a new `data-theme`
-2. Add a new `.project-nav-btn` to the slider tablist
-3. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB)
-4. Add a color theme block to [style.css](../assets/css/main.css) under `[data-project-theme="..."]`
-5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to both `translations.de` and `translations.en` in [script.js](../assets/js/main.js)
-6. Add the project slug to `COLOR_THEMES` in `assets/js/main.js` if it gets a picker swatch
-7. Create `projects/<slug>.html` for the detail page
-8. Test locally and push
+1. Add a `.project-card` with the correct `data-mode` to `.project-grid` and update the matching mode count.
+2. For a highlighted project, also add a `.hero-slide` with `data-theme` and `data-mode` plus its matching
+   `.project-nav-btn` in [index.html](../index.html).
+3. Add the project image to `assets/img/projects/` (optimize to WebP, <300 KB).
+4. Add a color theme block to [main.css](../assets/css/main.css) under `[data-project-theme="..."]`.
+5. Add the `grid.<project>.desc` key and, for slider projects, the `slide.<project>.*` keys to both language objects in
+   [main.js](../assets/js/main.js).
+6. Add the project slug to `COLOR_THEMES` if it gets a picker swatch.
+7. Create `projects/<slug>.html` when a detail page exists.
+8. Test both modes, the full grid, keyboard navigation, and lazy screenshot loading locally before pushing.
 
 ### Update an image
 

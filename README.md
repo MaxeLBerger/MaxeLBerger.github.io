@@ -10,7 +10,8 @@ Static portfolio site for Maximilian Haak — fullstack developer & AI specialis
 
 ## Featured Projects
 
-All projects are showcased on the homepage and have detail pages under [projects/](projects/):
+The homepage groups the portfolio into customer work and own projects. The hero slider highlights 13 projects; the
+mode-filtered grid below it lists all 30. Detail pages under [projects/](projects/) are linked where available.
 
 | Project | Type | Detail page |
 |---------|------|-------------|

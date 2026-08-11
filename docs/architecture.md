@@ -34,13 +34,25 @@ Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
 
 ### Hero project slider
 
-`#projects` contains 8 `.hero-slide` elements. The `ProjectSlider` class in
-[assets/js/main.js](../assets/js/main.js) handles:
+`#projects` contains one `.hero-slides-container` with 13 highlighted
+`.hero-slide` elements. They are divided by `data-mode`: seven customer projects
+and six own projects. The `.project-mode-selector` pill switches the active deck;
+slides and tabs from the other mode are hidden, so exactly one
+`.hero-slide.active` exists at any time.
+
+Below the slider, `.project-grid` lists the complete portfolio (13 customer and
+17 own projects). `ProjectSlider.applyMode()` filters these cards with the same
+mode as the slider, keeping both views synchronized.
+
+The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
-- Touch/swipe + keyboard navigation
+- Mode switching with a CSS crossfade (`.is-mode-switching`)
+- Touch/swipe + keyboard navigation within the active deck
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
 - Container height calculation (slides have varying heights)
+- Promoting a revealed slide's `loading="lazy"` screenshot to `eager`, without
+  which Chrome leaves it deferred forever and the browser frame stays empty
 
 ### Theming
 
@@ -49,7 +61,7 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |---|---|---|
 | `data-color-scheme` | `dark` (default), `light` | `#themeToggle` button |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider, scroll observer, color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment`, `albert`, `senihelp24` | Slider, scroll observer, color picker |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for
 `data-project-theme`. All callers go through `setProjectTheme(theme, source)`.
