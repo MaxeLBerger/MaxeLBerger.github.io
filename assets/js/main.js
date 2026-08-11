@@ -68,6 +68,10 @@
             'services.design.link': 'Termin vereinbaren',
             'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
             'services.cta.button': 'Kostenloses Erstgespräch →',
+            'services.availability.badge': 'Ab 01.10.2026',
+            'services.availability.title': 'Angebote & Dienstleistungen gibt es ab dem 1. Oktober 2026.',
+            'services.availability.text': 'Bis dahin nehme ich Anfragen entgegen und erstelle unverbindliche Angebote — die Umsetzung startet ab dem 1.10.',
+            'services.availability.cta': 'Jetzt Platz sichern →',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
@@ -76,7 +80,6 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Kundenprojekte',
-            'projects.mode.customers.lock': 'Bald verfügbar',
             'projects.mode.own': 'Eigene Projekte',
             'about.title': 'Über mich',
             'about.eyebrow': 'Persönlich',
@@ -239,6 +242,29 @@
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
             'slide.jkentertainment.badge': 'TCG STORE',
+
+            'slide.senihelp24.t1': 'Senihelp24.',
+            'slide.senihelp24.t2': '24h-Pflege',
+            'slide.senihelp24.t3': 'zu Hause.',
+            'slide.senihelp24.desc': 'Senihelp24 vermittelt keine Betreuungskräfte, sondern stellt sie selbst an — 24h-Pflege für Angehörige zu Hause. Ich baue dafür den neuen Web-Auftritt: Leistungen, Kostenrechner und ein Anfrage-Flow, der Familien in einer schwierigen Situation schnell zu einer klaren Antwort führt. Aktuell in Entwicklung.',
+            'slide.senihelp24.cta1': 'Anfragen',
+            'slide.senihelp24.cta2': 'Bald live',
+            'slide.senihelp24.tag1': 'Next.js & Vercel',
+            'slide.senihelp24.tag2': 'Pflege & Betreuung',
+            'slide.senihelp24.tag3': 'In Arbeit',
+            'slide.senihelp24.badge': 'IN ARBEIT',
+
+            'slide.albert.t1': 'Albert Royale.',
+            'slide.albert.t2': 'Dein Albert',
+            'slide.albert.t3': 'lernt von dir.',
+            'slide.albert.desc': 'Ein 3D-Battle-Royale mit einem neuronalen Netz als Gegner-Gehirn: In Phase 1 spielst du selbst — jede deiner Aktionen wird aufgezeichnet und per Behavior Cloning in einem Web Worker trainiert. In Phase 2 tritt dein Albert allein gegen fünfzehn andere an, und du schaust nur noch zu.',
+            'slide.albert.cta1': 'Projekt ansehen',
+            'slide.albert.cta2': 'Auf GitHub',
+            'slide.albert.tag1': 'Three.js & TypeScript',
+            'slide.albert.tag2': 'Neuronale Netze',
+            'slide.albert.tag3': 'Behavior Cloning',
+            'slide.albert.badge': 'KI-SPIEL',
+
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -314,6 +340,10 @@
             'services.design.link': 'Book a slot',
             'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
             'services.cta.button': 'Free intro call →',
+            'services.availability.badge': 'From 01 Oct 2026',
+            'services.availability.title': 'Offers and services are available from 1 October 2026.',
+            'services.availability.text': 'Until then I take enquiries and prepare non-binding quotes — delivery starts on 1 October.',
+            'services.availability.cta': 'Reserve your slot →',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
@@ -322,7 +352,6 @@
             'projects.group.websites': 'Websites & Apps',
             'projects.group.games': 'Games',
             'projects.mode.customers': 'Customer projects',
-            'projects.mode.customers.lock': 'Coming soon',
             'projects.mode.own': 'Own projects',
             'about.title': 'About me',
             'about.eyebrow': 'Personal',
@@ -485,6 +514,29 @@
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
             'slide.jkentertainment.badge': 'TCG STORE',
+
+            'slide.senihelp24.t1': 'Senihelp24.',
+            'slide.senihelp24.t2': '24h Care',
+            'slide.senihelp24.t3': 'At Home.',
+            'slide.senihelp24.desc': 'Senihelp24 does not broker caregivers — it employs them directly, providing round-the-clock care for relatives at home. I am building their new web presence: services, a cost calculator and an enquiry flow that gets families a clear answer fast, in a difficult moment. Currently in development.',
+            'slide.senihelp24.cta1': 'Get in touch',
+            'slide.senihelp24.cta2': 'Live soon',
+            'slide.senihelp24.tag1': 'Next.js & Vercel',
+            'slide.senihelp24.tag2': 'Care & Support',
+            'slide.senihelp24.tag3': 'In Progress',
+            'slide.senihelp24.badge': 'IN PROGRESS',
+
+            'slide.albert.t1': 'Albert Royale.',
+            'slide.albert.t2': 'Your Albert',
+            'slide.albert.t3': 'learns from you.',
+            'slide.albert.desc': 'A 3D battle royale with a neural network as the opponents’ brain: in phase 1 you play yourself — every action you take is recorded and trained via behavior cloning inside a web worker. In phase 2 your Albert faces fifteen others on his own, and you just watch.',
+            'slide.albert.cta1': 'View project',
+            'slide.albert.cta2': 'On GitHub',
+            'slide.albert.tag1': 'Three.js & TypeScript',
+            'slide.albert.tag2': 'Neural Networks',
+            'slide.albert.tag3': 'Behavior Cloning',
+            'slide.albert.badge': 'AI GAME',
+
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -707,28 +759,30 @@
             this.section = document.querySelector('#projects');
             if (!this.section) return;
 
-            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
-            // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
-            // and any nav button explicitly marked disabled or aria-disabled.
-            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+            // The slider holds two independent sets of slides — customer work and
+            // own projects — switched by the segmented pill above it. Everything
+            // index-based below (`this.slides` ↔ `this.navBtns`) operates on the
+            // *active* mode only; `allSlides` / `allNavBtns` keep the full set so
+            // a theme belonging to the other mode can still be resolved.
+            this.allSlides = Array.from(this.section.querySelectorAll('.hero-slide'));
+            // Exclude any nav button explicitly marked disabled or aria-disabled.
+            this.allNavBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+                .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
+            this.modeBtns = Array.from(this.section.querySelectorAll('.project-mode-btn'))
                 .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
 
-            // Re-sort slides to match nav button order (data-project ↔ data-theme)
-            // so that index-based pairing in goToSlide() stays in sync after the
-            // nav has been grouped/re-ordered visually.
-            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
-            const ordered = this.navBtns
-                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
-                .filter(Boolean);
-            if (ordered.length === this.slides.length) {
-                this.slides = ordered;
-            }
+            const activeModeBtn = this.modeBtns.find(btn => btn.classList.contains('is-active'));
+            this.mode = activeModeBtn ? activeModeBtn.dataset.mode : (this.allSlides[0]?.dataset.mode || 'own');
+
+            this.slides = [];
+            this.navBtns = [];
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');
             this.pagination = this.section.querySelector('.project-pagination');
-            this.currentIndex = Math.max(this.slides.findIndex(slide => slide.classList.contains('active')), 0);
+            this.currentIndex = 0;
             this.isAnimating = false;
+            this.isModeSwitching = false;
             this.animationGuardTimer = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -740,11 +794,108 @@
                 motionQuery.addListener(onMotionChange);
             }
 
-            if (this.slides.length === 0) return;
+            if (this.allSlides.length === 0) return;
+
+            // A colour the visitor picked earlier may belong to the other mode —
+            // start there so the slide that owns it is the one on screen. Read
+            // localStorage rather than the controller: its fallback is the
+            // document default ('maxhaak'), which would always drag a first-time
+            // visitor into "own projects" and override the markup's chosen mode.
+            let storedTheme = null;
+            try { storedTheme = localStorage.getItem('themeColor'); } catch (_) { /* private mode */ }
+            const stored = storedTheme ? this.locateTheme(storedTheme) : null;
+            if (stored) this.mode = stored.mode;
 
             this.bindEvents();
-            this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
-            this.syncToTheme(themeController.getProjectTheme(), { animate: false });
+            this.applyMode(this.mode, { index: stored ? stored.index : 0, dispatchEvent: false });
+        }
+
+        /**
+         * Collect the slides + nav buttons of one mode, in nav-button order, so
+         * that index-based pairing in goToSlide() stays in sync.
+         */
+        collectMode(mode) {
+            const navBtns = this.allNavBtns.filter(btn => btn.dataset.mode === mode);
+            const slideByTheme = new Map(
+                this.allSlides
+                    .filter(slide => slide.dataset.mode === mode)
+                    .map(slide => [slide.getAttribute('data-theme'), slide])
+            );
+            const slides = navBtns
+                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
+                .filter(Boolean);
+            return { navBtns, slides };
+        }
+
+        /** Find a theme across *both* modes. Returns null when nothing matches. */
+        locateTheme(theme) {
+            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+            for (const mode of ['customers', 'own']) {
+                const { slides } = this.collectMode(mode);
+                const index = slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
+                if (index !== -1) return { mode, index };
+            }
+            return null;
+        }
+
+        applyMode(mode, options = {}) {
+            const { index = 0, dispatchEvent = true, updateTheme = false } = options;
+            const { navBtns, slides } = this.collectMode(mode);
+            if (slides.length === 0) return;
+
+            this.mode = mode;
+            this.navBtns = navBtns;
+            this.slides = slides;
+
+            this.modeBtns.forEach(btn => {
+                const isActive = btn.dataset.mode === mode;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+
+            // Tabs and slides of the other mode leave the tab order entirely.
+            this.allNavBtns.forEach(btn => {
+                if (btn.dataset.mode === mode) {
+                    btn.hidden = false;
+                    return;
+                }
+                btn.hidden = true;
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+                btn.tabIndex = -1;
+            });
+            this.allSlides.forEach(slide => {
+                if (slide.dataset.mode === mode) return;
+                this.resetSlideInlineState(slide);
+                slide.classList.remove('active');
+                slide.hidden = true;
+            });
+
+            this.currentIndex = -1;
+            this.setActiveSlide(Math.min(Math.max(index, 0), slides.length - 1), { dispatchEvent, updateTheme });
+        }
+
+        /** Mode switch with a short crossfade so the swap doesn't snap. */
+        switchMode(mode) {
+            if (!mode || mode === this.mode || this.isAnimating || this.isModeSwitching) return;
+
+            if (this.prefersReducedMotion || !this.slidesContainer) {
+                this.applyMode(mode, { updateTheme: true });
+                return;
+            }
+
+            this.isModeSwitching = true;
+            this.slidesContainer.classList.add('is-mode-switching');
+            window.setTimeout(() => {
+                this.applyMode(mode, { updateTheme: true });
+                // Force the new layout to be committed before fading back in.
+                // Deliberately not requestAnimationFrame: it is throttled to a
+                // standstill in a backgrounded tab, which would strand the
+                // section at opacity 0 and lock the switch for good.
+                void this.slidesContainer.offsetHeight;
+                this.slidesContainer.classList.remove('is-mode-switching');
+                this.isModeSwitching = false;
+            }, 180);
         }
 
         getSlideIndexForTheme(theme) {
@@ -807,6 +958,7 @@
 
             this.currentIndex = index;
             this.updateContainerHeight();
+            this.revealActiveTab(index);
 
             if (dispatchEvent) {
                 document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: activeSlide } }));
@@ -814,8 +966,18 @@
         }
 
         syncToTheme(theme, options = {}) {
-            const index = this.getSlideIndexForTheme(theme);
-            if (index === -1 || index === this.currentIndex) return;
+            const located = this.locateTheme(theme);
+            if (!located) return;
+
+            // Picking a colour that belongs to the other mode flips the pill too,
+            // otherwise the swatch would select a slide nobody can see.
+            if (located.mode !== this.mode) {
+                this.applyMode(located.mode, { index: located.index });
+                return;
+            }
+
+            const index = located.index;
+            if (index === this.currentIndex) return;
 
             if (options.animate && this.isSectionVisible()) {
                 this.goToSlide(index);
@@ -823,6 +985,24 @@
             }
 
             this.setActiveSlide(index);
+        }
+
+        /**
+         * On narrow screens the pagination is a horizontally scrolling strip —
+         * with seven customer tabs the active one is often off-screen. Scroll the
+         * strip itself (never the page) so the current project stays visible.
+         */
+        revealActiveTab(index) {
+            const btn = this.navBtns[index];
+            const strip = this.pagination;
+            if (!btn || !strip || strip.scrollWidth <= strip.clientWidth) return;
+            const target = btn.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
+            const left = Math.max(0, Math.min(target, strip.scrollWidth - strip.clientWidth));
+            if (typeof strip.scrollTo === 'function') {
+                strip.scrollTo({ left, behavior: this.prefersReducedMotion ? 'auto' : 'smooth' });
+            } else {
+                strip.scrollLeft = left;
+            }
         }
 
         updateContainerHeight() {
@@ -834,13 +1014,20 @@
                 hidden: slide.hidden,
                 vis: slide.style.visibility,
             }));
+            this.slidesContainer.style.minHeight = '';
             this.slides.forEach(slide => {
                 slide.hidden = false;
                 slide.style.visibility = 'visible';
             });
             let maxHeight = 0;
             this.slides.forEach(slide => {
-                const h = slide.scrollHeight;
+                // Measure `.slide-content`, not the slide: slides are
+                // `position: absolute; inset: 0` and therefore stretch to whatever
+                // min-height the container already has, which would make the value
+                // grow-only. The two modes have different tallest slides, so it
+                // has to be able to shrink again.
+                const inner = slide.querySelector('.slide-content');
+                const h = inner ? inner.scrollHeight : slide.scrollHeight;
                 if (h > maxHeight) maxHeight = h;
             });
             this.slides.forEach((slide, i) => {
@@ -853,8 +1040,16 @@
         }
 
         bindEvents() {
-            this.navBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => this.goToSlide(i));
+            // Bound once over the full set — the index is resolved at click time
+            // because `this.navBtns` is re-collected on every mode switch.
+            this.allNavBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const i = this.navBtns.indexOf(btn);
+                    if (i !== -1) this.goToSlide(i);
+                });
+            });
+            this.modeBtns.forEach((btn) => {
+                btn.addEventListener('click', () => this.switchMode(btn.dataset.mode));
             });
             document.addEventListener('project-theme:change', (e) => {
                 if (e.detail?.source !== 'picker') return;

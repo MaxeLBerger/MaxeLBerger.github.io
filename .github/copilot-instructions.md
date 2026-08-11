@@ -82,25 +82,45 @@ reading (about 54ch max), rather than stretching across the available grid width
 
 ### Hero project slider
 
-`#projects` contains exactly ONE `.hero-slides-container` dedicated to own projects: E46 Studio, AI Captain,
-Medieval TD, Shookroko, and dog-kennel-online. Above the slider sits a two-option `.project-mode-selector`
-segmented pill with
-`Kundenprojekte` (left) and `Eigene Projekte` (right). `Eigene Projekte` is the active, enabled option and controls
-the single slider. `Kundenprojekte` is intentionally locked (`disabled`, `aria-disabled="true"`, `tabindex="-1"`,
-`.is-locked` modifier with a small lock SVG and a visually-hidden `.project-mode-status`) until paid customer work
-exists; do NOT wire it up or render customer slides on the homepage. The customer i18n keys (`slide.imkerei.*`,
-`slide.coha.*`, `slide.soundoflvke.*`, `slide.danielbrecheis.*`, `slide.kayaseeds.*`, `slide.jkentertainment.*`) are
-intentionally retained in [assets/js/main.js](../assets/js/main.js) for future use.
+`#projects` contains ONE `.hero-slides-container` that holds **both** project sets. Above it sits a two-option
+`.project-mode-selector` segmented pill — `Kundenprojekte` (left, active by default) and `Eigene Projekte` (right).
+Both options are enabled and switch the slider.
+
+Every `.hero-slide` and every `.project-pag-btn` carries a `data-mode` of `customers` or `own`:
+
+- **`customers`** — Imkerei Feuerstein, Co Ha, Daniel Brecheis, Kaya Seeds, JK Entertainment, Sound of Lvke,
+  Senihelp24 (in progress, no live link yet).
+- **`own`** — E46 Studio, AI Captain, Albert Royale, Medieval TD, Shookroko, dog-kennel-online.
+
+Tabs of the inactive mode get the `hidden` attribute (`.project-pag-btn[hidden] { display: none }` in
+`assets/css/main.css` is required — the base rule's `display: inline-flex` otherwise beats the UA `[hidden]` rule).
+The `.project-pag-index` numbering restarts at `01` per mode. When adding a project, add the slide, the tab and the
+i18n keys together, and give both the same `data-mode`.
 
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
+- Mode switching: `collectMode()` / `applyMode()` / `switchMode()`. `this.slides` and `this.navBtns` always hold the
+  **active mode only**; `this.allSlides` / `this.allNavBtns` hold everything. `locateTheme()` resolves a theme across
+  both modes, so picking a colour swatch that belongs to the other mode flips the pill as well.
 - Touch/swipe + keyboard navigation
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
-- Container height calculation (slides have varying heights)
+- Container height calculation. It measures `.slide-content`, not `.hero-slide`: slides are
+  `position: absolute; inset: 0` and would otherwise inherit the container's current `min-height`, making the value
+  grow-only — which breaks the moment the two modes have differently tall slides.
+
+The initial mode comes from whichever `.project-mode-btn` carries `.is-active` in the markup, unless
+`localStorage('themeColor')` names a project in the other mode. Do not read `themeController.getProjectTheme()` for
+this: its fallback is the document default `maxhaak`, which would always drag first-time visitors into "own projects".
 
 `ProjectSlider` filters `.project-nav-btn` elements that are `disabled` or have `aria-disabled="true"` out of
-`this.navBtns`, so any locked nav option (e.g. the future customer-mode tab) cannot become an active index.
+`this.allNavBtns`, so any locked nav option cannot become an active index.
+
+### Services availability notice
+
+`#pricing` opens with a `.services-availability` callout above the cards: offers and services start **01.10.2026**,
+enquiries and quotes are possible before then. Copy lives in the `services.availability.*` i18n keys (DE + EN). When
+that date passes, remove the callout and its keys rather than leaving a stale date on the page.
 
 ### Theming
 
@@ -109,7 +129,7 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |-----------|--------|---------------|
 | `data-color-scheme` | `dark` (default), `light` | Theme toggle button (`#themeToggle`) |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko` | Slider, scroll observer, and color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment`, `albert`, `senihelp24` | Slider, scroll observer, and color picker |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go
 through `setProjectTheme(theme, source)`. The color picker writes are persisted to `localStorage('themeColor')`; slider
