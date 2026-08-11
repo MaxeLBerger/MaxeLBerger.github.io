@@ -143,6 +143,64 @@
     margin-top: var(--space-md);
 }
 
+/* ─── Screenshot Gallery ─── */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+}
+
+.gallery-item {
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-card);
+    transition: transform var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out);
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--theme-primary), 0.45);
+}
+
+/* One uniform 16:9 box per tile so the row reads as a grid regardless of the
+   source aspect ratios. */
+.gallery-item img {
+    display: block;
+    width: 100%;
+    /* Beats the presentational `height` attribute, which would otherwise pin
+       the box to the intrinsic pixel height and cancel the aspect-ratio. */
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    background: var(--color-bg-elevated);
+}
+
+/* For UI panels that would get cropped or upscaled into mush by `cover`. */
+.gallery-item--contain img {
+    object-fit: contain;
+    padding: var(--space-md);
+}
+
+.gallery-item figcaption {
+    padding: var(--space-md) var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-item,
+    .gallery-item:hover {
+        transform: none;
+        transition: none;
+    }
+}
+
 /* ─── Features Grid ─── */
 .features-grid {
     display: grid;
