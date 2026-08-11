@@ -78,6 +78,41 @@
             'projects.mode.customers': 'Kundenprojekte',
             'projects.mode.customers.lock': 'Bald verfügbar',
             'projects.mode.own': 'Eigene Projekte',
+            // Alle-Projekte-Grid
+            'projects.all.title': 'Alle Projekte',
+            'projects.all.hint': 'Vollständige Übersicht — die Auswahl folgt dem Modus oben.',
+            'grid.status.live': 'Live',
+            'grid.status.done': 'Fertig',
+            'grid.status.wip': 'In Arbeit',
+            'grid.coha.desc': 'Vietnamesisches Restaurant in Bruckmühl — Speisekarte, Galerie, Reservierung.',
+            'grid.imkerei.desc': 'Honig-Onlineshop der Familienimkerei aus Elchingen.',
+            'grid.jkentertainment.desc': 'TCG-Onlineshop mit über 4.000 Artikeln, zwei Stores in Frankfurt und Darmstadt.',
+            'grid.kayaseeds.desc': 'E-Commerce für eine bayerische Cannabis-Samenmarke.',
+            'grid.danielbrecheis.desc': 'Human Bridges Consulting — HR-Coaching, Workshops, Interim-Management.',
+            'grid.soundoflvke.desc': 'Künstler-Website mit Audio-Player und Release-Übersicht.',
+            'grid.casteldelmonte.desc': 'Italienisches Restaurant in Vagen — Karte, Öffnungszeiten, Kontakt.',
+            'grid.kaess.desc': 'Lackschadenfreie Dellenreparatur — Leistungen, Ablauf, Galerie, Kontakt.',
+            'grid.wkdk.desc': 'Ankauf-Plattform für Sammelkarten — Collectibles-Hub GmbH, Rosenheim.',
+            'grid.bbspiele.desc': 'Marketing-Website für den Spiele- und Collectibles-Händler aus Rosenheim.',
+            'grid.nolte.desc': 'Markenauftritt für Klassiker-Fahrzeuge.',
+            'grid.jaeggl.desc': 'Redesign eines bestehenden Firmenauftritts.',
+            'grid.e46.desc': 'Desktop-App für BMW E46 Steuergeräte-Coding über serielle Schnittstelle.',
+            'grid.aicaptain.desc': 'KI-Agent als VS Code Extension — Code-Generierung, Debugging, Review.',
+            'grid.medieval.desc': 'Browser-Strategiespiel im Mittelalter-Setting mit eigenem Wave-System.',
+            'grid.shookroko.desc': 'Action-Browsergame mit Phaser 3, eigener Game-Loop und Asset-Pipeline.',
+            'grid.e46viola.desc': 'Fahrzeug-Showcase aus dem E46-Umfeld.',
+            'grid.teamkickoff.desc': 'Interaktives Meeting-Board für neun Personen mit geteiltem Zustand.',
+            'grid.dogkennel.desc': 'Plattform für Hundepensionen — Buchungen, Belegung, Hunde- und Halterprofile.',
+            'grid.teahop.desc': 'Bio-Tee-Shop als eigenes Shopify-Theme, Online Store 2.0.',
+            'grid.teekompass.desc': 'Bio-Tee-Abo mit KI-Personalisierung: Box, Bewertung, bessere nächste Box.',
+            'grid.glowcan.desc': '3D-gedruckter LED-Deckel für Energy-Dosen — Shopify-Theme, mobile-first.',
+            'grid.bierbrauen.desc': 'Web-App rund ums Bierbrauen — Rezepte und Prozessbegleitung.',
+            'grid.albert.desc': 'Evolutionssimulation mit neuronalen Netzen, plus 3D-Battle-Royale-Ableger.',
+            'grid.kundenkalender.desc': 'Lokaler Terminkalender als Desktop-App — Serientermine, ICS/CSV-Export.',
+            'grid.maxorchester.desc': 'Orchestrierung mehrerer KI-Agenten über ein gemeinsames Frontend.',
+            'grid.vibeide.desc': 'Experimentelle Entwicklungsumgebung mit KI-gestütztem Workflow.',
+            'grid.moneydash.desc': 'Dashboard für Finanzdaten und Auswertungen.',
+            'grid.assetkit.desc': 'Toolchain für Spiel-Assets — Generierung, Freistellen, Normalisierung.',
             'about.title': 'Über mich',
             'about.eyebrow': 'Persönlich',
             'about.imageAlt': 'Maximilian Haak vor seinem BMW E46 mit Alpenpanorama',
@@ -324,6 +359,41 @@
             'projects.mode.customers': 'Customer projects',
             'projects.mode.customers.lock': 'Coming soon',
             'projects.mode.own': 'Own projects',
+            // All-projects grid
+            'projects.all.title': 'All projects',
+            'projects.all.hint': 'Full overview — follows the mode selected above.',
+            'grid.status.live': 'Live',
+            'grid.status.done': 'Shipped',
+            'grid.status.wip': 'In progress',
+            'grid.coha.desc': 'Vietnamese restaurant in Bruckmühl — menu, gallery, reservations.',
+            'grid.imkerei.desc': 'Honey online shop for the Feuerstein family apiary in Elchingen.',
+            'grid.jkentertainment.desc': 'TCG online store with 4,000+ items and two stores in Frankfurt and Darmstadt.',
+            'grid.kayaseeds.desc': 'E-commerce for a Bavarian cannabis seed brand.',
+            'grid.danielbrecheis.desc': 'Human Bridges Consulting — HR coaching, workshops, interim management.',
+            'grid.soundoflvke.desc': 'Artist website with audio player and release overview.',
+            'grid.casteldelmonte.desc': 'Italian restaurant in Vagen — menu, opening hours, contact.',
+            'grid.kaess.desc': 'Paintless dent repair — services, process, gallery, contact.',
+            'grid.wkdk.desc': 'Trading card buy-back platform — Collectibles-Hub GmbH, Rosenheim.',
+            'grid.bbspiele.desc': 'Marketing site for the games and collectibles retailer in Rosenheim.',
+            'grid.nolte.desc': 'Brand presence for classic cars.',
+            'grid.jaeggl.desc': 'Redesign of an existing company website.',
+            'grid.e46.desc': 'Desktop app for BMW E46 ECU coding over a serial interface.',
+            'grid.aicaptain.desc': 'AI agent as a VS Code extension — code generation, debugging, review.',
+            'grid.medieval.desc': 'Browser strategy game in a medieval setting with a custom wave system.',
+            'grid.shookroko.desc': 'Action browser game built with Phaser 3, custom game loop and asset pipeline.',
+            'grid.e46viola.desc': 'Vehicle showcase from the E46 world.',
+            'grid.teamkickoff.desc': 'Interactive meeting board for nine people with shared state.',
+            'grid.dogkennel.desc': 'Platform for dog boarding kennels — bookings, occupancy, dog and owner profiles.',
+            'grid.teahop.desc': 'Organic tea shop as a custom Shopify theme, Online Store 2.0.',
+            'grid.teekompass.desc': 'Organic tea subscription with AI personalisation: box, rating, better next box.',
+            'grid.glowcan.desc': '3D-printed LED lid for energy drink cans — Shopify theme, mobile-first.',
+            'grid.bierbrauen.desc': 'Web app for home brewing — recipes and process guidance.',
+            'grid.albert.desc': 'Evolution simulation with neural networks, plus a 3D battle royale spin-off.',
+            'grid.kundenkalender.desc': 'Local appointment calendar as a desktop app — recurring events, ICS/CSV export.',
+            'grid.maxorchester.desc': 'Orchestrating multiple AI agents through a shared frontend.',
+            'grid.vibeide.desc': 'Experimental development environment with an AI-assisted workflow.',
+            'grid.moneydash.desc': 'Dashboard for financial data and analysis.',
+            'grid.assetkit.desc': 'Toolchain for game assets — generation, background removal, normalisation.',
             'about.title': 'About me',
             'about.eyebrow': 'Personal',
             'about.imageAlt': 'Maximilian Haak in front of his BMW E46 with an alpine backdrop',
@@ -707,22 +777,34 @@
             this.section = document.querySelector('#projects');
             if (!this.section) return;
 
-            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
+            this.allSlides = Array.from(this.section.querySelectorAll('.hero-slide'));
             // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
             // and any nav button explicitly marked disabled or aria-disabled.
-            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+            this.allNavBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
                 .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
 
             // Re-sort slides to match nav button order (data-project ↔ data-theme)
             // so that index-based pairing in goToSlide() stays in sync after the
             // nav has been grouped/re-ordered visually.
-            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
-            const ordered = this.navBtns
+            const slideByTheme = new Map(this.allSlides.map(s => [s.getAttribute('data-theme'), s]));
+            const ordered = this.allNavBtns
                 .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
                 .filter(Boolean);
-            if (ordered.length === this.slides.length) {
-                this.slides = ordered;
+            if (ordered.length === this.allSlides.length) {
+                this.allSlides = ordered;
             }
+
+            // Mode ("customers" / "own") splits the same slider into two decks.
+            // Slides and nav buttons stay in the DOM; only the active deck is
+            // wired into this.slides/this.navBtns, so every index-based method
+            // below keeps working unchanged.
+            this.modeBtns = Array.from(this.section.querySelectorAll('.project-mode-btn'));
+            this.gridCards = Array.from(this.section.querySelectorAll('.project-card'));
+            const activeModeBtn = this.modeBtns.find(btn => btn.classList.contains('is-active'));
+            this.mode = activeModeBtn ? activeModeBtn.getAttribute('data-mode') : 'own';
+            this.slides = [];
+            this.navBtns = [];
+            this.applyMode(this.mode, { initial: true });
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');
@@ -745,6 +827,66 @@
             this.bindEvents();
             this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
             this.syncToTheme(themeController.getProjectTheme(), { animate: false });
+        }
+
+        getModeOf(el) {
+            return el.getAttribute('data-mode') || 'own';
+        }
+
+        applyMode(mode, options = {}) {
+            const { initial = false, keepTheme = false } = options;
+            this.mode = mode;
+
+            this.slides = this.allSlides.filter(slide => this.getModeOf(slide) === mode);
+            this.navBtns = this.allNavBtns.filter(btn => this.getModeOf(btn) === mode);
+            if (this.slides.length === 0) return;
+
+            this.allSlides.forEach(slide => {
+                if (this.slides.includes(slide)) return;
+                this.resetSlideInlineState(slide);
+                slide.classList.remove('active');
+                slide.hidden = true;
+            });
+
+            this.allNavBtns.forEach(btn => {
+                const inMode = this.navBtns.includes(btn);
+                btn.hidden = !inMode;
+                if (inMode) return;
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+                btn.tabIndex = -1;
+            });
+
+            this.gridCards.forEach(card => {
+                card.hidden = this.getModeOf(card) !== mode;
+            });
+
+            this.modeBtns.forEach(btn => {
+                const isActive = btn.getAttribute('data-mode') === mode;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+
+            if (initial) return;
+
+            // A mode switch swaps the whole deck, so any in-flight slide
+            // transition is now animating elements that just left the stage.
+            this.isAnimating = false;
+            if (this.animationGuardTimer !== null) {
+                window.clearTimeout(this.animationGuardTimer);
+                this.animationGuardTimer = null;
+            }
+            this.currentIndex = 0;
+            // keepTheme: the caller already picked the colour it wants (e.g. a
+            // swatch for a slide in this deck) — landing on slide 0 must not
+            // clobber it on the way there.
+            this.setActiveSlide(0, { updateTheme: !keepTheme, themeSource: 'slider' });
+        }
+
+        setMode(mode) {
+            if (mode === this.mode) return;
+            if (!this.allSlides.some(slide => this.getModeOf(slide) === mode)) return;
+            this.applyMode(mode);
         }
 
         getSlideIndexForTheme(theme) {
@@ -814,7 +956,19 @@
         }
 
         syncToTheme(theme, options = {}) {
-            const index = this.getSlideIndexForTheme(theme);
+            let index = this.getSlideIndexForTheme(theme);
+
+            // The colour picker offers themes from both decks. If the chosen
+            // one lives in the deck that is currently hidden, switch modes
+            // first so the swatch still lands on its slide.
+            if (index === -1) {
+                const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+                const target = this.allSlides.find(slide => slide.getAttribute('data-theme') === projectTheme);
+                if (!target) return;
+                this.applyMode(this.getModeOf(target), { keepTheme: true });
+                index = this.getSlideIndexForTheme(theme);
+            }
+
             if (index === -1 || index === this.currentIndex) return;
 
             if (options.animate && this.isSectionVisible()) {
@@ -853,8 +1007,19 @@
         }
 
         bindEvents() {
-            this.navBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => this.goToSlide(i));
+            // Delegated: this.navBtns is rebuilt on every mode switch, so
+            // per-button listeners would point at stale indices.
+            if (this.pagination) {
+                this.pagination.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.project-nav-btn');
+                    if (!btn) return;
+                    const index = this.navBtns.indexOf(btn);
+                    if (index !== -1) this.goToSlide(index);
+                });
+            }
+
+            this.modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => this.setMode(btn.getAttribute('data-mode')));
             });
             document.addEventListener('project-theme:change', (e) => {
                 if (e.detail?.source !== 'picker') return;
