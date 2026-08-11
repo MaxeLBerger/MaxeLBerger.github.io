@@ -59,7 +59,7 @@ Brand/technology names in `.skill-tag` / `.tech-badge` stay inline without i18n 
 | Attribute | Values | localStorage |
 |---|---|---|
 | `data-color-scheme` | `dark` (default), `light` | `color-scheme` |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment` | `themeColor` (picker writes only) |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `medieval`, `dogkennel`, `soundoflvke`, `shookroko`, `danielbrecheis`, `kayaseeds`, `jkentertainment`, `albert`, `senihelp24` | `themeColor` (picker writes only) |
 
 `themeController` is the **single writer** for `data-project-theme`; three writers (color picker, slider, scroll observer) all funnel through `setProjectTheme(theme, source)` with `source` of `'picker' | 'slider' | 'scroll'`. Only picker writes persist and it dispatches `project-theme:change`, which `ProjectSlider` consumes so choosing a swatch selects the matching slide. Identical-theme writes short-circuit to avoid retriggering 0.6s CSS transitions site-wide. Never call `setAttribute('data-project-theme', …)` directly.
 
@@ -67,9 +67,9 @@ Brand/technology names in `.skill-tag` / `.tech-badge` stay inline without i18n 
 
 ### ProjectSlider
 
-`#projects` holds exactly one `.hero-slides-container` with the five **own** projects (`e46`, `aicaptain`, `medieval`, `shookroko`, `dogkennel`). Pairing is index-based between `.project-nav-btn[data-project]` and `.hero-slide[data-theme]`; the constructor re-sorts slides into nav-button order, and only reorders when the counts match — a nav button without a matching slide silently disables the reorder. Buttons that are `disabled` or `aria-disabled="true"` are filtered out of `this.navBtns` so they can never become an active index.
+`#projects` holds one `.hero-slides-container` with 13 highlighted projects. Every `.hero-slide` and matching `.project-nav-btn` carries `data-mode="customers"` or `data-mode="own"`; `collectMode()` pairs them by `data-project` ↔ `data-theme`. `this.allSlides` / `this.allNavBtns` retain the full set, while `this.slides` / `this.navBtns` contain only the active mode.
 
-The `.project-mode-selector` above the slider has a `Kundenprojekte` option that is **intentionally locked** (`disabled`, `aria-disabled`, `.is-locked`) until paid customer work exists. Do not wire it up or render customer slides on the homepage. The customer i18n keys (`slide.imkerei.*`, `slide.coha.*`, `slide.soundoflvke.*`, `slide.danielbrecheis.*`, `slide.kayaseeds.*`, `slide.jkentertainment.*`) and the corresponding pages under `projects/` are deliberately retained for later.
+The enabled `.project-mode-selector` switches between seven customer highlights and six own highlights. `applyMode()` updates the active slide, tabs, theme, and the 30-card `.project-grid` below the slider (13 customer projects, 17 own projects). Keep both `.project-mode-count` badges synchronized with the grid totals. `locateTheme()` searches both modes so a picker selection can switch decks before selecting its slide.
 
 ### Performance and privacy gates
 
@@ -79,7 +79,7 @@ These exist for measured reasons; don't remove them casually.
 - `.project-orb` CSS animations are paused while `#projects` lacks `.in-view`.
 - Interval-driven work skips when `document.hidden`.
 - Google Fonts load **only after** cookie consent (`localStorage('cookieConsent')`). Any new third-party request needs a matching update to [datenschutz.html](datenschutz.html).
-- The hero photo (`.hero-bg-squared` `<picture>`, responsive `hero-e46-*.webp`) is the LCP element — keep it `loading="eager"` + `fetchpriority="high"` and don't add competing preloads or a second background layer.
+- The hero photo (`.hero-bg-squared` `<picture>`, responsive `hero-e46-v2-*.webp`) is the LCP element — keep it `loading="eager"` + `fetchpriority="high"` and don't add competing preloads or a second background layer.
 
 ### Contact form
 
@@ -97,13 +97,13 @@ Mode is inferred from the form's `action`: `mailto:` builds a prefilled mail dra
 
 ## Adding a project
 
-1. `.hero-slide` in `#projects` with a new `data-theme` + matching `.project-nav-btn[data-project]` (same order, `role="tab"` wiring intact).
-2. Image in `assets/img/projects/` (WebP, <300 KB).
-3. Theme block in `assets/css/main.css` under `[data-project-theme="..."]`.
-4. `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys in **both** dictionaries.
-5. Add the slug to `COLOR_THEMES` if it gets a picker swatch.
-6. `projects/<slug>.html` detail page (copy an existing one).
-7. Add the detail page to [sitemap.xml](sitemap.xml) — easy to forget, not covered by CI.
+1. Add a `.project-card[data-mode]` to `.project-grid`, add `grid.<project>.desc` to both dictionaries, and update the matching mode count.
+2. For a highlighted project, also add `.hero-slide[data-theme][data-mode]` plus a matching `.project-nav-btn[data-project][data-mode]` with intact `role="tab"` wiring.
+3. Add the image to `assets/img/projects/` (WebP, <300 KB).
+4. Add a theme block in `assets/css/main.css` under `[data-project-theme="..."]`.
+5. For slider projects, add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys to **both** dictionaries.
+6. Add the slug to `COLOR_THEMES` only if it gets a picker swatch.
+7. Create `projects/<slug>.html` when a detail page exists, then add it to [sitemap.xml](sitemap.xml).
 
 ## Doc precedence
 

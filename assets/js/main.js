@@ -888,7 +888,11 @@
             if (stored) this.mode = stored.mode;
 
             this.bindEvents();
-            this.applyMode(this.mode, { index: stored ? stored.index : 0, dispatchEvent: false });
+            this.applyMode(this.mode, {
+                index: stored ? stored.index : 0,
+                dispatchEvent: false,
+                updateTheme: true,
+            });
         }
 
         /**
