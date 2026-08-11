@@ -2254,11 +2254,11 @@ html[data-color-scheme="light"] .project-card__status.is-wip {
 }
 
 .slider-arrow-left {
-    left: 1.5rem;
+    left: calc(50% - 50vw + 1rem);
 }
 
 .slider-arrow-right {
-    right: 1.5rem;
+    right: calc(50% - 50vw + 1rem);
 }
 
 /* Scroll hint */
