@@ -49,8 +49,8 @@ Plain static site — **no build step**, no submodules, no frameworks.
 ### Homepage hero
 
 The top `#hero` uses the E46 photo as the single full-bleed background. Keep the responsive
-`assets/img/backgrounds/hero-e46-640.webp`, `hero-e46-960.webp`, `hero-e46-1440.webp`, and full
-`hero-e46.webp` variants wired through the `.hero-bg-squared` `<picture>` sources; the active image is the LCP element,
+`assets/img/backgrounds/hero-e46-v2-640.webp`, `hero-e46-v2-960.webp`, `hero-e46-v2-1440.webp`, and full
+`hero-e46-v2.webp` variants wired through the `.hero-bg-squared` `<picture>` sources; the active image is the LCP element,
 so keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads;
 do not switch back to the older `herosquared` hero. Keep the dedicated `.hero-section--square` and
 `.hero-bg-squared` crop/veil rules. Place the hero text in the right-side grid column (`.hero-section--single`) on
@@ -66,6 +66,13 @@ proposition (third line uses `.title-line--quiet` for a muted typographic accent
 self-awarded credibility badges, a second pill button, or a scroll hint to the hero — these were deliberately removed
 as part of the de-templating redesign. i18n keys are `hero.eyebrow`, `hero.title1..3`, `hero.desc`, `hero.cta1/cta2`.
 The GSAP entrance sequence in `playEntrance()` animates eyebrow → title lines → description → CTAs.
+
+The hero photo is a **2:1 master** cropped so car and person sit left of the right-hand text column (the head ends at
+50% of the image width). Two things to keep in mind when retouching the crop: a *higher* `object-position` X value
+shows more of the right edge and therefore pushes the subject *left*, so the values increase toward wide viewports;
+and where the hero box is narrower than 2:1, `cover` shows the full image height, which makes the Y value a no-op.
+On mobile the window only spans about a quarter of the image width, so car and person cannot both fit — the
+`max-width: 768px` rule deliberately favours the person.
 
 ### About section
 

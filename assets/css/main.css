@@ -1039,18 +1039,22 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 35% 70%;
+    /* Das Foto ist 2:1 und im Master schon so beschnitten, dass Auto und
+       Person links der Textspalte liegen (Kopf endet bei 50% Bildbreite).
+       Ein HÖHERER X-Wert zeigt mehr von rechts und schiebt das Motiv damit
+       weiter nach links — deshalb steigen die Werte zur breiten Seite hin.
+       Y bleibt knapp unter der Mitte; es greift nur, wenn die Hero-Box
+       breiter als 2:1 ist und oben/unten beschnitten wird. */
+    object-position: 50% 55%;
 }
 @media (min-width: 1200px) {
     .hero-bg-image {
-        /* Wider landscape — keep cover, just nudge subject left of the
-           text column on big screens. */
-        object-position: 32% 68%;
+        object-position: 52% 55%;
     }
 }
 @media (min-width: 1600px) {
     .hero-bg-image {
-        object-position: 30% 65%;
+        object-position: 54% 55%;
     }
 }
 html[data-color-scheme="light"] .hero-bg-slide.hero-bg-squared {
@@ -3550,10 +3554,6 @@ html[data-color-scheme="light"] .cookie-content p {
             rgba(8, 10, 18, 0.68) 100%
         );
     }
-    .hero-bg-image {
-        object-position: 48% 78%;
-    }
-
     .slide-cta {
         justify-content: center;
     }
@@ -3942,7 +3942,14 @@ html[data-color-scheme="light"] .cookie-content p {
         );
     }
     .hero-bg-image {
-        object-position: 47% 82%;
+        /* Einzige Mobile-Regel für object-position — es gab hier lange eine
+           zweite, weiter oben im File, die von dieser still überschrieben
+           wurde. Nicht wieder duplizieren.
+           Das Hochkant-Fenster zeigt nur rund ein Viertel der Bildbreite;
+           Auto und Person liegen weiter auseinander als das. 47% wählt die
+           Person. Y ist hier wirkungslos: Die Box ist deutlich schmaler als
+           2:1, also zeigt `cover` ohnehin die volle Bildhöhe. */
+        object-position: 47% 55%;
     }
 }
 
