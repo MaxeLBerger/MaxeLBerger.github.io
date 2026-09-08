@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   script.js — Portfolio Interactions
+   script.js: Portfolio Interactions
    ProjectSlider, GSAP Animations, Theme, i18n
    ═══════════════════════════════════════════════ */
 
@@ -9,75 +9,81 @@
     /* ═══ i18n TRANSLATIONS ═══ */
     const translations = {
         de: {
-            'nav.services': 'Leistungen',
             'nav.portfolio': 'Portfolio',
             'nav.about': 'Über mich',
             'nav.pricing': 'Pakete',
             'nav.tech': 'Tech Stack',
             'nav.contact': 'Kontakt',
-            'nav.projects': 'Projekte',
-            'services.tag': 'Pakete & Preise',
-            'services.title': 'Transparent & fair — wählen Sie Ihren Weg',
-            'services.badge': '⭐ Empfohlen',
-            'services.label.for': 'Perfekt für',
-            'services.label.deliver': 'Sie bekommen',
-            'services.label.examples': 'Beispiele',
-            'services.web.title': 'Websites & Online-Auftritte',
-            'services.web.sub': 'Schnelle, saubere Websites die ranken und konvertieren.',
-            'services.web.meta': '2–4 Wochen · ab 1.500 €',
-            'services.web.for1': 'Handwerk, Selbstständige, KMU',
-            'services.web.for2': 'Relaunch alter Websites',
-            'services.web.for3': 'Landing Pages für Kampagnen',
-            'services.web.d1': 'Mobile-optimierte Website (1–8 Seiten)',
-            'services.web.d2': 'SEO-Setup & Lighthouse 90+',
-            'services.web.d3': 'DSGVO-konform, Hosting eingerichtet',
-            'services.web.d4': '30 Tage Support nach Launch',
-            'services.web.link': 'Erstgespräch anfragen',
-            'services.ai.title': 'KI & Automatisierung',
-            'services.ai.sub': 'Pragmatische KI, die Ihrem Team echte Stunden zurückgibt.',
-            'services.ai.meta': '1–3 Wochen · ab 1.990 €',
-            'services.ai.for1': 'Wiederkehrende manuelle Aufgaben',
-            'services.ai.for2': 'Kunden-Chatbots & Support-Automation',
-            'services.ai.for3': 'Datenauswertung mit LLMs / RAG',
-            'services.ai.d1': 'Lauffähigen Workflow oder AI-Agent',
-            'services.ai.d2': 'Anbindung an OpenAI / Claude / Ollama',
-            'services.ai.d3': 'Dokumentation & Schulung Ihres Teams',
-            'services.ai.d4': '60 Tage Support & Tuning',
-            'services.ai.link': 'Anwendungsfall besprechen',
-            'services.apps.title': 'Web-Anwendungen & Tools',
-            'services.apps.sub': 'Dashboards, Kundenportale, interne Tools — fullstack.',
-            'services.apps.meta': '4–12 Wochen · ab 4.990 €',
-            'services.apps.for1': 'Internes Dashboard / Kundenportal',
-            'services.apps.for2': 'Buchungs- oder Verwaltungssystem',
-            'services.apps.for3': 'API-Integrationen & CRM-Anbindung',
-            'services.apps.d1': 'Voll funktionsfähige Web-App (Frontend + Backend)',
-            'services.apps.d2': 'Datenbank, Auth & Rollen',
-            'services.apps.d3': 'CI/CD, Hosting & Monitoring',
-            'services.apps.d4': 'Technische Dokumentation',
-            'services.apps.link': 'Idee skizzieren',
-            'services.design.title': 'Beratung & Code-Review',
-            'services.design.sub': 'Zweite Meinung, ehrliches Feedback, klare nächste Schritte.',
-            'services.design.meta': 'flexibel · ab 120 €/h',
-            'services.design.for1': 'Bestehende Projekte mit Tech-Schulden',
-            'services.design.for2': 'Architektur- oder Stack-Entscheidungen',
-            'services.design.for3': 'KI-Strategie für Ihr Unternehmen',
-            'services.design.d1': 'Schriftlichen Review-Report mit Priorisierung',
-            'services.design.d2': 'Konkrete, umsetzbare Empfehlungen',
-            'services.design.d3': '1:1-Gespräch zur Diskussion',
-            'services.design.d4': 'Optional: Pair-Programming-Session',
-            'services.design.link': 'Termin vereinbaren',
+            'services.tag': 'Leistungen',
+            'services.title': 'Pakete & Preise',
+            'services.badge': 'Empfohlen',
+            'services.note': 'Alle Preise netto zzgl. USt.',
+            'services.landing.title': 'Landingpage',
+            'services.landing.sub': 'Eine Seite, die genau eine Sache tut: aus Besuchern Anfragen machen.',
+            'services.landing.meta': '1-2 Wochen \u00b7 ab 2.500 \u20ac',
+            'services.landing.d1': 'Individuelles Design, kein Template',
+            'services.landing.d2': 'Kontakt- oder Terminformular mit Spam-Schutz',
+            'services.landing.d3': 'Ladezeit unter einer Sekunde, Lighthouse 95+',
+            'services.landing.d4': 'DSGVO-konform, Hosting eingerichtet',
+            'services.landing.d5': '30 Tage Support nach Livegang',
+            'services.landing.link': 'Landingpage anfragen',
+            'services.website.title': 'Website',
+            'services.website.sub': 'Der vollst\u00e4ndige Auftritt: f\u00fcnf bis acht Seiten, aufgebaut auf Ihrem Corporate Design.',
+            'services.website.meta': '3-5 Wochen \u00b7 ab 5.500 \u20ac',
+            'services.website.d1': 'Designsystem nach Ihrem CI, mobil und Desktop',
+            'services.website.d2': '5 bis 8 Seiten, Blog oder News optional',
+            'services.website.d3': 'Formulare, SEO-Setup und Suchmaschinen-Anmeldung',
+            'services.website.d4': 'Umzug alter Inhalte inklusive Weiterleitungen',
+            'services.website.d5': '60 Tage Support nach Livegang',
+            'services.website.link': 'Website anfragen',
+            'services.plus.title': 'Website Plus',
+            'services.plus.sub': 'Mehrsprachig, mit Stellenportal oder Anbindung an Ihre Systeme.',
+            'services.plus.meta': '6-10 Wochen \u00b7 ab 9.500 \u20ac',
+            'services.plus.d1': 'Alles aus dem Paket Website',
+            'services.plus.d2': 'Zweite Sprache, vollst\u00e4ndig lokalisiert',
+            'services.plus.d3': 'Stellenportal mit Detailseiten und Bewerbungsformular',
+            'services.plus.d4': 'Anbindung an CRM oder andere Schnittstellen',
+            'services.plus.d5': '90 Tage Support nach Livegang',
+            'services.plus.link': 'Projekt besprechen',
+            'services.care.title': 'Website-Pflege',
+            'services.care.sub': 'Updates, Monitoring und kleine \u00c4nderungen bis 60 Minuten im Monat.',
+            'services.care.meta': 'laufend \u00b7 ab 149 \u20ac/Monat',
+            'services.care.link': 'Pflege dazubuchen',
+            'services.extra.title': 'Zusatzleistungen',
+            'services.extra.sub': 'Alles dar\u00fcber hinaus nach Aufwand, transparent abgerechnet.',
+            'services.extra.meta': '95 \u20ac/Stunde',
             'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
-            'services.cta.button': 'Kostenloses Erstgespräch →',
+            'services.cta.button': 'Kostenloses Erstgespräch',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
-            'projects.title': 'Projekte / Portfolio',
-            'projects.note': 'Hinweis: Viele dieser Projekte sind Prototypen und Eigenentwicklungen. Aktuell bin ich in Festanstellung als Software-Entwickler tätig und biete keine kommerziellen Web-Dienstleistungen an. Künftig ist eine selbstständige Tätigkeit nebenberuflich oder hauptberuflich denkbar.',
-            'projects.group.websites': 'Websites & Apps',
-            'projects.group.games': 'Games',
-            'projects.mode.customers': 'Kundenprojekte',
-            'projects.mode.customers.lock': 'Bald verfügbar',
+            'projects.prev': 'Vorheriges Projekt',
+            'projects.next': 'Nächstes Projekt',
+            'projects.pick': 'Projekt auswählen',
+            'projects.title': 'Projekte',
+            'projects.mode.group': 'Projekt-Kategorie',
             'projects.mode.own': 'Eigene Projekte',
+            'projects.mode.customers': 'Kundenprojekte',
+            // Albert Royale
+            'slide.albert.t1': 'Albert Royale.',
+            'slide.albert.t2': 'Dein Albert',
+            'slide.albert.t3': 'lernt von dir.',
+            'slide.albert.desc': 'Ein 3D-Battle-Royale, in dem du deinem Charakter erst selbst das \u00dcberleben beibringst und ihn dann allein in die Arena schickst. Das Gehirn dahinter ist ein selbstgeschriebenes neuronales Netz, trainiert aus deinem Spielverhalten.',
+            'slide.albert.cta1': 'Projekt-Details',
+            'slide.albert.cta2': 'Auf GitHub',
+            'slide.albert.tag1': 'Three.js',
+            'slide.albert.tag2': 'TypeScript',
+            'slide.albert.tag3': 'Neural Net',
+            // Senihelp24
+            'slide.senihelp24.t1': 'Senihelp24.',
+            'slide.senihelp24.t2': '24h-Pflege',
+            'slide.senihelp24.t3': 'zu Hause.',
+            'slide.senihelp24.desc': 'Senihelp24 vermittelt keine Betreuungskr\u00e4fte, sondern stellt sie selbst an: 24h-Pflege f\u00fcr Angeh\u00f6rige zu Hause. Ich baue daf\u00fcr den neuen Web-Auftritt mit Leistungen, Kostenrechner und einem Anfrage-Flow, der Familien in einer schwierigen Situation schnell zu einer klaren Antwort f\u00fchrt. Aktuell in Entwicklung.',
+            'slide.senihelp24.cta1': 'Anfragen',
+            'slide.senihelp24.cta2': 'Bald live',
+            'slide.senihelp24.tag1': 'Next.js & Vercel',
+            'slide.senihelp24.tag2': 'Pflege & Betreuung',
+            'slide.senihelp24.tag3': 'In Arbeit',
             'about.title': 'Über mich',
             'about.eyebrow': 'Persönlich',
             'about.imageAlt': 'Maximilian Haak vor seinem BMW E46 mit Alpenpanorama',
@@ -91,12 +97,9 @@
             'about.highlight.life': 'Fußball · Gym · E46',
             'about.highlight.musicLabel': 'Musik',
             'about.highlight.music': 'Percussion · Cajon · Rap · Beats',
-            'about.stat1': 'Jahre Erfahrung',
-            'about.stat2': 'Projekte umgesetzt',
-            'about.stat3': 'Kundenzufriedenheit',
             'contact.tag': 'Kontakt',
             'contact.title': 'Lassen Sie uns sprechen',
-            'contact.intro': 'Erzählen Sie mir von Ihrem Vorhaben — ganz unverbindlich. Ich melde mich persönlich bei Ihnen zurück, in der Regel innerhalb eines Werktags.',
+            'contact.intro': 'Erzählen Sie mir von Ihrem Vorhaben, ganz unverbindlich. Ich melde mich persönlich bei Ihnen zurück, in der Regel innerhalb eines Werktags.',
             'contact.name': 'Name',
             'contact.email': 'E-Mail',
             'contact.message': 'Nachricht',
@@ -110,18 +113,18 @@
             'footer.impressum': 'Impressum',
             'footer.datenschutz': 'Datenschutz',
             // Hero (statisch, Foto-first)
-            'hero.eyebrow': 'Maximilian Haak — Softwareentwickler',
+            'hero.eyebrow': 'Maximilian Haak \u00b7 Softwareentwickler',
             'hero.title1': 'Websites, Web\u2011Apps',
             'hero.title2': 'und KI-Lösungen.',
             'hero.title3': 'Sauber gebaut.',
-            'hero.desc': 'Seit über fünf Jahren entwickle ich Software mit TypeScript, React und modernen Cloud-Technologien — aus Bruckmühl bei Rosenheim, persönlich und direkt.',
+            'hero.desc': 'Seit über fünf Jahren entwickle ich Software mit TypeScript, React und modernen Cloud-Technologien, aus Bruckmühl bei Rosenheim, persönlich und direkt.',
             'hero.cta1': 'Projekte ansehen',
             'hero.cta2': 'Kontakt aufnehmen',
             // Slide 2 - Imkerei Feuerstein
             'slide.imkerei.t1': 'Honig-Shop.',
             'slide.imkerei.t2': 'Familienimkerei.',
             'slide.imkerei.t3': 'Online verkauft.',
-            'slide.imkerei.desc': 'Vollständiger Online-Shop für die Familienimkerei Feuerstein aus Elchingen: Produktkatalog mit Honig-Sorten, Warenkorb, News-Bereich und Kundenbewertungen. Gebaut mit Next.js, auf Vercel deployed — schnell, SEO-optimiert und responsiv auf allen Geräten.',
+            'slide.imkerei.desc': 'Vollständiger Online-Shop für die Familienimkerei Feuerstein aus Elchingen: Produktkatalog mit Honig-Sorten, Warenkorb, News-Bereich und Kundenbewertungen. Gebaut mit Next.js, auf Vercel deployed, schnell, SEO-optimiert und responsiv auf allen Geräten.',
             'slide.imkerei.cta1': 'Shop ansehen',
             'slide.imkerei.cta2': 'Projekt-Details',
             'slide.imkerei.tag1': 'Next.js & Vercel',
@@ -141,7 +144,7 @@
             'slide.e46.t1': 'Desktop App.',
             'slide.e46.t2': 'BMW E46.',
             'slide.e46.t3': 'Steuergeräte-Coding.',
-            'slide.e46.desc': 'E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation — für eine spezialisierte Automotive-Community.',
+            'slide.e46.desc': 'E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation für eine spezialisierte Automotive-Community.',
             'slide.e46.cta1': 'Live ansehen',
             'slide.e46.cta2': 'Projekt-Details',
             'slide.e46.tag1': 'Electron',
@@ -151,7 +154,7 @@
             'slide.coha.t1': 'Restaurant-Site.',
             'slide.coha.t2': 'Vietnamesisch.',
             'slide.coha.t3': 'Tische gefüllt.',
-            'slide.coha.desc': 'Website für Co Ha, ein vietnamesisches Restaurant in Bruckmühl: Speisekarte, Galerie, Online-Reservierung und Google-Bewertungen. Gebaut mit Next.js — schnell, mobil-optimiert und konsequent auf Reservierungen ausgerichtet.',
+            'slide.coha.desc': 'Website für Co Ha, ein vietnamesisches Restaurant in Bruckmühl: Speisekarte, Galerie, Online-Reservierung und Google-Bewertungen. Gebaut mit Next.js, schnell, mobil-optimiert und konsequent auf Reservierungen ausgerichtet.',
             'slide.coha.cta1': 'Live ansehen',
             'slide.coha.cta2': 'Projekt-Details',
             'slide.coha.tag1': 'Next.js & Vercel',
@@ -161,62 +164,52 @@
             'slide.soundoflvke.t1': 'Sound.',
             'slide.soundoflvke.t2': 'Design.',
             'slide.soundoflvke.t3': 'Identität.',
-            'slide.soundoflvke.desc': 'Portfolio-Website für einen Musik-Künstler — integrierter Audio-Player, Release-Übersicht und individuelles responsive Design. Kreative Webentwicklung, die Marken zum Leben erweckt.',
+            'slide.soundoflvke.desc': 'Portfolio-Website für einen Musik-Künstler mit integriertem Audio-Player, Release-Übersicht und individuellem responsive Design. Kreative Webentwicklung, die Marken zum Leben erweckt.',
             'slide.soundoflvke.cta1': 'Live ansehen',
             'slide.soundoflvke.cta2': 'Projekt-Details',
             'slide.soundoflvke.tag1': 'Künstler-Branding',
             'slide.soundoflvke.tag2': 'Audio Integration',
             'slide.soundoflvke.tag3': 'Responsive Design',
-            // Slide badges
-            'slide.imkerei.badge': 'KUNDENPROJEKT',
-            'slide.aicaptain.badge': 'AI AGENT',
-            'slide.e46.badge': 'DESKTOP APP',
-            'slide.coha.badge': 'KUNDENREFERENZ',
-            'slide.soundoflvke.badge': 'KÜNSTLER-WEBSITE',
             // Slide 7 - Shookroko
             'slide.shookroko.t1': 'Browser-Spiel.',
             'slide.shookroko.t2': 'Phaser 3.',
             'slide.shookroko.t3': 'TypeScript.',
-            'slide.shookroko.desc': 'Shookroko: Ein Action-Browsergame, gebaut mit Phaser 3 und TypeScript. Eigene Game-Loop, Asset-Pipeline und ein responsive Canvas — Game Development trifft modernes Web.',
+            'slide.shookroko.desc': 'Shookroko: Ein Action-Browsergame, gebaut mit Phaser 3 und TypeScript. Eigene Game-Loop, Asset-Pipeline und ein responsive Canvas: Game Development trifft modernes Web.',
             'slide.shookroko.cta1': 'Live spielen',
             'slide.shookroko.cta2': 'Projekt-Details',
             'slide.shookroko.tag1': 'Phaser 3',
             'slide.shookroko.tag2': 'TypeScript',
             'slide.shookroko.tag3': 'Game Dev',
-            'slide.shookroko.badge': 'BROWSER GAME',
             // Slide 8 - Medieval Tower Defense
             'slide.medieval.t1': 'Medieval.',
             'slide.medieval.t2': 'Tower',
             'slide.medieval.t3': 'Defense.',
-            'slide.medieval.desc': 'Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art — gebaut für die Vercel-Edge mit modernem Web-Stack.',
+            'slide.medieval.desc': 'Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art, gebaut für die Vercel-Edge mit modernem Web-Stack.',
             'slide.medieval.cta1': 'Live spielen',
             'slide.medieval.cta2': 'Zum Spiel',
             'slide.medieval.tag1': 'Browser Game',
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
-            'slide.medieval.badge': 'TOWER DEFENSE',
             // dog-kennel-online (in Arbeit, ohne Bild/Detailseite)
             'slide.dogkennel.t1': 'dog-kennel-online.',
             'slide.dogkennel.t2': 'Kennel',
             'slide.dogkennel.t3': 'Management.',
-            'slide.dogkennel.desc': 'dog-kennel-online: Eine Web-Plattform für Hundepensionen — Buchungen, Belegung, Hunde- und Halterprofile sowie tägliche Abläufe an einem Ort. Aktuell in Entwicklung; Detailseite folgt.',
+            'slide.dogkennel.desc': 'dog-kennel-online: Eine Web-Plattform für Hundepensionen mit Buchungen, Belegung, Hunde- und Halterprofilen sowie täglichen Abläufen an einem Ort. Aktuell in Entwicklung; Detailseite folgt.',
             'slide.dogkennel.cta1': 'Anfragen',
             'slide.dogkennel.cta2': 'Detailseite folgt',
             'slide.dogkennel.tag1': 'Web App',
             'slide.dogkennel.tag2': 'Booking',
             'slide.dogkennel.tag3': 'In Arbeit',
-            'slide.dogkennel.badge': 'IN ARBEIT',
             // Slide 9 - Daniel Brecheis (Human Bridges Consulting)
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
             'slide.danielbrecheis.t3': 'Bridges.',
-            'slide.danielbrecheis.desc': 'Daniel Brecheis — Human Bridges Consulting: Markenwebsite für HR-Coaching, Workshops und Interim-Management. Klare Typografie, ruhige Bildsprache und ein wertiges Erscheinungsbild für 25+ Jahre HR-Erfahrung.',
+            'slide.danielbrecheis.desc': 'Daniel Brecheis, Human Bridges Consulting: Markenwebsite für HR-Coaching, Workshops und Interim-Management. Klare Typografie, ruhige Bildsprache und ein wertiges Erscheinungsbild für 25+ Jahre HR-Erfahrung.',
             'slide.danielbrecheis.cta1': 'Live ansehen',
             'slide.danielbrecheis.cta2': 'Projekt-Details',
             'slide.danielbrecheis.tag1': 'Coaching',
             'slide.danielbrecheis.tag2': 'Branding',
             'slide.danielbrecheis.tag3': 'Vercel',
-            'slide.danielbrecheis.badge': 'CONSULTING',
             // Slide 10 - Kaya Seeds
             'slide.kayaseeds.t1': 'Premium.',
             'slide.kayaseeds.t2': 'Cannabis',
@@ -227,18 +220,16 @@
             'slide.kayaseeds.tag1': 'E-Commerce',
             'slide.kayaseeds.tag2': 'Branding',
             'slide.kayaseeds.tag3': 'Shopify',
-            'slide.kayaseeds.badge': 'ONLINE-SHOP',
             // Slide 11 - JK Entertainment
             'slide.jkentertainment.t1': 'TCG-Shop.',
             'slide.jkentertainment.t2': 'Magic, Pokémon',
             'slide.jkentertainment.t3': '& mehr.',
-            'slide.jkentertainment.desc': 'JK Entertainment: Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! & 6 weitere). Next.js Storefront, Produktkatalog mit über 4.000 Artikeln, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.',
+            'slide.jkentertainment.desc': 'JK Entertainment: Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! und 6 weitere). Next.js Storefront, Produktkatalog mit über 4.000 Artikeln, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.',
             'slide.jkentertainment.cta1': 'Live ansehen',
             'slide.jkentertainment.cta2': 'Projekt-Details',
             'slide.jkentertainment.tag1': 'Next.js',
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
-            'slide.jkentertainment.badge': 'TCG STORE',
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -255,75 +246,81 @@
             'cookie.more': 'Datenschutz',
         },
         en: {
-            'nav.services': 'Services',
             'nav.portfolio': 'Portfolio',
             'nav.about': 'About me',
             'nav.pricing': 'Pricing',
             'nav.tech': 'Tech Stack',
             'nav.contact': 'Contact',
-            'nav.projects': 'Projects',
-            'services.tag': 'Packages & Pricing',
-            'services.title': 'Transparent & fair — pick your path',
-            'services.badge': '⭐ Recommended',
-            'services.label.for': 'Perfect for',
-            'services.label.deliver': 'You get',
-            'services.label.examples': 'Examples',
-            'services.web.title': 'Websites & Online Presence',
-            'services.web.sub': 'Fast, clean websites that rank and convert.',
-            'services.web.meta': '2–4 weeks · from €1,500',
-            'services.web.for1': 'Trades, freelancers, SMBs',
-            'services.web.for2': 'Relaunch of outdated sites',
-            'services.web.for3': 'Landing pages for campaigns',
-            'services.web.d1': 'Mobile-optimised website (1–8 pages)',
-            'services.web.d2': 'SEO setup & Lighthouse 90+',
-            'services.web.d3': 'GDPR-compliant, hosting configured',
-            'services.web.d4': '30 days post-launch support',
-            'services.web.link': 'Book intro call',
-            'services.ai.title': 'AI & Automation',
-            'services.ai.sub': 'Pragmatic AI that gives your team real hours back.',
-            'services.ai.meta': '1–3 weeks · from €1,990',
-            'services.ai.for1': 'Recurring manual tasks',
-            'services.ai.for2': 'Customer chatbots & support automation',
-            'services.ai.for3': 'Data analysis with LLMs / RAG',
-            'services.ai.d1': 'Production-ready workflow or AI agent',
-            'services.ai.d2': 'Integration with OpenAI / Claude / Ollama',
-            'services.ai.d3': 'Documentation & team training',
-            'services.ai.d4': '60 days support & tuning',
-            'services.ai.link': 'Discuss your use case',
-            'services.apps.title': 'Web Applications & Tools',
-            'services.apps.sub': 'Dashboards, customer portals, internal tools — fullstack.',
-            'services.apps.meta': '4–12 weeks · from €4,990',
-            'services.apps.for1': 'Internal dashboard / customer portal',
-            'services.apps.for2': 'Booking or admin systems',
-            'services.apps.for3': 'API integrations & CRM hookups',
-            'services.apps.d1': 'Full-featured web app (frontend + backend)',
-            'services.apps.d2': 'Database, auth & roles',
-            'services.apps.d3': 'CI/CD, hosting & monitoring',
-            'services.apps.d4': 'Technical documentation',
-            'services.apps.link': 'Sketch your idea',
-            'services.design.title': 'Consulting & Code Review',
-            'services.design.sub': 'A second opinion, honest feedback, clear next steps.',
-            'services.design.meta': 'flexible · from €120/h',
-            'services.design.for1': 'Existing projects with tech debt',
-            'services.design.for2': 'Architecture or stack decisions',
-            'services.design.for3': 'AI strategy for your business',
-            'services.design.d1': 'Written review report with priorities',
-            'services.design.d2': 'Concrete, actionable recommendations',
-            'services.design.d3': '1:1 call to discuss',
-            'services.design.d4': 'Optional: pair-programming session',
-            'services.design.link': 'Book a slot',
+            'services.tag': 'Services',
+            'services.title': 'Packages & Pricing',
+            'services.badge': 'Recommended',
+            'services.note': 'All prices net, plus VAT.',
+            'services.landing.title': 'Landing Page',
+            'services.landing.sub': 'One page with one job: turning visitors into enquiries.',
+            'services.landing.meta': '1-2 weeks \u00b7 from \u20ac2,500',
+            'services.landing.d1': 'Custom design, never a template',
+            'services.landing.d2': 'Contact or booking form with spam protection',
+            'services.landing.d3': 'Loads in under a second, Lighthouse 95+',
+            'services.landing.d4': 'GDPR-compliant, hosting set up for you',
+            'services.landing.d5': '30 days of support after launch',
+            'services.landing.link': 'Request a landing page',
+            'services.website.title': 'Website',
+            'services.website.sub': 'The full presence: five to eight pages, built on your corporate design.',
+            'services.website.meta': '3-5 weeks \u00b7 from \u20ac5,500',
+            'services.website.d1': 'Design system based on your brand, mobile and desktop',
+            'services.website.d2': '5 to 8 pages, blog or news section optional',
+            'services.website.d3': 'Forms, SEO setup and search engine submission',
+            'services.website.d4': 'Migration of existing content including redirects',
+            'services.website.d5': '60 days of support after launch',
+            'services.website.link': 'Request a website',
+            'services.plus.title': 'Website Plus',
+            'services.plus.sub': 'Multilingual, with a careers portal or a link into your systems.',
+            'services.plus.meta': '6-10 weeks \u00b7 from \u20ac9,500',
+            'services.plus.d1': 'Everything in the Website package',
+            'services.plus.d2': 'A second language, fully localised',
+            'services.plus.d3': 'Careers portal with detail pages and application form',
+            'services.plus.d4': 'Integration with your CRM or other interfaces',
+            'services.plus.d5': '90 days of support after launch',
+            'services.plus.link': 'Discuss your project',
+            'services.care.title': 'Website Care',
+            'services.care.sub': 'Updates, monitoring and small changes, up to 60 minutes a month.',
+            'services.care.meta': 'ongoing \u00b7 from \u20ac149/month',
+            'services.care.link': 'Add website care',
+            'services.extra.title': 'Additional Work',
+            'services.extra.sub': 'Anything beyond that is billed by the hour, transparently.',
+            'services.extra.meta': '\u20ac95/hour',
             'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
-            'services.cta.button': 'Free intro call →',
+            'services.cta.button': 'Free intro call',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
-            'projects.title': 'Projects / Portfolio',
-            'projects.note': 'Note: Many of these projects are prototypes and personal builds. I currently work as a full-time employed software developer and do not offer commercial web services at the moment. Going freelance — part-time or full-time — is something I may consider in the future.',
-            'projects.group.websites': 'Websites & Apps',
-            'projects.group.games': 'Games',
-            'projects.mode.customers': 'Customer projects',
-            'projects.mode.customers.lock': 'Coming soon',
+            'projects.prev': 'Previous project',
+            'projects.next': 'Next project',
+            'projects.pick': 'Choose a project',
+            'projects.title': 'Projects',
+            'projects.mode.group': 'Project category',
             'projects.mode.own': 'Own projects',
+            'projects.mode.customers': 'Client projects',
+            // Albert Royale
+            'slide.albert.t1': 'Albert Royale.',
+            'slide.albert.t2': 'Your Albert',
+            'slide.albert.t3': 'learns from you.',
+            'slide.albert.desc': 'A 3D battle royale where you first teach your character to survive yourself, then send it into the arena alone. Its brain is a neural network written from scratch and trained on the way you play.',
+            'slide.albert.cta1': 'Project details',
+            'slide.albert.cta2': 'View on GitHub',
+            'slide.albert.tag1': 'Three.js',
+            'slide.albert.tag2': 'TypeScript',
+            'slide.albert.tag3': 'Neural Net',
+            // Senihelp24
+            'slide.senihelp24.t1': 'Senihelp24.',
+            'slide.senihelp24.t2': 'Round-the-clock care',
+            'slide.senihelp24.t3': 'at home.',
+            'slide.senihelp24.desc': 'Senihelp24 employs its carers directly instead of brokering them: 24-hour care for relatives at home. I am building their new web presence with services, a cost calculator and an enquiry flow that gets families a clear answer fast. Currently in development.',
+            'slide.senihelp24.cta1': 'Get in touch',
+            'slide.senihelp24.cta2': 'Live soon',
+            'slide.senihelp24.tag1': 'Next.js & Vercel',
+            'slide.senihelp24.tag2': 'Care & support',
+            'slide.senihelp24.tag3': 'In progress',
             'about.title': 'About me',
             'about.eyebrow': 'Personal',
             'about.imageAlt': 'Maximilian Haak in front of his BMW E46 with an alpine backdrop',
@@ -337,12 +334,9 @@
             'about.highlight.life': 'Football · Gym · E46',
             'about.highlight.musicLabel': 'Music',
             'about.highlight.music': 'Percussion · Cajon · Rap · Beats',
-            'about.stat1': 'Years Experience',
-            'about.stat2': 'Projects Delivered',
-            'about.stat3': 'Client Satisfaction',
             'contact.tag': 'Contact',
             'contact.title': 'Let\'s talk',
-            'contact.intro': "Tell me about your project — no strings attached. I'll get back to you personally, usually within one business day.",
+            'contact.intro': "Tell me about your project, no strings attached. I'll get back to you personally, usually within one business day.",
             'contact.name': 'Name',
             'contact.email': 'Email',
             'contact.message': 'Message',
@@ -356,18 +350,18 @@
             'footer.impressum': 'Legal Notice',
             'footer.datenschutz': 'Privacy Policy',
             // Hero (static, photo-first)
-            'hero.eyebrow': 'Maximilian Haak — Software Developer',
+            'hero.eyebrow': 'Maximilian Haak \u00b7 Software Developer',
             'hero.title1': 'Websites, web apps',
             'hero.title2': 'and AI solutions.',
             'hero.title3': 'Built properly.',
-            'hero.desc': 'I\'ve been building software for over five years with TypeScript, React and modern cloud technologies — based in Bruckmühl near Rosenheim, personal and direct.',
+            'hero.desc': 'I\'ve been building software for over five years with TypeScript, React and modern cloud technologies, based in Bruckmühl near Rosenheim, personal and direct.',
             'hero.cta1': 'View projects',
             'hero.cta2': 'Get in touch',
             // Slide 2 - Imkerei Feuerstein
             'slide.imkerei.t1': 'Honey Shop.',
             'slide.imkerei.t2': 'Family Beekeeping.',
             'slide.imkerei.t3': 'Sold Online.',
-            'slide.imkerei.desc': 'A full online shop for the Feuerstein family beekeeping business in Elchingen: honey product catalog, cart, news section and customer reviews. Built with Next.js and deployed on Vercel — fast, SEO-optimized and fully responsive.',
+            'slide.imkerei.desc': 'A full online shop for the Feuerstein family beekeeping business in Elchingen: honey product catalog, cart, news section and customer reviews. Built with Next.js and deployed on Vercel: fast, SEO-optimized and fully responsive.',
             'slide.imkerei.cta1': 'Visit Shop',
             'slide.imkerei.cta2': 'Project Details',
             'slide.imkerei.tag1': 'Next.js & Vercel',
@@ -387,7 +381,7 @@
             'slide.e46.t1': 'Desktop App.',
             'slide.e46.t2': 'BMW E46.',
             'slide.e46.t3': 'ECU Coding.',
-            'slide.e46.desc': 'E46 Studio: An Electron app for BMW E46 ECU coding via serial interface. TypeScript, Node.js, and low-level communication — for a specialized automotive community.',
+            'slide.e46.desc': 'E46 Studio: An Electron app for BMW E46 ECU coding via serial interface. TypeScript, Node.js, and low-level communication for a specialized automotive community.',
             'slide.e46.cta1': 'View Live',
             'slide.e46.cta2': 'Project Details',
             'slide.e46.tag1': 'Electron',
@@ -397,7 +391,7 @@
             'slide.coha.t1': 'Restaurant Site.',
             'slide.coha.t2': 'Vietnamese.',
             'slide.coha.t3': 'Tables Booked.',
-            'slide.coha.desc': 'Website for Co Ha, a Vietnamese restaurant in Bruckmühl: menu, gallery, online reservations and Google reviews. Built with Next.js — fast, mobile-first and laser-focused on driving bookings.',
+            'slide.coha.desc': 'Website for Co Ha, a Vietnamese restaurant in Bruckmühl: menu, gallery, online reservations and Google reviews. Built with Next.js: fast, mobile-first and laser-focused on driving bookings.',
             'slide.coha.cta1': 'View Live',
             'slide.coha.cta2': 'Project Details',
             'slide.coha.tag1': 'Next.js & Vercel',
@@ -407,62 +401,52 @@
             'slide.soundoflvke.t1': 'Sound.',
             'slide.soundoflvke.t2': 'Design.',
             'slide.soundoflvke.t3': 'Identity.',
-            'slide.soundoflvke.desc': 'Portfolio website for a music artist — integrated audio player, release overview, and custom responsive design. Creative web development that brings brands to life.',
+            'slide.soundoflvke.desc': 'Portfolio website for a music artist with an integrated audio player, release overview and custom responsive design. Creative web development that brings brands to life.',
             'slide.soundoflvke.cta1': 'View Live',
             'slide.soundoflvke.cta2': 'Project Details',
             'slide.soundoflvke.tag1': 'Artist Branding',
             'slide.soundoflvke.tag2': 'Audio Integration',
             'slide.soundoflvke.tag3': 'Responsive Design',
-            // Slide badges
-            'slide.imkerei.badge': 'CLIENT PROJECT',
-            'slide.aicaptain.badge': 'AI AGENT',
-            'slide.e46.badge': 'DESKTOP APP',
-            'slide.coha.badge': 'CLIENT REFERENCE',
-            'slide.soundoflvke.badge': 'ARTIST WEBSITE',
             // Slide 7 - Shookroko
             'slide.shookroko.t1': 'Browser Game.',
             'slide.shookroko.t2': 'Phaser 3.',
             'slide.shookroko.t3': 'TypeScript.',
-            'slide.shookroko.desc': 'Shookroko: An action browser game built with Phaser 3 and TypeScript. Custom game loop, asset pipeline, and a responsive canvas — game development meets the modern web.',
+            'slide.shookroko.desc': 'Shookroko: An action browser game built with Phaser 3 and TypeScript. Custom game loop, asset pipeline, and a responsive canvas: game development meets the modern web.',
             'slide.shookroko.cta1': 'Play live',
             'slide.shookroko.cta2': 'Project Details',
             'slide.shookroko.tag1': 'Phaser 3',
             'slide.shookroko.tag2': 'TypeScript',
             'slide.shookroko.tag3': 'Game Dev',
-            'slide.shookroko.badge': 'BROWSER GAME',
             // Slide 8 - Medieval Tower Defense
             'slide.medieval.t1': 'Medieval.',
             'slide.medieval.t2': 'Tower',
             'slide.medieval.t3': 'Defense.',
-            'slide.medieval.desc': 'Medieval Tower Defense: A browser-playable strategy game in a medieval setting. Custom mechanics, wave system, and pixel art — built for the Vercel edge with a modern web stack.',
+            'slide.medieval.desc': 'Medieval Tower Defense: A browser-playable strategy game in a medieval setting. Custom mechanics, wave system, and pixel art, built for the Vercel edge with a modern web stack.',
             'slide.medieval.cta1': 'Play live',
             'slide.medieval.cta2': 'Open Game',
             'slide.medieval.tag1': 'Browser Game',
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
-            'slide.medieval.badge': 'TOWER DEFENSE',
             // dog-kennel-online (work in progress, no image/detail page)
             'slide.dogkennel.t1': 'dog-kennel-online.',
             'slide.dogkennel.t2': 'Kennel',
             'slide.dogkennel.t3': 'Management.',
-            'slide.dogkennel.desc': 'dog-kennel-online: A web platform for dog boarding kennels — bookings, occupancy, dog and owner profiles, and daily routines in one place. Currently in development; a detail page will follow.',
+            'slide.dogkennel.desc': 'dog-kennel-online: A web platform for dog boarding kennels with bookings, occupancy, dog and owner profiles and daily routines in one place. Currently in development; a detail page will follow.',
             'slide.dogkennel.cta1': 'Get in touch',
             'slide.dogkennel.cta2': 'Detail page coming',
             'slide.dogkennel.tag1': 'Web App',
             'slide.dogkennel.tag2': 'Booking',
             'slide.dogkennel.tag3': 'In progress',
-            'slide.dogkennel.badge': 'WORK IN PROGRESS',
             // Slide 9 - Daniel Brecheis
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
             'slide.danielbrecheis.t3': 'Bridges.',
-            'slide.danielbrecheis.desc': 'Daniel Brecheis — Human Bridges Consulting: Brand website for HR coaching, workshops and interim management. Clear typography, calm imagery and a premium presence for 25+ years of HR experience.',
+            'slide.danielbrecheis.desc': 'Daniel Brecheis, Human Bridges Consulting: Brand website for HR coaching, workshops and interim management. Clear typography, calm imagery and a premium presence for 25+ years of HR experience.',
             'slide.danielbrecheis.cta1': 'View Live',
             'slide.danielbrecheis.cta2': 'Project Details',
             'slide.danielbrecheis.tag1': 'Coaching',
             'slide.danielbrecheis.tag2': 'Branding',
             'slide.danielbrecheis.tag3': 'Vercel',
-            'slide.danielbrecheis.badge': 'CONSULTING',
             // Slide 10 - Kaya Seeds
             'slide.kayaseeds.t1': 'Premium.',
             'slide.kayaseeds.t2': 'Cannabis',
@@ -473,7 +457,6 @@
             'slide.kayaseeds.tag1': 'E-Commerce',
             'slide.kayaseeds.tag2': 'Branding',
             'slide.kayaseeds.tag3': 'Shopify',
-            'slide.kayaseeds.badge': 'ONLINE STORE',
             // Slide 11 - JK Entertainment
             'slide.jkentertainment.t1': 'TCG Shop.',
             'slide.jkentertainment.t2': 'Magic, Pokémon',
@@ -484,7 +467,6 @@
             'slide.jkentertainment.tag1': 'Next.js',
             'slide.jkentertainment.tag2': 'E-Commerce',
             'slide.jkentertainment.tag3': 'TCG',
-            'slide.jkentertainment.badge': 'TCG STORE',
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -503,7 +485,6 @@
     };
 
     let currentLang = localStorage.getItem('lang') || 'de';
-    const retainedObservers = [];
 
     function applyTranslations(lang) {
         const dict = translations[lang];
@@ -537,138 +518,36 @@
         localStorage.setItem('color-scheme', scheme);
     }
 
-    /* ═══ COLOR THEME PICKER ═══ */
-    const COLOR_THEMES = ['maxhaak', 'imkerei', 'coha', 'aicaptain', 'soundoflvke', 'shookroko', 'danielbrecheis', 'kayaseeds', 'jkentertainment'];
-
+    /* ═══ PROJECT THEME ═══ */
     /**
-     * Theme controller — single source of truth for `data-project-theme`.
+     * Theme controller: single source of truth for `data-project-theme`.
      *
-     * Three writers compete for the attribute: the color picker (manual
-     * override), the project slider (active slide → theme), and a scroll
-     * observer (section enter → resync to active slide). Without coordination
-     * the scroll observer's `onLeaveBack` previously hard-reset the theme,
-     * silently undoing both slide- and user-driven colours.
-     *
-     * Design:
-     *   - Every writer goes through `setProjectTheme(theme, source)`.
-     *   - Slides remain authoritative: navigating projects always updates the
-     *     site colour (`source: 'slider'`).
-        *   - The picker is a transient manual override (`source: 'picker'`) and
-        *     is persisted to localStorage so a hard reload remembers the choice.
-        *     Picker writes also notify the project slider, so scrolling down lands
-        *     on the project that owns the selected colour.
-     *   - The scroll observer (`source: 'scroll'`) only resyncs to the active
-     *     slide on enter — there is no hard-reset on leave-back.
-     *   - Writes are cached: identical themes do not retrigger the 0.6s
-     *     CSS transitions on every theme-aware section.
+     * Two writers remain: the project slider (active slide → theme) and a
+     * scroll observer that resyncs to the active slide when the projects
+     * section enters the viewport. Writes are cached so an identical theme
+     * does not retrigger the CSS transitions on every theme-aware section.
      */
     const themeController = (() => {
         const root = document.documentElement;
-        const stored = localStorage.getItem('themeColor');
-        const validStored = COLOR_THEMES.includes(stored) ? stored : null;
-
-        let currentTheme = validStored || root.getAttribute('data-project-theme') || 'maxhaak';
-
-        if (validStored && validStored !== root.getAttribute('data-project-theme')) {
-            root.setAttribute('data-project-theme', validStored);
-        }
-
-        function syncSwatches(theme) {
-            // The e46 slide shares maxhaak's blue and has no dedicated swatch.
-            const swatchKey = theme === 'e46' ? 'maxhaak' : theme;
-            // Cache swatches on first call — they don't change after init.
-            if (!syncSwatches.cache) {
-                syncSwatches.cache = document.querySelectorAll('.color-swatch[data-color-theme]');
-            }
-            syncSwatches.cache.forEach(s => s.classList.toggle('active', s.dataset.colorTheme === swatchKey));
-        }
+        let currentTheme = root.getAttribute('data-project-theme') || 'maxhaak';
 
         function setProjectTheme(theme, source) {
             if (!theme) return;
-            if (source === 'picker') {
-                try {
-                    localStorage.setItem('themeColor', theme);
-                } catch (_) { /* ignore quota / private mode errors */ }
+            if (theme !== currentTheme) {
+                currentTheme = theme;
+                root.setAttribute('data-project-theme', theme);
             }
-            const detail = { theme, source };
-            if (theme === currentTheme) {
-                syncSwatches(theme);
-                document.dispatchEvent(new CustomEvent('project-theme:change', { detail }));
-                return;
-            }
-            currentTheme = theme;
-            root.setAttribute('data-project-theme', theme);
-            syncSwatches(theme);
-            document.dispatchEvent(new CustomEvent('project-theme:change', { detail }));
+            document.dispatchEvent(new CustomEvent('project-theme:change', {
+                detail: { theme, source },
+            }));
         }
 
         function getProjectTheme() {
             return currentTheme;
         }
 
-        syncSwatches(currentTheme);
-
         return { setProjectTheme, getProjectTheme };
     })();
-
-    function initColorPicker() {
-        const wrap = document.querySelector('.color-picker');
-        if (!wrap) return;
-        const trigger = wrap.querySelector('.color-picker-trigger');
-        const popover = wrap.querySelector('.color-picker-popover');
-        const swatches = wrap.querySelectorAll('.color-swatch[data-color-theme]');
-
-        function openPopover() {
-            if (!popover || !trigger) return;
-            popover.hidden = false;
-            // Force reflow so the [data-open] transition animates from hidden state.
-            void popover.offsetWidth;
-            popover.dataset.open = 'true';
-            trigger.setAttribute('aria-expanded', 'true');
-        }
-
-        function closePopover() {
-            if (!popover || !trigger) return;
-            popover.dataset.open = 'false';
-            trigger.setAttribute('aria-expanded', 'false');
-            // Hide after the CSS transition ends so it leaves the tab order.
-            const onEnd = () => {
-                popover.removeEventListener('transitionend', onEnd);
-                if (popover.dataset.open !== 'true') popover.hidden = true;
-            };
-            popover.addEventListener('transitionend', onEnd);
-        }
-
-        if (trigger && popover) {
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (trigger.getAttribute('aria-expanded') === 'true') {
-                    closePopover();
-                } else {
-                    openPopover();
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                if (trigger.getAttribute('aria-expanded') !== 'true') return;
-                if (!wrap.contains(e.target)) closePopover();
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
-                    closePopover();
-                    trigger.focus();
-                }
-            });
-        }
-
-        swatches.forEach(sw => {
-            sw.addEventListener('click', () => {
-                themeController.setProjectTheme(sw.dataset.colorTheme, 'picker');
-                closePopover();
-            });
-        });
-    }
 
     /* ═══ MOBILE MENU ═══ */
     function initMobileMenu() {
@@ -707,28 +586,30 @@
             this.section = document.querySelector('#projects');
             if (!this.section) return;
 
-            this.slides = Array.from(this.section.querySelectorAll('.hero-slide'));
-            // Exclude any locked/disabled mode buttons (e.g. .project-mode-btn)
-            // and any nav button explicitly marked disabled or aria-disabled.
-            this.navBtns = Array.from(this.section.querySelectorAll('.project-nav-btn'))
+            // Two independent slide sets, own work and client work, live in the
+            // same grid cell and are swapped by the segmented control above the
+            // slider. Everything index-based below operates on the ACTIVE mode;
+            // `allSlides` / `allNavBtns` keep the full set so a theme belonging
+            // to the other mode can still be resolved.
+            this.allSlides = Array.from(this.section.querySelectorAll('.hero-slide'));
+            this.allNavBtns = Array.from(this.section.querySelectorAll('.project-pag-btn'))
                 .filter(btn => !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');
+            this.modeBtns = Array.from(this.section.querySelectorAll('.project-mode-btn'));
 
-            // Re-sort slides to match nav button order (data-project ↔ data-theme)
-            // so that index-based pairing in goToSlide() stays in sync after the
-            // nav has been grouped/re-ordered visually.
-            const slideByTheme = new Map(this.slides.map(s => [s.getAttribute('data-theme'), s]));
-            const ordered = this.navBtns
-                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
-                .filter(Boolean);
-            if (ordered.length === this.slides.length) {
-                this.slides = ordered;
-            }
+            const activeModeBtn = this.modeBtns.find(btn => btn.classList.contains('is-active'));
+            this.mode = activeModeBtn
+                ? activeModeBtn.dataset.mode
+                : (this.allSlides[0] ? this.allSlides[0].dataset.mode : 'own');
+
+            this.slides = [];
+            this.navBtns = [];
             this.arrowLeft = this.section.querySelector('.slider-arrow-left');
             this.arrowRight = this.section.querySelector('.slider-arrow-right');
             this.slidesContainer = this.section.querySelector('.hero-slides-container');
             this.pagination = this.section.querySelector('.project-pagination');
-            this.currentIndex = Math.max(this.slides.findIndex(slide => slide.classList.contains('active')), 0);
+            this.currentIndex = -1;
             this.isAnimating = false;
+            this.isModeSwitching = false;
             this.animationGuardTimer = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -740,11 +621,110 @@
                 motionQuery.addListener(onMotionChange);
             }
 
-            if (this.slides.length === 0) return;
+            if (this.allSlides.length === 0) return;
 
             this.bindEvents();
-            this.setActiveSlide(this.currentIndex, { dispatchEvent: false });
-            this.syncToTheme(themeController.getProjectTheme(), { animate: false });
+            // Start on whichever tab the markup marks active, so the first
+            // paint already matches the document instead of snapping to 01.
+            const initial = this.collectMode(this.mode).navBtns
+                .findIndex(btn => btn.classList.contains('active'));
+            this.applyMode(this.mode, {
+                index: Math.max(initial, 0),
+                dispatchEvent: false,
+                updateTheme: true,
+            });
+        }
+
+        /**
+         * Collect the slides and nav buttons of one mode, in nav-button order,
+         * so index-based pairing in goToSlide() stays in sync.
+         */
+        collectMode(mode) {
+            const navBtns = this.allNavBtns.filter(btn => btn.dataset.mode === mode);
+            const slideByTheme = new Map(
+                this.allSlides
+                    .filter(slide => slide.dataset.mode === mode)
+                    .map(slide => [slide.getAttribute('data-theme'), slide])
+            );
+            const slides = navBtns
+                .map(btn => slideByTheme.get(btn.getAttribute('data-project')))
+                .filter(Boolean);
+            return { navBtns, slides };
+        }
+
+        /** Find a theme across BOTH modes. Returns null when nothing matches. */
+        locateTheme(theme) {
+            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+            for (const mode of ['own', 'customers']) {
+                const { slides } = this.collectMode(mode);
+                const index = slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
+                if (index !== -1) return { mode, index };
+            }
+            return null;
+        }
+
+        applyMode(mode, options = {}) {
+            const { index = 0, dispatchEvent = true, updateTheme = false } = options;
+            const { navBtns, slides } = this.collectMode(mode);
+            if (slides.length === 0) return;
+
+            this.mode = mode;
+            this.navBtns = navBtns;
+            this.slides = slides;
+
+            this.modeBtns.forEach(btn => {
+                const isActive = btn.dataset.mode === mode;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+
+            // Tabs and slides of the other mode leave the layout and the tab
+            // order entirely, so the container height follows the active set.
+            this.allNavBtns.forEach(btn => {
+                if (btn.dataset.mode === mode) {
+                    btn.hidden = false;
+                    return;
+                }
+                btn.hidden = true;
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+                btn.tabIndex = -1;
+            });
+            this.allSlides.forEach(slide => {
+                const inMode = slide.dataset.mode === mode;
+                if (!inMode) {
+                    this.resetSlideInlineState(slide);
+                    slide.classList.remove('active');
+                    slide.setAttribute('aria-hidden', 'true');
+                }
+                slide.hidden = !inMode;
+            });
+
+            this.currentIndex = -1;
+            this.setActiveSlide(Math.min(Math.max(index, 0), slides.length - 1), { dispatchEvent, updateTheme });
+        }
+
+        /** Mode switch with a short crossfade so the swap does not snap. */
+        switchMode(mode) {
+            if (!mode || mode === this.mode || this.isAnimating || this.isModeSwitching) return;
+
+            if (this.prefersReducedMotion || !this.slidesContainer) {
+                this.applyMode(mode, { updateTheme: true });
+                return;
+            }
+
+            this.isModeSwitching = true;
+            this.slidesContainer.classList.add('is-mode-switching');
+            window.setTimeout(() => {
+                this.applyMode(mode, { updateTheme: true });
+                // Force the new layout to commit before fading back in.
+                // Deliberately not requestAnimationFrame: it is throttled to a
+                // standstill in a backgrounded tab, which would strand the
+                // section at opacity 0 and lock the switch for good.
+                void this.slidesContainer.offsetHeight;
+                this.slidesContainer.classList.remove('is-mode-switching');
+                this.isModeSwitching = false;
+            }, 180);
         }
 
         getSlideIndexForTheme(theme) {
@@ -770,8 +750,6 @@
                 '.slide-cta .btn',
                 '.slide-tags',
                 '.showcase-frame',
-                '.showcase-badge',
-                '.browser-bar .dot',
                 '.showcase-image-wrap img',
             ].join(',')).forEach(el => {
                 ['opacity', 'transform', 'transition', 'visibility', 'zIndex', 'willChange', 'clipPath']
@@ -802,63 +780,90 @@
                 const isActive = i === index;
                 this.resetSlideInlineState(slide);
                 slide.classList.toggle('active', isActive);
-                slide.hidden = !isActive;
+                // No `hidden` attribute: all slides stay in the CSS grid so the
+                // container height follows the tallest slide. `visibility:
+                // hidden` (from CSS) already removes inactive slides from the
+                // accessibility tree and the tab order.
+                slide.setAttribute('aria-hidden', String(!isActive));
             });
 
             this.currentIndex = index;
-            this.updateContainerHeight();
+            this.revealActiveTab(index);
 
             if (dispatchEvent) {
                 document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: activeSlide } }));
             }
         }
 
-        syncToTheme(theme, options = {}) {
-            const index = this.getSlideIndexForTheme(theme);
-            if (index === -1 || index === this.currentIndex) return;
+        /**
+         * On narrow screens the pagination is a horizontally scrolling strip.
+         * Scroll the strip itself, never the page, so the current project tab
+         * stays visible after an arrow click or a swipe.
+         */
+        revealActiveTab(index) {
+            // Deferred by a tick: during a mode switch the strip is measured
+            // while tabs are still being hidden, which lands the scroll a few
+            // pixels short and clips the last tab.
+            window.setTimeout(() => this.scrollTabIntoView(index), 0);
+        }
 
-            if (options.animate && this.isSectionVisible()) {
-                this.goToSlide(index);
+        scrollTabIntoView(index) {
+            const btn = this.navBtns[index];
+            const strip = this.pagination;
+            if (!btn || !strip) return;
+            const maxScroll = strip.scrollWidth - strip.clientWidth;
+            if (maxScroll <= 0) return;
+
+            // Centre the tab, then pull it back until it is fully inside the
+            // strip with a gutter. Centring alone can leave the first and last
+            // tabs half cut off once the value is clamped to the scroll range.
+            const gutter = 16;
+            const start = btn.offsetLeft;
+            const end = start + btn.offsetWidth;
+            let left = start - (strip.clientWidth - btn.offsetWidth) / 2;
+            left = Math.min(left, start - gutter);
+            left = Math.max(left, end + gutter - strip.clientWidth);
+            left = Math.max(0, Math.min(left, maxScroll));
+
+            if (typeof strip.scrollTo === 'function') {
+                strip.scrollTo({ left, behavior: this.prefersReducedMotion ? 'auto' : 'smooth' });
+            } else {
+                strip.scrollLeft = left;
+            }
+        }
+
+        syncToTheme(theme, options = {}) {
+            const located = this.locateTheme(theme);
+            if (!located) return;
+
+            // A theme owned by the other mode flips the segmented control too,
+            // otherwise it would select a slide nobody can see.
+            if (located.mode !== this.mode) {
+                this.applyMode(located.mode, { index: located.index });
                 return;
             }
 
-            this.setActiveSlide(index);
-        }
+            if (located.index === this.currentIndex) return;
 
-        updateContainerHeight() {
-            if (!this.slidesContainer || this.slides.length === 0) return;
-            // Avoid layout thrashing: do all writes (unhide), then all reads
-            // (scrollHeight), then all restoring writes. Keeps the browser to
-            // a single forced layout per resize instead of one per slide.
-            const prev = this.slides.map(slide => ({
-                hidden: slide.hidden,
-                vis: slide.style.visibility,
-            }));
-            this.slides.forEach(slide => {
-                slide.hidden = false;
-                slide.style.visibility = 'visible';
-            });
-            let maxHeight = 0;
-            this.slides.forEach(slide => {
-                const h = slide.scrollHeight;
-                if (h > maxHeight) maxHeight = h;
-            });
-            this.slides.forEach((slide, i) => {
-                slide.hidden = prev[i].hidden;
-                slide.style.visibility = prev[i].vis;
-            });
-            if (maxHeight > 0) {
-                this.slidesContainer.style.minHeight = `${maxHeight}px`;
+            if (options.animate && this.isSectionVisible()) {
+                this.goToSlide(located.index);
+                return;
             }
+
+            this.setActiveSlide(located.index);
         }
 
         bindEvents() {
-            this.navBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => this.goToSlide(i));
+            // Bound once over the full set: the index is resolved at click time
+            // because `this.navBtns` is re-collected on every mode switch.
+            this.allNavBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const i = this.navBtns.indexOf(btn);
+                    if (i !== -1) this.goToSlide(i);
+                });
             });
-            document.addEventListener('project-theme:change', (e) => {
-                if (e.detail?.source !== 'picker') return;
-                this.syncToTheme(e.detail.theme, { animate: true });
+            this.modeBtns.forEach((btn) => {
+                btn.addEventListener('click', () => this.switchMode(btn.dataset.mode));
             });
             if (this.arrowLeft) {
                 this.arrowLeft.addEventListener('click', () => this.navigate(-1));
@@ -910,13 +915,6 @@
                     }
                 });
             }
-
-            // Recalculate container height on resize (debounced)
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => this.updateContainerHeight(), 100);
-            });
         }
 
         navigate(direction) {
@@ -982,7 +980,6 @@
             gsap.killTweensOf(newSlide.querySelectorAll('*'));
 
             // Prepare new slide (visible but offset)
-            newSlide.hidden = false;
             oldSlide.style.pointerEvents = 'none';
             newSlide.style.pointerEvents = 'auto';
             gsap.set(newSlide, {
@@ -1022,7 +1019,7 @@
 
             // === OLD SLIDE OUT ===
 
-            // Visual exits first (faster — parallax)
+            // Visual exits first (faster: parallax)
             if (oldContent.visual) {
                 master.to(oldContent.visual, {
                     x: xOut * 1.2,
@@ -1033,7 +1030,7 @@
                 }, 0);
             }
 
-            // Text exits (slower — parallax)
+            // Text exits (slower: parallax)
             if (oldContent.text) {
                 master.to(oldContent.text, {
                     x: xOut * config.parallaxRatio,
@@ -1060,7 +1057,7 @@
                 ease: 'power3.out',
             }, 0.2);
 
-            // Text enters (parallax — slower offset)
+            // Text enters (parallax: slower offset)
             if (newContent.text) {
                 master.to(newContent.text, {
                     x: 0,
@@ -1070,7 +1067,7 @@
                 }, 0.25);
             }
 
-            // Visual enters (parallax — faster offset)
+            // Visual enters (parallax: faster offset)
             if (newContent.visual) {
                 master.to(newContent.visual, {
                     x: 0,
@@ -1083,7 +1080,7 @@
 
             // === CONTENT REVEAL ===
 
-            // Title lines — clip-path bottom-up reveal
+            // Title lines: clip-path bottom-up reveal
             if (newContent.titleLines.length) {
                 master.fromTo(newContent.titleLines,
                     { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
@@ -1106,15 +1103,15 @@
                 );
             }
 
-            // CTA buttons — staggered with bounce
+            // CTA buttons: staggered with bounce
             if (newContent.cta.length) {
                 master.fromTo(newContent.cta,
-                    { y: 15, opacity: 0, scale: 0.95 },
+                    { y: 15, opacity: 0 },
                     {
-                        y: 0, opacity: 1, scale: 1,
+                        y: 0, opacity: 1,
                         stagger: 0.08,
                         duration: 0.4,
-                        ease: 'back.out(1.4)',
+                        ease: 'power3.out',
                     },
                     0.65
                 );
@@ -1135,61 +1132,17 @@
 
         animateShowcaseElements(slide, timeline) {
             const frame = slide.querySelector('.showcase-frame');
-            const badge = slide.querySelector('.showcase-badge');
+            if (!frame) return;
 
-            if (frame) {
-                // Browser mockup — 3D tilt entrance
-                timeline.fromTo(frame,
-                    { opacity: 0, rotationY: -15, rotationX: 8, scale: 0.9, transformPerspective: 1200 },
-                    {
-                        opacity: 1, rotationY: -5, rotationX: 2, scale: 1,
-                        duration: 0.8,
-                        ease: 'power4.out',
-                    },
-                    0.4
-                );
-
-                // Browser dots — elastic scale pop
-                const dots = frame.querySelectorAll('.browser-bar .dot');
-                if (dots.length) {
-                    timeline.fromTo(dots,
-                        { opacity: 0, scale: 0 },
-                        {
-                            opacity: 1, scale: 1,
-                            stagger: 0.06,
-                            duration: 0.3,
-                            ease: 'elastic.out(1, 0.5)',
-                        },
-                        0.7
-                    );
-                }
-
-                // Screenshot image — scale reveal
-                const img = frame.querySelector('img');
-                if (img) {
-                    timeline.fromTo(img,
-                        { opacity: 0, scale: 1.1 },
-                        { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' },
-                        0.5
-                    );
-                }
-            }
-
-            if (badge) {
-                timeline.fromTo(badge,
-                    { opacity: 0, y: -20, scale: 0.7, z: 40 },
-                    {
-                        opacity: 1, y: 0, scale: 1, z: 40,
-                        duration: 0.5,
-                        ease: 'back.out(1.4)',
-                    },
-                    0.8
-                );
-            }
+            // Screenshot frame: quiet fade + lift, no 3D tilt.
+            timeline.fromTo(frame,
+                { opacity: 0, y: 16 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+                0.4
+            );
         }
 
         animateWithCSS(oldSlide, newSlide, direction, settle) {
-            newSlide.hidden = false;
             oldSlide.style.pointerEvents = 'none';
             newSlide.style.pointerEvents = 'auto';
             newSlide.style.opacity = '0';
@@ -1224,6 +1177,10 @@
 
         playEntrance() {
             if (typeof gsap === 'undefined') return;
+            // Nothing to stage when the visitor asked for reduced motion:
+            // the initial gsap.set() below would otherwise hide the hero copy
+            // and rely on a timeline the visitor does not want to see.
+            if (this.prefersReducedMotion) return;
 
             // Animate static hero content
             const heroSection = document.querySelector('#hero');
@@ -1231,8 +1188,8 @@
 
             const eyebrow = heroSection.querySelector('.hero-eyebrow');
             const titleLines = heroSection.querySelectorAll('.title-line');
-            const desc = heroSection.querySelector('.slide-description');
-            const ctaItems = heroSection.querySelectorAll('.slide-cta .btn, .slide-cta .hero-link');
+            const desc = heroSection.querySelector('.hero-description');
+            const ctaItems = heroSection.querySelectorAll('.hero-cta .btn, .hero-cta .hero-link');
             const tags = heroSection.querySelector('.slide-tags');
 
             // Set initial hidden states
@@ -1244,7 +1201,7 @@
 
             const tl = gsap.timeline({ delay: 0.3 });
 
-            // Eyebrow — quiet fade-up before the headline
+            // Eyebrow: quiet fade-up before the headline
             if (eyebrow) {
                 tl.to(eyebrow, {
                     y: 0, opacity: 1,
@@ -1252,7 +1209,7 @@
                 }, 0.05);
             }
 
-            // Title lines — bottom-up clip reveal
+            // Title lines: bottom-up clip reveal
             tl.to(titleLines, {
                 y: 0, opacity: 1,
                 clipPath: 'inset(0 0 0% 0)',
@@ -1269,7 +1226,7 @@
                 }, 0.55);
             }
 
-            // CTAs — button and text link enter together, no bounce
+            // CTAs: button and text link enter together, no bounce
             if (ctaItems.length) {
                 tl.to(ctaItems, {
                     y: 0, opacity: 1,
@@ -1292,29 +1249,6 @@
     /* ═══ GSAP ANIMATIONS ═══ */
     function initAnimations() {
         const projectsSection = document.querySelector('#projects');
-        let parallaxTargetsVisible = false;
-
-        // Track projects section visibility. CSS uses .in-view to run/pause
-        // the portfolio ambient orbs, and mouse parallax only runs while the
-        // showcase is actually in view.
-        if (projectsSection) {
-            const updateProjectsVisibility = (isVisible) => {
-                projectsSection.classList.toggle('in-view', isVisible);
-                parallaxTargetsVisible = isVisible;
-            };
-
-            const projObserver = new IntersectionObserver(
-                (entries) => {
-                    updateProjectsVisibility(entries[0].isIntersecting);
-                },
-                { threshold: 0 }
-            );
-            projObserver.observe(projectsSection);
-            retainedObservers.push(projObserver);
-
-            const projectsRect = projectsSection.getBoundingClientRect();
-            updateProjectsVisibility(projectsRect.bottom > 0 && projectsRect.top < window.innerHeight);
-        }
 
         if (typeof gsap === 'undefined') {
             document.querySelectorAll('.scroll-reveal').forEach(el => {
@@ -1328,7 +1262,7 @@
             gsap.registerPlugin(ScrollTrigger);
         }
 
-        // Theme sync — when the projects section enters the viewport, align
+        // Theme sync: when the projects section enters the viewport, align
         // the global theme with the active slide. Going back up no longer
         // hard-resets to a default colour: that previously clobbered both the
         // user's picker choice and any other slide-derived theme. The shared
@@ -1344,60 +1278,13 @@
                     const currentTheme = themeController.getProjectTheme();
                     const currentProjectTheme = currentTheme === 'maxhaak' ? 'e46' : currentTheme;
                     const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
+                        .filter(slide => !slide.hidden)
                         .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
 
                     if (currentThemeHasSlide && activeTheme !== currentProjectTheme) return;
                     if (activeTheme) themeController.setProjectTheme(activeTheme, 'scroll');
                 },
             });
-        }
-
-        // Showcase mouse parallax.
-        // Disabled entirely on coarse pointers (touch devices) where it does
-        // nothing useful and just wastes battery. Uses gsap.quickTo so we
-        // reuse a single tween per target instead of spawning a new tween
-        // on every mousemove (which was the main source of scroll/move lag).
-        const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!isCoarsePointer && !reducedMotion) {
-            // quickTo binds to a specific element + property. We rebind whenever
-            // the active slide changes so the tween targets the visible frame.
-            let frameRotY = null, frameRotX = null;
-            let lastFrame = null;
-
-            const bindQuickTo = (el) => {
-                const opts = { duration: 0.6, ease: 'power2.out' };
-                frameRotY = gsap.quickTo(el, 'rotationY', opts);
-                frameRotX = gsap.quickTo(el, 'rotationX', opts);
-                lastFrame = el;
-            };
-
-            // Cache the active parallax target. Recomputed only when the slide
-            // actually changes (event from ProjectSlider) instead of on every
-            // mousemove frame, which used to do a full DOM query 60×/sec.
-            let cachedFrame = null;
-            const refreshTargets = () => {
-                cachedFrame = document.querySelector('.hero-slide.active .showcase-frame');
-            };
-            refreshTargets();
-            document.addEventListener('slide:change', refreshTargets);
-
-            let mouseTicking = false;
-            document.addEventListener('mousemove', (e) => {
-                if (mouseTicking || !parallaxTargetsVisible) return;
-                mouseTicking = true;
-                requestAnimationFrame(() => {
-                    const normX = (e.clientX / window.innerWidth - 0.5);
-                    const normY = (e.clientY / window.innerHeight - 0.5);
-                    const ry = -5 + normX * 10;
-                    const rx = 2 - normY * 6;
-                    if (cachedFrame) {
-                        if (cachedFrame !== lastFrame) bindQuickTo(cachedFrame);
-                        frameRotY(ry); frameRotX(rx);
-                    }
-                    mouseTicking = false;
-                });
-            }, { passive: true });
         }
 
         // Scroll reveal batch
@@ -1416,145 +1303,6 @@
                 start: 'top 85%',
                 once: true,
             });
-        }
-
-        initSkillsAnimation();
-    }
-
-    /* ═══ SKILLS SECTION ANIMATION ═══
-       Constellation-cascade reveal for the Tech Stack section. Drives:
-       - column titles fading + underline reveal
-       - per-column staggered tag pop-in with rotation
-       - icon pop-in inside tags
-       - continuous pulse on highlight tags (AI column), paused when off-screen
-       - count-up for the .stat-number values below the grid */
-    function initSkillsAnimation() {
-        const section = document.querySelector('.skills-section');
-        if (!section) return;
-
-        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const titles = section.querySelectorAll('.skill-category-title');
-        const categories = section.querySelectorAll('.skill-category');
-        const stats = section.querySelectorAll('.stat-number');
-        const highlightTags = section.querySelectorAll('.skill-tag.highlight');
-
-        const reveal = () => {
-            section.classList.add('is-animated');
-
-            if (prefersReduced || typeof gsap === 'undefined') {
-                section.querySelectorAll('.skill-tag, .skill-category-title')
-                    .forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; });
-                stats.forEach((el) => {
-                    const m = el.textContent.trim().match(/^(\d+)(.*)$/);
-                    if (m) el.textContent = m[1] + m[2];
-                });
-                highlightTags.forEach((t) => t.classList.add('is-pulsing'));
-                return;
-            }
-
-            // Column titles fade + slide
-            gsap.to(titles, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'power2.out',
-                stagger: 0.12,
-            });
-
-            // Per-column tag cascade with column offset
-            categories.forEach((cat, colIdx) => {
-                const tags = cat.querySelectorAll('.skill-tag');
-                if (!tags.length) return;
-                gsap.fromTo(tags, {
-                    opacity: 0,
-                    y: 24,
-                    scale: 0.85,
-                    rotation: () => (Math.random() * 6 - 3),
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.55,
-                    ease: 'back.out(1.6)',
-                    stagger: 0.045,
-                    delay: 0.15 + colIdx * 0.12,
-                    onComplete: () => {
-                        if (colIdx === categories.length - 1) startPulse();
-                    },
-                });
-
-                // Icon pop-in
-                const icons = cat.querySelectorAll('.skill-icon');
-                if (icons.length) {
-                    gsap.fromTo(icons, {
-                        scale: 0,
-                    }, {
-                        scale: 1,
-                        duration: 0.4,
-                        ease: 'back.out(2)',
-                        stagger: 0.04,
-                        delay: 0.3 + colIdx * 0.12,
-                    });
-                }
-            });
-
-            // Stat counters
-            stats.forEach((el) => {
-                const raw = el.textContent.trim();
-                const m = raw.match(/^(\d+)(.*)$/);
-                if (!m) return;
-                const target = parseInt(m[1], 10);
-                const suffix = m[2];
-                const obj = { val: 0 };
-                el.textContent = '0' + suffix;
-                gsap.to(obj, {
-                    val: target,
-                    duration: 1.2,
-                    ease: 'power2.out',
-                    delay: 0.4,
-                    onUpdate: () => {
-                        el.textContent = Math.round(obj.val) + suffix;
-                    },
-                });
-            });
-        };
-
-        // Pulse loop on highlight tags, gated by viewport visibility.
-        // Arming happens inside startPulse() so the loop never fires before
-        // the cascade animation finishes.
-        const startPulse = () => {
-            if (prefersReduced) return;
-            highlightTags.forEach((t) => {
-                t.dataset.pulseArmed = '1';
-                t.classList.add('is-pulsing');
-            });
-        };
-        if ('IntersectionObserver' in window && highlightTags.length) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    highlightTags.forEach((t) => {
-                        if (t.dataset.pulseArmed !== '1') return;
-                        if (entry.isIntersecting) {
-                            t.classList.add('is-pulsing');
-                        } else {
-                            t.classList.remove('is-pulsing');
-                        }
-                    });
-                });
-            }, { rootMargin: '0px 0px -10% 0px' });
-            io.observe(section);
-        }
-
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.create({
-                trigger: section,
-                start: 'top 75%',
-                once: true,
-                onEnter: reveal,
-            });
-        } else {
-            reveal();
         }
     }
 
@@ -1595,15 +1343,15 @@
                 status.classList.remove('is-success', 'is-error');
             }
 
-            // Mailto fallback (no backend) — build a pre-filled email and open the user's mail client
+            // Mailto fallback (no backend): build a pre-filled email and open the user's mail client
             if (action.startsWith('mailto:')) {
                 const name = (form.querySelector('#name')?.value || '').trim();
                 const email = (form.querySelector('#email')?.value || '').trim();
                 const message = (form.querySelector('#message')?.value || '').trim();
                 const subject = currentLang === 'de'
-                    ? `Anfrage über maximilianhaak.de — ${name}`
-                    : `Inquiry via maximilianhaak.de — ${name}`;
-                const body = `${message}\n\n—\n${name}\n${email}`;
+                    ? `Anfrage über maximilianhaak.de: ${name}`
+                    : `Inquiry via maximilianhaak.de: ${name}`;
+                const body = `${message}\n\n--\n${name}\n${email}`;
                 const target = `${action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 window.location.href = target;
                 btn.textContent = setStatus('contact.status.mailClient', 'success');
@@ -1762,7 +1510,6 @@
         initCookieConsent();
         initAnimations();
         initHeroBgSlideshow();
-        initColorPicker();
 
         // Project slider
         const slider = new ProjectSlider();

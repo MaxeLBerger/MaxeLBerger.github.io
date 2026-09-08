@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Captain — VS Code Extension | Maximilian Haak</title>
+    <title>AI Captain: VS Code Extension | Maximilian Haak</title>
     <meta name="description" content="AI Captain: Intelligente VS Code Extension mit Multi-Model-Support, Code-Generierung, Review-Automatisierung und Web-Recherche.">
     <meta name="author" content="Maximilian Haak">
     <link rel="icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
@@ -13,10 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
-    <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
-
     <nav id="navbar" aria-label="Hauptnavigation">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo" aria-label="Startseite">
@@ -76,7 +72,7 @@
                 </span>
                 <h2 class="section-title">KI-gestützte Softwareentwicklung</h2>
                 <p class="section-text">AI Captain ist eine VS Code Extension, die die Softwareentwicklung mit KI-Automatisierung auf ein neues Level hebt. Mit Slash-Commands wie /code, /review, /research und /plan wird der gesamte Entwicklungs-Workflow beschleunigt.</p>
-                <p class="section-text">Das Multi-Model-System unterstützt GPT-4o, Claude und Perplexity — je nach Aufgabe wird automatisch das beste Modell gewählt. Vollständig konfigurierbar und erweiterbar.</p>
+                <p class="section-text">Das Multi-Model-System unterstützt GPT-4o, Claude und Perplexity, je nach Aufgabe wird automatisch das beste Modell gewählt. Vollständig konfigurierbar und erweiterbar.</p>
             </section>
 
             <section class="project-section">
@@ -91,7 +87,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         </div>
                         <h3>/code</h3>
-                        <p>Autonome Code-Generierung — beschreibe was du brauchst, AI Captain schreibt den Code.</p>
+                        <p>Autonome Code-Generierung, beschreibe was du brauchst, AI Captain schreibt den Code.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -105,7 +101,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                         </div>
                         <h3>/research</h3>
-                        <p>Integrierte Web-Recherche via Perplexity API — aktuelle Informationen direkt in VS Code.</p>
+                        <p>Integrierte Web-Recherche via Perplexity API, aktuelle Informationen direkt in VS Code.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -119,14 +115,14 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
                         </div>
                         <h3>Multi-Model</h3>
-                        <p>GPT-4o, Claude und Perplexity — automatische Modellwahl je nach Aufgabe.</p>
+                        <p>GPT-4o, Claude und Perplexity, automatische Modellwahl je nach Aufgabe.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                         </div>
                         <h3>Konfigurierbar</h3>
-                        <p>Vollständig anpassbar — eigene Prompts, Modell-Einstellungen und Workflow-Regeln.</p>
+                        <p>Vollständig anpassbar, eigene Prompts, Modell-Einstellungen und Workflow-Regeln.</p>
                     </div>
                 </div>
             </section>
@@ -149,7 +145,7 @@
 
             <div class="project-cta">
                 <h2>Interesse an AI-gestützter Entwicklung?</h2>
-                <p>Entdecken Sie AI Captain auf GitHub — oder lassen Sie sich eine maßgeschneiderte AI-Lösung entwickeln.</p>
+                <p>Entdecken Sie AI Captain auf GitHub, oder lassen Sie sich eine maßgeschneiderte AI-Lösung entwickeln.</p>
                 <div class="project-actions">
                     <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub ansehen</a>
                     <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>

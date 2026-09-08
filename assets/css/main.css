@@ -9,7 +9,6 @@
     --theme-gradient-start: #22d3ee;
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #a855f7;
-    --theme-glow: rgba(6, 182, 212, 0.3);
     --theme-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Dark mode semantic colors (default) */
@@ -69,7 +68,7 @@
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-    /* Layout — clamp() lets the container breathe on wide screens without
+    /* Layout: clamp() lets the container breathe on wide screens without
        letting it grow unbounded on ultra-wide. Bumped from a flat 1200px so
        the 2-column slide layout no longer looks cramped at 1440/1920/2560+. */
     --container-max: clamp(1200px, 92vw, 1480px);
@@ -88,7 +87,6 @@
     --theme-gradient-start: #e6ac5a;
     --theme-gradient-mid: #b46c2a;
     --theme-gradient-end: #8b4513;
-    --theme-glow: rgba(180, 108, 42, 0.3);
 }
 
 /* Imkerei: Amber/Gold */
@@ -99,7 +97,6 @@
     --theme-gradient-start: #fbbf24;
     --theme-gradient-mid: #f59e0b;
     --theme-gradient-end: #d97706;
-    --theme-glow: rgba(245, 158, 11, 0.3);
 }
 
 /* Maximilian Haak: Blue/Indigo (Personal) */
@@ -110,7 +107,6 @@
     --theme-gradient-start: #60a5fa;
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #6366f1;
-    --theme-glow: rgba(59, 130, 246, 0.3);
 }
 
 /* AI Captain: Purple/Violet */
@@ -121,7 +117,6 @@
     --theme-gradient-start: #a78bfa;
     --theme-gradient-mid: #8b5cf6;
     --theme-gradient-end: #7c3aed;
-    --theme-glow: rgba(139, 92, 246, 0.3);
 }
 
 /* E46 Studio: Blue (matches hero/maxhaak for seamless transition) */
@@ -132,7 +127,6 @@
     --theme-gradient-start: #60a5fa;
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #6366f1;
-    --theme-glow: rgba(59, 130, 246, 0.3);
 }
 
 /* SoundOfLvke: Rose/Pink (Music) */
@@ -143,7 +137,6 @@
     --theme-gradient-start: #fb7185;
     --theme-gradient-mid: #f43f5e;
     --theme-gradient-end: #e11d48;
-    --theme-glow: rgba(244, 63, 94, 0.3);
 }
 
 /* Shookroko: Lime/Green (Game) */
@@ -154,7 +147,6 @@
     --theme-gradient-start: #84cc16;
     --theme-gradient-mid: #65a30d;
     --theme-gradient-end: #a3e635;
-    --theme-glow: rgba(132, 204, 22, 0.3);
 }
 
 /* Medieval Tower Defense: Heraldisches Burgund/Wein-Rot */
@@ -165,10 +157,9 @@
     --theme-gradient-start: #ef4444;
     --theme-gradient-mid: #b91c1c;
     --theme-gradient-end: #7f1d1d;
-    --theme-glow: rgba(185, 28, 28, 0.32);
 }
 
-/* dog-kennel-online: Teal mit warmem Akzent — ruhig, operativ */
+/* dog-kennel-online: Teal mit warmem Akzent, ruhig, operativ */
 [data-project-theme="dogkennel"] {
     --theme-primary: 13, 148, 136;
     --theme-secondary: 15, 118, 110;
@@ -176,10 +167,9 @@
     --theme-gradient-start: #2dd4bf;
     --theme-gradient-mid: #0d9488;
     --theme-gradient-end: #115e59;
-    --theme-glow: rgba(13, 148, 136, 0.3);
 }
 
-/* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire — wertig, vertrauensvoll */
+/* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire, wertig, vertrauensvoll */
 [data-project-theme="danielbrecheis"] {
     --theme-primary: 30, 64, 175;
     --theme-secondary: 30, 58, 138;
@@ -187,10 +177,9 @@
     --theme-gradient-start: #3b82f6;
     --theme-gradient-mid: #1e40af;
     --theme-gradient-end: #1e3a8a;
-    --theme-glow: rgba(30, 64, 175, 0.3);
 }
 
-/* Kaya Seeds: Emerald — natürlich, lebendig */
+/* Kaya Seeds: Emerald, natürlich, lebendig */
 [data-project-theme="kayaseeds"] {
     --theme-primary: 16, 185, 129;
     --theme-secondary: 5, 150, 105;
@@ -198,10 +187,9 @@
     --theme-gradient-start: #34d399;
     --theme-gradient-mid: #10b981;
     --theme-gradient-end: #047857;
-    --theme-glow: rgba(16, 185, 129, 0.3);
 }
 
-/* JK Entertainment: Trading-Card-Orange — energetisch, spielerisch (matches Logo + CTA) */
+/* JK Entertainment: Trading-Card-Orange, energetisch, spielerisch (matches Logo + CTA) */
 [data-project-theme="jkentertainment"] {
     --theme-primary: 249, 115, 22;
     --theme-secondary: 234, 88, 12;
@@ -209,7 +197,26 @@
     --theme-gradient-start: #fb923c;
     --theme-gradient-mid: #f97316;
     --theme-gradient-end: #c2410c;
-    --theme-glow: rgba(249, 115, 22, 0.32);
+}
+
+/* Albert Royale: Low-Poly-Insel-Gruen mit Zonen-Violett, spielerisch, KI-nah */
+[data-project-theme="albert"] {
+    --theme-primary: 74, 163, 68;
+    --theme-secondary: 46, 122, 58;
+    --theme-accent: 139, 92, 246;
+    --theme-gradient-start: #7bc96f;
+    --theme-gradient-mid: #4aa344;
+    --theme-gradient-end: #8b5cf6;
+}
+
+/* Senihelp24: warmes Pflege-Blau mit Herz-Rot, vertrauensvoll und nah */
+[data-project-theme="senihelp24"] {
+    --theme-primary: 14, 116, 144;
+    --theme-secondary: 8, 84, 106;
+    --theme-accent: 244, 114, 122;
+    --theme-gradient-start: #22b8cf;
+    --theme-gradient-mid: #0e7490;
+    --theme-gradient-end: #f4727a;
 }
 
 /* Theme transition on all theme-aware elements */
@@ -222,26 +229,21 @@
         color var(--theme-transition);
 }
 
-/* Theme colors flow through the whole site — when a slide activates a theme,
+/* Theme colors flow through the whole site: when a slide activates a theme,
    ALL sections (nav, services, pricing, contact, footer) inherit it.
    This creates a cohesive, dynamic color experience tied to the active project. */
 
 /* Smooth color/border/background transitions on theme-aware elements across the page */
 #navbar,
-.nav-cta,
 .about-section,
 .services-section,
 .service-card,
 .skill-tag,
-.pricing-section,
-.pricing-card,
-.pricing-card.featured,
 .contact-section,
 .contact-link,
 .contact-form input,
 .contact-form textarea,
 .contact-form button,
-.project-card,
 footer,
 footer a {
     transition:
@@ -280,38 +282,10 @@ html[data-color-scheme="light"] body {
         var(--color-bg);
 }
 
-html[data-color-scheme="light"] .project-orb {
-    opacity: 0.16;
-    /* mix-blend-mode: multiply was visually nicer but forced Chrome to
-       composite the entire section on every animation frame. */
-}
-
 /* Tags / chips ------------------------------------------------------------ */
-html[data-color-scheme="light"] .skill-tag {
-    background: rgba(15, 23, 42, 0.04);
-    border-color: rgba(15, 23, 42, 0.12);
-    color: var(--color-text-secondary);
-}
-html[data-color-scheme="light"] .section-tag,
-html[data-color-scheme="light"] .badge {
-    background: rgba(var(--theme-primary), 0.10);
-    border-color: rgba(var(--theme-primary), 0.28);
-    color: rgb(var(--theme-primary));
-}
+
 
 /* Cards ------------------------------------------------------------------- */
-html[data-color-scheme="light"] .pricing-card {
-    background: #ffffff;
-    border-color: rgba(15, 23, 42, 0.10);
-    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
-}
-html[data-color-scheme="light"] .pricing-card:hover {
-    border-color: rgba(var(--theme-primary), 0.35);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
-}
-html[data-color-scheme="light"] .pricing-price {
-    border-bottom-color: rgba(15, 23, 42, 0.08);
-}
 html[data-color-scheme="light"] .contact-map-link {
     border-color: rgba(15, 23, 42, 0.10);
 }
@@ -359,17 +333,16 @@ html[data-color-scheme="light"] .form-select:focus {
 
 /* Slider arrows ---------------------------------------------------------- */
 html[data-color-scheme="light"] .slider-arrow {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(var(--theme-primary), 0.45);
-    color: var(--color-text);
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+    border-color: rgba(15, 23, 42, 0.16);
+    color: var(--color-text-secondary);
 }
 html[data-color-scheme="light"] .slider-arrow:hover {
-    background: rgba(var(--theme-primary), 0.12);
+    background: rgba(var(--theme-primary), 0.08);
+    border-color: rgb(var(--theme-primary));
     color: rgb(var(--theme-primary));
 }
 
-/* Scroll hint entfernt — Hero kommt ohne dekorativen Hinweis aus. */
+/* Scroll hint entfernt: Hero kommt ohne dekorativen Hinweis aus. */
 
 /* Service cards ---------------------------------------------------------- */
 html[data-color-scheme="light"] .service-card {
@@ -402,6 +375,13 @@ html[data-color-scheme="light"] ::selection {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* The mode switch hides the other set of project tabs and slides with the
+   `hidden` attribute. Component rules set an explicit display, which would
+   otherwise beat the user-agent `[hidden] { display: none }`. */
+[hidden] {
+    display: none !important;
 }
 
 html {
@@ -475,14 +455,18 @@ ul, ol {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--theme-gradient-start), var(--theme-gradient-end));
-    color: #fff;
-    box-shadow: 0 4px 15px var(--theme-glow);
+    background: rgb(var(--theme-primary));
+    color: #0a0a0f;
+    transition: background var(--duration-base) var(--ease-out),
+                color var(--theme-transition);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--theme-glow);
+    background: rgba(var(--theme-primary), 0.85);
+}
+
+html[data-color-scheme="light"] .btn-primary {
+    color: #ffffff;
 }
 
 .btn-outline {
@@ -499,13 +483,13 @@ ul, ol {
 
 /* Contact form button states (set via JS) */
 .btn-primary.is-success {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    background: #16a34a;
+    color: #ffffff;
 }
 
 .btn-primary.is-error {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    background: #dc2626;
+    color: #ffffff;
 }
 
 .btn-icon {
@@ -565,8 +549,8 @@ html[data-color-scheme="light"] .btn-icon:hover {
     background:
         linear-gradient(
             to bottom,
-            rgba(10, 10, 15, 0.45) 0%,
-            rgba(10, 10, 15, 0.15) 70%,
+            rgba(10, 10, 15, 0.72) 0%,
+            rgba(10, 10, 15, 0.28) 70%,
             rgba(10, 10, 15, 0) 100%
         );
     border-bottom: 1px solid transparent;
@@ -579,8 +563,8 @@ html[data-color-scheme="light"] #navbar {
     background:
         linear-gradient(
             to bottom,
-            rgba(255, 255, 255, 0.55) 0%,
-            rgba(255, 255, 255, 0.20) 70%,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.42) 70%,
             rgba(255, 255, 255, 0) 100%
         );
     border-bottom-color: transparent;
@@ -625,11 +609,8 @@ html[data-color-scheme="light"] #navbar.scrolled {
 
 .logo-accent {
     font-weight: 700;
-    background: linear-gradient(135deg, var(--theme-gradient-start), var(--theme-gradient-end));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background var(--theme-transition);
+    color: rgb(var(--theme-primary));
+    transition: color var(--theme-transition);
 }
 
 .nav-links {
@@ -675,179 +656,45 @@ html[data-color-scheme="light"] #navbar.scrolled {
 }
 
 /* ═══ COLOR PICKER (single-ball trigger + popover) ═══ */
-.color-picker {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    margin-right: var(--space-xs);
-}
-
 /* Trigger: a single ball showing the active theme colour. */
-.color-picker-trigger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: border-color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out),
-                transform var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out);
-}
-
-.color-picker-trigger:hover {
-    transform: scale(1.06);
-    border-color: rgba(var(--theme-primary), 0.6);
-}
-
-.color-picker-trigger[aria-expanded="true"] {
-    border-color: rgba(var(--theme-primary), 0.85);
-    box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.18);
-}
-
-.color-picker-current {
-    display: block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: linear-gradient(
-        135deg,
-        rgb(var(--theme-primary)),
-        rgb(var(--theme-secondary, var(--theme-primary)))
-    );
-    box-shadow: 0 0 12px rgba(var(--theme-primary), 0.55),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    transition: background var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out);
-}
-
-html[data-color-scheme="light"] .color-picker-trigger {
-    background: rgba(0, 0, 0, 0.025);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
 /* Popover: identical pill design as before, anchored to the trigger. */
-.color-picker-popover {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
-                0 2px 6px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateY(-6px) scale(0.96);
-    transform-origin: top right;
-    transition: opacity var(--duration-base) var(--ease-out),
-                transform var(--duration-base) var(--ease-out);
-    pointer-events: none;
-    z-index: 1100;
+/* Over the hero photo the backdrop is a bright outdoor picture in BOTH
+   colour schemes, so the nav needs white text with a soft shadow until it
+   gets its own background on scroll. Scoped to pages that have a hero. */
+body.has-hero #navbar:not(.scrolled) .nav-logo,
+body.has-hero #navbar:not(.scrolled) .nav-links a,
+body.has-hero #navbar:not(.scrolled) .btn-icon {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
 }
 
-.color-picker-popover[data-open="true"] {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+body.has-hero #navbar:not(.scrolled) .nav-links a:hover {
+    color: #ffffff;
 }
 
-html[data-color-scheme="light"] .color-picker-popover {
+/* Light mode fills these circles with near-white, which would swallow the
+   white glyph above. Over the photo they stay outline-only in both schemes. */
+body.has-hero #navbar:not(.scrolled) .btn-icon,
+html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .btn-icon {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+}
+
+body.has-hero #navbar:not(.scrolled) .menu-toggle .bar {
     background: #ffffff;
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12),
-                0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-.color-swatch {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity var(--duration-base) var(--ease-out),
-                transform var(--duration-base) var(--ease-out);
-}
-
-.color-swatch span {
-    display: block;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    transition: width var(--duration-base) var(--ease-out),
-                height var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out);
-}
-
-.color-swatch[data-color-theme="maxhaak"] span {
-    background: linear-gradient(135deg, #60a5fa, #6366f1);
-}
-
-.color-swatch[data-color-theme="imkerei"] span {
-    background: linear-gradient(135deg, #fbbf24, #d97706);
-}
-
-.color-swatch[data-color-theme="coha"] span {
-    background: linear-gradient(135deg, #e6ac5a, #8b4513);
-}
-
-.color-swatch[data-color-theme="aicaptain"] span {
-    background: linear-gradient(135deg, #a78bfa, #7c3aed);
-}
-
-.color-swatch[data-color-theme="soundoflvke"] span {
-    background: linear-gradient(135deg, #fb7185, #e11d48);
-}
-
-.color-swatch[data-color-theme="shookroko"] span {
-    background: linear-gradient(135deg, #a3e635, #65a30d);
-}
-
-.color-swatch[data-color-theme="danielbrecheis"] span {
-    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
-}
-
-.color-swatch[data-color-theme="kayaseeds"] span {
-    background: linear-gradient(135deg, #34d399, #047857);
-}
-
-.color-swatch[data-color-theme="jkentertainment"] span {
-    background: linear-gradient(135deg, #fb923c, #c2410c);
-}
-
-.color-swatch:hover {
-    opacity: 1;
-    transform: scale(1.15);
-}
-
-.color-swatch.active {
-    opacity: 1;
-}
-
-.color-swatch.active span {
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 0 2px var(--color-bg-elevated),
-                0 0 0 3.5px rgba(var(--theme-primary), 0.85);
-}
-
-html[data-color-scheme="light"] .color-swatch.active span {
-    box-shadow: 0 0 0 2px #ffffff,
-                0 0 0 3.5px rgba(var(--theme-primary), 0.85);
+/* The scrim stays dark over the hero in light mode too, otherwise the white
+   nav text above would sit on a near-white gradient. */
+html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(10, 10, 15, 0.55) 0%,
+            rgba(10, 10, 15, 0.22) 70%,
+            rgba(10, 10, 15, 0) 100%
+        );
 }
 
 /* Theme toggle */
@@ -933,36 +780,6 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 }
 
 /* Mobile nav panel */
-.mobile-nav {
-    display: none;
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--color-bg);
-    z-index: 999;
-    padding: var(--space-2xl);
-    flex-direction: column;
-    gap: var(--space-lg);
-}
-
-.mobile-nav.open {
-    display: flex;
-}
-
-.mobile-nav a {
-    font-size: var(--font-size-xl);
-    color: var(--color-text-secondary);
-    padding: var(--space-md) 0;
-    border-bottom: 1px solid var(--color-border);
-    transition: color var(--duration-base);
-}
-
-.mobile-nav a:hover {
-    color: var(--color-text);
-}
-
 /* ═══════════════════════════════════════════════
    HERO SECTION
    ═══════════════════════════════════════════════ */
@@ -978,32 +795,6 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     isolation: isolate;
 }
 
-/* Layered hero backdrop:
-   1. Mountain photo, dimmed and slightly desaturated, sits at z=-3.
-    2. Theme-tinted gradient veil at z=-2 keeps the photo on-brand and
-        transitions colour with the active project theme.
-    3. Bottom-fade gradient at z=-1 blends seamlessly into the page
-        background so neighbouring sections remain edge-less. */
-.hero-section::before,
-.hero-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.hero-section::before {
-    /* Reserved for theme-tinted layering above the bg slides. */
-    background: transparent;
-    z-index: -3;
-}
-
-/* ── Hero background slideshow ──────────────────────────────────────
-   Eight real photos taken by Max around Bruckmühl. They crossfade
-   slowly behind the hero content. The dim/desaturate filter keeps text
-   and theme colours readable, matching the previous static treatment.
-   The first slide is preloaded eagerly via .is-active; subsequent
-   slides load on first activation (background-image only). */
 .hero-bg-slides {
     position: absolute;
     inset: 0;
@@ -1015,23 +806,11 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 .hero-bg-slide {
     position: absolute;
     inset: 0;
-    filter: brightness(0.72) saturate(1.0) hue-rotate(-4deg);
-    transform: scale(1.04);
     opacity: 0;
-    transition: opacity 1600ms ease-in-out;
-    will-change: opacity;
 }
 
 .hero-bg-slide.is-active {
     opacity: 1;
-}
-
-.hero-bg-squared {
-    transform: none;
-    /* Foto-first: nur leicht abdunkeln — Kontrast kommt aus dem gerichteten
-       Veil (--square::before) und den Text-Shadows, nicht aus einem flachen
-       Dim-Layer über dem ganzen Bild. */
-    filter: brightness(0.82) saturate(1.05) contrast(1.02);
 }
 
 .hero-bg-image {
@@ -1041,145 +820,18 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     object-fit: cover;
     object-position: 35% 70%;
 }
+
 @media (min-width: 1200px) {
-    .hero-bg-image {
-        /* Wider landscape — keep cover, just nudge subject left of the
-           text column on big screens. */
-        object-position: 32% 68%;
-    }
+    .hero-bg-image { object-position: 32% 68%; }
 }
+
 @media (min-width: 1600px) {
-    .hero-bg-image {
-        object-position: 30% 65%;
-    }
-}
-html[data-color-scheme="light"] .hero-bg-slide.hero-bg-squared {
-    filter: brightness(0.9) saturate(1.04) contrast(1.01);
-}
-/* hero-bg-6 / hero-bg-7 background-image is set via JS after first paint
-   so they don't compete with the LCP image for bandwidth. */
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-bg-slide {
-        transition: none;
-    }
+    .hero-bg-image { object-position: 30% 65%; }
 }
 
-.hero-section::after {
-    /* Nur noch ein Bottom-Blend in den Seitenhintergrund — keine Theme-
-       Radial-Tints mehr über dem Foto (die erzeugten den "muddy" Look). */
-    background:
-        linear-gradient(
-            180deg,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.10) 0%,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.02) 40%,
-            rgba(var(--color-bg-rgb, 10, 10, 14), 0.32) 74%,
-            var(--color-bg) 96%,
-            var(--color-bg) 100%
-        );
-    z-index: -2;
-    /* No transition on background — animating multi-stop gradients across
-       the full hero is a Chrome paint hot spot on theme changes. */
-}
-
-/* Light mode: lift the photo slightly and use a brighter veil so it
-   reads as airy rather than washed out. */
-html[data-color-scheme="light"] .hero-bg-slide {
-    filter: brightness(0.92) saturate(1.0) hue-rotate(-2deg);
-}
-
-html[data-color-scheme="light"] .hero-section::after {
-    /* Kein Weißschleier über dem Foto — der würde den dunklen Kontrast-Veil
-       auswaschen. Nur der Bottom-Blend in den hellen Seitenhintergrund. */
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.02) 55%,
-            rgba(255, 255, 255, 0.42) 80%,
-            var(--color-bg) 97%,
-            var(--color-bg) 100%
-        );
-}
-
-/* Hero content — static 2-column layout */
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-    align-items: center;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--space-xl);
-    position: relative;
-    z-index: 2;
-}
-
-/* Single-column variant — right-aligned over the calmer right portion of
-   the hero photo so the subject (car + person) on the LEFT stays fully
-   visible and the headline never lands on top of him. */
-.hero-section--single .hero-content {
-    width: 100%;
-    /* Cap the hero band on wide screens so the text column doesn't drift
-       to the far right edge — keeps the headline near the visual center
-       of the photo subject without overlapping it. */
-    max-width: 1280px;
-    margin: 0 auto;
-    grid-template-columns: minmax(0, 1fr) minmax(430px, 560px);
-    justify-content: end;
-    text-align: left;
-    padding-left: var(--space-xl);
-    padding-right: clamp(var(--space-lg), 4vw, 4rem);
-}
-
-.hero-section--single .hero-text {
-    align-items: flex-start;
-    grid-column: 2;
-    max-width: 560px;
-    margin-left: auto;
-}
-
-.hero-section--single .slide-title {
-    color: #ffffff;
-    font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.35rem);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-    font-weight: 700;
-}
-
-/* Dritte Headline-Zeile trägt die aktive Theme-Farbe — wechselt mit dem
-   Projekt-Theme mit. Leichtes padding-bottom + margin verhindern, dass die
-   Unterlängen (g, b) durch das Clip-Reveal oder line-height beschnitten
-   werden. */
-.hero-section--single .slide-title .title-line--quiet,
-.hero-section--single .slide-title .title-line--quiet.title-line {
-    color: rgb(var(--theme-primary));
-    font-weight: 600;
-    padding-bottom: 0.12em;
-    margin-bottom: -0.12em;
-    transition: color var(--theme-transition);
-}
-html[data-color-scheme="light"] .hero-section--single .slide-title .title-line--quiet {
-    color: rgb(var(--theme-primary));
-}
-
-.hero-section--single .slide-description {
-    max-width: 500px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(1rem, 0.5vw + 0.9rem, 1.16rem);
-    line-height: 1.62;
-}
-
-.hero-section--single .slide-cta {
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: var(--space-sm);
-}
-
-/* Soft directional veil over the right side of the hero. Uses a wide,
-   gently-curved gradient (no hard color stops) so it blends into the
-   photo instead of reading as a visible "box" behind the text. */
-.hero-section--single::before {
+/* Directional veil over the text side of the photo, identical in both
+   colour schemes because the hero text is always white over the photo. */
+.hero-section::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -1187,78 +839,111 @@ html[data-color-scheme="light"] .hero-section--single .slide-title .title-line--
     pointer-events: none;
     background: linear-gradient(
         270deg,
-        rgba(8, 10, 18, 0.55) 0%,
-        rgba(8, 10, 18, 0.42) 18%,
-        rgba(8, 10, 18, 0.22) 38%,
-        rgba(8, 10, 18, 0.08) 58%,
-        rgba(8, 10, 18, 0) 75%
-    );
-}
-html[data-color-scheme="light"] .hero-section--single::before {
-    background: linear-gradient(
-        270deg,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 255, 255, 0.40) 18%,
-        rgba(255, 255, 255, 0.20) 38%,
-        rgba(255, 255, 255, 0.06) 58%,
-        rgba(255, 255, 255, 0) 75%
+        rgba(8, 10, 18, 0.74) 0%,
+        rgba(8, 10, 18, 0.62) 28%,
+        rgba(8, 10, 18, 0.40) 50%,
+        rgba(8, 10, 18, 0.14) 72%,
+        rgba(8, 10, 18, 0) 92%
     );
 }
 
-.hero-section--square::before {
+/* Bottom blend into the page background. Kept short and late so light mode
+   no longer shows a broad white haze across the lower third of the photo. */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background: linear-gradient(
-        270deg,
-        rgba(8, 10, 18, 0.58) 0%,
-        rgba(8, 10, 18, 0.44) 26%,
-        rgba(8, 10, 18, 0.26) 46%,
-        rgba(8, 10, 18, 0.08) 68%,
-        rgba(8, 10, 18, 0) 88%
-    );
-}
-html[data-color-scheme="light"] .hero-section--square::before {
-    background: linear-gradient(
-        270deg,
-        rgba(8, 10, 18, 0.52) 0%,
-        rgba(8, 10, 18, 0.40) 26%,
-        rgba(8, 10, 18, 0.24) 46%,
-        rgba(8, 10, 18, 0.08) 68%,
-        rgba(8, 10, 18, 0) 88%
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 84%,
+        var(--color-bg) 100%
     );
 }
 
-/* No localized box-shaped backdrop behind the text — the wide section
-   veil above + the per-text shadow below carry contrast cleanly without
-   producing a visible rectangle. */
-.hero-section--single .hero-text {
+.hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 560px);
+    gap: var(--space-3xl);
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: clamp(1.25rem, 4vw, 2rem);
+    padding-right: clamp(1.25rem, 4vw, 4rem);
     position: relative;
+    z-index: 2;
 }
 
-/* Layered, very soft text shadow — a tight close shadow for crispness
-   plus a wider diffuse one for atmospheric separation from the photo.
-   Both are subtle enough to look natural, never blocky. */
-.hero-section--single .slide-title,
-.hero-section--single .slide-description {
-    text-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.45),
-        0 6px 24px rgba(0, 0, 0, 0.35);
-}
-html[data-color-scheme="light"] .hero-section--single .slide-title,
-html[data-color-scheme="light"] .hero-section--single .slide-description {
-    text-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.34),
-        0 7px 26px rgba(0, 0, 0, 0.24);
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    grid-column: 2;
+    max-width: 560px;
+    margin-left: auto;
 }
 
-/* Hero-CTAs — weißer Primary-Button liest sich editorial über dem Foto;
-   der Zweit-CTA ist ein ruhiger Textlink statt einer zweiten Pill. */
-.hero-section--single .btn-primary {
+.hero-eyebrow {
+    margin: 0;
+    font-size: clamp(0.78rem, 0.2vw + 0.74rem, 0.86rem);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.35rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+/* Third headline line: one flat accent colour, deliberately no gradient. */
+.hero-title .title-line--quiet {
+    color: rgb(var(--theme-accent));
+    font-weight: 600;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+}
+
+.hero-description {
+    max-width: 500px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 0.5vw + 0.9rem, 1.12rem);
+    line-height: 1.62;
+}
+
+.hero-title,
+.hero-description,
+.hero-eyebrow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+}
+
+/* A white primary button reads editorial over the photo, no glow. */
+.hero-cta .btn-primary {
     background: #ffffff;
     color: #0b0d14;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    box-shadow: none;
 }
-.hero-section--single .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34);
+
+.hero-cta .btn-primary:hover {
+    background: #e8ebf2;
+    box-shadow: none;
 }
 
 .hero-link {
@@ -1266,57 +951,27 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
     align-items: center;
     gap: 0.4rem;
     min-height: 44px;
-    padding: 0 0.25rem;
     color: rgba(255, 255, 255, 0.92);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     transition: color var(--duration-base) var(--ease-out);
 }
+
 .hero-link::after {
     content: '\2192';
     transition: transform var(--duration-base) var(--ease-out);
 }
+
 .hero-link:hover {
     color: #ffffff;
 }
+
 .hero-link:hover::after {
     transform: translateX(4px);
 }
 
-@media (max-width: 1100px) {
-    .hero-section--single .hero-content {
-        grid-template-columns: minmax(0, 1fr) minmax(380px, 460px);
-        padding-right: var(--space-xl);
-    }
-
-    .hero-section--single .hero-text {
-        max-width: 460px;
-    }
-}
-
-/* ═══════════════════════════════════════════════
-    HERO EYEBROW — ruhige Namens-/Rollenzeile über der Headline
-    ═══════════════════════════════════════════════ */
-.hero-eyebrow {
-    margin: 0;
-    font-size: clamp(0.78rem, 0.2vw + 0.74rem, 0.88rem);
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.78);
-    text-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.45),
-        0 5px 18px rgba(0, 0, 0, 0.30);
-}
-
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-}
-
-/* Skills section — separate block below hero */
+/* Skills section: separate block below hero */
 .skills-section {
     padding: var(--space-4xl) 0;
     position: relative;
@@ -1327,224 +982,18 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 }
 
 /* Portfolio ambient color orbs */
-.projects-background {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.project-orb {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.28;
-    will-change: transform;
-    contain: layout style;
-}
-
-.project-orb-1 {
-    width: 560px;
-    height: 560px;
-    top: clamp(1rem, 7vw, 6rem);
-    right: max(-180px, -9vw);
-    background: radial-gradient(
-        circle,
-        rgba(var(--theme-primary), 0.36) 0%,
-        rgba(var(--theme-primary), 0.12) 34%,
-        transparent 70%
-    );
-    animation: float-slow 24s ease-in-out infinite;
-}
-
-.project-orb-2 {
-    width: 440px;
-    height: 440px;
-    bottom: clamp(1rem, 6vw, 5rem);
-    left: max(-160px, -8vw);
-    background: radial-gradient(
-        circle,
-        rgba(var(--theme-secondary), 0.30) 0%,
-        rgba(var(--theme-secondary), 0.10) 34%,
-        transparent 70%
-    );
-    animation: float-slow 28s ease-in-out infinite reverse;
-}
-
-.project-orb-3 {
-    width: 320px;
-    height: 320px;
-    top: 44%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(
-        circle,
-        rgba(var(--theme-accent, var(--theme-primary)), 0.24) 0%,
-        rgba(var(--theme-accent, var(--theme-primary)), 0.08) 34%,
-        transparent 70%
-    );
-    animation: pulse-glow 12s ease-in-out infinite;
-}
-
 /* Global grid overlay */
-.hero-grid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* dvh avoids the iOS address-bar reflow that 100vh forces on every scroll. */
-    height: 100dvh;
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
-    background-image:
-        linear-gradient(
-            0deg,
-            transparent 24%,
-            rgba(var(--theme-primary), 0.15) 25%,
-            rgba(var(--theme-primary), 0.15) 26%,
-            transparent 27%,
-            transparent 74%,
-            rgba(var(--theme-primary), 0.15) 75%,
-            rgba(var(--theme-primary), 0.15) 76%,
-            transparent 77%,
-            transparent
-        ),
-        linear-gradient(
-            90deg,
-            transparent 24%,
-            rgba(var(--theme-primary), 0.15) 25%,
-            rgba(var(--theme-primary), 0.15) 26%,
-            transparent 27%,
-            transparent 74%,
-            rgba(var(--theme-primary), 0.15) 75%,
-            rgba(var(--theme-primary), 0.15) 76%,
-            transparent 77%,
-            transparent
-        );
-    background-size: 50px 50px;
-}
-
 /* Global ambient glow orbs */
-.glow-orb {
-    position: fixed;
-    border-radius: 50%;
-    opacity: 0.2;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.glow-orb-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--theme-primary), 0.3) 0%, transparent 70%);
-    top: -200px;
-    left: -200px;
-}
-
-.glow-orb-2 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(var(--theme-primary), 0.25) 0%, transparent 70%);
-    bottom: -150px;
-    right: -150px;
-}
-
 /* Background keyframe animations */
-@keyframes float-slow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25%      { transform: translate(30px, -30px) scale(1.05); }
-    50%      { transform: translate(-20px, 20px) scale(0.95); }
-    75%      { transform: translate(-30px, -20px) scale(1.02); }
-}
-
-@keyframes pulse-glow {
-    0%, 100% {
-        opacity: 0.3;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-
 /* Project nav pills */
-.project-nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-2xl);
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 5;
-}
-
-.project-nav-group {
-    flex-basis: 100%;
-    text-align: center;
-    margin: var(--space-md) 0 var(--space-xs);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-}
-
-.project-nav-group:first-child {
-    margin-top: 0;
-}
-
-.project-nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: 0.5rem 1rem;
-    min-height: 44px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
-    background: var(--color-bg-elevated);
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    font-family: var(--font-family);
-    cursor: pointer;
-    transition: all var(--duration-base) var(--ease-out);
-}
-
-.project-nav-btn .nav-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-text-muted);
-    transition: background var(--duration-base);
-}
-
-.project-nav-btn:hover {
-    border-color: var(--color-border-hover);
-    color: var(--color-text);
-}
-
-.project-nav-btn.active {
-    border-color: rgba(var(--theme-primary), 0.5);
-    color: var(--color-text);
-    background: rgba(var(--theme-primary), 0.08);
-    box-shadow: 0 0 20px var(--theme-glow), inset 0 0 20px rgba(var(--theme-primary), 0.03);
-}
-
-.project-nav-btn.active .nav-dot {
-    background: rgb(var(--theme-primary));
-    box-shadow: 0 0 8px rgba(var(--theme-primary), 0.5);
-}
-
-/* Project pagination — sits BELOW the slider, replaces the old grouped nav */
+/* Project pagination: sits BELOW the slider between the two arrows. */
 .project-pagination {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-sm);
-    margin: var(--space-2xl) auto var(--space-lg);
-    position: relative;
-    z-index: 5;
+    margin: 0;
+    min-width: 0;
 }
 
 .project-pag-btn {
@@ -1555,9 +1004,15 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
     min-height: 44px;
     padding: 0.55rem 1.1rem;
     background: transparent;
-    border-color: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
     color: var(--color-text-muted);
+    font-family: var(--font-family);
+    cursor: pointer;
     white-space: nowrap;
+    transition: background var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                color var(--duration-base) var(--ease-out);
 }
 
 .project-pag-btn .project-pag-index {
@@ -1577,11 +1032,14 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 }
 
 .project-pag-btn:hover {
-    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    border-color: var(--color-border-hover);
 }
 
 .project-pag-btn.active {
-    background: rgba(var(--theme-primary), 0.1);
+    color: var(--color-text);
+    background: rgba(var(--theme-primary), 0.10);
+    border-color: rgba(var(--theme-primary), 0.45);
 }
 
 .project-pag-btn.active .project-pag-index {
@@ -1593,135 +1051,105 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
     box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.2);
 }
 
-/* Project mode selector — segmented pill above the slider nav */
+/* Project mode selector: a quiet segmented control above the slider.
+   Sits in normal flow below the section header, so it never overlaps the
+   heading on narrow screens. */
 .project-mode-selector {
-    display: inline-flex;
-    margin: var(--space-lg) auto var(--space-xl);
-    padding: 4px;
-    background: var(--color-bg-elevated);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin: calc(-1 * var(--space-md)) auto var(--space-2xl);
+    padding: 0.3rem;
+    width: fit-content;
+    max-width: 100%;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    gap: 4px;
-    position: relative;
-    z-index: 5;
-}
-
-.projects-section .container .section-header + .project-mode-selector {
-    display: flex;
-    width: max-content;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    background: var(--color-surface);
 }
 
 .project-mode-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
-    min-width: 180px;
-    min-height: 44px;
-    padding: 0.5rem 1.25rem;
-    border: 0;
+    min-height: 40px;
+    padding: 0.5rem 1.15rem;
+    border: 1px solid transparent;
     border-radius: var(--radius-full);
     background: transparent;
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
     font-family: var(--font-family);
-    font-weight: 500;
-    letter-spacing: 0;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
     cursor: pointer;
-    transition: color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out);
 }
 
-.project-mode-btn:not(.is-locked):hover {
+.project-mode-btn:hover {
     color: var(--color-text);
+}
+
+/* Deliberately no theme transition here: the pill swaps the entire slide set,
+   so its own colours have to land with the new slide, not ease in behind it. */
+.project-mode-btn,
+.project-mode-btn.is-active {
+    transition: none;
 }
 
 .project-mode-btn.is-active {
-    background: rgba(var(--theme-primary), 0.12);
     color: var(--color-text);
-    box-shadow: 0 0 18px var(--theme-glow),
-                inset 0 0 0 1px rgba(var(--theme-primary), 0.45);
+    background: rgba(var(--theme-primary), 0.12);
+    border-color: rgba(var(--theme-primary), 0.42);
 }
 
-.project-mode-btn.is-locked {
-    color: var(--color-text-muted);
-    opacity: 0.55;
-    cursor: not-allowed;
+.project-mode-btn:focus-visible {
+    border-color: rgb(var(--theme-primary));
+    box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.2);
 }
 
-.project-mode-btn.is-locked:hover,
-.project-mode-btn.is-locked:focus {
-    color: var(--color-text-muted);
-    background: transparent;
-    box-shadow: none;
+/* Short crossfade while the two slide sets swap. */
+.hero-slides-container.is-mode-switching {
+    opacity: 0;
+    transition: opacity 0.18s var(--ease-out);
 }
 
-.project-mode-lock {
-    flex-shrink: 0;
-    opacity: 0.85;
-}
+@media (max-width: 480px) {
+    .project-mode-selector {
+        width: 100%;
+        justify-content: stretch;
+    }
 
-.project-mode-status {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-@media (max-width: 600px) {
     .project-mode-btn {
-        min-width: 0;
-        flex: 1 1 50%;
-        padding: 0.5rem 0.75rem;
+        flex: 1 1 0;
+        padding-inline: 0.5rem;
         font-size: var(--font-size-xs);
     }
-
-    .projects-section .container .section-header + .project-mode-selector {
-        width: 100%;
-    }
 }
 
-/* Hero slides */
+/* Project slides: all slides share one grid cell so the container height
+   follows the TALLEST slide instead of a hard-coded min-height. */
 .hero-slides-container {
     position: relative;
+    display: grid;
     width: 100%;
-    min-height: 500px;
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--space-xl);
     overflow: visible;
-    contain: layout style;
 }
 
 .hero-slide {
-    position: absolute;
-    inset: 0;
-    padding: 0 var(--space-xl);
+    grid-area: 1 / 1;
+    min-width: 0;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     z-index: 1;
-    will-change: auto;
-    transform: translateZ(0);
-    backface-visibility: hidden;
 }
 
 .hero-slide.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: all;
+    pointer-events: auto;
     z-index: 2;
-    will-change: transform, opacity;
 }
 
 .slide-content {
@@ -1780,7 +1208,7 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
     background: var(--color-surface);
 }
 
-/* Slide visual — browser mockup */
+/* Slide visual: browser mockup */
 .slide-visual {
     display: flex;
     justify-content: center;
@@ -1789,39 +1217,11 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 
 .showcase-container {
     position: relative;
-    perspective: 1200px;
-    transform-style: preserve-3d;
     width: 100%;
     max-width: 520px;
 }
 
-/* Badge — positioned relative to parent (.showcase-container) */
-.showcase-badge {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    z-index: 20;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--theme-gradient-start), var(--theme-gradient-end));
-    color: #fff;
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 4px 20px var(--theme-glow), 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: background var(--theme-transition), box-shadow var(--theme-transition);
-}
-
-.showcase-badge svg {
-    width: 14px;
-    height: 14px;
-}
-
+/* Badge: positioned relative to parent (.showcase-container) */
 .showcase-link {
     display: block;
     text-decoration: none;
@@ -1831,84 +1231,25 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 
 @media (hover: hover) {
     .showcase-link:hover .showcase-frame {
-        transform: rotateY(-3deg) rotateX(1deg) scale(1.04) translateY(-6px);
-        /* Reduced shadow blur from 80/40 → 32/16: blur >30px on a hovered+animated
-           element forces full GPU re-blur every paint frame. */
-        box-shadow:
-            0 24px 32px rgba(var(--theme-primary), 0.28),
-            0 8px 16px rgba(0, 0, 0, 0.35),
-            inset 0 0 0 1px rgba(var(--theme-primary), 0.2);
-        border-color: rgba(var(--theme-primary), 0.35);
-    }
-
-    .showcase-link:hover .showcase-frame .showcase-image-wrap img {
-        transform: scale(1.05);
-    }
-
-    .showcase-link:hover .showcase-frame .browser-bar {
-        background: rgba(var(--theme-primary), 0.08);
-    }
-
-    .showcase-link:hover ~ .showcase-glow {
-        background: rgba(var(--theme-primary), 0.3);
-        /* Reduced from 80px — animated blur on hover state is GPU-heavy. */
-        filter: blur(45px);
-        transform: scale(1.15);
+        border-color: rgba(var(--theme-primary), 0.45);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.30);
     }
 }
 
+/* Plain screenshot frame: 1px border, radius, one restrained shadow. */
 .showcase-frame {
     position: relative;
-    z-index: 2;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-lg);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.4s ease,
-                border-color 0.4s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
 }
 
-.showcase-frame .showcase-image-wrap img {
-    transition: transform 0.5s ease;
-}
-
-.showcase-frame .browser-bar {
-    transition: background 0.4s ease;
-}
-
-.browser-bar {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: 12px 16px;
-    background: var(--color-bg-elevated);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.browser-bar .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-text-muted);
-    opacity: 0.4;
-}
-
-.browser-bar .dot:nth-child(1) { background: #ff5f57; opacity: 1; }
-.browser-bar .dot:nth-child(2) { background: #febc2e; opacity: 1; }
-.browser-bar .dot:nth-child(3) { background: #28c840; opacity: 1; }
-
-.browser-url {
-    flex: 1;
-    margin-left: var(--space-sm);
-    padding: 4px 12px;
-    border-radius: var(--radius-sm);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
-    font-family: 'SF Mono', 'Fira Code', monospace;
+html[data-color-scheme="light"] .showcase-frame {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
 }
 
 .showcase-image-wrap {
@@ -1922,12 +1263,12 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
     object-fit: cover;
 }
 
-/* dog-kennel-online: image-less browser mock for the in-progress slide */
-.showcase-frame--kennel {
+/* Image-less placeholder frame for slides without a screenshot yet. */
+.showcase-frame--mock {
     cursor: default;
 }
 
-.kennel-mock {
+.project-mock {
     aspect-ratio: 16 / 10;
     display: grid;
     align-content: start;
@@ -1939,25 +1280,25 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
         var(--color-bg-card) 100%);
 }
 
-.kennel-mock-line {
+.project-mock-line {
     display: block;
     height: 14px;
     border-radius: var(--radius-sm);
     background: rgba(var(--theme-primary), 0.18);
 }
 
-.kennel-mock-line--lg {
+.project-mock-line--lg {
     width: 60%;
     height: 22px;
     background: rgba(var(--theme-primary), 0.32);
 }
 
-.kennel-mock-line--sm {
+.project-mock-line--sm {
     width: 35%;
     background: rgba(var(--theme-primary), 0.12);
 }
 
-.kennel-mock-grid {
+.project-mock-grid {
     display: block;
     margin-top: var(--space-md);
     height: 110px;
@@ -1969,68 +1310,41 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 }
 
 /* Showcase glow behind frame */
-.showcase-glow {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    top: 10%;
-    left: 10%;
-    border-radius: 50%;
-    background: rgba(var(--theme-primary), 0.15);
-    /* 60 → 35: still soft, ~half the GPU cost. */
-    filter: blur(35px);
-    z-index: 1;
-    transition: background 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+/* Slider controls: arrows + pagination sit directly below the slide. */
+.project-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-2xl);
 }
 
-/* Slider arrows */
 .slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 48px;
-    height: 48px;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(var(--color-bg-elevated-rgb), 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(var(--theme-primary), 0.3);
+    background: transparent;
+    border: 1px solid var(--color-border);
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition: all var(--duration-base) var(--ease-out);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    transition: border-color var(--duration-base) var(--ease-out),
+                color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out);
 }
 
 .slider-arrow:hover {
     border-color: rgb(var(--theme-primary));
     color: rgb(var(--theme-primary));
-    background: rgba(var(--theme-primary), 0.15);
-    box-shadow: 0 0 24px var(--theme-glow);
-    transform: translateY(-50%) scale(1.08);
+    background: rgba(var(--theme-primary), 0.08);
 }
 
 .slider-arrow svg {
     width: 20px;
     height: 20px;
-}
-
-.slider-arrow-left {
-    left: 1.5rem;
-}
-
-.slider-arrow-right {
-    right: 1.5rem;
-}
-
-/* Scroll hint */
-
-@keyframes scrollBounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
 }
 
 /* ═══════════════════════════════════════════════
@@ -2039,54 +1353,12 @@ html[data-color-scheme="light"] .hero-section--single .slide-description {
 .projects-section {
     padding: var(--space-4xl) 0;
     position: relative;
-    overflow: hidden;
-    isolation: isolate;
     /* Section sits flat on --color-bg so the hero's bottom fade
        (which ends in solid --color-bg) flows in without any seam. */
     background: var(--color-bg);
 }
 
-.projects-section > .container,
-.projects-section .hero-slides-container {
-    position: relative;
-    z-index: 1;
-}
-
-/* No decorative blobs — the section sits flat on --color-bg so the hero's
-   bottom fade flows in seamlessly. */
-.projects-section::before,
-.projects-section::after {
-    content: none;
-}
-
-@keyframes projectsBlobA {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to   { transform: translate3d(-40px, 30px, 0) scale(1.08); }
-}
-
-@keyframes projectsBlobB {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to   { transform: translate3d(50px, -35px, 0) scale(1.06); }
-}
-
 /* Light mode: blobs need much less opacity to stay subtle on white. */
-html[data-color-scheme="light"] .projects-section::before,
-html[data-color-scheme="light"] .projects-section::after {
-    opacity: 0.18;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .projects-section::before,
-    .projects-section::after { animation: none; }
-}
-
-.projects-section .hero-slides-container {
-    min-height: 500px;
-}
-
-.projects-section .slider-arrow {
-    top: calc(50% + 40px);
-}
 
 /* ═══════════════════════════════════════════════
    SECTION SHARED
@@ -2096,39 +1368,15 @@ html[data-color-scheme="light"] .projects-section::after {
     margin-bottom: var(--space-2xl);
 }
 
-.section-note {
-    max-width: 760px;
-    margin: var(--space-lg) auto 0;
-    padding: var(--space-md) var(--space-lg);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(var(--theme-primary), 0.18);
-    background: rgba(var(--theme-primary), 0.04);
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
-    line-height: 1.6;
-    transition: border-color var(--theme-transition), background var(--theme-transition);
-}
-
-.section-note--footer {
-    margin-top: var(--space-2xl);
-    text-align: center;
-}
-
+/* Quiet uppercase eyebrow above a section title: no pill, no border. */
 .section-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: 0.375rem 1rem;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(var(--theme-primary), 0.2);
-    background: rgba(var(--theme-primary), 0.05);
-    color: rgb(var(--theme-primary));
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-muted);
     font-size: var(--font-size-xs);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-lg);
-    transition: border-color var(--theme-transition), background var(--theme-transition), color var(--theme-transition);
+    letter-spacing: 0.18em;
 }
 
 .section-title {
@@ -2279,7 +1527,8 @@ html[data-color-scheme="light"] .about-highlight {
 }
 
 /* ═══════════════════════════════════════════════
-   SERVICES SECTION
+   SERVICES / PACKAGES SECTION
+   Three lean cards + one consulting row underneath.
    ═══════════════════════════════════════════════ */
 .services-section {
     padding: var(--space-4xl) 0;
@@ -2287,8 +1536,8 @@ html[data-color-scheme="light"] .about-highlight {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
     align-items: stretch;
 }
 
@@ -2296,175 +1545,76 @@ html[data-color-scheme="light"] .about-highlight {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    padding: var(--space-2xl);
-    border-radius: var(--radius-lg);
-    background: linear-gradient(
-        160deg,
-        rgba(255, 255, 255, 0.025) 0%,
-        rgba(255, 255, 255, 0.005) 100%
-    );
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
-    transition: transform var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out);
-    overflow: hidden;
-}
-
-/* Top accent bar — slides in on hover */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgb(var(--theme-primary)) 50%,
-        transparent 100%
-    );
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s var(--ease-out);
+    transition: border-color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out);
 }
 
 .service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(var(--theme-primary), 0.35);
-    box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.25),
-        0 4px 12px rgba(var(--theme-primary), 0.08);
+    border-color: var(--color-border-hover);
 }
 
-.service-card:hover::before {
-    transform: scaleX(1);
-}
-
-/* ─── Featured (recommended) card ─── */
 .service-card--featured {
-    background: linear-gradient(
-        160deg,
-        rgba(var(--theme-primary), 0.08) 0%,
-        rgba(var(--theme-primary), 0.02) 100%
-    );
-    border-color: rgba(var(--theme-primary), 0.28);
-    box-shadow: 0 0 32px rgba(var(--theme-primary), 0.06);
-}
-.service-card--featured::before {
-    transform: scaleX(1);
+    border-color: rgba(var(--theme-primary), 0.40);
 }
 
+/* "Empfohlen": a small text label, not a badge with an emoji. It is pinned
+   to the card corner so the featured card's title stays on the same
+   baseline as its neighbours. */
 .service-card__badge {
     position: absolute;
-    top: var(--space-md);
-    right: var(--space-md);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.3rem 0.7rem;
-    font-size: 11px;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    color: rgb(var(--theme-primary));
+    font-size: var(--font-size-xs);
     font-weight: 700;
-    letter-spacing: 0.05em;
-    color: rgb(var(--theme-primary));
-    background: rgba(var(--theme-primary), 0.15);
-    border: 1px solid rgba(var(--theme-primary), 0.3);
-    border-radius: var(--radius-full);
-    z-index: 2;
-}
-
-/* ─── Header row: icon + meta (price/duration) ─── */
-.service-card__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-    margin-bottom: var(--space-xs);
-}
-
-.service-card__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background: rgba(var(--theme-primary), 0.1);
-    color: rgb(var(--theme-primary));
-    flex-shrink: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
 .service-card__meta {
+    margin: 0;
     font-size: var(--font-size-xs);
     font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    text-align: right;
-}
-
-/* Featured card pushes meta away from the badge */
-.service-card--featured .service-card__head {
-    padding-right: 7rem;
+    color: var(--color-text-muted);
 }
 
 .service-card__title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
     letter-spacing: -0.01em;
 }
 
 .service-card__sub {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: 1.5;
     margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
 }
 
-/* ─── Bullet & check blocks ─── */
-.service-card__block {
+.service-card__checks {
+    list-style: none;
+    margin: var(--space-sm) 0 var(--space-lg);
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
 }
 
-.service-card__label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-}
-
-.service-card__bullets,
-.service-card__checks {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.service-card__bullets li,
 .service-card__checks li {
     position: relative;
-    padding-left: 1.4rem;
+    padding-left: 1.35rem;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.45;
-}
-
-.service-card__bullets li::before {
-    content: '•';
-    position: absolute;
-    left: 0.4rem;
-    top: 0;
-    color: rgb(var(--theme-primary));
-    font-weight: 700;
 }
 
 .service-card__checks li::before {
@@ -2476,147 +1626,92 @@ html[data-color-scheme="light"] .about-highlight {
     font-weight: 700;
 }
 
-/* ─── Tech tag pills ─── */
-.service-card__tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: auto;
-    padding-top: var(--space-xs);
-}
-
-.service-card__tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.6rem;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-full);
-}
-
-.service-card--featured .service-card__tag {
-    color: rgb(var(--theme-primary));
-    background: rgba(var(--theme-primary), 0.08);
-    border-color: rgba(var(--theme-primary), 0.18);
-}
-
-/* ─── Footer with CTA + project examples ─── */
-.service-card__foot {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border);
-}
-
 .service-card__cta {
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-xs);
-    padding: 0.7rem 1rem;
+    gap: 0.4rem;
+    min-height: 44px;
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: rgb(var(--theme-primary));
-    background: rgba(var(--theme-primary), 0.08);
-    border: 1px solid rgba(var(--theme-primary), 0.2);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: background var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out),
-                transform var(--duration-base) var(--ease-out);
 }
 
-.service-card__cta:hover {
-    background: rgba(var(--theme-primary), 0.16);
-    border-color: rgba(var(--theme-primary), 0.4);
-    transform: translateX(2px);
-}
-
-.service-card--featured .service-card__cta {
-    background: rgb(var(--theme-primary));
-    color: var(--color-bg);
-    border-color: rgb(var(--theme-primary));
-}
-
-.service-card--featured .service-card__cta:hover {
-    background: rgba(var(--theme-primary), 0.85);
-    border-color: rgba(var(--theme-primary), 0.85);
-}
-
-.service-card__examples {
-    margin: 0;
-    font-size: 12px;
-    color: var(--color-text-muted);
-    line-height: 1.4;
-}
-
-.service-card__examples a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--color-text-muted);
-    transition: color var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out);
-}
-
-.service-card__examples a:hover {
-    color: rgb(var(--theme-primary));
-    border-color: rgb(var(--theme-primary));
-}
-
-/* Light-mode tweaks */
-html[data-color-scheme="light"] .service-card__tag {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.08);
-    color: var(--color-text-secondary);
-}
-html[data-color-scheme="light"] .service-card--featured .service-card__cta {
-    color: #fff;
-}
-
-/* ═══ Legacy classes kept for back-compat (old layout still exists in
-   project sub-pages) — restore originals here so nothing else breaks. */
-.service-number {
-    display: block;
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: rgb(var(--theme-primary));
-    margin-bottom: var(--space-md);
-    opacity: 0.85;
-}
-
-.service-card h3 {
-    font-size: var(--font-size-2xl);
-    font-weight: 700;
-    margin-bottom: var(--space-md);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-}
-
-.service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: rgb(var(--theme-primary));
-    text-decoration: none;
-    transition: gap var(--duration-base) var(--ease-out);
-}
-
-.service-link::after {
+.service-card__cta::after {
     content: '→';
     transition: transform var(--duration-base) var(--ease-out);
-    display: inline-block;
 }
 
-.service-card:hover .service-link::after {
+.service-card__cta:hover::after {
     transform: translateX(4px);
+}
+
+/* ─── Consulting: one slim row under the cards ─── */
+.service-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-xl);
+    margin-top: var(--space-lg);
+    padding: var(--space-lg) var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.service-row__copy {
+    flex: 1 1 20rem;
+    min-width: 0;
+}
+
+.service-row__title {
+    margin: 0 0 0.15rem;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.service-row__sub {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.service-row__meta {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.service-row__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: rgb(var(--theme-primary));
+    white-space: nowrap;
+}
+
+.service-row__link::after {
+    content: '→';
+    transition: transform var(--duration-base) var(--ease-out);
+}
+
+.service-row__link:hover::after {
+    transform: translateX(4px);
+}
+
+/* Net-price footnote directly under the package grid. */
+.services-note {
+    margin-top: var(--space-md);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
 }
 
 .services-cta {
@@ -2624,8 +1719,8 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
     flex-direction: column;
     align-items: center;
     gap: var(--space-md);
-    margin-top: var(--space-3xl);
-    padding-top: var(--space-2xl);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
     border-top: 1px solid var(--color-border);
 }
 
@@ -2635,159 +1730,24 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
     text-align: center;
 }
 
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 34rem;
+        margin-inline: auto;
+    }
+}
+
 /* ═══════════════════════════════════════════════
-   PRICING SECTION
-   ═══════════════════════════════════════════════ */
-.pricing-section {
-    padding: var(--space-4xl) 0;
-    background: var(--color-bg-elevated);
-    position: relative;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    align-items: start;
-}
-
-.pricing-card {
-    background: var(--color-bg);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: var(--radius-xl);
-    padding: 2.5rem 2rem;
-    transition: all var(--duration-base) var(--ease-out);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.pricing-card:hover {
-    border-color: rgba(var(--theme-primary), 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.pricing-card.featured {
-    border-color: rgba(var(--theme-primary), 0.4);
-    box-shadow: 0 0 40px rgba(var(--theme-primary), 0.1);
-}
-
-.pricing-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, rgb(var(--theme-primary)), rgb(var(--theme-secondary)));
-    color: white;
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    padding: 0.35rem 1.25rem;
-    border-radius: var(--radius-full);
-    letter-spacing: 0.08em;
-}
-
-.pricing-header {
-    margin-bottom: 1.5rem;
-}
-
-.pricing-name {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-}
-
-.pricing-desc {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-}
-
-.pricing-price {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.pricing-amount {
-    font-size: var(--font-size-3xl);
-    font-weight: 800;
-    background: linear-gradient(135deg, rgb(var(--theme-primary)), rgb(var(--theme-accent)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem 0;
-    flex: 1;
-}
-
-.pricing-features li {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    padding: 0.5rem 0;
-    line-height: 1.5;
-}
-
-.pricing-cta {
-    width: 100%;
-    text-align: center;
-    margin-top: auto;
-}
-
-.pricing-note {
-    text-align: center;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    margin-top: 3rem;
-}
-
-/* Stats row */
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    margin-top: var(--space-xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-border);
-}
-
-.stat {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-}
-
-.stat-number {
-    font-size: var(--font-size-4xl);
-    font-weight: 800;
-    line-height: 1;
-    background: linear-gradient(135deg, var(--theme-gradient-start), var(--theme-gradient-end));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    font-weight: 500;
-}
-
-/* Skills Grid — Variant A: hero column layout
+   TECH STACK
    Frontend (left) · KI featured (center, wider) · Backend (right).
-   Featured column is explicitly placed in column 2 so DOM order can
-   stay logical (Frontend → Backend → AI). */
+   The featured column is placed explicitly so DOM order can stay logical.
+   ═══════════════════════════════════════════════ */
 .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1.3fr 1fr;
     gap: 1.25rem;
     margin-top: 2rem;
-    margin-bottom: var(--space-xl);
     align-items: stretch;
 }
 
@@ -2812,7 +1772,6 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
         rgba(var(--theme-primary), 0.07),
         rgba(var(--theme-primary), 0.02));
     border-color: rgba(var(--theme-primary), 0.22);
-    box-shadow: 0 0 32px rgba(var(--theme-primary), 0.08);
 }
 
 .skill-category--featured:hover {
@@ -2830,6 +1789,7 @@ html[data-color-scheme="light"] .service-card--featured .service-card__cta {
     padding: 0.8rem 0.45rem 0.6rem;
     font-size: 11px;
 }
+
 .skill-category--featured .skill-tag .skill-icon {
     width: 36px;
     height: 36px;
@@ -2881,8 +1841,7 @@ html[data-color-scheme="light"] .skill-category:hover {
                 box-shadow var(--duration-base) var(--ease-out);
 }
 
-/* Real-tech-icons sit ABOVE the name. White-tinted icons (typescript, etc.)
-   stay crisp on retina; the icon brightens + lifts slightly on hover. */
+/* Real tech icons sit ABOVE the name and brighten slightly on hover. */
 .skill-tag .skill-icon {
     width: 32px;
     height: 32px;
@@ -2898,21 +1857,23 @@ html[data-color-scheme="light"] .skill-category:hover {
     transform: scale(1.08);
 }
 
-/* Stacked dual-icon (e.g. HTML5 + CSS3) sits in the icon row. */
+/* Dual icon (HTML5 + CSS3) sits in the icon row. */
 .skill-tag .skill-icon-pair {
     display: inline-flex;
     align-items: center;
     height: 32px;
 }
+
 .skill-tag .skill-icon-pair .skill-icon {
     width: 26px;
     height: 26px;
 }
+
 .skill-tag .skill-icon-pair .skill-icon + .skill-icon {
     margin-left: -0.35rem;
 }
 
-/* Text-glyph fallback for skills without a real icon (Stripe, GSAP, Prompts). */
+/* Text-glyph fallback for skills without a real icon (Stripe, prompts). */
 .skill-tag .skill-icon-fallback {
     display: inline-flex;
     align-items: center;
@@ -2922,7 +1883,7 @@ html[data-color-scheme="light"] .skill-category:hover {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.06);
     color: var(--color-text);
-    font-family: var(--font-mono, ui-monospace, monospace);
+    font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace;
     font-size: 14px;
     font-weight: 700;
     line-height: 1;
@@ -2960,63 +1921,43 @@ html[data-color-scheme="light"] .skill-category:hover {
     border-color: rgba(var(--theme-primary), 0.4);
 }
 
-/* ─── Skills section entry animation ───
-   Initial state: tags hidden + slightly offset; revealed by JS via
-   `.is-animated` class on the section once it scrolls into view.
-   When JS is unavailable, `.no-anim` fallback shows everything. */
-.skills-section .skill-tag {
-    opacity: 0;
-    transform: translateY(24px) scale(0.85);
-    will-change: opacity, transform;
+html[data-color-scheme="light"] .skill-tag {
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
+    color: var(--color-text-secondary);
 }
 
-.skills-section .skill-category-title {
-    position: relative;
-    opacity: 0;
-    transform: translateY(12px);
+html[data-color-scheme="light"] .skill-tag.highlight {
+    background: rgba(var(--theme-primary), 0.10);
+    border-color: rgba(var(--theme-primary), 0.28);
+    color: rgb(var(--theme-primary));
 }
 
-.skills-section .skill-category-title::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    height: 2px;
-    width: 0;
-    background: linear-gradient(90deg, rgb(var(--theme-primary)), transparent);
-    transition: width 0.6s var(--ease-out) 0.1s;
-}
-
-.skills-section.is-animated .skill-category-title::after {
-    width: 40px;
-}
-
-/* Pulse loop for AI/highlight tags — paused via JS when off-screen. */
-.skill-tag.highlight.is-pulsing {
-    animation: skillPulse 2.6s ease-in-out infinite;
-}
-
-@keyframes skillPulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(var(--theme-primary), 0);
+@media (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    50% {
-        box-shadow: 0 0 14px 2px rgba(var(--theme-primary), 0.28);
+
+    .skill-category--featured {
+        grid-column: 1 / -1;
+        grid-row: auto;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .skills-section .skill-tag,
-    .skills-section .skill-category-title {
-        opacity: 1 !important;
-        transform: none !important;
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
     }
-    .skills-section .skill-category-title::after {
-        width: 40px !important;
-        transition: none !important;
+
+    .skill-category--featured {
+        grid-column: auto;
     }
-    .skill-tag.highlight.is-pulsing {
-        animation: none !important;
+}
+
+@media (max-width: 480px) {
+    .skill-category {
+        padding: var(--space-lg);
     }
 }
 
@@ -3335,8 +2276,7 @@ html[data-color-scheme="light"] .skill-category:hover {
     right: 0;
     z-index: 10000;
     padding: 1rem 2rem;
-    background: rgba(18, 18, 26, 0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(18, 18, 26, 0.98);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -3395,32 +2335,21 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — LAPTOP / TABLET LANDSCAPE (1024px)
+   RESPONSIVE: LAPTOP / TABLET LANDSCAPE (1024px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 1024px) {
     .hero-content {
         gap: var(--space-2xl);
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .skill-category--featured {
-        grid-column: 1 / -1;
-        grid-row: auto;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .pricing-card.featured {
-        grid-column: span 2;
+    .hero-text {
+        max-width: 460px;
     }
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — TABLET (768px)
+   RESPONSIVE: TABLET (768px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
     :root {
@@ -3440,35 +2369,13 @@ html[data-color-scheme="light"] .cookie-content p {
         background: rgba(245, 245, 250, 0.92);
     }
 
-    .hero-slides-container {
-        min-height: 820px;
-    }
-
     .nav-links {
         display: none;
     }
 
-    /* Color picker stays on mobile — just trim it down so it fits next to
+    /* Color picker stays on mobile: just trim it down so it fits next to
        the theme toggle + menu button. The popover already renders relative
        to the trigger so it works in tight nav layouts. */
-    .color-picker-trigger {
-        width: 36px;
-        height: 36px;
-        min-height: 36px;
-        padding: 0;
-    }
-
-    .color-picker-current {
-        width: 18px;
-        height: 18px;
-    }
-
-    .color-picker-popover {
-        right: -4px;
-        padding: 6px 10px;
-        gap: 4px;
-    }
-
     .nav-links.open {
         display: flex;
         position: absolute;
@@ -3512,46 +2419,38 @@ html[data-color-scheme="light"] .cookie-content p {
         max-width: 100%;
     }
 
-        /* On mobile the square-derived photo needs a centered text column and
-             a full-width veil for solid contrast. */
-    .hero-section--single .hero-content {
+    /* Single-column hero on tablets and phones: the veil turns vertical so
+       the copy keeps its contrast wherever the photo is bright. */
+    .hero-content {
         grid-template-columns: minmax(0, 1fr);
-        text-align: center;
+        max-width: none;
+        padding-inline: clamp(1.25rem, 6vw, 2rem);
     }
-    .hero-section--single .hero-text {
-        align-items: center;
+
+    .hero-text {
         grid-column: auto;
+        max-width: 100%;
+        margin-left: 0;
     }
-    .hero-section--single .slide-cta {
-        justify-content: center;
-    }
-    .hero-section--single::before {
+
+    .hero-section::before {
         background: linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.55) 0%,
-            rgba(0, 0, 0, 0.45) 50%,
-            rgba(0, 0, 0, 0.55) 100%
+            rgba(8, 10, 18, 0.30) 0%,
+            rgba(8, 10, 18, 0.55) 55%,
+            rgba(8, 10, 18, 0.74) 100%
         );
     }
-    html[data-color-scheme="light"] .hero-section--single::before {
-        background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.55) 0%,
-            rgba(255, 255, 255, 0.40) 50%,
-            rgba(255, 255, 255, 0.55) 100%
-        );
-    }
-    .hero-section--square::before,
-    html[data-color-scheme="light"] .hero-section--square::before {
-        background: linear-gradient(
-            180deg,
-            rgba(8, 10, 18, 0.26) 0%,
-            rgba(8, 10, 18, 0.46) 48%,
-            rgba(8, 10, 18, 0.68) 100%
-        );
-    }
+
     .hero-bg-image {
-        object-position: 48% 78%;
+        object-position: 47% 82%;
+    }
+
+    /* The mobile panel is a solid surface again, so the over-photo override
+       from the hero rules must not apply inside it. */
+    body.has-hero #navbar:not(.scrolled) .nav-links.open a {
+        color: var(--color-text-secondary);
+        text-shadow: none;
     }
 
     .slide-cta {
@@ -3562,14 +2461,6 @@ html[data-color-scheme="light"] .cookie-content p {
         justify-content: center;
     }
 
-    .slider-arrow-left {
-        left: 0.75rem;
-    }
-
-    .slider-arrow-right {
-        right: 0.75rem;
-    }
-
     .services-grid {
         grid-template-columns: 1fr;
     }
@@ -3578,53 +2469,14 @@ html[data-color-scheme="light"] .cookie-content p {
         padding: var(--space-xl);
     }
 
-    .service-card--featured .service-card__head {
-        padding-right: 0;
-        flex-wrap: wrap;
-    }
-
     .service-card__badge {
         position: static;
         align-self: flex-start;
         margin-bottom: var(--space-xs);
     }
 
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .pricing-card.featured {
-        grid-column: unset;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-2xl);
-        text-align: center;
-    }
-
-    .hero-text {
-        align-items: center;
-    }
-
     .contact-layout {
         grid-template-columns: 1fr;
-    }
-
-    .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .skill-category--featured {
-        grid-column: 1 / -1;
-        grid-row: auto;
     }
 
     .showcase-container {
@@ -3632,18 +2484,10 @@ html[data-color-scheme="light"] .cookie-content p {
         transform-style: flat;
     }
 
-    .showcase-badge {
-        right: 0;
-        top: -10px;
-    }
-
-    .pricing-features li {
-        font-size: var(--font-size-base);
-    }
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — MOBILE (480px)
+   RESPONSIVE: MOBILE (480px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 480px) {
     :root {
@@ -3657,62 +2501,9 @@ html[data-color-scheme="light"] .cookie-content p {
         padding-top: var(--nav-height);
     }
 
-    .hero-slides-container {
-        min-height: clamp(640px, calc(100dvh - var(--nav-height) - 60px), 720px);
-    }
-
-    /* Project showcase frames stay visible on mobile — just smaller and
-       without the perspective tilt so the whole browser mock-up fits the
-       viewport width without being clipped. */
+    /* Project screenshots stay visible on mobile: just narrower. */
     .showcase-container {
         max-width: min(360px, 90vw);
-    }
-
-    .showcase-frame {
-        transform: none;
-        box-shadow:
-            0 12px 24px rgba(var(--theme-primary), 0.18),
-            0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .showcase-badge {
-        top: -8px;
-        right: -8px;
-        font-size: 0.6rem;
-        padding: 5px 10px;
-    }
-
-    .project-nav {
-        gap: var(--space-xs);
-    }
-
-    .project-nav-btn {
-        padding: 0.375rem 0.75rem;
-        font-size: var(--font-size-xs);
-        min-height: 40px;
-    }
-
-    .slider-arrow {
-        display: none;
-    }
-
-    .stat-number {
-        font-size: var(--font-size-2xl);
-    }
-
-    .about-stats {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .skills-grid {
-        gap: 1rem;
-        grid-template-columns: 1fr;
-    }
-
-    .skill-category--featured {
-        grid-column: auto;
-        grid-row: auto;
     }
 
     .service-card {
@@ -3735,24 +2526,12 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — SMALL PHONE (360px)
+   RESPONSIVE: SMALL PHONE (360px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 360px) {
     :root {
         --space-xl: 1rem;
         --space-5xl: 3.5rem;
-    }
-
-    .hero-slides-container {
-        min-height: 680px;
-    }
-
-    .project-nav-btn {
-        padding: 0.375rem 0.5rem;
-    }
-
-    .project-nav-btn span:not(.nav-dot) {
-        display: none;
     }
 
     .slide-description {
@@ -3764,29 +2543,27 @@ html[data-color-scheme="light"] .cookie-content p {
         font-size: var(--font-size-sm);
     }
 
-    .showcase-badge {
-        font-size: 0.625rem;
-        padding: 5px 8px;
-        right: -4px;
-    }
 }
 
 /* ═══════════════════════════════════════════════
-   ACCESSIBILITY — REDUCED MOTION
+   ACCESSIBILITY: REDUCED MOTION
    ═══════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-    .project-orb,
-    .availability-dot {
-        animation: none;
-    }
-
     html {
         scroll-behavior: auto;
     }
 
+    /* Scroll-revealed blocks are hidden by CSS and shown by GSAP. Without
+       motion there is nothing to reveal, so show them straight away and
+       never risk an invisible section. */
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+    }
+
     .btn-primary:hover,
     .btn-outline:hover,
-    .project-nav-btn:hover,
+    .project-pag-btn:hover,
     .slider-arrow:hover {
         transform: none;
     }
@@ -3797,42 +2574,17 @@ html[data-color-scheme="light"] .cookie-content p {
    - content-visibility lets the browser skip layout/paint for sections
      that aren't on screen yet. Massive scroll-perf win on long pages.
      The contain-intrinsic-size keeps the scrollbar honest.
-   - Pause the projects-section blob animations while the section is
-     off-screen; the IntersectionObserver in script.js toggles .in-view.
-   - Reduce backdrop-filter blur on small screens — backdrop-filter is
-     one of the most expensive paints; halving the radius materially
-     reduces compositor cost on mobile/older GPUs.
    ═══════════════════════════════════════════════ */
 .skills-section,
 .services-section,
-.pricing-section,
 .contact-section,
 .site-footer {
     content-visibility: auto;
     contain-intrinsic-size: 1px 800px;
 }
 
-.projects-section:not(.in-view) .project-orb {
-    animation-play-state: paused;
-}
-
-@media (max-width: 768px) {
-    /* Cheaper blurs on phones — barely visible difference, large GPU win. */
-    .navbar,
-    .color-picker-popover,
-    .mobile-menu {
-        backdrop-filter: blur(10px) saturate(140%);
-        -webkit-backdrop-filter: blur(10px) saturate(140%);
-    }
-
-    /* The third portfolio orb is decorative; drop it on phones to free a layer. */
-    .project-orb-3 { display: none; }
-    .project-orb-1 { width: 360px; height: 360px; }
-    .project-orb-2 { width: 280px; height: 280px; }
-}
-
 /* ═══════════════════════════════════════════════
-   POLISH PASS — responsive, a11y, touch, typography
+   POLISH PASS: responsive, a11y, touch, typography
    - Additive overrides only. Targets weak spots found in the audit
      without rewriting existing components.
    ═══════════════════════════════════════════════ */
@@ -3844,11 +2596,7 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* Section note: shorter line length for comfortable reading. */
-.section-note {
-    max-width: min(60ch, 100%);
-}
-
-/* Section header rhythm — less aggressive bottom margin on phones. */
+/* Section header rhythm: less aggressive bottom margin on phones. */
 .section-header {
     margin-bottom: clamp(var(--space-lg), 3vw, var(--space-2xl));
 }
@@ -3858,24 +2606,13 @@ html[data-color-scheme="light"] .cookie-content p {
 .services-section,
 .about-section,
 .skills-section,
-.pricing-section,
 .contact-section {
     padding-top: clamp(var(--space-2xl), 6vw, var(--space-4xl));
     padding-bottom: clamp(var(--space-2xl), 6vw, var(--space-4xl));
 }
 
 /* Tap targets ≥ 44px without changing visual size of the dot. */
-.color-picker-trigger {
-    width: 44px;
-    height: 44px;
-}
-
-.color-swatch {
-    width: 32px;
-    height: 32px;
-}
-
-/* Generic icon button hit area — most theme/lang toggles already use this. */
+/* Generic icon button hit area: most theme/lang toggles already use this. */
 .btn-icon {
     min-width: 44px;
     min-height: 44px;
@@ -3893,67 +2630,17 @@ html[data-color-scheme="light"] .cookie-content p {
     outline-offset: 2px;
 }
 
-/* Universal keyboard focus ring — currently only inputs have one. */
+/* Universal keyboard focus ring: currently only inputs have one. */
 :where(a, button, [role="button"]):focus-visible {
     outline: 2px solid rgb(var(--theme-primary));
     outline-offset: 3px;
     border-radius: var(--radius-sm);
 }
 
-/* Hero text never narrower than the headline can break to. Prevents
-   a 380 px right column from overflowing on a 360 px phone. */
-@media (max-width: 768px) {
-    .hero-section--single .hero-content {
-        grid-template-columns: 1fr;
-        max-width: none;
-        padding-inline: clamp(1rem, 6vw, 2rem);
-        text-align: left;
-    }
-    .hero-section--single .hero-text {
-        max-width: 100%;
-        margin-left: 0;
-    }
-    .hero-section--single .slide-cta {
-        justify-content: flex-start;
-    }
-    .hero-section--single::before {
-        background: linear-gradient(
-            180deg,
-            rgba(8, 10, 18, 0.20) 0%,
-            rgba(8, 10, 18, 0.45) 55%,
-            rgba(8, 10, 18, 0.70) 100%
-        );
-    }
-    html[data-color-scheme="light"] .hero-section--single::before {
-        background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.20) 0%,
-            rgba(255, 255, 255, 0.50) 55%,
-            rgba(255, 255, 255, 0.70) 100%
-        );
-    }
-    .hero-section--square::before,
-    html[data-color-scheme="light"] .hero-section--square::before {
-        background: linear-gradient(
-            180deg,
-            rgba(8, 10, 18, 0.24) 0%,
-            rgba(8, 10, 18, 0.54) 55%,
-            rgba(8, 10, 18, 0.76) 100%
-        );
-    }
-    .hero-bg-image {
-        object-position: 47% 82%;
-    }
-}
 
-/* Skill / service / pricing cards — gentler padding on phones. */
+/* Service cards: gentler padding on phones. */
 @media (max-width: 480px) {
-    .skill-category,
-    .service-card,
-    .pricing-card {
-        padding: var(--space-lg);
-    }
-    .pricing-card.featured {
+    .service-card {
         padding: var(--space-lg);
     }
 }
@@ -3961,20 +2648,16 @@ html[data-color-scheme="light"] .cookie-content p {
 /* Light mode: lift secondary text contrast. The existing #3f4658 already
    passes AA against #f3f4f8, but section notes were rendering with the
    undefined --text-secondary. Force a real, readable colour. */
-.section-note {
-    color: var(--color-text-secondary);
-}
-
 /* Smooth, accessible motion fallback for the hero veil. */
 @media (prefers-reduced-motion: reduce) {
-    .hero-section--single::before,
-    .hero-section--single .slide-title,
-    .hero-section--single .slide-description {
+    .hero-section::before,
+    .hero-title,
+    .hero-description {
         transition: none;
     }
 }
 
-/* Production polish — compact project tabs and small-viewport stability. */
+/* Production polish: compact project tabs and small-viewport stability. */
 .hero-slides-container,
 .slide-content,
 .showcase-container,
@@ -4004,9 +2687,7 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 @media (max-width: 768px) {
-    .hero-slides-container,
-    .projects-section .hero-slides-container {
-        min-height: 640px;
+    .hero-slides-container {
         padding-inline: clamp(1rem, 4vw, 1.5rem);
     }
 
@@ -4023,16 +2704,36 @@ html[data-color-scheme="light"] .cookie-content p {
         line-height: 1.62;
     }
 
+    /* Pagination gets its own full-width scrollable row; arrows sit below it. */
+    .project-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .project-pagination {
+        order: -1;
+        /* The negative inline margins let the strip bleed to the screen edge;
+           the basis has to add them back or the arrows still fit on this line
+           and never wrap onto their own row. */
+        flex: 1 0 calc(100% + 2 * var(--space-xl));
+        margin-inline: calc(var(--space-xl) * -1);
+        padding-inline-start: var(--space-xl);
         justify-content: flex-start;
         flex-wrap: nowrap;
         overflow-x: auto;
         overscroll-behavior-inline: contain;
-        scroll-padding-inline: var(--space-xl);
         -webkit-overflow-scrolling: touch;
-        padding: 0 var(--space-xl) var(--space-xs);
-        margin-inline: calc(var(--space-xl) * -1);
+        padding-bottom: var(--space-xs);
         scrollbar-width: thin;
+    }
+
+    /* Chrome drops a flex container's trailing padding from scrollWidth, which
+       would clip the last tab at maximum scroll. A real flex item does not get
+       dropped, so the end gutter is a spacer instead of padding. */
+    .project-pagination::after {
+        content: '';
+        flex: 0 0 var(--space-xl);
+        height: 1px;
     }
 
     .project-pag-btn {
@@ -4049,7 +2750,6 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .about-layout,
     .services-grid,
-    .skills-grid,
     .contact-layout {
         gap: var(--space-xl);
     }
@@ -4078,20 +2778,6 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 @media (max-width: 480px) {
-    .hero-slides-container,
-    .projects-section .hero-slides-container {
-        min-height: 600px;
-    }
-
-    .project-mode-selector {
-        border-radius: var(--radius-lg);
-    }
-
-    .project-mode-btn {
-        min-height: 44px;
-        padding-inline: 0.65rem;
-    }
-
     .project-pag-btn {
         gap: 0.45rem;
         padding: 0.55rem 0.75rem;
@@ -4128,15 +2814,6 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 @media (max-width: 360px) {
-    .hero-slides-container,
-    .projects-section .hero-slides-container {
-        min-height: 580px;
-    }
-
-    .project-pag-btn span:not(.nav-dot) {
-        display: inline;
-    }
-
     .project-pag-btn .project-pag-name {
         white-space: nowrap;
     }
@@ -4149,15 +2826,12 @@ html[data-color-scheme="light"] .cookie-content p {
 @media (prefers-reduced-motion: reduce) {
     .hero-slide,
     .project-pag-btn,
-    .project-mode-btn,
-    .showcase-frame,
-    .showcase-badge {
+    .showcase-frame {
         transition: none !important;
     }
 
     .project-pag-btn:hover,
-    .showcase-frame:hover,
-    .color-swatch:hover {
+    .showcase-frame:hover {
         transform: none !important;
     }
 }
