@@ -97,17 +97,14 @@ All figures are net. When you change a price, change it in `index.html` and in b
 
 ### Hero image
 
-Four sizes plus one 4K variant, all showing the same photo, all under the CI size cap:
+Two sizes of the same portrait (wooden wall; `assets/img/profile/maxlerseite.webp` is the master), both under the CI size cap:
 
 | File | Size | Served from |
 |------|------|-------------|
-| `hero-e46-4k.webp` | 3840x2560 | 2200 px viewport width |
-| `hero-e46.webp` | 1920x1280 | 1600 px |
-| `hero-e46-1440.webp` | 1440x960 | 1100 px |
-| `hero-e46-960.webp` | 960x640 | 700 px |
-| `hero-e46-640.webp` | 640x426 | below that, and as the `<img>` fallback |
+| `hero-portrait.webp` | 953x1600 | 1100 px viewport width |
+| `hero-portrait-760.webp` | 760x1276 | below that, and as the `<img>` fallback |
 
-The number plate is retouched blank in every size. The highest real resolution of the source photo is 1920x1280, so the 4K file is upscaled and carries no extra detail. If you ever replace the photo, regenerate all five sizes from the same master and check the plate in each one.
+The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
 
 ---
 

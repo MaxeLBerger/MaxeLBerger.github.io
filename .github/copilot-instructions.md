@@ -53,19 +53,22 @@ an external source that contains one, replace it while copying. A pre-commit hoo
 
 ### Homepage hero
 
-The top `#hero` uses the E46 photo as the single full-bleed background, wired through one `<picture>` with five
-sources: `hero-e46-4k.webp` (3840x2560, from 2200 px), `hero-e46.webp` (1920x1280, from 1600 px),
-`hero-e46-1440.webp`, `hero-e46-960.webp` and `hero-e46-640.webp` as the `<img>` fallback. The active image is the
-LCP element, so keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads.
+The top `#hero` uses the wooden-wall portrait (`assets/img/profile/maxlerseite.webp` is the master) as a single
+right-anchored background, wired through one `<picture>` with two sources: `hero-portrait.webp` (953x1600, from
+1100 px) and `hero-portrait-760.webp` (760x1276) as the `<img>` fallback. The active image is the LCP element, so
+keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads.
 
-**The number plate is retouched blank in all five files.** If you ever replace the photo, retouch the plate in the
-master first, regenerate every size from that master, and verify the plate in each one. The highest real resolution
-of the current source is 1920x1280, so `hero-e46-4k.webp` is upscaled and adds no detail; it exists because a 4K
-variant was requested explicitly.
+The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`, anchored `right: 0`) instead of stretching
+across the width. `.hero-section` paints its own dark ground (`#080a12`) in both colour schemes, `.hero-section::before`
+is a horizontal veil that stays solid under the text column and blends into the photo, and `.hero-bg-slides::after`
+lays a light cyan/blue/violet wash over the wall. Below 768 px the veil turns vertical, the portrait fills the width
+and is pushed up so the face sits in the top half, and the copy moves to the bottom of the hero
+(`justify-content: flex-end`). The master is 953x1600, so very tall viewports upscale it slightly; regenerate both
+sizes from the master if you ever replace the photo.
 
 The hero is intentionally **photo-first and editorial**: the photo is only lightly dimmed, contrast for the text
-comes from a reduced directional veil plus layered text-shadows. Do not reintroduce heavy flat dim layers or
-theme-colored radial tints over the photo. The text column is: `.hero-eyebrow` (uppercase name and role line), then
+comes from the directional veil plus layered text-shadows. Do not reintroduce heavy flat dim layers; the only colour
+on the photo is the light linear wash from `.hero-bg-slides::after`. The text column is: `.hero-eyebrow` (uppercase name and role line), then
 `h1.hero-title` with three `.title-line` spans (the third uses `.title-line--quiet`, single accent color, never a
 gradient), then `.hero-description`, then `.hero-cta` with ONE white primary button linking to `#projects` and ONE
 `.hero-link` text link linking to `#contact`.
