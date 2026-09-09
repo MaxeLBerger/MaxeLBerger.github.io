@@ -42,13 +42,16 @@ The slider on the homepage runs in two modes, filtered through `data-mode` on bo
 |---------|------|-------------|
 | Imkerei Feuerstein | Online shop | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
 | Co Ha | Restaurant site | [coha.html](projects/coha.html) |
-| Daniel Brecheis | Consultant site (Human Bridges) | [danielbrecheis.html](projects/danielbrecheis.html) |
+| Daniel Brecheis | Consultant site (Human Bridges), in progress, live 1 October | none while unreleased |
 | Kaya Seeds | Online shop | [kayaseeds.html](projects/kayaseeds.html) |
 | JK Entertainment | Trading card shop | [jkentertainment.html](projects/jkentertainment.html) |
 | Sound of Lvke | Artist site | [soundoflvke.html](projects/soundoflvke.html) |
 | Senihelp24 | Care service site, in progress | none |
 
-Slides without a detail page link to the live site or to `#contact` instead. `Senihelp24` has no screenshot yet and uses the shared `.project-mock` placeholder.
+Slides without a detail page link to the live site or to `#contact` instead. `Senihelp24` and `Daniel Brecheis` have no
+screenshot on the slide and use the shared `.project-mock` placeholder. The Daniel Brecheis detail page
+([danielbrecheis.html](projects/danielbrecheis.html)) still exists but is unlinked, `noindex` and out of the sitemap
+until the site goes live on 1 October; relink it, drop the `robots` meta and add the sitemap entry back on launch.
 
 ---
 

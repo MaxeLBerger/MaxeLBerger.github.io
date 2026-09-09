@@ -117,6 +117,11 @@ floating category badge on the screenshot. Slides hidden by the mode filter use 
 which is also used by `dog-kennel-online`. Do not point an `<img>` at a file that does not exist; CI checks every
 `src` and `href`.
 
+`Daniel Brecheis` is deliberately in the same in-progress state until the site goes live on 1 October: the slide uses
+the `.project-mock` placeholder instead of `assets/img/projects/danielbrecheis.webp`, links to `#contact` plus a
+disabled `Live ab 1. Oktober` button instead of the Vercel URL, and [projects/danielbrecheis.html](../projects/danielbrecheis.html)
+is unlinked, `noindex` and absent from `sitemap.xml`. Do not restore the screenshot or the live links before launch.
+
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
 - GSAP-powered transitions (with CSS fallback)
