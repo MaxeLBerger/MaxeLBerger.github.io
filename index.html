@@ -69,13 +69,6 @@
             "itemListElement": [
                 {
                     "@type": "Offer",
-                    "name": "Landingpage",
-                    "description": "Eine Seite mit individuellem Design, Formular, SEO-Grundlagen und Hosting-Einrichtung",
-                    "price": "2500",
-                    "priceCurrency": "EUR"
-                },
-                {
-                    "@type": "Offer",
                     "name": "Website",
                     "description": "Fünf bis acht Seiten auf Basis Ihres Corporate Designs, inklusive SEO-Setup und Inhaltsumzug",
                     "price": "5500",
@@ -94,7 +87,7 @@
     </script>
 
     <link rel="icon" href="assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css?v=20260909-merged">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260909-combined">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -341,10 +334,10 @@
                                         <span class="dot"></span>
                                         <span class="dot"></span>
                                         <span class="dot"></span>
-                                        <span class="browser-url">auris.local/analysis</span>
+                                        <span class="browser-url">capitalcombo.local/markets</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/capitalcombo.webp" alt="CapitalCombo: Analyse-Ansicht mit Entscheidungs-Log und Kursverlauf" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img src="assets/img/projects/capitalcombo.webp" alt="CapitalCombo: Kursverlauf mit Trend-Signalen und Positionsbewertung" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div>
                             </div>
@@ -393,7 +386,48 @@
                     </div>
                 </div>
 
-                <!-- Eigen 6: MemeCoinTrader (in Arbeit, noch ohne Screenshot) -->
+                <!-- Eigen 6: DealHunter -->
+                <div class="hero-slide" id="slide-dealhunter" data-mode="own" data-theme="dealhunter" role="tabpanel" aria-labelledby="tab-dealhunter" aria-hidden="true">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.dealhunter.t1">DealHunter.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.dealhunter.t2">Findet Angebote,</span></span>
+                                <span class="title-line" data-i18n="slide.dealhunter.t3">bevor ich suche.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.dealhunter.desc">Ein autonomer Agent, der Kleinanzeigen rund um die Uhr nach lohnenden Angeboten absucht. Scheduler, Worker und Dashboard hängen an einer gemeinsamen Postgres-Queue, damit eine lange Suche nie den Rest blockiert. Autos, Schwerpunkt BMW E46, bewertet er gegen Marktmedian, Zustand, Laufleistung und Begehrtheit; bei Konsolen liest ein Vision-Modell die Fotos und rechnet die Marge gegen PriceCharting. Treffer kommen per Telegram, die KI-Kosten laufen sichtbar mit.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.dealhunter.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag1">Python</span>
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag2">FastAPI</span>
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag3">Claude API</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                                    <span data-i18n="slide.dealhunter.badge">MARKT-SCANNER</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">dealhunter.local/deals</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/dealhunter.webp" alt="DealHunter: Liste gefundener Angebote mit Score, Preisbewertung und Zustandsbalken" loading="lazy" decoding="async" width="1308" height="654">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 7: MemeCoinTrader (in Arbeit, noch ohne Screenshot) -->
                 <div class="hero-slide" id="slide-memecointrader" data-mode="own" data-theme="memecointrader" role="tabpanel" aria-labelledby="tab-memecointrader" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -428,7 +462,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 7: Albert Royale -->
+                <!-- Eigen 8: Albert Royale -->
                 <div class="hero-slide" id="slide-albert" data-mode="own" data-theme="albert" role="tabpanel" aria-labelledby="tab-albert" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -461,8 +495,9 @@
                                         <span class="dot"></span>
                                         <span class="browser-url">albert-royale.vercel.app</span>
                                     </div>
-                                    <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/albert.webp" alt="Albert Royale: Arena mit schrumpfender Zone" loading="lazy" decoding="async" width="1280" height="720">
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" src="assets/img/projects/albert-menu.webp" alt="Albert Royale: Menü mit Mehrspieler- und Einzelspieler-Auswahl auf der Inselkarte" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/albert-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -470,7 +505,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 8: Age of Max -->
+                <!-- Eigen 9: Age of Max -->
                 <div class="hero-slide" id="slide-ageofmax" data-mode="own" data-theme="ageofmax" role="tabpanel" aria-labelledby="tab-ageofmax" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -503,8 +538,9 @@
                                         <span class="dot"></span>
                                         <span class="browser-url">maximilianhaak.de/AgeOfMax</span>
                                     </div>
-                                    <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/ageofmax.webp" alt="Age of Max: Steinzeit-Bahn mit Einheiten, Türmen und Epochen-Anzeige" loading="lazy" decoding="async" width="1280" height="720">
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" src="assets/img/projects/ageofmax-menu.webp" alt="Age of Max: Titelbildschirm mit Menü und der Zeitleiste der fünf Epochen" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/ageofmax-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -512,7 +548,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 9: Shookroko -->
+                <!-- Eigen 10: Shookroko -->
                 <div class="hero-slide" id="slide-shookroko" data-mode="own" data-theme="shookroko" role="tabpanel" aria-labelledby="tab-shookroko" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -545,8 +581,9 @@
                                         <span class="dot"></span>
                                         <span class="browser-url">shookroko.pages.dev</span>
                                     </div>
-                                    <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/shookroko.webp" alt="Shookroko Browsergame" loading="lazy" decoding="async" width="1200" height="1200">
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" src="assets/img/projects/shookroko-menu.webp" alt="Shookroko: Startbildschirm mit Spielfigur, Steuerung und Solo-Play-Knopf" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/shookroko-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -554,7 +591,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 10: Medieval Tower Defense -->
+                <!-- Eigen 11: Medieval Tower Defense -->
                 <div class="hero-slide" id="slide-medieval" data-mode="own" data-theme="medieval" role="tabpanel" aria-labelledby="tab-medieval" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -587,8 +624,9 @@
                                         <span class="dot"></span>
                                         <span class="browser-url">mittel-alte.vercel.app</span>
                                     </div>
-                                    <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/medieval.webp" alt="Medieval Tower Defense" loading="lazy" decoding="async" width="1600" height="896">
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" src="assets/img/projects/medieval-menu.webp" alt="Medieval Tower Defense: Titelbildschirm mit Burghof und Kampagnen-Auswahl" loading="lazy" decoding="async" width="1600" height="896">
+                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/medieval-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="896">
                                     </div>
                                 </div></a>
                             </div>
@@ -739,24 +777,28 @@
                             <span class="project-pag-index" aria-hidden="true">05</span>
                             <span class="project-pag-name">Det. Review</span>
                         </button>
-                        <button id="tab-memecointrader" class="project-nav-btn project-pag-btn" data-mode="own" data-project="memecointrader" role="tab" aria-selected="false" aria-controls="slide-memecointrader" tabindex="-1">
+                        <button id="tab-dealhunter" class="project-nav-btn project-pag-btn" data-mode="own" data-project="dealhunter" role="tab" aria-selected="false" aria-controls="slide-dealhunter" tabindex="-1">
                             <span class="project-pag-index" aria-hidden="true">06</span>
+                            <span class="project-pag-name">DealHunter</span>
+                        </button>
+                        <button id="tab-memecointrader" class="project-nav-btn project-pag-btn" data-mode="own" data-project="memecointrader" role="tab" aria-selected="false" aria-controls="slide-memecointrader" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">07</span>
                             <span class="project-pag-name">MemeCoinTrader</span>
                         </button>
                         <button id="tab-albert" class="project-nav-btn project-pag-btn" data-mode="own" data-project="albert" role="tab" aria-selected="false" aria-controls="slide-albert" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">07</span>
+                            <span class="project-pag-index" aria-hidden="true">08</span>
                             <span class="project-pag-name">Albert Royale</span>
                         </button>
                         <button id="tab-ageofmax" class="project-nav-btn project-pag-btn" data-mode="own" data-project="ageofmax" role="tab" aria-selected="false" aria-controls="slide-ageofmax" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">08</span>
+                            <span class="project-pag-index" aria-hidden="true">09</span>
                             <span class="project-pag-name">Age of Max</span>
                         </button>
                         <button id="tab-shookroko" class="project-nav-btn project-pag-btn" data-mode="own" data-project="shookroko" role="tab" aria-selected="false" aria-controls="slide-shookroko" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">09</span>
+                            <span class="project-pag-index" aria-hidden="true">10</span>
                             <span class="project-pag-name">Shookroko</span>
                         </button>
                         <button id="tab-medieval" class="project-nav-btn project-pag-btn" data-mode="own" data-project="medieval" role="tab" aria-selected="false" aria-controls="slide-medieval" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">10</span>
+                            <span class="project-pag-index" aria-hidden="true">11</span>
                             <span class="project-pag-name">Medieval TD</span>
                         </button>
 
@@ -788,12 +830,12 @@
                 <div class="about-layout">
                     <figure class="about-media scroll-reveal">
                         <div class="about-image-frame">
-                            <img class="about-image" src="assets/img/profile/uebermich.webp" alt="Maximilian Haak vor seinem BMW E46 mit Alpenpanorama" data-i18n-alt="about.imageAlt" loading="lazy" decoding="async" width="1000" height="1334">
+                            <img class="about-image" src="assets/img/profile/uebermich_mysticblau.webp" alt="Maximilian Haak vor seiner mysticblauen BMW E46 Limousine mit Alpenpanorama" data-i18n-alt="about.imageAlt" loading="lazy" decoding="async" width="1000" height="1334">
                         </div>
                     </figure>
 
                     <div class="about-copy scroll-reveal">
-                        <p data-i18n="about.p1">Aufgewachsen in Bruckmühl, irgendwo zwischen Vereinsplatz, Werkstatt und Alpenpanorama. Familie und ein paar enge Freunde halten mich geerdet, und ein großer Teil meiner Geduld kommt vermutlich daher, dass ich früh angefangen habe, an einem alten BMW selbst rumzuschrauben.</p>
+                        <p><span data-i18n="about.p1a">Aufgewachsen in Bruckmühl, irgendwo zwischen Vereinsplatz, Werkstatt und Alpenpanorama. Familie und ein paar enge Freunde halten mich geerdet, und ein großer Teil meiner Geduld kommt vermutlich daher, dass ich früh angefangen habe, an einem </span><a href="https://e46petrolmica.vercel.app/" class="about-inline-link" target="_blank" rel="noopener noreferrer" data-i18n="about.p1link">alten BMW</a><span data-i18n="about.p1b"> selbst rumzuschrauben.</span></p>
                         <p data-i18n="about.p2">Im Alltag findet man mich meistens auf dem Fußballplatz oder im Gym, und danach läuft Musik. Mal sitze ich an eigenen Beats, mal an der Percussion, manchmal ist es auch einfach laute Musik im Auto auf dem Heimweg.</p>
 
                         <div class="about-highlights">
@@ -882,62 +924,136 @@
             </div>
         </section>
 
-        <!-- Pricing: drei Website-Pakete mit Umfang und Festpreis -->
+        <!-- Pricing: zwei Pakete als bildgefuehrte Panels, Grafik und Text wechseln die Seite -->
         <section id="pricing" class="services-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-tag" data-i18n="services.tag">Leistungen</p>
-                    <h2 class="section-title" data-i18n="services.title">Pakete &amp; Preise</h2>
+                <div class="services-head">
+                    <div>
+                        <p class="section-tag" data-i18n="services.tag">Leistungen</p>
+                        <h2 class="section-title" data-i18n="services.title">Pakete &amp; Preise</h2>
+                    </div>
+                    <p class="services-lead" data-i18n="services.lead">Zwei Pakete, ein Festpreis, ein klarer Zeitrahmen. Dazu Pflege und Zusatzleistungen, wenn Sie sie brauchen.</p>
                 </div>
-                <div class="services-grid">
-                    <article class="service-card service-card--featured scroll-reveal">
-                        <span class="service-card__badge" data-i18n="services.badge">Empfohlen</span>
-                        <p class="service-card__meta" data-i18n="services.website.meta">3-5 Wochen · ab 5.500 €</p>
-                        <h3 class="service-card__title" data-i18n="services.website.title">Website</h3>
-                        <p class="service-card__sub" data-i18n="services.website.sub">Der vollständige Auftritt: fünf bis acht Seiten, aufgebaut auf Ihrem Corporate Design.</p>
-                        <ul class="service-card__checks">
+
+                <article class="service-panel service-panel--featured scroll-reveal">
+                    <div class="service-panel__art">
+                        <svg class="service-art" viewBox="23 58 386 292" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                          <polygon class="service-art__plane" points="220,200 328,262 220,324 112,262" opacity="0.34"/>
+                          <polygon class="service-art__block" points="220,207.44 315.04,262 305.32,267.58 210.28,213.02" opacity="0.27"/>
+                          <polygon class="service-art__block" points="202.72,217.36 263.2,252.08 239.44,265.72 178.96,231" opacity="0.27"/>
+                          <polygon class="service-art__block" points="271.84,257.04 297.76,271.92 274,285.56 248.08,270.68" opacity="0.27"/>
+                          <polygon class="service-art__plane" points="220,142 328,204 220,266 112,204" opacity="0.48"/>
+                          <polygon class="service-art__block" points="220,149.44 315.04,204 305.32,209.58 210.28,155.02" opacity="0.38"/>
+                          <polygon class="service-art__block" points="202.72,159.36 263.2,194.08 239.44,207.72 178.96,173" opacity="0.38"/>
+                          <polygon class="service-art__block" points="271.84,199.04 297.76,213.92 274,227.56 248.08,212.68" opacity="0.38"/>
+                          <polygon class="service-art__plane" points="220,84 328,146 220,208 112,146" opacity="1"/>
+                          <polygon class="service-art__block" points="220,91.44 315.04,146 305.32,151.58 210.28,97.02" opacity="1"/>
+                          <polygon class="service-art__block" points="202.72,101.36 263.2,136.08 239.44,149.72 178.96,115" opacity="1"/>
+                          <polygon class="service-art__block" points="271.84,141.04 297.76,155.92 274,169.56 248.08,154.68" opacity="1"/>
+                          <polygon class="service-art__block" points="170.32,119.96 198.4,136.08 174.64,149.72 146.56,133.6" opacity="1"/>
+                          <polygon class="service-art__block" points="203.8,139.18 231.88,155.3 208.12,168.94 180.04,152.82" opacity="1"/>
+                          <polygon class="service-art__block" points="237.28,158.4 265.36,174.52 241.6,188.16 213.52,172.04" opacity="1"/>
+                          <polygon class="service-art__block" points="137.92,138.56 232.96,193.12 220,200.56 124.96,146" opacity="1"/>
+                          <line class="service-art__axis" x1="112" y1="160" x2="112" y2="262"/>
+                          <line class="service-art__axis" x1="104" y1="262" x2="112" y2="262"/>
+                          <line class="service-art__axis" x1="104" y1="204" x2="112" y2="204"/>
+                          <line class="service-art__axis" x1="104" y1="146" x2="112" y2="146"/>
+                        </svg>
+                    </div>
+                    <div class="service-panel__copy">
+                        <p class="service-panel__meta">
+                            <span data-i18n="services.website.meta">Paket 01 · 3 bis 5 Wochen</span>
+                            <b data-i18n="services.badge">Empfohlen</b>
+                        </p>
+                        <h3 class="service-panel__title" data-i18n="services.website.title">Website</h3>
+                        <p class="service-panel__sub" data-i18n="services.website.sub">Der vollständige Auftritt: fünf bis acht Seiten, aufgebaut auf Ihrem Corporate Design.</p>
+                        <p class="service-panel__price">
+                            <span data-i18n="services.website.pricePre">ab</span>
+                            <b data-i18n="services.website.priceValue">5.500 €</b>
+                            <span data-i18n="services.priceSuffix">netto</span>
+                        </p>
+                        <ul class="service-panel__checks">
                             <li data-i18n="services.website.d1">Designsystem nach Ihrem CI, mobil und Desktop</li>
                             <li data-i18n="services.website.d2">5 bis 8 Seiten, Blog oder News optional</li>
                             <li data-i18n="services.website.d3">Formulare, SEO-Setup und Suchmaschinen-Anmeldung</li>
                             <li data-i18n="services.website.d4">Umzug alter Inhalte inklusive Weiterleitungen</li>
                             <li data-i18n="services.website.d5">60 Tage Support nach Livegang</li>
                         </ul>
-                        <a href="#contact" class="service-card__cta" data-i18n="services.website.link">Website anfragen</a>
-                    </article>
+                        <a href="#contact" class="service-panel__cta" data-i18n="services.website.link">Website anfragen</a>
+                    </div>
+                </article>
 
-                    <article class="service-card scroll-reveal">
-                        <p class="service-card__meta" data-i18n="services.plus.meta">6-10 Wochen · ab 9.500 €</p>
-                        <h3 class="service-card__title" data-i18n="services.plus.title">Website Plus</h3>
-                        <p class="service-card__sub" data-i18n="services.plus.sub">Mehrsprachig, mit Stellenportal oder Anbindung an Ihre Systeme.</p>
-                        <ul class="service-card__checks">
+                <article class="service-panel service-panel--flip scroll-reveal">
+                    <div class="service-panel__art">
+                        <svg class="service-art" viewBox="54 48 386 292" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                          <polygon class="service-art__plane" points="196,190 304,252 196,314 88,252" opacity="0.34"/>
+                          <polygon class="service-art__block" points="196,197.44 291.04,252 281.32,257.58 186.28,203.02" opacity="0.27"/>
+                          <polygon class="service-art__block" points="178.72,207.36 239.2,242.08 215.44,255.72 154.96,221" opacity="0.27"/>
+                          <polygon class="service-art__block" points="247.84,247.04 273.76,261.92 250,275.56 224.08,260.68" opacity="0.27"/>
+                          <polygon class="service-art__plane" points="196,132 304,194 196,256 88,194" opacity="0.48"/>
+                          <polygon class="service-art__block" points="196,139.44 291.04,194 281.32,199.58 186.28,145.02" opacity="0.38"/>
+                          <polygon class="service-art__block" points="178.72,149.36 239.2,184.08 215.44,197.72 154.96,163" opacity="0.38"/>
+                          <polygon class="service-art__block" points="247.84,189.04 273.76,203.92 250,217.56 224.08,202.68" opacity="0.38"/>
+                          <polygon class="service-art__plane" points="196,74 304,136 196,198 88,136" opacity="1"/>
+                          <polygon class="service-art__block" points="196,81.44 291.04,136 281.32,141.58 186.28,87.02" opacity="1"/>
+                          <polygon class="service-art__block" points="178.72,91.36 239.2,126.08 215.44,139.72 154.96,105" opacity="1"/>
+                          <polygon class="service-art__block" points="247.84,131.04 273.76,145.92 250,159.56 224.08,144.68" opacity="1"/>
+                          <polygon class="service-art__block" points="146.32,109.96 174.4,126.08 150.64,139.72 122.56,123.6" opacity="1"/>
+                          <polygon class="service-art__block" points="179.8,129.18 207.88,145.3 184.12,158.94 156.04,142.82" opacity="1"/>
+                          <polygon class="service-art__block" points="213.28,148.4 241.36,164.52 217.6,178.16 189.52,162.04" opacity="1"/>
+                          <polygon class="service-art__block" points="113.92,128.56 208.96,183.12 196,190.56 100.96,136" opacity="1"/>
+                          <line class="service-art__axis" x1="88" y1="150" x2="88" y2="252"/>
+                          <line class="service-art__axis" x1="80" y1="252" x2="88" y2="252"/>
+                          <line class="service-art__axis" x1="80" y1="194" x2="88" y2="194"/>
+                          <line class="service-art__axis" x1="80" y1="136" x2="88" y2="136"/>
+                          <line class="service-art__link" x1="300" y1="186" x2="378" y2="114"/>
+                          <circle class="service-art__node" cx="378" cy="114" r="10"/>
+                          <circle class="service-art__dot" cx="378" cy="114" r="3.2"/>
+                          <line class="service-art__link" x1="300" y1="186" x2="404" y2="186"/>
+                          <circle class="service-art__node" cx="404" cy="186" r="10"/>
+                          <circle class="service-art__dot" cx="404" cy="186" r="3.2"/>
+                          <line class="service-art__link" x1="300" y1="186" x2="378" y2="258"/>
+                          <circle class="service-art__node" cx="378" cy="258" r="10"/>
+                          <circle class="service-art__dot" cx="378" cy="258" r="3.2"/>
+                        </svg>
+                    </div>
+                    <div class="service-panel__copy">
+                        <p class="service-panel__meta">
+                            <span data-i18n="services.plus.meta">Paket 02 · 6 bis 10 Wochen</span>
+                        </p>
+                        <h3 class="service-panel__title" data-i18n="services.plus.title">Website Plus</h3>
+                        <p class="service-panel__sub" data-i18n="services.plus.sub">Mehrsprachig, mit Stellenportal oder Anbindung an Ihre Systeme.</p>
+                        <p class="service-panel__price">
+                            <span data-i18n="services.plus.pricePre">ab</span>
+                            <b data-i18n="services.plus.priceValue">9.500 €</b>
+                            <span data-i18n="services.priceSuffix">netto</span>
+                        </p>
+                        <ul class="service-panel__checks">
                             <li data-i18n="services.plus.d1">Alles aus dem Paket Website</li>
                             <li data-i18n="services.plus.d2">Zweite Sprache, vollständig lokalisiert</li>
                             <li data-i18n="services.plus.d3">Stellenportal mit Detailseiten und Bewerbungsformular</li>
                             <li data-i18n="services.plus.d4">Anbindung an CRM oder andere Schnittstellen</li>
                             <li data-i18n="services.plus.d5">90 Tage Support nach Livegang</li>
                         </ul>
-                        <a href="#contact" class="service-card__cta" data-i18n="services.plus.link">Projekt besprechen</a>
-                    </article>
+                        <a href="#contact" class="service-panel__cta" data-i18n="services.plus.link">Projekt besprechen</a>
+                    </div>
+                </article>
+
+                <div class="service-tiles">
+                    <div class="service-tile scroll-reveal">
+                        <h3 class="service-tile__title" data-i18n="services.care.title">Website-Pflege</h3>
+                        <p class="service-tile__sub" data-i18n="services.care.sub">Updates, Monitoring und kleine Änderungen bis 60 Minuten im Monat.</p>
+                        <p class="service-tile__meta" data-i18n="services.care.meta">ab 149 € / Monat</p>
+                        <a href="#contact" class="service-tile__link" data-i18n="services.care.link">Pflege dazubuchen</a>
+                    </div>
+                    <div class="service-tile scroll-reveal">
+                        <h3 class="service-tile__title" data-i18n="services.extra.title">Zusatzleistungen</h3>
+                        <p class="service-tile__sub" data-i18n="services.extra.sub">Alles darüber hinaus nach Aufwand, transparent abgerechnet.</p>
+                        <p class="service-tile__meta" data-i18n="services.extra.meta">95 € / Stunde</p>
+                    </div>
                 </div>
 
                 <p class="services-note" data-i18n="services.note">Alle Preise netto zzgl. USt.</p>
-
-                <div class="service-row scroll-reveal">
-                    <div class="service-row__copy">
-                        <h3 class="service-row__title" data-i18n="services.care.title">Website-Pflege</h3>
-                        <p class="service-row__sub" data-i18n="services.care.sub">Updates, Monitoring und kleine Änderungen bis 60 Minuten im Monat.</p>
-                    </div>
-                    <p class="service-row__meta" data-i18n="services.care.meta">laufend · ab 149 €/Monat</p>
-                    <a href="#contact" class="service-row__link" data-i18n="services.care.link">Pflege dazubuchen</a>
-                </div>
-
-                <div class="service-row scroll-reveal">
-                    <div class="service-row__copy">
-                        <h3 class="service-row__title" data-i18n="services.extra.title">Zusatzleistungen</h3>
-                        <p class="service-row__sub" data-i18n="services.extra.sub">Alles darüber hinaus nach Aufwand, transparent abgerechnet.</p>
-                    </div>
-                    <p class="service-row__meta" data-i18n="services.extra.meta">95 €/Stunde</p>
-                </div>
 
                 <div class="services-cta">
                     <p data-i18n="services.cta.text">Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.</p>
@@ -1048,6 +1164,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260909-merged" defer></script>
+    <script src="assets/js/main.js?v=20260909-combined" defer></script>
 </body>
 </html>

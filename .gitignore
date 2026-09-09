@@ -65,3 +65,9 @@ desktop.ini
 
 # Lokale Review-Screenshots, nicht ausliefern
 _review/
+
+# Lokale Design-Mockups, nicht ausliefern
+_mockups/
+
+# Lokale Vorschau-Konfiguration dieser Session
+.claude/launch.json
