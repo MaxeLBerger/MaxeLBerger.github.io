@@ -12,7 +12,7 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Full-bleed E46 photo, editorial text column on the right, one primary button plus one text link. Static, no slider. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, a three-tile tech strip, a client logo row and a vertical tagline at the right edge. Static, no slider. |
 | `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack, three grouped boxes with icon tiles. |
@@ -99,7 +99,7 @@ All figures are net. When you change a price, change it in `index.html` and in b
 ├── assets/
 │   ├── css/main.css        # Stylesheet (design tokens + theming)
 │   ├── js/main.js          # Slider, mode filter, theme, i18n, animations
-│   └── img/                # Backgrounds, icons, profile, project shots
+│   └── img/                # Backgrounds, clients, icons, profile, project shots
 ├── projects/               # Project detail pages plus their own main.css
 ├── docs/                   # Architecture / development / deployment guides
 ├── tools/                  # Local dev tooling (NOT deployed)
@@ -116,6 +116,17 @@ Two sizes of the same portrait (wooden wall; `assets/img/profile/maxlerseite.web
 | `hero-portrait-760.webp` | 760x1276 | below that, and as the `<img>` fallback |
 
 The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
+
+### Client logos
+
+`assets/img/clients/` holds the two customer marks shown in the hero. Both are white silhouettes, because neither brand publishes a dark-background variant and the hero sits on a dark photo:
+
+| File | Size | Built from |
+|------|------|------------|
+| `senihelp24.webp` | 420x79 | the official senihelp24 wordmark, recoloured to white |
+| `human-bridges.webp` | 438x40 | the Human Bridges mark and wordmark, relaid out side by side in white |
+
+The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. Replace these only with mono versions at the same aspect ratio, otherwise the per-logo heights in `.hero-client-logo--*` need retuning.
 
 ### Package images
 

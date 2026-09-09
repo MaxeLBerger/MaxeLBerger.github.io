@@ -835,6 +835,10 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 /* ═══════════════════════════════════════════════
    HERO SECTION
    ═══════════════════════════════════════════════ */
+/* Portrait hero after the September 2026 mockup: text column on the left
+   with a two-line headline, a three-tile tech strip plus a client logo row
+   under the CTAs and a vertical tagline at the right edge next to the
+   right-anchored photo. */
 .hero-section {
     position: relative;
     min-height: 100dvh;
@@ -947,8 +951,9 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 .hero-content {
     display: grid;
-    grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
-    gap: var(--space-3xl);
+    grid-template-columns: minmax(0, 580px) minmax(0, 1fr);
+    column-gap: var(--space-3xl);
+    row-gap: var(--space-lg);
     align-items: center;
     width: 100%;
     max-width: 1280px;
@@ -962,43 +967,47 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 .hero-text {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     grid-column: 1;
-    max-width: 560px;
+    max-width: 580px;
 }
 
 .hero-eyebrow {
     margin: 0;
-    font-size: clamp(0.78rem, 0.2vw + 0.74rem, 0.86rem);
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.68);
 }
 
 .hero-title {
     display: flex;
     flex-direction: column;
+    margin-top: 0.1em;
     color: #ffffff;
-    font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.35rem);
+    font-size: clamp(2.3rem, 1.1rem + 2.9vw, 3.6rem);
     line-height: 1.06;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     font-weight: 700;
 }
 
-/* Third headline line: one flat accent colour, deliberately no gradient. */
-.hero-title .title-line--quiet {
+.hero-title .title-line {
+    display: block;
+}
+
+/* Last word of the headline in one flat accent colour, deliberately no
+   gradient. */
+.hero-title .title-accent {
     color: rgb(var(--theme-accent));
-    font-weight: 600;
-    padding-bottom: 0.12em;
-    margin-bottom: -0.12em;
 }
 
 .hero-description {
-    max-width: 500px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(1rem, 0.5vw + 0.9rem, 1.12rem);
-    line-height: 1.62;
+    max-width: 480px;
+    margin-top: 0.25rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(1rem, 0.4vw + 0.9rem, 1.1rem);
+    line-height: 1.6;
 }
 
 .hero-title,
@@ -1012,7 +1021,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     align-items: center;
     gap: var(--space-lg);
     flex-wrap: wrap;
-    margin-top: var(--space-sm);
+    margin-top: var(--space-md);
 }
 
 /* A white primary button reads editorial over the photo, no glow. */
@@ -1050,6 +1059,159 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 .hero-link:hover::after {
     transform: translateX(4px);
+}
+
+/* Tech strip under the CTAs: three tiles, icon above the label. */
+.hero-stack {
+    list-style: none;
+    margin: var(--space-xl) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.75rem, 1.6vw, 1.5rem);
+}
+
+.hero-stack-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 64px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.62);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero-stack-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Tile glyphs reuse the masked-SVG system from the skills section, but always
+   take the dark-theme brand colour: the hero sits on the dark photo in both
+   colour schemes, so the light-theme --ti-cl would wash out here. */
+.hero-stack-glyph {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background-color: transparent;
+}
+
+@supports ((-webkit-mask-image: url('#m')) or (mask-image: url('#m'))) {
+    .hero-stack-glyph {
+        background-color: var(--ti-c);
+        -webkit-mask: var(--ti-i) center / contain no-repeat;
+        mask: var(--ti-i) center / contain no-repeat;
+    }
+}
+
+/* Client row under the tech strip. Neither customer has a dark-background
+   logo variant, so both ship as white silhouettes: that keeps the row calm on
+   the photo and stops the Human Bridges wordmark (black on a blue patch in the
+   original) from disappearing. They sit dimmed and come up to full white on
+   hover. Heights are tuned per logo rather than shared, because senihelp is a
+   compact wordmark and Human Bridges a wide mark-plus-wordmark lockup. */
+.hero-clients {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.9rem, 1.8vw, 1.6rem);
+    margin-top: var(--space-lg);
+}
+
+.hero-clients-label {
+    margin: 0;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.48);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero-clients-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(1.1rem, 2.4vw, 2.1rem);
+}
+
+.hero-clients-item {
+    display: flex;
+    align-items: center;
+}
+
+.hero-client-logo {
+    display: block;
+    width: auto;
+    opacity: 0.62;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+    transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.hero-clients-item:hover .hero-client-logo {
+    opacity: 1;
+}
+
+.hero-client-logo--senihelp {
+    height: 24px;
+}
+
+.hero-client-logo--humanbridges {
+    height: 20px;
+}
+
+/* Vertical tagline: a thin accent bar and three stacked words, centred on
+   the hero and anchored to the viewport edge (not the content container) so
+   it sits in the dark strip right of the portrait on wide screens. The
+   subtraction cancels the container's side margin. Below 1600px there is no
+   dark strip beside the right-anchored photo, so the tagline turns into a
+   horizontal row under the tech tiles instead. */
+.hero-tagline {
+    position: absolute;
+    right: calc(clamp(1.25rem, 3vw, 3.5rem) - (100vw - 100%) / 2);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: stretch;
+    gap: 1.1rem;
+    margin: 0;
+}
+
+.hero-tagline-bar {
+    flex-shrink: 0;
+    width: 2px;
+    border-radius: 1px;
+    background: rgb(var(--theme-accent));
+}
+
+.hero-tagline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
 }
 
 /* Skills section: separate block below hero */
@@ -2853,11 +3015,37 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* ═══════════════════════════════════════════════
+   RESPONSIVE: HERO TAGLINE (below 1600px)
+   ═══════════════════════════════════════════════ */
+/* Without the dark strip right of the portrait the vertical tagline would
+   sit on the shoulder, so it moves into the text column and turns
+   horizontal. */
+@media (max-width: 1599px) {
+    .hero-tagline {
+        position: static;
+        transform: none;
+        grid-column: 1;
+        align-items: center;
+        gap: 0.9rem;
+    }
+
+    .hero-tagline-bar {
+        width: 28px;
+        height: 2px;
+    }
+
+    .hero-tagline-text {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE: LAPTOP / TABLET LANDSCAPE (1024px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 1024px) {
     .hero-content {
-        gap: var(--space-2xl);
+        column-gap: var(--space-2xl);
         grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
     }
 
@@ -2968,11 +3156,11 @@ html[data-color-scheme="light"] .cookie-content p {
     /* The portrait spans the width and is pushed up so the face sits in the
        top half, above the copy; the vertical veil replaces the edge mask. */
     .hero-bg-slide {
-        top: -18%;
+        top: -24%;
         right: auto;
         left: 0;
         width: 100%;
-        height: 118%;
+        height: 110%;
         transform: none;
         -webkit-mask-image: none;
         mask-image: none;
@@ -2982,6 +3170,55 @@ html[data-color-scheme="light"] .cookie-content p {
         width: 100%;
         object-fit: cover;
         object-position: 50% 0%;
+    }
+
+    /* Compact strip and tagline so the copy stays below the face. */
+    .hero-stack {
+        gap: 0.5rem;
+        margin-top: var(--space-lg);
+    }
+
+    .hero-stack-item {
+        width: 56px;
+        font-size: 10px;
+    }
+
+    .hero-stack-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+    }
+
+    .hero-stack-glyph {
+        width: 22px;
+        height: 22px;
+    }
+
+    .hero-clients {
+        gap: 0.75rem;
+        margin-top: var(--space-md);
+    }
+
+    .hero-clients-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-clients-list {
+        gap: 1.1rem;
+    }
+
+    .hero-client-logo--senihelp {
+        height: 21px;
+    }
+
+    .hero-client-logo--humanbridges {
+        height: 17px;
+    }
+
+    .hero-tagline-text {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
     }
 
     /* The mobile panel is a solid surface again, so the over-photo override
@@ -3034,6 +3271,20 @@ html[data-color-scheme="light"] .cookie-content p {
     .hero-eyebrow {
         font-size: 0.72rem;
         letter-spacing: 0.12em;
+    }
+
+    /* Button and "Kontakt aufnehmen" link do not fit one row on 375px
+       phones, so they stack on purpose with a tight gap. */
+    .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .hero-clients {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     /* Project screenshots stay visible on mobile: just narrower. */

@@ -59,22 +59,33 @@ right-anchored background, wired through one `<picture>` with two sources: `hero
 keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads.
 
 The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`, anchored `right: 0`) instead of stretching
-across the width. `.hero-section` paints its own dark ground (`#080a12`) in both colour schemes, `.hero-section::before`
-is a horizontal veil that stays solid under the text column and blends into the photo, and `.hero-bg-slides::after`
-lays a light cyan/blue/violet wash over the wall. Below 768 px the veil turns vertical, the portrait fills the width
+across the width; a mask feathers both side edges. `.hero-section` paints its own dark ground
+(`#080a12`) in both colour schemes, `.hero-section::before` is a horizontal veil that stays solid under the text
+column and blends into the photo, and `.hero-bg-slide::after` lays a light cyan/blue/violet wash over the wall. Below 768 px the veil turns vertical, the portrait fills the width
 and is pushed up so the face sits in the top half, and the copy moves to the bottom of the hero
 (`justify-content: flex-end`). The master is 953x1600, so very tall viewports upscale it slightly; regenerate both
 sizes from the master if you ever replace the photo.
 
 The hero is intentionally **photo-first and editorial**: the photo is only lightly dimmed, contrast for the text
 comes from the directional veil plus layered text-shadows. Do not reintroduce heavy flat dim layers; the only colour
-on the photo is the light linear wash from `.hero-bg-slides::after`. The text column is: `.hero-eyebrow` (uppercase name and role line), then
-`h1.hero-title` with three `.title-line` spans (the third uses `.title-line--quiet`, single accent color, never a
-gradient), then `.hero-description`, then `.hero-cta` with ONE white primary button linking to `#projects` and ONE
-`.hero-link` text link linking to `#contact`.
+on the photo is the light linear wash from `.hero-bg-slide::after`. The text column is: `.hero-eyebrow` (uppercase
+name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
+never a gradient), then `.hero-description`, then `.hero-cta` with ONE white primary button linking to `#projects`
+and ONE `.hero-link` text link linking to `#contact`, then `ul.hero-stack` with three icon tiles (Next.js,
+TypeScript, AI Agents in their brand colours, icons from `assets/img/icons/`), then `div.hero-clients`: an uppercase
+`hero.clients` label plus the two customer logos from `assets/img/clients/`. Those logos ship as white silhouettes
+and sit at `opacity: .62`, going to full white on hover; their heights are set per logo
+(`.hero-client-logo--senihelp` / `--humanbridges`) because one is a compact wordmark and the other a wide
+mark-plus-wordmark lockup, so do not give them a shared height. Beside the column, `aside.hero-tagline` (accent bar
+plus three words) is positioned absolutely at the viewport's right edge (its `right` cancels the container margin)
+and turns into a horizontal row under the tiles from 1600 px down. The GSAP entrance in `playEntrance()` adds the
+tiles, the client row and the tagline to the end of the existing timeline; the tagline wrapper itself is never
+transformed by GSAP because its centring relies on a CSS transform.
 
 Do NOT add gradient text, self-awarded credibility badges, a second pill button, or a scroll hint to the hero; these
-were deliberately removed. i18n keys are `hero.eyebrow`, `hero.title1..3`, `hero.desc`, `hero.cta1/cta2`.
+were deliberately removed. i18n keys are `hero.eyebrow`, `hero.title1..3` (title2 and title3 are the two words of
+the second line), `hero.desc`, `hero.cta1/cta2`, `hero.clients`, `hero.tag1..3` and `hero.tagline.label`, all
+present in both languages. The tile labels are product names and stay untranslated, like the ones in the skills section.
 
 Over the hero the navbar is transparent with white text (`body.has-hero #navbar:not(.scrolled)`). In light mode the
 scrim over the hero stays dark and the icon buttons stay transparent, otherwise the sun icon disappears. Keep both
@@ -84,7 +95,7 @@ rules when touching the navbar.
 
 `#about` sits directly after `#projects` and before the tech stack. Keep it as a personal editorial section with an
 E46 media frame, short biographical copy, and compact facts. The current media asset is the optimized
-`assets/img/profile/uebermich_mysticblau.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
+`assets/img/profile/uebermich_neu.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
 lower focus so the car/person stay visible. Keep this image large and cleanly cropped in a restrained 5:6 media frame
 with subtle border/shadow and no visible caption. The copy column should stay intentionally narrow for comfortable
 reading (about 54ch max), rather than stretching across the available grid width. Use
