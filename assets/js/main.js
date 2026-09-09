@@ -64,6 +64,7 @@
             'projects.mode.group': 'Projekt-Kategorie',
             'projects.mode.own': 'Eigene Projekte',
             'projects.mode.customers': 'Kundenprojekte',
+            'projects.pag.invite': 'Ihr Projekt',
             // Albert Royale
             'slide.albert.t1': 'Albert Royale.',
             'slide.albert.t2': 'Dein Albert',
@@ -120,16 +121,6 @@
             'hero.desc': 'Seit über fünf Jahren entwickle ich Software mit TypeScript, React und modernen Cloud-Technologien, aus Bruckmühl bei Rosenheim, persönlich und direkt.',
             'hero.cta1': 'Projekte ansehen',
             'hero.cta2': 'Kontakt aufnehmen',
-            // Slide 2 - Imkerei Feuerstein
-            'slide.imkerei.t1': 'Honig-Shop.',
-            'slide.imkerei.t2': 'Familienimkerei.',
-            'slide.imkerei.t3': 'Online verkauft.',
-            'slide.imkerei.desc': 'Vollständiger Online-Shop für die Familienimkerei Feuerstein aus Elchingen: Produktkatalog mit Honig-Sorten, Warenkorb, News-Bereich und Kundenbewertungen. Gebaut mit Next.js, auf Vercel deployed, schnell, SEO-optimiert und responsiv auf allen Geräten.',
-            'slide.imkerei.cta1': 'Shop ansehen',
-            'slide.imkerei.cta2': 'Projekt-Details',
-            'slide.imkerei.tag1': 'Next.js & Vercel',
-            'slide.imkerei.tag2': 'E-Commerce',
-            'slide.imkerei.tag3': 'SEO & Performance',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
@@ -150,26 +141,6 @@
             'slide.e46.tag1': 'Electron',
             'slide.e46.tag2': 'TypeScript',
             'slide.e46.tag3': 'Serial API',
-            // Slide 5 - CoHa
-            'slide.coha.t1': 'Restaurant-Site.',
-            'slide.coha.t2': 'Vietnamesisch.',
-            'slide.coha.t3': 'Tische gefüllt.',
-            'slide.coha.desc': 'Website für Co Ha, ein vietnamesisches Restaurant in Bruckmühl: Speisekarte, Galerie, Online-Reservierung und Google-Bewertungen. Gebaut mit Next.js, schnell, mobil-optimiert und konsequent auf Reservierungen ausgerichtet.',
-            'slide.coha.cta1': 'Live ansehen',
-            'slide.coha.cta2': 'Projekt-Details',
-            'slide.coha.tag1': 'Next.js & Vercel',
-            'slide.coha.tag2': 'Speisekarte & Reservierung',
-            'slide.coha.tag3': 'Lokale SEO',
-            // Slide 6 - SoundOfLvke
-            'slide.soundoflvke.t1': 'Sound.',
-            'slide.soundoflvke.t2': 'Design.',
-            'slide.soundoflvke.t3': 'Identität.',
-            'slide.soundoflvke.desc': 'Portfolio-Website für einen Musik-Künstler mit integriertem Audio-Player, Release-Übersicht und individuellem responsive Design. Kreative Webentwicklung, die Marken zum Leben erweckt.',
-            'slide.soundoflvke.cta1': 'Live ansehen',
-            'slide.soundoflvke.cta2': 'Projekt-Details',
-            'slide.soundoflvke.tag1': 'Künstler-Branding',
-            'slide.soundoflvke.tag2': 'Audio Integration',
-            'slide.soundoflvke.tag3': 'Responsive Design',
             // Slide 7 - Shookroko
             'slide.shookroko.t1': 'Browser-Spiel.',
             'slide.shookroko.t2': 'Phaser 3.',
@@ -190,16 +161,6 @@
             'slide.medieval.tag1': 'Browser Game',
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
-            // dog-kennel-online (in Arbeit, ohne Bild/Detailseite)
-            'slide.dogkennel.t1': 'dog-kennel-online.',
-            'slide.dogkennel.t2': 'Kennel',
-            'slide.dogkennel.t3': 'Management.',
-            'slide.dogkennel.desc': 'dog-kennel-online: Eine Web-Plattform für Hundepensionen mit Buchungen, Belegung, Hunde- und Halterprofilen sowie täglichen Abläufen an einem Ort. Aktuell in Entwicklung; Detailseite folgt.',
-            'slide.dogkennel.cta1': 'Anfragen',
-            'slide.dogkennel.cta2': 'Detailseite folgt',
-            'slide.dogkennel.tag1': 'Web App',
-            'slide.dogkennel.tag2': 'Booking',
-            'slide.dogkennel.tag3': 'In Arbeit',
             // Slide 9 - Daniel Brecheis (Human Bridges Consulting)
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
@@ -210,26 +171,70 @@
             'slide.danielbrecheis.tag1': 'Coaching',
             'slide.danielbrecheis.tag2': 'Branding',
             'slide.danielbrecheis.tag3': 'Vercel',
-            // Slide 10 - Kaya Seeds
-            'slide.kayaseeds.t1': 'Premium.',
-            'slide.kayaseeds.t2': 'Cannabis',
-            'slide.kayaseeds.t3': 'Seeds.',
-            'slide.kayaseeds.desc': 'Kaya Seeds: E-Commerce-Website für eine bayerische Cannabis-Samenmarke. Editoriales Layout, Produkt-Grid, Warenkorb-Flow und ein Markenauftritt zwischen 70er-Vibe und moderner Frische.',
-            'slide.kayaseeds.cta1': 'Live ansehen',
-            'slide.kayaseeds.cta2': 'Projekt-Details',
-            'slide.kayaseeds.tag1': 'E-Commerce',
-            'slide.kayaseeds.tag2': 'Branding',
-            'slide.kayaseeds.tag3': 'Shopify',
-            // Slide 11 - JK Entertainment
-            'slide.jkentertainment.t1': 'TCG-Shop.',
-            'slide.jkentertainment.t2': 'Magic, Pokémon',
-            'slide.jkentertainment.t3': '& mehr.',
-            'slide.jkentertainment.desc': 'JK Entertainment: Online-Shop für Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! und 6 weitere). Next.js Storefront, Produktkatalog mit über 4.000 Artikeln, Vorbestell-System und Community-Anbindung an zwei Stores in Frankfurt und Darmstadt.',
-            'slide.jkentertainment.cta1': 'Live ansehen',
-            'slide.jkentertainment.cta2': 'Projekt-Details',
-            'slide.jkentertainment.tag1': 'Next.js',
-            'slide.jkentertainment.tag2': 'E-Commerce',
-            'slide.jkentertainment.tag3': 'TCG',
+            // Haakly (self-hosted CMS, kein oeffentliches Repo)
+            'slide.haakly.t1': 'Haakly.',
+            'slide.haakly.t2': 'Jede Version',
+            'slide.haakly.t3': 'bleibt erreichbar.',
+            'slide.haakly.badge': 'Self-hosted CMS',
+            'slide.haakly.desc': 'Ein selbst hostbares CMS für Kundenwebsites: Redakteure pflegen Inhalte im Browser, jede Speicherung wird eine unveränderliche Revision, und veröffentlicht wird immer ein geprüftes Release. Ein Rollback schaltet auf ein früheres Release zurück, ohne dass die Live-Seite dazwischen leer wird.',
+            'slide.haakly.cta1': 'Projekt anfragen',
+            'slide.haakly.tag1': 'TypeScript',
+            'slide.haakly.tag2': 'Fastify',
+            'slide.haakly.tag3': 'PostgreSQL',
+            // CapitalCombo (privat, rein technische Beschreibung)
+            'slide.capitalcombo.t1': 'CapitalCombo.',
+            'slide.capitalcombo.t2': 'Ein Handelssystem,',
+            'slide.capitalcombo.t3': 'das sich selbst misst.',
+            'slide.capitalcombo.badge': 'Trading-Plattform',
+            'slide.capitalcombo.desc': 'Eine Forschungs- und Ausführungsplattform für den CFD-Handel: Trigger sammeln Marktkontext, ein LLM formuliert daraus eine Entscheidung, und 19 Vorprüfungen plus ein Live-Gate entscheiden, ob sie den Broker überhaupt erreicht. Ein großer Teil der Arbeit steckt im Messapparat aus Backtests, Kostenmodellen und einem Judge, der alte Entscheidungen gegen die tatsächlich folgenden Kerzen nachrechnet.',
+            'slide.capitalcombo.cta1': 'Projekt anfragen',
+            'slide.capitalcombo.tag1': 'FastAPI',
+            'slide.capitalcombo.tag2': 'Next.js',
+            'slide.capitalcombo.tag3': 'Multi-LLM',
+            // Deterministische Review (privat)
+            'slide.detreview.t1': 'Deterministische Review.',
+            'slide.detreview.t2': 'Erst mechanisch,',
+            'slide.detreview.t3': 'dann die KI.',
+            'slide.detreview.badge': 'Entwickler-Werkzeug',
+            'slide.detreview.desc': 'Eine Pipeline, die einen großen git-Branch zuerst mechanisch aufarbeitet: Merge-Basis, Netto-Diff, sechs Scans und ein Klassifikator, der jede geänderte Zeile gegen einen Musterkatalog hält. An KI-Agenten geht nur, was danach ungeklärt oder fachlich relevant bleibt. Die Antworten werden über stabile Befund-IDs zugeordnet und immer frisch aus den Dateien gerechnet, nie aus Erinnerungswerten.',
+            'slide.detreview.cta1': 'Projekt anfragen',
+            'slide.detreview.tag1': 'Python',
+            'slide.detreview.tag2': 'git',
+            'slide.detreview.tag3': 'LLM-Harness',
+            // MemeCoinTrader (privat, in Arbeit, ohne Bild)
+            'slide.memecointrader.t1': 'MemeCoinTrader.',
+            'slide.memecointrader.t2': 'Solana-Streams,',
+            'slide.memecointrader.t3': 'live ausgewertet.',
+            'slide.memecointrader.badge': 'Desktop App',
+            'slide.memecointrader.desc': 'Eine Java-Desktop-Anwendung, die WebSocket-Streams neuer Solana-Token einliest, Kandidaten über eine Score- und Regel-Engine bewertet und Orders über Jupiter-Quotes ausführt, standardmäßig im Papiermodus. Ein eigener Backtesting-Teil spielt aufgezeichnete Entscheidungen erneut ab und prüft sie mit Purged K-Fold und Deflated Sharpe auf Überanpassung.',
+            'slide.memecointrader.cta1': 'Projekt anfragen',
+            'slide.memecointrader.cta2': 'In Arbeit',
+            'slide.memecointrader.tag1': 'Java 21',
+            'slide.memecointrader.tag2': 'Solana RPC',
+            'slide.memecointrader.tag3': 'Backtesting',
+            // Age of Max (oeffentlich spielbar)
+            'slide.ageofmax.t1': 'Age of Max.',
+            'slide.ageofmax.t2': 'Steinzeit bis Zukunft',
+            'slide.ageofmax.t3': 'in einer Bahn.',
+            'slide.ageofmax.badge': 'Browser-Spiel',
+            'slide.ageofmax.desc': 'Ein Browser-Spiel nach dem Vorbild von Age of War: Einheiten laufen auf einer einzigen Bahn aufeinander zu, Gold kommt aus besiegten Gegnern, und genug XP schaltet die nächste Epoche mit besseren Einheiten und Türmen frei. Fünf Epochen von der Steinzeit bis zur Zukunft, 20 Einheiten, 15 Türme und drei Schwierigkeitsgrade.',
+            'slide.ageofmax.cta1': 'Jetzt spielen',
+            'slide.ageofmax.cta2': 'Auf GitHub',
+            'slide.ageofmax.tag1': 'Phaser 3',
+            'slide.ageofmax.tag2': 'TypeScript',
+            'slide.ageofmax.tag3': 'Vite',
+            // Einladung: kein Projekt, sondern der offene Platz im Kundenbereich
+            'slide.invite.t1': 'Ihr Projekt.',
+            'slide.invite.t2': 'Als Nächstes.',
+            'slide.invite.t3': 'Hier.',
+            'slide.invite.badge': 'Freier Platz',
+            'slide.invite.desc': 'Zwei Kundenprojekte sind hier zu sehen, echte Arbeit statt Musterseiten. Der Platz für das nächste ist frei. Ein kurzes Gespräch klärt, ob es passt.',
+            'slide.invite.cta1': 'Projekt besprechen',
+            'slide.invite.tag1': 'Websites',
+            'slide.invite.tag2': 'Web-Apps',
+            'slide.invite.tag3': 'Betreuung',
+            'slide.invite.mock1': 'Platz für Ihr Projekt.',
+            'slide.invite.mock2': 'Kein Platzhalter, ein freier Platz.',
             // About section (extra keys)
             'about.available': 'Verfügbar für Projekte & Festanstellung',
             'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
@@ -301,6 +306,7 @@
             'projects.mode.group': 'Project category',
             'projects.mode.own': 'Own projects',
             'projects.mode.customers': 'Client projects',
+            'projects.pag.invite': 'Your project',
             // Albert Royale
             'slide.albert.t1': 'Albert Royale.',
             'slide.albert.t2': 'Your Albert',
@@ -357,16 +363,6 @@
             'hero.desc': 'I\'ve been building software for over five years with TypeScript, React and modern cloud technologies, based in Bruckmühl near Rosenheim, personal and direct.',
             'hero.cta1': 'View projects',
             'hero.cta2': 'Get in touch',
-            // Slide 2 - Imkerei Feuerstein
-            'slide.imkerei.t1': 'Honey Shop.',
-            'slide.imkerei.t2': 'Family Beekeeping.',
-            'slide.imkerei.t3': 'Sold Online.',
-            'slide.imkerei.desc': 'A full online shop for the Feuerstein family beekeeping business in Elchingen: honey product catalog, cart, news section and customer reviews. Built with Next.js and deployed on Vercel: fast, SEO-optimized and fully responsive.',
-            'slide.imkerei.cta1': 'Visit Shop',
-            'slide.imkerei.cta2': 'Project Details',
-            'slide.imkerei.tag1': 'Next.js & Vercel',
-            'slide.imkerei.tag2': 'E-Commerce',
-            'slide.imkerei.tag3': 'SEO & Performance',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
@@ -387,26 +383,6 @@
             'slide.e46.tag1': 'Electron',
             'slide.e46.tag2': 'TypeScript',
             'slide.e46.tag3': 'Serial API',
-            // Slide 5 - CoHa
-            'slide.coha.t1': 'Restaurant Site.',
-            'slide.coha.t2': 'Vietnamese.',
-            'slide.coha.t3': 'Tables Booked.',
-            'slide.coha.desc': 'Website for Co Ha, a Vietnamese restaurant in Bruckmühl: menu, gallery, online reservations and Google reviews. Built with Next.js: fast, mobile-first and laser-focused on driving bookings.',
-            'slide.coha.cta1': 'View Live',
-            'slide.coha.cta2': 'Project Details',
-            'slide.coha.tag1': 'Next.js & Vercel',
-            'slide.coha.tag2': 'Menu & Reservation',
-            'slide.coha.tag3': 'Local SEO',
-            // Slide 6 - SoundOfLvke
-            'slide.soundoflvke.t1': 'Sound.',
-            'slide.soundoflvke.t2': 'Design.',
-            'slide.soundoflvke.t3': 'Identity.',
-            'slide.soundoflvke.desc': 'Portfolio website for a music artist with an integrated audio player, release overview and custom responsive design. Creative web development that brings brands to life.',
-            'slide.soundoflvke.cta1': 'View Live',
-            'slide.soundoflvke.cta2': 'Project Details',
-            'slide.soundoflvke.tag1': 'Artist Branding',
-            'slide.soundoflvke.tag2': 'Audio Integration',
-            'slide.soundoflvke.tag3': 'Responsive Design',
             // Slide 7 - Shookroko
             'slide.shookroko.t1': 'Browser Game.',
             'slide.shookroko.t2': 'Phaser 3.',
@@ -427,16 +403,6 @@
             'slide.medieval.tag1': 'Browser Game',
             'slide.medieval.tag2': 'Tower Defense',
             'slide.medieval.tag3': 'Vercel',
-            // dog-kennel-online (work in progress, no image/detail page)
-            'slide.dogkennel.t1': 'dog-kennel-online.',
-            'slide.dogkennel.t2': 'Kennel',
-            'slide.dogkennel.t3': 'Management.',
-            'slide.dogkennel.desc': 'dog-kennel-online: A web platform for dog boarding kennels with bookings, occupancy, dog and owner profiles and daily routines in one place. Currently in development; a detail page will follow.',
-            'slide.dogkennel.cta1': 'Get in touch',
-            'slide.dogkennel.cta2': 'Detail page coming',
-            'slide.dogkennel.tag1': 'Web App',
-            'slide.dogkennel.tag2': 'Booking',
-            'slide.dogkennel.tag3': 'In progress',
             // Slide 9 - Daniel Brecheis
             'slide.danielbrecheis.t1': 'HR Coaching.',
             'slide.danielbrecheis.t2': 'Human',
@@ -447,26 +413,70 @@
             'slide.danielbrecheis.tag1': 'Coaching',
             'slide.danielbrecheis.tag2': 'Branding',
             'slide.danielbrecheis.tag3': 'Vercel',
-            // Slide 10 - Kaya Seeds
-            'slide.kayaseeds.t1': 'Premium.',
-            'slide.kayaseeds.t2': 'Cannabis',
-            'slide.kayaseeds.t3': 'Seeds.',
-            'slide.kayaseeds.desc': 'Kaya Seeds: e-commerce website for a Bavarian cannabis seed brand. Editorial layout, product grid, cart flow and a brand identity between 70s vibe and modern freshness.',
-            'slide.kayaseeds.cta1': 'View Live',
-            'slide.kayaseeds.cta2': 'Project Details',
-            'slide.kayaseeds.tag1': 'E-Commerce',
-            'slide.kayaseeds.tag2': 'Branding',
-            'slide.kayaseeds.tag3': 'Shopify',
-            // Slide 11 - JK Entertainment
-            'slide.jkentertainment.t1': 'TCG Shop.',
-            'slide.jkentertainment.t2': 'Magic, Pokémon',
-            'slide.jkentertainment.t3': '& more.',
-            'slide.jkentertainment.desc': 'JK Entertainment: online shop for Trading Card Games (Magic, Pokémon, Yu-Gi-Oh! & 6 more). Next.js storefront, product catalog with 4,000+ items, pre-order system and community link to two stores in Frankfurt and Darmstadt.',
-            'slide.jkentertainment.cta1': 'View Live',
-            'slide.jkentertainment.cta2': 'Project Details',
-            'slide.jkentertainment.tag1': 'Next.js',
-            'slide.jkentertainment.tag2': 'E-Commerce',
-            'slide.jkentertainment.tag3': 'TCG',
+            // Haakly (self-hosted CMS, no public repo)
+            'slide.haakly.t1': 'Haakly.',
+            'slide.haakly.t2': 'Every version',
+            'slide.haakly.t3': 'stays reachable.',
+            'slide.haakly.badge': 'Self-hosted CMS',
+            'slide.haakly.desc': 'A self-hosted CMS for client websites: editors work in the browser, every save becomes an immutable revision, and what goes live is always a verified release. A rollback switches back to an earlier release without the live site going blank in between.',
+            'slide.haakly.cta1': 'Ask about this',
+            'slide.haakly.tag1': 'TypeScript',
+            'slide.haakly.tag2': 'Fastify',
+            'slide.haakly.tag3': 'PostgreSQL',
+            // CapitalCombo (private, purely technical description)
+            'slide.capitalcombo.t1': 'CapitalCombo.',
+            'slide.capitalcombo.t2': 'A trading system',
+            'slide.capitalcombo.t3': 'that measures itself.',
+            'slide.capitalcombo.badge': 'Trading Platform',
+            'slide.capitalcombo.desc': 'A research and execution platform for CFD trading: triggers gather market context, an LLM turns it into a decision, and 19 pre-flight checks plus a live gate decide whether it ever reaches the broker. A large part of the work sits in the measurement layer: backtests, cost models, and a judge that replays past decisions against the candles that actually followed.',
+            'slide.capitalcombo.cta1': 'Ask about this',
+            'slide.capitalcombo.tag1': 'FastAPI',
+            'slide.capitalcombo.tag2': 'Next.js',
+            'slide.capitalcombo.tag3': 'Multi-LLM',
+            // Deterministic review (private)
+            'slide.detreview.t1': 'Deterministic review.',
+            'slide.detreview.t2': 'Mechanics first,',
+            'slide.detreview.t3': 'then the AI.',
+            'slide.detreview.badge': 'Developer Tool',
+            'slide.detreview.desc': 'A pipeline that works through a large git branch mechanically first: merge base, net diff, six scans and a classifier that checks every changed line against a pattern catalogue. Only what is left unexplained or looks substantive goes to AI agents. The answers are matched by stable finding IDs and recomputed from the files every time, never from remembered numbers.',
+            'slide.detreview.cta1': 'Ask about this',
+            'slide.detreview.tag1': 'Python',
+            'slide.detreview.tag2': 'git',
+            'slide.detreview.tag3': 'LLM harness',
+            // MemeCoinTrader (private, work in progress, no screenshot)
+            'slide.memecointrader.t1': 'MemeCoinTrader.',
+            'slide.memecointrader.t2': 'Solana streams,',
+            'slide.memecointrader.t3': 'scored live.',
+            'slide.memecointrader.badge': 'Desktop App',
+            'slide.memecointrader.desc': 'A Java desktop application that reads WebSocket streams of new Solana tokens, scores candidates through a rule and scoring engine, and routes orders through Jupiter quotes, in paper mode by default. A dedicated backtesting part replays recorded decisions and checks them for overfitting with purged k-fold and deflated Sharpe.',
+            'slide.memecointrader.cta1': 'Ask about this',
+            'slide.memecointrader.cta2': 'Work in progress',
+            'slide.memecointrader.tag1': 'Java 21',
+            'slide.memecointrader.tag2': 'Solana RPC',
+            'slide.memecointrader.tag3': 'Backtesting',
+            // Age of Max (publicly playable)
+            'slide.ageofmax.t1': 'Age of Max.',
+            'slide.ageofmax.t2': 'Stone Age to future',
+            'slide.ageofmax.t3': 'on one lane.',
+            'slide.ageofmax.badge': 'Browser Game',
+            'slide.ageofmax.desc': 'A browser game modelled on Age of War: units advance along a single lane, gold comes from defeated enemies, and enough XP unlocks the next epoch with better units and turrets. Five epochs from the Stone Age to the future, 20 units, 15 turrets and three difficulty levels.',
+            'slide.ageofmax.cta1': 'Play now',
+            'slide.ageofmax.cta2': 'View on GitHub',
+            'slide.ageofmax.tag1': 'Phaser 3',
+            'slide.ageofmax.tag2': 'TypeScript',
+            'slide.ageofmax.tag3': 'Vite',
+            // Invitation: not a project, the open slot in the client section
+            'slide.invite.t1': 'Your project.',
+            'slide.invite.t2': 'Up next.',
+            'slide.invite.t3': 'Right here.',
+            'slide.invite.badge': 'Open slot',
+            'slide.invite.desc': 'Two client projects are shown here, real work rather than sample pages. The slot for the next one is open. A short conversation is enough to tell whether it is a fit.',
+            'slide.invite.cta1': 'Let us talk',
+            'slide.invite.tag1': 'Websites',
+            'slide.invite.tag2': 'Web apps',
+            'slide.invite.tag3': 'Ongoing care',
+            'slide.invite.mock1': 'Room for your project.',
+            'slide.invite.mock2': 'Not a placeholder, an open slot.',
             // About section (extra keys)
             'about.available': 'Available for Projects & Employment',
             'about.lead': 'Web Developer & AI Specialist from Bavaria',
@@ -483,6 +493,17 @@
             'cookie.more': 'Privacy Policy',
         }
     };
+
+    /* Die Projektseiten unter projects/ bringen ihre eigenen, deutlich
+       umfangreicheren Woerterbuecher mit (assets/js/projects-i18n.js, vor dieser
+       Datei eingebunden) und legen sie unter window.PROJECT_TRANSLATIONS ab.
+       Sie werden hier einmalig in translations gemischt. Die Startseite bindet
+       die Datei nicht ein, dort passiert an dieser Stelle nichts. */
+    if (window.PROJECT_TRANSLATIONS) {
+        Object.keys(translations).forEach((lang) => {
+            Object.assign(translations[lang], window.PROJECT_TRANSLATIONS[lang] || {});
+        });
+    }
 
     let currentLang = localStorage.getItem('lang') || 'de';
 
@@ -611,6 +632,9 @@
             this.isAnimating = false;
             this.isModeSwitching = false;
             this.animationGuardTimer = null;
+            // settle() of the transition that is currently running. Kept so a
+            // new request can finish it immediately instead of being dropped.
+            this.settleActive = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -665,6 +689,10 @@
 
         applyMode(mode, options = {}) {
             const { index = 0, dispatchEvent = true, updateTheme = false } = options;
+            // Land any running transition on the outgoing mode's arrays before
+            // they are swapped, otherwise its settle() would later write tab
+            // state for slides that are no longer on screen.
+            if (this.isAnimating) this.finishRunningAnimation();
             const { navBtns, slides } = this.collectMode(mode);
             if (slides.length === 0) return;
 
@@ -769,12 +797,7 @@
                 if (theme) themeController.setProjectTheme(theme, themeSource);
             }
 
-            this.navBtns.forEach((btn, i) => {
-                const isActive = i === index;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-selected', String(isActive));
-                btn.tabIndex = isActive ? 0 : -1;
-            });
+            this.setActiveTab(index);
 
             this.slides.forEach((slide, i) => {
                 const isActive = i === index;
@@ -788,11 +811,38 @@
             });
 
             this.currentIndex = index;
-            this.revealActiveTab(index);
 
             if (dispatchEvent) {
                 document.dispatchEvent(new CustomEvent('slide:change', { detail: { slide: activeSlide } }));
             }
+        }
+
+        /**
+         * The tablist half of the active state: selected class, aria-selected
+         * and the roving tabindex. Split out of setActiveSlide() so it can be
+         * re-run on its own, and so it is the single place that decides which
+         * tab is the selected one.
+         */
+        setActiveTab(index) {
+            this.navBtns.forEach((btn, i) => {
+                const isActive = i === index;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', String(isActive));
+                btn.tabIndex = isActive ? 0 : -1;
+            });
+            this.revealActiveTab(index);
+        }
+
+        /**
+         * Move DOM focus onto the tab at `index`, but only while the tablist
+         * already owns focus. Keyboard users then always sit on the tab that
+         * is selected; mouse and touch users are never yanked around.
+         */
+        focusTabIfInside(index) {
+            const active = document.activeElement;
+            if (!active || this.navBtns.indexOf(active) === -1) return;
+            const target = this.navBtns[index];
+            if (target && target !== active) target.focus();
         }
 
         /**
@@ -922,19 +972,55 @@
             this.goToSlide(nextIndex);
         }
 
+        /**
+         * End the transition that is running right now, immediately and with
+         * its full end state applied. Used when a new request arrives mid
+         * animation: dropping the request instead would leave focus,
+         * aria-selected and tabindex pointing at three different slides.
+         */
+        finishRunningAnimation() {
+            const settle = this.settleActive;
+            if (typeof settle === 'function') settle();
+        }
+
         goToSlide(index) {
             if (index < 0 || index >= this.slides.length) return;
-            if (index === this.currentIndex || this.isAnimating) return;
+
+            // A second arrow press while the first transition is still running
+            // no longer bails out. The running one is settled on the spot, so
+            // every press lands and the tablist can never be left describing a
+            // slide that was never shown.
+            if (this.isAnimating) this.finishRunningAnimation();
+
+            if (index === this.currentIndex) {
+                // Already there. Still re-assert the tab state and focus: the
+                // settled run above may have moved the roving tabindex onto a
+                // tab the visitor has meanwhile arrowed past.
+                this.setActiveTab(index);
+                this.focusTabIfInside(index);
+                return;
+            }
+
             this.isAnimating = true;
 
             const direction = index > this.currentIndex ? 1 : -1;
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
 
+            // Selection is decided here, not when the animation ends. The tab
+            // state and the panels' aria-hidden therefore describe the slide
+            // that is coming in for the whole transition, which is also the
+            // slide the visitor's focus is already on.
+            this.setActiveTab(index);
+            this.focusTabIfInside(index);
+            oldSlide.setAttribute('aria-hidden', 'true');
+            newSlide.setAttribute('aria-hidden', 'false');
+
             let settled = false;
             const settle = () => {
                 if (settled) return;
                 settled = true;
+                if (this.settleActive === settle) this.settleActive = null;
                 if (this.animationGuardTimer !== null) {
                     window.clearTimeout(this.animationGuardTimer);
                     this.animationGuardTimer = null;
@@ -947,6 +1033,7 @@
                 this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
                 this.isAnimating = false;
             };
+            this.settleActive = settle;
 
             this.animationGuardTimer = window.setTimeout(settle, this.prefersReducedMotion ? 80 : 1800);
 

@@ -175,14 +175,28 @@ Status feedback uses `.is-success` / `.is-error` classes on `.btn-primary` (defi
 
 ## Deployment
 
-[.github/workflows/deploy.yml](workflows/deploy.yml): single job:
+[.github/workflows/deploy.yml](workflows/deploy.yml): two jobs, `build` ("Validate and assemble") and `deploy`
+("Deploy to GitHub Pages"). The workflow also runs on pull requests, where `build` validates but nothing is
+uploaded or deployed.
+
+`build`:
 
 1. Checkout
-2. Copy `index.html`, `*.html`, `CNAME`, `assets/`, `projects/` into `dist/`
-3. Upload as Pages artifact
-4. Deploy to `github-pages` environment
+2. **Validation 1:** required entry points exist (`index.html`, `assets/css/main.css`, `assets/js/main.js`,
+   `CNAME`, `impressum.html`, `datenschutz.html`)
+3. **Validation 2:** no shipped image, video or SVG under `assets/` and `projects/` exceeds `MAX_ASSET_KB`
+   (currently 600 KB)
+4. Assemble `dist/`: `*.html`, `CNAME`, `robots.txt`, `sitemap.xml`, `assets/`, `projects/`, plus `.nojekyll`
+5. **Validation 3:** every `src=` and `href=` in the assembled HTML resolves to a file that exists in `dist/`
+   (external schemes and pure `#fragment` links are skipped)
+6. Build size report into the job summary
+7. Upload as Pages artifact (skipped on pull requests)
 
-Push to `main` goes live in about 1 to 2 minutes. There is **no build step** and **no matrix**.
+`deploy` (needs `build`, skipped on pull requests): deploys to the `github-pages` environment and appends a
+deployment summary.
+
+Any of the three validations failing blocks the deploy. Push to `main` goes live in about 1 to 2 minutes.
+There is **no build step** for the site itself and **no matrix**.
 
 ## Coding Guidelines
 

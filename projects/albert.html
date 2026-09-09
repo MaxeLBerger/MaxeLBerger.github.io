@@ -7,8 +7,8 @@
     <meta name="description" content="Albert Royale: Ein 3D-Battle-Royale, in dem dein Albert per Behavior Cloning aus deinem Spielverhalten lernt. Three.js, TypeScript, selbstgebautes neuronales Netz, plus die ursprüngliche Java-Evolutionssimulation.">
     <meta name="author" content="Maximilian Haak">
     <link rel="icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/main.css?v=20260810-kunden-albert">
-    <link rel="stylesheet" href="main.css?v=20260810-kunden-albert">
+    <link rel="stylesheet" href="../assets/css/main.css?v=20260909-merged">
+    <link rel="stylesheet" href="main.css?v=20260909-merged">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
@@ -19,10 +19,11 @@
                 <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="../index.html#pricing">Leistungen</a>
-                <a href="../index.html#projects">Portfolio</a>
-                <a href="../index.html#about">Über mich</a>
-                <a href="../index.html#contact">Kontakt</a>
+                <a href="../index.html#projects" data-i18n="nav.portfolio">Portfolio</a>
+                <a href="../index.html#about" data-i18n="nav.about">Über mich</a>
+                <a href="../index.html#skills" data-i18n="nav.tech">Tech Stack</a>
+                <a href="../index.html#pricing" data-i18n="nav.pricing">Pakete</a>
+                <a href="../index.html#contact" data-i18n="nav.contact">Kontakt</a>
             </div>
             <div class="nav-actions">
                 <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
@@ -42,142 +43,118 @@
     </nav>
 
     <main class="project-page">
+
         <section class="project-hero">
             <div class="container">
-                <a href="../index.html#projects" class="back-link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Zurück zum Portfolio
-                </a>
-                <div class="project-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></svg>
-                    KI-Spiel
-                </div>
-                <h1 class="project-title">Albert Royale. <span class="gradient-text">Dein Albert lernt von dir.</span></h1>
-                <p class="project-tagline">Ein 3D-Battle-Royale, in dem du deinem eigenen Charakter erst das Überleben beibringst, und ihn dann allein in die Arena schickst. Das Gehirn dahinter ist ein selbstgeschriebenes neuronales Netz, das aus deinem Spielverhalten trainiert wird.</p>
+
+                <a href="../index.html#projects" class="back-link" data-i18n="projekt.albert.hero.zurueck">Zurück zu den Projekten</a>
+
+                <p class="section-tag" data-i18n="projekt.albert.hero.label">KI-Spiel</p>
+
+                <h1 class="project-title">
+                    <span class="title-line" data-i18n="projekt.albert.hero.titel1">Albert Royale.</span>
+                    <span class="title-line title-line--accent" data-i18n="projekt.albert.hero.titel2">Dein Albert lernt von dir.</span>
+                </h1>
+
+                <p class="project-tagline" data-i18n="projekt.albert.hero.lead">Ein 3D-Battle-Royale, in dem du deinem eigenen Charakter erst das Überleben beibringst, und ihn dann allein in die Arena schickst. Das Gehirn dahinter ist ein selbstgeschriebenes neuronales Netz, das aus deinem Spielverhalten trainiert wird.</p>
+
                 <div class="project-actions">
-                    <a href="https://github.com/MaxeLBerger/Albert" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Auf GitHub ansehen</a>
-                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                    <a href="https://github.com/MaxeLBerger/Albert" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.albert.hero.cta1">Auf GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline" data-i18n="projekt.albert.hero.cta2">Projekt anfragen</a>
                 </div>
+
                 <div class="project-screenshot">
-                    <img src="../assets/img/projects/albert.webp" alt="Albert Royale: Arena mit schrumpfender Zone, Killfeed und Leaderboard" loading="eager" width="1280" height="720">
+                    <img src="../assets/img/projects/albert.webp" alt="Albert Royale: Arena mit schrumpfender Zone, Killfeed und Leaderboard" data-i18n-alt="projekt.albert.hero.shotAlt" width="1280" height="720" loading="eager" decoding="async">
                 </div>
             </div>
         </section>
 
         <div class="project-content">
+
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                    Über das Projekt
-                </span>
-                <h2 class="section-title">Zwei Spiele, ein Gehirn</h2>
-                <p class="section-text">Angefangen hat Albert als Java-Evolutionssimulation: Kreaturen leben auf einer Karte, sehen per Raycast, verhungern ohne Nahrung, greifen fremde Gruppen an und vererben ihr neuronales Netz an mutierte Klone. Wer überlebt, gibt seine Gewichte weiter, intelligentes Verhalten entsteht rein durch Selektion.</p>
-                <p class="section-text">Albert Royale dreht dieses Prinzip um. Statt auf zufällige Mutation zu warten, wird <strong>dein Spielverhalten zum Trainingsmaterial</strong>: In Phase 1 spielst du selbst, und alle drei Ticks wird ein Paar aus Beobachtung und deiner Aktion aufgezeichnet. Ein Web Worker trainiert das Netz danach per Behavior Cloning darauf. Spielst du aggressiv, wird dein Albert ein Jäger; hortest du Nahrung und versteckst dich, wird er ein Überlebenskünstler. In Phase 2 schaust du nur noch zu, wie er sich gegen fünfzehn andere schlägt.</p>
+                <p class="section-tag" data-i18n="projekt.albert.ueber.label">Über das Projekt</p>
+                <h2 class="section-title" data-i18n="projekt.albert.ueber.titel">Zwei Spiele, ein Gehirn</h2>
+                <p class="section-text" data-i18n="projekt.albert.ueber.text1">Angefangen hat Albert als Java-Evolutionssimulation: Kreaturen leben auf einer Karte, sehen per Raycast, verhungern ohne Nahrung, greifen fremde Gruppen an und vererben ihr neuronales Netz an mutierte Klone. Wer überlebt, gibt seine Gewichte weiter, intelligentes Verhalten entsteht rein durch Selektion.</p>
+                <p class="section-text" data-i18n="projekt.albert.ueber.text2">Albert Royale dreht dieses Prinzip um. Statt auf zufällige Mutation zu warten, wird dein Spielverhalten zum Trainingsmaterial: In Phase 1 spielst du selbst, und alle drei Ticks wird ein Paar aus Beobachtung und deiner Aktion aufgezeichnet. Ein Web Worker trainiert das Netz danach per Behavior Cloning darauf. Spielst du aggressiv, wird dein Albert ein Jäger; hortest du Nahrung und versteckst dich, wird er ein Überlebenskünstler. In Phase 2 schaust du nur noch zu, wie er sich gegen fünfzehn andere schlägt.</p>
             </section>
 
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                    Einblicke
-                </span>
-                <h2 class="section-title">Aus dem Spiel</h2>
+                <p class="section-tag" data-i18n="projekt.albert.features.label">Features</p>
+                <h2 class="section-title" data-i18n="projekt.albert.features.titel">Was drinsteckt</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f1.titel">Behavior Cloning</h3>
+                        <p data-i18n="projekt.albert.features.f1.text">Beobachtung + Aktion werden alle drei Ticks aufgezeichnet und in einem Web Worker per Backpropagation ins Netz trainiert, ohne den Render-Thread zu blockieren.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f2.titel">Acht Sichtstrahlen</h3>
+                        <p data-i18n="projekt.albert.features.f2.text">Der Raycast aus der Java-Simulation wurde auf acht Strahlen erweitert: Jeder Albert sieht Gegner, Futter und Hindernisse als Sensorvektor, mehr bekommt das Netz nicht.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f3.titel">Schrumpfende Zone</h3>
+                        <p data-i18n="projekt.albert.features.f3.text">Klassischer Battle-Royale-Druck: Die Zone zieht sich in Stufen zusammen, Kämpfe werden erzwungen, und die Netze müssen mit Zeitdruck umgehen lernen.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f4.titel">Waffen, Rüstung, Fallen</h3>
+                        <p data-i18n="projekt.albert.features.f4.text">Aus „Kollision mit fremder Gruppe → Schaden“ wurde ein echtes Kampfsystem mit Schwert, Bogen, Schild, Axt und Fallen, inklusive Crafting und Loot.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f5.titel">Brain-Inspektor</h3>
+                        <p data-i18n="projekt.albert.features.f5.text">Ein Overlay zeigt die Live-Aktivierungen aller Schichten samt Topologie und Generation, man sieht dem Netz beim Entscheiden zu, statt nur das Ergebnis zu sehen.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.albert.features.f6.titel">Fixer Zeitschritt</h3>
+                        <p data-i18n="projekt.albert.features.f6.text">20 Ticks Simulation pro Sekunde, 60 FPS Rendering mit Interpolation dazwischen, deterministisches Verhalten bei flüssiger Darstellung.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <p class="section-tag" data-i18n="projekt.albert.galerie.label">Einblicke</p>
+                <h2 class="section-title" data-i18n="projekt.albert.galerie.titel">Aus dem Spiel</h2>
                 <div class="project-gallery">
                     <figure class="gallery-item">
-                        <img src="../assets/img/screenshots/albert-02-phase1.webp" alt="Phase 1: Spieler-HUD mit Leben, Hunger, Inventar und Waffenauswahl" loading="lazy" decoding="async" width="1280" height="720">
-                        <figcaption>Phase 1: du spielst selbst, dein Albert lernt mit</figcaption>
+                        <img src="../assets/img/screenshots/albert-02-phase1.webp" alt="Phase 1: Spieler-HUD mit Leben, Hunger, Inventar und Waffenauswahl" data-i18n-alt="projekt.albert.galerie.b1.alt" width="1280" height="720" loading="lazy" decoding="async">
+                        <figcaption data-i18n="projekt.albert.galerie.b1.text">Phase 1: du spielst selbst, dein Albert lernt mit</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../assets/img/screenshots/albert-01-insel.webp" alt="Prozedural erzeugte Low-Poly-Insel mit umlaufender Zonengrenze" loading="lazy" decoding="async" width="1280" height="720">
-                        <figcaption>Prozedurale Low-Poly-Insel als Arena</figcaption>
+                        <img src="../assets/img/screenshots/albert-01-insel.webp" alt="Prozedural erzeugte Low-Poly-Insel mit umlaufender Zonengrenze" data-i18n-alt="projekt.albert.galerie.b2.alt" width="1280" height="720" loading="lazy" decoding="async">
+                        <figcaption data-i18n="projekt.albert.galerie.b2.text">Prozedurale Low-Poly-Insel als Arena</figcaption>
                     </figure>
                     <figure class="gallery-item gallery-item--contain">
-                        <img src="../assets/img/screenshots/albert-04-brain-inspektor.webp" alt="Brain-Inspektor mit Live-Aktivierungen des neuronalen Netzes" loading="lazy" decoding="async" width="300" height="298">
-                        <figcaption>Brain-Inspektor: Live-Aktivierungen des Netzes</figcaption>
+                        <img src="../assets/img/screenshots/albert-04-brain-inspektor.webp" alt="Brain-Inspektor mit Live-Aktivierungen des neuronalen Netzes" data-i18n-alt="projekt.albert.galerie.b3.alt" width="300" height="298" loading="lazy" decoding="async">
+                        <figcaption data-i18n="projekt.albert.galerie.b3.text">Brain-Inspektor: Live-Aktivierungen des Netzes</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../assets/img/screenshots/albert-sim-civilisation.webp" alt="Ursprüngliche Java-Simulation: Populationen bilden abgegrenzte Siedlungsgebiete" loading="lazy" decoding="async" width="1755" height="1179">
-                        <figcaption>Die Java-Ursprungssimulation: Gruppen bilden eigene Gebiete</figcaption>
+                        <img src="../assets/img/screenshots/albert-sim-civilisation.webp" alt="Ursprüngliche Java-Simulation: Populationen bilden abgegrenzte Siedlungsgebiete" data-i18n-alt="projekt.albert.galerie.b4.alt" width="1755" height="1179" loading="lazy" decoding="async">
+                        <figcaption data-i18n="projekt.albert.galerie.b4.text">Die Java-Ursprungssimulation: Gruppen bilden eigene Gebiete</figcaption>
                     </figure>
                 </div>
             </section>
 
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-                    Features
-                </span>
-                <h2 class="section-title">Was drinsteckt</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7l3 3M17 17l-3-3"/></svg>
-                        </div>
-                        <h3>Behavior Cloning</h3>
-                        <p>Beobachtung + Aktion werden alle drei Ticks aufgezeichnet und in einem Web Worker per Backpropagation ins Netz trainiert, ohne den Render-Thread zu blockieren.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
-                        </div>
-                        <h3>Acht Sichtstrahlen</h3>
-                        <p>Der Raycast aus der Java-Simulation wurde auf acht Strahlen erweitert: Jeder Albert sieht Gegner, Futter und Hindernisse als Sensorvektor, mehr bekommt das Netz nicht.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
-                        </div>
-                        <h3>Schrumpfende Zone</h3>
-                        <p>Klassischer Battle-Royale-Druck: Die Zone zieht sich in Stufen zusammen, Kämpfe werden erzwungen, und die Netze müssen mit Zeitdruck umgehen lernen.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a5 5 0 0 0-7 7l-6 6 1.4 1.4 6-6a5 5 0 0 0 7-7l-3 3-1.4-1.4 3-3z"/></svg>
-                        </div>
-                        <h3>Waffen, Rüstung, Fallen</h3>
-                        <p>Aus „Kollision mit fremder Gruppe → Schaden" wurde ein echtes Kampfsystem mit Schwert, Bogen, Schild, Axt und Fallen, inklusive Crafting und Loot.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
-                        </div>
-                        <h3>Brain-Inspektor</h3>
-                        <p>Ein Overlay zeigt die Live-Aktivierungen aller Schichten samt Topologie und Generation, man sieht dem Netz beim Entscheiden zu, statt nur das Ergebnis zu sehen.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        </div>
-                        <h3>Fixer Zeitschritt</h3>
-                        <p>20 Ticks Simulation pro Sekunde, 60 FPS Rendering mit Interpolation dazwischen, deterministisches Verhalten bei flüssiger Darstellung.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    Tech Stack
-                </span>
-                <h2 class="section-title">Technologien</h2>
+                <p class="section-tag" data-i18n="projekt.albert.stack.label">Tech Stack</p>
+                <h2 class="section-title" data-i18n="projekt.albert.stack.titel">Technologien</h2>
                 <div class="tech-stack">
-                    <span class="tech-badge">TypeScript</span>
-                    <span class="tech-badge">Three.js</span>
-                    <span class="tech-badge">Vite</span>
-                    <span class="tech-badge">Web Workers</span>
-                    <span class="tech-badge">Neuronale Netze (eigene Implementierung)</span>
-                    <span class="tech-badge">Genetische Algorithmen</span>
-                    <span class="tech-badge">Java (Ursprungssimulation)</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t1">TypeScript</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t2">Three.js</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t3">Vite</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t4">Web Workers</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t5">Neuronale Netze (eigene Implementierung)</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t6">Genetische Algorithmen</span>
+                    <span class="tech-badge" data-i18n="projekt.albert.stack.t7">Java (Ursprungssimulation)</span>
                 </div>
             </section>
 
-            <div class="project-cta">
-                <h2>Interesse an KI im Browser?</h2>
-                <p>Albert Royale ist ein Eigenprojekt, der Code, die Balance-Dokumente und das Game-Design-Dokument liegen offen im Repository. Wenn Sie etwas Ähnliches vorhaben, sprechen wir darüber.</p>
+            <section class="project-section project-outro">
+                <h2 data-i18n="projekt.albert.outro.titel">Interesse an KI im Browser?</h2>
+                <p data-i18n="projekt.albert.outro.text">Albert Royale ist ein Eigenprojekt, der Code, die Balance-Dokumente und das Game-Design-Dokument liegen offen im Repository. Wenn Sie etwas Ähnliches vorhaben, sprechen wir darüber.</p>
                 <div class="project-actions">
-                    <a href="https://github.com/MaxeLBerger/Albert" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Auf GitHub ansehen</a>
-                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                    <a href="https://github.com/MaxeLBerger/Albert" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.albert.outro.cta1">Auf GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline" data-i18n="projekt.albert.outro.cta2">Projekt anfragen</a>
                 </div>
-            </div>
+            </section>
+
         </div>
     </main>
 
@@ -186,13 +163,14 @@
             <div class="footer-content">
                 <p>&copy; 2026 Maximilian Haak</p>
                 <div class="footer-links">
-                    <a href="../impressum.html">Impressum</a>
-                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../impressum.html" data-i18n="footer.impressum">Impressum</a>
+                    <a href="../datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="../assets/js/main.js?v=20260810-kunden-albert" defer></script>
+    <script src="../assets/js/projects-i18n.js?v=20260909-merged" defer></script>
+    <script src="../assets/js/main.js?v=20260909-merged" defer></script>
 </body>
 </html>

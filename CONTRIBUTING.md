@@ -16,12 +16,12 @@ Open http://localhost:8000 and edit `index.html`, files under `assets/`,, or fil
 
 Use conventional commits:
 
-- `feat(scope): ...` — new feature
-- `fix(scope): ...` — bug fix
-- `docs(scope): ...` — documentation only
-- `style(scope): ...` — formatting / CSS tweaks
-- `refactor(scope): ...` — internal restructure, no behavior change
-- `chore(scope): ...` — tooling / config
+- `feat(scope): ...` for a new feature
+- `fix(scope): ...` for a bug fix
+- `docs(scope): ...` for documentation only
+- `style(scope): ...` for formatting and CSS tweaks
+- `refactor(scope): ...` for an internal restructure with no behavior change
+- `chore(scope): ...` for tooling and config
 
 ## Pre-Commit Checklist
 
@@ -30,7 +30,7 @@ Use conventional commits:
 - [ ] Mobile (375px), tablet (768px), and desktop layouts look correct
 - [ ] No new files committed under `node_modules/`, `dist/`, or `build/`
 - [ ] No secrets in code
-- [ ] Images optimized — target <300 KB each
+- [ ] Images optimized, target <300 KB each
 
 ## i18n Rules
 

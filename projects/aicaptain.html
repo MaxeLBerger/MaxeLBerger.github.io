@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de" data-color-scheme="dark" data-project-theme="aicaptain">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,8 @@
     <meta name="description" content="AI Captain: Intelligente VS Code Extension mit Multi-Model-Support, Code-Generierung, Review-Automatisierung und Web-Recherche.">
     <meta name="author" content="Maximilian Haak">
     <link rel="icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../assets/css/main.css?v=20260909-merged">
+    <link rel="stylesheet" href="main.css?v=20260909-merged">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
@@ -19,10 +19,11 @@
                 <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="../index.html#pricing">Leistungen</a>
-                <a href="../index.html#portfolio">Portfolio</a>
-                <a href="../index.html#about">Über mich</a>
-                <a href="../index.html#contact">Kontakt</a>
+                <a href="../index.html#projects" data-i18n="nav.portfolio">Portfolio</a>
+                <a href="../index.html#about" data-i18n="nav.about">Über mich</a>
+                <a href="../index.html#skills" data-i18n="nav.tech">Tech Stack</a>
+                <a href="../index.html#pricing" data-i18n="nav.pricing">Pakete</a>
+                <a href="../index.html#contact" data-i18n="nav.contact">Kontakt</a>
             </div>
             <div class="nav-actions">
                 <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
@@ -42,115 +43,94 @@
     </nav>
 
     <main class="project-page">
+
         <section class="project-hero">
             <div class="container">
-                <a href="../index.html#portfolio" class="back-link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Zurück zum Portfolio
-                </a>
-                <div class="project-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4zM20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87"/></svg>
-                    AI Agent
-                </div>
-                <h1 class="project-title">AI <span class="gradient-text">Captain</span></h1>
-                <p class="project-tagline">Dein intelligenter Coding-Copilot: VS Code Extension mit Multi-Model-Support, autonomer Code-Generierung, Review-Automatisierung und integrierter Web-Recherche.</p>
+
+                <a href="../index.html#projects" class="back-link" data-i18n="projekt.aicaptain.hero.zurueck">Zurück zu den Projekten</a>
+
+                <p class="section-tag" data-i18n="projekt.aicaptain.hero.label">AI Agent</p>
+
+                <h1 class="project-title">
+                    <span class="title-line" data-i18n="projekt.aicaptain.hero.titel1">AI</span>
+                    <span class="title-line title-line--accent" data-i18n="projekt.aicaptain.hero.titel2">Captain</span>
+                </h1>
+
+                <p class="project-tagline" data-i18n="projekt.aicaptain.hero.lead">Dein intelligenter Coding-Copilot: VS Code Extension mit Multi-Model-Support, autonomer Code-Generierung, Review-Automatisierung und integrierter Web-Recherche.</p>
+
                 <div class="project-actions">
-                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub ansehen</a>
-                    <a href="../index.html#contact" class="btn btn-outline">Ihr Projekt starten</a>
+                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.aicaptain.hero.cta1">GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline" data-i18n="projekt.aicaptain.hero.cta2">Ihr Projekt starten</a>
                 </div>
+
                 <div class="project-screenshot">
-                    <img src="../assets/img/projects/aicaptain.webp" alt="AI Captain VS Code Extension Screenshot" loading="eager">
+                    <img src="../assets/img/projects/aicaptain.webp" alt="AI Captain VS Code Extension Screenshot" data-i18n-alt="projekt.aicaptain.hero.shotAlt" width="1600" height="768" loading="eager" decoding="async">
                 </div>
             </div>
         </section>
 
         <div class="project-content">
+
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                    Über das Projekt
-                </span>
-                <h2 class="section-title">KI-gestützte Softwareentwicklung</h2>
-                <p class="section-text">AI Captain ist eine VS Code Extension, die die Softwareentwicklung mit KI-Automatisierung auf ein neues Level hebt. Mit Slash-Commands wie /code, /review, /research und /plan wird der gesamte Entwicklungs-Workflow beschleunigt.</p>
-                <p class="section-text">Das Multi-Model-System unterstützt GPT-4o, Claude und Perplexity, je nach Aufgabe wird automatisch das beste Modell gewählt. Vollständig konfigurierbar und erweiterbar.</p>
+                <p class="section-tag" data-i18n="projekt.aicaptain.ueber.label">Über das Projekt</p>
+                <h2 class="section-title" data-i18n="projekt.aicaptain.ueber.titel">KI-gestützte Softwareentwicklung</h2>
+                <p class="section-text" data-i18n="projekt.aicaptain.ueber.text1">AI Captain ist eine VS Code Extension, die die Softwareentwicklung mit KI-Automatisierung auf ein neues Level hebt. Mit Slash-Commands wie /code, /review, /research und /plan wird der gesamte Entwicklungs-Workflow beschleunigt.</p>
+                <p class="section-text" data-i18n="projekt.aicaptain.ueber.text2">Das Multi-Model-System unterstützt GPT-4o, Claude und Perplexity, je nach Aufgabe wird automatisch das beste Modell gewählt. Vollständig konfigurierbar und erweiterbar.</p>
             </section>
 
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-                    Features
-                </span>
-                <h2 class="section-title">Was AI Captain kann</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <h3>/code</h3>
-                        <p>Autonome Code-Generierung, beschreibe was du brauchst, AI Captain schreibt den Code.</p>
+                <p class="section-tag" data-i18n="projekt.aicaptain.features.label">Features</p>
+                <h2 class="section-title" data-i18n="projekt.aicaptain.features.titel">Was AI Captain kann</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f1.titel">/code</h3>
+                        <p data-i18n="projekt.aicaptain.features.f1.text">Autonome Code-Generierung, beschreibe was du brauchst, AI Captain schreibt den Code.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </div>
-                        <h3>/review</h3>
-                        <p>Automatisches Code-Review mit Verbesserungsvorschlägen und Best Practices.</p>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f2.titel">/review</h3>
+                        <p data-i18n="projekt.aicaptain.features.f2.text">Automatisches Code-Review mit Verbesserungsvorschlägen und Best Practices.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        </div>
-                        <h3>/research</h3>
-                        <p>Integrierte Web-Recherche via Perplexity API, aktuelle Informationen direkt in VS Code.</p>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f3.titel">/research</h3>
+                        <p data-i18n="projekt.aicaptain.features.f3.text">Integrierte Web-Recherche via Perplexity API, aktuelle Informationen direkt in VS Code.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                        </div>
-                        <h3>/plan</h3>
-                        <p>Strukturierte Implementierungspläne mit Abhängigkeiten und Risiko-Analyse.</p>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f4.titel">/plan</h3>
+                        <p data-i18n="projekt.aicaptain.features.f4.text">Strukturierte Implementierungspläne mit Abhängigkeiten und Risiko-Analyse.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                        </div>
-                        <h3>Multi-Model</h3>
-                        <p>GPT-4o, Claude und Perplexity, automatische Modellwahl je nach Aufgabe.</p>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f5.titel">Multi-Model</h3>
+                        <p data-i18n="projekt.aicaptain.features.f5.text">GPT-4o, Claude und Perplexity, automatische Modellwahl je nach Aufgabe.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                        </div>
-                        <h3>Konfigurierbar</h3>
-                        <p>Vollständig anpassbar, eigene Prompts, Modell-Einstellungen und Workflow-Regeln.</p>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.aicaptain.features.f6.titel">Konfigurierbar</h3>
+                        <p data-i18n="projekt.aicaptain.features.f6.text">Vollständig anpassbar, eigene Prompts, Modell-Einstellungen und Workflow-Regeln.</p>
                     </div>
                 </div>
             </section>
 
             <section class="project-section">
-                <span class="section-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    Tech Stack
-                </span>
-                <h2 class="section-title">Technologien</h2>
+                <p class="section-tag" data-i18n="projekt.aicaptain.stack.label">Tech Stack</p>
+                <h2 class="section-title" data-i18n="projekt.aicaptain.stack.titel">Technologien</h2>
                 <div class="tech-stack">
-                    <span class="tech-badge">TypeScript 5.7</span>
-                    <span class="tech-badge">VS Code API</span>
-                    <span class="tech-badge">Copilot Chat API</span>
-                    <span class="tech-badge">Perplexity API</span>
-                    <span class="tech-badge">esbuild</span>
-                    <span class="tech-badge">Node.js 20</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t1">TypeScript 5.7</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t2">VS Code API</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t3">Copilot Chat API</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t4">Perplexity API</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t5">esbuild</span>
+                    <span class="tech-badge" data-i18n="projekt.aicaptain.stack.t6">Node.js 20</span>
                 </div>
             </section>
 
-            <div class="project-cta">
-                <h2>Interesse an AI-gestützter Entwicklung?</h2>
-                <p>Entdecken Sie AI Captain auf GitHub, oder lassen Sie sich eine maßgeschneiderte AI-Lösung entwickeln.</p>
+            <section class="project-section project-outro">
+                <h2 data-i18n="projekt.aicaptain.outro.titel">Interesse an AI-gestützter Entwicklung?</h2>
+                <p data-i18n="projekt.aicaptain.outro.text">Entdecken Sie AI Captain auf GitHub, oder lassen Sie sich eine maßgeschneiderte AI-Lösung entwickeln.</p>
                 <div class="project-actions">
-                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub ansehen</a>
-                    <a href="../index.html#contact" class="btn btn-outline">Projekt anfragen</a>
+                    <a href="https://github.com/MaxeLBerger/AIAICaptain" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.aicaptain.outro.cta1">GitHub ansehen</a>
+                    <a href="../index.html#contact" class="btn btn-outline" data-i18n="projekt.aicaptain.outro.cta2">Projekt anfragen</a>
                 </div>
-            </div>
+            </section>
+
         </div>
     </main>
 
@@ -166,6 +146,7 @@
         </div>
     </footer>
 
-    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/projects-i18n.js?v=20260909-merged" defer></script>
+    <script src="../assets/js/main.js?v=20260909-merged" defer></script>
 </body>
 </html>

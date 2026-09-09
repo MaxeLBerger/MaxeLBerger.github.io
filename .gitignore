@@ -62,3 +62,6 @@ diff.txt
 # Windows folder metadata
 desktop.ini
 [Dd]esktop.ini
+
+# Lokale Review-Screenshots, nicht ausliefern
+_review/

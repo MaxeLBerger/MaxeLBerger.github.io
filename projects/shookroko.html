@@ -1,147 +1,157 @@
-﻿<!DOCTYPE html>
-<html lang="de">
+<!DOCTYPE html>
+<html lang="de" data-color-scheme="dark" data-project-theme="shookroko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shookroko - Survivors Game | Maximilian Haak</title>
-    <meta name="description" content="Shookroko - Browser-basiertes Survivors-Game mit 6 Umgebungen, Wave-System und prozeduralem Audio. React + Canvas + TypeScript.">
+    <title>Shookroko: Survivors Game | Maximilian Haak</title>
+    <meta name="description" content="Shookroko: Browser-basiertes Survivors-Game mit 6 Umgebungen, Wave-System und prozeduralem Audio. React + Canvas + TypeScript.">
     <meta name="keywords" content="Shookroko, Survivors, Game, React, Canvas, TypeScript, Maximilian Haak">
     <meta name="author" content="Maximilian Haak">
-
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
-
     <link rel="icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="shortcut icon" href="../assets/img/favicons/faviconwhitegreen.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/main.css?v=20260909-merged">
+    <link rel="stylesheet" href="main.css?v=20260909-merged">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <a href="../index.html#home">Maximilian Haak</a>
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Startseite">
+                <span class="logo-text">Maximilian&#160;<span class="logo-accent">Haak</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#projects" data-i18n="nav.portfolio">Portfolio</a>
+                <a href="../index.html#about" data-i18n="nav.about">Über mich</a>
+                <a href="../index.html#skills" data-i18n="nav.tech">Tech Stack</a>
+                <a href="../index.html#pricing" data-i18n="nav.pricing">Pakete</a>
+                <a href="../index.html#contact" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="langToggle" class="btn-icon" aria-label="Sprache wechseln" title="EN / DE">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
-        <div class="menu-toggle" id="mobile-menu" aria-label="Menü umschalten">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list" role="navigation">
-            <li><a href="../index.html#home" class="nav-link">Home</a></li>
-            <li><a href="../index.html#aboutMe" class="nav-link">About Me</a></li>
-            <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="../index.html#projects" class="nav-link">Projekte</a></li>
-        </ul>
     </nav>
 
-    <div id="progress-bar" aria-hidden="true"></div>
-
-    <main id="wrapper" class="project-main">
+    <main class="project-page">
         <section class="project-hero">
             <div class="container">
-                <h1 class="project-title">Shookroko</h1>
-                <p class="project-tagline">Browser-basiertes Survivors-Game mit 6 Umgebungen</p>
+                <a href="../index.html#projects" class="back-link" data-i18n="projekt.shookroko.hero.zurueck">Zurück zu den Projekten</a>
+
+                <p class="section-tag" data-i18n="projekt.shookroko.hero.label">Game Development</p>
+
+                <h1 class="project-title">
+                    <span class="title-line" data-i18n="projekt.shookroko.hero.titel1">Shookroko.</span>
+                    <span class="title-line title-line--accent" data-i18n="projekt.shookroko.hero.titel2">Survivors im Browser.</span>
+                </h1>
+
+                <p class="project-tagline" data-i18n="projekt.shookroko.hero.lead">Browser-basiertes Survivors-Game mit 6 Umgebungen.</p>
+
                 <div class="project-actions">
-                    <a href="https://shookroko.pages.dev/" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fas fa-play"></i> Live spielen
-                    </a>
-                    <a href="https://github.com/MaxeLBerger/shookroko" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i> Code ansehen
-                    </a>
+                    <a href="https://shookroko.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.shookroko.hero.cta1">Live spielen</a>
+                    <a href="https://github.com/MaxeLBerger/shookroko" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="projekt.shookroko.hero.cta2">Code ansehen</a>
                 </div>
             </div>
         </section>
 
-        <section class="project-detail-section">
-            <div class="container">
-                <section class="project-section">
-                    <h2><i class="fas fa-info-circle"></i> Über das Projekt</h2>
-                    <p>Shookroko ist ein browser-basiertes Survivors-Style Game mit einem niedlichen Amphibien-Charakter, der endlose Wellen von Feinden in verschiedenen aquatischen Umgebungen bekämpft. Das Spiel bietet tiefe Customization, prozedurales Audio und persistente Progression.</p>
-                    <p>Gebaut mit React 19, TypeScript und HTML5 Canvas mit über 3.500 Zeilen Entwickler-Dokumentation, bereit für professionelle Weiterentwicklung.</p>
-                </section>
+        <div class="project-content">
+            <section class="project-section">
+                <p class="section-tag" data-i18n="projekt.shookroko.ueber.label">Über das Projekt</p>
+                <h2 class="section-title" data-i18n="projekt.shookroko.ueber.titel">Endlose Wellen in sechs aquatischen Umgebungen</h2>
+                <p class="section-text" data-i18n="projekt.shookroko.ueber.text1">Shookroko ist ein browser-basiertes Survivors-Style Game mit einem niedlichen Amphibien-Charakter, der endlose Wellen von Feinden in verschiedenen aquatischen Umgebungen bekämpft. Das Spiel bietet tiefe Customization, prozedurales Audio und persistente Progression.</p>
+                <p class="section-text" data-i18n="projekt.shookroko.ueber.text2">Gebaut mit React 19, TypeScript und HTML5 Canvas mit über 3.500 Zeilen Entwickler-Dokumentation, bereit für professionelle Weiterentwicklung.</p>
+            </section>
 
-                <section class="project-section">
-                    <h2><i class="fas fa-star"></i> Features</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-map"></i>
-                            <h3>6 Umgebungen</h3>
-                            <p>Sumpf, Fluss, Korallenriff, Abgrund, Vulkan und Gefrorener See, jede mit einzigartiger Atmosphäre.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-wave-square"></i>
-                            <h3>Progressives Wave-System</h3>
-                            <p>Kontinuierliches Multi-Directional Enemy Spawning mit skalierender Schwierigkeit.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-palette"></i>
-                            <h3>Deep Customization</h3>
-                            <p>Skins, Hüte, Augenausdrücke, Emotes und Waffen-Skins für den Spielercharakter.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-skull-crossbones"></i>
-                            <h3>Einzigartige Feinde</h3>
-                            <p>6 umgebungsspezifische Feindvarianten mit speziellen Verhaltensweisen.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-headphones"></i>
-                            <h3>Prozedurales Audio</h3>
-                            <p>Echtzeit-synthetisierte Ambient-Sounds über die Web Audio API.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-save"></i>
-                            <h3>Persistente Progression</h3>
-                            <p>Unlocks und Customization werden via KV Storage dauerhaft gespeichert.</p>
-                        </div>
+            <section class="project-section">
+                <p class="section-tag" data-i18n="projekt.shookroko.features.label">Features</p>
+                <h2 class="section-title" data-i18n="projekt.shookroko.features.titel">Was im Spiel steckt</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f1.titel">6 Umgebungen</h3>
+                        <p data-i18n="projekt.shookroko.features.f1.text">Sumpf, Fluss, Korallenriff, Abgrund, Vulkan und Gefrorener See, jede mit einzigartiger Atmosphäre.</p>
                     </div>
-                </section>
-
-                <section class="project-section">
-                    <h2><i class="fas fa-code"></i> Technologien</h2>
-                    <div class="tech-stack">
-                        <span class="tech-badge">React 19</span>
-                        <span class="tech-badge">TypeScript 5.7</span>
-                        <span class="tech-badge">Vite 7</span>
-                        <span class="tech-badge">HTML5 Canvas</span>
-                        <span class="tech-badge">Web Audio API</span>
-                        <span class="tech-badge">Tailwind CSS</span>
-                        <span class="tech-badge">Shadcn UI</span>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f2.titel">Progressives Wave-System</h3>
+                        <p data-i18n="projekt.shookroko.features.f2.text">Kontinuierliches Multi-Directional Enemy Spawning mit skalierender Schwierigkeit.</p>
                     </div>
-                </section>
-
-                <div class="project-cta">
-                    <h2>Bereit für die Wellen?</h2>
-                    <p>Erkunde den Code dieses Survivors-Games!</p>
-                    <div class="cta-buttons">
-                        <a href="https://shookroko.pages.dev/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                            <i class="fas fa-play"></i> Jetzt spielen
-                        </a>
-                        <a href="https://github.com/MaxeLBerger/shookroko" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i> GitHub Repository
-                        </a>
-                        <a href="../index.html#projects" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-arrow-left"></i> Zurück zu Projekten
-                        </a>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f3.titel">Deep Customization</h3>
+                        <p data-i18n="projekt.shookroko.features.f3.text">Skins, Hüte, Augenausdrücke, Emotes und Waffen-Skins für den Spielercharakter.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f4.titel">Einzigartige Feinde</h3>
+                        <p data-i18n="projekt.shookroko.features.f4.text">6 umgebungsspezifische Feindvarianten mit speziellen Verhaltensweisen.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f5.titel">Prozedurales Audio</h3>
+                        <p data-i18n="projekt.shookroko.features.f5.text">Echtzeit-synthetisierte Ambient-Sounds über die Web Audio API.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 data-i18n="projekt.shookroko.features.f6.titel">Persistente Progression</h3>
+                        <p data-i18n="projekt.shookroko.features.f6.text">Unlocks und Customization werden via KV Storage dauerhaft gespeichert.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="project-section">
+                <p class="section-tag" data-i18n="projekt.shookroko.galerie.label">Einblicke</p>
+                <h2 class="section-title" data-i18n="projekt.shookroko.galerie.titel">Aus dem Spiel</h2>
+                <div class="project-gallery">
+                    <figure class="gallery-item">
+                        <img src="../assets/img/projects/shookroko.webp" alt="Kachelbare Sumpf-Grafik aus Shookroko mit Seerosenblättern auf dunklem Wasser" data-i18n-alt="projekt.shookroko.galerie.b1.alt" width="1200" height="1200" loading="lazy" decoding="async">
+                        <figcaption data-i18n="projekt.shookroko.galerie.b1.text">Sumpf-Tileset: eine der sechs Umgebungen.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <p class="section-tag" data-i18n="projekt.shookroko.stack.label">Tech Stack</p>
+                <h2 class="section-title" data-i18n="projekt.shookroko.stack.titel">Technologien</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t1">React 19</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t2">TypeScript 5.7</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t3">Vite 7</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t4">HTML5 Canvas</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t5">Web Audio API</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t6">Tailwind CSS</span>
+                    <span class="tech-badge" data-i18n="projekt.shookroko.stack.t7">Shadcn UI</span>
+                </div>
+            </section>
+
+            <section class="project-section project-outro">
+                <h2 data-i18n="projekt.shookroko.outro.titel">Bereit für die Wellen?</h2>
+                <p data-i18n="projekt.shookroko.outro.text">Erkunde den Code dieses Survivors-Games.</p>
+                <div class="project-actions">
+                    <a href="https://shookroko.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projekt.shookroko.outro.cta1">Jetzt spielen</a>
+                    <a href="https://github.com/MaxeLBerger/shookroko" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="projekt.shookroko.outro.cta2">GitHub Repository</a>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <button id="back-to-top" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
-
-    <footer>
-        <div class="social-media">
-            <a href="https://github.com/MaxeLBerger/shookroko" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Maximilian Haak</p>
+                <div class="footer-links">
+                    <a href="../impressum.html" data-i18n="footer.impressum">Impressum</a>
+                    <a href="../datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 Maximilian Haak</p>
-        <p>
-            <a href="../impressum.html" class="footer-link">Impressum</a> | 
-            <a href="../datenschutz.html" class="footer-link">Datenschutz</a> | 
-            <a href="#" class="footer-link" id="cookie-settings">Cookie-Einstellungen</a>
-        </p>
     </footer>
 
-    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/projects-i18n.js?v=20260909-merged" defer></script>
+    <script src="../assets/js/main.js?v=20260909-merged" defer></script>
 </body>
 </html>

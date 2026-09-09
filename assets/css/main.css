@@ -9,6 +9,11 @@
     --theme-gradient-start: #22d3ee;
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #a855f7;
+    /* Text that sits ON the theme colour (filled primary button). Every theme
+       block below picks the variant that clears 4.5:1 against its own
+       --theme-primary, instead of assuming the theme is always light enough
+       for near-black type. */
+    --theme-on-primary: #0a0a0f;
     --theme-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Dark mode semantic colors (default) */
@@ -23,6 +28,11 @@
     --color-text: #f0f0f5;
     --color-text-secondary: #a0a0b0;
     --color-text-muted: #606070;
+    /* Quiet but still readable: --color-text-muted only reaches ~3.1:1 and is
+       reserved for non-text decoration. Anything a visitor has to read (price
+       lines, eyebrows, the inactive mode label) uses this token, which clears
+       4.5:1 in both colour schemes. */
+    --color-text-quiet: #808090;
 
     /* Typography */
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -79,26 +89,6 @@
    PROJECT THEMES
    ═══════════════════════════════════════════════ */
 
-/* CoHa: Warm Golden-Brown (Crispy Duck) */
-[data-project-theme="coha"] {
-    --theme-primary: 180, 108, 42;
-    --theme-secondary: 210, 140, 60;
-    --theme-accent: 230, 172, 90;
-    --theme-gradient-start: #e6ac5a;
-    --theme-gradient-mid: #b46c2a;
-    --theme-gradient-end: #8b4513;
-}
-
-/* Imkerei: Amber/Gold */
-[data-project-theme="imkerei"] {
-    --theme-primary: 245, 158, 11;
-    --theme-secondary: 217, 119, 6;
-    --theme-accent: 251, 191, 36;
-    --theme-gradient-start: #fbbf24;
-    --theme-gradient-mid: #f59e0b;
-    --theme-gradient-end: #d97706;
-}
-
 /* Maximilian Haak: Blue/Indigo (Personal) */
 [data-project-theme="maxhaak"] {
     --theme-primary: 59, 130, 246;
@@ -129,16 +119,6 @@
     --theme-gradient-end: #6366f1;
 }
 
-/* SoundOfLvke: Rose/Pink (Music) */
-[data-project-theme="soundoflvke"] {
-    --theme-primary: 244, 63, 94;
-    --theme-secondary: 225, 29, 72;
-    --theme-accent: 251, 113, 133;
-    --theme-gradient-start: #fb7185;
-    --theme-gradient-mid: #f43f5e;
-    --theme-gradient-end: #e11d48;
-}
-
 /* Shookroko: Lime/Green (Game) */
 [data-project-theme="shookroko"] {
     --theme-primary: 132, 204, 22;
@@ -157,16 +137,7 @@
     --theme-gradient-start: #ef4444;
     --theme-gradient-mid: #b91c1c;
     --theme-gradient-end: #7f1d1d;
-}
-
-/* dog-kennel-online: Teal mit warmem Akzent, ruhig, operativ */
-[data-project-theme="dogkennel"] {
-    --theme-primary: 13, 148, 136;
-    --theme-secondary: 15, 118, 110;
-    --theme-accent: 251, 146, 60;
-    --theme-gradient-start: #2dd4bf;
-    --theme-gradient-mid: #0d9488;
-    --theme-gradient-end: #115e59;
+    --theme-on-primary: #ffffff;
 }
 
 /* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire, wertig, vertrauensvoll */
@@ -177,26 +148,59 @@
     --theme-gradient-start: #3b82f6;
     --theme-gradient-mid: #1e40af;
     --theme-gradient-end: #1e3a8a;
+    --theme-on-primary: #ffffff;
 }
 
-/* Kaya Seeds: Emerald, natürlich, lebendig */
-[data-project-theme="kayaseeds"] {
-    --theme-primary: 16, 185, 129;
-    --theme-secondary: 5, 150, 105;
-    --theme-accent: 52, 211, 153;
-    --theme-gradient-start: #34d399;
-    --theme-gradient-mid: #10b981;
-    --theme-gradient-end: #047857;
+/* Haakly: klares Produkt-Blau, ruhig und technisch */
+[data-project-theme="haakly"] {
+    --theme-primary: 74, 120, 255;
+    --theme-secondary: 47, 90, 214;
+    --theme-accent: 130, 160, 255;
+    --theme-gradient-start: #82a0ff;
+    --theme-gradient-mid: #4a78ff;
+    --theme-gradient-end: #2f5ad6;
 }
 
-/* JK Entertainment: Trading-Card-Orange, energetisch, spielerisch (matches Logo + CTA) */
-[data-project-theme="jkentertainment"] {
-    --theme-primary: 249, 115, 22;
-    --theme-secondary: 234, 88, 12;
-    --theme-accent: 251, 146, 60;
-    --theme-gradient-start: #fb923c;
-    --theme-gradient-mid: #f97316;
-    --theme-gradient-end: #c2410c;
+/* CapitalCombo: Magenta der Analyse-Oberflaeche, hoher Signalwert */
+[data-project-theme="capitalcombo"] {
+    --theme-primary: 229, 0, 114;
+    --theme-secondary: 178, 0, 89;
+    --theme-accent: 255, 92, 168;
+    --theme-gradient-start: #ff5ca8;
+    --theme-gradient-mid: #e50072;
+    --theme-gradient-end: #b20059;
+    --theme-on-primary: #ffffff;
+}
+
+/* Deterministische Review: tiefes Werkzeug-Blau, sachlich */
+[data-project-theme="detreview"] {
+    --theme-primary: 15, 67, 194;
+    --theme-secondary: 11, 50, 148;
+    --theme-accent: 96, 141, 245;
+    --theme-gradient-start: #608df5;
+    --theme-gradient-mid: #0f43c2;
+    --theme-gradient-end: #0b3294;
+    --theme-on-primary: #ffffff;
+}
+
+/* MemeCoinTrader: Cyan der Solana-Streams, kuehl und wach */
+[data-project-theme="memecointrader"] {
+    --theme-primary: 34, 211, 238;
+    --theme-secondary: 8, 145, 178;
+    --theme-accent: 103, 232, 249;
+    --theme-gradient-start: #67e8f9;
+    --theme-gradient-mid: #22d3ee;
+    --theme-gradient-end: #0891b2;
+}
+
+/* Age of Max: Bronze/Gold der Pixel-Epochen, warm */
+[data-project-theme="ageofmax"] {
+    --theme-primary: 217, 164, 65;
+    --theme-secondary: 170, 122, 40;
+    --theme-accent: 240, 200, 120;
+    --theme-gradient-start: #f0c878;
+    --theme-gradient-mid: #d9a441;
+    --theme-gradient-end: #aa7a28;
 }
 
 /* Albert Royale: Low-Poly-Insel-Gruen mit Zonen-Violett, spielerisch, KI-nah */
@@ -217,6 +221,7 @@
     --theme-gradient-start: #22b8cf;
     --theme-gradient-mid: #0e7490;
     --theme-gradient-end: #f4727a;
+    --theme-on-primary: #ffffff;
 }
 
 /* Theme transition on all theme-aware elements */
@@ -269,6 +274,7 @@ html[data-color-scheme="light"] {
     --color-text: #0f172a;
     --color-text-secondary: #3f4658;
     --color-text-muted: #6b7280;
+    --color-text-quiet: #5f6673;
     --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
     --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
     --shadow-lg: 0 18px 48px rgba(15, 23, 42, 0.14);
@@ -454,19 +460,19 @@ ul, ol {
     white-space: nowrap;
 }
 
+/* The label colour follows the brightness of the active theme colour, not the
+   colour scheme: a fixed near-black label drops to 2.3:1 on the dark navy and
+   deep blue themes, and a fixed white label drops below 2.2:1 on the amber and
+   lime ones. Each theme block picks its own --theme-on-primary. */
 .btn-primary {
     background: rgb(var(--theme-primary));
-    color: #0a0a0f;
+    color: var(--theme-on-primary);
     transition: background var(--duration-base) var(--ease-out),
                 color var(--theme-transition);
 }
 
 .btn-primary:hover {
     background: rgba(var(--theme-primary), 0.85);
-}
-
-html[data-color-scheme="light"] .btn-primary {
-    color: #ffffff;
 }
 
 .btn-outline {
@@ -1006,7 +1012,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     background: transparent;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     font-family: var(--font-family);
     cursor: pointer;
     white-space: nowrap;
@@ -1020,7 +1026,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     font-variant-numeric: tabular-nums;
     transition: color var(--duration-base);
 }
@@ -1074,7 +1080,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     border: 1px solid transparent;
     border-radius: var(--radius-full);
     background: transparent;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 600;
@@ -1138,6 +1144,11 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 .hero-slide {
     grid-area: 1 / 1;
+    /* All slides share one grid cell, so the container is as tall as the
+       tallest slide. Centre each slide in that cell: a short one then sits in
+       the middle instead of dumping the whole spare height as a gap between
+       its tags and the pagination. */
+    align-self: center;
     min-width: 0;
     opacity: 0;
     visibility: hidden;
@@ -1164,6 +1175,25 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+}
+
+/* Category eyebrow on a slide. Same visual family as the active mode pill:
+   the theme colour carries the tint, the label itself stays on --color-text so
+   it never depends on how bright the current theme happens to be.
+   `width: fit-content` instead of `align-self`, so the centred mobile layout
+   (.slide-text { align-items: center }) still centres it. */
+.slide-badge {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.3rem 0.85rem;
+    border: 1px solid rgba(var(--theme-primary), 0.42);
+    border-radius: var(--radius-full);
+    background: rgba(var(--theme-primary), 0.12);
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .slide-title {
@@ -1204,7 +1234,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     border-radius: var(--radius-full);
     border: 1px solid var(--color-border);
     font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     background: var(--color-surface);
 }
 
@@ -1253,7 +1283,9 @@ html[data-color-scheme="light"] .showcase-frame {
 }
 
 .showcase-image-wrap {
-    aspect-ratio: 16 / 10;
+    /* Die Slider-Screenshots liegen ueberwiegend als 2:1 vor. Ein 16:10-Rahmen
+       schnitt sie links und rechts sichtbar an. */
+    aspect-ratio: 2 / 1;
     overflow: hidden;
 }
 
@@ -1307,6 +1339,30 @@ html[data-color-scheme="light"] .showcase-frame {
     background:
         repeating-linear-gradient(0deg, rgba(var(--theme-primary), 0.06) 0 1px, transparent 1px 28px),
         repeating-linear-gradient(90deg, rgba(var(--theme-primary), 0.06) 0 1px, transparent 1px 28px);
+}
+
+/* The client set has room for one more project. The invitation slide says so
+   in type: a quiet surface in the same frame as the screenshots, not a fake
+   one and not a skeleton. */
+.project-mock--invite {
+    align-content: center;
+    gap: var(--space-sm);
+}
+
+.project-mock-headline {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.4vw + 0.5rem, var(--font-size-3xl));
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+}
+
+.project-mock-sub {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
 }
 
 /* Showcase glow behind frame */
@@ -1372,7 +1428,7 @@ html[data-color-scheme="light"] .showcase-frame {
 .section-tag {
     display: block;
     margin-bottom: var(--space-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;
@@ -1582,7 +1638,7 @@ html[data-color-scheme="light"] .about-highlight {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
 }
 
 .service-card__title {
@@ -1682,7 +1738,7 @@ html[data-color-scheme="light"] .about-highlight {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     white-space: nowrap;
 }
 
@@ -1710,7 +1766,7 @@ html[data-color-scheme="light"] .about-highlight {
 .services-note {
     margin-top: var(--space-md);
     text-align: center;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     font-size: var(--font-size-xs);
 }
 
@@ -2141,7 +2197,7 @@ html[data-color-scheme="light"] .skill-tag.highlight {
 
 .site-footer p {
     font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
 }
 
 .site-footer a {
@@ -2173,7 +2229,7 @@ html[data-color-scheme="light"] .skill-tag.highlight {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    color: var(--color-text-muted);
+    color: var(--color-text-quiet);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: all var(--duration-base) var(--ease-out);

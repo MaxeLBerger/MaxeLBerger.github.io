@@ -1,178 +1,264 @@
 /* ═══════════════════════════════════════════════
-   PROJECT PAGE STYLES: v2 Design System
+   PROJEKT-DETAILSEITEN: Designsystem v3
+
+   Uebertraegt den ruhigen, editorialen Stil der Startseite auf die
+   Detailseiten. Bewusst NICHT mehr enthalten: Verlaufstitel, Pill-Badges,
+   Icon-Kaesten, Signalfarben-Chips, radiale Deko-Layer, boxige CTA-Karten.
+
+   Wird IMMER nach assets/css/main.css geladen und erweitert dessen Tokens.
+   Alles hier ist auf .project-page oder auf projektspezifische Klassen
+   begrenzt, damit die Startseite unberuehrt bleibt.
    ═══════════════════════════════════════════════ */
 
-/* Page layout: offset for fixed nav */
+/* ─────────────────────────────────────────────
+   1. AKZENTFARBEN MIT GEPRUEFTEM KONTRAST
+
+   rgb(var(--theme-primary)) ist als Textfarbe nicht in jedem Theme
+   lesbar (danielbrecheis auf Dunkel: 2,3:1). Darum bekommt jede
+   Theme-Variante hier einen eigenen Textakzent, je einmal fuer Dunkel
+   und fuer Hell, jeweils nachgerechnet auf mindestens 4,5:1 gegen
+   --color-bg, gegen die Kartenflaechen und gegen den getoenten
+   Light-Mode-Hintergrund (Body-Radials mit 10 % Theme-Farbe).
+
+   --proj-on-accent ist die Schriftfarbe AUF der gefuellten Theme-Flaeche
+   (Primaerbutton). Sie gilt in beiden Farbschemata, weil die Fuellung in
+   beiden Schemata rgb(var(--theme-primary)) ist.
+   ───────────────────────────────────────────── */
+:root {
+    --proj-accent: #22d3ee;
+    --proj-on-accent: #0b0d14;
+    --proj-quiet: #8f8fa0;
+}
+
+html[data-color-scheme="light"] {
+    /* --proj-on-accent bleibt bewusst unberuehrt: die Fuellfarbe wechselt
+       beim Schemawechsel nicht, also darf es die Schriftfarbe auch nicht. */
+    --proj-accent: #0b5f78;
+    --proj-quiet: #5a6070;
+}
+
+[data-project-theme="coha"] { --proj-accent: #e6ac5a; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="coha"] { --proj-accent: #8b4513; }
+
+[data-project-theme="imkerei"] { --proj-accent: #fbbf24; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="imkerei"] { --proj-accent: #a04a06; }
+
+[data-project-theme="maxhaak"] { --proj-accent: #8fb3fd; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="maxhaak"] { --proj-accent: #1d4ed8; }
+
+[data-project-theme="aicaptain"] { --proj-accent: #a78bfa; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="aicaptain"] { --proj-accent: #6d28d9; }
+
+[data-project-theme="e46"] { --proj-accent: #8fb3fd; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="e46"] { --proj-accent: #1d4ed8; }
+
+[data-project-theme="soundoflvke"] { --proj-accent: #fb7185; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="soundoflvke"] { --proj-accent: #be123c; }
+
+[data-project-theme="shookroko"] { --proj-accent: #a3e635; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="shookroko"] { --proj-accent: #456f0d; }
+
+[data-project-theme="medieval"] { --proj-accent: #f28b8b; --proj-on-accent: #ffffff; }
+html[data-color-scheme="light"][data-project-theme="medieval"] { --proj-accent: #a31515; }
+
+[data-project-theme="dogkennel"] { --proj-accent: #2dd4bf; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="dogkennel"] { --proj-accent: #0a6259; }
+
+[data-project-theme="danielbrecheis"] { --proj-accent: #7ea8f8; --proj-on-accent: #ffffff; }
+html[data-color-scheme="light"][data-project-theme="danielbrecheis"] { --proj-accent: #1e40af; }
+
+[data-project-theme="kayaseeds"] { --proj-accent: #34d399; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="kayaseeds"] { --proj-accent: #046b4e; }
+
+[data-project-theme="jkentertainment"] { --proj-accent: #fb923c; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="jkentertainment"] { --proj-accent: #b03a09; }
+
+[data-project-theme="albert"] { --proj-accent: #7bc96f; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="albert"] { --proj-accent: #276b30; }
+
+[data-project-theme="senihelp24"] { --proj-accent: #38bdf8; --proj-on-accent: #ffffff; }
+html[data-color-scheme="light"][data-project-theme="senihelp24"] { --proj-accent: #0b5f78; }
+
+/* ─────────────────────────────────────────────
+   2. SEITENGERUEST
+   ───────────────────────────────────────────── */
 .project-page {
+    /* Eine Spalte fuer die ganze Seite, mittig im Viewport, Inhalt darin
+       linksbuendig. Schmaler als der globale Container (bis 1480px), weil
+       eine Detailseite gelesen und nicht ueberflogen wird. */
+    --proj-col: 980px;
+    --proj-measure: 68ch;
+    --proj-rhythm: clamp(2.5rem, 5vw, 4.5rem);
+
     padding-top: var(--nav-height);
 }
 
-/* ─── Project Hero ─── */
+/* Der globale .container ist auf Detailseiten zu breit. */
+.project-page .container {
+    max-width: var(--proj-col);
+}
+
+/* ─────────────────────────────────────────────
+   3. HERO: linksbuendig, flach, ohne Radial-Layer
+   ───────────────────────────────────────────── */
 .project-hero {
-    position: relative;
-    padding: var(--space-5xl) 0 var(--space-4xl);
-    text-align: center;
-    overflow: hidden;
+    padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.project-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(var(--theme-primary), 0.12) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.project-hero .container {
-    position: relative;
-    z-index: 1;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--space-xl);
-}
-
-.project-badge {
+.back-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-full);
-    background: rgba(var(--theme-primary), 0.1);
-    color: rgb(var(--theme-primary));
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-lg);
-    border: 1px solid rgba(var(--theme-primary), 0.2);
+    gap: 0.5rem;
+    min-height: 44px;
+    color: var(--proj-quiet);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.back-link::before {
+    content: "\2190";
+    font-size: 1.05em;
+    line-height: 1;
+}
+
+@media (hover: hover) {
+    .back-link:hover {
+        color: var(--color-text);
+    }
+}
+
+/* Das nuechterne Uppercase-Label ersetzt das alte Pill-Badge. Gleiche
+   Klasse wie auf der Startseite, hier nur mit hoeherem Kontrast:
+   --color-text-muted erreicht nur 3,2:1 (dunkel) und 4,4:1 (hell). */
+.project-page .section-tag {
+    color: var(--proj-quiet);
+    margin-bottom: var(--space-sm);
+}
+
+.project-hero .section-tag {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
 }
 
 .project-title {
-    font-size: clamp(2.5rem, 5vw, var(--font-size-6xl));
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    max-width: 22ch;
+    margin: 0 0 var(--space-lg);
     color: var(--color-text);
+    font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.35rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
 }
 
-.project-title .gradient-text {
-    background: linear-gradient(135deg, var(--theme-gradient-start), var(--theme-gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* Die eine farbige Zeile: flach, kein Verlauf. */
+.project-title .title-line--accent {
+    color: var(--proj-accent);
+    font-weight: 600;
+    /* Unterlaengen von g/j nicht abschneiden. */
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+}
+
+/* Sicherheitsnetz: falls in einer Seite noch ein .gradient-text im Titel
+   steht, wird er hier flach gestellt statt als Verlauf zu rendern. */
+.project-page .project-title .gradient-text {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--proj-accent);
 }
 
 .project-tagline {
-    font-size: var(--font-size-xl);
+    max-width: var(--proj-measure);
+    margin: 0 0 var(--space-xl);
     color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto var(--space-2xl);
-    line-height: 1.6;
+    font-size: clamp(1.05rem, 0.4vw + 0.98rem, 1.2rem);
+    line-height: 1.65;
 }
 
 .project-actions {
     display: flex;
-    gap: var(--space-md);
-    justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
 }
 
-/* ─── Project Screenshot ─── */
+/* Der Primaerbutton ist die einzige gefuellte Theme-Flaeche der Seite.
+   main.css setzt die Schrift pauschal auf #0a0a0f (dunkel) bzw. #ffffff
+   (hell); das faellt bei hellen Themes (lime, amber) auf 2:1. Hier
+   entscheidet stattdessen der pro Theme gepruefte Wert. */
+html[data-color-scheme] .project-page .btn-primary {
+    color: var(--proj-on-accent);
+}
+
+/* Faktenliste im Hero, optional. */
+.project-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-lg);
+    max-width: var(--proj-measure);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.project-meta dt {
+    margin-bottom: 0.35rem;
+    color: var(--proj-quiet);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.project-meta dd {
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────
+   4. BILDER
+   ───────────────────────────────────────────── */
 .project-screenshot {
-    max-width: 900px;
-    margin: var(--space-3xl) auto 0;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+    margin-top: var(--space-2xl);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
 }
 
 .project-screenshot img {
-    width: 100%;
     display: block;
+    width: 100%;
+    height: auto;
 }
 
-/* ─── Content Sections ─── */
-.project-content {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: var(--space-4xl) var(--space-xl);
-}
-
-.project-section {
-    margin-bottom: var(--space-4xl);
-}
-
-.project-section:last-child {
-    margin-bottom: 0;
-}
-
-.section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: rgb(var(--theme-primary));
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-md);
-}
-
-.section-label svg {
-    width: 16px;
-    height: 16px;
-}
-
-.section-title {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-lg);
-    line-height: 1.2;
-}
-
-.section-text {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 800px;
-}
-
-.section-text + .section-text {
-    margin-top: var(--space-md);
-}
-
-/* ─── Screenshot Gallery ─── */
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: var(--space-lg);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
 }
 
 .gallery-item {
     margin: 0;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    background: var(--color-bg-card);
-    transition: transform var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out);
+    background: var(--color-bg-elevated);
 }
 
-.gallery-item:hover {
-    transform: translateY(-4px);
-    border-color: rgba(var(--theme-primary), 0.45);
-}
-
-/* One uniform 16:9 box per tile so the row reads as a grid regardless of the
-   source aspect ratios. */
+/* Ein einheitlicher 16:9-Kasten pro Kachel, damit die Reihe unabhaengig
+   von den Quell-Seitenverhaeltnissen als Raster liest. */
 .gallery-item img {
     display: block;
     width: 100%;
-    /* Beats the presentational `height` attribute, which would otherwise pin
-       the box to the intrinsic pixel height and cancel the aspect-ratio. */
+    /* Schlaegt das praesentationelle height-Attribut, das sonst die
+       aspect-ratio aushebeln wuerde. */
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
@@ -180,247 +266,229 @@
     background: var(--color-bg-elevated);
 }
 
-/* For UI panels that would get cropped or upscaled into mush by `cover`. */
+/* Fuer UI-Panels, die cover zerschneiden oder hochskalieren wuerde. */
 .gallery-item--contain img {
     object-fit: contain;
     padding: var(--space-md);
 }
 
 .gallery-item figcaption {
-    padding: var(--space-md) var(--space-lg);
-    color: var(--color-text-muted);
+    padding: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
     line-height: 1.5;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .gallery-item,
-    .gallery-item:hover {
-        transform: none;
-        transition: none;
-    }
+/* ─────────────────────────────────────────────
+   5. INHALTSABSCHNITTE
+   ───────────────────────────────────────────── */
+.project-content {
+    max-width: var(--proj-col);
+    margin: 0 auto;
+    padding: 0 var(--space-xl) clamp(3rem, 6vw, 5rem);
 }
 
-/* ─── Features Grid ─── */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-lg);
-    margin-top: var(--space-2xl);
+/* Haarlinie plus grosszuegiger Abstand statt Karten und Kaesten. */
+.project-section {
+    padding-top: var(--proj-rhythm);
+    margin-top: var(--proj-rhythm);
+    border-top: 1px solid var(--color-border);
 }
 
-.feature-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    transition: transform var(--duration-base) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out);
-}
-
-@media (hover: hover) {
-    .feature-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(var(--theme-primary), 0.15);
-        border-color: rgba(var(--theme-primary), 0.3);
-    }
-}
-
-.feature-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background: rgba(var(--theme-primary), 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-lg);
-    color: rgb(var(--theme-primary));
-}
-
-.feature-icon svg {
-    width: 24px;
-    height: 24px;
-}
-
-.feature-card h3 {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
+.project-page .section-title {
+    max-width: 24ch;
+    margin: 0 0 var(--space-md);
     color: var(--color-text);
-    margin-bottom: var(--space-sm);
+    text-wrap: balance;
 }
 
-.feature-card p {
-    font-size: var(--font-size-base);
+.section-text {
+    max-width: var(--proj-measure);
     color: var(--color-text-secondary);
-    line-height: 1.6;
+    font-size: clamp(1rem, 0.3vw + 0.95rem, 1.08rem);
+    line-height: 1.75;
 }
 
-/* ─── Tech Stack ─── */
+.section-text + .section-text {
+    margin-top: var(--space-md);
+}
+
+/* Fliesstext-Links: der Akzent ist hier bewusst sichtbar, aber gepruefte
+   Textfarbe statt rgb(var(--theme-primary)). */
+.section-text a {
+    color: var(--proj-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────────
+   6. FEATURES ALS HAARLINIEN-LISTE
+
+   Ohne Icon-Kasten waere eine Karte nur noch ein Rahmen um zwei Zeilen
+   Text: viel Flaeche, kein Mehrwert. Die Liste haelt Titel und Text auf
+   derselben linken Kante wie den Fliesstext, traegt drei genauso gut wie
+   acht Punkte und braucht weder Schatten noch Hover-Anhebung.
+   ───────────────────────────────────────────── */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    column-gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+.feature-item {
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.feature-item h3 {
+    margin: 0 0 0.4rem;
+    color: var(--color-text);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+}
+
+.feature-item p {
+    max-width: 48ch;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────
+   7. TECH-BADGES: ruhig, keine Signalfarbe
+   ───────────────────────────────────────────── */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
+    max-width: var(--proj-measure);
     margin-top: var(--space-lg);
 }
 
 .tech-badge {
-    padding: var(--space-sm) var(--space-lg);
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
-    font-weight: 600;
-    background: rgba(var(--theme-primary), 0.1);
-    color: rgb(var(--theme-primary));
-    border: 1px solid rgba(var(--theme-primary), 0.2);
-    transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+    font-weight: 500;
+    line-height: 1.5;
 }
 
-@media (hover: hover) {
-    .tech-badge:hover {
-        background: rgb(var(--theme-primary));
-        color: var(--color-bg);
-    }
+/* ─────────────────────────────────────────────
+   8. LINKLISTE (ersetzt die Social-Karten)
+   ───────────────────────────────────────────── */
+.link-list {
+    max-width: var(--proj-measure);
+    margin-top: var(--space-xl);
 }
 
-/* ─── Social Links (for SoundOfLvke etc.) ─── */
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-}
-
-.social-card {
+.link-item {
     display: flex;
     align-items: center;
     gap: var(--space-md);
-    padding: var(--space-lg);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    text-decoration: none;
+    min-height: 52px;
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
     color: var(--color-text);
-    transition: transform var(--duration-base) var(--ease-out),
-                border-color var(--duration-base) var(--ease-out);
-}
-
-@media (hover: hover) {
-    .social-card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(var(--theme-primary), 0.3);
-    }
-}
-
-.social-card svg {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    color: rgb(var(--theme-primary));
-}
-
-.social-card span {
-    font-weight: 600;
-    font-size: var(--font-size-base);
-}
-
-/* ─── Project CTA ─── */
-.project-cta {
-    position: relative;
-    text-align: center;
-    padding: var(--space-4xl) var(--space-xl);
-    margin-top: var(--space-3xl);
-    border-radius: var(--radius-xl);
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-}
-
-.project-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(var(--theme-primary), 0.08) 0%, transparent 60%);
-    pointer-events: none;
-}
-
-.project-cta h2 {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-md);
-    position: relative;
-}
-
-.project-cta p {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-2xl);
-    position: relative;
-}
-
-.project-cta .project-actions {
-    position: relative;
-}
-
-/* ─── Back Navigation ─── */
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
     font-weight: 500;
     transition: color var(--duration-fast) var(--ease-out);
-    margin-bottom: var(--space-2xl);
+}
+
+.link-item-meta {
+    margin-left: auto;
+    color: var(--proj-quiet);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.link-item::after {
+    content: "\2197";
+    color: var(--proj-accent);
+    line-height: 1;
 }
 
 @media (hover: hover) {
-    .back-link:hover {
-        color: rgb(var(--theme-primary));
+    .link-item:hover {
+        color: var(--proj-accent);
     }
 }
 
-.back-link svg {
-    width: 16px;
-    height: 16px;
+/* ─────────────────────────────────────────────
+   9. ABSCHLUSS statt CTA-Box
+
+   Kein Kasten, kein Radial, kein Zentrieren: derselbe Haarlinien-Rhythmus
+   wie jeder andere Abschnitt, nur mit kleinerer Ueberschrift.
+   ───────────────────────────────────────────── */
+.project-outro h2 {
+    max-width: 26ch;
+    margin: 0 0 var(--space-sm);
+    color: var(--color-text);
+    font-size: clamp(1.35rem, 0.8rem + 1.4vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    text-wrap: balance;
 }
 
-/* ─── Responsive ─── */
+.project-outro p {
+    max-width: var(--proj-measure);
+    margin: 0 0 var(--space-xl);
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 0.3vw + 0.95rem, 1.08rem);
+    line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────
+   10. RESPONSIVE
+   ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .project-hero {
-        padding: var(--space-4xl) 0 var(--space-3xl);
+    .project-page {
+        --proj-rhythm: clamp(2rem, 7vw, 3rem);
     }
 
     .project-title {
-        font-size: clamp(2rem, 8vw, 3rem);
+        max-width: none;
     }
 
-    .project-tagline {
-        font-size: var(--font-size-base);
-    }
-
-    .features-grid {
+    .feature-list {
         grid-template-columns: 1fr;
     }
 
-    .project-cta {
-        padding: var(--space-3xl) var(--space-lg);
+    .project-content {
+        padding-inline: var(--space-lg);
+    }
+
+    .project-page .container {
+        padding-inline: var(--space-lg);
     }
 }
 
-@media (max-width: 480px) {
-    .project-hero {
-        padding: var(--space-3xl) 0 var(--space-2xl);
-    }
-
+@media (max-width: 420px) {
     .project-actions {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
-    .section-title {
-        font-size: var(--font-size-2xl);
+    .project-actions .btn {
+        justify-content: center;
+    }
+
+    .project-meta {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .back-link,
+    .link-item {
+        transition: none;
     }
 }
