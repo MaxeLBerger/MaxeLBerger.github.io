@@ -1248,8 +1248,12 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 .slide-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
+    /* Das Fenster mit dem Screenshot bekommt mehr Anteil als die Textspalte,
+       damit die gezeigte Arbeit gross genug erkennbar ist. Weiter darf es
+       nicht gehen: bei schmalerem Text bricht die laengste Titelzeile um,
+       die 549 px braucht. */
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--space-2xl);
     align-items: center;
 }
 
@@ -1331,7 +1335,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 .showcase-container {
     position: relative;
     width: 100%;
-    max-width: 520px;
+    max-width: 660px;
 }
 
 /* Badge: positioned relative to parent (.showcase-container) */
@@ -2904,7 +2908,7 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 .showcase-container {
-    max-width: min(520px, 100%);
+    max-width: min(660px, 100%);
 }
 
 .showcase-frame,

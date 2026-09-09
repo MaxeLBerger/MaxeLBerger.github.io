@@ -12,6 +12,7 @@
 
 window.PROJECT_TRANSLATIONS = {
     de: {
+        "projekt.albert.hero.cta3": "Auf GitHub",
         /* AI Captain */
         'projekt.aicaptain.hero.zurueck': "Zurück zu den Projekten",
         'projekt.aicaptain.hero.label': "AI Agent",
@@ -58,7 +59,7 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.albert.hero.titel1': "Albert Royale.",
         'projekt.albert.hero.titel2': "Dein Albert lernt von dir.",
         'projekt.albert.hero.lead': "Ein 3D-Battle-Royale, in dem du deinem eigenen Charakter erst das Überleben beibringst, und ihn dann allein in die Arena schickst. Das Gehirn dahinter ist ein selbstgeschriebenes neuronales Netz, das aus deinem Spielverhalten trainiert wird.",
-        'projekt.albert.hero.cta1': "Auf GitHub ansehen",
+        'projekt.albert.hero.cta1': 'Jetzt spielen',
         'projekt.albert.hero.cta2': "Projekt anfragen",
         'projekt.albert.hero.shotAlt': "Albert Royale: Arena mit schrumpfender Zone, Killfeed und Leaderboard",
         'projekt.albert.ueber.label': "Über das Projekt",
@@ -100,7 +101,7 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.albert.stack.t7': "Java (Ursprungssimulation)",
         'projekt.albert.outro.titel': "Interesse an KI im Browser?",
         'projekt.albert.outro.text': "Albert Royale ist ein Eigenprojekt, der Code, die Balance-Dokumente und das Game-Design-Dokument liegen offen im Repository. Wenn Sie etwas Ähnliches vorhaben, sprechen wir darüber.",
-        'projekt.albert.outro.cta1': "Auf GitHub ansehen",
+        'projekt.albert.outro.cta1': 'Jetzt spielen',
         'projekt.albert.outro.cta2': "Projekt anfragen",
 
         /* CoHa */
@@ -423,6 +424,8 @@ window.PROJECT_TRANSLATIONS = {
     },
 
     en: {
+
+        "projekt.albert.hero.cta3": "View on GitHub",
         /* AI Captain */
         'projekt.aicaptain.hero.zurueck': "Back to projects",
         'projekt.aicaptain.hero.label': "AI Agent",
@@ -469,7 +472,7 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.albert.hero.titel1': "Albert Royale.",
         'projekt.albert.hero.titel2': "Your Albert learns from you.",
         'projekt.albert.hero.lead': "A 3D battle royale where you first teach your own character how to survive, then send it into the arena on its own. The brain behind it is a hand-written neural network trained on the way you play.",
-        'projekt.albert.hero.cta1': "View on GitHub",
+        'projekt.albert.hero.cta1': 'Play now',
         'projekt.albert.hero.cta2': "Request a project",
         'projekt.albert.hero.shotAlt': "Albert Royale: arena with shrinking zone, kill feed and leaderboard",
         'projekt.albert.ueber.label': "About the project",
@@ -511,7 +514,7 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.albert.stack.t7': "Java (original simulation)",
         'projekt.albert.outro.titel': "Interested in AI in the browser?",
         'projekt.albert.outro.text': "Albert Royale is a personal project; the code, the balancing documents and the game design document are all public in the repository. If you have something similar in mind, let us talk about it.",
-        'projekt.albert.outro.cta1': "View on GitHub",
+        'projekt.albert.outro.cta1': 'Play now',
         'projekt.albert.outro.cta2': "Request a project",
 
         /* CoHa */
