@@ -4,7 +4,7 @@
 
 **Live:** [maximilianhaak.de](https://maximilianhaak.de)
 
-Static portfolio site for Maximilian Haak, fullstack developer and AI specialist from Bruckmühl near Rosenheim. Vanilla HTML, CSS and JavaScript, no build step. Deployed to GitHub Pages on every push to `main`.
+Static portfolio site for Maximilian Haak, fullstack developer and AI specialist from Bruckmühl near Rosenheim. Vanilla HTML, CSS and JavaScript, no build step. Deployed to Cloudflare Pages on every push to `main`.
 
 ---
 
@@ -73,7 +73,7 @@ All figures are net. When you change a price, change it in `index.html` and in b
 - **Frontend:** HTML5, CSS3 with custom design tokens, vanilla JavaScript (ES6+)
 - **Animations:** GSAP 3.12 and ScrollTrigger via CDN
 - **Fonts:** Inter (Google Fonts, loaded after consent)
-- **Hosting:** GitHub Pages, custom domain via `CNAME`
+- **Hosting:** Cloudflare Pages, DNS and apex domain via Cloudflare
 - **i18n:** custom DE/EN dictionary in [assets/js/main.js](assets/js/main.js), no framework
 
 ---
@@ -89,6 +89,7 @@ All figures are net. When you change a price, change it in `index.html` and in b
 │   ├── css/main.css        # Stylesheet (design tokens + theming)
 │   ├── js/main.js          # Slider, mode filter, theme, i18n, animations
 │   └── img/                # Backgrounds, icons, profile, project shots
+├── _headers                # Cloudflare Pages response headers
 ├── projects/               # Project detail pages plus their own main.css
 ├── docs/                   # Architecture / development / deployment guides
 ├── tools/                  # Local dev tooling (NOT deployed)
@@ -129,16 +130,19 @@ Open <http://localhost:8000>. No build step.
 
 | Step | Fails the build when |
 |------|----------------------|
-| **Verify required entry points** | `index.html`, `assets/css/main.css`, `assets/js/main.js`, `CNAME`, `impressum.html` or `datenschutz.html` is missing |
+| **Verify required entry points** | `index.html`, `assets/css/main.css`, `assets/js/main.js`, `CNAME`, `impressum.html`, `datenschutz.html` or `_headers` is missing |
 | **Asset size guard** | any image or video under `assets/img/` or `projects/` exceeds `MAX_ASSET_KB` (600 KB); raise it only with a real reason |
-| **Assemble dist/** | never (globs all top-level `*.html`, copies `assets/` and `projects/`, writes `.nojekyll`) |
+| **Assemble dist/** | never (globs all top-level `*.html`, copies `assets/`, `projects/` and `_headers`) |
 | **Internal-link check** | any `src=` or `href=` in a shipped HTML file points at a local target that does not exist in `dist/` |
 | **Build size report** | never (writes a per-folder and top-10-largest summary to the job page) |
-| **Upload Pages artifact** | skipped on PRs |
+| **Upload dist artifact** | skipped on PRs |
 
 ### Job `deploy`, only on push to `main`
 
-Gated behind `build`. Publishes to the `github-pages` environment via `actions/deploy-pages@v4`. PRs run the validators but never publish.
+Gated behind `build`. Downloads the `dist` artifact and publishes it to Cloudflare Pages with
+`wrangler pages deploy` via [`cloudflare/wrangler-action@v3`](https://github.com/cloudflare/wrangler-action).
+Needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`; see
+[docs/deployment.md](docs/deployment.md). PRs run the validators but never publish.
 
 ---
 

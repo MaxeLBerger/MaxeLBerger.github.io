@@ -1,7 +1,7 @@
 ﻿# Architecture
 
 Static portfolio site. **No build step**, no submodules, no frameworks.
-Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
+Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to Cloudflare Pages.
 
 ## File Layout
 

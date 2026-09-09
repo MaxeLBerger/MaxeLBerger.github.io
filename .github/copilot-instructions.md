@@ -2,7 +2,7 @@
 
 ## Overview
 
-Personal portfolio site for Maximilian Haak, fullstack web developer and AI specialist from Bruckmühl/Rosenheim. Static site (HTML + CSS + vanilla JavaScript), deployed to GitHub Pages.
+Personal portfolio site for Maximilian Haak, fullstack web developer and AI specialist from Bruckmühl/Rosenheim. Static site (HTML + CSS + vanilla JavaScript), deployed to Cloudflare Pages.
 
 **Live:** [maximilianhaak.de](https://maximilianhaak.de)
 
@@ -31,7 +31,7 @@ Plain static site, **no build step**, no submodules, no frameworks.
 ├── tools/                  # Local dev tooling (NOT deployed)
 │   └── mcp-portfolio-server/   # Local MCP dev tool
 └── .github/workflows/
-    └── deploy.yml          # Two-job validate and deploy to GitHub Pages
+    └── deploy.yml          # Two-job validate and deploy to Cloudflare Pages
 ```
 
 ## Writing rule that applies to every file
@@ -47,7 +47,7 @@ an external source that contains one, replace it while copying. A pre-commit hoo
 - **GSAP 3.12 + ScrollTrigger** via CDN for animations
 - **Inter** (Google Fonts): loaded after cookie consent (GDPR)
 - **i18n**: custom DE/EN dictionary in [assets/js/main.js](../assets/js/main.js) (DE is default)
-- **Hosting**: GitHub Pages with custom domain (`CNAME` → `maximilianhaak.de`)
+- **Hosting**: Cloudflare Pages, apex domain `maximilianhaak.de` via Cloudflare DNS
 
 ## Core Architectural Concepts
 
@@ -176,24 +176,26 @@ Status feedback uses `.is-success` / `.is-error` classes on `.btn-primary` (defi
 ## Deployment
 
 [.github/workflows/deploy.yml](workflows/deploy.yml): two jobs, `build` ("Validate and assemble") and `deploy`
-("Deploy to GitHub Pages"). The workflow also runs on pull requests, where `build` validates but nothing is
+("Deploy to Cloudflare Pages"). The workflow also runs on pull requests, where `build` validates but nothing is
 uploaded or deployed.
 
 `build`:
 
 1. Checkout
 2. **Validation 1:** required entry points exist (`index.html`, `assets/css/main.css`, `assets/js/main.js`,
-   `CNAME`, `impressum.html`, `datenschutz.html`)
+   `CNAME`, `impressum.html`, `datenschutz.html`, `_headers`)
 3. **Validation 2:** no shipped image, video or SVG under `assets/` and `projects/` exceeds `MAX_ASSET_KB`
    (currently 600 KB)
-4. Assemble `dist/`: `*.html`, `CNAME`, `robots.txt`, `sitemap.xml`, `assets/`, `projects/`, plus `.nojekyll`
+4. Assemble `dist/`: `*.html`, `robots.txt`, `sitemap.xml`, `assets/`, `projects/`, `_headers`
+   (`CNAME` is GitHub Pages only and is deliberately not shipped)
 5. **Validation 3:** every `src=` and `href=` in the assembled HTML resolves to a file that exists in `dist/`
    (external schemes and pure `#fragment` links are skipped)
 6. Build size report into the job summary
-7. Upload as Pages artifact (skipped on pull requests)
+7. Upload `dist/` as a workflow artifact (skipped on pull requests)
 
-`deploy` (needs `build`, skipped on pull requests): deploys to the `github-pages` environment and appends a
-deployment summary.
+`deploy` (needs `build`, skipped on pull requests): downloads the `dist` artifact and runs
+`wrangler pages deploy` via `cloudflare/wrangler-action@v3`, then appends a deployment summary.
+Needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
 Any of the three validations failing blocks the deploy. Push to `main` goes live in about 1 to 2 minutes.
 There is **no build step** for the site itself and **no matrix**.
@@ -205,7 +207,7 @@ There is **no build step** for the site itself and **no matrix**.
 - Keep it simple, vanilla HTML/CSS/JS only
 - Mobile-first responsive design
 - Optimize images: WebP preferred, target <300 KB each
-- Asset paths must match the exact on-disk filename casing; GitHub Pages is case-sensitive even if local Windows dev is not
+- Asset paths must match the exact on-disk filename casing; Cloudflare Pages is case-sensitive even if local Windows dev is not
 - Use semantic HTML and ARIA where appropriate
 - No `console.log` in production code
 - No inline `style="..."` for state changes, use CSS classes (`.is-success`, `.is-error`, `.active`, etc.)
