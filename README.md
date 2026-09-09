@@ -128,6 +128,19 @@ The portrait is anchored to the right edge at its own aspect ratio and grows wit
 
 The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. Replace these only with mono versions at the same aspect ratio, otherwise the per-logo heights in `.hero-client-logo--*` need retuning.
 
+### Package images
+
+The two `#pricing` panels are led by a device mockup each, both 16:9 and both carrying their price as baked-in typography:
+
+| File | Size | Served from |
+|------|------|-------------|
+| `pay-packets/paket-website.webp` | 1200x675 | `srcset` above roughly 700 px of slot width, and as the `<img>` fallback |
+| `pay-packets/paket-website-760.webp` | 760x428 | narrower slots |
+| `pay-packets/paket-websiteplus.webp` | 1200x675 | as above, for package 02 |
+| `pay-packets/paket-websiteplus-760.webp` | 760x428 | narrower slots |
+
+Side by side with the copy column the panel is taller than a 16:9 frame, so the leftover strip above and below is filled by a blurred copy of the same picture (`.service-panel__art::before`) under a veil in the surface colour (`::after`). Nothing of the motif is cropped. Stacked below 900 px the picture fills the width on its own and both pseudo-elements switch off, so no extra file is fetched on phones. The blurred strip reuses the 1200 px file the `<img>` already loaded on desktop. Replacing a mockup means regenerating both widths from the same master and keeping the 16:9 ratio, otherwise the strip and the frame stop matching.
+
 ---
 
 ## Local Development
