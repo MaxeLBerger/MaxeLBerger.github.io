@@ -81,7 +81,7 @@ rules when touching the navbar.
 
 `#about` sits directly after `#projects` and before the tech stack. Keep it as a personal editorial section with an
 E46 media frame, short biographical copy, and compact facts. The current media asset is the optimized
-`assets/img/profile/uebermich.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
+`assets/img/profile/uebermich_mysticblau.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
 lower focus so the car/person stay visible. Keep this image large and cleanly cropped in a restrained 5:6 media frame
 with subtle border/shadow and no visible caption. The copy column should stay intentionally narrow for comfortable
 reading (about 54ch max), rather than stretching across the available grid width. Use
