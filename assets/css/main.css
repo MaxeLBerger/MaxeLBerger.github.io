@@ -161,15 +161,14 @@
     --theme-gradient-end: #2f5ad6;
 }
 
-/* CapitalCombo: Magenta der Analyse-Oberflaeche, hoher Signalwert */
+/* CapitalCombo: das Hellblau des Seitenmenues, kuehl und sachlich */
 [data-project-theme="capitalcombo"] {
-    --theme-primary: 229, 0, 114;
-    --theme-secondary: 178, 0, 89;
-    --theme-accent: 255, 92, 168;
-    --theme-gradient-start: #ff5ca8;
-    --theme-gradient-mid: #e50072;
-    --theme-gradient-end: #b20059;
-    --theme-on-primary: #ffffff;
+    --theme-primary: 152, 201, 223;
+    --theme-secondary: 95, 159, 194;
+    --theme-accent: 184, 220, 238;
+    --theme-gradient-start: #b8dcee;
+    --theme-gradient-mid: #98c9df;
+    --theme-gradient-end: #5f9fc2;
 }
 
 /* Deterministische Review: tiefes Werkzeug-Blau, sachlich */
