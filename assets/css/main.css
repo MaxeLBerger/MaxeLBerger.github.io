@@ -1680,6 +1680,21 @@ html[data-color-scheme="light"] .showcase-frame {
     line-height: 1.68;
 }
 
+.about-inline-link {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--theme-primary), 0.55);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.18em;
+    transition: color var(--transition-base), text-decoration-color var(--transition-base);
+}
+
+.about-inline-link:hover,
+.about-inline-link:focus-visible {
+    color: rgb(var(--theme-primary));
+    text-decoration-color: rgb(var(--theme-primary));
+}
+
 .about-highlights {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
