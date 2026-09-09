@@ -251,7 +251,8 @@
 #navbar,
 .about-section,
 .services-section,
-.service-card,
+.service-panel,
+.service-tile,
 .skill-tag,
 .contact-section,
 .contact-link,
@@ -360,15 +361,22 @@ html[data-color-scheme="light"] .slider-arrow:hover {
 
 /* Scroll hint entfernt: Hero kommt ohne dekorativen Hinweis aus. */
 
-/* Service cards ---------------------------------------------------------- */
-html[data-color-scheme="light"] .service-card {
+/* Paket-Panels und Kacheln --------------------------------------------- */
+html[data-color-scheme="light"] .service-panel,
+html[data-color-scheme="light"] .service-tile {
     background: #ffffff;
     border-color: rgba(15, 23, 42, 0.10);
     box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
 }
-html[data-color-scheme="light"] .service-card:hover {
+html[data-color-scheme="light"] .service-panel:hover,
+html[data-color-scheme="light"] .service-tile:hover {
     border-color: rgba(var(--theme-primary), 0.35);
     box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+}
+/* Die Grafikflaeche bleibt auch hell eine eigene, leicht abgesetzte Buehne. */
+html[data-color-scheme="light"] .service-panel__art {
+    background: radial-gradient(115% 110% at 32% 18%, rgba(var(--theme-primary), 0.14), transparent 62%),
+                #eef1f8;
 }
 
 /* Section dividers / separators ----------------------------------------- */
@@ -1818,192 +1826,312 @@ html[data-color-scheme="light"] .about-highlight {
 
 /* ═══════════════════════════════════════════════
    SERVICES / PACKAGES SECTION
-   Three lean cards + one consulting row underneath.
+   Zwei bildgefuehrte Panels: Grafik und Text tauschen von Paket zu Paket
+   die Seite. Darunter Pflege und Zusatzleistungen als schmale Kacheln.
    ═══════════════════════════════════════════════ */
 .services-section {
     padding: var(--space-4xl) 0;
 }
 
-.services-grid {
-    display: grid;
-    /* Zwei Pakete: Website und Website Plus. Sie stehen mittig statt ueber die
-       volle Breite gezogen, sonst wirken zwei Karten verloren. */
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-lg);
-    align-items: stretch;
-    max-width: 60rem;
-    margin-inline: auto;
-}
-
-.service-card {
-    position: relative;
+/* Kopf bewusst nicht als .section-header: der ist zentriert und wuerde den
+   linksbuendigen Panels darunter die Achse nehmen. */
+.services-head {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-xl);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out);
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-2xl);
 }
 
-.service-card:hover {
-    border-color: var(--color-border-hover);
+.services-head .section-tag {
+    margin-bottom: var(--space-sm);
 }
 
-.service-card--featured {
-    border-color: rgba(var(--theme-primary), 0.40);
-}
-
-/* "Empfohlen": a small text label, not a badge with an emoji. It is pinned
-   to the card corner so the featured card's title stays on the same
-   baseline as its neighbours. */
-.service-card__badge {
-    position: absolute;
-    top: var(--space-xl);
-    right: var(--space-xl);
-    color: rgb(var(--theme-primary));
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.service-card__meta {
-    margin: 0;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-quiet);
-}
-
-.service-card__title {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-}
-
-.service-card__sub {
+.services-lead {
+    max-width: 34ch;
     margin: 0;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.55;
 }
 
-.service-card__checks {
-    list-style: none;
-    margin: var(--space-sm) 0 var(--space-lg);
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
+/* ─── Paket-Panel: Grafik | Text ─── */
+.service-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    overflow: hidden;
+    transition: border-color var(--duration-base) var(--ease-out),
+                background var(--duration-base) var(--ease-out);
 }
 
-.service-card__checks li {
+.service-panel + .service-panel {
+    margin-top: var(--space-lg);
+}
+
+.service-panel:hover {
+    border-color: var(--color-border-hover);
+}
+
+.service-panel--featured {
+    border-color: rgba(var(--theme-primary), 0.35);
+}
+
+.service-panel__art {
     position: relative;
-    padding-left: 1.35rem;
+    display: grid;
+    place-items: center;
+    min-height: 20rem;
+    padding: var(--space-xl);
+    border-right: 1px solid var(--color-border);
+    background: radial-gradient(115% 110% at 32% 18%, rgba(var(--theme-primary), 0.18), transparent 62%),
+                var(--color-bg-elevated);
+}
+
+/* Feines Raster hinter der Grafik, zu den Raendern hin ausgeblendet. */
+.service-panel__art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(var(--theme-primary), 0.10) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(var(--theme-primary), 0.10) 1px, transparent 1px);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent 78%);
+            mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent 78%);
+}
+
+/* Zweites Panel spiegelt: Grafik nach rechts, Trennlinie wechselt mit. */
+.service-panel--flip .service-panel__art {
+    order: 2;
+    border-right: 0;
+    border-left: 1px solid var(--color-border);
+}
+
+/* Die Grafik ist bewusst inline im HTML: nur so erbt sie die Theme-Variablen
+   und wechselt mit Hell/Dunkel und dem Projekt-Theme mit. */
+.service-art {
+    position: relative;
+    display: block;
+    width: min(100%, 27rem);
+    height: auto;
+}
+
+.service-art__plane {
+    fill: rgba(var(--theme-primary), 0.06);
+    stroke: rgba(var(--theme-primary), 0.55);
+    stroke-width: 1;
+}
+
+.service-art__block {
+    fill: rgba(var(--theme-primary), 0.18);
+    stroke: rgba(var(--theme-primary), 0.45);
+    stroke-width: 0.75;
+}
+
+.service-art__axis {
+    stroke: var(--color-text-muted);
+    stroke-width: 1;
+    stroke-dasharray: 3 5;
+}
+
+.service-art__link {
+    stroke: rgba(var(--theme-secondary), 0.55);
+    stroke-width: 1;
+}
+
+.service-art__node {
+    fill: var(--color-bg-elevated);
+    stroke: rgba(var(--theme-accent), 0.8);
+    stroke-width: 1;
+}
+
+.service-art__dot {
+    fill: rgb(var(--theme-accent));
+}
+
+.service-panel__copy {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(var(--space-lg), 3vw, var(--space-2xl));
+}
+
+.service-panel__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin: 0;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-quiet);
+}
+
+.service-panel__meta b {
+    font-weight: 700;
+    color: rgb(var(--theme-primary));
+}
+
+.service-panel__title {
+    margin: var(--space-md) 0 0;
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.service-panel__sub {
+    margin: var(--space-sm) 0 0;
+    max-width: 46ch;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+}
+
+/* Der Preis ist die groesste Angabe im Panel. Vorher stand er als kleinste
+   Zeile ueber dem Titel, obwohl die Leute genau deswegen scrollen. */
+.service-panel__price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin: var(--space-lg) 0 0;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-quiet);
+    font-variant-numeric: tabular-nums;
+}
+
+.service-panel__price b {
+    font-size: clamp(1.65rem, 1.2rem + 1.4vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+}
+
+.service-panel__checks {
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+}
+
+.service-panel__checks li {
+    position: relative;
+    padding-left: 1.3rem;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.45;
 }
 
-.service-card__checks li::before {
-    content: '✓';
+/* Gefuelltes Quadrat statt Haken: ein Umriss liest sich wie eine leere
+   Checkbox, also wie "nicht enthalten". */
+.service-panel__checks li::before {
+    content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    color: rgb(var(--theme-primary));
-    font-weight: 700;
+    left: 0.1rem;
+    top: 0.55em;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 2px;
+    background: rgb(var(--theme-primary));
+    opacity: 0.85;
 }
 
-.service-card__cta {
-    margin-top: auto;
+.service-panel__cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.45rem;
+    margin-top: auto;
+    padding-top: var(--space-lg);
     min-height: 44px;
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: rgb(var(--theme-primary));
 }
 
-.service-card__cta::after {
+.service-panel__cta::after {
     content: '→';
     transition: transform var(--duration-base) var(--ease-out);
 }
 
-.service-card__cta:hover::after {
+.service-panel__cta:hover::after {
     transform: translateX(4px);
 }
 
-/* ─── Consulting: one slim row under the cards ─── */
-.service-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-md) var(--space-xl);
+/* ─── Pflege und Zusatzleistungen ─── */
+.service-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
     margin-top: var(--space-lg);
+}
+
+.service-tile {
+    display: flex;
+    flex-direction: column;
     padding: var(--space-lg) var(--space-xl);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--duration-base) var(--ease-out);
 }
 
-.service-row__copy {
-    flex: 1 1 20rem;
-    min-width: 0;
+.service-tile:hover {
+    border-color: var(--color-border-hover);
 }
 
-.service-row__title {
-    margin: 0 0 0.15rem;
+.service-tile__title {
+    margin: 0;
     font-size: var(--font-size-lg);
     font-weight: 700;
+    line-height: 1.25;
     letter-spacing: -0.01em;
 }
 
-.service-row__sub {
-    margin: 0;
+.service-tile__sub {
+    margin: 0.3rem 0 0;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
+    line-height: 1.5;
 }
 
-.service-row__meta {
-    margin: 0;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-quiet);
-    white-space: nowrap;
+.service-tile__meta {
+    margin: var(--space-md) 0 0;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
 }
 
-.service-row__link {
+.service-tile__link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    margin-top: auto;
+    padding-top: var(--space-md);
     min-height: 44px;
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: rgb(var(--theme-primary));
-    white-space: nowrap;
 }
 
-.service-row__link::after {
+.service-tile__link::after {
     content: '→';
     transition: transform var(--duration-base) var(--ease-out);
 }
 
-.service-row__link:hover::after {
+.service-tile__link:hover::after {
     transform: translateX(4px);
 }
 
-/* Net-price footnote directly under the package grid. */
+/* Preisfussnote sitzt jetzt auf derselben Achse wie alles darueber. */
 .services-note {
     margin-top: var(--space-md);
-    text-align: center;
     color: var(--color-text-quiet);
     font-size: var(--font-size-xs);
 }
@@ -2025,10 +2153,29 @@ html[data-color-scheme="light"] .about-highlight {
 }
 
 @media (max-width: 900px) {
-    .services-grid {
+    .service-panel {
         grid-template-columns: 1fr;
-        max-width: 34rem;
-        margin-inline: auto;
+    }
+
+    /* Gestapelt liegt die Grafik immer oben, auch im gespiegelten Panel. */
+    .service-panel__art,
+    .service-panel--flip .service-panel__art {
+        order: 0;
+        min-height: 12rem;
+        padding: var(--space-lg);
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Hochformat in voller Breite frisst sonst ein Drittel des Telefons,
+       bevor der Paketname kommt. */
+    .service-art {
+        width: min(92%, 17rem);
+    }
+
+    .service-tiles {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -2755,18 +2902,8 @@ html[data-color-scheme="light"] .cookie-content p {
         justify-content: center;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .service-card {
+    .service-panel__copy {
         padding: var(--space-xl);
-    }
-
-    .service-card__badge {
-        position: static;
-        align-self: flex-start;
-        margin-bottom: var(--space-xs);
     }
 
     .contact-layout {
@@ -2800,7 +2937,7 @@ html[data-color-scheme="light"] .cookie-content p {
         max-width: min(360px, 90vw);
     }
 
-    .service-card {
+    .service-panel__copy {
         padding: var(--space-xl);
     }
 
@@ -2932,9 +3069,10 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 
-/* Service cards: gentler padding on phones. */
+/* Paket-Panels: sanfteres Innenmass auf dem Telefon. */
 @media (max-width: 480px) {
-    .service-card {
+    .service-panel__copy,
+    .service-tile {
         padding: var(--space-lg);
     }
 }
@@ -3036,7 +3174,7 @@ html[data-color-scheme="light"] .cookie-content p {
     }
 
     .about-layout,
-    .services-grid,
+    .service-tiles,
     .contact-layout {
         gap: var(--space-xl);
     }
