@@ -1759,9 +1759,13 @@ html[data-color-scheme="light"] .about-highlight {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* Zwei Pakete: Website und Website Plus. Sie stehen mittig statt ueber die
+       volle Breite gezogen, sonst wirken zwei Karten verloren. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
     align-items: stretch;
+    max-width: 60rem;
+    margin-inline: auto;
 }
 
 .service-card {
