@@ -862,8 +862,11 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 /* The picture shrink-wraps the portrait: anchored to the right edge at the
    photo's own aspect ratio, it grows with the viewport height and never
    stretches across the width. It is slightly oversized so the top of the
-   wall and the shirt hem stay cropped. The mask feathers the left edge so
-   the blend into the dark ground follows the photo, not the viewport. */
+   wall and the shirt hem stay cropped. The mask feathers both side edges so
+   the blend into the dark ground follows the photo, not the viewport: a wide
+   fade on the left under the copy, a shorter one on the right so the
+   portrait never ends in a hard cut when it sits inside the container on
+   wide screens. */
 .hero-bg-slide {
     display: block;
     position: absolute;
@@ -876,8 +879,8 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     width: auto;
     transform: translateY(-50%);
     opacity: 0;
-    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%);
-    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%);
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%, #000 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%, #000 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 /* Cool colour wash over the portrait so the wooden wall picks up the
