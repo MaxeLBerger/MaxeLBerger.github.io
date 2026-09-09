@@ -82,7 +82,7 @@
        letting it grow unbounded on ultra-wide. Bumped from a flat 1200px so
        the 2-column slide layout no longer looks cramped at 1440/1920/2560+. */
     --container-max: clamp(1200px, 92vw, 1480px);
-    --nav-height: 84px;
+    --nav-height: 96px;
 }
 
 /* ═══════════════════════════════════════════════
@@ -552,27 +552,55 @@ html[data-color-scheme="light"] .btn-icon:hover {
        Chrome. Both effects are now omitted in the unscrolled state and
        only the .scrolled state opts back into a single backdrop-filter
        (without a mask) where it actually adds polish. */
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(10, 10, 15, 0.72) 0%,
-            rgba(10, 10, 15, 0.28) 70%,
-            rgba(10, 10, 15, 0) 100%
-        );
+    background: transparent;
     border-bottom: 1px solid transparent;
     transition: background var(--duration-base),
                 box-shadow var(--duration-base),
                 border-color var(--duration-base);
 }
 
+/* Der Lesbarkeits-Schleier hinter der Navbar. Er sitzt in einem eigenen
+   Element, das ueber die Navbar hinausragt und dort weich auslaeuft: endete
+   der Verlauf exakt auf Navbar-Hoehe, war ueber dem hellen Hero-Foto eine
+   deutliche waagerechte Kante zu sehen. */
+#navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 190%;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 15, 0.78) 0%,
+        rgba(10, 10, 15, 0.52) 30%,
+        rgba(10, 10, 15, 0.26) 55%,
+        rgba(10, 10, 15, 0.08) 78%,
+        rgba(10, 10, 15, 0) 100%
+    );
+    opacity: 1;
+    transition: opacity var(--duration-base);
+}
+
+html[data-color-scheme="light"] #navbar::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(8, 10, 18, 0.62) 0%,
+        rgba(8, 10, 18, 0.40) 30%,
+        rgba(8, 10, 18, 0.20) 55%,
+        rgba(8, 10, 18, 0.06) 78%,
+        rgba(8, 10, 18, 0) 100%
+    );
+}
+
+/* Sobald die feste Flaeche eingeblendet wird, braucht es den Schleier nicht mehr. */
+#navbar.scrolled::before {
+    opacity: 0;
+}
+
 html[data-color-scheme="light"] #navbar {
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.88) 0%,
-            rgba(255, 255, 255, 0.42) 70%,
-            rgba(255, 255, 255, 0) 100%
-        );
+    background: transparent;
     border-bottom-color: transparent;
 }
 
@@ -626,7 +654,7 @@ html[data-color-scheme="light"] #navbar.scrolled {
 }
 
 .nav-links a {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     font-weight: 500;
     color: var(--color-text-secondary);
     transition: color var(--duration-base);
@@ -992,20 +1020,70 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 /* Global ambient glow orbs */
 /* Background keyframe animations */
 /* Project nav pills */
-/* Project pagination: sits BELOW the slider between the two arrows. */
+/* Project pagination: sits BELOW the slider between the two arrows.
+   Always a single row. With ten own projects the pills are wider than the
+   container, so the row scrolls horizontally instead of wrapping into a
+   second line (a second line pushes the arrows away from the pills and
+   makes the whole control look detached). The scrollbar stays hidden and
+   the overflowing sides fade out, so the strip still reads as one quiet
+   line. With three client projects nothing overflows: the strip is only as
+   wide as its pills and both arrows sit right next to them. */
 .project-pagination {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     gap: var(--space-sm);
     margin: 0;
     min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    /* Room for the focus ring of the first and last pill: a scroll container
+       clips it, and at either end of the scroll range the ring would sit
+       exactly on the edge. The block padding is taken back off the outer box
+       so the row still has the height of a single pill. */
+    padding-block: 4px;
+    padding-inline: 4px;
+    margin-block: -4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    --pag-fade-start: 0px;
+    --pag-fade-end: 0px;
+}
+
+.project-pagination::-webkit-scrollbar {
+    display: none;
+}
+
+/* The mask only exists while the strip really scrolls, so the common case
+   (no overflow) needs no extra compositing layer at all. */
+.project-pagination.has-scroll-start,
+.project-pagination.has-scroll-end {
+    -webkit-mask-image: linear-gradient(to right,
+        transparent 0,
+        #000 var(--pag-fade-start),
+        #000 calc(100% - var(--pag-fade-end)),
+        transparent 100%);
+            mask-image: linear-gradient(to right,
+        transparent 0,
+        #000 var(--pag-fade-start),
+        #000 calc(100% - var(--pag-fade-end)),
+        transparent 100%);
+}
+
+.project-pagination.has-scroll-start {
+    --pag-fade-start: 2.5rem;
+}
+
+.project-pagination.has-scroll-end {
+    --pag-fade-end: 2.5rem;
 }
 
 .project-pag-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
     gap: 0.6rem;
     min-height: 44px;
     padding: 0.55rem 1.1rem;
@@ -2774,13 +2852,6 @@ html[data-color-scheme="light"] .cookie-content p {
         flex: 1 0 calc(100% + 2 * var(--space-xl));
         margin-inline: calc(var(--space-xl) * -1);
         padding-inline-start: var(--space-xl);
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overscroll-behavior-inline: contain;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: var(--space-xs);
-        scrollbar-width: thin;
     }
 
     /* Chrome drops a flex container's trailing padding from scrollWidth, which

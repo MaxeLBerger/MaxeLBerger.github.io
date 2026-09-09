@@ -846,9 +846,9 @@
         }
 
         /**
-         * On narrow screens the pagination is a horizontally scrolling strip.
-         * Scroll the strip itself, never the page, so the current project tab
-         * stays visible after an arrow click or a swipe.
+         * The pagination is a single horizontally scrolling row. Scroll the
+         * strip itself, never the page, so the current project tab stays
+         * visible after an arrow click or a swipe.
          */
         revealActiveTab(index) {
             // Deferred by a tick: during a mode switch the strip is measured
@@ -857,20 +857,62 @@
             window.setTimeout(() => this.scrollTabIntoView(index), 0);
         }
 
+        /**
+         * Fade out whichever side of the strip still has pills behind it, so
+         * a cut off pill reads as "there is more" instead of as a clipping
+         * bug. Both classes are dropped as soon as nothing overflows, which
+         * is the normal case for the three client projects.
+         */
+        updateEdgeFades() {
+            const strip = this.pagination;
+            if (!strip) return;
+            const first = this.navBtns[0];
+            const last = this.navBtns[this.navBtns.length - 1];
+            if (!first || !last) {
+                strip.classList.remove('has-scroll-start', 'has-scroll-end');
+                return;
+            }
+            // Measured against the real pills, not against scrollWidth: the
+            // narrow layout adds a leading padding and a trailing spacer, and
+            // those alone must not pretend there is a hidden project.
+            const stripRect = strip.getBoundingClientRect();
+            const tolerance = 1;
+            strip.classList.toggle('has-scroll-start',
+                first.getBoundingClientRect().left < stripRect.left - tolerance);
+            strip.classList.toggle('has-scroll-end',
+                last.getBoundingClientRect().right > stripRect.right + tolerance);
+        }
+
         scrollTabIntoView(index) {
             const btn = this.navBtns[index];
             const strip = this.pagination;
             if (!btn || !strip) return;
             const maxScroll = strip.scrollWidth - strip.clientWidth;
-            if (maxScroll <= 0) return;
+            if (maxScroll <= 0) {
+                // Nothing to scroll. Clear any offset left over from the mode
+                // that had more tabs, otherwise the shorter row starts shifted.
+                if (strip.scrollLeft !== 0) strip.scrollLeft = 0;
+                this.updateEdgeFades();
+                return;
+            }
+
+            // Where the tab sits inside the scrolled content. Measured from
+            // the strip itself, because offsetLeft would be relative to the
+            // section (the nearest positioned ancestor) and would be off by
+            // the strip's own left edge on wide screens.
+            const stripRect = strip.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+            const width = btnRect.width;
+            const start = btnRect.left - stripRect.left + strip.scrollLeft;
+            const end = start + width;
 
             // Centre the tab, then pull it back until it is fully inside the
             // strip with a gutter. Centring alone can leave the first and last
             // tabs half cut off once the value is clamped to the scroll range.
-            const gutter = 16;
-            const start = btn.offsetLeft;
-            const end = start + btn.offsetWidth;
-            let left = start - (strip.clientWidth - btn.offsetWidth) / 2;
+            // The gutter matches the edge fade of .project-pagination, so the
+            // selected tab is never the one being faded out.
+            const gutter = 40;
+            let left = start - (strip.clientWidth - width) / 2;
             left = Math.min(left, start - gutter);
             left = Math.max(left, end + gutter - strip.clientWidth);
             left = Math.max(0, Math.min(left, maxScroll));
@@ -880,6 +922,7 @@
             } else {
                 strip.scrollLeft = left;
             }
+            this.updateEdgeFades();
         }
 
         syncToTheme(theme, options = {}) {
@@ -941,6 +984,16 @@
             }
 
             if (this.pagination) {
+                // The fades follow the real scroll position, so they also
+                // update while a smooth scrollTo() is still running.
+                this.pagination.addEventListener('scroll', () => this.updateEdgeFades(), { passive: true });
+                window.addEventListener('resize', () => this.updateEdgeFades(), { passive: true });
+                // A late web font changes the pill widths, which can turn a
+                // row that fitted into one that scrolls.
+                if (document.fonts && typeof document.fonts.ready === 'object') {
+                    document.fonts.ready.then(() => this.updateEdgeFades());
+                }
+
                 this.pagination.addEventListener('keydown', (e) => {
                     const focusedTab = e.target.closest('.project-pag-btn');
                     const focusedIndex = this.navBtns.indexOf(focusedTab);
