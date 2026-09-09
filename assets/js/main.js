@@ -569,6 +569,13 @@
 
     /* ═══ PROJECT THEME ═══ */
     /**
+     * The neutral `maxhaak` theme has no slide of its own, so anything that
+     * has to map it onto a slide falls back to the first project in the
+     * pagination. Keep this in sync with the leading tab in index.html.
+     */
+    const FIRST_PROJECT_THEME = 'capitalcombo';
+
+    /**
      * Theme controller: single source of truth for `data-project-theme`.
      *
      * Two writers remain: the project slider (active slide → theme) and a
@@ -706,7 +713,7 @@
 
         /** Find a theme across BOTH modes. Returns null when nothing matches. */
         locateTheme(theme) {
-            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+            const projectTheme = theme === 'maxhaak' ? FIRST_PROJECT_THEME : theme;
             for (const mode of ['own', 'customers']) {
                 const { slides } = this.collectMode(mode);
                 const index = slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
@@ -784,7 +791,7 @@
         }
 
         getSlideIndexForTheme(theme) {
-            const projectTheme = theme === 'maxhaak' ? 'e46' : theme;
+            const projectTheme = theme === 'maxhaak' ? FIRST_PROJECT_THEME : theme;
             return this.slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
         }
 
@@ -1444,7 +1451,7 @@
                     const activeSlide = projectsSection.querySelector('.hero-slide.active');
                     const activeTheme = activeSlide && activeSlide.getAttribute('data-theme');
                     const currentTheme = themeController.getProjectTheme();
-                    const currentProjectTheme = currentTheme === 'maxhaak' ? 'e46' : currentTheme;
+                    const currentProjectTheme = currentTheme === 'maxhaak' ? FIRST_PROJECT_THEME : currentTheme;
                     const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
                         .filter(slide => !slide.hidden)
                         .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
