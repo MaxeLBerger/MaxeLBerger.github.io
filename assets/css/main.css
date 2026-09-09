@@ -373,10 +373,10 @@ html[data-color-scheme="light"] .service-tile:hover {
     border-color: rgba(var(--theme-primary), 0.35);
     box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
 }
-/* Die Grafikflaeche bleibt auch hell eine eigene, leicht abgesetzte Buehne. */
-html[data-color-scheme="light"] .service-panel__art {
-    background: radial-gradient(115% 110% at 32% 18%, rgba(var(--theme-primary), 0.14), transparent 62%),
-                #eef1f8;
+/* Hell traegt der Schleier duenner auf: sonst verschwindet die Bildflaeche
+   im weissen Panel und die beiden Spalten fliessen ineinander. */
+html[data-color-scheme="light"] .service-panel__art::after {
+    opacity: 0.5;
 }
 
 /* Section dividers / separators ----------------------------------------- */
@@ -1885,10 +1885,12 @@ html[data-color-scheme="light"] .about-highlight {
     line-height: 1.55;
 }
 
-/* ─── Paket-Panel: Grafik | Text ─── */
+/* ─── Paket-Panel: Bild | Text ─── */
 .service-panel {
+    /* Eine Variable, damit das gespiegelte Panel dieselbe Bildbreite bekommt. */
+    --art-col: 1.3fr;
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, var(--art-col)) minmax(0, 1fr);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
@@ -1913,72 +1915,81 @@ html[data-color-scheme="light"] .about-highlight {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 20rem;
-    padding: var(--space-xl);
+    min-height: 16rem;
+    overflow: hidden;
     border-right: 1px solid var(--color-border);
-    background: radial-gradient(115% 110% at 32% 18%, rgba(var(--theme-primary), 0.18), transparent 62%),
-                var(--color-bg-elevated);
+    background: var(--color-bg-elevated);
 }
 
-/* Feines Raster hinter der Grafik, zu den Raendern hin ausgeblendet. */
+/* Das Motiv ist 16:9, die Textspalte daneben ist hoeher. Ein weich gezeichneter
+   Auszug desselben Bildes fuellt die Luft ueber und unter dem Motiv, damit die
+   Flaeche randlos bleibt und trotzdem nichts vom Bild beschnitten wird.
+   Unter 900px stapelt das Panel, dort passt das Bild fast exakt: Auszug aus. */
 .service-panel__art::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(var(--theme-primary), 0.10) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(var(--theme-primary), 0.10) 1px, transparent 1px);
-    background-size: 32px 32px;
-    -webkit-mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent 78%);
-            mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent 78%);
+    inset: -12%;
+    background-image: var(--art-image);
+    background-size: cover;
+    background-position: center;
+    filter: blur(34px);
 }
 
-/* Zweites Panel spiegelt: Grafik nach rechts, Trennlinie wechselt mit. */
+/* Schleier in der Flaechenfarbe: nimmt dem Auszug die Buntheit und traegt
+   Hell und Dunkel gleichermassen, ohne zweite Regel je Theme. */
+.service-panel__art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-elevated);
+    opacity: 0.66;
+}
+
+.service-panel__art--website {
+    --art-image: url('../img/pay-packets/paket-website.webp');
+}
+
+.service-panel__art--plus {
+    --art-image: url('../img/pay-packets/paket-websiteplus.webp');
+}
+
+/* Zweites Panel spiegelt. Bewusst ueber grid-column statt order: nur so behaelt
+   die Bildspalte auf beiden Panels dieselbe Breite. */
+.service-panel--flip {
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--art-col));
+}
+
 .service-panel--flip .service-panel__art {
-    order: 2;
+    grid-column: 2;
+    grid-row: 1;
     border-right: 0;
     border-left: 1px solid var(--color-border);
 }
 
-/* Die Grafik ist bewusst inline im HTML: nur so erbt sie die Theme-Variablen
-   und wechselt mit Hell/Dunkel und dem Projekt-Theme mit. */
-.service-art {
+.service-panel--flip .service-panel__copy {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Das Mockup laeuft in voller Spaltenbreite bis an die Panel-Kante. */
+.service-shot {
     position: relative;
+    z-index: 1;
     display: block;
-    width: min(100%, 27rem);
+    width: 100%;
     height: auto;
+    transition: transform var(--duration-slow) var(--ease-out);
 }
 
-.service-art__plane {
-    fill: rgba(var(--theme-primary), 0.06);
-    stroke: rgba(var(--theme-primary), 0.55);
-    stroke-width: 1;
+.service-panel:hover .service-shot {
+    transform: scale(1.03);
 }
 
-.service-art__block {
-    fill: rgba(var(--theme-primary), 0.18);
-    stroke: rgba(var(--theme-primary), 0.45);
-    stroke-width: 0.75;
-}
-
-.service-art__axis {
-    stroke: var(--color-text-muted);
-    stroke-width: 1;
-    stroke-dasharray: 3 5;
-}
-
-.service-art__link {
-    stroke: rgba(var(--theme-secondary), 0.55);
-    stroke-width: 1;
-}
-
-.service-art__node {
-    fill: var(--color-bg-elevated);
-    stroke: rgba(var(--theme-accent), 0.8);
-    stroke-width: 1;
-}
-
-.service-art__dot {
-    fill: rgb(var(--theme-accent));
+@media (prefers-reduced-motion: reduce) {
+    .service-panel:hover .service-shot {
+        transform: none;
+        transition: none;
+    }
 }
 
 .service-panel__copy {
@@ -2182,25 +2193,36 @@ html[data-color-scheme="light"] .about-highlight {
 }
 
 @media (max-width: 900px) {
-    .service-panel {
+    .service-panel,
+    .service-panel--flip {
         grid-template-columns: 1fr;
     }
 
-    /* Gestapelt liegt die Grafik immer oben, auch im gespiegelten Panel. */
+    /* Gestapelt liegt das Bild immer oben, auch im gespiegelten Panel: die
+       Spaltenzuweisung von oben muss dafuer ausdruecklich zurueck. */
+    .service-panel--flip .service-panel__art {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .service-panel--flip .service-panel__copy {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
     .service-panel__art,
     .service-panel--flip .service-panel__art {
-        order: 0;
-        min-height: 12rem;
-        padding: var(--space-lg);
+        min-height: 0;
         border-right: 0;
         border-left: 0;
         border-bottom: 1px solid var(--color-border);
     }
 
-    /* Hochformat in voller Breite frisst sonst ein Drittel des Telefons,
-       bevor der Paketname kommt. */
-    .service-art {
-        width: min(92%, 17rem);
+    /* Gestapelt fuellt das 16:9-Motiv die Breite ohnehin aus: der weiche
+       Auszug dahinter waere nur noch unsichtbare Ladezeit. */
+    .service-panel__art::before,
+    .service-panel__art::after {
+        display: none;
     }
 
     .service-tiles {
