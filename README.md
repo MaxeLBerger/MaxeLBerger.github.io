@@ -12,7 +12,7 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Full-bleed E46 photo, editorial text column on the right, one primary button plus one text link. Static, no slider. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, a five-tile tech strip and a vertical tagline at the right edge. Static, no slider. |
 | `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack, three grouped boxes with icon tiles. |
