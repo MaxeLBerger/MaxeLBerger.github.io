@@ -1,4 +1,4 @@
-﻿name: Deploy Portfolio
+name: Deploy Portfolio
 
 on:
   push:
@@ -9,11 +9,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: cloudflare-pages
   cancel-in-progress: false
 
 env:
@@ -22,6 +20,8 @@ env:
   # (real hero photo, optimized WebP). 600 leaves headroom but still
   # catches an accidentally committed 2 MB PNG.
   MAX_ASSET_KB: 600
+  # Must match the Cloudflare Pages project name exactly.
+  CF_PAGES_PROJECT: maximilianhaak-de
 
 jobs:
   build:
@@ -36,7 +36,9 @@ jobs:
       - name: Verify required entry points exist
         run: |
           set -e
-          required=(index.html assets/css/main.css assets/js/main.js CNAME impressum.html datenschutz.html)
+          # CNAME is not used by Cloudflare Pages. It stays in the repo so a
+          # rollback to GitHub Pages remains a one-commit operation.
+          required=(index.html assets/css/main.css assets/js/main.js CNAME impressum.html datenschutz.html _headers)
           missing=0
           for f in "${required[@]}"; do
             if [ ! -f "$f" ]; then
@@ -68,13 +70,12 @@ jobs:
           set -e
           mkdir -p dist
           cp ./*.html dist/
-          cp CNAME dist/
           [ -f robots.txt ] && cp robots.txt dist/
           [ -f sitemap.xml ] && cp sitemap.xml dist/
           [ -d assets ] && cp -r assets dist/
           [ -d projects ] && cp -r projects dist/
-          # Disable Jekyll on Pages (we ship plain static files).
-          touch dist/.nojekyll
+          # Cloudflare Pages reads _headers from the root of the deployed directory.
+          cp _headers dist/
           echo "Assembled dist/:"
           ls -la dist | head -40
 
@@ -129,41 +130,59 @@ jobs:
             echo
             echo "## Top-level"
             du -sh dist/*.html 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s`: %s\n", $2, $1 }'
             echo
             echo "## Folders"
             du -sh dist/assets dist/projects 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s`: %s\n", $2, $1 }'
             echo
             echo "## 10 largest files"
             find dist -type f -printf '%s\t%p\n' | sort -rn | head -10 \
-              | awk -F'\t' '{ printf "- `%s` — %.0f KB\n", $2, $1/1024 }'
+              | awk -F'\t' '{ printf "- `%s`: %.0f KB\n", $2, $1/1024 }'
           } >> "$GITHUB_STEP_SUMMARY"
           echo "total=$(du -sb dist | cut -f1)" >> "$GITHUB_OUTPUT"
 
-      - name: Upload Pages artifact
+      - name: Upload dist artifact
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: dist
           path: dist
+          retention-days: 7
+          if-no-files-found: error
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy to Cloudflare Pages
     needs: build
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      name: production
+      url: https://maximilianhaak.de
     steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
       - name: Deploy
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy dist --project-name=${{ env.CF_PAGES_PROJECT }} --branch=main
 
       - name: Deployment summary
         run: |
           {
             echo "## Deployment"
-            echo "- **URL:** ${{ steps.deploy.outputs.page_url }}"
+            echo "- **Target:** Cloudflare Pages project \`${{ env.CF_PAGES_PROJECT }}\`"
+            echo "- **URL:** https://maximilianhaak.de"
             echo "- **Bytes shipped:** ${{ needs.build.outputs.total_size }}"
           } >> "$GITHUB_STEP_SUMMARY"

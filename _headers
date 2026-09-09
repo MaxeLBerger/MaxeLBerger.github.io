@@ -1,0 +1,20 @@
+# Cloudflare Pages response headers.
+# Format: https://developers.cloudflare.com/pages/configuration/headers/
+# Limits: max 100 rules, max 2000 characters per line.
+# This file must end up in the root of the deployed directory (see deploy.yml).
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+
+# Media changes rarely and is versioned by filename (hero-08.webp and friends).
+# HTML, CSS and JS keep the Cloudflare default (revalidate on every request),
+# because main.css and main.js are not content-hashed.
+/assets/img/*
+  Cache-Control: public, max-age=86400
+
+/assets/video/*
+  Cache-Control: public, max-age=86400
