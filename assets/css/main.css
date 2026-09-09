@@ -836,8 +836,9 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
    HERO SECTION
    ═══════════════════════════════════════════════ */
 /* Portrait hero after the September 2026 mockup: text column on the left
-   with a two-line headline, a five-tile tech strip under the CTAs and a
-   vertical tagline at the right edge next to the right-anchored photo. */
+   with a two-line headline, a three-tile tech strip plus a client logo row
+   under the CTAs and a vertical tagline at the right edge next to the
+   right-anchored photo. */
 .hero-section {
     position: relative;
     min-height: 100dvh;
@@ -1060,7 +1061,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     transform: translateX(4px);
 }
 
-/* Tech strip under the CTAs: five tiles, icon above the label. */
+/* Tech strip under the CTAs: three tiles, icon above the label. */
 .hero-stack {
     list-style: none;
     margin: var(--space-xl) 0 0;
@@ -1102,6 +1103,66 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     height: 26px;
     object-fit: contain;
     border-radius: 5px;
+}
+
+/* Client row under the tech strip. Neither customer has a dark-background
+   logo variant, so both ship as white silhouettes: that keeps the row calm on
+   the photo and stops the Human Bridges wordmark (black on a blue patch in the
+   original) from disappearing. They sit dimmed and come up to full white on
+   hover. Heights are tuned per logo rather than shared, because senihelp is a
+   compact wordmark and Human Bridges a wide mark-plus-wordmark lockup. */
+.hero-clients {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.9rem, 1.8vw, 1.6rem);
+    margin-top: var(--space-lg);
+}
+
+.hero-clients-label {
+    margin: 0;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.48);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero-clients-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(1.1rem, 2.4vw, 2.1rem);
+}
+
+.hero-clients-item {
+    display: flex;
+    align-items: center;
+}
+
+.hero-client-logo {
+    display: block;
+    width: auto;
+    opacity: 0.62;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+    transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.hero-clients-item:hover .hero-client-logo {
+    opacity: 1;
+}
+
+.hero-client-logo--senihelp {
+    height: 24px;
+}
+
+.hero-client-logo--humanbridges {
+    height: 20px;
 }
 
 /* Vertical tagline: a thin accent bar and three stacked words, centred on
@@ -3075,6 +3136,28 @@ html[data-color-scheme="light"] .cookie-content p {
         height: 22px;
     }
 
+    .hero-clients {
+        gap: 0.75rem;
+        margin-top: var(--space-md);
+    }
+
+    .hero-clients-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-clients-list {
+        gap: 1.1rem;
+    }
+
+    .hero-client-logo--senihelp {
+        height: 21px;
+    }
+
+    .hero-client-logo--humanbridges {
+        height: 17px;
+    }
+
     .hero-tagline-text {
         font-size: 0.68rem;
         letter-spacing: 0.16em;
@@ -3138,6 +3221,12 @@ html[data-color-scheme="light"] .cookie-content p {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.25rem;
+    }
+
+    .hero-clients {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     /* Project screenshots stay visible on mobile: just narrower. */

@@ -125,6 +125,7 @@
             'hero.desc': 'Websites, Web-Apps und KI-Lösungen für Unternehmen und Selbstständige, von der Konzeption bis zum Go-Live. Persönlich und direkt aus Bruckmühl bei Rosenheim.',
             'hero.cta1': 'Projekte ansehen',
             'hero.cta2': 'Kontakt aufnehmen',
+            'hero.clients': 'Kunden',
             'hero.tag1': 'Sauber.',
             'hero.tag2': 'Zuverlässig.',
             'hero.tag3': 'Direkt.',
@@ -385,6 +386,7 @@
             'hero.desc': 'Websites, web apps and AI solutions for companies and freelancers, from concept to go-live. Personal and direct, from Bruckmühl near Rosenheim.',
             'hero.cta1': 'View projects',
             'hero.cta2': 'Get in touch',
+            'hero.clients': 'Clients',
             'hero.tag1': 'Clean.',
             'hero.tag2': 'Reliable.',
             'hero.tag3': 'Direct.',
@@ -1375,6 +1377,7 @@
             const ctaItems = heroSection.querySelectorAll('.hero-cta .btn, .hero-cta .hero-link');
             const tags = heroSection.querySelector('.slide-tags');
             const stackItems = heroSection.querySelectorAll('.hero-stack-item');
+            const clientItems = heroSection.querySelectorAll('.hero-clients-label, .hero-clients-item');
             const taglineBar = heroSection.querySelector('.hero-tagline-bar');
             const taglineWords = heroSection.querySelectorAll('.hero-tagline-text span');
 
@@ -1385,6 +1388,7 @@
             gsap.set(ctaItems, { y: 15, opacity: 0 });
             if (tags) gsap.set(tags, { y: 10, opacity: 0 });
             if (stackItems.length) gsap.set(stackItems, { y: 14, opacity: 0 });
+            if (clientItems.length) gsap.set(clientItems, { y: 10, opacity: 0 });
             // The tagline wrapper is positioned through a CSS transform, so
             // only its children are animated: the bar grows from its start,
             // the words slide in after it.
@@ -1444,6 +1448,16 @@
                     duration: 0.45,
                     ease: 'power3.out',
                 }, 0.85);
+            }
+
+            // Client logos: label first, then the logos, just after the tiles
+            if (clientItems.length) {
+                tl.to(clientItems, {
+                    y: 0, opacity: 1,
+                    stagger: 0.07,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                }, 1.0);
             }
 
             // Tagline: bar grows, then the three words slide in
