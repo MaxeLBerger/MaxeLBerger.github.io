@@ -1464,6 +1464,45 @@ html[data-color-scheme="light"] .showcase-frame {
     object-fit: cover;
 }
 
+/* Spiele-Slides tragen zwei Screenshots im selben Rahmen: in Ruhe das Menue,
+   unter der Maus das laufende Spiel. Beide Bilder haben exakt dieselben Masse,
+   sonst schneidet object-fit: cover die Ebenen unterschiedlich zu und die
+   Ueberblendung wandert an den Kanten. */
+.showcase-image-wrap--swap {
+    position: relative;
+}
+
+/* Das Ingame-Bild liegt deckungsgleich ueber dem Menue und loest sich beim
+   Hover darueber auf. Das Menue bleibt dabei voll deckend liegen, damit in der
+   Mitte der Blende nicht kurz der Rahmen durchscheint. */
+.showcase-shot--hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+@media (hover: hover) {
+    .showcase-shot--hover {
+        transform: scale(1.04);
+        transition: opacity 450ms var(--ease-out),
+                    transform 450ms var(--ease-out);
+    }
+
+    .showcase-link:hover .showcase-shot--hover,
+    .showcase-link:focus-visible .showcase-shot--hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Ohne Bewegung bleibt der Wechsel, nur eben als harter Schnitt. */
+@media (prefers-reduced-motion: reduce) {
+    .showcase-shot--hover {
+        transform: none;
+        transition: none;
+    }
+}
+
 /* Image-less placeholder frame for slides without a screenshot yet. */
 .showcase-frame--mock {
     cursor: default;
