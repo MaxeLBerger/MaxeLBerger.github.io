@@ -27,14 +27,22 @@ The slider on the homepage runs in two modes, filtered through `data-mode` on bo
 
 ### Own work (`data-mode="own"`)
 
+Listed in slider order. The pagination buttons in `index.html` are the single source of that order:
+the slider pairs slides to buttons by `data-project`, so moving a project means moving its button.
+
 | Project | Type | Detail page |
 |---------|------|-------------|
+| CapitalCombo | Trading research and execution platform | none |
+| DealHunter | Autonomous marketplace scanner | none |
 | E46 Studio | Desktop app (Electron) | [e46-studio.html](projects/e46-studio.html) |
-| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 | Albert Royale | 3D game with a self-built neural net | [albert.html](projects/albert.html) |
+| Age of Max | Browser game | none |
 | Medieval Tower Defense | Browser game | none |
+| Deterministische Review | Git review pipeline (developer tool) | none |
+| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 | Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
-| dog-kennel-online | Web app, in progress | none |
+| MemeCoinTrader | Java desktop trading app, in progress | none |
+| Haakly | Self-hosted CMS | none |
 
 ### Client work (`data-mode="customers"`)
 
