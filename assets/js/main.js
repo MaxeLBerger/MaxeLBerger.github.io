@@ -119,12 +119,17 @@
             'footer.datenschutz': 'Datenschutz',
             // Hero (statisch, Foto-first)
             'hero.eyebrow': 'Maximilian Haak \u00b7 Softwareentwickler',
-            'hero.title1': 'Websites, Web\u2011Apps',
-            'hero.title2': 'und KI-Lösungen.',
-            'hero.title3': 'Sauber gebaut.',
-            'hero.desc': 'Seit über fünf Jahren entwickle ich Software mit TypeScript, React und modernen Cloud-Technologien, aus Bruckmühl bei Rosenheim, persönlich und direkt.',
+            'hero.title1': 'Entwicklung.',
+            'hero.title2': 'Design.',
+            'hero.title3': 'Effizienz.',
+            'hero.desc': 'Websites, Web-Apps und KI-Lösungen für Unternehmen und Selbstständige, von der Konzeption bis zum Go-Live. Persönlich und direkt aus Bruckmühl bei Rosenheim.',
             'hero.cta1': 'Projekte ansehen',
             'hero.cta2': 'Kontakt aufnehmen',
+            'hero.clients': 'Kunden',
+            'hero.tag1': 'Sauber.',
+            'hero.tag2': 'Zuverlässig.',
+            'hero.tag3': 'Direkt.',
+            'hero.tagline.label': 'Arbeitsweise',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
@@ -375,12 +380,17 @@
             'footer.datenschutz': 'Privacy Policy',
             // Hero (static, photo-first)
             'hero.eyebrow': 'Maximilian Haak \u00b7 Software Developer',
-            'hero.title1': 'Websites, web apps',
-            'hero.title2': 'and AI solutions.',
-            'hero.title3': 'Built properly.',
-            'hero.desc': 'I\'ve been building software for over five years with TypeScript, React and modern cloud technologies, based in Bruckmühl near Rosenheim, personal and direct.',
+            'hero.title1': 'Development.',
+            'hero.title2': 'Design.',
+            'hero.title3': 'Efficiency.',
+            'hero.desc': 'Websites, web apps and AI solutions for companies and freelancers, from concept to go-live. Personal and direct, from Bruckmühl near Rosenheim.',
             'hero.cta1': 'View projects',
             'hero.cta2': 'Get in touch',
+            'hero.clients': 'Clients',
+            'hero.tag1': 'Clean.',
+            'hero.tag2': 'Reliable.',
+            'hero.tag3': 'Direct.',
+            'hero.tagline.label': 'Way of working',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
@@ -1366,6 +1376,10 @@
             const desc = heroSection.querySelector('.hero-description');
             const ctaItems = heroSection.querySelectorAll('.hero-cta .btn, .hero-cta .hero-link');
             const tags = heroSection.querySelector('.slide-tags');
+            const stackItems = heroSection.querySelectorAll('.hero-stack-item');
+            const clientItems = heroSection.querySelectorAll('.hero-clients-label, .hero-clients-item');
+            const taglineBar = heroSection.querySelector('.hero-tagline-bar');
+            const taglineWords = heroSection.querySelectorAll('.hero-tagline-text span');
 
             // Set initial hidden states
             if (eyebrow) gsap.set(eyebrow, { y: 12, opacity: 0 });
@@ -1373,6 +1387,13 @@
             if (desc) gsap.set(desc, { y: 20, opacity: 0 });
             gsap.set(ctaItems, { y: 15, opacity: 0 });
             if (tags) gsap.set(tags, { y: 10, opacity: 0 });
+            if (stackItems.length) gsap.set(stackItems, { y: 14, opacity: 0 });
+            if (clientItems.length) gsap.set(clientItems, { y: 10, opacity: 0 });
+            // The tagline wrapper is positioned through a CSS transform, so
+            // only its children are animated: the bar grows from its start,
+            // the words slide in after it.
+            if (taglineBar) gsap.set(taglineBar, { scaleY: 0, scaleX: 1, transformOrigin: '0 0' });
+            if (taglineWords.length) gsap.set(taglineWords, { x: 8, opacity: 0 });
 
             const tl = gsap.timeline({ delay: 0.3 });
 
@@ -1417,6 +1438,42 @@
                     y: 0, opacity: 1,
                     duration: 0.4, ease: 'power3.out',
                 }, 0.78);
+            }
+
+            // Tech tiles: short stagger after the CTAs
+            if (stackItems.length) {
+                tl.to(stackItems, {
+                    y: 0, opacity: 1,
+                    stagger: 0.06,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                }, 0.85);
+            }
+
+            // Client logos: label first, then the logos, just after the tiles
+            if (clientItems.length) {
+                tl.to(clientItems, {
+                    y: 0, opacity: 1,
+                    stagger: 0.07,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                }, 1.0);
+            }
+
+            // Tagline: bar grows, then the three words slide in
+            if (taglineBar) {
+                tl.to(taglineBar, {
+                    scaleY: 1, scaleX: 1,
+                    duration: 0.5, ease: 'power3.inOut',
+                }, 0.95);
+            }
+            if (taglineWords.length) {
+                tl.to(taglineWords, {
+                    x: 0, opacity: 1,
+                    stagger: 0.08,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                }, 1.1);
             }
         }
     }
