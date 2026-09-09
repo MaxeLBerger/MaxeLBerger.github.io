@@ -71,16 +71,21 @@ comes from the directional veil plus layered text-shadows. Do not reintroduce he
 on the photo is the light linear wash from `.hero-bg-slide::after`. The text column is: `.hero-eyebrow` (uppercase
 name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
 never a gradient), then `.hero-description`, then `.hero-cta` with ONE white primary button linking to `#projects`
-and ONE `.hero-link` text link linking to `#contact`, then `ul.hero-stack` with five icon tiles (TypeScript, React,
-Next.js, Node.js, Delphi in their brand colours, icons from `assets/img/icons/`). Beside the column,
-`aside.hero-tagline` (accent bar plus three words) is positioned absolutely at the viewport's right edge (its
-`right` cancels the container margin) and turns into a horizontal row under the tiles from 1024 px down. The GSAP entrance in `playEntrance()` adds the
-tiles and the tagline to the end of the existing timeline; the tagline wrapper itself is never transformed by GSAP
-because its centring relies on a CSS transform.
+and ONE `.hero-link` text link linking to `#contact`, then `ul.hero-stack` with three icon tiles (Next.js,
+TypeScript, AI Agents in their brand colours, icons from `assets/img/icons/`), then `div.hero-clients`: an uppercase
+`hero.clients` label plus the two customer logos from `assets/img/clients/`. Those logos ship as white silhouettes
+and sit at `opacity: .62`, going to full white on hover; their heights are set per logo
+(`.hero-client-logo--senihelp` / `--humanbridges`) because one is a compact wordmark and the other a wide
+mark-plus-wordmark lockup, so do not give them a shared height. Beside the column, `aside.hero-tagline` (accent bar
+plus three words) is positioned absolutely at the viewport's right edge (its `right` cancels the container margin)
+and turns into a horizontal row under the tiles from 1600 px down. The GSAP entrance in `playEntrance()` adds the
+tiles, the client row and the tagline to the end of the existing timeline; the tagline wrapper itself is never
+transformed by GSAP because its centring relies on a CSS transform.
 
 Do NOT add gradient text, self-awarded credibility badges, a second pill button, or a scroll hint to the hero; these
 were deliberately removed. i18n keys are `hero.eyebrow`, `hero.title1..3` (title2 and title3 are the two words of
-the second line), `hero.desc`, `hero.cta1/cta2`, `hero.tag1..3` and `hero.tagline.label`, all present in both languages.
+the second line), `hero.desc`, `hero.cta1/cta2`, `hero.clients`, `hero.tag1..3` and `hero.tagline.label`, all
+present in both languages. The tile labels are product names and stay untranslated, like the ones in the skills section.
 
 Over the hero the navbar is transparent with white text (`body.has-hero #navbar:not(.scrolled)`). In light mode the
 scrim over the hero stays dark and the icon buttons stay transparent, otherwise the sun icon disappears. Keep both
