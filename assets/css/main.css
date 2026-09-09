@@ -346,6 +346,7 @@ html[data-color-scheme="light"] .slider-arrow:hover {
     background: rgba(var(--theme-primary), 0.08);
     border-color: rgb(var(--theme-primary));
     color: rgb(var(--theme-primary));
+    transform: translateY(-50%);
 }
 
 /* Scroll hint entfernt: Hero kommt ohne dekorativen Hinweis aus. */
@@ -1031,9 +1032,13 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 .project-pagination {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    /* Zentriert, solange alles hineinpasst. "safe" verhindert, dass bei
+       Ueberlauf der Anfang der Reihe hinter den linken Rand rutscht und
+       unerreichbar wird. */
+    justify-content: center;
+    justify-content: safe center;
     gap: var(--space-sm);
-    margin: 0;
+    margin: var(--space-2xl) 0 0;
     min-width: 0;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
@@ -1445,16 +1450,19 @@ html[data-color-scheme="light"] .showcase-frame {
 
 /* Showcase glow behind frame */
 /* Slider controls: arrows + pagination sit directly below the slide. */
+/* Die Pfeile sitzen wieder aussen am Slide, die Pagination steht allein
+   darunter, so wie es vor der Erweiterung war. */
 .project-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-md);
-    margin-top: var(--space-2xl);
 }
 
 .slider-arrow {
-    flex: 0 0 auto;
+    position: absolute;
+    top: 46%;
+    transform: translateY(-50%);
+    z-index: 10;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -1479,6 +1487,14 @@ html[data-color-scheme="light"] .showcase-frame {
 .slider-arrow svg {
     width: 20px;
     height: 20px;
+}
+
+.slider-arrow-left {
+    left: 1.5rem;
+}
+
+.slider-arrow-right {
+    right: 1.5rem;
 }
 
 /* ═══════════════════════════════════════════════
