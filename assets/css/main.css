@@ -2311,15 +2311,30 @@ html[data-color-scheme="light"] .skill-category:hover {
                 box-shadow var(--duration-base) var(--ease-out);
 }
 
-/* Real tech icons sit ABOVE the name and brighten slightly on hover. */
+/* Tech icons are single-colour SVG masks: one file per brand, the colour comes
+   from CSS. That keeps every icon optically the same weight and lets both themes
+   stay legible, since near-black brand marks would otherwise vanish on the dark
+   background. Per-icon colours live in the .ti-* map below. */
 .skill-tag .skill-icon {
     width: 32px;
     height: 32px;
-    object-fit: contain;
     flex-shrink: 0;
+    background-color: transparent;
     opacity: 0.95;
     transition: opacity var(--duration-base) var(--ease-out),
                 transform var(--duration-base) var(--ease-out);
+}
+
+@supports ((-webkit-mask-image: url('#m')) or (mask-image: url('#m'))) {
+    .skill-tag .skill-icon {
+        background-color: var(--ti-c);
+        -webkit-mask: var(--ti-i) center / contain no-repeat;
+        mask: var(--ti-i) center / contain no-repeat;
+    }
+
+    html[data-color-scheme="light"] .skill-tag .skill-icon {
+        background-color: var(--ti-cl);
+    }
 }
 
 .skill-tag:hover .skill-icon {
@@ -2327,38 +2342,54 @@ html[data-color-scheme="light"] .skill-category:hover {
     transform: scale(1.08);
 }
 
-/* Dual icon (HTML5 + CSS3) sits in the icon row. */
-.skill-tag .skill-icon-pair {
-    display: inline-flex;
-    align-items: center;
-    height: 32px;
-}
-
-.skill-tag .skill-icon-pair .skill-icon {
-    width: 26px;
-    height: 26px;
-}
-
-.skill-tag .skill-icon-pair .skill-icon + .skill-icon {
-    margin-left: -0.35rem;
-}
-
-/* Text-glyph fallback for skills without a real icon (Stripe, prompts). */
-.skill-tag .skill-icon-fallback {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--color-text);
-    font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    flex-shrink: 0;
-}
+/* Brand colour per icon: --ti-c on the dark theme, --ti-cl on the light one.
+   Both are the official brand colour, adjusted only where it fell below a 3.2:1
+   contrast ratio against that theme's background. */
+.ti-react { --ti-i: url(../img/tech/react.svg); --ti-c: #61DAFB; --ti-cl: #0594BB; }
+.ti-typescript { --ti-i: url(../img/tech/typescript.svg); --ti-c: #3178C6; --ti-cl: #3178C6; }
+.ti-nextjs { --ti-i: url(../img/tech/nextjs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-vite { --ti-i: url(../img/tech/vite.svg); --ti-c: #9135FF; --ti-cl: #9135FF; }
+.ti-astro { --ti-i: url(../img/tech/astro.svg); --ti-c: #BC52EE; --ti-cl: #BC52EE; }
+.ti-tailwind { --ti-i: url(../img/tech/tailwind.svg); --ti-c: #06B6D4; --ti-cl: #0595AE; }
+.ti-radix { --ti-i: url(../img/tech/radix.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-framer { --ti-i: url(../img/tech/framer.svg); --ti-c: #0055FF; --ti-cl: #0055FF; }
+.ti-html5 { --ti-i: url(../img/tech/html5.svg); --ti-c: #E34F26; --ti-cl: #E34F26; }
+.ti-css3 { --ti-i: url(../img/tech/css3.svg); --ti-c: #8041C0; --ti-cl: #663399; }
+.ti-gsap { --ti-i: url(../img/tech/gsap.svg); --ti-c: #88CE02; --ti-cl: #639601; }
+.ti-threejs { --ti-i: url(../img/tech/threejs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-phaser { --ti-i: url(../img/tech/phaser.svg); --ti-c: #8E44E0; --ti-cl: #8E44E0; }
+.ti-nodejs { --ti-i: url(../img/tech/nodejs.svg); --ti-c: #5FA04E; --ti-cl: #599649; }
+.ti-python { --ti-i: url(../img/tech/python.svg); --ti-c: #3776AB; --ti-cl: #3776AB; }
+.ti-fastapi { --ti-i: url(../img/tech/fastapi.svg); --ti-c: #009688; --ti-cl: #009688; }
+.ti-express { --ti-i: url(../img/tech/express.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-supabase { --ti-i: url(../img/tech/supabase.svg); --ti-c: #3FCF8E; --ti-cl: #269965; }
+.ti-sql { --ti-i: url(../img/tech/sql.svg); --ti-c: #4C8DFF; --ti-cl: #3B82FF; }
+.ti-postgresql { --ti-i: url(../img/tech/postgresql.svg); --ti-c: #4169E1; --ti-cl: #4169E1; }
+.ti-prisma { --ti-i: url(../img/tech/prisma.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-stripe { --ti-i: url(../img/tech/stripe.svg); --ti-c: #635BFF; --ti-cl: #635BFF; }
+.ti-rust { --ti-i: url(../img/tech/rust.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-java { --ti-i: url(../img/tech/java.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-tauri { --ti-i: url(../img/tech/tauri.svg); --ti-c: #24C8D8; --ti-cl: #1B96A2; }
+.ti-electron { --ti-i: url(../img/tech/electron.svg); --ti-c: #47848F; --ti-cl: #47848F; }
+.ti-docker { --ti-i: url(../img/tech/docker.svg); --ti-c: #2496ED; --ti-cl: #138CE8; }
+.ti-playwright { --ti-i: url(../img/tech/playwright.svg); --ti-c: #2EAD33; --ti-cl: #2A9D2E; }
+.ti-githubactions { --ti-i: url(../img/tech/githubactions.svg); --ti-c: #2088FF; --ti-cl: #1D86FF; }
+.ti-git { --ti-i: url(../img/tech/git.svg); --ti-c: #F03C2E; --ti-cl: #F03C2E; }
+.ti-svn { --ti-i: url(../img/tech/svn.svg); --ti-c: #809CC9; --ti-cl: #6788BE; }
+.ti-delphi { --ti-i: url(../img/tech/delphi.svg); --ti-c: #E62431; --ti-cl: #E62431; }
+.ti-llmapi { --ti-i: url(../img/tech/llmapi.svg); --ti-c: #10A37F; --ti-cl: #0F9977; }
+.ti-claude { --ti-i: url(../img/tech/claude.svg); --ti-c: #D97757; --ti-cl: #D56946; }
+.ti-cursor { --ti-i: url(../img/tech/cursor.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-openai { --ti-i: url(../img/tech/openai.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-copilot { --ti-i: url(../img/tech/copilot.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-aiagents { --ti-i: url(../img/tech/aiagents.svg); --ti-c: #7C5CFF; --ti-cl: #7C5CFF; }
+.ti-rag { --ti-i: url(../img/tech/rag.svg); --ti-c: #00B8A9; --ti-cl: #00998C; }
+.ti-mcp { --ti-i: url(../img/tech/mcp.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-ollama { --ti-i: url(../img/tech/ollama.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-prompt { --ti-i: url(../img/tech/prompt.svg); --ti-c: #F2A03D; --ti-cl: #C7730D; }
+.ti-vscode { --ti-i: url(../img/tech/vscode.svg); --ti-c: #0065A9; --ti-cl: #0065A9; }
+.ti-n8n { --ti-i: url(../img/tech/n8n.svg); --ti-c: #EA4B71; --ti-cl: #EA4B71; }
+.ti-spark { --ti-i: url(../img/tech/spark.svg); --ti-c: #FF7A45; --ti-cl: #F94700; }
 
 .skill-tag .skill-name {
     display: block;
@@ -2379,11 +2410,6 @@ html[data-color-scheme="light"] .skill-category:hover {
     color: rgb(var(--theme-primary));
     background: rgba(var(--theme-primary), 0.1);
     border-color: rgba(var(--theme-primary), 0.22);
-}
-
-.skill-tag.highlight .skill-icon-fallback {
-    background: rgba(var(--theme-primary), 0.18);
-    color: rgb(var(--theme-primary));
 }
 
 .skill-tag.highlight:hover {
