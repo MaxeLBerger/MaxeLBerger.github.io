@@ -198,6 +198,16 @@
             'slide.detreview.tag1': 'Python',
             'slide.detreview.tag2': 'git',
             'slide.detreview.tag3': 'LLM-Harness',
+            // DealHunter (privat)
+            'slide.dealhunter.t1': 'DealHunter.',
+            'slide.dealhunter.t2': 'Findet Angebote,',
+            'slide.dealhunter.t3': 'bevor ich suche.',
+            'slide.dealhunter.badge': 'MARKT-SCANNER',
+            'slide.dealhunter.desc': 'Ein autonomer Agent, der Kleinanzeigen rund um die Uhr nach lohnenden Angeboten absucht. Scheduler, Worker und Dashboard hängen an einer gemeinsamen Postgres-Queue, damit eine lange Suche nie den Rest blockiert. Autos, Schwerpunkt BMW E46, bewertet er gegen Marktmedian, Zustand, Laufleistung und Begehrtheit; bei Konsolen liest ein Vision-Modell die Fotos und rechnet die Marge gegen PriceCharting. Treffer kommen per Telegram, die KI-Kosten laufen sichtbar mit.',
+            'slide.dealhunter.cta1': 'Projekt anfragen',
+            'slide.dealhunter.tag1': 'Python',
+            'slide.dealhunter.tag2': 'FastAPI',
+            'slide.dealhunter.tag3': 'Claude API',
             // MemeCoinTrader (privat, in Arbeit, ohne Bild)
             'slide.memecointrader.t1': 'MemeCoinTrader.',
             'slide.memecointrader.t2': 'Solana-Streams,',
@@ -437,6 +447,16 @@
             'slide.detreview.tag1': 'Python',
             'slide.detreview.tag2': 'git',
             'slide.detreview.tag3': 'LLM harness',
+            // DealHunter (private)
+            'slide.dealhunter.t1': 'DealHunter.',
+            'slide.dealhunter.t2': 'Finds the deals',
+            'slide.dealhunter.t3': 'before I look.',
+            'slide.dealhunter.badge': 'MARKET SCANNER',
+            'slide.dealhunter.desc': 'An autonomous agent that scans Kleinanzeigen around the clock for listings worth having. Scheduler, worker and dashboard share one Postgres queue, so a long search never blocks the rest. Cars, mostly the BMW E46, are scored against market median, condition, mileage and demand; for consoles a vision model reads the photos and works out the margin against PriceCharting. Hits arrive over Telegram, with the AI cost running visibly alongside.',
+            'slide.dealhunter.cta1': 'Ask about this',
+            'slide.dealhunter.tag1': 'Python',
+            'slide.dealhunter.tag2': 'FastAPI',
+            'slide.dealhunter.tag3': 'Claude API',
             // MemeCoinTrader (private, work in progress, no screenshot)
             'slide.memecointrader.t1': 'MemeCoinTrader.',
             'slide.memecointrader.t2': 'Solana streams,',

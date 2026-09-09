@@ -183,6 +183,16 @@
     --theme-on-primary: #ffffff;
 }
 
+/* DealHunter: Signalgelb der Jagd-Oberflaeche, wach und aufmerksam */
+[data-project-theme="dealhunter"] {
+    --theme-primary: 245, 178, 52;
+    --theme-secondary: 214, 138, 12;
+    --theme-accent: 255, 204, 1;
+    --theme-gradient-start: #ffcc01;
+    --theme-gradient-mid: #f5b234;
+    --theme-gradient-end: #d68a0c;
+}
+
 /* MemeCoinTrader: Cyan der Solana-Streams, kuehl und wach */
 [data-project-theme="memecointrader"] {
     --theme-primary: 34, 211, 238;
