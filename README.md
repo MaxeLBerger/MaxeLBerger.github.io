@@ -25,6 +25,9 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 The slider on the homepage runs in two modes, filtered through `data-mode` on both slides and pagination buttons. Default is `own`.
 
+The section header carries a `.section-note` line (`projects.note`): self-employment starts on 1 October 2026, and the
+client slides repeat that date rather than implying an older track record.
+
 ### Own work (`data-mode="own"`)
 
 Listed in slider order. The pagination buttons in `index.html` are the single source of that order:

@@ -1760,6 +1760,18 @@ html[data-color-scheme="light"] .showcase-frame {
     line-height: 1.2;
 }
 
+/* Ruhige Statuszeile unter einem Abschnittstitel: keine Box, kein Rahmen,
+   nur zurueckgenommener Text. Bewusst kein Theme-Blau, damit sie beim
+   Projektwechsel nicht mitfarbt und die Aussage sachlich bleibt. */
+.section-note {
+    max-width: min(60ch, 100%);
+    margin: var(--space-md) auto 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    text-wrap: balance;
+}
+
 /* ═══════════════════════════════════════════════
    ABOUT SECTION
    ═══════════════════════════════════════════════ */
@@ -3229,7 +3241,6 @@ html[data-color-scheme="light"] .cookie-content p {
     font-size: clamp(1.5rem, 1rem + 2.4vw, 2.25rem);
 }
 
-/* Section note: shorter line length for comfortable reading. */
 /* Section header rhythm: less aggressive bottom margin on phones. */
 .section-header {
     margin-bottom: clamp(var(--space-lg), 3vw, var(--space-2xl));
