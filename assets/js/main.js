@@ -579,7 +579,7 @@
      * has to map it onto a slide falls back to the first project in the
      * pagination. Keep this in sync with the leading tab in index.html.
      */
-    const FIRST_PROJECT_THEME = 'capitalcombo';
+    const FIRST_PROJECT_THEME = 'haakly';
 
     /**
      * Theme controller: single source of truth for `data-project-theme`.
