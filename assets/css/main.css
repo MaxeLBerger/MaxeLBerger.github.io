@@ -151,14 +151,22 @@
     --theme-on-primary: #ffffff;
 }
 
-/* Haakly: klares Produkt-Blau, ruhig und technisch */
+/* Haakly: klares Produkt-Blau, ruhig und technisch. Die ganze Rampe sitzt auf
+   dem Farbton des Hemds im Hero-Portrait: #7ba3eb ist exakt aus dem Foto
+   gemessen, primary und secondary sind derselbe Farbton 219 in dunkleren
+   Stufen. Nicht auf ein generisches Indigo "zurueckkorrigieren".
+   Luminanz faellt monoton 0.364 / 0.204 / 0.125. Die dunkleren Stufen sind
+   bewusst nicht das Hemd-Blau selbst: primary traegt 37 Textstellen und die
+   Buttonflaechen und braeuchte sonst im Light Mode 2.31:1, secondary ist das
+   dunkle Ende des Verlaufstitels und faellt unter 3:1, sobald es heller wird.
+   gradient-mid ist nur Reserve, benutzt wird es nirgends. */
 [data-project-theme="haakly"] {
-    --theme-primary: 74, 120, 255;
-    --theme-secondary: 47, 90, 214;
-    --theme-accent: 130, 160, 255;
-    --theme-gradient-start: #82a0ff;
-    --theme-gradient-mid: #4a78ff;
-    --theme-gradient-end: #2f5ad6;
+    --theme-primary: 74, 123, 212;
+    --theme-secondary: 45, 95, 190;
+    --theme-accent: 123, 163, 235;
+    --theme-gradient-start: #7ba3eb;
+    --theme-gradient-mid: #4a7bd4;
+    --theme-gradient-end: #2d5fbe;
 }
 
 /* CapitalCombo: das Hellblau des Seitenmenues, kuehl und sachlich */
@@ -836,9 +844,8 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
    HERO SECTION
    ═══════════════════════════════════════════════ */
 /* Portrait hero after the September 2026 mockup: text column on the left
-   with a two-line headline, a three-tile tech strip plus a client logo row
-   under the CTAs and a vertical tagline at the right edge next to the
-   right-anchored photo. */
+   with a two-line headline and a client logo row under the CTAs, next to
+   the right-anchored photo. */
 .hero-section {
     position: relative;
     min-height: 100dvh;
@@ -885,20 +892,6 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     opacity: 0;
     -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%, #000 80%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 48%, #000 80%, rgba(0, 0, 0, 0) 100%);
-}
-
-/* Cool colour wash over the portrait so the wooden wall picks up the
-   cyan/blue/violet of the theme instead of its own warm grey. */
-.hero-bg-slide::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(34, 211, 238, 0.08) 0%,
-        rgba(59, 130, 246, 0.18) 60%,
-        rgba(168, 85, 247, 0.16) 100%
-    );
 }
 
 .hero-bg-slide.is-active {
@@ -1061,61 +1054,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     transform: translateX(4px);
 }
 
-/* Tech strip under the CTAs: three tiles, icon above the label. */
-.hero-stack {
-    list-style: none;
-    margin: var(--space-xl) 0 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(0.75rem, 1.6vw, 1.5rem);
-}
-
-.hero-stack-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 64px;
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1.2;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.62);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.hero-stack-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* Tile glyphs reuse the masked-SVG system from the skills section, but always
-   take the dark-theme brand colour: the hero sits on the dark photo in both
-   colour schemes, so the light-theme --ti-cl would wash out here. */
-.hero-stack-glyph {
-    display: block;
-    width: 26px;
-    height: 26px;
-    background-color: transparent;
-}
-
-@supports ((-webkit-mask-image: url('#m')) or (mask-image: url('#m'))) {
-    .hero-stack-glyph {
-        background-color: var(--ti-c);
-        -webkit-mask: var(--ti-i) center / contain no-repeat;
-        mask: var(--ti-i) center / contain no-repeat;
-    }
-}
-
-/* Client row under the tech strip. Neither customer has a dark-background
+/* Client row under the CTAs. Neither customer has a dark-background
    logo variant, so both ship as white silhouettes: that keeps the row calm on
    the photo and stops the Human Bridges wordmark (black on a blue patch in the
    original) from disappearing. They sit dimmed and come up to full white on
@@ -1126,7 +1065,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     align-items: center;
     flex-wrap: wrap;
     gap: clamp(0.9rem, 1.8vw, 1.6rem);
-    margin-top: var(--space-lg);
+    margin-top: var(--space-xl);
 }
 
 .hero-clients-label {
@@ -1173,45 +1112,6 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 
 .hero-client-logo--humanbridges {
     height: 20px;
-}
-
-/* Vertical tagline: a thin accent bar and three stacked words, centred on
-   the hero and anchored to the viewport edge (not the content container) so
-   it sits in the dark strip right of the portrait on wide screens. The
-   subtraction cancels the container's side margin. Below 1600px there is no
-   dark strip beside the right-anchored photo, so the tagline turns into a
-   horizontal row under the tech tiles instead. */
-.hero-tagline {
-    position: absolute;
-    right: calc(clamp(1.25rem, 3vw, 3.5rem) - (100vw - 100%) / 2);
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: stretch;
-    gap: 1.1rem;
-    margin: 0;
-}
-
-.hero-tagline-bar {
-    flex-shrink: 0;
-    width: 2px;
-    border-radius: 1px;
-    background: rgb(var(--theme-accent));
-}
-
-.hero-tagline-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    margin: 0;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    line-height: 1.2;
-    color: rgba(255, 255, 255, 0.86);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    white-space: nowrap;
 }
 
 /* Skills section: separate block below hero */
@@ -3015,32 +2915,6 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE: HERO TAGLINE (below 1600px)
-   ═══════════════════════════════════════════════ */
-/* Without the dark strip right of the portrait the vertical tagline would
-   sit on the shoulder, so it moves into the text column and turns
-   horizontal. */
-@media (max-width: 1599px) {
-    .hero-tagline {
-        position: static;
-        transform: none;
-        grid-column: 1;
-        align-items: center;
-        gap: 0.9rem;
-    }
-
-    .hero-tagline-bar {
-        width: 28px;
-        height: 2px;
-    }
-
-    .hero-tagline-text {
-        flex-direction: row;
-        gap: 1rem;
-    }
-}
-
-/* ═══════════════════════════════════════════════
    RESPONSIVE: LAPTOP / TABLET LANDSCAPE (1024px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -3172,31 +3046,10 @@ html[data-color-scheme="light"] .cookie-content p {
         object-position: 50% 0%;
     }
 
-    /* Compact strip and tagline so the copy stays below the face. */
-    .hero-stack {
-        gap: 0.5rem;
-        margin-top: var(--space-lg);
-    }
-
-    .hero-stack-item {
-        width: 56px;
-        font-size: 10px;
-    }
-
-    .hero-stack-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-    }
-
-    .hero-stack-glyph {
-        width: 22px;
-        height: 22px;
-    }
-
+    /* Compact client row so the copy stays below the face. */
     .hero-clients {
         gap: 0.75rem;
-        margin-top: var(--space-md);
+        margin-top: var(--space-lg);
     }
 
     .hero-clients-label {
@@ -3214,11 +3067,6 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .hero-client-logo--humanbridges {
         height: 17px;
-    }
-
-    .hero-tagline-text {
-        font-size: 0.68rem;
-        letter-spacing: 0.16em;
     }
 
     /* The mobile panel is a solid surface again, so the over-photo override
