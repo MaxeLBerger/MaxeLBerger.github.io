@@ -151,14 +151,22 @@
     --theme-on-primary: #ffffff;
 }
 
-/* Haakly: klares Produkt-Blau, ruhig und technisch */
+/* Haakly: klares Produkt-Blau, ruhig und technisch. Die ganze Rampe sitzt auf
+   dem Farbton des Hemds im Hero-Portrait: #7ba3eb ist exakt aus dem Foto
+   gemessen, primary und secondary sind derselbe Farbton 219 in dunkleren
+   Stufen. Nicht auf ein generisches Indigo "zurueckkorrigieren".
+   Luminanz faellt monoton 0.364 / 0.204 / 0.125. Die dunkleren Stufen sind
+   bewusst nicht das Hemd-Blau selbst: primary traegt 37 Textstellen und die
+   Buttonflaechen und braeuchte sonst im Light Mode 2.31:1, secondary ist das
+   dunkle Ende des Verlaufstitels und faellt unter 3:1, sobald es heller wird.
+   gradient-mid ist nur Reserve, benutzt wird es nirgends. */
 [data-project-theme="haakly"] {
-    --theme-primary: 74, 120, 255;
-    --theme-secondary: 47, 90, 214;
-    --theme-accent: 130, 160, 255;
-    --theme-gradient-start: #82a0ff;
-    --theme-gradient-mid: #4a78ff;
-    --theme-gradient-end: #2f5ad6;
+    --theme-primary: 74, 123, 212;
+    --theme-secondary: 45, 95, 190;
+    --theme-accent: 123, 163, 235;
+    --theme-gradient-start: #7ba3eb;
+    --theme-gradient-mid: #4a7bd4;
+    --theme-gradient-end: #2d5fbe;
 }
 
 /* CapitalCombo: das Hellblau des Seitenmenues, kuehl und sachlich */
