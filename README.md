@@ -12,7 +12,7 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, a three-tile tech strip, a client logo row and a vertical tagline at the right edge. Static, no slider. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link and a client logo row. Static, no slider. |
 | `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack, three grouped boxes with icon tiles. |
@@ -115,7 +115,7 @@ Two sizes of the same portrait (wooden wall; `assets/img/profile/maxlerseite.web
 | `hero-portrait.webp` | 953x1600 | 1100 px viewport width |
 | `hero-portrait-760.webp` | 760x1276 | below that, and as the `<img>` fallback |
 
-The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
+The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The photo carries no colour overlay: it keeps the warm skin, hair and wood tones of the master, so a replacement should already be graded the way it is meant to look. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
 
 ### Client logos
 
