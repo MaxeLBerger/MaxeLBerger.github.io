@@ -1114,6 +1114,141 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     height: 20px;
 }
 
+/* ── Hero energy band ─────────────────────────────────────────────────
+   A blue plasma band (straight-alpha WebP, no blend mode needed over the
+   dark ground) between the veil and the portrait. The light source sits
+   behind the portrait's head and shoulder, the band thins into a faint
+   tail towards the copy. On two-column screens the portrait is lifted
+   above the veil so it can occlude the band: the veil only matters under
+   the text column, where the portrait never is. Static placement uses
+   `translate`, the ambient drift animates `transform`, so the two never
+   fight. `--hero-energy-opacity` is the overall strength. */
+@media (min-width: 769px) {
+    .hero-section::before {
+        z-index: -3;
+    }
+
+    .hero-bg-slides {
+        z-index: -2;
+    }
+}
+
+.hero-section {
+    --hero-energy-opacity: 0.85;
+}
+
+.hero-energy {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.8s var(--ease-out);
+    /* Capped to 22 % under the text column (which ends near 48 % of the
+       width) so the copy keeps AAA contrast even where the tail drifts
+       underneath. */
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0, rgba(0, 0, 0, 0.22) 46%, #000 62%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0, rgba(0, 0, 0, 0.22) 46%, #000 62%);
+}
+
+.hero-energy.is-ready {
+    opacity: var(--hero-energy-opacity);
+}
+
+.hero-energy-layer {
+    position: absolute;
+    left: -8%;
+    top: 50%;
+    width: 116%;
+    aspect-ratio: 16 / 9;
+    translate: 0 -37%;
+    will-change: transform, opacity;
+}
+
+.hero-energy-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: fill;
+}
+
+.hero-energy.is-paused .hero-energy-layer {
+    animation-play-state: paused;
+}
+
+@keyframes hero-energy-drift-back {
+    from {
+        transform: translate3d(-0.8%, 0.5%, 0) scale(1.02);
+    }
+    to {
+        transform: translate3d(0.8%, -0.5%, 0) scale(1.05);
+    }
+}
+
+@keyframes hero-energy-drift-front {
+    from {
+        transform: translate3d(1.1%, -0.4%, 0) scale(1.07) rotate(0.3deg);
+    }
+    to {
+        transform: translate3d(-1.1%, 0.4%, 0) scale(1.02) rotate(-0.3deg);
+    }
+}
+
+@keyframes hero-energy-breathe {
+    from {
+        opacity: 0.82;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-energy-layer--back {
+    animation:
+        hero-energy-drift-back 40s ease-in-out infinite alternate,
+        hero-energy-breathe 11s ease-in-out infinite alternate;
+}
+
+/* The second copy sits a little offset and much fainter: it only adds
+   depth when the two drift against each other. */
+.hero-energy-layer--front {
+    opacity: 0.32;
+    mix-blend-mode: screen;
+    animation:
+        hero-energy-drift-front 52s ease-in-out infinite alternate,
+        hero-energy-breathe 15s ease-in-out infinite alternate-reverse;
+}
+
+/* One static layer on tablets, nothing on phones (the picture serves a
+   1x1 gif there, so no bytes are spent either). */
+@media (max-width: 1099px) {
+    .hero-energy-layer {
+        animation: none !important;
+    }
+
+    .hero-energy-layer--front {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-energy {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-energy {
+        transition: none;
+    }
+
+    .hero-energy-layer {
+        animation: none !important;
+    }
+}
+
 /* Skills section: separate block below hero */
 .skills-section {
     padding: var(--space-4xl) 0;

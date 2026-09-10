@@ -87,7 +87,7 @@
     </script>
 
     <link rel="icon" href="assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css?v=20260910-hero">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260911-energy">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -134,6 +134,22 @@
                 <picture class="hero-bg-slide is-active">
                     <source media="(min-width: 1100px)" srcset="assets/img/backgrounds/hero-portrait.webp" type="image/webp">
                     <img class="hero-bg-image" src="assets/img/backgrounds/hero-portrait-760.webp" alt="" width="953" height="1600" fetchpriority="high" loading="eager" decoding="sync">
+                </picture>
+            </div>
+
+            <!-- Blue plasma band with real alpha. Two copies of the same file
+                 (one request) drift at different speeds for depth. Phones get
+                 a 1x1 gif so the layer costs nothing there. -->
+            <div class="hero-energy" aria-hidden="true">
+                <picture class="hero-energy-layer hero-energy-layer--back">
+                    <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    <source media="(min-width: 1100px)" srcset="assets/img/backgrounds/hero-energy.webp" type="image/webp">
+                    <img class="hero-energy-image" src="assets/img/backgrounds/hero-energy-900.webp" alt="" width="1800" height="1012" fetchpriority="low" decoding="async">
+                </picture>
+                <picture class="hero-energy-layer hero-energy-layer--front">
+                    <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    <source media="(min-width: 1100px)" srcset="assets/img/backgrounds/hero-energy.webp" type="image/webp">
+                    <img class="hero-energy-image" src="assets/img/backgrounds/hero-energy-900.webp" alt="" width="1800" height="1012" fetchpriority="low" decoding="async">
                 </picture>
             </div>
 
@@ -1132,6 +1148,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260910-hero" defer></script>
+    <script src="assets/js/main.js?v=20260911-energy" defer></script>
 </body>
 </html>

@@ -1676,6 +1676,43 @@
         start();
     }
 
+    /* ═══ HERO ENERGY BAND ═══
+       Fades the plasma layer in once its image has decoded, pauses the
+       ambient drift while the tab is hidden and adds a slow scroll parallax
+       on the whole layer. */
+    function initHeroEnergy() {
+        const hero = document.getElementById('hero');
+        const energy = hero ? hero.querySelector('.hero-energy') : null;
+        if (!energy) return;
+
+        const img = energy.querySelector('.hero-energy-image');
+        const ready = () => energy.classList.add('is-ready');
+        if (img && !img.complete) {
+            img.addEventListener('load', ready, { once: true });
+            img.addEventListener('error', ready, { once: true });
+            window.setTimeout(ready, 4000);
+        } else {
+            ready();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            energy.classList.toggle('is-paused', document.hidden);
+        });
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.to(energy, {
+            yPercent: 14,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: hero,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.6,
+            },
+        });
+    }
+
     /* ═══ INIT ═══ */
     function init() {
         // Color scheme
@@ -1711,6 +1748,7 @@
         initCookieConsent();
         initAnimations();
         initHeroBgSlideshow();
+        initHeroEnergy();
 
         // Project slider
         const slider = new ProjectSlider();
