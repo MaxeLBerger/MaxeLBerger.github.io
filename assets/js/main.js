@@ -1261,15 +1261,19 @@
 
             // === CONTENT REVEAL ===
 
-            // Title lines: clip-path bottom-up reveal
+            // Title lines: clip-path bottom-up reveal. The wipe runs past the
+            // bottom of the line box and the clip is dropped afterwards: the
+            // title's line-height is tighter than the font's descender, so a
+            // clip that stops at 0% shaves the tail off letters like "p".
             if (newContent.titleLines.length) {
                 master.fromTo(newContent.titleLines,
                     { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
                     {
-                        y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)',
+                        y: 0, opacity: 1, clipPath: 'inset(0 0 -20% 0)',
                         stagger: 0.1,
                         duration: 0.6,
                         ease: 'power4.out',
+                        clearProps: 'clipPath',
                     },
                     0.35
                 );
@@ -1392,13 +1396,17 @@
                 }, 0.05);
             }
 
-            // Title lines: bottom-up clip reveal
+            // Title lines: bottom-up clip reveal. Same overshoot as the slider
+            // titles, for the same reason: at line-height 1.06 the descenders
+            // of "Entwicklung." and "Design." hang about 6.5% of the line box
+            // below it, so a clip ending at 0% would cut them off for good.
             tl.to(titleLines, {
                 y: 0, opacity: 1,
-                clipPath: 'inset(0 0 0% 0)',
+                clipPath: 'inset(0 0 -20% 0)',
                 stagger: 0.1,
                 duration: 0.6,
                 ease: 'power4.out',
+                clearProps: 'clipPath',
             }, 0.25);
 
             // Description
