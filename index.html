@@ -87,7 +87,7 @@
     </script>
 
     <link rel="icon" href="assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css?v=20260910-hero">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260910-projekte">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -166,6 +166,7 @@
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
                     <h2 class="section-title" data-i18n="projects.title">Projekte</h2>
+                    <p class="section-note" data-i18n="projects.note">Selbstständig ab dem 1. Oktober 2026. Die Kundenprojekte hier entstehen jetzt und gehen zum Start live.</p>
                 </div>
 
                 <div class="project-mode-selector" role="group" aria-label="Projekt-Kategorie" data-i18n-aria-label="projects.mode.group">
@@ -182,8 +183,49 @@
 
                 <!-- ═══ EIGENE PROJEKTE ═══ -->
 
-                <!-- Eigen 1: CapitalCombo -->
-                <div class="hero-slide active" id="slide-capitalcombo" data-mode="own" data-theme="capitalcombo" role="tabpanel" aria-labelledby="tab-capitalcombo" aria-hidden="false">
+                <!-- Eigen 1: Haakly -->
+                <div class="hero-slide active" id="slide-haakly" data-mode="own" data-theme="haakly" role="tabpanel" aria-labelledby="tab-haakly" aria-hidden="false">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.haakly.t1">Haakly.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.haakly.t2">Jede Version</span></span>
+                                <span class="title-line" data-i18n="slide.haakly.t3">bleibt erreichbar.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.haakly.desc">Ein selbst hostbares CMS für Kundenwebsites: Redakteure pflegen Inhalte im Browser, jede Speicherung wird eine unveränderliche Revision, und veröffentlicht wird immer ein geprüftes Release. Ein Rollback schaltet auf ein früheres Release zurück, ohne dass die Live-Seite dazwischen leer wird.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.haakly.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.haakly.tag1">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.haakly.tag2">Fastify</span>
+                                <span class="slide-tag" data-i18n="slide.haakly.tag3">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                    <span data-i18n="slide.haakly.badge">SELF-HOSTED CMS</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">haakly.local/redaktion</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/haakly.webp" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 2: CapitalCombo -->
+                <div class="hero-slide" id="slide-capitalcombo" data-mode="own" data-theme="capitalcombo" role="tabpanel" aria-labelledby="tab-capitalcombo" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -223,7 +265,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 2: DealHunter -->
+                <!-- Eigen 3: DealHunter -->
                 <div class="hero-slide" id="slide-dealhunter" data-mode="own" data-theme="dealhunter" role="tabpanel" aria-labelledby="tab-dealhunter" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -264,7 +306,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 3: E46 Studio -->
+                <!-- Eigen 4: E46 Studio -->
                 <div class="hero-slide" id="slide-e46" data-mode="own" data-theme="e46" role="tabpanel" aria-labelledby="tab-e46" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -306,7 +348,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 4: Albert Royale -->
+                <!-- Eigen 5: Albert Royale -->
                 <div class="hero-slide" id="slide-albert" data-mode="own" data-theme="albert" role="tabpanel" aria-labelledby="tab-albert" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -349,7 +391,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 5: Age of Max -->
+                <!-- Eigen 6: Age of Max -->
                 <div class="hero-slide" id="slide-ageofmax" data-mode="own" data-theme="ageofmax" role="tabpanel" aria-labelledby="tab-ageofmax" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -392,7 +434,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 6: Medieval Tower Defense -->
+                <!-- Eigen 7: Medieval Tower Defense -->
                 <div class="hero-slide" id="slide-medieval" data-mode="own" data-theme="medieval" role="tabpanel" aria-labelledby="tab-medieval" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -435,7 +477,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 7: Deterministische Review -->
+                <!-- Eigen 8: Deterministische Review -->
                 <div class="hero-slide" id="slide-detreview" data-mode="own" data-theme="detreview" role="tabpanel" aria-labelledby="tab-detreview" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -476,7 +518,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 8: AI Captain -->
+                <!-- Eigen 9: AI Captain -->
                 <div class="hero-slide" id="slide-aicaptain" data-mode="own" data-theme="aicaptain" role="tabpanel" aria-labelledby="tab-aicaptain" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -518,7 +560,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 9: Shookroko -->
+                <!-- Eigen 10: Shookroko -->
                 <div class="hero-slide" id="slide-shookroko" data-mode="own" data-theme="shookroko" role="tabpanel" aria-labelledby="tab-shookroko" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -561,7 +603,7 @@
                     </div>
                 </div>
 
-                <!-- Eigen 10: MemeCoinTrader (in Arbeit, noch ohne Screenshot) -->
+                <!-- Eigen 11: MemeCoinTrader (in Arbeit, noch ohne Screenshot) -->
                 <div class="hero-slide" id="slide-memecointrader" data-mode="own" data-theme="memecointrader" role="tabpanel" aria-labelledby="tab-memecointrader" aria-hidden="true">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -596,47 +638,6 @@
                     </div>
                 </div>
 
-                <!-- Eigen 11: Haakly -->
-                <div class="hero-slide" id="slide-haakly" data-mode="own" data-theme="haakly" role="tabpanel" aria-labelledby="tab-haakly" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.haakly.t1">Haakly.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.haakly.t2">Jede Version</span></span>
-                                <span class="title-line" data-i18n="slide.haakly.t3">bleibt erreichbar.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.haakly.desc">Ein selbst hostbares CMS für Kundenwebsites: Redakteure pflegen Inhalte im Browser, jede Speicherung wird eine unveränderliche Revision, und veröffentlicht wird immer ein geprüftes Release. Ein Rollback schaltet auf ein früheres Release zurück, ohne dass die Live-Seite dazwischen leer wird.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.haakly.cta1">Projekt anfragen</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.haakly.tag1">TypeScript</span>
-                                <span class="slide-tag" data-i18n="slide.haakly.tag2">Fastify</span>
-                                <span class="slide-tag" data-i18n="slide.haakly.tag3">PostgreSQL</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                                    <span data-i18n="slide.haakly.badge">SELF-HOSTED CMS</span>
-                                </div>
-                                <div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">haakly.local/redaktion</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/haakly.webp" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- ═══ KUNDENPROJEKTE ═══ -->
 
                 <!-- Kunde 1: Senihelp24 (in Arbeit, noch ohne Screenshot) -->
@@ -648,7 +649,7 @@
                                 <span class="title-line"><span class="gradient-text" data-i18n="slide.senihelp24.t2">Website</span></span>
                                 <span class="title-line" data-i18n="slide.senihelp24.t3">in Arbeit.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.senihelp24.desc">Neuer Web-Auftritt für senihelp24.pl. Aktuell in Entwicklung.</p>
+                            <p class="slide-description" data-i18n="slide.senihelp24.desc">Neuer Web-Auftritt für senihelp24.pl. Aktuell in Entwicklung, eines der ersten Projekte zum Start meiner Selbstständigkeit am 1. Oktober 2026.</p>
                             <div class="slide-cta">
                                 <a href="#contact" class="btn btn-primary" data-i18n="slide.senihelp24.cta1">Anfragen</a>
                                 <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.senihelp24.cta2">Bald live</button>
@@ -683,7 +684,7 @@
                                 <span class="title-line"><span class="gradient-text" data-i18n="slide.danielbrecheis.t2">Website</span></span>
                                 <span class="title-line" data-i18n="slide.danielbrecheis.t3">in Arbeit.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.danielbrecheis.desc">Markenwebsite für Daniel Brecheis (Human Bridges Consulting): HR-Coaching, Workshops und Interim-Management. Aktuell in Entwicklung, live ab dem 1. Oktober.</p>
+                            <p class="slide-description" data-i18n="slide.danielbrecheis.desc">Markenwebsite für Daniel Brecheis (Human Bridges Consulting): HR-Coaching, Workshops und Interim-Management. Aktuell in Entwicklung, live zum Start meiner Selbstständigkeit am 1. Oktober 2026.</p>
                             <div class="slide-cta">
                                 <a href="#contact" class="btn btn-primary" data-i18n="slide.danielbrecheis.cta1">Anfragen</a>
                                 <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.danielbrecheis.cta2">Live ab 1. Oktober</button>
@@ -718,7 +719,7 @@
                                 <span class="title-line"><span class="gradient-text" data-i18n="slide.invite.t2">Als Nächstes.</span></span>
                                 <span class="title-line" data-i18n="slide.invite.t3">Hier.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.invite.desc">Zwei Kundenprojekte entstehen hier gerade, echte Arbeit statt Musterseiten. Der Platz für das nächste ist frei. Ein kurzes Gespräch klärt, ob es passt.</p>
+                            <p class="slide-description" data-i18n="slide.invite.desc">Zwei Kundenprojekte entstehen hier gerade, echte Arbeit statt Musterseiten. Selbstständig bin ich ab dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
                             <div class="slide-cta">
                                 <a href="#contact" class="btn btn-primary" data-i18n="slide.invite.cta1">Projekt besprechen</a>
                             </div>
@@ -753,49 +754,49 @@
             <div class="container">
                     <nav class="project-pagination" role="tablist" aria-label="Projekt auswählen" data-i18n-aria-label="projects.pick">
                         <!-- Eigene Projekte -->
-                        <button id="tab-capitalcombo" class="project-nav-btn project-pag-btn active" data-mode="own" data-project="capitalcombo" role="tab" aria-selected="true" aria-controls="slide-capitalcombo" tabindex="0">
+                        <button id="tab-haakly" class="project-nav-btn project-pag-btn active" data-mode="own" data-project="haakly" role="tab" aria-selected="true" aria-controls="slide-haakly" tabindex="0">
                             <span class="project-pag-index" aria-hidden="true">01</span>
+                            <span class="project-pag-name">Haakly</span>
+                        </button>
+                        <button id="tab-capitalcombo" class="project-nav-btn project-pag-btn" data-mode="own" data-project="capitalcombo" role="tab" aria-selected="false" aria-controls="slide-capitalcombo" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">02</span>
                             <span class="project-pag-name">CapitalCombo</span>
                         </button>
                         <button id="tab-dealhunter" class="project-nav-btn project-pag-btn" data-mode="own" data-project="dealhunter" role="tab" aria-selected="false" aria-controls="slide-dealhunter" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">02</span>
+                            <span class="project-pag-index" aria-hidden="true">03</span>
                             <span class="project-pag-name">DealHunter</span>
                         </button>
                         <button id="tab-e46" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46" role="tab" aria-selected="false" aria-controls="slide-e46" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">03</span>
+                            <span class="project-pag-index" aria-hidden="true">04</span>
                             <span class="project-pag-name">E46 Studio</span>
                         </button>
                         <button id="tab-albert" class="project-nav-btn project-pag-btn" data-mode="own" data-project="albert" role="tab" aria-selected="false" aria-controls="slide-albert" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">04</span>
+                            <span class="project-pag-index" aria-hidden="true">05</span>
                             <span class="project-pag-name">Albert Royale</span>
                         </button>
                         <button id="tab-ageofmax" class="project-nav-btn project-pag-btn" data-mode="own" data-project="ageofmax" role="tab" aria-selected="false" aria-controls="slide-ageofmax" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">05</span>
+                            <span class="project-pag-index" aria-hidden="true">06</span>
                             <span class="project-pag-name">Age of Max</span>
                         </button>
                         <button id="tab-medieval" class="project-nav-btn project-pag-btn" data-mode="own" data-project="medieval" role="tab" aria-selected="false" aria-controls="slide-medieval" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">06</span>
+                            <span class="project-pag-index" aria-hidden="true">07</span>
                             <span class="project-pag-name">Medieval TD</span>
                         </button>
                         <button id="tab-detreview" class="project-nav-btn project-pag-btn" data-mode="own" data-project="detreview" role="tab" aria-selected="false" aria-controls="slide-detreview" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">07</span>
+                            <span class="project-pag-index" aria-hidden="true">08</span>
                             <span class="project-pag-name">Det. Review</span>
                         </button>
                         <button id="tab-aicaptain" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aicaptain" role="tab" aria-selected="false" aria-controls="slide-aicaptain" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">08</span>
+                            <span class="project-pag-index" aria-hidden="true">09</span>
                             <span class="project-pag-name">AI Captain</span>
                         </button>
                         <button id="tab-shookroko" class="project-nav-btn project-pag-btn" data-mode="own" data-project="shookroko" role="tab" aria-selected="false" aria-controls="slide-shookroko" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">09</span>
+                            <span class="project-pag-index" aria-hidden="true">10</span>
                             <span class="project-pag-name">Shookroko</span>
                         </button>
                         <button id="tab-memecointrader" class="project-nav-btn project-pag-btn" data-mode="own" data-project="memecointrader" role="tab" aria-selected="false" aria-controls="slide-memecointrader" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">10</span>
-                            <span class="project-pag-name">MemeCoinTrader</span>
-                        </button>
-                        <button id="tab-haakly" class="project-nav-btn project-pag-btn" data-mode="own" data-project="haakly" role="tab" aria-selected="false" aria-controls="slide-haakly" tabindex="-1">
                             <span class="project-pag-index" aria-hidden="true">11</span>
-                            <span class="project-pag-name">Haakly</span>
+                            <span class="project-pag-name">MemeCoinTrader</span>
                         </button>
 
                         <!-- Kundenprojekte -->
@@ -1132,6 +1133,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260910-hero" defer></script>
+    <script src="assets/js/main.js?v=20260910-projekte" defer></script>
 </body>
 </html>

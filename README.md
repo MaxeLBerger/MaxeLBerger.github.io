@@ -25,13 +25,19 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 The slider on the homepage runs in two modes, filtered through `data-mode` on both slides and pagination buttons. Default is `own`.
 
+The section header carries a `.section-note` line (`projects.note`): self-employment starts on 1 October 2026, and the
+client slides repeat that date rather than implying an older track record.
+
 ### Own work (`data-mode="own"`)
 
 Listed in slider order. The pagination buttons in `index.html` are the single source of that order:
 the slider pairs slides to buttons by `data-project`, so moving a project means moving its button.
+`FIRST_PROJECT_THEME` in `assets/js/main.js` resolves the neutral `maxhaak` theme onto the leading project,
+so it has to name whichever project sits first in this table.
 
 | Project | Type | Detail page |
 |---------|------|-------------|
+| Haakly | Self-hosted CMS | none |
 | CapitalCombo | Trading research and execution platform | none |
 | DealHunter | Autonomous marketplace scanner | none |
 | E46 Studio | Desktop app (Electron) | [e46-studio.html](projects/e46-studio.html) |
@@ -42,7 +48,6 @@ the slider pairs slides to buttons by `data-project`, so moving a project means 
 | AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 | Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
 | MemeCoinTrader | Java desktop trading app, in progress | none |
-| Haakly | Self-hosted CMS | none |
 
 ### Client work (`data-mode="customers"`)
 
