@@ -3362,9 +3362,11 @@ html[data-color-scheme="light"] .projects-section {
     text-decoration: underline;
 }
 
+/* Nur das Bild tauschen: die Kurzform background setzte background-clip
+   auf border-box zurueck, dann war der Titel hell ein Balken ohne Text. */
 html[data-color-scheme="light"] .legal-page h1 {
-    background: linear-gradient(135deg, rgb(var(--accent)), rgb(var(--accent)));
-    background: linear-gradient(135deg,
+    background-image: linear-gradient(135deg, rgb(var(--accent)), rgb(var(--accent)));
+    background-image: linear-gradient(135deg,
         rgb(var(--accent)),
         color-mix(in srgb, rgb(var(--accent)) 62%, #0b1220));
 }
