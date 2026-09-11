@@ -162,28 +162,28 @@
     },
     {
       "id": "albert",
-      "name": "Albert",
-      "shortDescription": "KI-Evolution-Simulation",
-      "fullDescription": "Eine faszinierende KI-Evolution-Simulation mit 100 Kreaturen, die durch natürliche Selektion und neuronale Anpassung in einer dynamischen Umgebung überleben und sich weiterentwickeln. Beobachte, wie sich intelligentes Verhalten durch evolutionäre Prozesse entwickelt.",
+      "name": "Albert Royale",
+      "shortDescription": "3D-Battle-Royale im Browser, dein Albert lernt von dir",
+      "fullDescription": "Ein 3D-Battle-Royale, in dem du deinem Albert erst selbst das Überleben beibringst und ihn dann allein in die Arena schickst. In Phase 1 spielst du selbst, und ein selbstgeschriebenes neuronales Netz lernt per Behavior Cloning aus deinen Eingaben. In Phase 2 kämpft das trainierte Gehirn ohne dich gegen 15 andere Alberts, Best of 5. Entstanden ist das Spiel aus einer Java-Evolutionssimulation; deren Mutation erzeugt heute die Generationen zwischen den Arena-Runden.",
       "category": "Artificial Intelligence",
-      "technologies": ["JavaScript", "Neural Networks", "Genetic Algorithms", "HTML5 Canvas"],
+      "technologies": ["TypeScript", "Three.js", "Vite", "Web Workers", "Neural Networks", "Behavior Cloning"],
       "features": [
-        "100 autonome Kreaturen",
-        "Neuronale Netzwerke",
-        "Genetische Algorithmen",
-        "Natürliche Selektion",
-        "Dynamische Umgebung",
-        "Echtzeit-Visualisierung",
-        "Generations-Tracking"
+        "Phase 1: du spielst selbst, dein Albert lernt per Behavior Cloning mit",
+        "Phase 2: das trainierte Gehirn kämpft allein gegen 15 andere, Best of 5",
+        "Selbstgeschriebenes neuronales Netz, trainiert im Web Worker",
+        "Acht Sichtstrahlen als Sensorvektor",
+        "Schrumpfende Zone auf einer prozeduralen Low-Poly-Insel",
+        "Brain-Inspektor mit Live-Aktivierungen des Netzes"
       ],
+      "liveUrl": "https://albert-royale.de",
       "detailsUrl": "projects/albert.html",
-      "image": "assets/img/albert.png",
+      "image": "assets/img/projects/albert.webp",
       "status": "completed",
-      "year": 2024
+      "year": 2026
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-11-07",
+    "lastUpdated": "2026-09-11",
     "version": "1.0.0",
     "totalProjects": 5,
     "categories": [

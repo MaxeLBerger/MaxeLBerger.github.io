@@ -31,7 +31,7 @@ Dieser MCP-Server bietet folgende Tools für Claude Desktop:
 Alle Portfolio-Daten sind strukturiert in `portfolio-data.json`:
 - Persönliche Informationen
 - Skills mit Kategorien
-- 5 Projekte (Age of Max, FireCastle, AuTune Online, SoundofLvke, Albert)
+- 5 Projekte (Age of Max, FireCastle, AuTune Online, SoundofLvke, Albert Royale)
 - Vollständige Projekt-Details mit Features, Technologien, URLs
 
 ## 🚀 Installation & Setup
@@ -129,7 +129,7 @@ npm run watch
 - `firecastle` - Clash of Clans API & Website
 - `autune-online` - Audio Visualizer
 - `soundoflvke` - Musikproduzenten Portfolio
-- `albert` - KI Evolution Simulation
+- `albert` - Albert Royale, 3D-Battle-Royale mit lernendem neuronalen Netz
 
 ## 🎯 Use Cases
 
