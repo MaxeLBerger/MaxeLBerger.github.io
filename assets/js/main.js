@@ -1676,24 +1676,23 @@
         start();
     }
 
-    /* ═══ HERO ENERGY BAND ═══
-       Fades the plasma layer in once its image has decoded, pauses the
-       ambient drift while the tab is hidden and adds a slow scroll parallax
-       on the whole layer. */
-    function initHeroEnergy() {
-        const hero = document.getElementById('hero');
-        const energy = hero ? hero.querySelector('.hero-energy') : null;
+    /* ═══ PROJECTS ENERGY BAND ═══
+       The band behind the projects is a CSS-masked layer coloured by the
+       project theme. Fade it in once the mask image has decoded, pause
+       the ambient drift while the tab is hidden and add a slow scroll
+       parallax over the section (the inner wrapper moves, the masked
+       outer box stays put). */
+    function initProjectsEnergy() {
+        const projects = document.getElementById('projects');
+        const energy = projects ? projects.querySelector('.projects-energy') : null;
         if (!energy) return;
 
-        const img = energy.querySelector('.hero-energy-image');
         const ready = () => energy.classList.add('is-ready');
-        if (img && !img.complete) {
-            img.addEventListener('load', ready, { once: true });
-            img.addEventListener('error', ready, { once: true });
-            window.setTimeout(ready, 4000);
-        } else {
-            ready();
-        }
+        const large = window.matchMedia('(min-width: 1100px)').matches;
+        const probe = new Image();
+        probe.src = `assets/img/backgrounds/hero-energy${large ? '' : '-900'}.webp`;
+        (probe.decode ? probe.decode() : Promise.resolve()).then(ready, ready);
+        window.setTimeout(ready, 4000);
 
         document.addEventListener('visibilitychange', () => {
             energy.classList.toggle('is-paused', document.hidden);
@@ -1701,15 +1700,11 @@
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-        gsap.to(energy, {
-            yPercent: 14,
+        const mover = energy.querySelector('.projects-energy-move') || energy;
+        gsap.fromTo(mover, { y: -90 }, {
+            y: 90,
             ease: 'none',
-            scrollTrigger: {
-                trigger: hero,
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 0.6,
-            },
+            scrollTrigger: { trigger: projects, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
         });
     }
 
@@ -1748,7 +1743,7 @@
         initCookieConsent();
         initAnimations();
         initHeroBgSlideshow();
-        initHeroEnergy();
+        initProjectsEnergy();
 
         // Project slider
         const slider = new ProjectSlider();

@@ -87,7 +87,7 @@
     </script>
 
     <link rel="icon" href="assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css?v=20260911-energy">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260911-energy2">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -137,22 +137,6 @@
                 </picture>
             </div>
 
-            <!-- Blue plasma band with real alpha. Two copies of the same file
-                 (one request) drift at different speeds for depth. Phones get
-                 a 1x1 gif so the layer costs nothing there. -->
-            <div class="hero-energy" aria-hidden="true">
-                <picture class="hero-energy-layer hero-energy-layer--back">
-                    <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-                    <source media="(min-width: 1100px)" srcset="assets/img/backgrounds/hero-energy.webp" type="image/webp">
-                    <img class="hero-energy-image" src="assets/img/backgrounds/hero-energy-900.webp" alt="" width="1800" height="1012" fetchpriority="low" decoding="async">
-                </picture>
-                <picture class="hero-energy-layer hero-energy-layer--front">
-                    <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-                    <source media="(min-width: 1100px)" srcset="assets/img/backgrounds/hero-energy.webp" type="image/webp">
-                    <img class="hero-energy-image" src="assets/img/backgrounds/hero-energy-900.webp" alt="" width="1800" height="1012" fetchpriority="low" decoding="async">
-                </picture>
-            </div>
-
             <div class="hero-content">
                 <div class="hero-text">
                     <p class="hero-eyebrow" data-i18n="hero.eyebrow">Maximilian Haak · Softwareentwickler</p>
@@ -178,6 +162,14 @@
 
         <!-- Projects Showcase Section -->
         <section id="projects" class="projects-section">
+            <!-- Plasma band behind the projects: the WebP is only a CSS mask,
+                 the colour comes from the active project theme. -->
+            <div class="projects-energy" aria-hidden="true">
+                <div class="projects-energy-move">
+                    <div class="projects-energy-layer projects-energy-layer--band"></div>
+                    <div class="projects-energy-layer projects-energy-layer--glow"></div>
+                </div>
+            </div>
             <div class="container">
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
@@ -1148,6 +1140,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260911-energy" defer></script>
+    <script src="assets/js/main.js?v=20260911-energy2" defer></script>
 </body>
 </html>

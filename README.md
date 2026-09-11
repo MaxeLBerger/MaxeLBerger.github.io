@@ -12,8 +12,8 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link and a client logo row. A quiet blue plasma band drifts between the veil and the portrait on two-column screens. Static, no slider. |
-| `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link and a client logo row. Static, no slider. |
+| `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. A plasma band in the active project's colours drifts behind the whole section. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack, three grouped boxes with icon tiles. |
 | `#pricing` | Three website packages plus maintenance and hourly rate. |
@@ -117,16 +117,16 @@ Two sizes of the same portrait (wooden wall; `assets/img/profile/maxlerseite.web
 
 The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The photo carries no colour overlay: it keeps the warm skin, hair and wood tones of the master, so a replacement should already be graded the way it is meant to look. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
 
-### Hero energy band
+### Projects energy band
 
-Behind the portrait and in front of the veil sits `.hero-energy`, a blue plasma band with real alpha (no blend mode, no colour wash on the photo). The light source sits behind the head and shoulder, a faint tail runs through the gap towards the copy, and the portrait occludes the band where they overlap.
+Behind the whole `#projects` section sits `.projects-energy`, a plasma band that takes its colour from the active project theme. The WebP files are only the shape: they are CSS masks (`mask-image`), and the two layers paint plain `background-color` from the theme tokens (`--theme-gradient-end` for the band, `--theme-gradient-start` for the highlight, which uses a luminance mask so it only shows through the bright cores). That is why the band recolours together with buttons and accents when the slide changes.
 
-| File | Size | Served from |
-|------|------|-------------|
+| File | Size | Used from |
+|------|------|-----------|
 | `hero-energy.webp` | 1800x1012 | 1100 px viewport width |
 | `hero-energy-900.webp` | 900x506 | 769 to 1099 px, one static layer |
 
-Phones get a 1x1 data-URI gif from the `<picture>` and the layer is `display: none`, so the band costs nothing there. Two copies of the same file drift against each other (40 s and 52 s CSS keyframes, only `transform` and `opacity`), the whole layer gets a slow scroll parallax from GSAP, and everything is off under `prefers-reduced-motion`. The overall strength is `--hero-energy-opacity` on `.hero-section`; the mask on `.hero-energy` caps the band to 22 % under the text column so the copy keeps AAA contrast (measured worst case 8.8:1 on the eyebrow, everything else above 10:1). Both files are generated, not drawn: `python tools/hero-energy/make_energy.py <out-dir>` renders them (needs numpy, scipy, Pillow), so regenerate rather than retouch.
+The band is flipped vertically so the light source sits low right behind the mockup and the tab row and the faint tail rises to the upper left. Two copies drift against each other (CSS keyframes, only `transform` and `opacity`), a soft stripe travels along the strands, and GSAP moves the inner wrapper 180 px over the section for a scroll parallax. Everything is off under `prefers-reduced-motion`. Phones get `display: none`, so the mask image is never requested there. Strength is `--projects-energy-opacity` on `.projects-section` (0.9 dark, 0.5 light), and the mask on `.projects-energy` caps the band to 22 % under the slide copy on the left so the text keeps at least 5.9:1. Both files are generated, not drawn: `python tools/hero-energy/make_energy.py <out-dir>` renders them (needs numpy, scipy, Pillow), so regenerate rather than retouch.
 
 ### Client logos
 
