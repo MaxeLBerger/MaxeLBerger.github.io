@@ -67,6 +67,10 @@ numbers printed under every frame.
 - **Hide the text, not its parent.** The veil under the hero copy is a
   `::before` of `.hero-content`, the parent of `.hero-text`; hiding the parent
   hides the veil you are trying to measure. That is what `--hide` defaults to.
+- **`--targets` and `--hide` belong together.** Point `--targets` at something
+  outside the hero and the default `--hide` no longer covers it, so the probe
+  measures the glyphs themselves instead of the ground behind them, which reads
+  as suspiciously good contrast. Pass a `--hide` for the new text as well.
 - **Take the text box from a Range over the text nodes**, not from the element
   box: a paragraph's empty right half would otherwise count as text pixels.
 - **Wait for the webfont.** Inter arrives after cookie consent and re-wraps

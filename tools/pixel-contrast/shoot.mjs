@@ -36,7 +36,7 @@ import { spawn } from 'node:child_process';
 import net from 'node:net';
 import { mkdirSync, writeFileSync, existsSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, isAbsolute, resolve } from 'node:path';
+import { join, resolve } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 
 const EDGE_CANDIDATES = [
@@ -100,7 +100,6 @@ if (!edgePath) {
 /* A relative or missing --user-data-dir makes Edge silently fall back to the
    real default profile, so the root has to exist before anything launches. */
 const PROFILES = resolve(opt('profiles', join(tmpdir(), 'pixel-contrast-profiles')));
-if (!isAbsolute(PROFILES)) { console.error('--profiles must be absolute'); process.exit(2); }
 mkdirSync(PROFILES, { recursive: true });
 if (!existsSync(PROFILES) || !statSync(PROFILES).isDirectory()) {
     console.error(`--profiles is not a directory: ${PROFILES}`);

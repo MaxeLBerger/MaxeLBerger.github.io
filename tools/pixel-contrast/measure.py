@@ -120,8 +120,9 @@ def contrast_cmd(dirs, save=None):
         if not rows:
             print(f'{d}: no hidden-mode shots found')
             continue
-        cols = [c for c in ORDER if any(c in lang for cell in rows.values() for lang in cell.values())]
-        cols += sorted({c for cell in rows.values() for lang in cell.values() for c in lang} - set(cols))
+        measured = [res for cell in rows.values() for res in cell.values()]
+        cols = [c for c in ORDER if any(c in res for res in measured)]
+        cols += sorted({c for res in measured for c in res} - set(cols))
         langs = sorted({lang for cell in rows.values() for lang in cell})
         for scheme in sorted({k[0] for k in rows}):
             head = '/'.join(lang.upper() for lang in langs)
