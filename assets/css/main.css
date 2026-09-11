@@ -367,18 +367,6 @@ html[data-color-scheme="light"] body {
         var(--color-bg);
 }
 
-/* ── Hero-Insel ──────────────────────────────────────────────────────────
-   Im Hero und in der noch transparenten Navbar liegt alles ueber einem
-   dunklen Foto, in BEIDEN Schemata. Dort waere die abgedunkelte Rampe
-   falsch herum, also zeigt --accent hier wieder auf die Dark-Farbe. Weil
-   Custom Properties erben, korrigiert das alles darin auf einen Schlag. */
-html[data-color-scheme="light"] #hero,
-html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) {
-    --accent: var(--theme-primary);
-    --on-accent: var(--theme-on-primary);
-    --glow-alpha: 1;
-}
-
 /* ── Verlaufstitel ───────────────────────────────────────────────────────
    Zeile 2 jeder Projekt-Headline. Auf Weiss fielen beide Stops des
    Dark-Verlaufs unter 2:1 (capitalcombo 1.32:1). Hell laeuft der Verlauf
@@ -957,29 +945,65 @@ body.has-hero #navbar:not(.scrolled) .nav-links a:hover {
     color: #ffffff;
 }
 
-/* Light mode fills these circles with near-white, which would swallow the
-   white glyph above. Over the photo they stay outline-only in both schemes. */
-body.has-hero #navbar:not(.scrolled) .btn-icon,
-html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .btn-icon {
+/* Over the dark photo the icon circles stay outline-only, a filled near-white
+   circle would swallow the white glyph. No shadow either: the light-mode
+   .btn-icon shadow would otherwise reach these on phones. */
+body.has-hero #navbar:not(.scrolled) .btn-icon {
     background: rgba(255, 255, 255, 0.10);
     border-color: rgba(255, 255, 255, 0.45);
     color: #ffffff;
+    box-shadow: none;
 }
 
 body.has-hero #navbar:not(.scrolled) .menu-toggle .bar {
     background: #ffffff;
 }
 
-/* The scrim stays dark over the hero in light mode too, otherwise the white
-   nav text above would sit on a near-white gradient. */
-html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) {
-    background:
-        linear-gradient(
+/* Hell traegt der Hero ab Tablet-Breite links die Leinwand, und das
+   Holzfoto reicht oben bis unter die Navbar ("Kontakt" stand bei 1440 mit
+   1.6:1 auf dem Holz). Dort wird die transparente Navbar zu Tinte, die
+   Kreise tragen wieder ihre helle Flaeche, und statt des dunklen Schleiers
+   liegt spiegelbildlich ein heller. Auf dem Handy liegt oben das Foto in
+   voller Breite: dort gelten die weissen Regeln oben und der dunkle
+   Schleier in beiden Schemata, siehe den 768px-Block. */
+@media (min-width: 769px) {
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled)::before {
+        background: linear-gradient(
             to bottom,
-            rgba(10, 10, 15, 0.55) 0%,
-            rgba(10, 10, 15, 0.22) 70%,
-            rgba(10, 10, 15, 0) 100%
+            rgba(237, 240, 247, 0.92) 0%,
+            rgba(237, 240, 247, 0.8) 40%,
+            rgba(237, 240, 247, 0.4) 70%,
+            rgba(237, 240, 247, 0) 100%
         );
+    }
+
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .nav-logo {
+        color: var(--color-text);
+        text-shadow: none;
+    }
+
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .nav-links a {
+        color: var(--color-text-secondary);
+        text-shadow: none;
+    }
+
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .nav-links a:hover {
+        color: var(--color-text);
+    }
+
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .btn-icon {
+        background: var(--color-bg-elevated);
+        border-color: var(--color-border);
+        color: var(--color-text);
+        text-shadow: none;
+        box-shadow: var(--shadow-sm);
+    }
+
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .btn-icon:hover {
+        border-color: rgb(var(--accent));
+        color: rgb(var(--accent));
+        box-shadow: var(--shadow-card);
+    }
 }
 
 /* Theme toggle */
@@ -1081,9 +1105,9 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     padding-top: var(--nav-height);
     padding-bottom: var(--space-2xl);
     isolation: isolate;
-    /* The hero stays dark in both colour schemes: the portrait only covers
-       the right side, so the section paints its own ground behind the veil
-       instead of letting the light page background show through. */
+    /* The portrait only covers the right side, so the section paints its
+       own ground behind the veil: night-dark here, the light canvas in the
+       light-mode block further down. */
     background: #080a12;
 }
 
@@ -1134,8 +1158,8 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
    the centre line. The stops are anchored to the centre in px rather than
    viewport percentages so the face is never dimmed on wide screens and the
    copy still has a solid ground when the portrait reaches into it on
-   narrow, tall windows. Identical in both colour schemes because the hero
-   text is always white over the photo. */
+   narrow, tall windows. The light-mode block repaints it in the canvas
+   colour with the same stops. */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -1353,6 +1377,86 @@ html[data-color-scheme="light"] .projects-section {
 
 .hero-client-logo--humanbridges {
     height: 20px;
+}
+
+/* ═══ HERO: LIGHT MODE ═══
+   Hell folgt der Hero dem Schema wie der Rest der Seite: Leinwand statt
+   Nachtgrund, Tinte statt Weiss. Das Holzfoto bleibt unveraendert, ohne
+   Farbe darueber, und laeuft ueber seine Masken und den Schleier in die
+   Leinwand aus. Ein Freisteller auf blanker Leinwand stand im September
+   2026 als Alternative zur Wahl; gewaehlt wurde bewusst das echte Foto. */
+html[data-color-scheme="light"] .hero-section {
+    background: var(--color-bg);
+}
+
+/* Derselbe Schleier wie dunkel, in der Leinwandfarbe #edf0f7. */
+html[data-color-scheme="light"] .hero-section::before {
+    background: linear-gradient(
+        90deg,
+        var(--color-bg) 0,
+        var(--color-bg) calc(50% - 200px),
+        rgba(237, 240, 247, 0.55) calc(50% - 20px),
+        rgba(237, 240, 247, 0) calc(50% + 250px)
+    );
+}
+
+html[data-color-scheme="light"] .hero-eyebrow {
+    color: var(--color-text-quiet);
+}
+
+html[data-color-scheme="light"] .hero-title {
+    color: var(--color-text);
+}
+
+/* --theme-accent ist die helle Stufe fuer den dunklen Grund und faellt auf
+   der Leinwand unter 3:1; die Akzenttinte traegt in allen 14 Themes. */
+html[data-color-scheme="light"] .hero-title .title-accent {
+    color: rgb(var(--accent));
+}
+
+html[data-color-scheme="light"] .hero-description {
+    color: var(--color-text-secondary);
+}
+
+html[data-color-scheme="light"] .hero-title,
+html[data-color-scheme="light"] .hero-description,
+html[data-color-scheme="light"] .hero-eyebrow,
+html[data-color-scheme="light"] .hero-link,
+html[data-color-scheme="light"] .hero-clients-label {
+    text-shadow: none;
+}
+
+/* Spiegelbild des weissen Buttons: eine Tintenflaeche, ebenfalls ohne Glow. */
+html[data-color-scheme="light"] .hero-cta .btn-primary {
+    background: var(--color-text);
+    color: #ffffff;
+}
+
+html[data-color-scheme="light"] .hero-cta .btn-primary:hover {
+    background: #1e293b;
+}
+
+html[data-color-scheme="light"] .hero-link {
+    color: var(--color-text);
+}
+
+html[data-color-scheme="light"] .hero-link:hover {
+    color: rgb(var(--accent));
+}
+
+html[data-color-scheme="light"] .hero-clients-label {
+    color: var(--color-text-quiet);
+}
+
+/* Die Logos liegen als weisse Silhouetten vor; brightness(0) macht daraus
+   dunkle, ohne zweite Dateien. */
+html[data-color-scheme="light"] .hero-client-logo {
+    filter: brightness(0);
+    opacity: 0.55;
+}
+
+html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
+    opacity: 0.9;
 }
 
 /* Skills section: separate block below hero */
@@ -3265,6 +3369,33 @@ html[data-color-scheme="light"] .cookie-content p {
         );
     }
 
+    /* Hell haengt der Schleier an den Texten statt an der Hoehe der
+       Sektion. Ueber dem Gesicht liest ein heller Schleier als Milchglas,
+       und wo die Texte beginnen, haengt von Bildschirmhoehe und Sprache ab:
+       mit festen Prozenten stand die Eyebrow bei 390x844 auf halb
+       aufgehelltem Holz (2.1:1). So laeuft er 100px ueber der ersten Zeile
+       an, deckt ab der Eyebrow und reicht bis zur Unterkante des Hero. */
+    html[data-color-scheme="light"] .hero-section::before {
+        background: none;
+    }
+
+    html[data-color-scheme="light"] .hero-content::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: 0;
+        bottom: calc(-1 * var(--space-2xl));
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(
+            180deg,
+            rgba(237, 240, 247, 0) 0,
+            rgba(237, 240, 247, 0.95) 84px,
+            var(--color-bg) 100px
+        );
+    }
+
     /* The portrait spans the width and is pushed up so the face sits in the
        top half, above the copy; the vertical veil replaces the edge mask. */
     .hero-bg-slide {
@@ -3312,6 +3443,15 @@ html[data-color-scheme="light"] .cookie-content p {
     body.has-hero #navbar:not(.scrolled) .nav-links.open a {
         color: var(--color-text-secondary);
         text-shadow: none;
+    }
+
+    /* Auf dem Handy liegt oben auch hell das dunkle Holzfoto in voller
+       Breite. Die weissen Navbar-Regeln und der dunkle Schleier im
+       ::before gelten dort ohnehin in beiden Schemata; nur "Haak" braucht
+       die helle Akzentstufe, die Tinte laege auf dem Holz unter 3:1. Das
+       ist die einzige Stelle, an der hell --theme-primary gilt. */
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) {
+        --accent: var(--theme-primary);
     }
 
     .slide-cta {
