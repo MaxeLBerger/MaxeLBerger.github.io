@@ -86,7 +86,9 @@ chosen, so do not swap the photo for it. The text column is: `.hero-eyebrow` (up
 name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
 never a gradient), then `.hero-description`, then `.hero-cta` with ONE primary button (white on dark, ink on light) linking to `#projects`
 and ONE `.hero-link` text link linking to `#contact`, then `div.hero-clients`: an uppercase
-`hero.clients` label ("Vertraut von" / "Trusted by") plus the two customer logos from `assets/img/clients/`. Those logos ship as white silhouettes
+`hero.clients` label ("Vertraut von:" / "Trusted by:") on its own line and the two customer logos from
+`assets/img/clients/` in a row beneath it; the block is a column at every width, so do not put the label back
+beside the logos. Those logos ship as white silhouettes
 and sit at `opacity: .62`, going to full white on hover; light mode renders the same files as dark silhouettes with
 `filter: brightness(0)` at `opacity: .55`, so there is still one file per logo. Their heights are set per logo
 (`.hero-client-logo--senihelp` / `--humanbridges`) because one is a compact wordmark and the other a wide

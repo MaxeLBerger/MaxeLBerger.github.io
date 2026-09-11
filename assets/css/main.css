@@ -1321,7 +1321,8 @@ html[data-color-scheme="light"] .projects-section {
     transform: translateX(4px);
 }
 
-/* Client row under the CTAs. Neither customer has a dark-background
+/* Client block under the CTAs: the "Vertraut von:" label on its own line,
+   the logo row beneath it, at every width. Neither customer has a dark-background
    logo variant, so both ship as white silhouettes: that keeps the row calm on
    the photo and stops the Human Bridges wordmark (black on a blue patch in the
    original) from disappearing. They sit dimmed and come up to full white on
@@ -1329,9 +1330,9 @@ html[data-color-scheme="light"] .projects-section {
    compact wordmark and Human Bridges a wide mark-plus-wordmark lockup. */
 .hero-clients {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: clamp(0.9rem, 1.8vw, 1.6rem);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
     margin-top: var(--space-xl);
 }
 
@@ -3756,9 +3757,9 @@ html[data-color-scheme="light"] .cookie-content p {
         object-position: 50% 0%;
     }
 
-    /* Compact client row so the copy stays below the face. */
+    /* Compact client block so the copy stays below the face. */
     .hero-clients {
-        gap: 0.75rem;
+        gap: 0.5rem;
         margin-top: var(--space-lg);
     }
 
@@ -3846,12 +3847,6 @@ html[data-color-scheme="light"] .cookie-content p {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.25rem;
-    }
-
-    .hero-clients {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
     }
 
     /* Project screenshots stay visible on mobile: just narrower. */

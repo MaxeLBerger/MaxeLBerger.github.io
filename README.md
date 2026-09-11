@@ -12,7 +12,7 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link and a client logo row. Static, no slider. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, then a "Vertraut von:" label with the client logos in a row beneath it. Static, no slider. |
 | `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. A plasma band in the active project's colours drifts behind the whole section. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack, three grouped boxes with icon tiles. |
