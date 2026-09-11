@@ -118,15 +118,17 @@
     --accent-ink: 11, 99, 242;
 }
 
-/* AI Captain: Purple/Violet */
+/* AI Captain: das Kapitaensgold der Landingpage, warm und selbstbewusst.
+   Hell genug fuer den dunklen Label-Default aus :root, deshalb kein
+   --theme-on-primary (wie bei dealhunter und ageofmax). */
 [data-project-theme="aicaptain"] {
-    --theme-primary: 139, 92, 246;
-    --theme-secondary: 124, 58, 237;
-    --theme-accent: 167, 139, 250;
-    --theme-gradient-start: #a78bfa;
-    --theme-gradient-mid: #8b5cf6;
-    --theme-gradient-end: #7c3aed;
-    --accent-ink: 124, 71, 245;
+    --theme-primary: 225, 189, 79;
+    --theme-secondary: 184, 144, 42;
+    --theme-accent: 240, 210, 122;
+    --theme-gradient-start: #f0d27a;
+    --theme-gradient-mid: #e1bd4f;
+    --theme-gradient-end: #b8902a;
+    --accent-ink: 122, 90, 14;
 }
 
 /* E46 Studio: Blue (matches hero/maxhaak for seamless transition) */
@@ -3370,9 +3372,11 @@ html[data-color-scheme="light"] .projects-section {
     text-decoration: underline;
 }
 
+/* Nur das Bild tauschen: die Kurzform background setzte background-clip
+   auf border-box zurueck, dann war der Titel hell ein Balken ohne Text. */
 html[data-color-scheme="light"] .legal-page h1 {
-    background: linear-gradient(135deg, rgb(var(--accent)), rgb(var(--accent)));
-    background: linear-gradient(135deg,
+    background-image: linear-gradient(135deg, rgb(var(--accent)), rgb(var(--accent)));
+    background-image: linear-gradient(135deg,
         rgb(var(--accent)),
         color-mix(in srgb, rgb(var(--accent)) 62%, #0b1220));
 }
@@ -3542,9 +3546,9 @@ html[data-color-scheme="light"] .cookie-content p {
 /* Logo, fuenf Links und zwei Kreise passen erst ab etwa 880px in eine
    Zeile; bei 820 brachen "Über mich" und "Tech Stack" um, und das Logo lief
    in "Portfolio". Darunter klappt die Navbar wie auf dem Handy ins Menue
-   (die Handy-Regeln stehen im 768px-Block). Nur Navbars mit Menueknopf:
-   die Rechtsseiten haben vier Links, keinen Knopf und kein main.js und
-   passen so, wie sie sind. */
+   (die Handy-Regeln stehen im 768px-Block). Das gilt fuer jede Navbar mit
+   Menueknopf; seit die Rechtsseiten einen haben (Inline-Skript statt
+   main.js), klappen auch sie hier, obwohl ihre vier Links passen wuerden. */
 @media (min-width: 769px) and (max-width: 1023px) {
     .nav-container:has(.menu-toggle) .nav-links {
         display: none;
