@@ -1747,6 +1747,10 @@ html[data-color-scheme="light"] .showcase-frame {
     /* Keeps the band's z-index: -1 inside the section, above its ground. */
     isolation: isolate;
     --projects-energy-opacity: 0.9;
+    /* Longer and softer than --theme-transition: the colour should flow
+       into the band while the slide is still moving, and the highlight
+       follows a beat later so the change reads as a wave. */
+    --projects-energy-transition: 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html[data-color-scheme="light"] .projects-section {
@@ -1816,7 +1820,7 @@ html[data-color-scheme="light"] .projects-section {
 
 .projects-energy-layer--band {
     background-color: var(--theme-gradient-end);
-    transition: background-color var(--theme-transition);
+    transition: background-color var(--projects-energy-transition);
     animation:
         projects-energy-drift 24s ease-in-out infinite alternate,
         projects-energy-breathe 8s ease-in-out infinite alternate;
@@ -1826,7 +1830,7 @@ html[data-color-scheme="light"] .projects-section {
    element runs a soft stripe along the strands. */
 .projects-energy-layer--glow {
     background-color: var(--theme-gradient-start);
-    transition: background-color var(--theme-transition);
+    transition: background-color var(--projects-energy-transition) 0.12s;
     opacity: 0.55;
     mix-blend-mode: screen;
     -webkit-mask-mode: luminance;

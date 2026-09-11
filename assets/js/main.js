@@ -1110,6 +1110,14 @@
             oldSlide.setAttribute('aria-hidden', 'true');
             newSlide.setAttribute('aria-hidden', 'false');
 
+            // The theme flips the moment the new slide is chosen, not when it
+            // has landed: accents and the energy band start flowing towards
+            // the incoming project while it slides in, instead of snapping
+            // over a second later. settle() re-asserts the same theme, which
+            // the controller treats as a no-op.
+            const incomingTheme = newSlide.getAttribute('data-theme');
+            if (incomingTheme) themeController.setProjectTheme(incomingTheme, 'slider');
+
             let settled = false;
             const settle = () => {
                 if (settled) return;

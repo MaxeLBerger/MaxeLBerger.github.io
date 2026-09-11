@@ -119,7 +119,7 @@ The portrait is anchored to the right edge at its own aspect ratio and grows wit
 
 ### Projects energy band
 
-Behind the whole `#projects` section sits `.projects-energy`, a plasma band that takes its colour from the active project theme. The WebP files are only the shape: they are CSS masks (`mask-image`), and the two layers paint plain `background-color` from the theme tokens (`--theme-gradient-end` for the band, `--theme-gradient-start` for the highlight, which uses a luminance mask so it only shows through the bright cores). That is why the band recolours together with buttons and accents when the slide changes.
+Behind the whole `#projects` section sits `.projects-energy`, a plasma band that takes its colour from the active project theme. The WebP files are only the shape: they are CSS masks (`mask-image`), and the two layers paint plain `background-color` from the theme tokens (`--theme-gradient-end` for the band, `--theme-gradient-start` for the highlight, which uses a luminance mask so it only shows through the bright cores). That is why the band recolours together with buttons and accents when the slide changes. The theme flips the moment a slide is chosen (not when it has landed), and the band uses its own, longer `--projects-energy-transition` (0.9 s ease-out, the highlight 120 ms behind) so the colour flows in while the slide is still moving.
 
 | File | Size | Used from |
 |------|------|-----------|
