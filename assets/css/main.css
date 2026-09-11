@@ -118,15 +118,17 @@
     --accent-ink: 11, 99, 242;
 }
 
-/* AI Captain: Purple/Violet */
+/* AI Captain: das Kapitaensgold der Landingpage, warm und selbstbewusst.
+   Hell genug fuer den dunklen Label-Default aus :root, deshalb kein
+   --theme-on-primary (wie bei dealhunter und ageofmax). */
 [data-project-theme="aicaptain"] {
-    --theme-primary: 139, 92, 246;
-    --theme-secondary: 124, 58, 237;
-    --theme-accent: 167, 139, 250;
-    --theme-gradient-start: #a78bfa;
-    --theme-gradient-mid: #8b5cf6;
-    --theme-gradient-end: #7c3aed;
-    --accent-ink: 124, 71, 245;
+    --theme-primary: 225, 189, 79;
+    --theme-secondary: 184, 144, 42;
+    --theme-accent: 240, 210, 122;
+    --theme-gradient-start: #f0d27a;
+    --theme-gradient-mid: #e1bd4f;
+    --theme-gradient-end: #b8902a;
+    --accent-ink: 122, 90, 14;
 }
 
 /* E46 Studio: Blue (matches hero/maxhaak for seamless transition) */

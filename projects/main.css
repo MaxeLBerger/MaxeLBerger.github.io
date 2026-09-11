@@ -57,8 +57,8 @@ html[data-color-scheme="light"][data-project-theme="imkerei"] { --proj-accent: #
 [data-project-theme="maxhaak"] { --proj-accent: #8fb3fd; --proj-on-accent: #0b0d14; }
 html[data-color-scheme="light"][data-project-theme="maxhaak"] { --proj-accent: #1d4ed8; }
 
-[data-project-theme="aicaptain"] { --proj-accent: #a78bfa; --proj-on-accent: #0b0d14; }
-html[data-color-scheme="light"][data-project-theme="aicaptain"] { --proj-accent: #6d28d9; }
+[data-project-theme="aicaptain"] { --proj-accent: #e1bd4f; --proj-on-accent: #0b0d14; }
+html[data-color-scheme="light"][data-project-theme="aicaptain"] { --proj-accent: #7a5a0e; }
 
 [data-project-theme="e46"] { --proj-accent: #8fb3fd; --proj-on-accent: #0b0d14; }
 html[data-color-scheme="light"][data-project-theme="e46"] { --proj-accent: #1d4ed8; }
