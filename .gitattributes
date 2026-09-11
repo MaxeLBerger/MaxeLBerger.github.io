@@ -1,0 +1,3 @@
+# The files in .githooks/ are shell scripts. Without this, core.autocrlf hands a
+# fresh Windows clone CRLF copies and sh trips over the CR after the shebang.
+.githooks/** text eol=lf
