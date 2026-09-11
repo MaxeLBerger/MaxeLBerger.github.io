@@ -111,6 +111,20 @@ with a menu button folds into it as on phones (`.nav-container:has(.menu-toggle)
 rules; in light mode the bars turn ink there). The legal pages have four links, no menu button and no main.js, and
 keep their inline links at that width.
 
+### Projects energy band
+
+`div.projects-energy` is the first child of `#projects`: a plasma band behind the whole section, coloured by the
+active project theme. `assets/img/backgrounds/hero-energy.webp` (and the 900 px version below 1100 px) are CSS
+masks on two layers that paint `background-color: var(--theme-gradient-end)` (band, alpha mask) and
+`var(--theme-gradient-start)` (highlight, luminance mask), so the colour follows `[data-project-theme]` through
+`--projects-energy-transition` (0.9 s ease-out, highlight delayed 120 ms). `goToSlide()` sets the theme when the slide is
+chosen, before the slide animation, so keep that order: the band must start recolouring on the click, not on settle. The section has `isolation: isolate` so the band's `z-index: -1` stays above its own
+ground; `.projects-energy-move` is what GSAP moves for the scroll parallax (`initProjectsEnergy()`), the layers
+carry the CSS drift and the highlight's `::after` the travelling stripe. `prefers-reduced-motion` switches all
+motion off, phones get `display: none`. Do not put the band back into the hero and do not add a blend mode to the
+band layer. Regenerate the files with `tools/hero-energy/make_energy.py` instead of retouching them.
+>>>>>>> origin/main
+
 ### About section
 
 `#about` sits directly after `#projects` and before the tech stack. Keep it as a personal editorial section with an
