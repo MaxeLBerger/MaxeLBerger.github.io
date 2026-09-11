@@ -20,9 +20,15 @@
    --color-bg, gegen die Kartenflaechen und gegen den getoenten
    Light-Mode-Hintergrund (Body-Radials mit 10 % Theme-Farbe).
 
+   Dasselbe Prinzip traegt main.css seit dem Umbau des Light mode als
+   --accent / --accent-ink. Hier bleibt --proj-accent bestehen, weil es
+   sechs Themes abdeckt, die es auf der Startseite nicht gibt.
+
    --proj-on-accent ist die Schriftfarbe AUF der gefuellten Theme-Flaeche
-   (Primaerbutton). Sie gilt in beiden Farbschemata, weil die Fuellung in
-   beiden Schemata rgb(var(--theme-primary)) ist.
+   (Primaerbutton). Sie ist seit dem Umbau schemaabhaengig: dunkel fuellt
+   der Button weiter mit rgb(var(--theme-primary)) und traegt die dunkle
+   Schrift, hell fuellt er mit --proj-accent, einer Tinte, auf der nur
+   Weiss lesbar ist.
    ───────────────────────────────────────────── */
 :root {
     --proj-accent: #22d3ee;
@@ -31,10 +37,15 @@
 }
 
 html[data-color-scheme="light"] {
-    /* --proj-on-accent bleibt bewusst unberuehrt: die Fuellfarbe wechselt
-       beim Schemawechsel nicht, also darf es die Schriftfarbe auch nicht. */
     --proj-accent: #0b5f78;
     --proj-quiet: #5a6070;
+    /* Frueher blieb --proj-on-accent bewusst schemaneutral, weil die
+       gefuellte Flaeche in beiden Schemata dieselbe Farbe hatte. Seit dem
+       Umbau des Light mode stimmt das nicht mehr: hell fuellt der Button
+       mit --proj-accent, und das ist dort eine dunkle Tinte. Near-Black
+       darauf waere unlesbar, Weiss traegt bei allen 14 Themes >= 5.9:1
+       (schlechtester Wert shookroko #456f0d). */
+    --proj-on-accent: #ffffff;
 }
 
 [data-project-theme="coha"] { --proj-accent: #e6ac5a; --proj-on-accent: #0b0d14; }
@@ -186,11 +197,28 @@ html[data-color-scheme="light"][data-project-theme="senihelp24"] { --proj-accent
 }
 
 /* Der Primaerbutton ist die einzige gefuellte Theme-Flaeche der Seite.
-   main.css setzt die Schrift pauschal auf #0a0a0f (dunkel) bzw. #ffffff
-   (hell); das faellt bei hellen Themes (lime, amber) auf 2:1. Hier
-   entscheidet stattdessen der pro Theme gepruefte Wert. */
+   main.css leitet seine Fuellung aus --accent ab, das kennt aber nur die
+   14 Themes der Startseite; coha, imkerei, soundoflvke, dogkennel,
+   kayaseeds und jkentertainment gibt es nur hier. Deshalb fuellt der
+   Button auf Detailseiten mit --proj-accent, derselben Farbe, die auf der
+   Seite auch den Text traegt, und die Schrift kommt aus dem pro Schema
+   geprueften --proj-on-accent. */
 html[data-color-scheme] .project-page .btn-primary {
     color: var(--proj-on-accent);
+}
+
+/* Nur im Light mode wechselt die Fuellung: main.css leitet sie aus
+   --accent ab, und das kennt nur die 14 Themes der Startseite. coha,
+   imkerei, soundoflvke, dogkennel, kayaseeds und jkentertainment gibt es
+   nur hier und wuerden sonst auf die Basisfarbe zurueckfallen. Der Dark
+   mode bleibt bewusst unangetastet auf --theme-primary. */
+html[data-color-scheme="light"] .project-page .btn-primary {
+    background: var(--proj-accent);
+}
+
+html[data-color-scheme="light"] .project-page .btn-primary:hover {
+    background: var(--proj-accent);
+    filter: brightness(0.92);
 }
 
 /* Faktenliste im Hero, optional. */
@@ -229,6 +257,20 @@ html[data-color-scheme] .project-page .btn-primary {
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg-elevated);
+}
+
+/* Dieselbe Materialsprache wie auf der Startseite: weisse Flaeche,
+   Haarlinie, zweilagiger Schatten. */
+html[data-color-scheme="light"] .project-screenshot,
+html[data-color-scheme="light"] .gallery-item {
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+}
+
+html[data-color-scheme="light"] .tech-badge {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
 }
 
 .project-screenshot img {

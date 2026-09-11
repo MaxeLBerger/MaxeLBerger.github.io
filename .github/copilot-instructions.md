@@ -59,21 +59,27 @@ right-anchored background, wired through one `<picture>` with two sources: `hero
 keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads.
 
 The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`, anchored `right: 0`) instead of stretching
-across the width; a mask feathers both side edges. `.hero-section` paints its own dark ground
-(`#080a12`) in both colour schemes, and `.hero-section::before` is a horizontal veil that stays solid under the text
-column and blends into the photo. Below 768 px the veil turns vertical, the portrait fills the width
-and is pushed up so the face sits in the top half, and the copy moves to the bottom of the hero
-(`justify-content: flex-end`). The master is 953x1600, so very tall viewports upscale it slightly; regenerate both
-sizes from the master if you ever replace the photo.
+across the width; a mask feathers both side edges. `.hero-section` paints its own ground, night-dark `#080a12` in
+dark mode and the light canvas (`--color-bg`) in light mode, and `.hero-section::before` is a horizontal veil in that
+same colour that stays solid under the text column and blends into the photo. Below 768 px the veil turns vertical,
+the portrait fills the width and is pushed up so the face sits in the top half, and the copy moves to the bottom of
+the hero (`justify-content: flex-end`). In light mode the phone veil hangs off the copy instead
+(`.hero-content::before`, starting 100 px above the first line): a light veil over the face reads as frosted glass,
+and where the copy starts depends on screen height and language. The master is 953x1600, so very tall viewports
+upscale it slightly; regenerate both sizes from the master if you ever replace the photo.
 
 The hero is intentionally **photo-first and editorial**: the photo is only lightly dimmed, contrast for the text
 comes from the directional veil plus layered text-shadows. Do not reintroduce heavy flat dim layers, and do not lay a
-colour wash over the photo: it shows the master's own warm skin, hair and wood tones. The text column is: `.hero-eyebrow` (uppercase
+colour wash over the photo: it shows the master's own warm skin, hair and wood tones. Light mode shows the same photo,
+unchanged; there the text is ink without shadows and the veil alone carries the contrast. A cut-out portrait on the
+plain canvas (`assets/img/profile/maxlerseite_no_bg.webp`) was built as an alternative in September 2026 and not
+chosen, so do not swap the photo for it. The text column is: `.hero-eyebrow` (uppercase
 name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
-never a gradient), then `.hero-description`, then `.hero-cta` with ONE white primary button linking to `#projects`
+never a gradient), then `.hero-description`, then `.hero-cta` with ONE primary button (white on dark, ink on light) linking to `#projects`
 and ONE `.hero-link` text link linking to `#contact`, then `div.hero-clients`: an uppercase
 `hero.clients` label ("Vertraut von" / "Trusted by") plus the two customer logos from `assets/img/clients/`. Those logos ship as white silhouettes
-and sit at `opacity: .62`, going to full white on hover; their heights are set per logo
+and sit at `opacity: .62`, going to full white on hover; light mode renders the same files as dark silhouettes with
+`filter: brightness(0)` at `opacity: .55`, so there is still one file per logo. Their heights are set per logo
 (`.hero-client-logo--senihelp` / `--humanbridges`) because one is a compact wordmark and the other a wide
 mark-plus-wordmark lockup, so do not give them a shared height. The GSAP entrance in `playEntrance()` adds the
 client row to the end of the existing timeline.
@@ -83,9 +89,13 @@ tagline block to the hero; these were deliberately removed. i18n keys are `hero.
 and title3 are the two words of the second line), `hero.desc`, `hero.cta1/cta2` and `hero.clients`, all
 present in both languages.
 
-Over the hero the navbar is transparent with white text (`body.has-hero #navbar:not(.scrolled)`). In light mode the
-scrim over the hero stays dark and the icon buttons stay transparent, otherwise the sun icon disappears. Keep both
-rules when touching the navbar.
+Over the hero the navbar is transparent (`body.has-hero #navbar:not(.scrolled)`). In dark mode, and in light mode
+below 769 px where the photo fills the top of the hero, it carries white text, outline-only icon circles and the dark
+scrim in `#navbar::before`; the logo accent "Haak" there reads `--theme-primary`, the only place the light scheme uses
+the raw theme colour. From 769 px in light mode it switches to ink text, filled icon circles and a light scrim,
+because the canvas and the scrim-lightened top of the photo sit behind it. Keep the scrim in the softly fading
+`::before`: as a background on the navbar itself the gradient repeated into the transparent 1 px bottom border and
+drew a dark line across the photo.
 
 
 ### Projects energy band

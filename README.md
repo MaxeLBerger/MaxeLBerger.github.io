@@ -25,13 +25,19 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 The slider on the homepage runs in two modes, filtered through `data-mode` on both slides and pagination buttons. Default is `own`.
 
+The section header carries a `.section-note` line (`projects.note`): self-employment starts on 1 October 2026, and the
+client slides repeat that date rather than implying an older track record.
+
 ### Own work (`data-mode="own"`)
 
 Listed in slider order. The pagination buttons in `index.html` are the single source of that order:
 the slider pairs slides to buttons by `data-project`, so moving a project means moving its button.
+`FIRST_PROJECT_THEME` in `assets/js/main.js` resolves the neutral `maxhaak` theme onto the leading project,
+so it has to name whichever project sits first in this table.
 
 | Project | Type | Detail page |
 |---------|------|-------------|
+| Haakly | Self-hosted CMS | none |
 | CapitalCombo | Trading research and execution platform | none |
 | DealHunter | Autonomous marketplace scanner | none |
 | E46 Studio | Desktop app (Electron) | [e46-studio.html](projects/e46-studio.html) |
@@ -42,7 +48,6 @@ the slider pairs slides to buttons by `data-project`, so moving a project means 
 | AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 | Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
 | MemeCoinTrader | Java desktop trading app, in progress | none |
-| Haakly | Self-hosted CMS | none |
 
 ### Client work (`data-mode="customers"`)
 
@@ -115,7 +120,7 @@ Two sizes of the same portrait (wooden wall; `assets/img/profile/maxlerseite.web
 | `hero-portrait.webp` | 953x1600 | 1100 px viewport width |
 | `hero-portrait-760.webp` | 760x1276 | below that, and as the `<img>` fallback |
 
-The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column dark, and on phones the veil turns vertical and the copy moves below the face. The photo carries no colour overlay: it keeps the warm skin, hair and wood tones of the master, so a replacement should already be graded the way it is meant to look. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
+The portrait is anchored to the right edge at its own aspect ratio and grows with the viewport height; a horizontal veil keeps the text column on the hero's own ground (night-dark, or the light canvas in light mode), and on phones the veil turns vertical and the copy moves below the face. Both colour schemes show the same photo: light mode swaps only the ground, the veil colour and the ink, and the photo feathers into the canvas. The photo carries no colour overlay: it keeps the warm skin, hair and wood tones of the master, so a replacement should already be graded the way it is meant to look. The master is 953x1600, so very tall viewports upscale it slightly. If you ever replace the photo, regenerate both sizes from the same master.
 
 ### Projects energy band
 
@@ -130,7 +135,7 @@ The band is flipped vertically so the light source sits low right behind the moc
 
 ### Client logos
 
-`assets/img/clients/` holds the two customer marks shown in the hero. Both are white silhouettes, because neither brand publishes a dark-background variant and the hero sits on a dark photo:
+`assets/img/clients/` holds the two customer marks shown in the hero. Both are white silhouettes, because neither brand publishes a dark-background variant; in light mode `filter: brightness(0)` renders the same files as dark silhouettes on the canvas:
 
 | File | Size | Built from |
 |------|------|------------|
@@ -193,6 +198,8 @@ Full rules in [`.github/copilot-instructions.md`](.github/copilot-instructions.m
 - **Images:** convert to WebP first, keep each file at or below 600 KB, otherwise CI fails.
 - **i18n:** every visible string uses `data-i18n="key"`; keep `translations.de` and `translations.en` in [assets/js/main.js](assets/js/main.js) at identical key sets.
 - **Theming:** `data-color-scheme` (light/dark) and `data-project-theme` (per-project palette) on `<html>`. The only writer is `themeController` in [assets/js/main.js](assets/js/main.js); the project palette follows the active slide.
+- **Accent tokens:** never write `rgb(var(--theme-primary))` in a rule. Use `rgb(var(--accent))` for anything that carries meaning (text, border, filled surface) and `var(--on-accent)` for the text on a filled surface. `--accent` resolves to `--theme-primary` in dark mode and to `--accent-ink` in light mode, the darkened variant of the same hue that each `[data-project-theme]` block carries. The raw `--theme-primary` is only correct in one place: the transparent navbar over the hero on phones, where the ground is the dark photo in both schemes; that carve-out is one rule in the 768 px block of [assets/css/main.css](assets/css/main.css). Reason: the project palettes are tuned for a dark ground, and 11 of 14 fell below 4.5:1 on the light page, 7 of them below 3:1 even as a button surface.
+- **Contrast:** run `node tools/contrast-audit.mjs` against a local server before shipping colour work. It measures every visible element across all pages, both schemes and all 14 project themes, and exits non-zero on anything below 4.5:1 (3:1 for large text).
 - **No inline `style="..."`** for state, use CSS classes (`.is-success`, `.is-error`, `.active` and so on).
 - **No decorative layers:** no blur filters, no endless keyframe animations, no glow orbs or grid overlays. They were removed on purpose because they blocked rendering.
 - **No build tools, no analytics, no third-party scripts** without updating [datenschutz.html](datenschutz.html).
