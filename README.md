@@ -167,6 +167,13 @@ python -m http.server 8000
 
 Open <http://localhost:8000>. No build step.
 
+Once per clone, point Git at the repo's hooks so the writing rule is enforced
+locally:
+
+```powershell
+git config core.hooksPath .githooks
+```
+
 ---
 
 ## CI / CD

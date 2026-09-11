@@ -39,7 +39,9 @@ Plain static site, **no build step**, no submodules, no frameworks.
 **Never use an em dash (U+2014) or an en dash (U+2013)**, in any file type: HTML, CSS, JS, comments, i18n strings,
 Markdown, commit messages. Use a colon, comma, parentheses, semicolon or a separate sentence instead. Plain hyphens
 in compound words and numeric ranges (`2-4 Wochen`, `1-8 Seiten`) are fine. When you copy text from an old file or
-an external source that contains one, replace it while copying. A pre-commit hook enforces this.
+an external source that contains one, replace it while copying. The `.githooks/pre-commit` hook
+enforces this; a fresh clone enables it with `git config core.hooksPath .githooks` (see
+[docs/development.md](../docs/development.md)).
 
 ## Tech Stack
 
