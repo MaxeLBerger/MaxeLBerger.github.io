@@ -53,21 +53,36 @@ an external source that contains one, replace it while copying. A pre-commit hoo
 
 ### Homepage hero
 
-The top `#hero` uses the wooden-wall portrait (`assets/img/profile/maxlerseite.webp` is the master) as a single
-right-anchored background, wired through one `<picture>` with two sources: `hero-portrait.webp` (953x1600, from
-1100 px) and `hero-portrait-760.webp` (760x1276) as the `<img>` fallback. The active image is the LCP element, so
-keep it eager with `fetchpriority="high"` and do not add competing CSS-background preloads.
+The top `#hero` shows the wooden-wall portrait as a single right-anchored background. The markup is
+`div.hero-bg-slides` (a wrapper left over from the old crossfading slideshow) holding one
+`picture.hero-bg-slide.is-active`: a `<source>` for `hero-portrait.webp` (953x1600, from 1100 px) plus
+`hero-portrait-760.webp` (760x1276) as the `img.hero-bg-image` fallback. `assets/img/profile/maxlerseite.webp` is the
+master and is byte-identical to the large background copy. `.hero-bg-slide` starts at `opacity: 0` and only shows
+with `.is-active`, so keep that class on the picture; `initHeroBgSlideshow()` in `assets/js/main.js` still exists but
+returns immediately with fewer than two slides. The active image is the LCP element, so keep it eager with
+`fetchpriority="high"` and do not add competing CSS-background preloads.
 
-The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`, anchored `right: 0`) instead of stretching
-across the width; a mask feathers both side edges. `.hero-section` paints its own ground, night-dark `#080a12` in
-dark mode and the light canvas (`--color-bg`) in light mode, and `.hero-section::before` is a horizontal veil in that
-same colour that stays solid under the text column and blends into the photo. Below 768 px the portrait fills the
-width and is pushed up so the face sits in the top half, and the copy moves to the bottom of the hero
-(`justify-content: flex-end`). There the veil hangs off the copy in both schemes (`.hero-content::before`, starting
-130 px above the first line in dark and 100 px in light), not off the section height: where the copy starts depends
-on screen height and language, and with fixed percentages the dark eyebrow sat on the mouth on short phones (1.75:1
-at 375x667). In dark mode only a soft top tint stays on `.hero-section::before`, so the ground under the navbar is
-unchanged; a light veil over the face would read as frosted glass.
+The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`) instead of stretching across the width, and
+sits at `right: max(0px, calc((100% - var(--container-max)) / 2))`, so on very wide screens it follows the content
+container inward instead of drifting away from the copy; a mask feathers both side edges. `.hero-content` is a
+two-column grid (`minmax(0, 580px) minmax(0, 1fr)`, 460 px from 1024 px down) whose second column stays empty:
+`.hero-text` sits in column 1, so the copy never runs onto the face. `.hero-section` paints its own ground,
+night-dark `#080a12` in dark mode and the light canvas (`--color-bg`) in light mode, and `.hero-section::before` is a
+horizontal veil in that same colour, solid under the text column and clear over the photo. Its stops are anchored to
+the centre in px (`calc(50% - 200px)` through `calc(50% + 250px)`) instead of viewport percentages, so the face is
+never dimmed on wide screens and the copy keeps a solid ground when the portrait reaches into it on narrow, tall
+windows; the light-mode block repaints section and veil in the canvas colour with the same stops.
+`.hero-section::after` blends the bottom edge into `--color-bg`, late and short: from 84% in dark, and only from 95%
+in light, where a longer gradient washed the lower third of the photo and a `border-top` hairline on
+`.projects-section` carries the edge instead.
+
+Below 768 px `.hero-content` drops to one column, the portrait fills the width and is pushed up so the face sits in
+the top half, and the copy moves to the bottom of the hero (`justify-content: flex-end`). There the veil hangs off
+the copy in both schemes (`.hero-content::before`, starting 130 px above the first line in dark and 100 px in light),
+not off the section height: where the copy starts depends on screen height and language, and with fixed percentages
+the dark eyebrow sat on the mouth on short phones (1.75:1 at 375x667). In dark mode only a soft top tint stays on
+`.hero-section::before`, so the ground under the navbar is unchanged; a light veil over the face would read as
+frosted glass.
 
 Portrait tablets from 769 to 1024 px (`orientation: portrait`) stack the same way. There the portrait grows with
 the height to almost the full width (787 px at 820x1180), and beside it the text column sat on the face. The photo
