@@ -87,7 +87,17 @@
     </script>
 
     <link rel="icon" href="assets/img/favicons/faviconwhitegreen.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css?v=20260910-lightmode">
+    <!-- Apply the stored colour scheme before first paint. main.js is deferred, so without this a
+         light-mode visitor gets the dark page first and then a jump, which the light hero makes obvious. -->
+    <script>
+        try {
+            const storedScheme = localStorage.getItem('color-scheme');
+            if (storedScheme === 'light' || storedScheme === 'dark') {
+                document.documentElement.setAttribute('data-color-scheme', storedScheme);
+            }
+        } catch (e) { /* storage blocked: keep the dark default */ }
+    </script>
+    <link rel="stylesheet" href="assets/css/main.css?v=20260911-lighthero">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -1133,6 +1143,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260910-lightmode" defer></script>
+    <script src="assets/js/main.js?v=20260911-lighthero" defer></script>
 </body>
 </html>
