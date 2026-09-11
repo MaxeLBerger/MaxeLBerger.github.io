@@ -123,7 +123,6 @@ ground; `.projects-energy-move` is what GSAP moves for the scroll parallax (`ini
 carry the CSS drift and the highlight's `::after` the travelling stripe. `prefers-reduced-motion` switches all
 motion off, phones get `display: none`. Do not put the band back into the hero and do not add a blend mode to the
 band layer. Regenerate the files with `tools/hero-energy/make_energy.py` instead of retouching them.
->>>>>>> origin/main
 
 ### About section
 
