@@ -3536,9 +3536,9 @@ html[data-color-scheme="light"] .cookie-content p {
 /* Logo, fuenf Links und zwei Kreise passen erst ab etwa 880px in eine
    Zeile; bei 820 brachen "Über mich" und "Tech Stack" um, und das Logo lief
    in "Portfolio". Darunter klappt die Navbar wie auf dem Handy ins Menue
-   (die Handy-Regeln stehen im 768px-Block). Nur Navbars mit Menueknopf:
-   die Rechtsseiten haben vier Links, keinen Knopf und kein main.js und
-   passen so, wie sie sind. */
+   (die Handy-Regeln stehen im 768px-Block). Das gilt fuer jede Navbar mit
+   Menueknopf; seit die Rechtsseiten einen haben (Inline-Skript statt
+   main.js), klappen auch sie hier, obwohl ihre vier Links passen wuerden. */
 @media (min-width: 769px) and (max-width: 1023px) {
     .nav-container:has(.menu-toggle) .nav-links {
         display: none;
