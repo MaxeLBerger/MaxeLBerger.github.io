@@ -3271,6 +3271,129 @@ html[data-color-scheme="light"] .cookie-content p {
 }
 
 /* ═══════════════════════════════════════════════
+   RESPONSIVE: TABLET HOCHKANT (769 bis 1024px)
+   ═══════════════════════════════════════════════ */
+/* Hochkant waechst das Portraet mit der Hoehe fast auf die ganze Breite
+   (787px bei 820x1180), und daneben lag die Textspalte auf dem Gesicht:
+   Eyebrow 2.7:1, "Effizienz." 2.4:1 hell. Deshalb stapelt der Hero hier wie
+   auf dem Handy, Gesicht oben und Texte darunter. Das Foto behaelt Groesse
+   und rechte Kante und wird nur angehoben; der Schleier haengt wie auf dem
+   Handy an den Texten, in beiden Schemata. */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+    .hero-section {
+        justify-content: flex-end;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-text {
+        max-width: 560px;
+    }
+
+    .hero-section::before,
+    html[data-color-scheme="light"] .hero-section::before {
+        background: none;
+    }
+
+    .hero-content::before {
+        content: '';
+        position: absolute;
+        top: -130px;
+        right: 0;
+        bottom: calc(-1 * var(--space-2xl));
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(
+            180deg,
+            rgba(8, 10, 18, 0) 0,
+            rgba(8, 10, 18, 0.5) 90px,
+            rgba(8, 10, 18, 0.72) 130px,
+            rgba(8, 10, 18, 0.86) 170px,
+            rgba(8, 10, 18, 0.94) 240px,
+            #080a12 290px
+        );
+    }
+
+    /* Laenger als auf dem Handy: das Tablet hat den Platz, und ein kurzer
+       Uebergang liest sich als Schnitt quer durchs Hemd. */
+    html[data-color-scheme="light"] .hero-content::before {
+        top: -150px;
+        background: linear-gradient(
+            180deg,
+            rgba(237, 240, 247, 0) 0,
+            rgba(237, 240, 247, 0.55) 70px,
+            rgba(237, 240, 247, 0.92) 125px,
+            var(--color-bg) 150px
+        );
+    }
+
+    /* Nur angehoben, nicht vergroessert: die Haare beginnen knapp unter der
+       Navbar, das Kinn bleibt ueber den Texten. */
+    .hero-bg-slide {
+        top: calc(var(--nav-height) - 22%);
+        transform: none;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE: NAVBAR 769 BIS 1023px
+   ═══════════════════════════════════════════════ */
+/* Logo, fuenf Links und zwei Kreise passen erst ab etwa 880px in eine
+   Zeile; bei 820 brachen "Über mich" und "Tech Stack" um, und das Logo lief
+   in "Portfolio". Darunter klappt die Navbar wie auf dem Handy ins Menue
+   (die Handy-Regeln stehen im 768px-Block). Nur Navbars mit Menueknopf:
+   die Rechtsseiten haben vier Links, keinen Knopf und kein main.js und
+   passen so, wie sie sind. */
+@media (min-width: 769px) and (max-width: 1023px) {
+    .nav-container:has(.menu-toggle) .nav-links {
+        display: none;
+    }
+
+    .nav-container:has(.menu-toggle) .nav-links.open {
+        display: flex;
+        position: absolute;
+        top: calc(100% + var(--space-sm));
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+        min-width: 240px;
+        padding: var(--space-lg);
+        background: rgba(10, 10, 15, 0.96);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+
+    html[data-color-scheme="light"] .nav-container:has(.menu-toggle) .nav-links.open {
+        background: rgba(245, 245, 250, 0.98);
+    }
+
+    .nav-links.open a {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Das Panel ist eine feste Flaeche, die weisse Schrift fuer den Hero
+       gilt darin nicht. */
+    body.has-hero #navbar:not(.scrolled) .nav-links.open a {
+        color: var(--color-text-secondary);
+        text-shadow: none;
+    }
+
+    /* Hell steht die Navbar ab 769px als Tinte auf dem hellen Schleier. */
+    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) .menu-toggle .bar {
+        background: var(--color-text);
+    }
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE: TABLET (768px)
    ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -3359,13 +3482,37 @@ html[data-color-scheme="light"] .cookie-content p {
         justify-content: flex-end;
     }
 
+    /* Dunkel haengt der Schleier wie hell an den Texten statt an der Hoehe
+       der Sektion: mit festen Prozenten lag die Eyebrow auf kurzen Handys
+       auf dem Mund (1.75:1 bei 375x667). Auf der Sektion bleibt nur die
+       leichte Toenung oben, damit der Grund unter der Navbar derselbe
+       bleibt. Der Schleier laeuft 130px ueber der ersten Zeile an und ist
+       ab der Beschreibung deckend. */
     .hero-section::before {
         background: linear-gradient(
             180deg,
             rgba(8, 10, 18, 0.10) 0%,
-            rgba(8, 10, 18, 0.24) 30%,
-            rgba(8, 10, 18, 0.85) 48%,
-            #080a12 66%
+            rgba(8, 10, 18, 0.24) 30%
+        );
+    }
+
+    .hero-content::before {
+        content: '';
+        position: absolute;
+        top: -130px;
+        right: 0;
+        bottom: calc(-1 * var(--space-2xl));
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(
+            180deg,
+            rgba(8, 10, 18, 0) 0,
+            rgba(8, 10, 18, 0.5) 90px,
+            rgba(8, 10, 18, 0.72) 130px,
+            rgba(8, 10, 18, 0.86) 170px,
+            rgba(8, 10, 18, 0.94) 240px,
+            #080a12 290px
         );
     }
 

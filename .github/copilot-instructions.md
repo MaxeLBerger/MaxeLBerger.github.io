@@ -61,12 +61,21 @@ keep it eager with `fetchpriority="high"` and do not add competing CSS-backgroun
 The portrait keeps its own aspect ratio (`height: 112%`, `width: auto`, anchored `right: 0`) instead of stretching
 across the width; a mask feathers both side edges. `.hero-section` paints its own ground, night-dark `#080a12` in
 dark mode and the light canvas (`--color-bg`) in light mode, and `.hero-section::before` is a horizontal veil in that
-same colour that stays solid under the text column and blends into the photo. Below 768 px the veil turns vertical,
-the portrait fills the width and is pushed up so the face sits in the top half, and the copy moves to the bottom of
-the hero (`justify-content: flex-end`). In light mode the phone veil hangs off the copy instead
-(`.hero-content::before`, starting 100 px above the first line): a light veil over the face reads as frosted glass,
-and where the copy starts depends on screen height and language. The master is 953x1600, so very tall viewports
-upscale it slightly; regenerate both sizes from the master if you ever replace the photo.
+same colour that stays solid under the text column and blends into the photo. Below 768 px the portrait fills the
+width and is pushed up so the face sits in the top half, and the copy moves to the bottom of the hero
+(`justify-content: flex-end`). There the veil hangs off the copy in both schemes (`.hero-content::before`, starting
+130 px above the first line in dark and 100 px in light), not off the section height: where the copy starts depends
+on screen height and language, and with fixed percentages the dark eyebrow sat on the mouth on short phones (1.75:1
+at 375x667). In dark mode only a soft top tint stays on `.hero-section::before`, so the ground under the navbar is
+unchanged; a light veil over the face would read as frosted glass.
+
+Portrait tablets from 769 to 1024 px (`orientation: portrait`) stack the same way. There the portrait grows with
+the height to almost the full width (787 px at 820x1180), and beside it the text column sat on the face. The photo
+keeps its tablet size and right edge and is only lifted (`top: calc(var(--nav-height) - 22%)`), so the hair starts
+under the navbar and the chin clears the copy; the text column widens to 560 px and the light veil fades in over
+150 px. A shorter "laptop band" hero with the photo beside the copy was built as the alternative in September 2026
+and not chosen. The master is 953x1600, so very tall viewports upscale it slightly; regenerate both sizes from the
+master if you ever replace the photo.
 
 The hero is intentionally **photo-first and editorial**: the photo is only lightly dimmed, contrast for the text
 comes from the directional veil plus layered text-shadows. Do not reintroduce heavy flat dim layers, and do not lay a
@@ -96,6 +105,11 @@ the raw theme colour. From 769 px in light mode it switches to ink text, filled 
 because the canvas and the scrim-lightened top of the photo sit behind it. Keep the scrim in the softly fading
 `::before`: as a background on the navbar itself the gradient repeated into the transparent 1 px bottom border and
 drew a dark line across the photo.
+
+Logo, five links and two icon circles only fit on one line from about 880 px, so from 769 to 1023 px every navbar
+with a menu button folds into it as on phones (`.nav-container:has(.menu-toggle)`, its own block after the 1024 px
+rules; in light mode the bars turn ink there). The legal pages have four links, no menu button and no main.js, and
+keep their inline links at that width.
 
 ### About section
 
