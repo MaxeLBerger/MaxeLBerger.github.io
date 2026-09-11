@@ -97,7 +97,7 @@
             }
         } catch (e) { /* storage blocked: keep the dark default */ }
     </script>
-    <link rel="stylesheet" href="assets/css/main.css?v=20260911-lighthero">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260911-energy3">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -172,6 +172,14 @@
 
         <!-- Projects Showcase Section -->
         <section id="projects" class="projects-section">
+            <!-- Plasma band behind the projects: the WebP is only a CSS mask,
+                 the colour comes from the active project theme. -->
+            <div class="projects-energy" aria-hidden="true">
+                <div class="projects-energy-move">
+                    <div class="projects-energy-layer projects-energy-layer--band"></div>
+                    <div class="projects-energy-layer projects-energy-layer--glow"></div>
+                </div>
+            </div>
             <div class="container">
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
@@ -1143,6 +1151,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260911-lighthero" defer></script>
+    <script src="assets/js/main.js?v=20260911-energy3" defer></script>
 </body>
 </html>

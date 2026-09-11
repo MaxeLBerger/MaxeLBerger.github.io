@@ -2073,6 +2073,196 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
     background: var(--color-bg);
 }
 
+/* ── Projects energy band ─────────────────────────────────────────────
+   A plasma band behind the whole projects section. The WebP only
+   provides the shape (it is a CSS mask, alpha channel), the colour comes
+   from the active project theme, so the band recolours with every slide
+   through the same 0.6 s theme transition as the rest of the page.
+   Two layers: the band itself in the theme's primary colour, and a
+   highlight in the theme's light gradient stop that only shows through
+   the bright cores (luminance mask) and carries a slow travelling pulse.
+   Static placement uses translate/scale, the ambient drift animates
+   transform, the scroll parallax moves the inner wrapper, so none of the
+   three fight. Tablets get one static layer, phones nothing. */
+.projects-section {
+    /* Keeps the band's z-index: -1 inside the section, above its ground. */
+    isolation: isolate;
+    --projects-energy-opacity: 0.9;
+    /* Longer and softer than --theme-transition: the colour should flow
+       into the band while the slide is still moving, and the highlight
+       follows a beat later so the change reads as a wave. */
+    --projects-energy-transition: 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html[data-color-scheme="light"] .projects-section {
+    --projects-energy-opacity: 0.5;
+}
+
+.projects-energy {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    /* Quieter under the slide copy on the left, feathered at top and
+       bottom so the section edges never cut the band. */
+    -webkit-mask-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0, rgba(0, 0, 0, 0.22) 42%, #000 62%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 0, #000 14%, #000 86%, rgba(0, 0, 0, 0) 100%);
+    mask-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0, rgba(0, 0, 0, 0.22) 42%, #000 62%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 0, #000 14%, #000 86%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.projects-energy.is-ready {
+    opacity: var(--projects-energy-opacity);
+    animation: projects-energy-in 1.6s var(--ease-out) both;
+}
+
+@keyframes projects-energy-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.projects-energy-move {
+    position: absolute;
+    inset: 0;
+}
+
+/* Flipped vertically: the light source sits low right behind the mockup
+   and the tab row, the faint tail rises to the upper left. */
+.projects-energy-layer {
+    position: absolute;
+    left: -8%;
+    top: 50%;
+    width: 116%;
+    aspect-ratio: 16 / 9;
+    translate: 0 -50%;
+    scale: 1 -1;
+    -webkit-mask-image: url('../img/backgrounds/hero-energy-900.webp');
+    mask-image: url('../img/backgrounds/hero-energy-900.webp');
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    will-change: transform, opacity;
+}
+
+@media (min-width: 1100px) {
+    .projects-energy-layer {
+        -webkit-mask-image: url('../img/backgrounds/hero-energy.webp');
+        mask-image: url('../img/backgrounds/hero-energy.webp');
+    }
+}
+
+.projects-energy-layer--band {
+    background-color: var(--theme-gradient-end);
+    transition: background-color var(--projects-energy-transition);
+    animation:
+        projects-energy-drift 24s ease-in-out infinite alternate,
+        projects-energy-breathe 8s ease-in-out infinite alternate;
+}
+
+/* Highlight: luminance mask keeps only the bright cores, the pseudo
+   element runs a soft stripe along the strands. */
+.projects-energy-layer--glow {
+    background-color: var(--theme-gradient-start);
+    transition: background-color var(--projects-energy-transition) 0.12s;
+    opacity: 0.55;
+    mix-blend-mode: screen;
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+    overflow: hidden;
+    animation:
+        projects-energy-drift-glow 31s ease-in-out infinite alternate,
+        projects-energy-breathe 13s ease-in-out infinite alternate-reverse;
+}
+
+.projects-energy-layer--glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(70deg, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0) 68%);
+    background-size: 260% 260%;
+    animation: projects-energy-pulse 12s linear infinite;
+}
+
+.projects-energy.is-paused .projects-energy-layer,
+.projects-energy.is-paused .projects-energy-layer--glow::after {
+    animation-play-state: paused;
+}
+
+@keyframes projects-energy-drift {
+    from {
+        transform: translate3d(-1.4%, 0.9%, 0) scale(1.02);
+    }
+    to {
+        transform: translate3d(1.4%, -0.9%, 0) scale(1.06);
+    }
+}
+
+@keyframes projects-energy-drift-glow {
+    from {
+        transform: translate3d(1.8%, -0.7%, 0) scale(1.08) rotate(0.4deg);
+    }
+    to {
+        transform: translate3d(-1.8%, 0.7%, 0) scale(1.02) rotate(-0.4deg);
+    }
+}
+
+@keyframes projects-energy-breathe {
+    from {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes projects-energy-pulse {
+    from {
+        background-position: 100% 100%;
+    }
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+/* One static layer on tablets, nothing on phones (display: none means
+   the mask image is never requested there). */
+@media (max-width: 1099px) {
+    .projects-energy-layer,
+    .projects-energy-layer--glow::after {
+        animation: none !important;
+    }
+
+    .projects-energy-layer--glow {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-energy {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-energy.is-ready {
+        animation: none;
+    }
+
+    .projects-energy-layer,
+    .projects-energy-layer--glow::after {
+        animation: none !important;
+    }
+}
+
+
 /* Light mode: blobs need much less opacity to stay subtle on white. */
 
 /* ═══════════════════════════════════════════════
