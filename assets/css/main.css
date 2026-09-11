@@ -833,6 +833,14 @@ html[data-color-scheme="light"] #navbar::before {
     );
 }
 
+/* Der dunkle Schleier gehoert zum Hero-Foto. Auf Seiten ohne Hero (Rechts-
+   und Projektseiten) liegt hell unter der Navbar nur die helle Leinwand: dort
+   stand er als graues Band ueber den oberen 180px, und "Haak" fiel darauf
+   unter 1.5:1. Ohne Schleier steht die Tinte direkt auf der Leinwand. */
+html[data-color-scheme="light"] body:not(.has-hero) #navbar::before {
+    content: none;
+}
+
 /* Sobald die feste Flaeche eingeblendet wird, braucht es den Schleier nicht mehr. */
 #navbar.scrolled::before {
     opacity: 0;
