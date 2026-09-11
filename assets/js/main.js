@@ -1112,6 +1112,14 @@
             oldSlide.setAttribute('aria-hidden', 'true');
             newSlide.setAttribute('aria-hidden', 'false');
 
+            // The theme flips the moment the new slide is chosen, not when it
+            // has landed: accents and the energy band start flowing towards
+            // the incoming project while it slides in, instead of snapping
+            // over a second later. settle() re-asserts the same theme, which
+            // the controller treats as a no-op.
+            const incomingTheme = newSlide.getAttribute('data-theme');
+            if (incomingTheme) themeController.setProjectTheme(incomingTheme, 'slider');
+
             let settled = false;
             const settle = () => {
                 if (settled) return;
@@ -1678,6 +1686,38 @@
         start();
     }
 
+    /* ═══ PROJECTS ENERGY BAND ═══
+       The band behind the projects is a CSS-masked layer coloured by the
+       project theme. Fade it in once the mask image has decoded, pause
+       the ambient drift while the tab is hidden and add a slow scroll
+       parallax over the section (the inner wrapper moves, the masked
+       outer box stays put). */
+    function initProjectsEnergy() {
+        const projects = document.getElementById('projects');
+        const energy = projects ? projects.querySelector('.projects-energy') : null;
+        if (!energy) return;
+
+        const ready = () => energy.classList.add('is-ready');
+        const large = window.matchMedia('(min-width: 1100px)').matches;
+        const probe = new Image();
+        probe.src = `assets/img/backgrounds/hero-energy${large ? '' : '-900'}.webp`;
+        (probe.decode ? probe.decode() : Promise.resolve()).then(ready, ready);
+        window.setTimeout(ready, 4000);
+
+        document.addEventListener('visibilitychange', () => {
+            energy.classList.toggle('is-paused', document.hidden);
+        });
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        const mover = energy.querySelector('.projects-energy-move') || energy;
+        gsap.fromTo(mover, { y: -90 }, {
+            y: 90,
+            ease: 'none',
+            scrollTrigger: { trigger: projects, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+        });
+    }
+
     /* ═══ INIT ═══ */
     function init() {
         // Color scheme
@@ -1713,6 +1753,7 @@
         initCookieConsent();
         initAnimations();
         initHeroBgSlideshow();
+        initProjectsEnergy();
 
         // Project slider
         const slider = new ProjectSlider();
