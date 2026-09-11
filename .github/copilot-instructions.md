@@ -91,9 +91,15 @@ present in both languages.
 
 Over the hero the navbar is transparent (`body.has-hero #navbar:not(.scrolled)`). In dark mode, and in light mode
 below 769 px where the photo fills the top of the hero, it carries white text, outline-only icon circles and the dark
-scrim in `#navbar::before`; the logo accent "Haak" there reads `--theme-primary`, the only place the light scheme uses
-the raw theme colour. From 769 px in light mode it switches to ink text, filled icon circles and a light scrim,
-because the canvas and the scrim-lightened top of the photo sit behind it. Keep the scrim in the softly fading
+scrim in `#navbar::before`. On phones the light-mode scrim is as dense as the dark one behind the nav row and holds
+0.60 down to the logo baseline, with the old tail below the bar: on short and landscape phones the hero copy reaches up
+to the navbar, and its light veil used to sit behind the logo as a mid-grey. There `.nav-logo` and `.nav-actions` set
+`--accent` to `--accent-bright` in both schemes, so "Haak" and the focus rings on the photo take the lightened step of
+the theme hue (same OKLCH hue, relative luminance 0.46) that each `[data-project-theme]` block carries next to
+`--accent-ink`; the theme colour itself stayed below 3:1 on the wood. The menu panel keeps the accent of its scheme.
+On phones the light-mode `.hero-eyebrow` takes `--color-text-secondary`, because on those short screens it starts
+right under the navbar, in the tail of the scrim. From 769 px in light mode the navbar switches to ink text, filled
+icon circles and a light scrim, because the canvas and the scrim-lightened top of the photo sit behind it. Keep the scrim in the softly fading
 `::before`: as a background on the navbar itself the gradient repeated into the transparent 1 px bottom border and
 drew a dark line across the photo.
 

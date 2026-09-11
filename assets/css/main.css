@@ -29,6 +29,14 @@
     /* Light-Variante des Basisthemas. Jeder [data-project-theme]-Block bringt
        seine eigene mit; im Dark mode wird sie nie gelesen. */
     --accent-ink: 4, 120, 140;
+    /* Die Gegenrichtung: helle Stufe desselben Farbtons fuer den dunklen
+       Fotogrund. Gilt nur in der transparenten Navbar ueber dem Hero auf
+       dem Handy, in beiden Schemata: dort steht --accent fuer Logo und
+       Knoepfe auf dieser Stufe ("Haak", Fokusringe). Gleicher OKLCH-
+       Farbton, Helligkeit angehoben bis zur relativen Luminanz 0.46,
+       Chroma nur so weit gekappt, wie sRGB es verlangt; Themes, deren
+       Primaerfarbe das schon schafft, behalten sie. */
+    --accent-bright: 45, 197, 227;
 
     /* Dark mode semantic colors (default) */
     --color-bg: #0a0a0f;
@@ -116,6 +124,7 @@
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #6366f1;
     --accent-ink: 11, 99, 242;
+    --accent-bright: 138, 182, 255;
 }
 
 /* AI Captain: Purple/Violet */
@@ -127,6 +136,7 @@
     --theme-gradient-mid: #8b5cf6;
     --theme-gradient-end: #7c3aed;
     --accent-ink: 124, 71, 245;
+    --accent-bright: 186, 169, 255;
 }
 
 /* E46 Studio: Blue (matches hero/maxhaak for seamless transition) */
@@ -138,6 +148,7 @@
     --theme-gradient-mid: #3b82f6;
     --theme-gradient-end: #6366f1;
     --accent-ink: 11, 99, 242;
+    --accent-bright: 138, 182, 255;
 }
 
 /* Shookroko: Lime/Green (Game) */
@@ -149,6 +160,7 @@
     --theme-gradient-mid: #65a30d;
     --theme-gradient-end: #a3e635;
     --accent-ink: 79, 121, 13;
+    --accent-bright: 132, 204, 22;
 }
 
 /* Medieval Tower Defense: Heraldisches Burgund/Wein-Rot */
@@ -161,6 +173,7 @@
     --theme-gradient-end: #7f1d1d;
     --theme-on-primary: #ffffff;
     --accent-ink: 185, 28, 28;
+    --accent-bright: 255, 154, 141;
 }
 
 /* Daniel Brecheis (Human Bridges Consulting): tiefes Navy/Sapphire, wertig, vertrauensvoll */
@@ -173,6 +186,7 @@
     --theme-gradient-end: #1e3a8a;
     --theme-on-primary: #ffffff;
     --accent-ink: 30, 64, 175;
+    --accent-bright: 147, 180, 255;
 }
 
 /* Haakly: klares Produkt-Blau, ruhig und technisch. Die ganze Rampe sitzt auf
@@ -192,6 +206,7 @@
     --theme-gradient-mid: #4a7bd4;
     --theme-gradient-end: #2d5fbe;
     --accent-ink: 50, 106, 206;
+    --accent-bright: 140, 182, 255;
 }
 
 /* CapitalCombo: das Hellblau des Seitenmenues, kuehl und sachlich */
@@ -203,6 +218,7 @@
     --theme-gradient-mid: #98c9df;
     --theme-gradient-end: #5f9fc2;
     --accent-ink: 46, 117, 148;
+    --accent-bright: 152, 201, 223;
 }
 
 /* Deterministische Review: tiefes Werkzeug-Blau, sachlich */
@@ -215,6 +231,7 @@
     --theme-gradient-end: #0b3294;
     --theme-on-primary: #ffffff;
     --accent-ink: 15, 67, 194;
+    --accent-bright: 143, 181, 255;
 }
 
 /* DealHunter: Signalgelb der Jagd-Oberflaeche, wach und aufmerksam */
@@ -226,6 +243,7 @@
     --theme-gradient-mid: #f5b234;
     --theme-gradient-end: #d68a0c;
     --accent-ink: 149, 99, 7;
+    --accent-bright: 245, 178, 52;
 }
 
 /* MemeCoinTrader: Cyan der Solana-Streams, kuehl und wach */
@@ -237,6 +255,7 @@
     --theme-gradient-mid: #22d3ee;
     --theme-gradient-end: #0891b2;
     --accent-ink: 11, 120, 137;
+    --accent-bright: 34, 211, 238;
 }
 
 /* Age of Max: Bronze/Gold der Pixel-Epochen, warm */
@@ -248,6 +267,7 @@
     --theme-gradient-mid: #d9a441;
     --theme-gradient-end: #aa7a28;
     --accent-ink: 142, 102, 28;
+    --accent-bright: 225, 172, 74;
 }
 
 /* Albert Royale: Low-Poly-Insel-Gruen mit Zonen-Violett, spielerisch, KI-nah */
@@ -259,6 +279,7 @@
     --theme-gradient-mid: #4aa344;
     --theme-gradient-end: #8b5cf6;
     --accent-ink: 55, 123, 50;
+    --accent-bright: 111, 201, 104;
 }
 
 /* Senihelp24: warmes Pflege-Blau mit Herz-Rot, vertrauensvoll und nah */
@@ -271,6 +292,7 @@
     --theme-gradient-end: #f4727a;
     --theme-on-primary: #ffffff;
     --accent-ink: 14, 116, 144;
+    --accent-bright: 106, 192, 222;
 }
 
 /* Theme transition on all theme-aware elements */
@@ -3446,12 +3468,39 @@ html[data-color-scheme="light"] .cookie-content p {
     }
 
     /* Auf dem Handy liegt oben auch hell das dunkle Holzfoto in voller
-       Breite. Die weissen Navbar-Regeln und der dunkle Schleier im
-       ::before gelten dort ohnehin in beiden Schemata; nur "Haak" braucht
-       die helle Akzentstufe, die Tinte laege auf dem Holz unter 3:1. Das
-       ist die einzige Stelle, an der hell --theme-primary gilt. */
-    html[data-color-scheme="light"] body.has-hero #navbar:not(.scrolled) {
-        --accent: var(--theme-primary);
+       Breite; die weissen Navbar-Regeln gelten dort in beiden Schemata.
+       Was dort in der Akzentfarbe auf dem Holz steht, "Haak" und die
+       Fokusringe von Logo und Knoepfen, nimmt die helle Stufe
+       --accent-bright: die Themenfarbe selbst lag auf dem Holz hell bei
+       1.0 bis 2.8:1 und dunkel bei 2.5 bis 3.8:1, dunkle Themes wie
+       danielbrecheis in beiden um 1.2:1. Das Menue-Panel (.nav-links) ist
+       eine eigene Flaeche und behaelt den Akzent seines Schemas. */
+    body.has-hero #navbar:not(.scrolled) .nav-logo,
+    body.has-hero #navbar:not(.scrolled) .nav-actions {
+        --accent: var(--accent-bright);
+    }
+
+    /* Hell ist der Schleier hinter der Navbar-Zeile so dicht wie dunkel
+       und haelt bis unter die Schrift. Wo der Text des Hero bis an die
+       Navbar reicht (niedrige Handys, jedes Handy quer), liegt dort der
+       helle Textschleier statt des Fotos; unter dem alten Verlauf wurde
+       daraus ein Mittelgrau, auf dem auch "Maximilian" und "EN" unter
+       4.5:1 fielen. Der Auslauf unterhalb der Navbar bleibt unveraendert. */
+    html[data-color-scheme="light"] body.has-hero #navbar::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(8, 10, 18, 0.78) 0%,
+            rgba(8, 10, 18, 0.60) 30%,
+            rgba(8, 10, 18, 0.20) 55%,
+            rgba(8, 10, 18, 0.06) 78%,
+            rgba(8, 10, 18, 0) 100%
+        );
+    }
+
+    /* In genau diesen Faellen beginnt die Eyebrow direkt unter der Navbar,
+       im Auslauf des Schleiers, und nimmt deshalb die kraeftigere Tinte. */
+    html[data-color-scheme="light"] .hero-eyebrow {
+        color: var(--color-text-secondary);
     }
 
     .slide-cta {
