@@ -3854,6 +3854,27 @@ html[data-color-scheme="light"] .cookie-content p {
 
 }
 
+/* Drei Kundenlogos passen auf dem Handy nicht in eine Zeile: bei 21px Hoehe
+   brauchen sie 470.95px, bis 534px Viewport bricht das Imkerei-Logo um. Die
+   zweite Zeile kostet 38px, und weil die Hero-Texte unten anliegen, rueckten
+   sie damit auf kurzen Handys ins Gesicht (Eyebrow 10px statt 49px unter der
+   Navbar bei 360x640). Enger gesetzte Abstaende holen genau diese 38px zurueck
+   (12 + 16 + 9.6), gemessen von 360 bis 430px auf 1px wie mit zwei Logos.
+   Kommt ein Logo hinzu oder aendert sich eine Hoehe, die Schwelle neu rechnen. */
+@media (max-width: 534px) {
+    .hero-section {
+        padding-bottom: calc(var(--space-2xl) - 0.75rem);
+    }
+
+    .hero-clients {
+        margin-top: var(--space-sm);
+    }
+
+    .hero-clients-list {
+        row-gap: 0.5rem;
+    }
+}
+
 /* ═══════════════════════════════════════════════
    RESPONSIVE: MOBILE (480px)
    ═══════════════════════════════════════════════ */

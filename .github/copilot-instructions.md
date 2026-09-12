@@ -109,7 +109,10 @@ beside the logos. Those logos ship as white silhouettes
 and sit at `opacity: .62`, going to full white on hover; light mode renders the same files as dark silhouettes with
 `filter: brightness(0)` at `opacity: .55`, so there is still one file per logo. Their heights are set per logo
 (`.hero-client-logo--senihelp` / `--humanbridges` / `--imkerei`, the last a bee plus one-line wordmark) because one is a compact wordmark and the other a wide
-mark-plus-wordmark lockup, so do not give them a shared height. The GSAP entrance in `playEntrance()` adds the
+mark-plus-wordmark lockup, so do not give them a shared height. Up to 534 px the three logos no longer fit one row and the Imkerei mark wraps;
+the `@media (max-width: 534px)` block in `main.css` takes back the 38 px of that second row (hero bottom padding,
+client block margin, list row gap), so the bottom-aligned copy stays exactly where it sat with two logos and does not
+climb into the face. Recompute that threshold when a logo or a logo height changes. The GSAP entrance in `playEntrance()` adds the
 client row to the end of the existing timeline.
 
 Do NOT add gradient text, self-awarded credibility badges, a second pill button, a scroll hint, a tech-icon strip or a
