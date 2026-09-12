@@ -129,15 +129,15 @@ jobs:
             echo
             echo "## Top-level"
             du -sh dist/*.html 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s`: %s\n", $2, $1 }'
             echo
             echo "## Folders"
             du -sh dist/assets dist/projects 2>/dev/null \
-              | awk '{ printf "- `%s` — %s\n", $2, $1 }'
+              | awk '{ printf "- `%s`: %s\n", $2, $1 }'
             echo
             echo "## 10 largest files"
             find dist -type f -printf '%s\t%p\n' | sort -rn | head -10 \
-              | awk -F'\t' '{ printf "- `%s` — %.0f KB\n", $2, $1/1024 }'
+              | awk -F'\t' '{ printf "- `%s`: %.0f KB\n", $2, $1/1024 }'
           } >> "$GITHUB_STEP_SUMMARY"
           echo "total=$(du -sb dist | cut -f1)" >> "$GITHUB_OUTPUT"
 

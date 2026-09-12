@@ -10,7 +10,7 @@ push to `main` and on PRs.
 1. **build** (always)
    - Verify required entry points exist (`index.html`, `assets/css/main.css`, `assets/js/main.js`,
      `CNAME`, `impressum.html`, `datenschutz.html`).
-   - Guard against oversized assets — fail if any image/video in `assets/img/` or
+   - Guard against oversized assets: fail if any image/video in `assets/img/` or
      `projects/` exceeds **600 KB**.
    - Assemble `dist/` by copying root HTML, `assets/css/main.css`, `assets/js/main.js`, `CNAME`,
      `assets/img/`, `projects/`, plus `.nojekyll`.

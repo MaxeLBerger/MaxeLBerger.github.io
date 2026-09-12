@@ -17,6 +17,22 @@ php -S localhost:8000
 
 Open <http://localhost:8000>.
 
+### Enable the pre-commit hook
+
+The repo ships a hook in `.githooks/` that rejects a commit whose staged content
+contains an em dash (U+2014) or an en dash (U+2013). Git does not look in
+`.githooks/` on its own, so a fresh clone has to point it there once:
+
+```powershell
+git config core.hooksPath .githooks
+```
+
+The hook reads the staged blobs, not the working tree, so it judges exactly what
+is about to be committed. It skips binaries and everything under `assets/img/`,
+tolerates a BOM and CRLF, and names the file and line it objects to. Plain
+hyphens in compound words and numeric ranges stay legal. For a deliberate
+exception, `git commit --no-verify` skips it.
+
 ## Conventions
 
 ### CSS
@@ -25,7 +41,7 @@ Open <http://localhost:8000>.
 - Theme overrides go under `[data-project-theme="..."]`.
 - Light-mode overrides go under `html[data-color-scheme="light"]`.
 - Mobile-first media queries.
-- No inline `style="..."` for state changes — use CSS classes
+- No inline `style="..."` for state changes: use CSS classes
   (`.is-success`, `.is-error`, `.active`, …).
 
 ### JavaScript
@@ -81,14 +97,14 @@ Update **both** the inline HTML default **and** both language objects in
 
 ## What NOT to do
 
-- ❌ Don't introduce a build tool (Webpack, Vite, etc.) — site is intentionally
+- ❌ Don't introduce a build tool (Webpack, Vite, etc.). The site is intentionally
   buildless.
 - ❌ Don't add inline `style="..."` for hover/active/state styling.
 - ❌ Don't commit images > 500 KB.
-- ❌ Don't add new top-level documentation files — extend a file in `docs/`
+- ❌ Don't add new top-level documentation files; extend a file in `docs/`
   or `README.md` instead.
-- ❌ Don't use `setTimeout` to wait for CSS transitions — use `transitionend`.
-- ❌ Don't query the DOM inside animation frames or mousemove handlers —
+- ❌ Don't use `setTimeout` to wait for CSS transitions; use `transitionend`.
+- ❌ Don't query the DOM inside animation frames or mousemove handlers;
   cache references.
 - ❌ Don't add tracking, analytics, or third-party scripts without updating
   `datenschutz.html`.

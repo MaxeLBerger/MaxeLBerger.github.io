@@ -128,7 +128,7 @@
             'hero.desc': 'Websites, Web-Apps und KI-Lösungen für Unternehmen und Selbstständige, von der Konzeption bis zum Go-Live. Persönlich und direkt aus Bruckmühl bei Rosenheim.',
             'hero.cta1': 'Projekte ansehen',
             'hero.cta2': 'Kontakt aufnehmen',
-            'hero.clients': 'Vertraut von',
+            'hero.clients': 'Vertraut von:',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
@@ -388,7 +388,7 @@
             'hero.desc': 'Websites, web apps and AI solutions for companies and freelancers, from concept to go-live. Personal and direct, from Bruckmühl near Rosenheim.',
             'hero.cta1': 'View projects',
             'hero.cta2': 'Get in touch',
-            'hero.clients': 'Trusted by',
+            'hero.clients': 'Trusted by:',
             // Slide 3 - AI Captain
             'slide.aicaptain.t1': 'AI Captain.',
             'slide.aicaptain.t2': 'VS Code',
