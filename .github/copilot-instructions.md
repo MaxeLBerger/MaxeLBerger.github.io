@@ -162,6 +162,25 @@ reading (about 54ch max), rather than stretching across the available grid width
 `assets/video/e46-about.mp4` with a poster fallback. All visible copy still goes through `data-i18n` keys in
 `assets/js/main.js`; translated image alt text uses `data-i18n-alt`.
 
+### Tech stack
+
+`#skills` has two groups. `.stack-core` is the main group: large tiles in three thematic rows, each with an
+`h3.stack-row-title` ("Web, 3D & Games": Astro, Three.js, GSAP, Phaser; "KI & Agents": Claude Code, Codex, RAG,
+AI Agents; "Sprachen & Tools": Python, Docker, SQL, Git, Delphi, Java). The user chose these entries and this order in
+September 2026, so keep them. `.stack-more` lists every other tool below as small pills under a divider label
+("Außerdem im Einsatz"). On desktop the row title sits left of its tiles and the tiles fill the row, so the rows of four
+and of six end flush; below 1024 px the title moves above the tiles, and below 601 px the rows fold into two and three
+columns. One card per row and an open logo wall without boxes were built as alternatives and not chosen.
+
+Every logo is an `i.stack-logo.ti-<name>`, and its file comes from the `.ti-*` map in `main.css`. Multi-colour
+originals are background images (`--ti-img`, plus `--ti-img-l` when a mark has dark parts: Astro shows
+`astro-inverse.svg` in dark mode). Single-colour and black marks stay CSS masks coloured with `--ti-c` (dark) and
+`--ti-cl` (light), so they read on both grounds. The files in `assets/img/tech/` are the brands' originals (devicon,
+Simple Icons, LobeHub for Codex, vectorlogo.zone for Phaser); RAG, AI Agents, SQL, LLM APIs, Prompt Engineering and
+GitHub Spark have no official logo and are drawn. Replace a logo only with a sanitized SVG that keeps a viewBox and has
+no width, height, script or external reference. Main-group tiles light up in their brand colour on hover through
+`--glow`, set per logo with `.stack-item:has(> .ti-*)`; there is no endless animation in the section.
+
 ### Project slider
 
 `#projects` contains ONE `.hero-slides-container` holding all 13 slides. A two-option `.project-mode-selector`
@@ -223,7 +242,7 @@ All user-visible text uses `data-i18n="key"` attributes. The dictionary lives in
 
 **Critical:** when changing visible text, update **both** the inline HTML default **and** the matching key in both language objects, or the JS will overwrite your HTML change on next load.
 
-Language-neutral technology, product, and tool names in `.skill-tag` / `.tech-badge` labels stay inline as brand
+Language-neutral technology, product, and tool names in `.stack-item` / `.stack-chip` / `.tech-badge` labels stay inline as brand
 labels. Keep i18n keys for surrounding headings, descriptions, and copy that changes between DE and EN.
 
 Language is persisted in `localStorage('lang')`.

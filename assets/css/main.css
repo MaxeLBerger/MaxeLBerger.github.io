@@ -318,7 +318,6 @@
 .services-section,
 .service-panel,
 .service-tile,
-.skill-tag,
 .contact-section,
 .contact-link,
 .contact-form input,
@@ -426,7 +425,6 @@ html[data-color-scheme="light"] .site-footer {
 /* ── Karten ──────────────────────────────────────────────────────────────
    Der Kern von Soft Studio: weisse Flaeche, Haarlinie, zweilagiger
    Schatten. Hover hebt ueber Hoehe, nicht ueber Farbe. */
-html[data-color-scheme="light"] .skill-category,
 html[data-color-scheme="light"] .service-panel,
 html[data-color-scheme="light"] .service-tile,
 html[data-color-scheme="light"] .showcase-frame,
@@ -455,11 +453,6 @@ html[data-color-scheme="light"] .contact-map-link:hover {
 html[data-color-scheme="light"] .showcase-frame:hover {
     box-shadow: var(--shadow-lift);
 }
-html[data-color-scheme="light"] .skill-category:hover {
-    background: var(--color-bg-elevated);
-    border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-lift);
-}
 /* Der Schleier ueber der Bildhaelfte des Pakets erzeugte hell graue Baender
    ueber und unter dem Foto. Auf Weiss trennt die Panelkante ohnehin. */
 html[data-color-scheme="light"] .service-panel__art::after {
@@ -467,28 +460,11 @@ html[data-color-scheme="light"] .service-panel__art::after {
 }
 
 /* ── Chips und Tags ──────────────────────────────────────────────────────
-   .skill-tag.highlight faerbte im Dark mode den Text mit der Projektfarbe.
-   Hell machte das die halbe KI-Spalte unlesbar (1.63:1). Die Auszeichnung
-   traegt jetzt Tint und Kontur, der Text bleibt Tinte. */
-html[data-color-scheme="light"] .slide-tag,
-html[data-color-scheme="light"] .skill-tag {
+   Projekt-Tags auf dem Slider: helle Flaeche, Haarlinie, Text in Tinte. */
+html[data-color-scheme="light"] .slide-tag {
     background: var(--color-surface);
     border-color: var(--color-border);
     color: var(--color-text-secondary);
-}
-html[data-color-scheme="light"] .skill-tag.highlight {
-    background: rgba(var(--accent), 0.09);
-    border-color: rgba(var(--accent), 0.28);
-    /* Die ausgezeichnete Spalte bleibt farbig, aber als Tinte: frueher
-       #98C9DF bei 1.63:1, jetzt die abgedunkelte Rampe bei >= 4.5:1. */
-    color: rgb(var(--accent));
-}
-html[data-color-scheme="light"] .skill-tag:hover,
-html[data-color-scheme="light"] .skill-tag.highlight:hover {
-    background: var(--color-bg-elevated);
-    border-color: rgba(var(--accent), 0.38);
-    color: var(--color-text);
-    box-shadow: var(--shadow-card);
 }
 html[data-color-scheme="light"] .slide-badge,
 html[data-color-scheme="light"] .showcase-badge {
@@ -2820,229 +2796,353 @@ html[data-color-scheme="light"] .projects-section {
 }
 
 /* ═══════════════════════════════════════════════
-   TECH STACK
-   Frontend (left) · KI featured (center, wider) · Backend (right).
-   The featured column is placed explicitly so DOM order can stay logical.
+   TECH STACK: LOGO-TABELLE
+   Mehrfarbige Originale sind Bilder: --ti-img, dazu --ti-img-l, wenn die
+   Marke dunkle Teile hat, die im Dark mode verschwaenden. Einfarbige Marken
+   bleiben Masken: --ti-i ist die Datei, --ti-c die Farbe im Dark mode,
+   --ti-cl im hellen Modus; beides die offizielle Markenfarbe, nur dort
+   angepasst, wo sie unter 3.2:1 gegen den Grund fiel.
+   Quellen: devicon 2.17.0 (MIT), Simple Icons (CC0), LobeHub Icons 1.95.0
+   (MIT) fuer Codex, vectorlogo.zone fuer Phaser. RAG, AI Agents, SQL,
+   LLM APIs, Prompt Engineering und GitHub Spark haben kein offizielles
+   Logo und sind gezeichnet.
    ═══════════════════════════════════════════════ */
-.skills-grid {
+.ti-astro { --ti-img: url(../img/tech/astro-inverse.svg); --ti-img-l: url(../img/tech/astro.svg); }
+.ti-phaser { --ti-img: url(../img/tech/phaser.svg); }
+.ti-codex { --ti-img: url(../img/tech/codex.svg); }
+.ti-rag { --ti-img: url(../img/tech/rag.svg); }
+.ti-aiagents { --ti-img: url(../img/tech/aiagents.svg); }
+.ti-python { --ti-img: url(../img/tech/python.svg); }
+.ti-sql { --ti-img: url(../img/tech/sql.svg); }
+.ti-delphi { --ti-img: url(../img/tech/delphi.svg); }
+.ti-java { --ti-img: url(../img/tech/java.svg); }
+.ti-typescript { --ti-img: url(../img/tech/typescript.svg); }
+.ti-vite { --ti-img: url(../img/tech/vite.svg); }
+.ti-html5 { --ti-img: url(../img/tech/html5.svg); }
+.ti-css3 { --ti-img: url(../img/tech/css3.svg); }
+.ti-tauri { --ti-img: url(../img/tech/tauri.svg); }
+.ti-nodejs { --ti-img: url(../img/tech/nodejs.svg); }
+.ti-fastapi { --ti-img: url(../img/tech/fastapi.svg); }
+.ti-supabase { --ti-img: url(../img/tech/supabase.svg); }
+.ti-postgresql { --ti-img: url(../img/tech/postgresql.svg); }
+.ti-playwright { --ti-img: url(../img/tech/playwright.svg); }
+.ti-githubactions { --ti-img: url(../img/tech/githubactions.svg); }
+.ti-vscode { --ti-img: url(../img/tech/vscode.svg); }
+
+.ti-threejs { --ti-i: url(../img/tech/threejs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-gsap { --ti-i: url(../img/tech/gsap.svg); --ti-c: #0AE448; --ti-cl: #0E100F; }
+.ti-claude { --ti-i: url(../img/tech/claude.svg); --ti-c: #D97757; --ti-cl: #D56946; }
+.ti-docker { --ti-i: url(../img/tech/docker.svg); --ti-c: #2496ED; --ti-cl: #138CE8; }
+.ti-git { --ti-i: url(../img/tech/git.svg); --ti-c: #F03C2E; --ti-cl: #F03C2E; }
+.ti-react { --ti-i: url(../img/tech/react.svg); --ti-c: #61DAFB; --ti-cl: #0594BB; }
+.ti-nextjs { --ti-i: url(../img/tech/nextjs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-tailwind { --ti-i: url(../img/tech/tailwind.svg); --ti-c: #06B6D4; --ti-cl: #0595AE; }
+.ti-radix { --ti-i: url(../img/tech/radix.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-framer { --ti-i: url(../img/tech/framer.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-electron { --ti-i: url(../img/tech/electron.svg); --ti-c: #47848F; --ti-cl: #47848F; }
+.ti-express { --ti-i: url(../img/tech/express.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-prisma { --ti-i: url(../img/tech/prisma.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-stripe { --ti-i: url(../img/tech/stripe.svg); --ti-c: #635BFF; --ti-cl: #635BFF; }
+.ti-rust { --ti-i: url(../img/tech/rust.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-svn { --ti-i: url(../img/tech/svn.svg); --ti-c: #809CC9; --ti-cl: #6788BE; }
+.ti-llmapi { --ti-i: url(../img/tech/llmapi.svg); --ti-c: #10A37F; --ti-cl: #0F9977; }
+.ti-cursor { --ti-i: url(../img/tech/cursor.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-copilot { --ti-i: url(../img/tech/copilot.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-mcp { --ti-i: url(../img/tech/mcp.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-ollama { --ti-i: url(../img/tech/ollama.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
+.ti-prompt { --ti-i: url(../img/tech/prompt.svg); --ti-c: #F2A03D; --ti-cl: #C7730D; }
+.ti-n8n { --ti-i: url(../img/tech/n8n.svg); --ti-c: #EA4B71; --ti-cl: #EA4B71; }
+.ti-spark { --ti-i: url(../img/tech/spark.svg); --ti-c: #FF7A45; --ti-cl: #F94700; }
+
+/* Hover-Schein der Hauptgruppe in der Markenfarbe, als RGB-Tripel. */
+.stack-item:has(> .ti-astro) { --glow: 188, 82, 238; }
+.stack-item:has(> .ti-threejs) { --glow: 233, 233, 238; }
+.stack-item:has(> .ti-gsap) { --glow: 10, 228, 72; }
+.stack-item:has(> .ti-phaser) { --glow: 142, 68, 224; }
+.stack-item:has(> .ti-claude) { --glow: 217, 119, 87; }
+.stack-item:has(> .ti-codex) { --glow: 57, 65, 255; }
+.stack-item:has(> .ti-rag) { --glow: 45, 212, 191; }
+.stack-item:has(> .ti-aiagents) { --glow: 139, 92, 246; }
+.stack-item:has(> .ti-python) { --glow: 55, 118, 171; }
+.stack-item:has(> .ti-docker) { --glow: 36, 150, 237; }
+.stack-item:has(> .ti-sql) { --glow: 59, 130, 246; }
+.stack-item:has(> .ti-git) { --glow: 240, 60, 46; }
+.stack-item:has(> .ti-delphi) { --glow: 230, 36, 49; }
+.stack-item:has(> .ti-java) { --glow: 234, 45, 46; }
+
+/* TECH STACK: LAYOUT
+   Hauptgruppe (.stack-core) als grosse Kacheln in drei thematischen Reihen,
+   darunter die uebrigen Tools (.stack-more) als kleine Pills. Auf dem Desktop
+   steht der Reihentitel links und die Kacheln fuellen die Zeile, damit die
+   Reihen mit vier und mit sechs Eintraegen buendig abschliessen. */
+.stack-core,
+.stack-more {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stack-core {
     display: grid;
-    grid-template-columns: 1fr 1.3fr 1fr;
-    gap: 1.25rem;
-    margin-top: 2rem;
-    align-items: stretch;
+    gap: 14px;
 }
 
-.skill-category {
-    padding: 1.25rem 1.1rem;
-    background: rgba(255, 255, 255, 0.015);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    transition: border-color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out);
-}
-
-.skill-category:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.025);
-}
-
-.skill-category--featured {
-    grid-column: 2;
-    grid-row: 1;
-    background: linear-gradient(180deg,
-        rgba(var(--accent), 0.07),
-        rgba(var(--accent), 0.02));
-    border-color: rgba(var(--accent), 0.22);
-}
-
-.skill-category--featured:hover {
-    border-color: rgba(var(--accent), 0.35);
-    background: linear-gradient(180deg,
-        rgba(var(--accent), 0.1),
-        rgba(var(--accent), 0.03));
-}
-
-.skill-category--featured .skill-category-title {
-    color: rgb(var(--accent));
-}
-
-.skill-category--featured .skill-tag {
-    padding: 0.8rem 0.45rem 0.6rem;
-    font-size: 11px;
-}
-
-.skill-category--featured .skill-tag .skill-icon {
-    width: 36px;
-    height: 36px;
-}
-
-.skill-category-title {
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.skill-tags {
+.stack-row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
-    gap: 0.6rem;
-}
-
-.skill-tag {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 170px minmax(0, 1fr);
     align-items: center;
-    justify-content: flex-start;
-    gap: 0.45rem;
-    padding: 0.7rem 0.4rem 0.55rem;
-    font-size: 11px;
-    font-weight: 500;
-    text-align: center;
-    color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 12px;
+    gap: 24px;
+}
+
+.stack-row-items,
+.stack-more-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.stack-row-items {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 14px;
+}
+
+.stack-row-title,
+.stack-more-title {
+    margin: 0;
+    color: var(--color-text-quiet);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.stack-item,
+.stack-chip {
+    display: flex;
+    align-items: center;
+    min-width: 0;
     transition: transform var(--duration-base) var(--ease-out),
                 color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out),
+                background-color var(--duration-base) var(--ease-out),
                 border-color var(--duration-base) var(--ease-out),
                 box-shadow var(--duration-base) var(--ease-out);
 }
 
-/* Tech icons are single-colour SVG masks: one file per brand, the colour comes
-   from CSS. That keeps every icon optically the same weight and lets both themes
-   stay legible, since near-black brand marks would otherwise vanish on the dark
-   background. Per-icon colours live in the .ti-* map below. */
-.skill-tag .skill-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    background-color: transparent;
-    opacity: 0.95;
-    transition: opacity var(--duration-base) var(--ease-out),
-                transform var(--duration-base) var(--ease-out);
-}
-
-@supports ((-webkit-mask-image: url('#m')) or (mask-image: url('#m'))) {
-    .skill-tag .skill-icon {
-        background-color: var(--ti-c);
-        -webkit-mask: var(--ti-i) center / contain no-repeat;
-        mask: var(--ti-i) center / contain no-repeat;
-    }
-
-    html[data-color-scheme="light"] .skill-tag .skill-icon {
-        background-color: var(--ti-cl);
-    }
-}
-
-.skill-tag:hover .skill-icon {
-    opacity: 1;
-    transform: scale(1.08);
-}
-
-/* Brand colour per icon: --ti-c on the dark theme, --ti-cl on the light one.
-   Both are the official brand colour, adjusted only where it fell below a 3.2:1
-   contrast ratio against that theme's background. */
-.ti-react { --ti-i: url(../img/tech/react.svg); --ti-c: #61DAFB; --ti-cl: #0594BB; }
-.ti-typescript { --ti-i: url(../img/tech/typescript.svg); --ti-c: #3178C6; --ti-cl: #3178C6; }
-.ti-nextjs { --ti-i: url(../img/tech/nextjs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-vite { --ti-i: url(../img/tech/vite.svg); --ti-c: #9135FF; --ti-cl: #9135FF; }
-.ti-astro { --ti-i: url(../img/tech/astro.svg); --ti-c: #BC52EE; --ti-cl: #BC52EE; }
-.ti-tailwind { --ti-i: url(../img/tech/tailwind.svg); --ti-c: #06B6D4; --ti-cl: #0595AE; }
-.ti-radix { --ti-i: url(../img/tech/radix.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-framer { --ti-i: url(../img/tech/framer.svg); --ti-c: #0055FF; --ti-cl: #0055FF; }
-.ti-html5 { --ti-i: url(../img/tech/html5.svg); --ti-c: #E34F26; --ti-cl: #E34F26; }
-.ti-css3 { --ti-i: url(../img/tech/css3.svg); --ti-c: #8041C0; --ti-cl: #663399; }
-.ti-gsap { --ti-i: url(../img/tech/gsap.svg); --ti-c: #88CE02; --ti-cl: #639601; }
-.ti-threejs { --ti-i: url(../img/tech/threejs.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-phaser { --ti-i: url(../img/tech/phaser.svg); --ti-c: #8E44E0; --ti-cl: #8E44E0; }
-.ti-nodejs { --ti-i: url(../img/tech/nodejs.svg); --ti-c: #5FA04E; --ti-cl: #599649; }
-.ti-python { --ti-i: url(../img/tech/python.svg); --ti-c: #3776AB; --ti-cl: #3776AB; }
-.ti-fastapi { --ti-i: url(../img/tech/fastapi.svg); --ti-c: #009688; --ti-cl: #009688; }
-.ti-express { --ti-i: url(../img/tech/express.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-supabase { --ti-i: url(../img/tech/supabase.svg); --ti-c: #3FCF8E; --ti-cl: #269965; }
-.ti-sql { --ti-i: url(../img/tech/sql.svg); --ti-c: #4C8DFF; --ti-cl: #3B82FF; }
-.ti-postgresql { --ti-i: url(../img/tech/postgresql.svg); --ti-c: #4169E1; --ti-cl: #4169E1; }
-.ti-prisma { --ti-i: url(../img/tech/prisma.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-stripe { --ti-i: url(../img/tech/stripe.svg); --ti-c: #635BFF; --ti-cl: #635BFF; }
-.ti-rust { --ti-i: url(../img/tech/rust.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-java { --ti-i: url(../img/tech/java.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-tauri { --ti-i: url(../img/tech/tauri.svg); --ti-c: #24C8D8; --ti-cl: #1B96A2; }
-.ti-electron { --ti-i: url(../img/tech/electron.svg); --ti-c: #47848F; --ti-cl: #47848F; }
-.ti-docker { --ti-i: url(../img/tech/docker.svg); --ti-c: #2496ED; --ti-cl: #138CE8; }
-.ti-playwright { --ti-i: url(../img/tech/playwright.svg); --ti-c: #2EAD33; --ti-cl: #2A9D2E; }
-.ti-githubactions { --ti-i: url(../img/tech/githubactions.svg); --ti-c: #2088FF; --ti-cl: #1D86FF; }
-.ti-git { --ti-i: url(../img/tech/git.svg); --ti-c: #F03C2E; --ti-cl: #F03C2E; }
-.ti-svn { --ti-i: url(../img/tech/svn.svg); --ti-c: #809CC9; --ti-cl: #6788BE; }
-.ti-delphi { --ti-i: url(../img/tech/delphi.svg); --ti-c: #E62431; --ti-cl: #E62431; }
-.ti-llmapi { --ti-i: url(../img/tech/llmapi.svg); --ti-c: #10A37F; --ti-cl: #0F9977; }
-.ti-claude { --ti-i: url(../img/tech/claude.svg); --ti-c: #D97757; --ti-cl: #D56946; }
-.ti-cursor { --ti-i: url(../img/tech/cursor.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-openai { --ti-i: url(../img/tech/openai.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-copilot { --ti-i: url(../img/tech/copilot.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-aiagents { --ti-i: url(../img/tech/aiagents.svg); --ti-c: #7C5CFF; --ti-cl: #7C5CFF; }
-.ti-rag { --ti-i: url(../img/tech/rag.svg); --ti-c: #00B8A9; --ti-cl: #00998C; }
-.ti-mcp { --ti-i: url(../img/tech/mcp.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-ollama { --ti-i: url(../img/tech/ollama.svg); --ti-c: #E9E9EE; --ti-cl: #131318; }
-.ti-prompt { --ti-i: url(../img/tech/prompt.svg); --ti-c: #F2A03D; --ti-cl: #C7730D; }
-.ti-vscode { --ti-i: url(../img/tech/vscode.svg); --ti-c: #0065A9; --ti-cl: #0065A9; }
-.ti-n8n { --ti-i: url(../img/tech/n8n.svg); --ti-c: #EA4B71; --ti-cl: #EA4B71; }
-.ti-spark { --ti-i: url(../img/tech/spark.svg); --ti-c: #FF7A45; --ti-cl: #F94700; }
-
-.skill-tag .skill-name {
-    display: block;
-    line-height: 1.15;
-    word-break: break-word;
-    hyphens: auto;
-}
-
-.skill-tag:hover {
+.stack-item {
+    position: relative;
+    isolation: isolate;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    min-height: 132px;
+    padding: 20px 10px 16px;
+    overflow: hidden;
     color: var(--color-text);
-    background: rgba(var(--accent), 0.1);
-    border-color: rgba(var(--accent), 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
 }
 
-.skill-tag.highlight {
-    color: rgb(var(--accent));
-    background: rgba(var(--accent), 0.1);
-    border-color: rgba(var(--accent), 0.22);
+/* Schein in der Markenfarbe, nur beim Hover. --glow setzt die Logo-Tabelle
+   pro Eintrag als RGB-Tripel, ohne Eintrag gilt die Projektfarbe. */
+.stack-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(120% 90% at 50% 0%, rgba(var(--glow, var(--accent)), 0.24), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+    pointer-events: none;
 }
 
-.skill-tag.highlight:hover {
-    background: rgba(var(--accent), 0.18);
-    border-color: rgba(var(--accent), 0.4);
+.stack-name {
+    line-height: 1.2;
+    overflow-wrap: break-word;
 }
 
-@media (max-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Farbige Originale kommen als Bild (--ti-img, dazu --ti-img-l fuer den
+   hellen Modus, wo eine Marke dunkle Teile hat). Einfarbige Marken bleiben
+   Masken in --ti-c / --ti-cl, sonst verschwaenden schwarze Marken im Dark
+   mode. Ohne --ti-i ist die Maske none und das Bild steht unveraendert. */
+.stack-logo {
+    --logo: 24px;
+    display: block;
+    flex-shrink: 0;
+    width: var(--logo);
+    height: var(--logo);
+    background-color: var(--ti-c, transparent);
+    background-image: var(--ti-img, none);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-mask: var(--ti-i, none) center / contain no-repeat;
+    mask: var(--ti-i, none) center / contain no-repeat;
+    transition: transform var(--duration-base) var(--ease-out);
+}
+
+html[data-color-scheme="light"] .stack-logo {
+    background-color: var(--ti-cl, var(--ti-c, transparent));
+    background-image: var(--ti-img-l, var(--ti-img, none));
+}
+
+.stack-item .stack-logo {
+    --logo: 52px;
+}
+
+.stack-more {
+    margin-top: 56px;
+}
+
+.stack-more-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.stack-more-title::before,
+.stack-more-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.stack-more-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.stack-chip {
+    gap: 8px;
+    padding: 6px 13px 6px 8px;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 999px;
+}
+
+.stack-chip .stack-logo {
+    --logo: 18px;
+}
+
+@media (hover: hover) {
+    .stack-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(var(--glow, var(--accent)), 0.45);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
     }
 
-    .skill-category--featured {
-        grid-column: 1 / -1;
-        grid-row: auto;
+    .stack-item:hover::before {
+        opacity: 1;
+    }
+
+    .stack-item:hover .stack-logo,
+    .stack-chip:hover .stack-logo {
+        transform: scale(1.08);
+    }
+
+    .stack-chip:hover {
+        color: var(--color-text);
+        border-color: rgba(var(--accent), 0.35);
+    }
+}
+
+@media (max-width: 1023px) {
+    .stack-core {
+        gap: 26px;
+    }
+
+    .stack-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
     }
 }
 
 @media (max-width: 600px) {
-    .skills-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1rem;
+    .stack-row-items {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
     }
 
-    .skill-category--featured {
-        grid-column: auto;
+    .stack-row--eng .stack-row-items {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .stack-item {
+        min-height: 108px;
+        gap: 10px;
+        padding: 16px 6px 12px;
+        font-size: 13px;
+        border-radius: 16px;
+    }
+
+    .stack-item .stack-logo {
+        --logo: 42px;
+    }
+
+    .stack-row--eng .stack-item .stack-logo {
+        --logo: 36px;
+    }
+
+    .stack-more {
+        margin-top: 40px;
+    }
+
+    .stack-chip {
+        font-size: 12.5px;
     }
 }
 
-@media (max-width: 480px) {
-    .skill-category {
-        padding: var(--space-lg);
+/* Heller Modus: Kacheln nach dem Soft-Studio-System (weiss, Haarlinie,
+   zweilagiger Schatten), die Pills auf der gesenkten Flaeche. */
+html[data-color-scheme="light"] .stack-item {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card);
+}
+
+html[data-color-scheme="light"] .stack-chip {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+
+@media (hover: hover) {
+    html[data-color-scheme="light"] .stack-item:hover {
+        border-color: rgba(var(--glow, var(--accent)), 0.45);
+        box-shadow: var(--shadow-lift);
+    }
+
+    html[data-color-scheme="light"] .stack-chip:hover {
+        background: var(--color-bg-elevated);
+        border-color: rgba(var(--accent), 0.38);
+        box-shadow: var(--shadow-card);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stack-item,
+    .stack-chip,
+    .stack-logo,
+    .stack-item::before {
+        transition: none;
+    }
+
+    #skills .stack-item:hover,
+    #skills .stack-item:hover .stack-logo,
+    #skills .stack-chip:hover .stack-logo {
+        transform: none;
     }
 }
 
