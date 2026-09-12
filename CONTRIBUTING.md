@@ -7,6 +7,7 @@ This repo is a personal portfolio site. PRs from outside contributors are unlike
 ```bash
 git clone https://github.com/MaxeLBerger/MaxeLBerger.github.io.git
 cd MaxeLBerger.github.io
+git config core.hooksPath .githooks   # once per clone: enables the writing-rule hook
 python -m http.server 8000   # or: npx serve .
 ```
 

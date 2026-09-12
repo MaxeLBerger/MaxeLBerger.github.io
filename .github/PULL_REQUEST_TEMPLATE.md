@@ -6,12 +6,12 @@
 
 ## Type
 
-- [ ] feat — new user-facing feature
-- [ ] fix — bug fix
-- [ ] perf — performance improvement
-- [ ] refactor — code restructure, no behavior change
-- [ ] docs — documentation only
-- [ ] chore — tooling, CI, or repo housekeeping
+- [ ] feat: new user-facing feature
+- [ ] fix: bug fix
+- [ ] perf: performance improvement
+- [ ] refactor: code restructure, no behavior change
+- [ ] docs: documentation only
+- [ ] chore: tooling, CI, or repo housekeeping
 
 ## Local checks
 
@@ -23,4 +23,4 @@
 
 ## Notes for reviewer
 
-<!-- Anything reviewers should know — e.g. "this needs a manual cache purge", screenshots, etc. -->
+<!-- Anything reviewers should know, e.g. "this needs a manual cache purge", screenshots, etc. -->

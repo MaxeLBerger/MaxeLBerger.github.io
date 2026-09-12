@@ -1,0 +1,76 @@
+#!/bin/sh
+#
+# Blocks a commit that stages an em dash (U+2014) or an en dash (U+2013).
+# See "Writing rule that applies to every file" in .github/copilot-instructions.md.
+#
+# A fresh clone does not pick this up on its own. Enable it once with:
+#
+#     git config core.hooksPath .githooks
+#
+# Escape hatch for a deliberate exception: git commit --no-verify
+
+set -u
+
+# Hooks already run from the top level, but this also makes the script safe to
+# run by hand: sh .githooks/pre-commit
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+# The pattern stays ASCII on purpose. Spelling the characters out literally
+# would make this file trip over itself the moment it is staged.
+DASHES='[\x{2014}\x{2013}]'
+
+# Staged paths, deletions dropped. Images are exempt by name, every other
+# binary is dropped by -I below.
+set --
+while IFS= read -r path; do
+	[ -n "$path" ] || continue
+	case "$path" in
+		assets/img/*) continue ;;
+	esac
+	set -- "$@" "$path"
+done <<LIST
+$(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR)
+LIST
+
+[ "$#" -gt 0 ] || exit 0
+
+# --cached reads the staged blobs, so this judges what is about to be
+# committed rather than the working tree. A BOM sits before the first
+# character of line 1 and a CRLF blob leaves a trailing CR; neither can hide a
+# dash from the match, and both are stripped further down for display only.
+hits=$(git grep --cached -I -n --no-color -P "$DASHES" -- "$@")
+status=$?
+
+# 1 means no match. Anything above that is a broken pattern or a broken grep,
+# so fail closed rather than wave the commit through.
+if [ "$status" -eq 1 ]; then
+	exit 0
+elif [ "$status" -ne 0 ]; then
+	echo "pre-commit: git grep failed (exit $status). Commit blocked." >&2
+	exit 1
+fi
+
+BOM=$(printf '\357\273\277')
+
+{
+	echo
+	echo "Commit blocked: em dash (U+2014) or en dash (U+2013) in staged content."
+	echo
+	printf '%s\n' "$hits" \
+		| tr -d '\r' \
+		| sed "s/$BOM//g" \
+		| awk -F: '{
+			file = $1
+			line = $2
+			sub(/^[^:]*:[0-9]+:/, "")
+			printf "  %s:%s\n      %s\n", file, line, $0
+		}'
+	echo
+	echo "Use a colon, a comma, parentheses, a semicolon or a separate sentence"
+	echo "instead. Plain hyphens stay fine in compound words and numeric ranges"
+	echo "(2-4 Wochen, 1-8 Seiten)."
+	echo
+	echo "Fix the lines above, stage them again, then commit."
+} >&2
+
+exit 1
