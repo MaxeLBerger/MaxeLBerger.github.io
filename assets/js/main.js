@@ -91,7 +91,7 @@
             'slide.imkerei.tag2': 'Shop-Oberfläche',
             'slide.imkerei.tag3': 'MVP',
             'slide.imkerei.badge': 'MVP-DEMO',
-            'slide.imkerei.alt': 'Shop-Übersicht der MVP-Demo der Imkerei Feuerstein mit Filter und Produktkarten',
+            'slide.imkerei.alt': 'Startseite der MVP-Demo der Imkerei Feuerstein mit dem Imkermeister vor Bienenstöcken und Honiggläsern',
             'slide.imkerei.linkLabel': 'MVP-Demo der Imkerei Feuerstein ansehen',
             // Senihelp24
             'slide.senihelp24.t1': 'senihelp24.pl',
@@ -364,7 +364,7 @@
             'slide.imkerei.tag2': 'Shop interface',
             'slide.imkerei.tag3': 'MVP',
             'slide.imkerei.badge': 'MVP DEMO',
-            'slide.imkerei.alt': 'Shop overview of the Imkerei Feuerstein MVP demo with filters and product cards',
+            'slide.imkerei.alt': 'Home page of the Imkerei Feuerstein MVP demo with the master beekeeper in front of hives and honey jars',
             'slide.imkerei.linkLabel': 'View the Imkerei Feuerstein MVP demo',
             // Senihelp24
             'slide.senihelp24.t1': 'senihelp24.pl',

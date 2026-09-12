@@ -103,12 +103,12 @@ chosen, so do not swap the photo for it. The text column is: `.hero-eyebrow` (up
 name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
 never a gradient), then `.hero-description`, then `.hero-cta` with ONE primary button (white on dark, ink on light) linking to `#projects`
 and ONE `.hero-link` text link linking to `#contact`, then `div.hero-clients`: an uppercase
-`hero.clients` label ("Vertraut von:" / "Trusted by:") on its own line and the two customer logos from
+`hero.clients` label ("Vertraut von:" / "Trusted by:") on its own line and the three customer logos from
 `assets/img/clients/` in a row beneath it; the block is a column at every width, so do not put the label back
 beside the logos. Those logos ship as white silhouettes
 and sit at `opacity: .62`, going to full white on hover; light mode renders the same files as dark silhouettes with
 `filter: brightness(0)` at `opacity: .55`, so there is still one file per logo. Their heights are set per logo
-(`.hero-client-logo--senihelp` / `--humanbridges`) because one is a compact wordmark and the other a wide
+(`.hero-client-logo--senihelp` / `--humanbridges` / `--imkerei`, the last a bee plus one-line wordmark) because one is a compact wordmark and the other a wide
 mark-plus-wordmark lockup, so do not give them a shared height. The GSAP entrance in `playEntrance()` adds the
 client row to the end of the existing timeline.
 
@@ -171,7 +171,7 @@ segmented pill above it switches between two sets, filtered through `data-mode` 
 | Mode | Slides |
 |------|--------|
 | `own` (default) | E46 Studio, AI Captain, Albert Royale, Medieval TD, Shookroko, dog-kennel-online |
-| `customers` | Imkerei Feuerstein (MVP), Senihelp24, Daniel Brecheis, the open "Ihr Projekt" slot |
+| `customers` | Senihelp24, Daniel Brecheis, Imkerei Feuerstein (MVP), the open "Ihr Projekt" slot |
 
 Both modes are open. The earlier locked state for `Kundenprojekte` (lock icon, `disabled`, `.is-locked`) is gone;
 do not bring it back.
@@ -199,8 +199,10 @@ no real orders are possible; the new site is not live on the client's domain yet
 [projects/imkerei-feuerstein.html](../projects/imkerei-feuerstein.html) link to the Vercel demo with "MVP ansehen" /
 "Demo ansehen". Do not claim a finished online shop, an ordering function, live operation, sales, visitor numbers or
 revenue, do not write "seit 1982" (the verified wording is "seit über 40 Jahren"), and it is built with Astro, not
-Next.js or React. The screenshot `assets/img/projects/imkerei-feuerstein.webp` is the demo's shop overview, taken so
-that no people and no names from the guestbook or testimonials are visible; keep it that way when replacing it.
+Next.js or React. The screenshot `assets/img/projects/imkerei-feuerstein.webp` is the demo's home page hero, chosen by the site owner:
+it shows the client himself, Robert Feuerstein, and the demo's own "seit 1982" badge. Never use a screenshot that
+shows names from the guestbook or testimonials. In the customer slider the Imkerei sits at position 03, after
+Senihelp24 and Daniel Brecheis, and its white logo is the third mark in the hero client row.
 
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 

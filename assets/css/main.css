@@ -1427,6 +1427,11 @@ html[data-color-scheme="light"] .projects-section {
     height: 20px;
 }
 
+/* Biene plus einzeiliger Schriftzug; die Biene ist hoeher als die Schrift. */
+.hero-client-logo--imkerei {
+    height: 24px;
+}
+
 /* ═══ HERO: LIGHT MODE ═══
    Hell folgt der Hero dem Schema wie der Rest der Seite: Leinwand statt
    Nachtgrund, Tinte statt Weiss. Das Holzfoto bleibt unveraendert, ohne
@@ -3823,6 +3828,10 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .hero-client-logo--humanbridges {
         height: 17px;
+    }
+
+    .hero-client-logo--imkerei {
+        height: 21px;
     }
 
     /* The mobile panel is a solid surface again, so the over-photo override
