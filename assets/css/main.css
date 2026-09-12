@@ -2269,6 +2269,134 @@ html[data-color-scheme="light"] .projects-section {
     }
 }
 
+/* ═══ SKILLS/TOOLS PLASMA BAND ═══
+   Same masked band behind "Mit welchen Tools ich arbeite" as behind
+   Projekte, but there is no active project slide to take the colour from
+   here, so it cycles on its own through a few curated palettes
+   (--skills-energy-band/--skills-energy-glow, driven by JS). Drift/breathe/
+   pulse keyframes are shared with .projects-energy on purpose: same motion
+   language, no need for a second copy. */
+.skills-section {
+    isolation: isolate;
+    --skills-energy-opacity: 0.9;
+    /* Slow cross-fade: the colour is switching itself every few seconds,
+       not reacting to a click, so it should read as ambient drifting. */
+    --skills-energy-transition: 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+    --skills-energy-band: #a855f7;
+    --skills-energy-glow: #22d3ee;
+}
+
+html[data-color-scheme="light"] .skills-section {
+    --skills-energy-opacity: 0.45;
+}
+
+.skills-energy {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, #000 14%, #000 86%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, #000 14%, #000 86%, rgba(0, 0, 0, 0) 100%);
+}
+
+.skills-energy.is-ready {
+    opacity: var(--skills-energy-opacity);
+    animation: projects-energy-in 1.6s var(--ease-out) both;
+}
+
+.skills-energy-move {
+    position: absolute;
+    inset: 0;
+}
+
+.skills-energy-layer {
+    position: absolute;
+    left: -8%;
+    top: 50%;
+    width: 116%;
+    aspect-ratio: 16 / 9;
+    translate: 0 -50%;
+    -webkit-mask-image: url('../img/backgrounds/hero-energy-900.webp');
+    mask-image: url('../img/backgrounds/hero-energy-900.webp');
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    will-change: transform, opacity;
+}
+
+@media (min-width: 1100px) {
+    .skills-energy-layer {
+        -webkit-mask-image: url('../img/backgrounds/hero-energy.webp');
+        mask-image: url('../img/backgrounds/hero-energy.webp');
+    }
+}
+
+.skills-energy-layer--band {
+    background-color: var(--skills-energy-band);
+    transition: background-color var(--skills-energy-transition);
+    animation:
+        projects-energy-drift 26s ease-in-out infinite alternate,
+        projects-energy-breathe 9s ease-in-out infinite alternate;
+}
+
+.skills-energy-layer--glow {
+    background-color: var(--skills-energy-glow);
+    transition: background-color var(--skills-energy-transition) 0.15s;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+    overflow: hidden;
+    animation:
+        projects-energy-drift-glow 34s ease-in-out infinite alternate,
+        projects-energy-breathe 14s ease-in-out infinite alternate-reverse;
+}
+
+.skills-energy-layer--glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(70deg, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0) 68%);
+    background-size: 260% 260%;
+    animation: projects-energy-pulse 14s linear infinite;
+}
+
+.skills-energy.is-paused .skills-energy-layer,
+.skills-energy.is-paused .skills-energy-layer--glow::after {
+    animation-play-state: paused;
+}
+
+@media (max-width: 1099px) {
+    .skills-energy-layer,
+    .skills-energy-layer--glow::after {
+        animation: none !important;
+    }
+
+    .skills-energy-layer--glow {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-energy {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-energy.is-ready {
+        animation: none;
+    }
+
+    .skills-energy-layer,
+    .skills-energy-layer--glow::after {
+        animation: none !important;
+    }
+}
+
 
 /* Light mode: blobs need much less opacity to stay subtle on white. */
 
