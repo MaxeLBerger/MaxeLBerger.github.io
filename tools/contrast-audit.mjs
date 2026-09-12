@@ -16,8 +16,8 @@
  *
  * Exit 1, sobald eine Stelle die Schwelle reisst.
  */
-import { spawn } from 'node:child_process';
-import { writeFileSync, rmSync, existsSync } from 'node:fs';
+import { spawn, execFileSync } from 'node:child_process';
+import { writeFileSync, readFileSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { setTimeout as sleep } from 'node:timers/promises';
 
 const EDGE_CANDIDATES = [
@@ -56,18 +56,95 @@ if (!edgePath) {
     process.exit(2);
 }
 
-const PROFILE = `${process.env.TEMP || '/tmp'}/contrast-audit-${Date.now()}`;
+const PROFILE_PREFIX = 'contrast-audit-';
+const TMP_ROOT = process.env.TEMP || '/tmp';
+const RUN_TAG = `${PROFILE_PREFIX}${Date.now()}`;
+const PROFILE = `${TMP_ROOT}/${RUN_TAG}`;
+const LOCK = `${PROFILE}.lock`;
+
+/** true, solange die PID lebt. Signal 0 prueft nur, ohne etwas zu senden. */
+function isAlive(pid) {
+    if (!pid || pid <= 0) return false;
+    try { process.kill(pid, 0); return true; } catch (err) { return err.code === 'EPERM'; }
+}
+
+/** Beendet alle Browser-Prozesse eines Wegwerf-Profils, erkannt am eindeutigen
+  * Profilnamen in der Kommandozeile.
+  * Ueber die PID geht das nicht: Edge startet sich beim Hochfahren selbst neu
+  * (--edge-skip-compat-layer-relaunch) und laeuft danach unter einer anderen PID
+  * weiter, waehrend die von spawn() gelieferte PID bereits beendet ist. Ein
+  * edge.kill() trifft deshalb nur den toten Starter und laesst den echten
+  * Browser samt Renderern stehen. */
+function killProfile(tag) {
+    if (process.platform !== 'win32') {
+        try { execFileSync('pkill', ['-f', tag], { stdio: 'ignore' }); } catch { /* keiner da */ }
+        return;
+    }
+    try {
+        // Mehrere Durchgaenge, weil Edge beim Beenden vereinzelt noch Helfer nachzieht.
+        const ps = `for ($i = 0; $i -lt 3; $i++) {`
+            + ` Get-CimInstance Win32_Process -Filter "Name='msedge.exe'"`
+            + ` | Where-Object { $_.CommandLine -like '*${tag}*' }`
+            + ` | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue };`
+            + ` Start-Sleep -Milliseconds 250 }`;
+        execFileSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', ps],
+            { stdio: 'ignore', timeout: 20000 });
+    } catch { /* keiner da */ }
+}
+
+/** Raeumt Profile frueherer Laeufe weg, deren Node-Prozess nicht mehr lebt.
+  * Zweite Verteidigungslinie: wird der Node hart abgeschossen (Session-Ende,
+  * Tool-Timeout, Strg+C), laufen unter Windows gar keine exit-Handler mehr.
+  * Die Lock-Datei neben dem Profil haelt die PID des Laufs fest, damit ein
+  * parallel laufender Audit nicht mit abgeschossen wird. */
+function reapOrphans() {
+    let entries;
+    try { entries = readdirSync(TMP_ROOT); } catch { return; }
+    const tags = new Set();
+    for (const name of entries) {
+        if (!name.startsWith(PROFILE_PREFIX)) continue;
+        tags.add(name.endsWith('.lock') ? name.slice(0, -5) : name);
+    }
+    let killed = 0;
+    for (const tag of tags) {
+        if (tag === RUN_TAG) continue;
+        let owner = 0;
+        try { owner = Number(readFileSync(`${TMP_ROOT}/${tag}.lock`, 'utf8').trim()); }
+        catch { /* kein Lock: Lauf von vor diesem Fix, gilt als verwaist */ }
+        if (isAlive(owner)) continue;
+        killProfile(tag);
+        killed++;
+        try { rmSync(`${TMP_ROOT}/${tag}`, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 }); }
+        catch { /* naechster Lauf */ }
+        try { rmSync(`${TMP_ROOT}/${tag}.lock`, { force: true }); } catch { /* egal */ }
+    }
+    if (killed) console.error(`Aufgeraeumt: ${killed} verwaiste Profil(e) frueherer Laeufe beendet.`);
+}
+
+reapOrphans();
+writeFileSync(LOCK, String(process.pid));
+
 const edge = spawn(edgePath, [
     '--headless=new', `--remote-debugging-port=${PORT}`, `--user-data-dir=${PROFILE}`,
     '--no-first-run', '--no-default-browser-check', '--force-prefers-reduced-motion',
     '--hide-scrollbars', '--window-size=1440,900', 'about:blank',
 ], { stdio: 'ignore' });
+edge.on('error', (err) => { console.error('Edge liess sich nicht starten:', err.message); process.exit(2); });
 
+let cleanedUp = false;
 const cleanup = () => {
-    try { edge.kill(); } catch { /* schon beendet */ }
-    try { rmSync(PROFILE, { recursive: true, force: true }); } catch { /* egal */ }
+    if (cleanedUp) return;
+    cleanedUp = true;
+    killProfile(RUN_TAG);
+    try { rmSync(PROFILE, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 }); }
+    catch { /* Datei noch gesperrt, dann raeumt es der naechste Lauf weg */ }
+    try { rmSync(LOCK, { force: true }); } catch { /* egal */ }
 };
 process.on('exit', cleanup);
+for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP', 'SIGBREAK']) {
+    process.on(sig, () => { cleanup(); process.exit(130); });
+}
+process.on('uncaughtException', (err) => { cleanup(); console.error(err); process.exit(1); });
 
 async function cdpJson(path) {
     for (let i = 0; i < 60; i++) {
