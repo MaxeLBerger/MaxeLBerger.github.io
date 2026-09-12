@@ -97,7 +97,7 @@
             }
         } catch (e) { /* storage blocked: keep the dark default */ }
     </script>
-    <link rel="stylesheet" href="assets/css/main.css?v=20260912-haakphone">
+    <link rel="stylesheet" href="assets/css/main.css?v=20260912-imkerei">
 
     <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -184,7 +184,7 @@
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
                     <h2 class="section-title" data-i18n="projects.title">Projekte</h2>
-                    <p class="section-note" data-i18n="projects.note">Selbstständig ab dem 1. Oktober 2026. Die Kundenprojekte hier entstehen jetzt und gehen zum Start live.</p>
+                    <p class="section-note" data-i18n="projects.note">Selbstständig ab dem 1. Oktober 2026. Die Kundenprojekte hier sind in Arbeit oder als MVP gebaut und gehen nach und nach live.</p>
                 </div>
 
                 <div class="project-mode-selector" role="group" aria-label="Projekt-Kategorie" data-i18n-aria-label="projects.mode.group">
@@ -658,7 +658,49 @@
 
                 <!-- ═══ KUNDENPROJEKTE ═══ -->
 
-                <!-- Kunde 1: Senihelp24 (in Arbeit, noch ohne Screenshot) -->
+                <!-- Kunde 1: Imkerei Feuerstein (MVP, Livegang mit Bestellsystem in Vorbereitung; keine Aussagen ueber fertigen Shop oder Verkaeufe) -->
+                <div class="hero-slide" id="slide-imkerei" data-mode="customers" data-theme="imkerei" role="tabpanel" aria-labelledby="tab-imkerei" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.imkerei.t1">Imkerei Feuerstein</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.imkerei.t2">Relaunch</span></span>
+                                <span class="title-line" data-i18n="slide.imkerei.t3">als MVP.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.imkerei.desc">MVP: Relaunch-Website mit Shop-Oberfläche für die Familienimkerei Feuerstein aus Elchingen. 122 statisch erzeugte Seiten, 103 Produkte mit Suche und Filter, Warenkorb, Galerie und FAQ. Der Livegang mit angebundenem Bestellsystem ist in Vorbereitung.</p>
+                            <div class="slide-cta">
+                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.imkerei.cta1">MVP ansehen</a>
+                                <a href="projects/imkerei-feuerstein.html" class="btn btn-outline" data-i18n="slide.imkerei.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag1">Astro</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag2">Shop-Oberfläche</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag3">MVP</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span data-i18n="slide.imkerei.badge">MVP-DEMO</span>
+                                </div>
+                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="MVP-Demo der Imkerei Feuerstein ansehen" data-i18n-aria-label="slide.imkerei.linkLabel"><div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">imkerei-feuerstein.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img src="assets/img/projects/imkerei-feuerstein.webp" alt="Shop-Übersicht der MVP-Demo der Imkerei Feuerstein mit Filter und Produktkarten" data-i18n-alt="slide.imkerei.alt" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kunde 2: Senihelp24 (in Arbeit, noch ohne Screenshot) -->
                 <div class="hero-slide" id="slide-senihelp24" data-mode="customers" data-theme="senihelp24" role="tabpanel" aria-labelledby="tab-senihelp24" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
@@ -693,7 +735,7 @@
                     </div>
                 </div>
 
-                <!-- Kunde 2: Daniel Brecheis (in Arbeit, live ab 01.10., noch ohne Screenshot) -->
+                <!-- Kunde 3: Daniel Brecheis (in Arbeit, live ab 01.10., noch ohne Screenshot) -->
                 <div class="hero-slide" id="slide-danielbrecheis" data-mode="customers" data-theme="danielbrecheis" role="tabpanel" aria-labelledby="tab-danielbrecheis" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
@@ -728,7 +770,7 @@
                     </div>
                 </div>
 
-                <!-- Kunde 3: Einladung. Kein Projekt, sondern der offene Platz fuer das naechste. -->
+                <!-- Kunde 4: Einladung. Kein Projekt, sondern der offene Platz fuer das naechste. -->
                 <div class="hero-slide" id="slide-invite" data-mode="customers" data-theme="maxhaak" role="tabpanel" aria-labelledby="tab-invite" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
@@ -737,7 +779,7 @@
                                 <span class="title-line"><span class="gradient-text" data-i18n="slide.invite.t2">Als Nächstes.</span></span>
                                 <span class="title-line" data-i18n="slide.invite.t3">Hier.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.invite.desc">Zwei Kundenprojekte entstehen hier gerade, echte Arbeit statt Musterseiten. Selbstständig bin ich ab dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
+                            <p class="slide-description" data-i18n="slide.invite.desc">Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich ab dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
                             <div class="slide-cta">
                                 <a href="#contact" class="btn btn-primary" data-i18n="slide.invite.cta1">Projekt besprechen</a>
                             </div>
@@ -818,16 +860,20 @@
                         </button>
 
                         <!-- Kundenprojekte -->
-                        <button id="tab-senihelp24" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="senihelp24" role="tab" aria-selected="false" aria-controls="slide-senihelp24" tabindex="-1" hidden>
+                        <button id="tab-imkerei" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="imkerei" role="tab" aria-selected="false" aria-controls="slide-imkerei" tabindex="-1" hidden>
                             <span class="project-pag-index" aria-hidden="true">01</span>
+                            <span class="project-pag-name">Imkerei Feuerstein</span>
+                        </button>
+                        <button id="tab-senihelp24" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="senihelp24" role="tab" aria-selected="false" aria-controls="slide-senihelp24" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">02</span>
                             <span class="project-pag-name">Senihelp24</span>
                         </button>
                         <button id="tab-danielbrecheis" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="danielbrecheis" role="tab" aria-selected="false" aria-controls="slide-danielbrecheis" tabindex="-1" hidden>
-                            <span class="project-pag-index" aria-hidden="true">02</span>
+                            <span class="project-pag-index" aria-hidden="true">03</span>
                             <span class="project-pag-name">Daniel Brecheis</span>
                         </button>
                         <button id="tab-invite" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="maxhaak" role="tab" aria-selected="false" aria-controls="slide-invite" tabindex="-1" hidden>
-                            <span class="project-pag-index" aria-hidden="true">03</span>
+                            <span class="project-pag-index" aria-hidden="true">04</span>
                             <span class="project-pag-name" data-i18n="projects.pag.invite">Ihr Projekt</span>
                         </button>
                     </nav>
@@ -1151,6 +1197,6 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js?v=20260912-haakphone" defer></script>
+    <script src="assets/js/main.js?v=20260912-imkerei" defer></script>
 </body>
 </html>

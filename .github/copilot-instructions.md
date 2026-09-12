@@ -171,7 +171,7 @@ segmented pill above it switches between two sets, filtered through `data-mode` 
 | Mode | Slides |
 |------|--------|
 | `own` (default) | E46 Studio, AI Captain, Albert Royale, Medieval TD, Shookroko, dog-kennel-online |
-| `customers` | Imkerei Feuerstein, Co Ha, Daniel Brecheis, Kaya Seeds, JK Entertainment, Sound of Lvke, Senihelp24 |
+| `customers` | Imkerei Feuerstein (MVP), Senihelp24, Daniel Brecheis, the open "Ihr Projekt" slot |
 
 Both modes are open. The earlier locked state for `Kundenprojekte` (lock icon, `disabled`, `.is-locked`) is gone;
 do not bring it back.
@@ -190,6 +190,17 @@ which is also used by `dog-kennel-online`. Do not point an `<img>` at a file tha
 the `.project-mock` placeholder instead of `assets/img/projects/danielbrecheis.webp`, links to `#contact` plus a
 disabled `Live ab 1. Oktober` button instead of the Vercel URL, and [projects/danielbrecheis.html](../projects/danielbrecheis.html)
 is unlinked, `noindex` and absent from `sitemap.xml`. Do not restore the screenshot or the live links before launch.
+
+`Imkerei Feuerstein` is shown as an **MVP**, not as a finished shop. Verified state (September 2026): an Astro 4 site,
+statically generated, 122 pages (19 page types plus 103 product pages), 103 products in 9 categories with search,
+filters, sorting and a browser-side cart, a gallery of 128 images in 13 topics, 45 FAQ entries, built January to
+March 2026. The contact, guestbook and order forms are finished in the front end but have no server connection, so
+no real orders are possible; the new site is not live on the client's domain yet. The slide and
+[projects/imkerei-feuerstein.html](../projects/imkerei-feuerstein.html) link to the Vercel demo with "MVP ansehen" /
+"Demo ansehen". Do not claim a finished online shop, an ordering function, live operation, sales, visitor numbers or
+revenue, do not write "seit 1982" (the verified wording is "seit über 40 Jahren"), and it is built with Astro, not
+Next.js or React. The screenshot `assets/img/projects/imkerei-feuerstein.webp` is the demo's shop overview, taken so
+that no people and no names from the guestbook or testimonials are visible; keep it that way when replacing it.
 
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 

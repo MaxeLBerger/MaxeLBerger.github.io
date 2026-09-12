@@ -53,7 +53,7 @@ so it has to name whichever project sits first in this table.
 
 | Project | Type | Detail page |
 |---------|------|-------------|
-| Imkerei Feuerstein | Online shop | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
+| Imkerei Feuerstein | MVP: relaunch site with shop interface, demo on Vercel, launch with ordering system in preparation | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
 | Co Ha | Restaurant site | [coha.html](projects/coha.html) |
 | Daniel Brecheis | Consultant site (Human Bridges), in progress, live 1 October | none while unreleased |
 | Kaya Seeds | Online shop | [kayaseeds.html](projects/kayaseeds.html) |

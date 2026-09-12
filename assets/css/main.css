@@ -298,6 +298,20 @@
     --accent-bright: 106, 192, 222;
 }
 
+/* Imkerei Feuerstein: das Honiggold aus Logo und Ueberschriften der Demo.
+   Hell genug fuer den dunklen Label-Default aus :root, deshalb kein
+   --theme-on-primary (wie bei aicaptain). */
+[data-project-theme="imkerei"] {
+    --theme-primary: 212, 168, 54;
+    --theme-secondary: 176, 132, 30;
+    --theme-accent: 240, 200, 90;
+    --theme-gradient-start: #f0c85a;
+    --theme-gradient-mid: #d4a836;
+    --theme-gradient-end: #b0841e;
+    --accent-ink: 128, 92, 12;
+    --accent-bright: 225, 185, 70;
+}
+
 /* Theme transition on all theme-aware elements */
 [data-project-theme] {
     transition:
