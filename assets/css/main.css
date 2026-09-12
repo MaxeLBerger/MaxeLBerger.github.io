@@ -426,7 +426,6 @@ html[data-color-scheme="light"] .site-footer {
 /* ── Karten ──────────────────────────────────────────────────────────────
    Der Kern von Soft Studio: weisse Flaeche, Haarlinie, zweilagiger
    Schatten. Hover hebt ueber Hoehe, nicht ueber Farbe. */
-html[data-color-scheme="light"] .about-highlight,
 html[data-color-scheme="light"] .skill-category,
 html[data-color-scheme="light"] .service-panel,
 html[data-color-scheme="light"] .service-tile,
@@ -437,7 +436,6 @@ html[data-color-scheme="light"] .contact-map-link {
     border-radius: 18px;
     box-shadow: var(--shadow-card);
 }
-html[data-color-scheme="light"] .about-highlight,
 html[data-color-scheme="light"] .service-panel,
 html[data-color-scheme="light"] .service-tile,
 html[data-color-scheme="light"] .showcase-frame,
@@ -446,7 +444,6 @@ html[data-color-scheme="light"] .contact-map-link {
                 border-color var(--duration-base) var(--ease-out),
                 transform var(--duration-base) var(--ease-out);
 }
-html[data-color-scheme="light"] .about-highlight:hover,
 html[data-color-scheme="light"] .service-panel:hover,
 html[data-color-scheme="light"] .service-tile:hover,
 html[data-color-scheme="light"] .contact-map-link:hover {
@@ -2423,45 +2420,6 @@ html[data-color-scheme="light"] .projects-section {
     text-decoration-color: rgb(var(--accent));
 }
 
-.about-highlights {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-sm);
-}
-
-.about-highlight {
-    min-height: 96px;
-    padding: var(--space-lg);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    background: rgba(255, 255, 255, 0.035);
-    transition: border-color var(--theme-transition), background var(--theme-transition), transform var(--transition-base);
-}
-
-.about-highlight:hover {
-    transform: translateY(-2px);
-    border-color: rgba(var(--accent), 0.38);
-    background: rgba(var(--accent), 0.06);
-}
-
-.about-highlight-label {
-    display: block;
-    margin-bottom: var(--space-xs);
-    color: rgb(var(--accent));
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.about-highlight strong {
-    display: block;
-    color: var(--color-text);
-    font-size: var(--font-size-base);
-    line-height: 1.35;
-}
-
 @media (max-width: 980px) {
     .about-layout {
         grid-template-columns: 1fr;
@@ -2479,10 +2437,6 @@ html[data-color-scheme="light"] .projects-section {
 }
 
 @media (max-width: 560px) {
-    .about-highlights {
-        grid-template-columns: 1fr;
-    }
-
     .about-copy p {
         font-size: var(--font-size-base);
     }
