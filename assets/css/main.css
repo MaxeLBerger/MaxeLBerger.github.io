@@ -2278,7 +2278,7 @@ html[data-color-scheme="light"] .projects-section {
    language, no need for a second copy. */
 .skills-section {
     isolation: isolate;
-    --skills-energy-opacity: 0.9;
+    --skills-energy-opacity: 0.75;
     /* Slow cross-fade: the colour is switching itself every few seconds,
        not reacting to a click, so it should read as ambient drifting. */
     --skills-energy-transition: 2.4s cubic-bezier(0.22, 1, 0.36, 1);
