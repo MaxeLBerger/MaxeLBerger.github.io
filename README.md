@@ -53,7 +53,7 @@ so it has to name whichever project sits first in this table.
 
 | Project | Type | Detail page |
 |---------|------|-------------|
-| Imkerei Feuerstein | Online shop | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
+| Imkerei Feuerstein | MVP: relaunch site with shop interface, demo on Vercel, launch with ordering system in preparation | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
 | Co Ha | Restaurant site | [coha.html](projects/coha.html) |
 | Daniel Brecheis | Consultant site (Human Bridges), in progress, live 1 October | none while unreleased |
 | Kaya Seeds | Online shop | [kayaseeds.html](projects/kayaseeds.html) |
@@ -135,12 +135,13 @@ The band is flipped vertically so the light source sits low right behind the moc
 
 ### Client logos
 
-`assets/img/clients/` holds the two customer marks shown in the hero. Both are white silhouettes, because neither brand publishes a dark-background variant; in light mode `filter: brightness(0)` renders the same files as dark silhouettes on the canvas:
+`assets/img/clients/` holds the three customer marks shown in the hero. All are white silhouettes, so they read on the photo in one consistent style; in light mode `filter: brightness(0)` renders the same files as dark silhouettes on the canvas:
 
 | File | Size | Built from |
 |------|------|------------|
 | `senihelp24.webp` | 420x79 | the official senihelp24 wordmark, recoloured to white |
 | `human-bridges.webp` | 438x40 | the Human Bridges mark and wordmark, relaid out side by side in white |
+| `imkerei-feuerstein.webp` | 460x70 | `public/images/logo_breit.png` from the Imkerei repo: yellow bee recoloured to white, pupil knocked out, lossless WebP |
 
 The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. Replace these only with mono versions at the same aspect ratio, otherwise the per-logo heights in `.hero-client-logo--*` need retuning.
 
