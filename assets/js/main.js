@@ -267,9 +267,10 @@
             'about.h1': 'Moderne Technologien & AI-first',
             'about.h2': 'Faire Preise & klare Kommunikation',
             'about.h3': 'Von Konzept bis Go-Live aus einer Hand',
-            'about.skills.frontend': 'Frontend',
-            'about.skills.backend': 'Backend & Data',
-            'about.skills.ai': 'KI & Automation',
+            'skills.row.web': 'Web, 3D & Games',
+            'skills.row.ai': 'KI & Agents',
+            'skills.row.eng': 'Sprachen & Tools',
+            'skills.more': 'Außerdem im Einsatz',
             'about.cta': 'Projekt besprechen',
             // Cookie consent
             'cookie.text': 'Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.',
@@ -535,9 +536,10 @@
             'about.h1': 'Modern Technologies & AI-first',
             'about.h2': 'Fair Prices & Clear Communication',
             'about.h3': 'From Concept to Go-Live in One Hand',
-            'about.skills.frontend': 'Frontend',
-            'about.skills.backend': 'Backend & Data',
-            'about.skills.ai': 'AI & Automation',
+            'skills.row.web': 'Web, 3D & Games',
+            'skills.row.ai': 'AI & Agents',
+            'skills.row.eng': 'Languages & Tools',
+            'skills.more': 'Also in my toolbox',
             'about.cta': 'Discuss Your Project',
             // Cookie consent
             'cookie.text': 'This website uses only technically necessary cookies. No tracking cookies.',
@@ -1734,6 +1736,105 @@
         });
     }
 
+    /* ═══ SKILLS/TOOLS PLASMA BAND ═══
+       Same band technique as behind Projekte (fade in once the mask image
+       has decoded, pause while the tab is hidden, slow scroll parallax),
+       but there is no active project slide to take the colour from here:
+       it cycles on its own through a few curated palettes, and hovering a
+       tool tile previews that tool's own brand colour (--glow, see the
+       per-logo table in main.css) instead of waiting for the next tick. */
+    function initSkillsEnergy() {
+        const skills = document.getElementById('skills');
+        const energy = skills ? skills.querySelector('.skills-energy') : null;
+        if (!energy) return;
+
+        const ready = () => energy.classList.add('is-ready');
+        const large = window.matchMedia('(min-width: 1100px)').matches;
+        const probe = new Image();
+        probe.src = `assets/img/backgrounds/hero-energy${large ? '' : '-900'}.webp`;
+        (probe.decode ? probe.decode() : Promise.resolve()).then(ready, ready);
+        window.setTimeout(ready, 4000);
+
+        document.addEventListener('visibilitychange', () => {
+            energy.classList.toggle('is-paused', document.hidden);
+        });
+
+        // Erster Eintrag = die CSS-Defaults (--skills-energy-band/-glow),
+        // damit weder der erste Zyklus-Tick noch der erste Hover einen
+        // sichtbaren Sprung machen.
+        const palettes = [
+            { band: '#a855f7', glow: '#22d3ee' },
+            { band: '#6366f1', glow: '#60a5fa' },
+            { band: '#b8902a', glow: '#f0d27a' },
+            { band: '#8b5cf6', glow: '#7bc96f' },
+        ];
+        let index = 0;
+        const applyPalette = i => {
+            energy.style.setProperty('--skills-energy-band', palettes[i].band);
+            energy.style.setProperty('--skills-energy-glow', palettes[i].glow);
+        };
+        const cycle = () => {
+            index = (index + 1) % palettes.length;
+            applyPalette(index);
+        };
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const intervalMs = 12000;
+        let timerId = reduceMotion ? null : window.setInterval(cycle, intervalMs);
+        const stopCycle = () => {
+            if (timerId !== null) {
+                window.clearInterval(timerId);
+                timerId = null;
+            }
+        };
+        const startCycle = () => {
+            if (timerId === null && !reduceMotion && !document.hidden) {
+                timerId = window.setInterval(cycle, intervalMs);
+            }
+        };
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopCycle(); else startCycle();
+        });
+
+        // Hover: jede Kachel hat schon eine Marken-Glow-Farbe fuer ihren
+        // eigenen Radial-Schein (--glow, faellt sonst auf --accent zurueck).
+        // Das Band uebernimmt beim Hover genau diese Farbe und pausiert
+        // dafuer den Zyklus; beim Verlassen springt es zur aktuellen
+        // Zyklus-Farbe zurueck und der Zyklus laeuft weiter.
+        if (window.matchMedia('(hover: hover)').matches) {
+            const parseRgbTriplet = value => {
+                const parts = value.split(',').map(n => parseFloat(n));
+                return parts.length >= 3 && parts.every(n => !Number.isNaN(n)) ? parts.slice(0, 3) : null;
+            };
+            const lighten = (rgb, amount) => rgb.map(c => Math.round(c + (255 - c) * amount));
+            const toRgbString = rgb => `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+
+            skills.querySelectorAll('.stack-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const cs = getComputedStyle(item);
+                    const raw = cs.getPropertyValue('--glow').trim() || cs.getPropertyValue('--accent').trim();
+                    const rgb = parseRgbTriplet(raw);
+                    if (!rgb) return;
+                    stopCycle();
+                    energy.style.setProperty('--skills-energy-band', toRgbString(rgb));
+                    energy.style.setProperty('--skills-energy-glow', toRgbString(lighten(rgb, 0.4)));
+                });
+                item.addEventListener('mouseleave', () => {
+                    applyPalette(index);
+                    startCycle();
+                });
+            });
+        }
+
+        if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        const mover = energy.querySelector('.skills-energy-move') || energy;
+        gsap.fromTo(mover, { y: -70 }, {
+            y: 70,
+            ease: 'none',
+            scrollTrigger: { trigger: skills, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+        });
+    }
+
     /* ═══ INIT ═══ */
     function init() {
         // Color scheme
@@ -1770,6 +1871,7 @@
         initAnimations();
         initHeroBgSlideshow();
         initProjectsEnergy();
+        initSkillsEnergy();
 
         // Project slider
         const slider = new ProjectSlider();
