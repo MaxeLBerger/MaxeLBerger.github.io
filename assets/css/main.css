@@ -285,6 +285,18 @@
     --accent-bright: 111, 201, 104;
 }
 
+/* Aurevia: Hoehlensee-Tuerkis mit Portal-Gold, mystisch und weit */
+[data-project-theme="aurevia"] {
+    --theme-primary: 71, 166, 158;
+    --theme-secondary: 34, 105, 99;
+    --theme-accent: 230, 196, 110;
+    --theme-gradient-start: #5ccedb;
+    --theme-gradient-mid: #47a69e;
+    --theme-gradient-end: #e6c46e;
+    --accent-ink: 14, 110, 103;
+    --accent-bright: 95, 196, 184;
+}
+
 /* Senihelp24: warmes Pflege-Blau mit Herz-Rot, vertrauensvoll und nah */
 [data-project-theme="senihelp24"] {
     --theme-primary: 14, 116, 144;
