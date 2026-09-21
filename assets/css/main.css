@@ -1351,14 +1351,26 @@ html[data-color-scheme="light"] .projects-section {
     transform: translateX(4px);
 }
 
-/* Client block under the CTAs: the "Vertraut von:" label on its own line,
-   the logo row beneath it, at every width. Neither customer has a dark-background
-   logo variant, so both ship as white silhouettes: that keeps the row calm on
-   the photo and stops the Human Bridges wordmark (black on a blue patch in the
-   original) from disappearing. They sit dimmed and come up to full white on
-   hover. Heights are tuned per logo rather than shared, because senihelp is a
-   compact wordmark and Human Bridges a wide mark-plus-wordmark lockup. */
+/* Client block under the CTAs: the "Bereits vertraut von:" label on its own
+   line, the logo row beneath it, at every width. None of the customers has a
+   dark-background logo variant, so all three ship as white silhouettes: that
+   keeps the row calm on the photo and stops the Human Bridges wordmark (black
+   on a blue patch in the original) from disappearing. They sit dimmed and come
+   up to full white on hover.
+
+   One measure sizes the row: --client-cap, the cap height every wordmark is
+   rendered at. Each logo's height is that cap height times the ratio of its
+   file (image height / cap height in the file), so three typefaces with three
+   different proportions land on the same optical size. Human Bridges is all
+   caps with wide tracking and reads bigger than the two mixed-case marks at
+   the same cap height, so it gets 0.925. The translateY per logo moves the
+   caps onto one centre line, because the cap centre sits at a different spot
+   in each file (7px low in senihelp, 1px high in Human Bridges, dead centre in
+   the Imkerei lockup). Row budget at 12px: 114.5 + 202.5 + 201 plus two gaps
+   of 24px = 566px inside the 580px text column. Raise --client-cap and that
+   third logo wraps on desktop. */
 .hero-clients {
+    --client-cap: 12px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1384,7 +1396,7 @@ html[data-color-scheme="light"] .projects-section {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: clamp(1.1rem, 2.4vw, 2.1rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .hero-clients-item {
@@ -1404,17 +1416,22 @@ html[data-color-scheme="light"] .projects-section {
     opacity: 1;
 }
 
+/* 420x79, caps 44px high with their centre 7px below the image centre. */
 .hero-client-logo--senihelp {
-    height: 24px;
+    height: calc(var(--client-cap) * 79 / 44);
+    transform: translateY(calc(var(--client-cap) * -0.159));
 }
 
+/* 438x40, caps 24px high, 1px above centre. */
 .hero-client-logo--humanbridges {
-    height: 20px;
+    height: calc(var(--client-cap) * 0.925 * 40 / 24);
+    transform: translateY(calc(var(--client-cap) * 0.0385));
 }
 
-/* Biene plus einzeiliger Schriftzug; die Biene ist hoeher als die Schrift. */
+/* 699x96: the bee mascot from the Imkerei logo.svg plus the wordmark on one
+   line. The bee is 2.3 cap heights tall and the caps are centred on it. */
 .hero-client-logo--imkerei {
-    height: 24px;
+    height: calc(var(--client-cap) * 2.3);
 }
 
 /* ═══ HERO: LIGHT MODE ═══
@@ -4001,8 +4018,10 @@ html[data-color-scheme="light"] .cookie-content p {
         object-position: 50% 0%;
     }
 
-    /* Compact client block so the copy stays below the face. */
+    /* Compact client block so the copy stays below the face: the same cap
+       height for all three, 12.5% smaller than on desktop. */
     .hero-clients {
+        --client-cap: 10.5px;
         gap: 0.5rem;
         margin-top: var(--space-lg);
     }
@@ -4014,18 +4033,6 @@ html[data-color-scheme="light"] .cookie-content p {
 
     .hero-clients-list {
         gap: 1.1rem;
-    }
-
-    .hero-client-logo--senihelp {
-        height: 21px;
-    }
-
-    .hero-client-logo--humanbridges {
-        height: 17px;
-    }
-
-    .hero-client-logo--imkerei {
-        height: 21px;
     }
 
     /* The mobile panel is a solid surface again, so the over-photo override
@@ -4094,14 +4101,16 @@ html[data-color-scheme="light"] .cookie-content p {
 
 }
 
-/* Drei Kundenlogos passen auf dem Handy nicht in eine Zeile: bei 21px Hoehe
-   brauchen sie 470.95px, bis 534px Viewport bricht das Imkerei-Logo um. Die
-   zweite Zeile kostet 38px, und weil die Hero-Texte unten anliegen, rueckten
-   sie damit auf kurzen Handys ins Gesicht (Eyebrow 10px statt 49px unter der
-   Navbar bei 360x640). Enger gesetzte Abstaende holen genau diese 38px zurueck
-   (12 + 16 + 9.6), gemessen von 360 bis 430px auf 1px wie mit zwei Logos.
-   Kommt ein Logo hinzu oder aendert sich eine Hoehe, die Schwelle neu rechnen. */
-@media (max-width: 534px) {
+/* Drei Kundenlogos passen auf dem Handy nicht in eine Zeile: bei 10.5px
+   Kapitaelchenhoehe brauchen sie 488.4px (100.2 + 177.3 + 175.8 plus zwei
+   Luecken von 17.6px), bis 552px Viewport bricht das Imkerei-Logo um. Die
+   zweite Zeile kostet 42px (17.6 Luecke + 24.2 Logo), und weil die Hero-Texte
+   unten anliegen, rueckten sie damit auf kurzen Handys ins Gesicht (Eyebrow
+   10px statt 49px unter der Navbar bei 360x640). Enger gesetzte Abstaende
+   holen das zurueck (12 + 16 + 9.6, dazu die um 2px flachere erste Zeile),
+   gemessen von 360 bis 552px auf hoechstens 3px wie mit zwei Logos. Kommt ein
+   Logo hinzu oder aendert sich --client-cap, die Schwelle neu messen. */
+@media (max-width: 552px) {
     .hero-section {
         padding-bottom: calc(var(--space-2xl) - 0.75rem);
     }
