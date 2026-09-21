@@ -12,7 +12,7 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 
 | Section | What it is |
 |---------|------------|
-| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, then a "Vertraut von:" label with the client logos in a row beneath it. Static, no slider. |
+| `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, then a "Bereits vertraut von:" label with the client logos in a row beneath it. Static, no slider. |
 | `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. A plasma band in the active project's colours drifts behind the whole section. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack: the main group as large tiles with the original logos in three rows (Web, 3D & Games; KI & Agents; Sprachen & Tools), every other tool below as small pills. |
@@ -141,9 +141,11 @@ The band is flipped vertically so the light source sits low right behind the moc
 |------|------|------------|
 | `senihelp24.webp` | 420x79 | the official senihelp24 wordmark, recoloured to white |
 | `human-bridges.webp` | 438x40 | the Human Bridges mark and wordmark, relaid out side by side in white |
-| `imkerei-feuerstein.webp` | 460x70 | `public/images/logo_breit.png` from the Imkerei repo: yellow bee recoloured to white, pupil knocked out, lossless WebP |
+| `imkerei-feuerstein.webp` | 699x96 | `images/logo.svg` from the Imkerei site (the bee mascot as an embedded 110x138 PNG plus "Imkerei" / "Feuerstein" in Georgia Bold on two lines): the mascot as a white silhouette with its black stripes, eyes and glasses knocked out, the wordmark re-set on one line in the same face, bee 2.3 cap heights tall and the caps centred on it, lossless WebP |
 
-The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. Replace these only with mono versions at the same aspect ratio, otherwise the per-logo heights in `.hero-client-logo--*` need retuning.
+The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. The Imkerei mascot is a low-resolution cartoon, so a colour version would not survive `brightness(0)` in light mode and would be the only coloured mark in the row; the silhouette keeps the row uniform.
+
+The row is sized from one number, `--client-cap` on `.hero-clients` (12px on desktop, 10.5px up to 768px): every wordmark is rendered at that cap height, each logo's CSS height is the cap height times the ratio measured in its file, and a small `translateY` per logo puts the caps on one centre line. Replace these only with mono versions, and when a file's proportions change, re-measure its cap height for the ratio in `.hero-client-logo--*`.
 
 ### Package images
 

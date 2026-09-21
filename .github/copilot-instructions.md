@@ -103,16 +103,22 @@ chosen, so do not swap the photo for it. The text column is: `.hero-eyebrow` (up
 name and role line), then `h1.hero-title` with two `.title-line` spans (the last word sits in `.title-accent`, single accent colour,
 never a gradient), then `.hero-description`, then `.hero-cta` with ONE primary button (white on dark, ink on light) linking to `#projects`
 and ONE `.hero-link` text link linking to `#contact`, then `div.hero-clients`: an uppercase
-`hero.clients` label ("Vertraut von:" / "Trusted by:") on its own line and the three customer logos from
+`hero.clients` label ("Bereits vertraut von:" / "Already trusted by:") on its own line and the three customer logos from
 `assets/img/clients/` in a row beneath it; the block is a column at every width, so do not put the label back
 beside the logos. Those logos ship as white silhouettes
 and sit at `opacity: .62`, going to full white on hover; light mode renders the same files as dark silhouettes with
-`filter: brightness(0)` at `opacity: .55`, so there is still one file per logo. Their heights are set per logo
-(`.hero-client-logo--senihelp` / `--humanbridges` / `--imkerei`, the last a bee plus one-line wordmark) because one is a compact wordmark and the other a wide
-mark-plus-wordmark lockup, so do not give them a shared height. Up to 534 px the three logos no longer fit one row and the Imkerei mark wraps;
-the `@media (max-width: 534px)` block in `main.css` takes back the 38 px of that second row (hero bottom padding,
+`filter: brightness(0)` at `opacity: .55`, so there is still one file per logo (the Imkerei mark is the bee mascot
+from the client's `logo.svg` plus its Georgia Bold wordmark on one line, also as a silhouette; do not swap in the
+colour mascot, it would be the only coloured mark and turns into a blob under `brightness(0)`). The row is sized from
+one number, `--client-cap` on `.hero-clients` (12px on desktop, 10.5px in the 768px block): every wordmark is rendered
+at that cap height, each logo's height in `.hero-client-logo--senihelp` / `--humanbridges` / `--imkerei` is
+`--client-cap` times the ratio measured in its file (Human Bridges is all caps and gets 0.925 on top), and the
+`translateY` per logo puts the caps on one centre line. Do not replace those calcs with three hand-picked pixel heights,
+and keep the desktop row under the 580px text column (566px at 12px, gaps included) or the third logo wraps on
+desktop. Up to 552 px the three logos no longer fit one row and the Imkerei mark wraps;
+the `@media (max-width: 552px)` block in `main.css` takes back the 42 px of that second row (hero bottom padding,
 client block margin, list row gap), so the bottom-aligned copy stays exactly where it sat with two logos and does not
-climb into the face. Recompute that threshold when a logo or a logo height changes. The GSAP entrance in `playEntrance()` adds the
+climb into the face. Re-measure that threshold when a logo or `--client-cap` changes. The GSAP entrance in `playEntrance()` adds the
 client row to the end of the existing timeline.
 
 Do NOT add gradient text, self-awarded credibility badges, a second pill button, a scroll hint, a tech-icon strip or a
