@@ -1,3 +1,12 @@
+/* Inter v4.1, SIL Open Font License; served locally. */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/InterVariable.woff2') format('woff2');
+}
+
 /* ═══════════════════════════════════════════════
    DESIGN TOKENS
    ═══════════════════════════════════════════════ */
@@ -2594,381 +2603,40 @@ html[data-color-scheme="light"] .skills-section {
     }
 }
 
-/* ═══════════════════════════════════════════════
-   SERVICES / PACKAGES SECTION
-   Zwei bildgefuehrte Panels: Grafik und Text tauschen von Paket zu Paket
-   die Seite. Darunter Pflege und Zusatzleistungen als schmale Kacheln.
-   ═══════════════════════════════════════════════ */
+/* Individual project inquiries */
 .services-section {
     padding: var(--space-4xl) 0;
+    scroll-margin-top: 5rem;
 }
-
-/* Kopf bewusst nicht als .section-header: der ist zentriert und wuerde den
-   linksbuendigen Panels darunter die Achse nehmen. */
 .services-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-lg) var(--space-xl);
-    margin-bottom: var(--space-2xl);
-}
-
-.services-head .section-tag {
-    margin-bottom: var(--space-sm);
-}
-
-.services-lead {
-    max-width: 34ch;
-    margin: 0;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.55;
-}
-
-/* ─── Paket-Panel: Bild | Text ─── */
-.service-panel {
-    /* Eine Variable, damit das gespiegelte Panel dieselbe Bildbreite bekommt. */
-    --art-col: 1.3fr;
-    display: grid;
-    grid-template-columns: minmax(0, var(--art-col)) minmax(0, 1fr);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
-    overflow: hidden;
-    transition: border-color var(--duration-base) var(--ease-out),
-                background var(--duration-base) var(--ease-out);
-}
-
-.service-panel + .service-panel {
-    margin-top: var(--space-lg);
-}
-
-.service-panel:hover {
-    border-color: var(--color-border-hover);
-}
-
-.service-panel--featured {
-    border-color: rgba(var(--accent), 0.35);
-}
-
-.service-panel__art {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 16rem;
-    overflow: hidden;
-    border-right: 1px solid var(--color-border);
-    background: var(--color-bg-elevated);
-}
-
-/* Das Motiv ist 16:9, die Textspalte daneben ist hoeher. Ein weich gezeichneter
-   Auszug desselben Bildes fuellt die Luft ueber und unter dem Motiv, damit die
-   Flaeche randlos bleibt und trotzdem nichts vom Bild beschnitten wird.
-   Unter 900px stapelt das Panel, dort passt das Bild fast exakt: Auszug aus. */
-.service-panel__art::before {
-    content: '';
-    position: absolute;
-    inset: -12%;
-    background-image: var(--art-image);
-    background-size: cover;
-    background-position: center;
-    filter: blur(34px);
-}
-
-/* Schleier in der Flaechenfarbe: nimmt dem Auszug die Buntheit und traegt
-   Hell und Dunkel gleichermassen, ohne zweite Regel je Theme. */
-.service-panel__art::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-bg-elevated);
-    opacity: 0.66;
-}
-
-.service-panel__art--website {
-    --art-image: url('../img/pay-packets/paket-website.webp');
-}
-
-.service-panel__art--plus {
-    --art-image: url('../img/pay-packets/paket-websiteplus.webp');
-}
-
-/* Zweites Panel spiegelt. Bewusst ueber grid-column statt order: nur so behaelt
-   die Bildspalte auf beiden Panels dieselbe Breite. */
-.service-panel--flip {
-    grid-template-columns: minmax(0, 1fr) minmax(0, var(--art-col));
-}
-
-.service-panel--flip .service-panel__art {
-    grid-column: 2;
-    grid-row: 1;
-    border-right: 0;
-    border-left: 1px solid var(--color-border);
-}
-
-.service-panel--flip .service-panel__copy {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-/* Das Mockup laeuft in voller Spaltenbreite bis an die Panel-Kante. */
-.service-shot {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.service-panel:hover .service-shot {
-    transform: scale(1.03);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .service-panel:hover .service-shot {
-        transform: none;
-        transition: none;
-    }
-}
-
-.service-panel__copy {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(var(--space-lg), 3vw, var(--space-2xl));
-}
-
-.service-panel__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin: 0;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-text-quiet);
-}
-
-.service-panel__meta b {
-    font-weight: 700;
-    color: rgb(var(--accent));
-}
-
-.service-panel__title {
-    margin: var(--space-md) 0 0;
-    font-size: var(--font-size-2xl);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
-
-.service-panel__sub {
-    margin: var(--space-sm) 0 0;
-    max-width: 46ch;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.55;
-}
-
-/* Der Preis ist die groesste Angabe im Panel. Vorher stand er als kleinste
-   Zeile ueber dem Titel, obwohl die Leute genau deswegen scrollen. */
-.service-panel__price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.35rem;
-    margin: var(--space-lg) 0 0;
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-quiet);
-    font-variant-numeric: tabular-nums;
-}
-
-.service-panel__price b {
-    font-size: clamp(1.65rem, 1.2rem + 1.4vw, 2.1rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.035em;
-    color: var(--color-text);
-}
-
-.service-panel__checks {
-    list-style: none;
-    display: grid;
-    gap: 0.45rem;
-    margin: var(--space-lg) 0 0;
-    padding: 0;
-}
-
-.service-panel__checks li {
-    position: relative;
-    padding-left: 1.3rem;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.45;
-}
-
-/* Gefuelltes Quadrat statt Haken: ein Umriss liest sich wie eine leere
-   Checkbox, also wie "nicht enthalten". */
-.service-panel__checks li::before {
-    content: '';
-    position: absolute;
-    left: 0.1rem;
-    top: 0.55em;
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 2px;
-    background: rgb(var(--accent));
-    opacity: 0.85;
-}
-
-.service-panel__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    margin-top: auto;
-    padding-top: var(--space-lg);
-    min-height: 44px;
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: rgb(var(--accent));
-}
-
-.service-panel__cta::after {
-    content: '→';
-    transition: transform var(--duration-base) var(--ease-out);
-}
-
-.service-panel__cta:hover::after {
-    transform: translateX(4px);
-}
-
-/* ─── Pflege und Zusatzleistungen ─── */
-.service-tiles {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-lg);
-    margin-top: var(--space-lg);
-}
-
-.service-tile {
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-lg) var(--space-xl);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    transition: border-color var(--duration-base) var(--ease-out);
-}
-
-.service-tile:hover {
-    border-color: var(--color-border-hover);
-}
-
-.service-tile__title {
-    margin: 0;
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-}
-
-.service-tile__sub {
-    margin: 0.3rem 0 0;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-}
-
-.service-tile__meta {
-    margin: var(--space-md) 0 0;
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.01em;
-}
-
-.service-tile__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: auto;
-    padding-top: var(--space-md);
-    min-height: 44px;
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: rgb(var(--accent));
-}
-
-.service-tile__link::after {
-    content: '→';
-    transition: transform var(--duration-base) var(--ease-out);
-}
-
-.service-tile__link:hover::after {
-    transform: translateX(4px);
-}
-
-/* Preisfussnote sitzt jetzt auf derselben Achse wie alles darueber. */
-.services-note {
-    margin-top: var(--space-md);
-    color: var(--color-text-quiet);
-    font-size: var(--font-size-xs);
-}
-
-.services-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-border);
-}
-
-.services-cta p {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
+    max-width: 52rem;
+    margin: 0 auto;
     text-align: center;
 }
-
-@media (max-width: 900px) {
-    .service-panel,
-    .service-panel--flip {
-        grid-template-columns: 1fr;
-    }
-
-    /* Gestapelt liegt das Bild immer oben, auch im gespiegelten Panel: die
-       Spaltenzuweisung von oben muss dafuer ausdruecklich zurueck. */
-    .service-panel--flip .service-panel__art {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .service-panel--flip .service-panel__copy {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .service-panel__art,
-    .service-panel--flip .service-panel__art {
-        min-height: 0;
-        border-right: 0;
-        border-left: 0;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    /* Gestapelt fuellt das 16:9-Motiv die Breite ohnehin aus: der weiche
-       Auszug dahinter waere nur noch unsichtbare Ladezeit. */
-    .service-panel__art::before,
-    .service-panel__art::after {
-        display: none;
-    }
-
-    .service-tiles {
-        grid-template-columns: 1fr;
-    }
+.services-head .section-title { text-wrap: balance; }
+.services-lead {
+    margin: var(--space-lg) auto 0;
+    max-width: 64ch;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+}
+.services-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+.contact-form-note {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+.contact-form-note a {
+    color: rgb(var(--accent));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 /* ═══════════════════════════════════════════════

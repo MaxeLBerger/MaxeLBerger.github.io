@@ -1,0 +1,9 @@
+Inter variable font, version 4.1
+Copyright (c) 2016 The Inter Project Authors
+https://github.com/rsms/inter
+
+Unmodified upright variable WOFF2 from the official v4.1 release source:
+https://raw.githubusercontent.com/rsms/inter/v4.1/docs/font-files/InterVariable.woff2
+
+Licensed under SIL Open Font License 1.1; see Inter-LICENSE.txt.
+https://raw.githubusercontent.com/rsms/inter/v4.1/LICENSE.txt

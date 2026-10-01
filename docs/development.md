@@ -108,3 +108,15 @@ Update **both** the inline HTML default **and** both language objects in
   cache references.
 - ❌ Don't add tracking, analytics, or third-party scripts without updating
   `datenschutz.html`.
+
+## Contact and privacy baseline (1 October 2026)
+
+The website presents individually scoped work without public package prices. Keep the German
+HTML and DE/EN translations aligned. The old price artwork is in tools/archive/pay-packets/;
+the deployment excludes tools/.
+
+Inter and GSAP are served locally with their license notices in assets/fonts/ and
+assets/vendor/gsap/. The contact form only prepares an email in the visitor's email app.
+There is no analytics integration, external font loading, form service or consent banner.
+Language and appearance preferences are stored only after the visitor actively selects them.
+If any data processing changes, update datenschutz.html to match before publishing.

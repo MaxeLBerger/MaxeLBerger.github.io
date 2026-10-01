@@ -16,48 +16,14 @@
             'slide.medieval.badge': 'TOWER DEFENSE',
             'nav.portfolio': 'Portfolio',
             'nav.about': 'Über mich',
-            'nav.pricing': 'Pakete',
+            'nav.services': 'Leistungen',
             'nav.tech': 'Tech Stack',
             'nav.contact': 'Kontakt',
-            'services.tag': 'Leistungen',
-            'services.title': 'Pakete & Preise',
-            'services.lead': 'Zwei Pakete, ein Festpreis, ein klarer Zeitrahmen. Dazu Pflege und Zusatzleistungen, wenn Sie sie brauchen.',
-            'services.badge': 'Empfohlen',
-            'services.note': 'Alle Preise netto zzgl. USt.',
-            'services.priceSuffix': 'netto',
-            'services.website.title': 'Website',
-            'services.website.sub': 'Der vollst\u00e4ndige Auftritt: f\u00fcnf bis acht Seiten, aufgebaut auf Ihrem Corporate Design.',
-            'services.website.meta': 'Paket 01 \u00b7 3 bis 5 Wochen',
-            'services.website.pricePre': 'ab',
-            'services.website.priceValue': '5.500 \u20ac',
-            'services.website.d1': 'Designsystem nach Ihrem CI, mobil und Desktop',
-            'services.website.d2': '5 bis 8 Seiten, Blog oder News optional',
-            'services.website.d3': 'Formulare, SEO-Setup und Suchmaschinen-Anmeldung',
-            'services.website.d4': 'Umzug alter Inhalte inklusive Weiterleitungen',
-            'services.website.d5': '60 Tage Support nach Livegang',
-            'services.website.link': 'Website anfragen',
-            'services.website.imageAlt': 'Paket Website: Startseite von maximilianhaak.de auf MacBook und iPhone vor Alpenpanorama, daneben der Preis ab 5.500 Euro',
-            'services.plus.title': 'Website Plus',
-            'services.plus.sub': 'Mehrsprachig, mit Stellenportal oder Anbindung an Ihre Systeme.',
-            'services.plus.meta': 'Paket 02 \u00b7 6 bis 10 Wochen',
-            'services.plus.pricePre': 'ab',
-            'services.plus.priceValue': '9.500 \u20ac',
-            'services.plus.d1': 'Alles aus dem Paket Website',
-            'services.plus.d2': 'Zweite Sprache, vollst\u00e4ndig lokalisiert',
-            'services.plus.d3': 'Stellenportal mit Detailseiten und Bewerbungsformular',
-            'services.plus.d4': 'Anbindung an CRM oder andere Schnittstellen',
-            'services.plus.d5': '90 Tage Support nach Livegang',
-            'services.plus.link': 'Projekt besprechen',
-            'services.plus.imageAlt': 'Paket Website Plus: Karriereseite mit Stellenportal auf MacBook und Bewerbungsformular auf dem iPhone, daneben der Preis ab 9.500 Euro',
-            'services.care.title': 'Website-Pflege',
-            'services.care.sub': 'Updates, Monitoring und kleine \u00c4nderungen bis 60 Minuten im Monat.',
-            'services.care.meta': 'ab 149 \u20ac / Monat',
-            'services.care.link': 'Pflege dazubuchen',
-            'services.extra.title': 'Zusatzleistungen',
-            'services.extra.sub': 'Alles dar\u00fcber hinaus nach Aufwand, transparent abgerechnet.',
-            'services.extra.meta': '95 \u20ac / Stunde',
-            'services.cta.text': 'Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.',
-            'services.cta.button': 'Kostenloses Erstgespräch',
+            'services.tag': 'Zusammenarbeit',
+            'services.title': 'Ihr Projekt beginnt mit einem Gespräch',
+            'services.lead': 'Sie interessieren sich für eine Website, eine Web-App oder eine KI-Lösung? Nehmen Sie direkt Kontakt mit mir auf. Wir besprechen Ihr Vorhaben, den passenden Umfang und den Zeitrahmen. Anschließend erhalten Sie ein individuelles Angebot.',
+            'services.cta.email': 'Direkt per E-Mail anfragen',
+            'services.cta.contact': 'Zum Kontakt',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Mit welchen Tools ich arbeite',
             'projects.tag': 'Ausgewählte Arbeiten',
@@ -65,7 +31,7 @@
             'projects.next': 'Nächstes Projekt',
             'projects.pick': 'Projekt auswählen',
             'projects.title': 'Projekte',
-            'projects.note': 'Selbstständig ab dem 1. Oktober 2026. Die Kundenprojekte hier sind in Arbeit oder als MVP gebaut und gehen nach und nach live.',
+            'projects.note': 'Selbstständig seit dem 1. Oktober 2026. Die Kundenprojekte hier sind in Arbeit oder als MVP gebaut und gehen nach und nach live.',
             'projects.mode.group': 'Projekt-Kategorie',
             'projects.mode.own': 'Eigene Projekte',
             'projects.mode.customers': 'Kundenprojekte',
@@ -119,13 +85,11 @@
             'contact.name': 'Name',
             'contact.email': 'E-Mail',
             'contact.message': 'Nachricht',
-            'contact.send': 'Nachricht senden',
+            'contact.send': 'E-Mail vorbereiten',
+            'contact.mailHint': 'Das Formular bereitet eine E-Mail in Ihrem E-Mail-Programm vor. Erst dort senden Sie die Nachricht ab.',
             'contact.map.title': 'Bruckmühl / Rosenheim',
             'contact.map.open': 'Karte öffnen',
-            'contact.status.sending': 'Wird gesendet...',
-            'contact.status.success': 'Danke, Ihre Nachricht wurde gesendet.',
-            'contact.status.error': 'Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt per E-Mail.',
-            'contact.status.mailClient': 'Ihr E-Mail-Programm wurde geöffnet.',
+            'contact.status.mailClient': 'Bitte senden Sie die Nachricht in Ihrem E-Mail-Programm ab. Falls es sich nicht öffnet, schreiben Sie direkt an kontakt@maximilianhaak.de.',
             'footer.impressum': 'Impressum',
             'footer.datenschutz': 'Datenschutz',
             // Hero (statisch, Foto-first)
@@ -265,7 +229,7 @@
             'slide.invite.t2': 'Als Nächstes.',
             'slide.invite.t3': 'Hier.',
             'slide.invite.badge': 'FREIER PLATZ',
-            'slide.invite.desc': 'Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich ab dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.',
+            'slide.invite.desc': 'Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich seit dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.',
             'slide.invite.cta1': 'Projekt besprechen',
             'slide.invite.tag1': 'Websites',
             'slide.invite.tag2': 'Web-Apps',
@@ -283,10 +247,6 @@
             'skills.row.eng': 'Sprachen & Tools',
             'skills.more': 'Außerdem im Einsatz',
             'about.cta': 'Projekt besprechen',
-            // Cookie consent
-            'cookie.text': 'Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.',
-            'cookie.accept': 'Verstanden',
-            'cookie.more': 'Datenschutz',
         },
         en: {
             'slide.e46.badge': 'DESKTOP APP',
@@ -296,48 +256,14 @@
             'slide.medieval.badge': 'TOWER DEFENSE',
             'nav.portfolio': 'Portfolio',
             'nav.about': 'About me',
-            'nav.pricing': 'Pricing',
+            'nav.services': 'Services',
             'nav.tech': 'Tech Stack',
             'nav.contact': 'Contact',
-            'services.tag': 'Services',
-            'services.title': 'Packages & Pricing',
-            'services.lead': 'Two packages, one fixed price, one clear timeline. Plus care and additional work whenever you need it.',
-            'services.badge': 'Recommended',
-            'services.note': 'All prices net, plus VAT.',
-            'services.priceSuffix': 'net',
-            'services.website.title': 'Website',
-            'services.website.sub': 'The full presence: five to eight pages, built on your corporate design.',
-            'services.website.meta': 'Package 01 \u00b7 3 to 5 weeks',
-            'services.website.pricePre': 'from',
-            'services.website.priceValue': '\u20ac5,500',
-            'services.website.d1': 'Design system based on your brand, mobile and desktop',
-            'services.website.d2': '5 to 8 pages, blog or news section optional',
-            'services.website.d3': 'Forms, SEO setup and search engine submission',
-            'services.website.d4': 'Migration of existing content including redirects',
-            'services.website.d5': '60 days of support after launch',
-            'services.website.link': 'Request a website',
-            'services.website.imageAlt': 'Website package: the maximilianhaak.de home page on a MacBook and an iPhone against an alpine backdrop, next to the price from 5,500 euros',
-            'services.plus.title': 'Website Plus',
-            'services.plus.sub': 'Multilingual, with a careers portal or a link into your systems.',
-            'services.plus.meta': 'Package 02 \u00b7 6 to 10 weeks',
-            'services.plus.pricePre': 'from',
-            'services.plus.priceValue': '\u20ac9,500',
-            'services.plus.d1': 'Everything in the Website package',
-            'services.plus.d2': 'A second language, fully localised',
-            'services.plus.d3': 'Careers portal with detail pages and application form',
-            'services.plus.d4': 'Integration with your CRM or other interfaces',
-            'services.plus.d5': '90 days of support after launch',
-            'services.plus.link': 'Discuss your project',
-            'services.plus.imageAlt': 'Website Plus package: a careers page with job portal on a MacBook and an application form on an iPhone, next to the price from 9,500 euros',
-            'services.care.title': 'Website Care',
-            'services.care.sub': 'Updates, monitoring and small changes, up to 60 minutes a month.',
-            'services.care.meta': 'from \u20ac149 / month',
-            'services.care.link': 'Add website care',
-            'services.extra.title': 'Additional Work',
-            'services.extra.sub': 'Anything beyond that is billed by the hour, transparently.',
-            'services.extra.meta': '\u20ac95 / hour',
-            'services.cta.text': 'Not sure what you need? A 20-minute call usually clears it up.',
-            'services.cta.button': 'Free intro call',
+            'services.tag': 'Working together',
+            'services.title': 'Your project starts with a conversation',
+            'services.lead': 'Interested in a website, a web app or an AI solution? Contact me directly. We will discuss your goals, the scope and the timeline. You will then receive a proposal tailored to your project.',
+            'services.cta.email': 'Get in touch by email',
+            'services.cta.contact': 'Contact details',
             'skills.tag': 'Tech Stack',
             'skills.title': 'Tools I work with',
             'projects.tag': 'Selected Work',
@@ -345,7 +271,7 @@
             'projects.next': 'Next project',
             'projects.pick': 'Choose a project',
             'projects.title': 'Projects',
-            'projects.note': 'Self-employed from 1 October 2026. The client projects here are in progress or built as an MVP and go live one by one.',
+            'projects.note': 'Self-employed since 1 October 2026. The client projects here are in progress or built as an MVP and go live one by one.',
             'projects.mode.group': 'Project category',
             'projects.mode.own': 'Own projects',
             'projects.mode.customers': 'Client projects',
@@ -399,13 +325,11 @@
             'contact.name': 'Name',
             'contact.email': 'Email',
             'contact.message': 'Message',
-            'contact.send': 'Send message',
+            'contact.send': 'Prepare email',
+            'contact.mailHint': 'This form prepares an email in your email app. You send the message from there.',
             'contact.map.title': 'Bruckmühl / Rosenheim',
             'contact.map.open': 'Open map',
-            'contact.status.sending': 'Sending...',
-            'contact.status.success': 'Thanks, your message has been sent.',
-            'contact.status.error': 'Something went wrong. Please email me directly instead.',
-            'contact.status.mailClient': 'Your mail client has been opened.',
+            'contact.status.mailClient': 'Please send the message from your email app. If it does not open, email kontakt@maximilianhaak.de directly.',
             'footer.impressum': 'Legal Notice',
             'footer.datenschutz': 'Privacy Policy',
             // Hero (static, photo-first)
@@ -545,7 +469,7 @@
             'slide.invite.t2': 'Up next.',
             'slide.invite.t3': 'Right here.',
             'slide.invite.badge': 'OPEN SLOT',
-            'slide.invite.desc': 'This selection shows three client projects, real work rather than sample pages. I am self-employed from 1 October 2026, and the slot for the next project is open. A short conversation beforehand is enough to tell whether it is a fit.',
+            'slide.invite.desc': 'This selection shows three client projects, real work rather than sample pages. I have been self-employed since 1 October 2026, and the slot for the next project is open. A short conversation beforehand is enough to tell whether it is a fit.',
             'slide.invite.cta1': 'Let us talk',
             'slide.invite.tag1': 'Websites',
             'slide.invite.tag2': 'Web apps',
@@ -563,10 +487,6 @@
             'skills.row.eng': 'Languages & Tools',
             'skills.more': 'Also in my toolbox',
             'about.cta': 'Discuss Your Project',
-            // Cookie consent
-            'cookie.text': 'This website uses only technically necessary cookies. No tracking cookies.',
-            'cookie.accept': 'Understood',
-            'cookie.more': 'Privacy Policy',
         }
     };
 
@@ -581,7 +501,14 @@
         });
     }
 
-    let currentLang = localStorage.getItem('lang') || 'de';
+    // Remember explicit display choices only; storage may be blocked.
+    function readPreference(key) {
+        try { return localStorage.getItem(key); } catch (_) { return null; }
+    }
+    function savePreference(key, value) {
+        try { localStorage.setItem(key, value); } catch (_) { /* Keep this visit usable. */ }
+    }
+    let currentLang = readPreference('lang') === 'en' ? 'en' : 'de';
 
     function applyTranslations(lang) {
         const dict = translations[lang];
@@ -607,12 +534,11 @@
 
     /* ═══ COLOR SCHEME TOGGLE ═══ */
     function getStoredTheme() {
-        return localStorage.getItem('color-scheme') || 'dark';
+        return readPreference('color-scheme') === 'light' ? 'light' : 'dark';
     }
 
     function setColorScheme(scheme) {
         document.documentElement.setAttribute('data-color-scheme', scheme);
-        localStorage.setItem('color-scheme', scheme);
     }
 
     /* ═══ PROJECT THEME ═══ */
@@ -1561,116 +1487,17 @@
     function initContactForm() {
         const form = document.querySelector('.contact-form');
         if (!form) return;
-
         const status = form.querySelector('.contact-form-status');
-        const btn = form.querySelector('button[type="submit"]');
-        if (!btn) return;
-
-        const getText = (key) => translations[currentLang]?.[key] || translations.de[key] || '';
-        const setStatus = (key, state) => {
-            const message = getText(key);
-            if (status) {
-                status.textContent = message;
-                status.classList.toggle('is-success', state === 'success');
-                status.classList.toggle('is-error', state === 'error');
-            }
-            return message;
-        };
-
-        const resetFeedback = (delay) => {
-            window.setTimeout(() => {
-                btn.textContent = getText('contact.send');
-                btn.classList.remove('is-success', 'is-error');
-                btn.disabled = false;
-            }, delay);
-        };
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const action = form.getAttribute('action') || '';
-
-            if (status) {
-                status.textContent = '';
-                status.classList.remove('is-success', 'is-error');
-            }
-
-            // Mailto fallback (no backend): build a pre-filled email and open the user's mail client
-            if (action.startsWith('mailto:')) {
-                const name = (form.querySelector('#name')?.value || '').trim();
-                const email = (form.querySelector('#email')?.value || '').trim();
-                const message = (form.querySelector('#message')?.value || '').trim();
-                const subject = currentLang === 'de'
-                    ? `Anfrage über maximilianhaak.de: ${name}`
-                    : `Inquiry via maximilianhaak.de: ${name}`;
-                const body = `${message}\n\n--\n${name}\n${email}`;
-                const target = `${action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                window.location.href = target;
-                btn.textContent = setStatus('contact.status.mailClient', 'success');
-                btn.classList.add('is-success');
-                resetFeedback(4000);
-                return;
-            }
-
-            btn.disabled = true;
-            btn.textContent = setStatus('contact.status.sending');
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    btn.textContent = setStatus('contact.status.success', 'success');
-                    btn.classList.add('is-success');
-                    form.reset();
-                    resetFeedback(3000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (_) {
-                btn.textContent = setStatus('contact.status.error', 'error');
-                btn.classList.add('is-error');
-                resetFeedback(4000);
-            }
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = (form.querySelector('#name')?.value || '').trim();
+            const email = (form.querySelector('#email')?.value || '').trim();
+            const message = (form.querySelector('#message')?.value || '').trim();
+            const subject = (currentLang === 'de' ? 'Anfrage über maximilianhaak.de: ' : 'Inquiry via maximilianhaak.de: ') + name;
+            const body = [message, '', '--', name, email].join('\r\n');
+            window.location.href = 'mailto:kontakt@maximilianhaak.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            if (status) status.textContent = translations[currentLang]['contact.status.mailClient'];
         });
-    }
-
-    /* ═══ COOKIE CONSENT ═══ */
-    function initCookieConsent() {
-        const banner = document.getElementById('cookieConsent');
-        const acceptBtn = document.getElementById('cookieAccept');
-        if (!banner || !acceptBtn) return;
-
-        // Load Google Fonts only after consent (GDPR compliance)
-        function loadGoogleFonts() {
-            if (document.querySelector('link[data-google-fonts]')) return;
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.setAttribute('data-google-fonts', 'true');
-            link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap';
-            document.head.appendChild(link);
-        }
-
-        // If already consented, load fonts immediately
-        if (localStorage.getItem('cookieConsent') === 'accepted') {
-            loadGoogleFonts();
-        }
-
-        if (!localStorage.getItem('cookieConsent')) {
-            window.setTimeout(() => { banner.hidden = false; }, 1000);
-        }
-
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            banner.hidden = true;
-            loadGoogleFonts();
-        });
-
-        window.showConsentManager = function () {
-            banner.hidden = false;
-        };
     }
 
     /* ═══ HERO BACKGROUND SLIDESHOW ═══
@@ -1865,7 +1692,9 @@
         if (themeBtn) {
             themeBtn.addEventListener('click', () => {
                 const current = document.documentElement.getAttribute('data-color-scheme');
-                setColorScheme(current === 'dark' ? 'light' : 'dark');
+                const next = current === 'dark' ? 'light' : 'dark';
+                setColorScheme(next);
+                savePreference('color-scheme', next);
             });
         }
 
@@ -1880,7 +1709,7 @@
             updateLangLabel();
             langBtn.addEventListener('click', () => {
                 currentLang = currentLang === 'de' ? 'en' : 'de';
-                localStorage.setItem('lang', currentLang);
+                savePreference('lang', currentLang);
                 applyTranslations(currentLang);
                 updateLangLabel();
             });
@@ -1889,7 +1718,6 @@
         initMobileMenu();
         initNavbarScroll();
         initContactForm();
-        initCookieConsent();
         initAnimations();
         initHeroBgSlideshow();
         initProjectsEnergy();
