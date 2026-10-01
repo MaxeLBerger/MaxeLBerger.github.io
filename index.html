@@ -57,32 +57,11 @@
                 "name": "Oberbayern"
             }
         ],
-        "priceRange": "€€€",
         "knowsLanguage": ["de", "en"],
         "sameAs": [
             "https://github.com/MaxeLBerger",
             "https://www.linkedin.com/in/maximilian-haak-69531739a/"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Website-Pakete",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "name": "Website",
-                    "description": "Fünf bis acht Seiten auf Basis Ihres Corporate Designs, inklusive SEO-Setup und Inhaltsumzug",
-                    "price": "5500",
-                    "priceCurrency": "EUR"
-                },
-                {
-                    "@type": "Offer",
-                    "name": "Website Plus",
-                    "description": "Mehrsprachige Website mit Stellenportal oder Anbindung an CRM und weitere Systeme",
-                    "price": "9500",
-                    "priceCurrency": "EUR"
-                }
-            ]
-        }
+        ]
     }
     </script>
 
@@ -97,14 +76,11 @@
             }
         } catch (e) { /* storage blocked: keep the dark default */ }
     </script>
-    <link rel="stylesheet" href="assets/css/main.css?v=20260913-imkerei">
+    <link rel="stylesheet" href="assets/css/main.css?v=20261001-contact">
 
-    <!-- Pre-warm CDN connection so deferred GSAP doesn't pay a fresh DNS+TLS round-trip. -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <!-- Animation libraries are served from this website. -->
+    <script src="assets/vendor/gsap/gsap.min.js" defer></script>
+    <script src="assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
 </head>
 <body class="has-hero">
     <!-- Navigation -->
@@ -117,7 +93,7 @@
                 <a href="#projects" data-i18n="nav.portfolio">Portfolio</a>
                 <a href="#about" data-i18n="nav.about">Über mich</a>
                 <a href="#skills" data-i18n="nav.tech">Tech Stack</a>
-                <a href="#pricing" data-i18n="nav.pricing">Pakete</a>
+                <a href="#services" data-i18n="nav.services">Leistungen</a>
                 <a href="#contact" data-i18n="nav.contact">Kontakt</a>
             </div>
             <div class="nav-actions">
@@ -185,7 +161,7 @@
                 <div class="section-header">
                     <p class="section-tag" data-i18n="projects.tag">Ausgewählte Arbeiten</p>
                     <h2 class="section-title" data-i18n="projects.title">Projekte</h2>
-                    <p class="section-note" data-i18n="projects.note">Selbstständig ab dem 1. Oktober 2026. Die Kundenprojekte hier sind in Arbeit oder als MVP gebaut und gehen nach und nach live.</p>
+                    <p class="section-note" data-i18n="projects.note">Selbstständig seit dem 1. Oktober 2026. Die Kundenprojekte hier sind in Arbeit oder als MVP gebaut und gehen nach und nach live.</p>
                 </div>
 
                 <div class="project-mode-selector" role="group" aria-label="Projekt-Kategorie" data-i18n-aria-label="projects.mode.group">
@@ -822,7 +798,7 @@
                                 <span class="title-line"><span class="gradient-text" data-i18n="slide.invite.t2">Als Nächstes.</span></span>
                                 <span class="title-line" data-i18n="slide.invite.t3">Hier.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.invite.desc">Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich ab dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
+                            <p class="slide-description" data-i18n="slide.invite.desc">Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich seit dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
                             <div class="slide-cta">
                                 <a href="#contact" class="btn btn-primary" data-i18n="slide.invite.cta1">Projekt besprechen</a>
                             </div>
@@ -1039,103 +1015,18 @@
             </div>
         </section>
 
-        <!-- Pricing: zwei Pakete als bildgefuehrte Panels, Grafik und Text wechseln die Seite -->
-        <section id="pricing" class="services-section">
+        <!-- Individual project inquiries -->
+        <section id="services" class="services-section">
             <div class="container">
+                <span id="pricing" aria-hidden="true"></span>
                 <div class="services-head">
-                    <div>
-                        <p class="section-tag" data-i18n="services.tag">Leistungen</p>
-                        <h2 class="section-title" data-i18n="services.title">Pakete &amp; Preise</h2>
-                    </div>
-                    <p class="services-lead" data-i18n="services.lead">Zwei Pakete, ein Festpreis, ein klarer Zeitrahmen. Dazu Pflege und Zusatzleistungen, wenn Sie sie brauchen.</p>
+                    <p class="section-tag" data-i18n="services.tag">Zusammenarbeit</p>
+                    <h2 class="section-title" data-i18n="services.title">Ihr Projekt beginnt mit einem Gespräch</h2>
+                    <p class="services-lead" data-i18n="services.lead">Sie interessieren sich für eine Website, eine Web-App oder eine KI-Lösung? Nehmen Sie direkt Kontakt mit mir auf. Wir besprechen Ihr Vorhaben, den passenden Umfang und den Zeitrahmen. Anschließend erhalten Sie ein individuelles Angebot.</p>
                 </div>
-
-                <article class="service-panel service-panel--featured scroll-reveal">
-                    <div class="service-panel__art service-panel__art--website">
-                        <img class="service-shot"
-                             src="assets/img/pay-packets/paket-website.webp"
-                             srcset="assets/img/pay-packets/paket-website-760.webp 760w,
-                                     assets/img/pay-packets/paket-website.webp 1200w"
-                             sizes="(max-width: 900px) 92vw, 40vw"
-                             alt="Paket Website: Startseite von maximilianhaak.de auf MacBook und iPhone vor Alpenpanorama, daneben der Preis ab 5.500 Euro"
-                             data-i18n-alt="services.website.imageAlt"
-                             loading="lazy" decoding="async" width="1200" height="675">
-                    </div>
-                    <div class="service-panel__copy">
-                        <p class="service-panel__meta">
-                            <span data-i18n="services.website.meta">Paket 01 · 3 bis 5 Wochen</span>
-                            <b data-i18n="services.badge">Empfohlen</b>
-                        </p>
-                        <h3 class="service-panel__title" data-i18n="services.website.title">Website</h3>
-                        <p class="service-panel__sub" data-i18n="services.website.sub">Der vollständige Auftritt: fünf bis acht Seiten, aufgebaut auf Ihrem Corporate Design.</p>
-                        <p class="service-panel__price">
-                            <span data-i18n="services.website.pricePre">ab</span>
-                            <b data-i18n="services.website.priceValue">5.500 €</b>
-                            <span data-i18n="services.priceSuffix">netto</span>
-                        </p>
-                        <ul class="service-panel__checks">
-                            <li data-i18n="services.website.d1">Designsystem nach Ihrem CI, mobil und Desktop</li>
-                            <li data-i18n="services.website.d2">5 bis 8 Seiten, Blog oder News optional</li>
-                            <li data-i18n="services.website.d3">Formulare, SEO-Setup und Suchmaschinen-Anmeldung</li>
-                            <li data-i18n="services.website.d4">Umzug alter Inhalte inklusive Weiterleitungen</li>
-                            <li data-i18n="services.website.d5">60 Tage Support nach Livegang</li>
-                        </ul>
-                        <a href="#contact" class="service-panel__cta" data-i18n="services.website.link">Website anfragen</a>
-                    </div>
-                </article>
-
-                <article class="service-panel service-panel--flip scroll-reveal">
-                    <div class="service-panel__art service-panel__art--plus">
-                        <img class="service-shot"
-                             src="assets/img/pay-packets/paket-websiteplus.webp"
-                             srcset="assets/img/pay-packets/paket-websiteplus-760.webp 760w,
-                                     assets/img/pay-packets/paket-websiteplus.webp 1200w"
-                             sizes="(max-width: 900px) 92vw, 40vw"
-                             alt="Paket Website Plus: Karriereseite mit Stellenportal auf MacBook und Bewerbungsformular auf dem iPhone, daneben der Preis ab 9.500 Euro"
-                             data-i18n-alt="services.plus.imageAlt"
-                             loading="lazy" decoding="async" width="1200" height="675">
-                    </div>
-                    <div class="service-panel__copy">
-                        <p class="service-panel__meta">
-                            <span data-i18n="services.plus.meta">Paket 02 · 6 bis 10 Wochen</span>
-                        </p>
-                        <h3 class="service-panel__title" data-i18n="services.plus.title">Website Plus</h3>
-                        <p class="service-panel__sub" data-i18n="services.plus.sub">Mehrsprachig, mit Stellenportal oder Anbindung an Ihre Systeme.</p>
-                        <p class="service-panel__price">
-                            <span data-i18n="services.plus.pricePre">ab</span>
-                            <b data-i18n="services.plus.priceValue">9.500 €</b>
-                            <span data-i18n="services.priceSuffix">netto</span>
-                        </p>
-                        <ul class="service-panel__checks">
-                            <li data-i18n="services.plus.d1">Alles aus dem Paket Website</li>
-                            <li data-i18n="services.plus.d2">Zweite Sprache, vollständig lokalisiert</li>
-                            <li data-i18n="services.plus.d3">Stellenportal mit Detailseiten und Bewerbungsformular</li>
-                            <li data-i18n="services.plus.d4">Anbindung an CRM oder andere Schnittstellen</li>
-                            <li data-i18n="services.plus.d5">90 Tage Support nach Livegang</li>
-                        </ul>
-                        <a href="#contact" class="service-panel__cta" data-i18n="services.plus.link">Projekt besprechen</a>
-                    </div>
-                </article>
-
-                <div class="service-tiles">
-                    <div class="service-tile scroll-reveal">
-                        <h3 class="service-tile__title" data-i18n="services.care.title">Website-Pflege</h3>
-                        <p class="service-tile__sub" data-i18n="services.care.sub">Updates, Monitoring und kleine Änderungen bis 60 Minuten im Monat.</p>
-                        <p class="service-tile__meta" data-i18n="services.care.meta">ab 149 € / Monat</p>
-                        <a href="#contact" class="service-tile__link" data-i18n="services.care.link">Pflege dazubuchen</a>
-                    </div>
-                    <div class="service-tile scroll-reveal">
-                        <h3 class="service-tile__title" data-i18n="services.extra.title">Zusatzleistungen</h3>
-                        <p class="service-tile__sub" data-i18n="services.extra.sub">Alles darüber hinaus nach Aufwand, transparent abgerechnet.</p>
-                        <p class="service-tile__meta" data-i18n="services.extra.meta">95 € / Stunde</p>
-                    </div>
-                </div>
-
-                <p class="services-note" data-i18n="services.note">Alle Preise netto zzgl. USt.</p>
-
                 <div class="services-cta">
-                    <p data-i18n="services.cta.text">Nicht sicher, was Sie brauchen? Ein 20-minütiges Gespräch klärt das meist.</p>
-                    <a href="#contact" class="btn btn-primary" data-i18n="services.cta.button">Kostenloses Erstgespräch</a>
+                    <a href="mailto:kontakt@maximilianhaak.de" class="btn btn-primary" data-i18n="services.cta.email">Direkt per E-Mail anfragen</a>
+                    <a href="#contact" class="btn btn-outline" data-i18n="services.cta.contact">Zum Kontakt</a>
                 </div>
             </div>
         </section>
@@ -1202,7 +1093,8 @@
                             <label for="message" data-i18n="contact.message">Nachricht</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" data-i18n="contact.send">Nachricht senden</button>
+                        <p class="contact-form-note"><span data-i18n="contact.mailHint">Das Formular bereitet eine E-Mail in Ihrem E-Mail-Programm vor. Erst dort senden Sie die Nachricht ab.</span> <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></p>
+                        <button type="submit" class="btn btn-primary" data-i18n="contact.send">E-Mail vorbereiten</button>
                         <p id="contactFormStatus" class="contact-form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
@@ -1231,17 +1123,6 @@
         </div>
     </footer>
 
-    <!-- Cookie Consent -->
-    <div id="cookieConsent" class="cookie-consent" role="region" aria-live="polite" hidden>
-        <div class="cookie-content">
-            <p data-i18n="cookie.text">Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies.</p>
-            <div class="cookie-actions">
-                <button class="btn btn-primary btn-sm" id="cookieAccept" data-i18n="cookie.accept">Verstanden</button>
-                <a href="datenschutz.html" class="cookie-link" data-i18n="cookie.more">Datenschutz</a>
-            </div>
-        </div>
-    </div>
-
-    <script src="assets/js/main.js?v=20260913-imkerei" defer></script>
+    <script src="assets/js/main.js?v=20261001-contact" defer></script>
 </body>
 </html>

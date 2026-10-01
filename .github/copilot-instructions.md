@@ -47,7 +47,7 @@ enforces this; a fresh clone enables it with `git config core.hooksPath .githook
 
 - **HTML5 / CSS3 / vanilla JavaScript (ES6+)**: no React, no Vue, no bundler
 - **GSAP 3.12 + ScrollTrigger** via CDN for animations
-- **Inter** (Google Fonts): loaded after cookie consent (GDPR)
+- **Inter**: served locally from assets/fonts/InterVariable.woff2 (SIL OFL)
 - **i18n**: custom DE/EN dictionary in [assets/js/main.js](../assets/js/main.js) (DE is default)
 - **Hosting**: GitHub Pages with custom domain (`CNAME` → `maximilianhaak.de`)
 
@@ -278,18 +278,16 @@ Language is persisted in `localStorage('lang')`.
     scrolled navbar.
 - **No JS-dependent `opacity: 0` start states** outside of `.scroll-reveal`. The skills section was invisible once
     its old animator was gone.
-- **Google Fonts** are only loaded after the user accepts the cookie banner.
+- **Fonts and GSAP** are served locally. There is no cookie banner or third-party runtime import.
 - **Contact location** uses a lightweight external Google Maps link card, not an embedded iframe. Do not reintroduce a
     map iframe on the homepage unless there is a strong product reason and it remains opt-in/lazy.
 
 ### Contact form
 
-Two modes detected from the form's `action` attribute:
+The form prepares a mailto draft locally. It does not submit to a server or a form provider.
+The button says "E-Mail vorbereiten" and explains that the visitor sends it in their mail application.
+Do not add a form backend without updating the privacy notice.
 
-- `mailto:` → builds a pre-filled email and opens the user's mail client
-- HTTP URL → POSTs `FormData` to the endpoint (e.g. Formspree)
-
-Status feedback uses `.is-success` / `.is-error` classes on `.btn-primary` (defined in [style.css](../assets/css/main.css)).
 
 ## Deployment
 
@@ -377,15 +375,12 @@ See [.gitignore](../.gitignore). Important exclusions:
 6. Create `projects/<slug>.html` for the detail page and add it to `sitemap.xml`
 7. Test both modes locally, in light and dark, then push
 
-### Change a price or a package
+### Individual project inquiries
 
-The pricing section sells website work only: Landingpage (from 2.500 €), Website (from 5.500 €, marked as
-recommended), Website Plus (from 9.500 €), plus maintenance from 149 € per month and 95 € per hour for anything
-beyond scope. All figures are net; the disclaimer under the cards says so.
-
-Change a number in `index.html` **and** in both `translations.de` and `translations.en`, otherwise the JS overwrites
-the HTML on the next load. Do not reintroduce packages for AI automation, web apps or code review; they were removed
-deliberately.
+The services section has no packages or published prices. It directs visitors to personal contact
+and an individual proposal. Keep German HTML and both translations synchronized.
+Do not restore public package prices without an explicit request from the owner.
+Former price artwork is archived in tools/archive/pay-packets and is not deployed.
 
 ### Update an image
 
