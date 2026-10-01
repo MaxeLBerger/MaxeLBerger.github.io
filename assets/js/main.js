@@ -89,7 +89,7 @@
             'contact.mailHint': 'Das Formular bereitet eine E-Mail in Ihrem E-Mail-Programm vor. Erst dort senden Sie die Nachricht ab.',
             'contact.map.title': 'Bruckmühl / Rosenheim',
             'contact.map.open': 'Karte öffnen',
-            'contact.status.mailClient': 'Bitte senden Sie die Nachricht in Ihrem E-Mail-Programm ab. Falls es sich nicht öffnet, schreiben Sie direkt an kontakt@maximilianhaak.de.',
+            'contact.status.mailClient': 'Bitte senden Sie die Nachricht in Ihrem E-Mail-Programm ab. Falls es sich nicht öffnet, schreiben Sie direkt an maximilian@haak.in.',
             'footer.impressum': 'Impressum',
             'footer.datenschutz': 'Datenschutz',
             // Hero (statisch, Foto-first)
@@ -329,7 +329,7 @@
             'contact.mailHint': 'This form prepares an email in your email app. You send the message from there.',
             'contact.map.title': 'Bruckmühl / Rosenheim',
             'contact.map.open': 'Open map',
-            'contact.status.mailClient': 'Please send the message from your email app. If it does not open, email kontakt@maximilianhaak.de directly.',
+            'contact.status.mailClient': 'Please send the message from your email app. If it does not open, email maximilian@haak.in directly.',
             'footer.impressum': 'Legal Notice',
             'footer.datenschutz': 'Privacy Policy',
             // Hero (static, photo-first)
@@ -1495,7 +1495,7 @@
             const message = (form.querySelector('#message')?.value || '').trim();
             const subject = (currentLang === 'de' ? 'Anfrage über maximilianhaak.de: ' : 'Inquiry via maximilianhaak.de: ') + name;
             const body = [message, '', '--', name, email].join('\r\n');
-            window.location.href = 'mailto:kontakt@maximilianhaak.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            window.location.href = 'mailto:maximilian@haak.in?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
             if (status) status.textContent = translations[currentLang]['contact.status.mailClient'];
         });
     }
