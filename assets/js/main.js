@@ -797,7 +797,11 @@
             });
         }
 
-        /** Warm the slides an arrow press or swipe would reach next. */
+        /**
+         * Warm the slides an arrow press or swipe would reach next. Waits for
+         * the load event, so on a slow link these never compete with the
+         * hero photo and the font.
+         */
         preloadAround(index) {
             const run = () => {
                 const count = this.slides.length;
@@ -805,11 +809,15 @@
                 this.loadSlideMedia(this.slides[(index + 1) % count]);
                 this.loadSlideMedia(this.slides[(index - 1 + count) % count]);
             };
-            if (typeof window.requestIdleCallback === 'function') {
-                window.requestIdleCallback(run, { timeout: 2000 });
-            } else {
-                window.setTimeout(run, 300);
-            }
+            const schedule = () => {
+                if (typeof window.requestIdleCallback === 'function') {
+                    window.requestIdleCallback(run, { timeout: 2000 });
+                } else {
+                    window.setTimeout(run, 300);
+                }
+            };
+            if (document.readyState === 'complete') schedule();
+            else window.addEventListener('load', schedule, { once: true });
         }
 
         getSlideIndexForTheme(theme) {
@@ -1436,6 +1444,25 @@
         if (energy) revealEnergyBand(energy);
     }
 
+    /* The 37 tech stack icons are CSS images. Fetched at start-up they
+       shared a slow mobile link with the hero photo, the page's largest
+       paint, and delayed it by about 0.4 s. CSS keeps them unset until the
+       section is within 800 px of the viewport and this adds .is-near. */
+    function initSkillsIcons() {
+        const skills = document.getElementById('skills');
+        if (!skills) return;
+        if (!('IntersectionObserver' in window)) {
+            skills.classList.add('is-near');
+            return;
+        }
+        const near = new IntersectionObserver((entries) => {
+            if (!entries.some(entry => entry.isIntersecting)) return;
+            skills.classList.add('is-near');
+            near.disconnect();
+        }, { rootMargin: '800px 0px' });
+        near.observe(skills);
+    }
+
     /* The Tech Stack band has no active project slide to take its colour
        from: it cycles through a few curated palettes, and hovering a tool
        tile previews that tool's own brand colour (--glow, see the per-logo
@@ -1564,6 +1591,7 @@
         initHeroBgSlideshow();
         initProjectsEnergy();
         initSkillsEnergy();
+        initSkillsIcons();
 
         // Project slider
         const slider = new ProjectSlider();

@@ -3912,3 +3912,13 @@ html[data-color-scheme="light"] .legal-page a:hover {
         transform: none !important;
     }
 }
+
+/* Tech stack icons wait until the section is near (initSkillsIcons() in
+   main.js adds .is-near): 37 small files otherwise compete with the hero
+   photo on slow mobile links. Gated on .js, so without script they load as
+   usual. */
+.js .skills-section:not(.is-near) .stack-logo {
+    background-image: none;
+    -webkit-mask: none;
+    mask: none;
+}
