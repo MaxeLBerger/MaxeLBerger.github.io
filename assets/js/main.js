@@ -1553,60 +1553,39 @@
         start();
     }
 
-    /* ═══ PROJECTS ENERGY BAND ═══
-       The band behind the projects is a CSS-masked layer coloured by the
-       project theme. Fade it in once the mask image has decoded, pause
-       the ambient drift while the tab is hidden and add a slow scroll
-       parallax over the section (the inner wrapper moves, the masked
-       outer box stays put). */
-    function initProjectsEnergy() {
-        const projects = document.getElementById('projects');
-        const energy = projects ? projects.querySelector('.projects-energy') : null;
-        if (!energy) return;
-
+    /* ═══ ENERGY BANDS ═══
+       The bands behind Projekte and Tech Stack are static CSS-masked layers
+       (see the energy band block in main.css for why they no longer animate).
+       Script only fades a band in once its mask image has decoded; the
+       scroll parallax is a CSS scroll-driven animation. */
+    function revealEnergyBand(energy) {
+        // Phones hide the band entirely: do not fetch the mask image there.
+        if (getComputedStyle(energy).display === 'none') return;
         const ready = () => energy.classList.add('is-ready');
         const large = window.matchMedia('(min-width: 1100px)').matches;
         const probe = new Image();
         probe.src = `assets/img/backgrounds/hero-energy${large ? '' : '-900'}.webp`;
         (probe.decode ? probe.decode() : Promise.resolve()).then(ready, ready);
         window.setTimeout(ready, 4000);
-
-        document.addEventListener('visibilitychange', () => {
-            energy.classList.toggle('is-paused', document.hidden);
-        });
-
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-        const mover = energy.querySelector('.projects-energy-move') || energy;
-        gsap.fromTo(mover, { y: -90 }, {
-            y: 90,
-            ease: 'none',
-            scrollTrigger: { trigger: projects, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
-        });
     }
 
-    /* ═══ SKILLS/TOOLS PLASMA BAND ═══
-       Same band technique as behind Projekte (fade in once the mask image
-       has decoded, pause while the tab is hidden, slow scroll parallax),
-       but there is no active project slide to take the colour from here:
-       it cycles on its own through a few curated palettes, and hovering a
-       tool tile previews that tool's own brand colour (--glow, see the
-       per-logo table in main.css) instead of waiting for the next tick. */
+    function initProjectsEnergy() {
+        const projects = document.getElementById('projects');
+        const energy = projects ? projects.querySelector('.projects-energy') : null;
+        if (energy) revealEnergyBand(energy);
+    }
+
+    /* The Tech Stack band has no active project slide to take its colour
+       from: it cycles through a few curated palettes, and hovering a tool
+       tile previews that tool's own brand colour (--glow, see the per-logo
+       table in main.css). The cycle only runs while the section is on
+       screen and the tab is visible, because every colour change repaints
+       the masked layers for the length of the transition. */
     function initSkillsEnergy() {
         const skills = document.getElementById('skills');
         const energy = skills ? skills.querySelector('.skills-energy') : null;
         if (!energy) return;
-
-        const ready = () => energy.classList.add('is-ready');
-        const large = window.matchMedia('(min-width: 1100px)').matches;
-        const probe = new Image();
-        probe.src = `assets/img/backgrounds/hero-energy${large ? '' : '-900'}.webp`;
-        (probe.decode ? probe.decode() : Promise.resolve()).then(ready, ready);
-        window.setTimeout(ready, 4000);
-
-        document.addEventListener('visibilitychange', () => {
-            energy.classList.toggle('is-paused', document.hidden);
-        });
+        revealEnergyBand(energy);
 
         // Erster Eintrag = die CSS-Defaults (--skills-energy-band/-glow),
         // damit weder der erste Zyklus-Tick noch der erste Hover einen
@@ -1629,21 +1608,28 @@
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const intervalMs = 12000;
-        let timerId = reduceMotion ? null : window.setInterval(cycle, intervalMs);
-        const stopCycle = () => {
-            if (timerId !== null) {
+        let timerId = null;
+        let onScreen = false;
+        let hovering = false;
+        const syncCycle = () => {
+            const shouldRun = !reduceMotion && onScreen && !hovering && !document.hidden;
+            if (shouldRun && timerId === null) {
+                timerId = window.setInterval(cycle, intervalMs);
+            } else if (!shouldRun && timerId !== null) {
                 window.clearInterval(timerId);
                 timerId = null;
             }
         };
-        const startCycle = () => {
-            if (timerId === null && !reduceMotion && !document.hidden) {
-                timerId = window.setInterval(cycle, intervalMs);
-            }
-        };
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) stopCycle(); else startCycle();
-        });
+        document.addEventListener('visibilitychange', syncCycle);
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver((entries) => {
+                onScreen = entries[entries.length - 1].isIntersecting;
+                syncCycle();
+            }).observe(skills);
+        } else {
+            onScreen = true;
+            syncCycle();
+        }
 
         // Hover: jede Kachel hat schon eine Marken-Glow-Farbe fuer ihren
         // eigenen Radial-Schein (--glow, faellt sonst auf --accent zurueck).
@@ -1664,24 +1650,18 @@
                     const raw = cs.getPropertyValue('--glow').trim() || cs.getPropertyValue('--accent').trim();
                     const rgb = parseRgbTriplet(raw);
                     if (!rgb) return;
-                    stopCycle();
+                    hovering = true;
+                    syncCycle();
                     energy.style.setProperty('--skills-energy-band', toRgbString(rgb));
                     energy.style.setProperty('--skills-energy-glow', toRgbString(lighten(rgb, 0.4)));
                 });
                 item.addEventListener('mouseleave', () => {
+                    hovering = false;
                     applyPalette(index);
-                    startCycle();
+                    syncCycle();
                 });
             });
         }
-
-        if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-        const mover = energy.querySelector('.skills-energy-move') || energy;
-        gsap.fromTo(mover, { y: -70 }, {
-            y: 70,
-            ease: 'none',
-            scrollTrigger: { trigger: skills, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
-        });
     }
 
     /* ═══ INIT ═══ */

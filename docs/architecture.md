@@ -69,12 +69,16 @@ Language is persisted in `localStorage('lang')`.
 
 ### Performance gates
 
-- **Mouse parallax** in `assets/js/main.js` skips work when `#projects` is
-  off-screen (`parallaxTargetsVisible` flag, fed by an `IntersectionObserver`).
-- **Portfolio orb CSS animations** live in `#projects` as `.project-orb`
-  elements and are paused while the section lacks `.in-view`.
+- **Energy bands** behind `#projects` and `#skills` are static masked layers.
+  Do not add keyframe animations to them or their children: measured with
+  `tools/perf-bench/`, that kept the main thread 30 to 80 % busy at 4x CPU
+  throttling. Their scroll parallax is a CSS scroll-driven animation.
+- **Skills palette cycle** (`setInterval`) only runs while `#skills` is on
+  screen (`IntersectionObserver`) and the tab is visible.
 - **Hero photo crossfade** (`setInterval`) skips work when `document.hidden`.
-- **Google Fonts** load only after the user accepts the cookie banner.
+- **Below-the-fold sections** use `content-visibility: auto`.
+- Measure scroll and idle cost before and after visual changes:
+  `node tools/perf-bench/bench.mjs --url <local server> --throttle 4`.
 
 ### Contact form
 
