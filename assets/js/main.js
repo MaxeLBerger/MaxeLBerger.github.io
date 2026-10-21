@@ -1444,10 +1444,11 @@
         if (energy) revealEnergyBand(energy);
     }
 
-    /* The 37 tech stack icons are CSS images. Fetched at start-up they
-       shared a slow mobile link with the hero photo, the page's largest
-       paint, and delayed it by about 0.4 s. CSS keeps them unset until the
-       section is within 800 px of the viewport and this adds .is-near. */
+    /* The tech stack icons (about 40 small SVGs) are CSS images. Fetched
+       at start-up they shared a slow mobile link with the hero photo, the
+       page's largest paint, and delayed it by about 0.4 s. CSS keeps them
+       unset until the section is within 800 px of the viewport and this
+       adds .is-near. */
     function initSkillsIcons() {
         const skills = document.getElementById('skills');
         if (!skills) return;
