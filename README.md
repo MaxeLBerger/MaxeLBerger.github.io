@@ -87,8 +87,8 @@ All figures are net. When you change a price, change it in `index.html` and in b
 ## Tech Stack
 
 - **Frontend:** HTML5, CSS3 with custom design tokens, vanilla JavaScript (ES6+)
-- **Animations:** GSAP 3.12 and ScrollTrigger via CDN
-- **Fonts:** Inter (Google Fonts, loaded after consent)
+- **Animations:** Web Animations API and CSS (no animation library)
+- **Fonts:** Inter, served locally as a Latin subset
 - **Hosting:** GitHub Pages, custom domain via `CNAME`
 - **i18n:** custom DE/EN dictionary in [assets/js/main.js](assets/js/main.js), no framework
 

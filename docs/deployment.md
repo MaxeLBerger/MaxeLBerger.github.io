@@ -14,6 +14,9 @@ push to `main` and on PRs.
      `projects/` exceeds **600 KB**.
    - Assemble `dist/` by copying root HTML, `assets/css/main.css`, `assets/js/main.js`, `CNAME`,
      `assets/img/`, `projects/`, plus `.nojekyll`.
+   - Minify the copied `main.css`, `projects/main.css` and the two scripts in `dist/` with a
+     pinned esbuild (`npx esbuild@0.24.0 --minify`). The repository keeps the readable sources;
+     test a change to them against a minified copy if it touches unusual CSS syntax.
    - Walk every HTML file in `dist/` and validate every internal `src=`/`href=`
      resolves to an existing file. Fail on broken references.
    - Emit a build size report to the GitHub Actions step summary.

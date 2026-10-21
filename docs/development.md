@@ -121,8 +121,8 @@ The website presents individually scoped work without public package prices. Kee
 HTML and DE/EN translations aligned. The old price artwork is in tools/archive/pay-packets/;
 the deployment excludes tools/.
 
-Inter and GSAP are served locally with their license notices in assets/fonts/ and
-assets/vendor/gsap/. The contact form only prepares an email in the visitor's email app.
+Inter is served locally with its license notice in assets/fonts/. Animations use the
+browser's Web Animations API, no third-party library. The contact form only prepares an email in the visitor's email app.
 There is no analytics integration, external font loading, form service or consent banner.
 Language and appearance preferences are stored only after the visitor actively selects them.
 If any data processing changes, update datenschutz.html to match before publishing.
