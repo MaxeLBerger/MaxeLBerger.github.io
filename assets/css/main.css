@@ -4,7 +4,7 @@
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-    src: url('../fonts/InterVariable.woff2') format('woff2');
+    src: url('../fonts/InterVariable-subset.woff2') format('woff2');
 }
 
 /* ═══════════════════════════════════════════════
@@ -1977,6 +1977,13 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Screenshots of slides not yet shown wait in data-src (main.js loads them
+   on demand). Until then the empty frame stays clean instead of showing the
+   alt text. */
+.showcase-image-wrap img[data-src] {
+    visibility: hidden;
 }
 
 /* Spiele-Slides tragen zwei Screenshots im selben Rahmen: in Ruhe das Menue,

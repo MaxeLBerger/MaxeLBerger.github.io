@@ -76,7 +76,7 @@
             }
         } catch (e) { /* storage blocked: keep the dark default */ }
     </script>
-    <link rel="stylesheet" href="assets/css/main.css?v=20261021-perf">
+    <link rel="stylesheet" href="assets/css/main.css?v=20261021-load">
 
     <!-- Animation libraries are served from this website. -->
     <script src="assets/vendor/gsap/gsap.min.js" defer></script>
@@ -211,7 +211,7 @@
                                         <span class="browser-url">haakly.local/redaktion</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/haakly.webp" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
+                                        <img src="assets/img/projects/haakly.webp" srcset="assets/img/projects/haakly-800.webp 800w, assets/img/projects/haakly-1200.webp 1200w, assets/img/projects/haakly.webp 1440w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                                         <span class="browser-url">capitalcombo.local/markets</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/capitalcombo.webp" alt="CapitalCombo: Kursverlauf mit Trend-Signalen und Positionsbewertung" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img data-src="assets/img/projects/capitalcombo.webp" data-srcset="assets/img/projects/capitalcombo-800.webp 800w, assets/img/projects/capitalcombo-1200.webp 1200w, assets/img/projects/capitalcombo.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="CapitalCombo: Kursverlauf mit Trend-Signalen und Positionsbewertung" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +293,7 @@
                                         <span class="browser-url">dealhunter.local/deals</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/dealhunter.webp" alt="DealHunter: Liste gefundener Angebote mit Score, Preisbewertung und Zustandsbalken" loading="lazy" decoding="async" width="1308" height="654">
+                                        <img data-src="assets/img/projects/dealhunter.webp" data-srcset="assets/img/projects/dealhunter-800.webp 800w, assets/img/projects/dealhunter-1200.webp 1200w, assets/img/projects/dealhunter.webp 1308w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="DealHunter: Liste gefundener Angebote mit Score, Preisbewertung und Zustandsbalken" loading="lazy" decoding="async" width="1308" height="654">
                                     </div>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@
                                         <span class="browser-url">e46studio.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/e46studio.webp" alt="E46 Studio / DolphinCode" loading="lazy" decoding="async" width="1600" height="796">
+                                        <img data-src="assets/img/projects/e46studio.webp" data-srcset="assets/img/projects/e46studio-800.webp 800w, assets/img/projects/e46studio-1200.webp 1200w, assets/img/projects/e46studio.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="E46 Studio / DolphinCode" loading="lazy" decoding="async" width="1600" height="796">
                                     </div>
                                 </div></a>
                             </div>
@@ -377,8 +377,8 @@
                                         <span class="browser-url">albert-royale.de</span>
                                     </div>
                                     <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" src="assets/img/projects/albert-menu.webp" alt="Albert Royale: Menü mit Mehrspieler- und Einzelspieler-Auswahl auf der Inselkarte" loading="lazy" decoding="async" width="1600" height="800">
-                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/albert-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot" data-src="assets/img/projects/albert-menu.webp" data-srcset="assets/img/projects/albert-menu-800.webp 800w, assets/img/projects/albert-menu-1200.webp 1200w, assets/img/projects/albert-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Albert Royale: Menü mit Mehrspieler- und Einzelspieler-Auswahl auf der Inselkarte" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/albert-ingame.webp" data-srcset="assets/img/projects/albert-ingame-800.webp 800w, assets/img/projects/albert-ingame-1200.webp 1200w, assets/img/projects/albert-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -420,7 +420,7 @@
                                         <span class="browser-url">aurevia.local/hauptmenü</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/aurevia.webp" alt="Aurevia: Hauptmenü-Konzept mit Spielstand, Mehrspieler- und Einstellungen-Auswahl vor einer Höhlenlandschaft mit Wasserfällen und leuchtenden Portalringen" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img data-src="assets/img/projects/aurevia.webp" data-srcset="assets/img/projects/aurevia-800.webp 800w, assets/img/projects/aurevia-1200.webp 1200w, assets/img/projects/aurevia.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Aurevia: Hauptmenü-Konzept mit Spielstand, Mehrspieler- und Einstellungen-Auswahl vor einer Höhlenlandschaft mit Wasserfällen und leuchtenden Portalringen" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div>
                             </div>
@@ -462,8 +462,8 @@
                                         <span class="browser-url">maximilianhaak.de/AgeOfMax</span>
                                     </div>
                                     <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" src="assets/img/projects/ageofmax-menu.webp" alt="Age of Max: Titelbildschirm mit Menü und der Zeitleiste der fünf Epochen" loading="lazy" decoding="async" width="1600" height="800">
-                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/ageofmax-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot" data-src="assets/img/projects/ageofmax-menu.webp" data-srcset="assets/img/projects/ageofmax-menu-800.webp 800w, assets/img/projects/ageofmax-menu-1200.webp 1200w, assets/img/projects/ageofmax-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Age of Max: Titelbildschirm mit Menü und der Zeitleiste der fünf Epochen" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/ageofmax-ingame.webp" data-srcset="assets/img/projects/ageofmax-ingame-800.webp 800w, assets/img/projects/ageofmax-ingame-1200.webp 1200w, assets/img/projects/ageofmax-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -505,8 +505,8 @@
                                         <span class="browser-url">mittel-alte.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" src="assets/img/projects/medieval-menu.webp" alt="Medieval Tower Defense: Titelbildschirm mit Burghof und Kampagnen-Auswahl" loading="lazy" decoding="async" width="1600" height="896">
-                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/medieval-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="896">
+                                        <img class="showcase-shot" data-src="assets/img/projects/medieval-menu.webp" data-srcset="assets/img/projects/medieval-menu-800.webp 800w, assets/img/projects/medieval-menu-1200.webp 1200w, assets/img/projects/medieval-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Medieval Tower Defense: Titelbildschirm mit Burghof und Kampagnen-Auswahl" loading="lazy" decoding="async" width="1600" height="896">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/medieval-ingame.webp" data-srcset="assets/img/projects/medieval-ingame-800.webp 800w, assets/img/projects/medieval-ingame-1200.webp 1200w, assets/img/projects/medieval-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="896">
                                     </div>
                                 </div></a>
                             </div>
@@ -547,7 +547,7 @@
                                         <span class="browser-url">review.local/vorgang</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/detreview.webp" alt="Deterministische Review: Übersicht mit Abdeckung, Befunden, Merge-Lage und Pipeline-Schritten" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img data-src="assets/img/projects/detreview.webp" data-srcset="assets/img/projects/detreview-800.webp 800w, assets/img/projects/detreview-1200.webp 1200w, assets/img/projects/detreview.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Deterministische Review: Übersicht mit Abdeckung, Befunden, Merge-Lage und Pipeline-Schritten" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div>
                             </div>
@@ -589,7 +589,7 @@
                                         <span class="browser-url">ai-captain-delta.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/aicaptain.webp" alt="AI Captain: Landingpage mit dem Agenten-Chat in VS Code" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img data-src="assets/img/projects/aicaptain.webp" data-srcset="assets/img/projects/aicaptain-800.webp 800w, assets/img/projects/aicaptain-1200.webp 1200w, assets/img/projects/aicaptain.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="AI Captain: Landingpage mit dem Agenten-Chat in VS Code" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -631,8 +631,8 @@
                                         <span class="browser-url">shookroko.pages.dev</span>
                                     </div>
                                     <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" src="assets/img/projects/shookroko-menu.webp" alt="Shookroko: Startbildschirm mit Spielfigur, Steuerung und Solo-Play-Knopf" loading="lazy" decoding="async" width="1600" height="800">
-                                        <img class="showcase-shot showcase-shot--hover" src="assets/img/projects/shookroko-ingame.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot" data-src="assets/img/projects/shookroko-menu.webp" data-srcset="assets/img/projects/shookroko-menu-800.webp 800w, assets/img/projects/shookroko-menu-1200.webp 1200w, assets/img/projects/shookroko-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Shookroko: Startbildschirm mit Spielfigur, Steuerung und Solo-Play-Knopf" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/shookroko-ingame.webp" data-srcset="assets/img/projects/shookroko-ingame-800.webp 800w, assets/img/projects/shookroko-ingame-1200.webp 1200w, assets/img/projects/shookroko-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -781,7 +781,7 @@
                                         <span class="browser-url">imkerei-feuerstein.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/imkerei-feuerstein.webp" alt="Startseite der MVP-Demo der Imkerei Feuerstein mit dem Imkermeister vor Bienenstöcken und Honiggläsern" data-i18n-alt="slide.imkerei.alt" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img data-src="assets/img/projects/imkerei-feuerstein.webp" data-srcset="assets/img/projects/imkerei-feuerstein-800.webp 800w, assets/img/projects/imkerei-feuerstein-1200.webp 1200w, assets/img/projects/imkerei-feuerstein.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Startseite der MVP-Demo der Imkerei Feuerstein mit dem Imkermeister vor Bienenstöcken und Honiggläsern" data-i18n-alt="slide.imkerei.alt" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -914,7 +914,7 @@
                 <div class="about-layout">
                     <figure class="about-media scroll-reveal">
                         <div class="about-image-frame">
-                            <img class="about-image" src="assets/img/profile/uebermich_neu.webp" alt="Maximilian Haak vor seinem schwarzen BMW E46 Coupé mit Alpenpanorama" data-i18n-alt="about.imageAlt" loading="lazy" decoding="async" width="1000" height="1334">
+                            <img class="about-image" src="assets/img/profile/uebermich_neu.webp" srcset="assets/img/profile/uebermich_neu-600.webp 600w, assets/img/profile/uebermich_neu-800.webp 800w, assets/img/profile/uebermich_neu.webp 1000w" sizes="(max-width: 480px) 90vw, 520px" alt="Maximilian Haak vor seinem schwarzen BMW E46 Coupé mit Alpenpanorama" data-i18n-alt="about.imageAlt" loading="lazy" decoding="async" width="1000" height="1334">
                         </div>
                     </figure>
 
@@ -1123,6 +1123,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js?v=20261021-perf" defer></script>
+    <script src="assets/js/main.js?v=20261021-load" defer></script>
 </body>
 </html>
