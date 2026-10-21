@@ -40,7 +40,7 @@ const PORT = Number(opt('port', 9500 + (process.pid % 400)));
 const PAGES = (opt('pages', 'index.html,impressum.html,datenschutz.html')).split(',');
 const THEMES = [
     'maxhaak', 'capitalcombo', 'haakly', 'dealhunter', 'shookroko', 'senihelp24',
-    'detreview', 'memecointrader', 'ageofmax', 'albert', 'aicaptain', 'medieval',
+    'detreview', 'kundenkalender', 'reachlab', 'e46customz', 'ageofmax', 'albert', 'aicaptain', 'medieval',
     'danielbrecheis', 'e46', 'imkerei',
 ];
 const SCHEMES = ['light', 'dark'];
