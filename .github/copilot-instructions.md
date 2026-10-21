@@ -47,7 +47,7 @@ enforces this; a fresh clone enables it with `git config core.hooksPath .githook
 
 - **HTML5 / CSS3 / vanilla JavaScript (ES6+)**: no React, no Vue, no bundler
 - **GSAP 3.12 + ScrollTrigger** via CDN for animations
-- **Inter**: served locally from assets/fonts/InterVariable.woff2 (SIL OFL)
+- **Inter**: served locally from assets/fonts/InterVariable-subset.woff2 (SIL OFL, subset, see assets/fonts/Inter-SOURCE.txt)
 - **i18n**: custom DE/EN dictionary in [assets/js/main.js](../assets/js/main.js) (DE is default)
 - **Hosting**: GitHub Pages with custom domain (`CNAME` → `maximilianhaak.de`)
 
@@ -153,16 +153,19 @@ masks on two layers that paint `background-color: var(--theme-gradient-end)` (ba
 `var(--theme-gradient-start)` (highlight, luminance mask), so the colour follows `[data-project-theme]` through
 `--projects-energy-transition` (0.9 s ease-out, highlight delayed 120 ms). `goToSlide()` sets the theme when the slide is
 chosen, before the slide animation, so keep that order: the band must start recolouring on the click, not on settle. The section has `isolation: isolate` so the band's `z-index: -1` stays above its own
-ground; `.projects-energy-move` is what GSAP moves for the scroll parallax (`initProjectsEnergy()`), the layers
-carry the CSS drift and the highlight's `::after` the travelling stripe. `prefers-reduced-motion` switches all
-motion off, phones get `display: none`. Do not put the band back into the hero and do not add a blend mode to the
+ground; `.projects-energy-move` carries the scroll parallax as a CSS scroll-driven animation
+(`animation-timeline: view()`, which is why the band uses `overflow: clip`, not `hidden`). The layers are static on
+purpose: keyframe animations on or inside these masked, blended layers cost 30 to 80 % main-thread time and made
+scrolling stutter, so do not add drift, breathing or a travelling stripe back (measure with `tools/perf-bench/`).
+`prefers-reduced-motion` switches the parallax off, phones get `display: none`. Do not put the band back into the hero and do not add a blend mode to the
 band layer. Regenerate the files with `tools/hero-energy/make_energy.py` instead of retouching them.
 
 ### About section
 
 `#about` sits directly after `#projects` and before the tech stack. Keep it as a personal editorial section with an
 E46 media frame, short biographical copy, and compact facts. The current media asset is the optimized
-`assets/img/profile/uebermich_neu.webp` (portrait, 1000×1334, keep under ~300 KB) in a `.about-image-frame`; preserve the
+`assets/img/profile/uebermich_neu.webp` (portrait, 1000×1334, keep under ~300 KB, plus `-600` / `-800` variants for
+`srcset`, regenerate with `python tools/responsive-images.py --widths 600,800 <file>`) in a `.about-image-frame`; preserve the
 lower focus so the car/person stay visible. Keep this image large and cleanly cropped in a restrained 5:6 media frame
 with subtle border/shadow and no visible caption. The copy column should stay intentionally narrow for comfortable
 reading (about 54ch max), rather than stretching across the available grid width. Use
@@ -209,6 +212,13 @@ the container height follows the tallest slide instead of a fixed `min-height`; 
 `.project-controls` row directly below the slide; there is no browser chrome mockup with traffic-light dots and no
 floating category badge on the screenshot. Slides hidden by the mode filter use `[hidden]`, so any rule setting
 `display` on `.project-pag-btn` must not override it.
+
+Slider screenshots load on demand. Only the slide shown at load (Haakly) has a real `src`; every other slide image
+carries `data-src` / `data-srcset` and `loadSlideMedia()` in `assets/js/main.js` swaps them in when the slide is
+chosen, when its tab is hovered or focused, and for the two neighbours of the active slide in idle time. The in-game
+`.showcase-shot--hover` images only load on devices with hover. Each screenshot ships with `-800` and `-1200` width
+variants made by `python tools/responsive-images.py <master.webp>`; a new or replaced screenshot needs them
+regenerated and the `srcset` / `sizes` attributes copied from a neighbouring slide.
 
 `Senihelp24` has no screenshot under `assets/img/projects/`. It renders the shared `.project-mock` placeholder,
 which is also used by `dog-kennel-online`. Do not point an `<img>` at a file that does not exist; CI checks every

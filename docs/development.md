@@ -74,7 +74,11 @@ When adding or changing visible text:
 1. Add a new `.hero-slide` to `#projects` in [index.html](../index.html) with
    a new `data-theme`.
 2. Add a new `.project-nav-btn` to the slider tablist.
-3. Add the project image to `assets/img/projects/` (WebP, < 300 KB).
+3. Add the project image to `assets/img/projects/` (WebP, < 300 KB), run
+   `python tools/responsive-images.py assets/img/projects/<slug>.webp` for the
+   `-800` / `-1200` variants, and write the `<img>` like its neighbours: with
+   `data-src` / `data-srcset` / `sizes` instead of `src`, so it only loads when
+   the slide is chosen.
 4. Add a color theme block to [assets/css/main.css](../assets/css/main.css) under
    `[data-project-theme="..."]`.
 5. Add `slide.<project>.t1/t2/t3/desc/cta1/cta2/badge/tag1/tag2/tag3` keys
@@ -87,7 +91,9 @@ When adding or changing visible text:
 ### Update an image
 
 - Optimize first (WebP, < 300 KB).
-- Update the `<img src>` reference in `index.html` and any project detail page.
+- Update the `<img src>` (or `data-src`) reference in `index.html` and any project detail page.
+- Regenerate its width variants with `python tools/responsive-images.py <file>`
+  so `srcset` never serves the old picture.
 - Delete the old image from `assets/img/`.
 
 ### Change a translation

@@ -645,6 +645,9 @@
             // new request can finish it immediately instead of being dropped.
             this.settleActive = null;
             this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // The in-game screenshot on game slides only ever shows on hover,
+            // so touch devices never need to download it.
+            this.canHover = window.matchMedia('(hover: hover)').matches;
 
             const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const onMotionChange = (event) => { this.prefersReducedMotion = event.matches; };
@@ -764,6 +767,39 @@
             }, 180);
         }
 
+        /**
+         * Screenshots of slides that are not on screen at load carry their
+         * URLs in data-src / data-srcset, so the first visit only downloads
+         * the slide that is actually shown. This swaps them in on demand.
+         */
+        loadSlideMedia(slide) {
+            if (!slide) return;
+            slide.querySelectorAll('img[data-src]').forEach(img => {
+                if (!this.canHover && img.classList.contains('showcase-shot--hover')) return;
+                if (img.dataset.srcset) {
+                    img.srcset = img.dataset.srcset;
+                    img.removeAttribute('data-srcset');
+                }
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
+        }
+
+        /** Warm the slides an arrow press or swipe would reach next. */
+        preloadAround(index) {
+            const run = () => {
+                const count = this.slides.length;
+                if (count < 2) return;
+                this.loadSlideMedia(this.slides[(index + 1) % count]);
+                this.loadSlideMedia(this.slides[(index - 1 + count) % count]);
+            };
+            if (typeof window.requestIdleCallback === 'function') {
+                window.requestIdleCallback(run, { timeout: 2000 });
+            } else {
+                window.setTimeout(run, 300);
+            }
+        }
+
         getSlideIndexForTheme(theme) {
             const projectTheme = theme === 'maxhaak' ? FIRST_PROJECT_THEME : theme;
             return this.slides.findIndex(slide => slide.getAttribute('data-theme') === projectTheme);
@@ -800,6 +836,8 @@
 
             const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
             const activeSlide = this.slides[index];
+            this.loadSlideMedia(activeSlide);
+            this.preloadAround(index);
 
             if (updateTheme) {
                 const theme = activeSlide.getAttribute('data-theme');
@@ -958,11 +996,19 @@
         bindEvents() {
             // Bound once over the full set: the index is resolved at click time
             // because `this.navBtns` is re-collected on every mode switch.
+            const slideForButton = btn => this.allSlides.find(slide =>
+                slide.dataset.mode === btn.dataset.mode
+                && slide.getAttribute('data-theme') === btn.getAttribute('data-project'));
             this.allNavBtns.forEach((btn) => {
                 btn.addEventListener('click', () => {
                     const i = this.navBtns.indexOf(btn);
                     if (i !== -1) this.goToSlide(i);
                 });
+                // Pointing at or tabbing to a project starts its download, so
+                // the screenshot is usually there by the time of the click.
+                const warm = () => this.loadSlideMedia(slideForButton(btn));
+                btn.addEventListener('pointerenter', warm, { passive: true });
+                btn.addEventListener('focus', warm);
             });
             this.modeBtns.forEach((btn) => {
                 btn.addEventListener('click', () => this.switchMode(btn.dataset.mode));
@@ -1068,6 +1114,7 @@
             const direction = index > this.currentIndex ? 1 : -1;
             const oldSlide = this.slides[this.currentIndex];
             const newSlide = this.slides[index];
+            this.loadSlideMedia(newSlide);
 
             // Selection is decided here, not when the animation ends. The tab
             // state and the panels' aria-hidden therefore describe the slide

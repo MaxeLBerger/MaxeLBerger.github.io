@@ -77,6 +77,11 @@ Language is persisted in `localStorage('lang')`.
   screen (`IntersectionObserver`) and the tab is visible.
 - **Hero photo crossfade** (`setInterval`) skips work when `document.hidden`.
 - **Below-the-fold sections** use `content-visibility: auto`.
+- **Slider screenshots** load on demand (`data-src`, see `loadSlideMedia()`),
+  with `srcset` width variants; a first visit downloads only the visible slide.
+- **Inter** ships as a Latin subset (`InterVariable-subset.woff2`, 114 KB
+  instead of 344 KB). It is deliberately not preloaded: on slow connections a
+  preload competed with the CSS and delayed the first paint.
 - Measure scroll and idle cost before and after visual changes:
   `node tools/perf-bench/bench.mjs --url <local server> --throttle 4`.
 
