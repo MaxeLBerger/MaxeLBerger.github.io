@@ -78,6 +78,19 @@ jobs:
           echo "Assembled dist/:"
           ls -la dist | head -40
 
+      - name: Minify CSS and JS
+        # The repository keeps readable, commented sources and needs no build
+        # step to work on locally; only the deployed copy is minified. That
+        # roughly halves the render-blocking CSS after gzip. esbuild is pinned.
+        run: |
+          set -e
+          for f in dist/assets/css/main.css dist/projects/main.css dist/assets/js/main.js dist/assets/js/projects-i18n.js; do
+            [ -f "$f" ] || continue
+            before=$(stat -c %s "$f")
+            npx --yes esbuild@0.24.0 "$f" --minify --outfile="$f" --allow-overwrite --log-level=warning
+            echo "$f: $before -> $(stat -c %s "$f") bytes"
+          done
+
       - name: Check internal asset references
         run: |
           set -e

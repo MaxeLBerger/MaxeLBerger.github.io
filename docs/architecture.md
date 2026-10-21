@@ -1,7 +1,8 @@
 ﻿# Architecture
 
-Static portfolio site. **No build step**, no submodules, no frameworks.
-Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
+Static portfolio site. **No build step** for local work, no submodules, no frameworks.
+Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages. The deploy
+workflow only minifies the copied CSS/JS (see [deployment.md](deployment.md)).
 
 ## File Layout
 
@@ -37,7 +38,7 @@ Plain HTML + CSS + vanilla JavaScript (ES6+), deployed to GitHub Pages.
 `#projects` contains 8 `.hero-slide` elements. The `ProjectSlider` class in
 [assets/js/main.js](../assets/js/main.js) handles:
 
-- GSAP-powered transitions (with CSS fallback)
+- Web Animations API transitions (transform/opacity, run by the browser)
 - Touch/swipe + keyboard navigation
 - Per-slide theme switching via `data-theme` → `data-project-theme` on `<html>`
 - Container height calculation (slides have varying heights)

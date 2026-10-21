@@ -351,8 +351,6 @@
 #navbar,
 .about-section,
 .services-section,
-.service-panel,
-.service-tile,
 .contact-section,
 .contact-link,
 .contact-form input,
@@ -460,8 +458,6 @@ html[data-color-scheme="light"] .site-footer {
 /* ── Karten ──────────────────────────────────────────────────────────────
    Der Kern von Soft Studio: weisse Flaeche, Haarlinie, zweilagiger
    Schatten. Hover hebt ueber Hoehe, nicht ueber Farbe. */
-html[data-color-scheme="light"] .service-panel,
-html[data-color-scheme="light"] .service-tile,
 html[data-color-scheme="light"] .showcase-frame,
 html[data-color-scheme="light"] .contact-map-link {
     background: var(--color-bg-elevated);
@@ -469,16 +465,12 @@ html[data-color-scheme="light"] .contact-map-link {
     border-radius: 18px;
     box-shadow: var(--shadow-card);
 }
-html[data-color-scheme="light"] .service-panel,
-html[data-color-scheme="light"] .service-tile,
 html[data-color-scheme="light"] .showcase-frame,
 html[data-color-scheme="light"] .contact-map-link {
     transition: box-shadow var(--duration-base) var(--ease-out),
                 border-color var(--duration-base) var(--ease-out),
                 transform var(--duration-base) var(--ease-out);
 }
-html[data-color-scheme="light"] .service-panel:hover,
-html[data-color-scheme="light"] .service-tile:hover,
 html[data-color-scheme="light"] .contact-map-link:hover {
     background: var(--color-bg-elevated);
     border-color: rgba(var(--accent), 0.30);
@@ -488,11 +480,6 @@ html[data-color-scheme="light"] .contact-map-link:hover {
 html[data-color-scheme="light"] .showcase-frame:hover {
     box-shadow: var(--shadow-lift);
 }
-/* Der Schleier ueber der Bildhaelfte des Pakets erzeugte hell graue Baender
-   ueber und unter dem Foto. Auf Weiss trennt die Panelkante ohnehin. */
-html[data-color-scheme="light"] .service-panel__art::after {
-    opacity: 0;
-}
 
 /* ── Chips und Tags ──────────────────────────────────────────────────────
    Projekt-Tags auf dem Slider: helle Flaeche, Haarlinie, Text in Tinte. */
@@ -501,7 +488,6 @@ html[data-color-scheme="light"] .slide-tag {
     border-color: var(--color-border);
     color: var(--color-text-secondary);
 }
-html[data-color-scheme="light"] .slide-badge,
 html[data-color-scheme="light"] .showcase-badge {
     background: rgb(var(--accent));
     color: var(--on-accent);
@@ -535,15 +521,13 @@ html[data-color-scheme="light"] .btn-primary:hover {
     background: rgb(var(--accent));
     background: color-mix(in srgb, rgb(var(--accent)) 86%, #0b1220);
 }
-html[data-color-scheme="light"] .btn-outline,
-html[data-color-scheme="light"] .btn-secondary {
+html[data-color-scheme="light"] .btn-outline {
     background: var(--color-bg-elevated);
     border-color: var(--color-border-hover);
     color: var(--color-text);
     box-shadow: var(--shadow-sm);
 }
-html[data-color-scheme="light"] .btn-outline:hover,
-html[data-color-scheme="light"] .btn-secondary:hover {
+html[data-color-scheme="light"] .btn-outline:hover {
     border-color: rgb(var(--accent));
     color: rgb(var(--accent));
     background: var(--color-bg-elevated);
@@ -566,23 +550,15 @@ html[data-color-scheme="light"] .slider-arrow:hover {
 /* ── Formular ────────────────────────────────────────────────────────────
    Felder waren weiss auf weiss mit einer 0.14-Haarlinie. Jetzt liegen sie
    als gesenkte Flaeche in der Karte, mit einem 3px-Fokusring. */
-html[data-color-scheme="light"] .form-input,
-html[data-color-scheme="light"] .form-textarea,
-html[data-color-scheme="light"] .form-select,
 html[data-color-scheme="light"] .form-group input,
-html[data-color-scheme="light"] .form-group textarea,
-html[data-color-scheme="light"] .form-group select {
+html[data-color-scheme="light"] .form-group textarea {
     background: var(--color-surface);
     border-color: var(--color-border-hover);
     color: var(--color-text);
     box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.04);
 }
-html[data-color-scheme="light"] .form-input:focus,
-html[data-color-scheme="light"] .form-textarea:focus,
-html[data-color-scheme="light"] .form-select:focus,
 html[data-color-scheme="light"] .form-group input:focus,
-html[data-color-scheme="light"] .form-group textarea:focus,
-html[data-color-scheme="light"] .form-group select:focus {
+html[data-color-scheme="light"] .form-group textarea:focus {
     background: var(--color-bg-elevated);
     border-color: rgb(var(--accent));
     box-shadow: 0 0 0 3px rgba(var(--accent), 0.18);
@@ -1092,8 +1068,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 }
 
 /* Mobile menu toggle */
-.menu-toggle,
-.mobile-menu-toggle {
+.menu-toggle {
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -1106,8 +1081,7 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     padding: 8px;
 }
 
-.menu-toggle .bar,
-.mobile-menu-toggle span {
+.menu-toggle .bar {
     display: block;
     width: 100%;
     height: 2px;
@@ -1117,20 +1091,17 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
 }
 
 .menu-toggle.active .bar:nth-child(1),
-.menu-toggle[aria-expanded="true"] .bar:nth-child(1),
-.mobile-menu-toggle.active span:nth-child(1) {
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
 
 .menu-toggle.active .bar:nth-child(2),
-.menu-toggle[aria-expanded="true"] .bar:nth-child(2),
-.mobile-menu-toggle.active span:nth-child(2) {
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
     opacity: 0;
 }
 
 .menu-toggle.active .bar:nth-child(3),
-.menu-toggle[aria-expanded="true"] .bar:nth-child(3),
-.mobile-menu-toggle.active span:nth-child(3) {
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
@@ -1792,25 +1763,6 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
     gap: var(--space-lg);
 }
 
-/* Category eyebrow on a slide. Same visual family as the active mode pill:
-   the theme colour carries the tint, the label itself stays on --color-text so
-   it never depends on how bright the current theme happens to be.
-   `width: fit-content` instead of `align-self`, so the centred mobile layout
-   (.slide-text { align-items: center }) still centres it. */
-.slide-badge {
-    width: fit-content;
-    max-width: 100%;
-    padding: 0.3rem 0.85rem;
-    border: 1px solid rgba(var(--accent), 0.42);
-    border-radius: var(--radius-full);
-    background: rgba(var(--accent), 0.12);
-    color: var(--color-text);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
 .slide-title {
     font-size: clamp(1.5rem, 4.5vw + 0.25rem, 3.25rem);
     font-weight: 800;
@@ -2097,13 +2049,6 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
 
 /* Showcase glow behind frame */
 /* Slider controls: arrows + pagination sit directly below the slide. */
-/* Die Pfeile sitzen wieder aussen am Slide, die Pagination steht allein
-   darunter, so wie es vor der Erweiterung war. */
-.project-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .slider-arrow {
     position: absolute;
@@ -2359,7 +2304,6 @@ html[data-color-scheme="light"] .skills-section {
         transition: none;
     }
 }
-
 
 /* Light mode: blobs need much less opacity to stay subtle on white. */
 
@@ -3135,11 +3079,24 @@ html[data-color-scheme="light"] .stack-chip {
 }
 
 /* ═══════════════════════════════════════════════
-   SCROLL REVEAL (GSAP)
+   SCROLL REVEAL
+   Blocks only start hidden when script runs (the head script sets html.js),
+   so without JavaScript nothing stays invisible. initScrollReveal() in
+   main.js adds .is-revealed once a block's top passes 85 % of the viewport;
+   blocks arriving together get a staggered --reveal-delay.
    ═══════════════════════════════════════════════ */
-.scroll-reveal {
+.js .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
+    /* power2.out, the curve the former GSAP reveal used. */
+    transition:
+        opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0s),
+        transform 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0s);
+}
+
+.js .scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: none;
 }
 
 /* ═══════════════════════════════════════════════
@@ -3221,75 +3178,6 @@ html[data-color-scheme="light"] .legal-page h1 {
 
 html[data-color-scheme="light"] .legal-page a:hover {
     color: rgb(var(--accent));
-}
-
-/* ═══════════════════════════════════════════════
-   COOKIE CONSENT
-   ═══════════════════════════════════════════════ */
-.cookie-consent {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10000;
-    padding: 1rem 2rem;
-    background: rgba(18, 18, 26, 0.98);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cookie-consent[hidden] {
-    display: none;
-}
-
-.cookie-content {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-.cookie-content p {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    margin: 0;
-}
-
-.cookie-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
-}
-
-.btn-sm {
-    padding: 0.5rem 1.25rem;
-    font-size: var(--font-size-sm);
-}
-
-.cookie-link {
-    color: rgb(var(--accent));
-    font-size: var(--font-size-sm);
-    text-decoration: underline;
-    white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-    .cookie-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-html[data-color-scheme="light"] .cookie-consent {
-    background: rgba(255, 255, 255, 0.97);
-    border-top-color: var(--color-border);
-    box-shadow: var(--shadow-pop);
-}
-
-html[data-color-scheme="light"] .cookie-content p {
-    color: var(--color-text-secondary);
 }
 
 /* ═══════════════════════════════════════════════
@@ -3481,8 +3369,7 @@ html[data-color-scheme="light"] .cookie-content p {
         width: 100%;
     }
 
-    .menu-toggle,
-    .mobile-menu-toggle {
+    .menu-toggle {
         display: flex;
     }
 
@@ -3666,10 +3553,6 @@ html[data-color-scheme="light"] .cookie-content p {
         justify-content: center;
     }
 
-    .service-panel__copy {
-        padding: var(--space-xl);
-    }
-
     .contact-layout {
         grid-template-columns: 1fr;
     }
@@ -3739,10 +3622,6 @@ html[data-color-scheme="light"] .cookie-content p {
         max-width: min(360px, 90vw);
     }
 
-    .service-panel__copy {
-        padding: var(--space-xl);
-    }
-
     .footer-links a {
         padding: var(--space-sm) var(--space-xs);
     }
@@ -3789,9 +3668,10 @@ html[data-color-scheme="light"] .cookie-content p {
     /* Scroll-revealed blocks are hidden by CSS and shown by GSAP. Without
        motion there is nothing to reveal, so show them straight away and
        never risk an invisible section. */
-    .scroll-reveal {
+    .js .scroll-reveal {
         opacity: 1;
         transform: none;
+        transition: none;
     }
 
     .btn-primary:hover,
@@ -3869,15 +3749,6 @@ html[data-color-scheme="light"] .cookie-content p {
     border-radius: var(--radius-sm);
 }
 
-
-/* Paket-Panels: sanfteres Innenmass auf dem Telefon. */
-@media (max-width: 480px) {
-    .service-panel__copy,
-    .service-tile {
-        padding: var(--space-lg);
-    }
-}
-
 /* Light mode: lift secondary text contrast. The existing #3f4658 already
    passes AA against #f3f4f8, but section notes were rendering with the
    undefined --text-secondary. Force a real, readable colour. */
@@ -3937,12 +3808,6 @@ html[data-color-scheme="light"] .cookie-content p {
         line-height: 1.62;
     }
 
-    /* Pagination gets its own full-width scrollable row; arrows sit below it. */
-    .project-controls {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .project-pagination {
         order: -1;
         /* The negative inline margins let the strip bleed to the screen edge;
@@ -3975,7 +3840,6 @@ html[data-color-scheme="light"] .cookie-content p {
     }
 
     .about-layout,
-    .service-tiles,
     .contact-layout {
         gap: var(--space-xl);
     }
@@ -3988,19 +3852,6 @@ html[data-color-scheme="light"] .cookie-content p {
         gap: var(--space-md);
     }
 
-    .cookie-consent {
-        padding: var(--space-md) var(--space-lg);
-    }
-
-    .cookie-content {
-        align-items: stretch;
-        gap: var(--space-md);
-    }
-
-    .cookie-actions {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
 }
 
 @media (max-width: 480px) {

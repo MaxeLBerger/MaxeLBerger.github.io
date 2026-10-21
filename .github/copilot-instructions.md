@@ -46,7 +46,8 @@ enforces this; a fresh clone enables it with `git config core.hooksPath .githook
 ## Tech Stack
 
 - **HTML5 / CSS3 / vanilla JavaScript (ES6+)**: no React, no Vue, no bundler
-- **GSAP 3.12 + ScrollTrigger** via CDN for animations
+- **Web Animations API** (`element.animate`) for the slider and hero entrance, IntersectionObserver for scroll
+  reveals; no animation library. Keep animations on `transform`/`opacity`
 - **Inter**: served locally from assets/fonts/InterVariable-subset.woff2 (SIL OFL, subset, see assets/fonts/Inter-SOURCE.txt)
 - **i18n**: custom DE/EN dictionary in [assets/js/main.js](../assets/js/main.js) (DE is default)
 - **Hosting**: GitHub Pages with custom domain (`CNAME` → `maximilianhaak.de`)
@@ -118,8 +119,8 @@ and keep the desktop row under the 580px text column (566px at 12px, gaps includ
 desktop. Up to 552 px the three logos no longer fit one row and the Imkerei mark wraps;
 the `@media (max-width: 552px)` block in `main.css` takes back the 42 px of that second row (hero bottom padding,
 client block margin, list row gap), so the bottom-aligned copy stays exactly where it sat with two logos and does not
-climb into the face. Re-measure that threshold when a logo or `--client-cap` changes. The GSAP entrance in `playEntrance()` adds the
-client row to the end of the existing timeline.
+climb into the face. Re-measure that threshold when a logo or `--client-cap` changes. The entrance in `playEntrance()` (Web Animations)
+starts the client row right after the CTAs.
 
 Do NOT add gradient text, self-awarded credibility badges, a second pill button, a scroll hint, a tech-icon strip or a
 tagline block to the hero; these were deliberately removed. i18n keys are `hero.eyebrow`, `hero.title1..3` (title2
@@ -208,8 +209,8 @@ Both modes are open. The earlier locked state for `Kundenprojekte` (lock icon, `
 do not bring it back.
 
 Layout rules that were fixed on purpose and should stay: slides sit on top of each other with `grid-area: 1/1` so
-the container height follows the tallest slide instead of a fixed `min-height`; arrows and pagination live in one
-`.project-controls` row directly below the slide; there is no browser chrome mockup with traffic-light dots and no
+the container height follows the tallest slide instead of a fixed `min-height`; the arrows sit at the slide's
+sides and the `.project-pagination` row stands alone directly below the slide; there is no browser chrome mockup with traffic-light dots and no
 floating category badge on the screenshot. Slides hidden by the mode filter use `[hidden]`, so any rule setting
 `display` on `.project-pag-btn` must not override it.
 
@@ -244,7 +245,7 @@ Senihelp24 and Daniel Brecheis, and its white logo is the third mark in the hero
 
 The `ProjectSlider` class in [assets/js/main.js](../assets/js/main.js) handles:
 
-- GSAP-powered transitions (with CSS fallback)
+- Web Animations API transitions (transform/opacity, run by the browser)
 - Touch/swipe and keyboard navigation
 - Per-slide theme switching via `data-theme` to `data-project-theme` on `<html>`
 - The mode filter, including scrolling the active pagination button into view
@@ -288,7 +289,7 @@ Language is persisted in `localStorage('lang')`.
     scrolled navbar.
 - **No JS-dependent `opacity: 0` start states** outside of `.scroll-reveal`. The skills section was invisible once
     its old animator was gone.
-- **Fonts and GSAP** are served locally. There is no cookie banner or third-party runtime import.
+- **Fonts** are served locally and there is no animation library. There is no cookie banner or third-party runtime import.
 - **Contact location** uses a lightweight external Google Maps link card, not an embedded iframe. Do not reintroduce a
     map iframe on the homepage unless there is a strong product reason and it remains opt-in/lazy.
 

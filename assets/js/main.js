@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    script.js: Portfolio Interactions
-   ProjectSlider, GSAP Animations, Theme, i18n
+   ProjectSlider, Web Animations, Theme, i18n
    ═══════════════════════════════════════════════ */
 
 (function () {
@@ -548,6 +548,18 @@
      * pagination. Keep this in sync with the leading tab in index.html.
      */
     const FIRST_PROJECT_THEME = 'haakly';
+
+    /**
+     * GSAP's power eases as CSS cubic-bezier curves (power2 = cubic,
+     * power3 = quart, power4 = quint), so the Web Animations versions of the
+     * slider and hero entrance move exactly like the GSAP timelines did.
+     */
+    const EASE = {
+        power2In: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
+        power2InOut: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+        power3Out: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+        power4Out: 'cubic-bezier(0.23, 1, 0.32, 1)',
+    };
 
     /**
      * Theme controller: single source of truth for `data-project-theme`.
@@ -1142,12 +1154,10 @@
                     window.clearTimeout(this.animationGuardTimer);
                     this.animationGuardTimer = null;
                 }
-                if (typeof gsap !== 'undefined') {
-                    gsap.killTweensOf([oldSlide, newSlide]);
-                    gsap.killTweensOf(oldSlide.querySelectorAll('*'));
-                    gsap.killTweensOf(newSlide.querySelectorAll('*'));
-                }
                 this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
+                // Same task as the class change above, so no frame shows the
+                // slides between the animated and the settled state.
+                this.cancelSlideAnimations();
                 this.isAnimating = false;
             };
             this.settleActive = settle;
@@ -1162,372 +1172,176 @@
             this.animatePremiumTransition(oldSlide, newSlide, direction, settle);
         }
 
+        /**
+         * Slide transition on the Web Animations API. Same choreography and
+         * timings as the former GSAP timeline, but the browser runs the
+         * transform/opacity tracks itself, so no script and no style
+         * recalculation happen per frame. Times are in ms from the click.
+         */
         animatePremiumTransition(oldSlide, newSlide, direction, settle) {
-            if (typeof gsap === 'undefined') {
-                this.animateWithCSS(oldSlide, newSlide, direction, settle);
+            if (typeof Element.prototype.animate !== 'function') {
+                settle();
                 return;
             }
 
-            const config = {
-                duration: 0.7,
-                stagger: 0.05,
-                xOffset: 120,
-                parallaxRatio: 0.5,
+            const xOffset = 120;
+            const xOut = direction === 1 ? -xOffset : xOffset;
+            const xIn = -xOut;
+            const anims = [];
+            const run = (el, keyframes, duration, delay, easing) => {
+                if (!el) return;
+                anims.push(el.animate(keyframes, { duration, delay, easing, fill: 'both' }));
             };
+            const shift = (x, y = 0, scale = 1) => `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
 
-            const xOut = direction === 1 ? -config.xOffset : config.xOffset;
-            const xIn = direction === 1 ? config.xOffset : -config.xOffset;
-
-            // Kill any running tweens
-            gsap.killTweensOf([oldSlide, newSlide]);
-            gsap.killTweensOf(oldSlide.querySelectorAll('*'));
-            gsap.killTweensOf(newSlide.querySelectorAll('*'));
-
-            // Prepare new slide (visible but offset)
             oldSlide.style.pointerEvents = 'none';
             newSlide.style.pointerEvents = 'auto';
-            gsap.set(newSlide, {
-                x: xIn,
-                opacity: 0,
-                visibility: 'visible',
-                zIndex: 3,
+            // Inactive slides are visibility: hidden in CSS; the incoming one
+            // has to be visible while it fades in. Cleared again on settle.
+            newSlide.style.visibility = 'visible';
+            newSlide.style.zIndex = '3';
+
+            const oldText = oldSlide.querySelector('.slide-text');
+            const oldVisual = oldSlide.querySelector('.slide-visual');
+            const newText = newSlide.querySelector('.slide-text');
+            const newVisual = newSlide.querySelector('.slide-visual');
+
+            // Old slide out: visual first and further (parallax), then text.
+            run(oldVisual, [{ transform: shift(0), opacity: 1 }, { transform: shift(xOut * 1.2, 0, 0.95), opacity: 0 }], 560, 0, EASE.power2InOut);
+            run(oldText, [{ transform: shift(0), opacity: 1 }, { transform: shift(xOut * 0.5), opacity: 0 }], 490, 50, EASE.power2InOut);
+            run(oldSlide, [{ opacity: 1 }, { opacity: 0 }], 350, 100, EASE.power2In);
+
+            // New slide in.
+            run(newSlide, [{ transform: shift(xIn), opacity: 0 }, { transform: shift(0), opacity: 1 }], 700, 200, EASE.power3Out);
+            run(newText, [{ transform: shift(xIn * 0.5), opacity: 0 }, { transform: shift(0), opacity: 1 }], 630, 250, EASE.power4Out);
+            run(newVisual, [{ transform: shift(xIn * 1.2, 0, 0.95), opacity: 0 }, { transform: shift(0), opacity: 1 }], 700, 300, EASE.power4Out);
+
+            // Content reveal. The title wipe runs past the bottom of the line
+            // box: the title's line-height is tighter than the font's
+            // descender, so a clip that stops at 0% would shave the tail off
+            // letters like "p". The clip ends with the animation.
+            newSlide.querySelectorAll('.title-line').forEach((line, i) => {
+                run(line, [
+                    { transform: shift(0, 30), opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+                    { transform: shift(0), opacity: 1, clipPath: 'inset(0 0 -20% 0)' },
+                ], 600, 350 + i * 100, EASE.power4Out);
             });
-
-            const oldContent = {
-                text: oldSlide.querySelector('.slide-text'),
-                visual: oldSlide.querySelector('.slide-visual'),
-            };
-
-            const newContent = {
-                text: newSlide.querySelector('.slide-text'),
-                visual: newSlide.querySelector('.slide-visual'),
-                titleLines: newSlide.querySelectorAll('.title-line'),
-                desc: newSlide.querySelector('.slide-description'),
-                cta: newSlide.querySelectorAll('.slide-cta .btn'),
-                tags: newSlide.querySelector('.slide-tags'),
-            };
-
-            // Set initial states for new slide inner elements
-            if (newContent.text) {
-                gsap.set(newContent.text, { x: xIn * config.parallaxRatio, opacity: 0 });
-            }
-            if (newContent.visual) {
-                gsap.set(newContent.visual, { x: xIn * 1.2, opacity: 0, scale: 0.95 });
-            }
-
-            // Master timeline
-            const master = gsap.timeline({
-                onComplete: settle,
-                onInterrupt: settle,
+            run(newSlide.querySelector('.slide-description'), [{ transform: shift(0, 20), opacity: 0 }, { transform: shift(0), opacity: 1 }], 500, 550, EASE.power3Out);
+            newSlide.querySelectorAll('.slide-cta .btn').forEach((btn, i) => {
+                run(btn, [{ transform: shift(0, 15), opacity: 0 }, { transform: shift(0), opacity: 1 }], 400, 650 + i * 80, EASE.power3Out);
             });
-
-            // === OLD SLIDE OUT ===
-
-            // Visual exits first (faster: parallax)
-            if (oldContent.visual) {
-                master.to(oldContent.visual, {
-                    x: xOut * 1.2,
-                    opacity: 0,
-                    scale: 0.95,
-                    duration: config.duration * 0.8,
-                    ease: 'power2.inOut',
-                }, 0);
-            }
-
-            // Text exits (slower: parallax)
-            if (oldContent.text) {
-                master.to(oldContent.text, {
-                    x: xOut * config.parallaxRatio,
-                    opacity: 0,
-                    duration: config.duration * 0.7,
-                    ease: 'power2.inOut',
-                }, 0.05);
-            }
-
-            // Fade out old slide container
-            master.to(oldSlide, {
-                opacity: 0,
-                duration: config.duration * 0.5,
-                ease: 'power2.in',
-            }, 0.1);
-
-            // === NEW SLIDE IN ===
-
-            // Slide container enters
-            master.to(newSlide, {
-                x: 0,
-                opacity: 1,
-                duration: config.duration,
-                ease: 'power3.out',
-            }, 0.2);
-
-            // Text enters (parallax: slower offset)
-            if (newContent.text) {
-                master.to(newContent.text, {
-                    x: 0,
-                    opacity: 1,
-                    duration: config.duration * 0.9,
-                    ease: 'power4.out',
-                }, 0.25);
-            }
-
-            // Visual enters (parallax: faster offset)
-            if (newContent.visual) {
-                master.to(newContent.visual, {
-                    x: 0,
-                    opacity: 1,
-                    scale: 1,
-                    duration: config.duration,
-                    ease: 'power4.out',
-                }, 0.3);
-            }
-
-            // === CONTENT REVEAL ===
-
-            // Title lines: clip-path bottom-up reveal. The wipe runs past the
-            // bottom of the line box and the clip is dropped afterwards: the
-            // title's line-height is tighter than the font's descender, so a
-            // clip that stops at 0% shaves the tail off letters like "p".
-            if (newContent.titleLines.length) {
-                master.fromTo(newContent.titleLines,
-                    { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
-                    {
-                        y: 0, opacity: 1, clipPath: 'inset(0 0 -20% 0)',
-                        stagger: 0.1,
-                        duration: 0.6,
-                        ease: 'power4.out',
-                        clearProps: 'clipPath',
-                    },
-                    0.35
-                );
-            }
-
-            // Description
-            if (newContent.desc) {
-                master.fromTo(newContent.desc,
-                    { y: 20, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
-                    0.55
-                );
-            }
-
-            // CTA buttons: staggered with bounce
-            if (newContent.cta.length) {
-                master.fromTo(newContent.cta,
-                    { y: 15, opacity: 0 },
-                    {
-                        y: 0, opacity: 1,
-                        stagger: 0.08,
-                        duration: 0.4,
-                        ease: 'power3.out',
-                    },
-                    0.65
-                );
-            }
-
-            // Tags
-            if (newContent.tags) {
-                master.fromTo(newContent.tags,
-                    { y: 10, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
-                    0.75
-                );
-            }
-
-            // Showcase elements
-            this.animateShowcaseElements(newSlide, master);
-        }
-
-        animateShowcaseElements(slide, timeline) {
-            const frame = slide.querySelector('.showcase-frame');
-            if (!frame) return;
-
+            run(newSlide.querySelector('.slide-tags'), [{ transform: shift(0, 10), opacity: 0 }, { transform: shift(0), opacity: 1 }], 400, 750, EASE.power3Out);
             // Screenshot frame: quiet fade + lift, no 3D tilt.
-            timeline.fromTo(frame,
-                { opacity: 0, y: 16 },
-                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-                0.4
-            );
+            run(newSlide.querySelector('.showcase-frame'), [{ transform: shift(0, 16), opacity: 0 }, { transform: shift(0), opacity: 1 }], 600, 400, EASE.power3Out);
+
+            this.runningAnimations = anims;
+            // cancel() rejects finished; that path is settle()'s own doing.
+            Promise.all(anims.map(anim => anim.finished)).then(settle, () => {});
         }
 
-        animateWithCSS(oldSlide, newSlide, direction, settle) {
-            oldSlide.style.pointerEvents = 'none';
-            newSlide.style.pointerEvents = 'auto';
-            newSlide.style.opacity = '0';
-            newSlide.style.transform = `translateX(${direction === 1 ? 60 : -60}px)`;
-
-            let finished = false;
-            let guardTimer = null;
-            const finish = () => {
-                if (finished) return;
-                finished = true;
-                if (guardTimer !== null) window.clearTimeout(guardTimer);
-                newSlide.removeEventListener('transitionend', onTransitionEnd);
-                settle();
-            };
-            const onTransitionEnd = (event) => {
-                if (event.target === newSlide && event.propertyName === 'opacity') finish();
-            };
-
-            newSlide.addEventListener('transitionend', onTransitionEnd);
-
-            requestAnimationFrame(() => {
-                newSlide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                oldSlide.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                newSlide.style.opacity = '1';
-                newSlide.style.transform = 'translateX(0)';
-                oldSlide.style.opacity = '0';
-                oldSlide.style.transform = `translateX(${direction === 1 ? -60 : 60}px)`;
-            });
-
-            guardTimer = window.setTimeout(finish, 700);
+        cancelSlideAnimations() {
+            const anims = this.runningAnimations || [];
+            this.runningAnimations = [];
+            anims.forEach(anim => anim.cancel());
         }
 
         playEntrance() {
-            if (typeof gsap === 'undefined') return;
-            // Nothing to stage when the visitor asked for reduced motion:
-            // the initial gsap.set() below would otherwise hide the hero copy
-            // and rely on a timeline the visitor does not want to see.
+            if (typeof Element.prototype.animate !== 'function') return;
+            // Nothing to stage when the visitor asked for reduced motion.
             if (this.prefersReducedMotion) return;
 
-            // Animate static hero content
             const heroSection = document.querySelector('#hero');
             if (!heroSection) return;
 
-            const eyebrow = heroSection.querySelector('.hero-eyebrow');
-            const titleLines = heroSection.querySelectorAll('.title-line');
-            const desc = heroSection.querySelector('.hero-description');
-            const ctaItems = heroSection.querySelectorAll('.hero-cta .btn, .hero-cta .hero-link');
-            const tags = heroSection.querySelector('.slide-tags');
-            const clientItems = heroSection.querySelectorAll('.hero-clients-label, .hero-clients-item');
+            // fill: 'backwards' holds the start frame during the delay and
+            // leaves no inline state behind once the entrance has played.
+            const enter = (el, y, duration, delay, easing, extra = {}) => {
+                if (!el) return;
+                el.animate([
+                    { transform: `translate3d(0, ${y}px, 0)`, opacity: 0, ...(extra.from || {}) },
+                    { transform: 'translate3d(0, 0, 0)', opacity: 1, ...(extra.to || {}) },
+                ], { duration, delay, easing, fill: 'backwards' });
+            };
+            const start = 300;
 
-            // Set initial hidden states
-            if (eyebrow) gsap.set(eyebrow, { y: 12, opacity: 0 });
-            gsap.set(titleLines, { y: 30, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
-            if (desc) gsap.set(desc, { y: 20, opacity: 0 });
-            gsap.set(ctaItems, { y: 15, opacity: 0 });
-            if (tags) gsap.set(tags, { y: 10, opacity: 0 });
-            if (clientItems.length) gsap.set(clientItems, { y: 10, opacity: 0 });
-
-            const tl = gsap.timeline({ delay: 0.3 });
-
-            // Eyebrow: quiet fade-up before the headline
-            if (eyebrow) {
-                tl.to(eyebrow, {
-                    y: 0, opacity: 1,
-                    duration: 0.45, ease: 'power3.out',
-                }, 0.05);
-            }
-
+            enter(heroSection.querySelector('.hero-eyebrow'), 12, 450, start + 50, EASE.power3Out);
             // Title lines: bottom-up clip reveal. Same overshoot as the slider
             // titles, for the same reason: at line-height 1.06 the descenders
-            // of "Entwicklung." and "Design." hang about 6.5% of the line box
-            // below it, so a clip ending at 0% would cut them off for good.
-            tl.to(titleLines, {
-                y: 0, opacity: 1,
-                clipPath: 'inset(0 0 -20% 0)',
-                stagger: 0.1,
-                duration: 0.6,
-                ease: 'power4.out',
-                clearProps: 'clipPath',
-            }, 0.25);
-
-            // Description
-            if (desc) {
-                tl.to(desc, {
-                    y: 0, opacity: 1,
-                    duration: 0.5, ease: 'power3.out',
-                }, 0.55);
-            }
-
-            // CTAs: button and text link enter together, no bounce
-            if (ctaItems.length) {
-                tl.to(ctaItems, {
-                    y: 0, opacity: 1,
-                    stagger: 0.08,
-                    duration: 0.45,
-                    ease: 'power3.out',
-                }, 0.68);
-            }
-
-            // Tags
-            if (tags) {
-                tl.to(tags, {
-                    y: 0, opacity: 1,
-                    duration: 0.4, ease: 'power3.out',
-                }, 0.78);
-            }
-
-            // Client logos: label first, then the logos, right after the CTAs
-            if (clientItems.length) {
-                tl.to(clientItems, {
-                    y: 0, opacity: 1,
-                    stagger: 0.07,
-                    duration: 0.45,
-                    ease: 'power3.out',
-                }, 0.85);
-            }
+            // of "Entwicklung." and "Design." hang below the line box.
+            heroSection.querySelectorAll('.title-line').forEach((line, i) => {
+                enter(line, 30, 600, start + 250 + i * 100, EASE.power4Out, {
+                    from: { clipPath: 'inset(0 0 100% 0)' },
+                    to: { clipPath: 'inset(0 0 -20% 0)' },
+                });
+            });
+            enter(heroSection.querySelector('.hero-description'), 20, 500, start + 550, EASE.power3Out);
+            // CTAs: button and text link enter together, no bounce.
+            heroSection.querySelectorAll('.hero-cta .btn, .hero-cta .hero-link').forEach((el, i) => {
+                enter(el, 15, 450, start + 680 + i * 80, EASE.power3Out);
+            });
+            enter(heroSection.querySelector('.slide-tags'), 10, 400, start + 780, EASE.power3Out);
+            // Client logos: label first, then the logos, right after the CTAs.
+            heroSection.querySelectorAll('.hero-clients-label, .hero-clients-item').forEach((el, i) => {
+                enter(el, 10, 450, start + 850 + i * 70, EASE.power3Out);
+            });
         }
     }
 
-    /* ═══ GSAP ANIMATIONS ═══ */
-    function initAnimations() {
-        const projectsSection = document.querySelector('#projects');
-
-        if (typeof gsap === 'undefined') {
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
+    /* ═══ SCROLL REVEAL + THEME SYNC ═══
+       Both used to run on GSAP ScrollTrigger. Two IntersectionObservers do
+       the same job without a scroll listener and without the 42 KB plugin. */
+    function initScrollReveal() {
+        const blocks = Array.from(document.querySelectorAll('.scroll-reveal'));
+        if (!blocks.length) return;
+        const reveal = el => el.classList.add('is-revealed');
+        if (!('IntersectionObserver' in window)) {
+            blocks.forEach(reveal);
             return;
         }
-
-        if (typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-        }
-
-        // Theme sync: when the projects section enters the viewport, align
-        // the global theme with the active slide. Going back up no longer
-        // hard-resets to a default colour: that previously clobbered both the
-        // user's picker choice and any other slide-derived theme. The shared
-        // controller also no-ops when the user has locked a colour.
-        if (projectsSection) {
-            ScrollTrigger.create({
-                trigger: projectsSection,
-                start: 'top center',
-                end: 'bottom center',
-                onEnter: () => {
-                    const activeSlide = projectsSection.querySelector('.hero-slide.active');
-                    const activeTheme = activeSlide && activeSlide.getAttribute('data-theme');
-                    const currentTheme = themeController.getProjectTheme();
-                    const currentProjectTheme = currentTheme === 'maxhaak' ? FIRST_PROJECT_THEME : currentTheme;
-                    const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
-                        .filter(slide => !slide.hidden)
-                        .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
-
-                    if (currentThemeHasSlide && activeTheme !== currentProjectTheme) return;
-                    if (activeTheme) themeController.setProjectTheme(activeTheme, 'scroll');
-                },
+        const observer = new IntersectionObserver((entries) => {
+            // Blocks that arrive in the same frame fade in 0.1 s apart.
+            let order = 0;
+            entries.forEach((entry) => {
+                const rect = entry.boundingClientRect;
+                // Inside a section that content-visibility: auto still skips,
+                // the block has no layout yet and reports an empty rect at
+                // 0,0, which counts as intersecting. Wait for the real one.
+                if (rect.width === 0 && rect.height === 0) return;
+                // Also reveal blocks already above the viewport (a reload
+                // further down the page), so none waits for a scroll back.
+                const passed = rect.bottom < 0;
+                if (!entry.isIntersecting && !passed) return;
+                entry.target.style.setProperty('--reveal-delay', `${(order * 0.1).toFixed(1)}s`);
+                order += 1;
+                reveal(entry.target);
+                observer.unobserve(entry.target);
             });
-        }
+        }, { rootMargin: '0px 0px -15% 0px' });
+        blocks.forEach(el => observer.observe(el));
+    }
 
-        // Scroll reveal batch
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.batch('.scroll-reveal', {
-                onEnter: (batch) => {
-                    gsap.to(batch, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.7,
-                        ease: 'power2.out',
-                        stagger: 0.1,
-                        overwrite: true,
-                    });
-                },
-                start: 'top 85%',
-                once: true,
+    /* When the projects section reaches the middle of the viewport on the way
+       down, align the global theme with the active slide. Going back up does
+       not reset anything: that used to clobber slide-derived themes. */
+    function initProjectsThemeSync() {
+        const projectsSection = document.querySelector('#projects');
+        if (!projectsSection || !('IntersectionObserver' in window)) return;
+        new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                // top < 0 means the section came in from above (scrolling up).
+                if (!entry.isIntersecting || entry.boundingClientRect.top < 0) return;
+                const activeSlide = projectsSection.querySelector('.hero-slide.active');
+                const activeTheme = activeSlide && activeSlide.getAttribute('data-theme');
+                const currentTheme = themeController.getProjectTheme();
+                const currentProjectTheme = currentTheme === 'maxhaak' ? FIRST_PROJECT_THEME : currentTheme;
+                const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
+                    .filter(slide => !slide.hidden)
+                    .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
+
+                if (currentThemeHasSlide && activeTheme !== currentProjectTheme) return;
+                if (activeTheme) themeController.setProjectTheme(activeTheme, 'scroll');
             });
-        }
+        }, { rootMargin: '-50% 0px -49% 0px' }).observe(projectsSection);
     }
 
     /* ═══ CONTACT FORM ═══ */
@@ -1745,7 +1559,8 @@
         initMobileMenu();
         initNavbarScroll();
         initContactForm();
-        initAnimations();
+        initScrollReveal();
+        initProjectsThemeSync();
         initHeroBgSlideshow();
         initProjectsEnergy();
         initSkillsEnergy();
