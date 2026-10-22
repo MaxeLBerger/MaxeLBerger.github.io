@@ -221,7 +221,7 @@
     --accent-bright: 140, 182, 255;
 }
 
-/* CapitalCombo: das Hellblau des Seitenmenues, kuehl und sachlich */
+/* ChartCombo (Key: capitalcombo): das Hellblau des Seitenmenues, kuehl und sachlich */
 [data-project-theme="capitalcombo"] {
     --theme-primary: 152, 201, 223;
     --theme-secondary: 95, 159, 194;
@@ -1548,7 +1548,9 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
        so the row still has the height of a single pill. */
     padding-block: 4px;
     padding-inline: 4px;
-    margin-block: -4px;
+    /* Top: a real gap to the slide above, so the strip never touches the
+       tags of the tallest slide. */
+    margin-block: calc(var(--space-xl) - 4px) -4px;
     scrollbar-width: none;
     -ms-overflow-style: none;
     --pag-fade-start: 0px;
@@ -2089,6 +2091,24 @@ html[data-color-scheme="light"] .hero-clients-item:hover .hero-client-logo {
     right: 1.5rem;
 }
 
+/* Below ~1300px the slides run edge to edge, so the arrows sat on top of the
+   copy and the category badge. Give the slides enough side room to clear
+   them: arrow inset + arrow width + a gap. */
+@media (min-width: 1024px) and (max-width: 1299px) {
+    .hero-slides-container {
+        padding-inline: calc(1.5rem + 44px + var(--space-md));
+    }
+}
+
+/* Phones and tablets: that side room would squeeze the title column until
+   long words break. Swiping and the project strip below the slide already
+   cover navigation, so the arrows go. */
+@media (max-width: 1023px) {
+    .slider-arrow {
+        display: none;
+    }
+}
+
 /* ═══════════════════════════════════════════════
    PROJECTS SHOWCASE SECTION
    ═══════════════════════════════════════════════ */
@@ -2477,6 +2497,101 @@ html[data-color-scheme="light"] .skills-section {
     justify-content: center;
     gap: var(--space-md);
     margin-top: var(--space-xl);
+}
+.services-grid + .services-cta {
+    margin-top: var(--space-2xl);
+}
+
+/* Three offer cards. No prices on purpose, the meta line gives a feel for
+   scope instead. */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-2xl) 0 0;
+    padding: 0;
+    list-style: none;
+}
+.service-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    transition: border-color var(--duration-base) var(--ease-out);
+}
+.service-card:hover {
+    border-color: rgba(var(--accent), 0.45);
+}
+.service-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(var(--accent), 0.12);
+    color: rgb(var(--accent));
+}
+.service-title {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text);
+}
+.service-desc {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+.service-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.service-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.55;
+}
+/* Check mark drawn with borders, so it follows the theme accent. */
+.service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0.2rem;
+    top: 0.3em;
+    width: 0.4rem;
+    height: 0.75rem;
+    border: solid rgb(var(--accent));
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.service-meta {
+    margin: auto 0 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+@media (max-width: 960px) {
+    .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 40rem;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .service-card {
+        padding: var(--space-lg);
+    }
 }
 .contact-form-note {
     color: var(--color-text-secondary);
@@ -3694,6 +3809,12 @@ html[data-color-scheme="light"] .legal-page a:hover {
 .site-footer {
     content-visibility: auto;
     contain-intrinsic-size: 1px 800px;
+}
+
+/* The services section carries the offer cards now, so its placeholder
+   height is closer to the real one. */
+.services-section {
+    contain-intrinsic-size: auto 1200px;
 }
 
 /* ═══════════════════════════════════════════════
