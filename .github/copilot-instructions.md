@@ -29,7 +29,6 @@ Plain static site, **no build step**, no submodules, no frameworks.
 │   └── soundoflvke.html
 ├── docs/                   # architecture / development / deployment guides
 ├── tools/                  # Local dev tooling (NOT deployed)
-│   └── mcp-portfolio-server/   # Local MCP dev tool
 └── .github/workflows/
     └── deploy.yml          # Two-job validate and deploy to GitHub Pages
 ```
@@ -391,7 +390,7 @@ See [.gitignore](../.gitignore). Important exclusions:
 The services section has no packages or published prices. It directs visitors to personal contact
 and an individual proposal. Keep German HTML and both translations synchronized.
 Do not restore public package prices without an explicit request from the owner.
-Former price artwork is archived in tools/archive/pay-packets and is not deployed.
+The former price artwork was removed; it is in git history (tools/archive/pay-packets).
 
 ### Update an image
 

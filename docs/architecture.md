@@ -26,7 +26,6 @@ workflow only minifies the copied CSS/JS (see [deployment.md](deployment.md)).
 │   ├── js/main.js          All JS (~1.5 k lines, single IIFE)
 │   └── img/                Static assets (images only)
 ├── tools/                  Local dev tooling (NOT deployed)
-│   └── mcp-portfolio-server/   MCP server for editing portfolio data
 ├── docs/                   This folder
 └── .github/workflows/      CI: deploy.yml
 ```

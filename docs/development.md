@@ -118,8 +118,8 @@ Update **both** the inline HTML default **and** both language objects in
 ## Contact and privacy baseline (1 October 2026)
 
 The website presents individually scoped work without public package prices. Keep the German
-HTML and DE/EN translations aligned. The old price artwork is in tools/archive/pay-packets/;
-the deployment excludes tools/.
+HTML and DE/EN translations aligned. The old price artwork was removed and is only in git
+history (tools/archive/pay-packets/).
 
 Inter is served locally with its license notice in assets/fonts/. Animations use the
 browser's Web Animations API, no third-party library. The contact form only prepares an email in the visitor's email app.

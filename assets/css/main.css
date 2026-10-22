@@ -344,7 +344,7 @@
 }
 
 /* Theme colors flow through the whole site: when a slide activates a theme,
-   ALL sections (nav, services, pricing, contact, footer) inherit it.
+   ALL sections (nav, services, contact, footer) inherit it.
    This creates a cohesive, dynamic color experience tied to the active project. */
 
 /* Smooth color/border/background transitions on theme-aware elements across the page */
@@ -736,17 +736,6 @@ ul, ol {
     border-color: rgb(var(--accent));
     color: rgb(var(--accent));
     background: rgba(var(--accent), 0.05);
-}
-
-/* Contact form button states (set via JS) */
-.btn-primary.is-success {
-    background: #16a34a;
-    color: #ffffff;
-}
-
-.btn-primary.is-error {
-    background: #dc2626;
-    color: #ffffff;
 }
 
 .btn-icon {
@@ -2962,14 +2951,6 @@ html[data-color-scheme="light"] .stack-chip {
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
     line-height: 1.4;
-}
-
-.contact-form-status.is-success {
-    color: rgb(var(--accent));
-}
-
-.contact-form-status.is-error {
-    color: #f87171;
 }
 
 .form-group {

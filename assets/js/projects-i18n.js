@@ -261,7 +261,6 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.imkerei.outro.cta2': "Projekt anfragen",
 
         /* JK Entertainment */
-        'projekt.jkentertainment.nav.leistungen': "Leistungen",
         'projekt.jkentertainment.hero.zurueck': "Zurück zum Portfolio",
         'projekt.jkentertainment.hero.label': "TCG E-Commerce",
         'projekt.jkentertainment.hero.titel1': "TCG-Shop.",
@@ -679,7 +678,6 @@ window.PROJECT_TRANSLATIONS = {
         'projekt.imkerei.outro.cta2': "Request a project",
 
         /* JK Entertainment */
-        'projekt.jkentertainment.nav.leistungen': "Services",
         'projekt.jkentertainment.hero.zurueck': "Back to portfolio",
         'projekt.jkentertainment.hero.label': "TCG E-Commerce",
         'projekt.jkentertainment.hero.titel1': "TCG store.",

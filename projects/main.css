@@ -221,33 +221,6 @@ html[data-color-scheme="light"] .project-page .btn-primary:hover {
     filter: brightness(0.92);
 }
 
-/* Faktenliste im Hero, optional. */
-.project-meta {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--space-lg);
-    max-width: var(--proj-measure);
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
-}
-
-.project-meta dt {
-    margin-bottom: 0.35rem;
-    color: var(--proj-quiet);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.project-meta dd {
-    color: var(--color-text);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    line-height: 1.5;
-}
-
 /* ─────────────────────────────────────────────
    4. BILDER
    ───────────────────────────────────────────── */
@@ -520,11 +493,6 @@ html[data-color-scheme="light"] .tech-badge {
 
     .project-actions .btn {
         justify-content: center;
-    }
-
-    .project-meta {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
     }
 }
 
