@@ -47,7 +47,9 @@ so it has to name whichever project sits first in this table.
 | Deterministische Review | Git review pipeline (developer tool) | none |
 | AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 | Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
-| MemeCoinTrader | Java desktop trading app, in progress | none |
+| Kundenkalender | Local-first desktop calendar (Tauri); the screenshot uses invented demo data | none |
+| reachlab | Short-video analysis pipeline; the slide image is a rendered summary of the numbers in its README | none |
+| E46 in 3D | Blender reconstruction of a BMW E46 (repo E46CustomZ); Blender renders as slide images | none |
 
 ### Client work (`data-mode="customers"`)
 
