@@ -13,76 +13,82 @@ Static portfolio site for Maximilian Haak, fullstack developer and AI specialist
 | Section | What it is |
 |---------|------------|
 | `#hero` | Right-anchored portrait photo, text column on the left with a two-line headline, one primary button plus one text link, then a "Bereits vertraut von:" label with the client logos in a row beneath it. Static, no slider. |
-| `#projects` | Project slider with a mode switch between own work and client work. Height follows the content; arrows and pagination sit below the slide. A plasma band in the active project's colours drifts behind the whole section. |
+| `#projects` | Project slider with a mode switch between client work (shown first) and own work. Height follows the content; the pagination strip sits below the slide, the arrows beside it (hidden below 1024 px, where swiping and the strip cover navigation). A plasma band in the active project's colours drifts behind the whole section. |
 | `#about` | Personal section with a portrait frame and compact facts. |
 | `#skills` | Tech stack: the main group as large tiles with the original logos in three rows (Web, 3D & Games; KI & Agents; Sprachen & Tools), every other tool below as small pills. |
-| `#pricing` | Three website packages plus maintenance and hourly rate. |
+| `#services` | Three offers (Website, Web-App, KI & Automatisierung) as cards without prices, then the inquiry buttons. An empty `#pricing` anchor inside keeps old links working. |
 | `#contact` | Contact links, location and a mailto form. |
 
 ---
 
 ## Projects
 
-The slider on the homepage runs in two modes, filtered through `data-mode` on both slides and pagination buttons. Default is `own`.
+The slider on the homepage runs in two modes, filtered through `data-mode` on both slides and pagination buttons. Default is
+`customers`: the mode button marked `is-active` and the pagination button marked `active` decide what shows at load.
+That slide is the only one whose screenshot uses a real `src`; every other slide carries `data-src` and loads on demand.
 
-The section header carries a `.section-note` line (`projects.note`): self-employment starts on 1 October 2026, and the
-client slides repeat that date rather than implying an older track record.
+The section header carries a `.section-note` line (`projects.note`): self-employed since 1 October 2026. Client slides
+that are not live yet say "in Arbeit" and carry no launch date, so the page never shows a date that has already passed.
 
-### Own work (`data-mode="own"`)
-
-Listed in slider order. The pagination buttons in `index.html` are the single source of that order:
-the slider pairs slides to buttons by `data-project`, so moving a project means moving its button.
+Slide order: the pagination buttons in `index.html` are the single source of it. The slider pairs slides to buttons by
+`data-project`, so moving a project means moving its button (the slide blocks follow the same order for readability).
 `FIRST_PROJECT_THEME` in `assets/js/main.js` resolves the neutral `maxhaak` theme onto the leading project,
-so it has to name whichever project sits first in this table.
+so it has to name the first client project.
 
-| Project | Type | Detail page |
-|---------|------|-------------|
-| Haakly | Self-hosted CMS | none |
-| CapitalCombo | Trading research and execution platform | none |
-| DealHunter | Autonomous marketplace scanner | none |
-| E46 Studio | Desktop app (Electron) | [e46-studio.html](projects/e46-studio.html) |
-| Albert Royale | 3D game with a self-built neural net | [albert.html](projects/albert.html) |
-| Age of Max | Browser game | none |
-| Medieval Tower Defense | Browser game | none |
-| Deterministische Review | Git review pipeline (developer tool) | none |
-| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
-| Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
-| Kundenkalender | Local-first desktop calendar (Tauri); the screenshot uses invented demo data | none |
-| reachlab | Short-video analysis pipeline; the slide image is a rendered summary of the numbers in its README | none |
-| E46 in 3D | Blender reconstruction of a BMW E46 (repo E46CustomZ); Blender renders as slide images | none |
+Own projects without a public link use "Ähnliches Projekt besprechen" (to `#contact`), client slides without a live
+site use "Ähnliche Website anfragen".
 
 ### Client work (`data-mode="customers"`)
 
 | Project | Type | Detail page |
 |---------|------|-------------|
 | Imkerei Feuerstein | MVP: relaunch site with shop interface, demo on Vercel, launch with ordering system in preparation | [imkerei-feuerstein.html](projects/imkerei-feuerstein.html) |
-| Co Ha | Restaurant site | [coha.html](projects/coha.html) |
-| Daniel Brecheis | Consultant site (Human Bridges), in progress, live 1 October | none while unreleased |
-| Kaya Seeds | Online shop | [kayaseeds.html](projects/kayaseeds.html) |
-| JK Entertainment | Trading card shop | [jkentertainment.html](projects/jkentertainment.html) |
-| Sound of Lvke | Artist site | [soundoflvke.html](projects/soundoflvke.html) |
+| Daniel Brecheis | Consultant site (Human Bridges), in progress | none while unreleased |
 | Senihelp24 | Care service site, in progress | none |
+| Ihr Projekt | Invitation slide, no project | none |
 
-Slides without a detail page link to the live site or to `#contact` instead. `Senihelp24` and `Daniel Brecheis` have no
-screenshot on the slide and use the shared `.project-mock` placeholder. The Daniel Brecheis detail page
-([danielbrecheis.html](projects/danielbrecheis.html)) still exists but is unlinked, `noindex` and out of the sitemap
-until the site goes live on 1 October; relink it, drop the `robots` meta and add the sitemap entry back on launch.
+Co Ha, Kaya Seeds, JK Entertainment and Sound of Lvke keep their detail pages under `projects/` but have no slide.
+
+`Senihelp24` and `Daniel Brecheis` have no screenshot on the slide and use the shared `.project-mock` placeholder.
+The Daniel Brecheis detail page ([danielbrecheis.html](projects/danielbrecheis.html)) still exists but is unlinked,
+`noindex` and out of the sitemap until the site goes live; relink it, drop the `robots` meta and add the sitemap
+entry back on launch.
+
+### Own work (`data-mode="own"`)
+
+Listed in slider order: projects people can open or play first, work without a public link after.
+
+| Project | Type | Detail page |
+|---------|------|-------------|
+| Albert Royale | 3D game with a self-built neural net | [albert.html](projects/albert.html) |
+| ChartCombo (key `capitalcombo`) | Trading research and execution platform | none |
+| Aurevia | Game concept, playable prototype in progress | none |
+| E46 Studio | Desktop app (Electron) | [e46-studio.html](projects/e46-studio.html) |
+| Haakly | Self-hosted CMS | none |
+| DealHunter | Autonomous marketplace scanner | none |
+| Age of Max | Browser game | none |
+| Deterministische Review | Git review pipeline (developer tool) | none |
+| Kundenkalender | Local-first desktop calendar (Tauri); the screenshot uses invented demo data | none |
+| reachlab | Short-video analysis pipeline; the slide image is a rendered summary of the numbers in its README | none |
+| E46 in 3D | Blender reconstruction of a BMW E46 (repo E46CustomZ); Blender renders as slide images | none |
+| Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
+| Medieval Tower Defense | Browser game | none |
+| AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
 
 ---
 
-## Packages on the site
+## Services on the site
 
-The pricing section offers website work only. Earlier packages for AI automation, web apps and code review were removed.
+`#services` shows three offers without public prices; every project gets its own quote after a first conversation.
 
-| Package | Lead time | Starting at |
-|---------|-----------|-------------|
-| Landingpage | 1 to 2 weeks | 2.500 € |
-| Website (recommended) | 3 to 5 weeks | 5.500 € |
-| Website Plus | 6 to 10 weeks | 9.500 € |
-| Website maintenance | ongoing | 149 €/month |
-| Anything beyond scope | hourly | 95 €/hour |
+| Offer | Meta line |
+|-------|-----------|
+| Website | Typisch 3 bis 5 Wochen |
+| Web-App | Umfang nach Absprache |
+| KI & Automatisierung | Start mit einem kleinen Pilotprojekt |
 
-All figures are net. When you change a price, change it in `index.html` and in both `translations.de` and `translations.en` in [assets/js/main.js](assets/js/main.js).
+Below the cards sit the two inquiry buttons. All copy lives under `services.*` in both `translations.de` and `translations.en` in
+[assets/js/main.js](assets/js/main.js); change the German HTML and both dictionaries together.
 
 ---
 
@@ -148,19 +154,6 @@ The band is flipped vertically so the light source sits low right behind the moc
 The Human Bridges original is a black wordmark on a blue patch with the bridge arcs knocked out of it, so it is unreadable on the hero as shipped; the mono version keeps the arcs and drops the patch. The Imkerei mascot is a low-resolution cartoon, so a colour version would not survive `brightness(0)` in light mode and would be the only coloured mark in the row; the silhouette keeps the row uniform.
 
 The row is sized from one number, `--client-cap` on `.hero-clients` (12px on desktop, 10.5px up to 768px): every wordmark is rendered at that cap height, each logo's CSS height is the cap height times the ratio measured in its file, and a small `translateY` per logo puts the caps on one centre line. Replace these only with mono versions, and when a file's proportions change, re-measure its cap height for the ratio in `.hero-client-logo--*`.
-
-### Package images
-
-The two `#pricing` panels are led by a device mockup each, both 16:9 and both carrying their price as baked-in typography:
-
-| File | Size | Served from |
-|------|------|-------------|
-| `pay-packets/paket-website.webp` | 1200x675 | `srcset` above roughly 700 px of slot width, and as the `<img>` fallback |
-| `pay-packets/paket-website-760.webp` | 760x428 | narrower slots |
-| `pay-packets/paket-websiteplus.webp` | 1200x675 | as above, for package 02 |
-| `pay-packets/paket-websiteplus-760.webp` | 760x428 | narrower slots |
-
-Side by side with the copy column the panel is taller than a 16:9 frame, so the leftover strip above and below is filled by a blurred copy of the same picture (`.service-panel__art::before`) under a veil in the surface colour (`::after`). Nothing of the motif is cropped. Stacked below 900 px the picture fills the width on its own and both pseudo-elements switch off, so no extra file is fetched on phones. The blurred strip reuses the 1200 px file the `<img>` already loaded on desktop. Replacing a mockup means regenerating both widths from the same master and keeping the 16:9 ratio, otherwise the strip and the frame stop matching.
 
 ---
 

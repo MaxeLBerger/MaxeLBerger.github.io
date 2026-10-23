@@ -78,7 +78,7 @@
             }
         } catch (e) { /* storage blocked: keep the dark default */ }
     </script>
-    <link rel="stylesheet" href="assets/css/main.css?v=20261021-lcp">
+    <link rel="stylesheet" href="assets/css/main.css?v=20261023-services">
 </head>
 <body class="has-hero">
     <!-- Navigation -->
@@ -163,177 +163,54 @@
                 </div>
 
                 <div class="project-mode-selector" role="group" aria-label="Projekt-Kategorie" data-i18n-aria-label="projects.mode.group">
-                    <button type="button" class="project-mode-btn is-active" data-mode="own" aria-pressed="true">
-                        <span class="project-mode-label" data-i18n="projects.mode.own">Eigene Projekte</span>
-                    </button>
-                    <button type="button" class="project-mode-btn" data-mode="customers" aria-pressed="false">
+                    <button type="button" class="project-mode-btn is-active" data-mode="customers" aria-pressed="true">
                         <span class="project-mode-label" data-i18n="projects.mode.customers">Kundenprojekte</span>
+                    </button>
+                    <button type="button" class="project-mode-btn" data-mode="own" aria-pressed="false">
+                        <span class="project-mode-label" data-i18n="projects.mode.own">Eigene Projekte</span>
                     </button>
                 </div>
             </div>
 
             <div class="hero-slides-container">
 
-                <!-- ═══ EIGENE PROJEKTE ═══ -->
+                <!-- ═══ KUNDENPROJEKTE ═══ -->
 
-                <!-- Eigen 1: Haakly -->
-                <div class="hero-slide active" id="slide-haakly" data-mode="own" data-theme="haakly" role="tabpanel" aria-labelledby="tab-haakly" aria-hidden="false">
+                <!-- Kunde 1: Imkerei Feuerstein (MVP, Livegang mit Bestellsystem in Vorbereitung; keine Aussagen ueber fertigen Shop oder Verkaeufe) -->
+                <div class="hero-slide active" id="slide-imkerei" data-mode="customers" data-theme="imkerei" role="tabpanel" aria-labelledby="tab-imkerei" aria-hidden="false">
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.haakly.t1">Haakly.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.haakly.t2">Jede Version</span></span>
-                                <span class="title-line" data-i18n="slide.haakly.t3">bleibt erreichbar.</span>
+                                <span class="title-line" data-i18n="slide.imkerei.t1">Imkerei Feuerstein</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.imkerei.t2">Relaunch</span></span>
+                                <span class="title-line" data-i18n="slide.imkerei.t3">als MVP.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.haakly.desc">Ein selbst hostbares CMS für Kundenwebsites: Redakteure pflegen Inhalte im Browser, jede Speicherung wird eine unveränderliche Revision, und veröffentlicht wird immer ein geprüftes Release. Ein Rollback schaltet auf ein früheres Release zurück, ohne dass die Live-Seite dazwischen leer wird.</p>
+                            <p class="slide-description" data-i18n="slide.imkerei.desc">MVP: Relaunch-Website mit Shop-Oberfläche für die Familienimkerei Feuerstein aus Elchingen. 122 statisch erzeugte Seiten, 103 Produkte mit Suche und Filter, Warenkorb, Galerie und FAQ. Der Livegang mit angebundenem Bestellsystem ist in Vorbereitung.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.haakly.cta1">Projekt anfragen</a>
+                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.imkerei.cta1">MVP ansehen</a>
+                                <a href="projects/imkerei-feuerstein.html" class="btn btn-outline" data-i18n="slide.imkerei.cta2">Projekt-Details</a>
                             </div>
                             <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.haakly.tag1">TypeScript</span>
-                                <span class="slide-tag" data-i18n="slide.haakly.tag2">Fastify</span>
-                                <span class="slide-tag" data-i18n="slide.haakly.tag3">PostgreSQL</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag1">Astro</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag2">Shop-Oberfläche</span>
+                                <span class="slide-tag" data-i18n="slide.imkerei.tag3">MVP</span>
                             </div>
                         </div>
                         <div class="slide-visual">
                             <div class="showcase-container">
                                 <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                                    <span data-i18n="slide.haakly.badge">SELF-HOSTED CMS</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span data-i18n="slide.imkerei.badge">MVP-DEMO</span>
                                 </div>
-                                <div class="showcase-frame">
+                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="MVP-Demo der Imkerei Feuerstein ansehen" data-i18n-aria-label="slide.imkerei.linkLabel"><div class="showcase-frame">
                                     <div class="browser-bar" aria-hidden="true">
                                         <span class="dot"></span>
                                         <span class="dot"></span>
                                         <span class="dot"></span>
-                                        <span class="browser-url">haakly.local/redaktion</span>
+                                        <span class="browser-url">imkerei-feuerstein.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap">
-                                        <img src="assets/img/projects/haakly.webp" srcset="assets/img/projects/haakly-800.webp 800w, assets/img/projects/haakly-1200.webp 1200w, assets/img/projects/haakly.webp 1440w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 2: CapitalCombo -->
-                <div class="hero-slide" id="slide-capitalcombo" data-mode="own" data-theme="capitalcombo" role="tabpanel" aria-labelledby="tab-capitalcombo" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.capitalcombo.t1">CapitalCombo.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.capitalcombo.t2">Ein Handelssystem,</span></span>
-                                <span class="title-line" data-i18n="slide.capitalcombo.t3">das sich selbst misst.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.capitalcombo.desc">Eine Forschungs- und Ausführungsplattform für den CFD-Handel: Trigger sammeln Marktkontext, ein LLM formuliert daraus eine Entscheidung, und 19 Vorprüfungen plus ein Live-Gate entscheiden, ob sie den Broker überhaupt erreicht. Ein großer Teil der Arbeit steckt im Messapparat aus Backtests, Kostenmodellen und einem Judge, der alte Entscheidungen gegen die tatsächlich folgenden Kerzen nachrechnet.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.capitalcombo.cta1">Projekt anfragen</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag1">FastAPI</span>
-                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag2">Next.js</span>
-                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag3">Multi-LLM</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
-                                    <span data-i18n="slide.capitalcombo.badge">TRADING-PLATTFORM</span>
-                                </div>
-                                <div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">capitalcombo.local/markets</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/capitalcombo.webp" data-srcset="assets/img/projects/capitalcombo-800.webp 800w, assets/img/projects/capitalcombo-1200.webp 1200w, assets/img/projects/capitalcombo.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="CapitalCombo: Kursverlauf mit Trend-Signalen und Positionsbewertung" loading="lazy" decoding="async" width="1600" height="800">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 3: DealHunter -->
-                <div class="hero-slide" id="slide-dealhunter" data-mode="own" data-theme="dealhunter" role="tabpanel" aria-labelledby="tab-dealhunter" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.dealhunter.t1">DealHunter.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.dealhunter.t2">Findet Angebote,</span></span>
-                                <span class="title-line" data-i18n="slide.dealhunter.t3">bevor ich suche.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.dealhunter.desc">Ein autonomer Agent, der Kleinanzeigen rund um die Uhr nach lohnenden Angeboten absucht. Scheduler, Worker und Dashboard hängen an einer gemeinsamen Postgres-Queue, damit eine lange Suche nie den Rest blockiert. Autos, Schwerpunkt BMW E46, bewertet er gegen Marktmedian, Zustand, Laufleistung und Begehrtheit; bei Konsolen liest ein Vision-Modell die Fotos und rechnet die Marge gegen PriceCharting. Treffer kommen per Telegram, die KI-Kosten laufen sichtbar mit.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.dealhunter.cta1">Projekt anfragen</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.dealhunter.tag1">Python</span>
-                                <span class="slide-tag" data-i18n="slide.dealhunter.tag2">FastAPI</span>
-                                <span class="slide-tag" data-i18n="slide.dealhunter.tag3">Claude API</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-                                    <span data-i18n="slide.dealhunter.badge">MARKT-SCANNER</span>
-                                </div>
-                                <div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">dealhunter.local/deals</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/dealhunter.webp" data-srcset="assets/img/projects/dealhunter-800.webp 800w, assets/img/projects/dealhunter-1200.webp 1200w, assets/img/projects/dealhunter.webp 1308w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="DealHunter: Liste gefundener Angebote mit Score, Preisbewertung und Zustandsbalken" loading="lazy" decoding="async" width="1308" height="654">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 4: E46 Studio -->
-                <div class="hero-slide" id="slide-e46" data-mode="own" data-theme="e46" role="tabpanel" aria-labelledby="tab-e46" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.e46.t1">Desktop App.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46.t2">BMW E46.</span></span>
-                                <span class="title-line" data-i18n="slide.e46.t3">Steuergeräte-Coding.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.e46.desc">E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation für eine spezialisierte Automotive-Community.</p>
-                            <div class="slide-cta">
-                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.e46.cta1">Live ansehen</a>
-                                <a href="projects/e46-studio.html" class="btn btn-outline" data-i18n="slide.e46.cta2">Projekt-Details</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.e46.tag1">Electron</span>
-                                <span class="slide-tag" data-i18n="slide.e46.tag2">TypeScript</span>
-                                <span class="slide-tag" data-i18n="slide.e46.tag3">Serial API</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
-                                    <span data-i18n="slide.e46.badge">DESKTOP APP</span>
-                                </div>
-                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="E46 Studio Website ansehen"><div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">e46studio.vercel.app</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/e46studio.webp" data-srcset="assets/img/projects/e46studio-800.webp 800w, assets/img/projects/e46studio-1200.webp 1200w, assets/img/projects/e46studio.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="E46 Studio / DolphinCode" loading="lazy" decoding="async" width="1600" height="796">
+                                        <img src="assets/img/projects/imkerei-feuerstein.webp" srcset="assets/img/projects/imkerei-feuerstein-800.webp 800w, assets/img/projects/imkerei-feuerstein-1200.webp 1200w, assets/img/projects/imkerei-feuerstein.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Startseite der MVP-Demo der Imkerei Feuerstein mit dem Imkermeister vor Bienenstöcken und Honiggläsern" data-i18n-alt="slide.imkerei.alt" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div></a>
                             </div>
@@ -341,8 +218,110 @@
                     </div>
                 </div>
 
-                <!-- Eigen 5: Albert Royale -->
-                <div class="hero-slide" id="slide-albert" data-mode="own" data-theme="albert" role="tabpanel" aria-labelledby="tab-albert" aria-hidden="true">
+                <!-- Kunde 2: Daniel Brecheis (in Arbeit, noch ohne Screenshot) -->
+                <div class="hero-slide" id="slide-danielbrecheis" data-mode="customers" data-theme="danielbrecheis" role="tabpanel" aria-labelledby="tab-danielbrecheis" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.danielbrecheis.t1">Daniel Brecheis</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.danielbrecheis.t2">Website</span></span>
+                                <span class="title-line" data-i18n="slide.danielbrecheis.t3">in Arbeit.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.danielbrecheis.desc">Markenwebsite für Daniel Brecheis (Human Bridges Consulting): HR-Coaching, Workshops und Interim-Management. Aktuell in der Umsetzung.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.danielbrecheis.cta1">Ähnliche Website anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag1">Coaching</span>
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag2">Branding</span>
+                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag3">In Arbeit</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
+                                    <div class="project-mock">
+                                        <span class="project-mock-line project-mock-line--lg"></span>
+                                        <span class="project-mock-line"></span>
+                                        <span class="project-mock-line project-mock-line--sm"></span>
+                                        <span class="project-mock-grid"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kunde 3: Senihelp24 (in Arbeit, noch ohne Screenshot) -->
+                <div class="hero-slide" id="slide-senihelp24" data-mode="customers" data-theme="senihelp24" role="tabpanel" aria-labelledby="tab-senihelp24" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.senihelp24.t1">senihelp24.pl</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.senihelp24.t2">Website</span></span>
+                                <span class="title-line" data-i18n="slide.senihelp24.t3">in Arbeit.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.senihelp24.desc">Neuer Web-Auftritt für senihelp24.pl. Aktuell in Entwicklung, eines der ersten Kundenprojekte meiner Selbstständigkeit.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.senihelp24.cta1">Ähnliche Website anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.senihelp24.tag1">Next.js & Vercel</span>
+                                <span class="slide-tag" data-i18n="slide.senihelp24.tag2">Website</span>
+                                <span class="slide-tag" data-i18n="slide.senihelp24.tag3">In Arbeit</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
+                                    <div class="project-mock">
+                                        <span class="project-mock-line project-mock-line--lg"></span>
+                                        <span class="project-mock-line"></span>
+                                        <span class="project-mock-line project-mock-line--sm"></span>
+                                        <span class="project-mock-grid"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kunde 4: Einladung. Kein Projekt, sondern der offene Platz fuer das naechste. -->
+                <div class="hero-slide" id="slide-invite" data-mode="customers" data-theme="maxhaak" role="tabpanel" aria-labelledby="tab-invite" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.invite.t1">Ihr Projekt.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.invite.t2">Als Nächstes.</span></span>
+                                <span class="title-line" data-i18n="slide.invite.t3">Hier.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.invite.desc">Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich seit dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.invite.cta1">Projekt besprechen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.invite.tag1">Websites</span>
+                                <span class="slide-tag" data-i18n="slide.invite.tag2">Web-Apps</span>
+                                <span class="slide-tag" data-i18n="slide.invite.tag3">Betreuung</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
+                                    <div class="project-mock project-mock--invite">
+                                        <p class="project-mock-headline" data-i18n="slide.invite.mock1">Platz für Ihr Projekt.</p>
+                                        <p class="project-mock-sub" data-i18n="slide.invite.mock2">Kein Platzhalter, ein freier Platz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ EIGENE PROJEKTE ═══ -->
+
+                <!-- Eigen 1: Albert Royale -->
+                <div class="hero-slide" id="slide-albert" data-mode="own" data-theme="albert" role="tabpanel" aria-labelledby="tab-albert" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -384,8 +363,49 @@
                     </div>
                 </div>
 
-                <!-- Eigen 6: Aurevia (Spielkonzept, KI-Keyart, spielbarer Prototyp in Arbeit) -->
-                <div class="hero-slide" id="slide-aurevia" data-mode="own" data-theme="aurevia" role="tabpanel" aria-labelledby="tab-aurevia" aria-hidden="true">
+                <!-- Eigen 2: ChartCombo -->
+                <div class="hero-slide" id="slide-capitalcombo" data-mode="own" data-theme="capitalcombo" role="tabpanel" aria-labelledby="tab-capitalcombo" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.capitalcombo.t1">ChartCombo.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.capitalcombo.t2">Ein Handelssystem,</span></span>
+                                <span class="title-line" data-i18n="slide.capitalcombo.t3">das sich selbst misst.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.capitalcombo.desc">Eine Forschungs- und Ausführungsplattform für den CFD-Handel: Trigger sammeln Marktkontext, ein LLM formuliert daraus eine Entscheidung, und 19 Vorprüfungen plus ein Live-Gate entscheiden, ob sie den Broker überhaupt erreicht. Ein großer Teil der Arbeit steckt im Messapparat aus Backtests, Kostenmodellen und einem Judge, der alte Entscheidungen gegen die tatsächlich folgenden Kerzen nachrechnet.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.capitalcombo.cta1">Ähnliches Projekt besprechen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag1">FastAPI</span>
+                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag2">Next.js</span>
+                                <span class="slide-tag" data-i18n="slide.capitalcombo.tag3">Multi-LLM</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+                                    <span data-i18n="slide.capitalcombo.badge">TRADING-PLATTFORM</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">chartcombo.local/markets</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/capitalcombo.webp" data-srcset="assets/img/projects/capitalcombo-800.webp 800w, assets/img/projects/capitalcombo-1200.webp 1200w, assets/img/projects/capitalcombo.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="ChartCombo: Kursverlauf mit Trend-Signalen und Positionsbewertung" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 3: Aurevia (Spielkonzept, KI-Keyart, spielbarer Prototyp in Arbeit) -->
+                <div class="hero-slide" id="slide-aurevia" data-mode="own" data-theme="aurevia" role="tabpanel" aria-labelledby="tab-aurevia" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -395,7 +415,7 @@
                             </h2>
                             <p class="slide-description" data-i18n="slide.aurevia.desc">Aurevia ist ein Spielkonzept für ein kooperatives Fantasy-Abenteuer jenseits unterirdischer Kavernen: KI-generiertes Keyart, eigenes UI-Design für Hauptmenü, Spielstand und Steuerungshinweise. Ein spielbarer Prototyp ist in Arbeit, dieser Screen zeigt die visuelle Richtung.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.aurevia.cta1">Projekt anfragen</a>
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.aurevia.cta1">Ähnliches Projekt besprechen</a>
                                 <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.aurevia.cta2">In Arbeit</button>
                             </div>
                             <div class="slide-tags">
@@ -426,8 +446,132 @@
                     </div>
                 </div>
 
+                <!-- Eigen 4: E46 Studio -->
+                <div class="hero-slide" id="slide-e46" data-mode="own" data-theme="e46" role="tabpanel" aria-labelledby="tab-e46" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.e46.t1">Desktop App.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46.t2">BMW E46.</span></span>
+                                <span class="title-line" data-i18n="slide.e46.t3">Steuergeräte-Coding.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.e46.desc">E46 Studio: Eine Electron-Anwendung für BMW E46 Steuergeräte-Coding über serielle Schnittstelle. TypeScript, Node.js und Low-Level-Kommunikation für eine spezialisierte Automotive-Community.</p>
+                            <div class="slide-cta">
+                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.e46.cta1">Live ansehen</a>
+                                <a href="projects/e46-studio.html" class="btn btn-outline" data-i18n="slide.e46.cta2">Projekt-Details</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.e46.tag1">Electron</span>
+                                <span class="slide-tag" data-i18n="slide.e46.tag2">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.e46.tag3">Serial API</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+                                    <span data-i18n="slide.e46.badge">DESKTOP APP</span>
+                                </div>
+                                <a href="https://e46studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="E46 Studio Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">e46studio.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/e46studio.webp" data-srcset="assets/img/projects/e46studio-800.webp 800w, assets/img/projects/e46studio-1200.webp 1200w, assets/img/projects/e46studio.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="E46 Studio / DolphinCode" loading="lazy" decoding="async" width="1600" height="796">
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 5: Haakly -->
+                <div class="hero-slide" id="slide-haakly" data-mode="own" data-theme="haakly" role="tabpanel" aria-labelledby="tab-haakly" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.haakly.t1">Haakly.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.haakly.t2">Jede Version</span></span>
+                                <span class="title-line" data-i18n="slide.haakly.t3">bleibt erreichbar.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.haakly.desc">Ein selbst hostbares CMS für Kundenwebsites: Redakteure pflegen Inhalte im Browser, jede Speicherung wird eine unveränderliche Revision, und veröffentlicht wird immer ein geprüftes Release. Ein Rollback schaltet auf ein früheres Release zurück, ohne dass die Live-Seite dazwischen leer wird.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.haakly.cta1">Ähnliches Projekt besprechen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.haakly.tag1">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.haakly.tag2">Fastify</span>
+                                <span class="slide-tag" data-i18n="slide.haakly.tag3">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                    <span data-i18n="slide.haakly.badge">SELF-HOSTED CMS</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">haakly.local/redaktion</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/haakly.webp" data-srcset="assets/img/projects/haakly-800.webp 800w, assets/img/projects/haakly-1200.webp 1200w, assets/img/projects/haakly.webp 1440w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Haakly: Redaktionsansicht mit Entwurf, Versionsliste und Veröffentlichungsstand" loading="lazy" decoding="async" width="1440" height="720">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 6: DealHunter -->
+                <div class="hero-slide" id="slide-dealhunter" data-mode="own" data-theme="dealhunter" role="tabpanel" aria-labelledby="tab-dealhunter" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.dealhunter.t1">DealHunter.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.dealhunter.t2">Findet Angebote,</span></span>
+                                <span class="title-line" data-i18n="slide.dealhunter.t3">bevor ich suche.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.dealhunter.desc">Ein autonomer Agent, der Kleinanzeigen rund um die Uhr nach lohnenden Angeboten absucht. Scheduler, Worker und Dashboard hängen an einer gemeinsamen Postgres-Queue, damit eine lange Suche nie den Rest blockiert. Autos, Schwerpunkt BMW E46, bewertet er gegen Marktmedian, Zustand, Laufleistung und Begehrtheit; bei Konsolen liest ein Vision-Modell die Fotos und rechnet die Marge gegen PriceCharting. Treffer kommen per Telegram, die KI-Kosten laufen sichtbar mit.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.dealhunter.cta1">Ähnliches Projekt besprechen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag1">Python</span>
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag2">FastAPI</span>
+                                <span class="slide-tag" data-i18n="slide.dealhunter.tag3">Claude API</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                                    <span data-i18n="slide.dealhunter.badge">MARKT-SCANNER</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">dealhunter.local/deals</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/dealhunter.webp" data-srcset="assets/img/projects/dealhunter-800.webp 800w, assets/img/projects/dealhunter-1200.webp 1200w, assets/img/projects/dealhunter.webp 1308w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="DealHunter: Liste gefundener Angebote mit Score, Preisbewertung und Zustandsbalken" loading="lazy" decoding="async" width="1308" height="654">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Eigen 7: Age of Max -->
-                <div class="hero-slide" id="slide-ageofmax" data-mode="own" data-theme="ageofmax" role="tabpanel" aria-labelledby="tab-ageofmax" aria-hidden="true">
+                <div class="hero-slide" id="slide-ageofmax" data-mode="own" data-theme="ageofmax" role="tabpanel" aria-labelledby="tab-ageofmax" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -469,51 +613,8 @@
                     </div>
                 </div>
 
-                <!-- Eigen 8: Medieval Tower Defense -->
-                <div class="hero-slide" id="slide-medieval" data-mode="own" data-theme="medieval" role="tabpanel" aria-labelledby="tab-medieval" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.medieval.t1">Medieval.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.medieval.t2">Tower</span></span>
-                                <span class="title-line" data-i18n="slide.medieval.t3">Defense.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.medieval.desc">Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art, gebaut für die Vercel-Edge mit modernem Web-Stack.</p>
-                            <div class="slide-cta">
-                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.medieval.cta1">Live spielen</a>
-                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="slide.medieval.cta2">Zum Spiel</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.medieval.tag1">Browser Game</span>
-                                <span class="slide-tag" data-i18n="slide.medieval.tag2">Tower Defense</span>
-                                <span class="slide-tag" data-i18n="slide.medieval.tag3">Vercel</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M7 12h4M9 10v4"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="14" r="1"/></svg>
-                                    <span data-i18n="slide.medieval.badge">TOWER DEFENSE</span>
-                                </div>
-                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Medieval Tower Defense spielen"><div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">mittel-alte.vercel.app</span>
-                                    </div>
-                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" data-src="assets/img/projects/medieval-menu.webp" data-srcset="assets/img/projects/medieval-menu-800.webp 800w, assets/img/projects/medieval-menu-1200.webp 1200w, assets/img/projects/medieval-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Medieval Tower Defense: Titelbildschirm mit Burghof und Kampagnen-Auswahl" loading="lazy" decoding="async" width="1600" height="896">
-                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/medieval-ingame.webp" data-srcset="assets/img/projects/medieval-ingame-800.webp 800w, assets/img/projects/medieval-ingame-1200.webp 1200w, assets/img/projects/medieval-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="896">
-                                    </div>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 9: Deterministische Review -->
-                <div class="hero-slide" id="slide-detreview" data-mode="own" data-theme="detreview" role="tabpanel" aria-labelledby="tab-detreview" aria-hidden="true">
+                <!-- Eigen 8: Deterministische Review -->
+                <div class="hero-slide" id="slide-detreview" data-mode="own" data-theme="detreview" role="tabpanel" aria-labelledby="tab-detreview" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -523,7 +624,7 @@
                             </h2>
                             <p class="slide-description" data-i18n="slide.detreview.desc">Eine Pipeline, die einen großen git-Branch zuerst mechanisch aufarbeitet: Merge-Basis, Netto-Diff, sechs Scans und ein Klassifikator, der jede geänderte Zeile gegen einen Musterkatalog hält. An KI-Agenten geht nur, was danach ungeklärt oder fachlich relevant bleibt. Die Antworten werden über stabile Befund-IDs zugeordnet und immer frisch aus den Dateien gerechnet, nie aus Erinnerungswerten.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.detreview.cta1">Projekt anfragen</a>
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.detreview.cta1">Ähnliches Projekt besprechen</a>
                             </div>
                             <div class="slide-tags">
                                 <span class="slide-tag" data-i18n="slide.detreview.tag1">Python</span>
@@ -553,50 +654,133 @@
                     </div>
                 </div>
 
-                <!-- Eigen 10: AI Captain -->
-                <div class="hero-slide" id="slide-aicaptain" data-mode="own" data-theme="aicaptain" role="tabpanel" aria-labelledby="tab-aicaptain" aria-hidden="true">
+                <!-- Eigen 9a: Kundenkalender (Demo-Daten auf dem Screenshot, keine echten Kunden) -->
+                <div class="hero-slide" id="slide-kundenkalender" data-mode="own" data-theme="kundenkalender" role="tabpanel" aria-labelledby="tab-kundenkalender" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.aicaptain.t1">AI Captain.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.aicaptain.t2">VS Code</span></span>
-                                <span class="title-line" data-i18n="slide.aicaptain.t3">Extension.</span>
+                                <span class="title-line" data-i18n="slide.kundenkalender.t1">Kundenkalender.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.kundenkalender.t2">Eine EXE,</span></span>
+                                <span class="title-line" data-i18n="slide.kundenkalender.t3">kein Server.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.aicaptain.desc">Mein eigenes Produkt im VS Code Marketplace: Ein KI-Agent für intelligente Code-Generierung, Debugging und Review. Gebaut mit TypeScript, LLM-APIs und der VS Code Extension API.</p>
+                            <p class="slide-description" data-i18n="slide.kundenkalender.desc">Ein Kalender für Kundentermine, der komplett lokal läuft: eine einzige Windows-App von rund 3 MB, ohne Server, Account oder Internet. Monats-, Wochen- und Tagesansicht, Serientermine mit Ausnahmen, Drag-and-Drop, Tagebuch und Export als ICS, CSV und JSON. Der ganze Bestand liegt in einer lesbaren JSON-Datei, die so geschrieben wird, dass auch ein Absturz nichts kostet.</p>
                             <div class="slide-cta">
-                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.aicaptain.cta1">Mehr erfahren</a>
-                                <a href="projects/aicaptain.html" class="btn btn-outline" data-i18n="slide.aicaptain.cta2">Projekt-Details</a>
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.kundenkalender.cta1">Projekt anfragen</a>
                             </div>
                             <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.aicaptain.tag1">VS Code Marketplace</span>
-                                <span class="slide-tag" data-i18n="slide.aicaptain.tag2">TypeScript</span>
-                                <span class="slide-tag" data-i18n="slide.aicaptain.tag3">LLM APIs</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag1">React 19</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag2">Tauri 2</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag3">Local-first</span>
                             </div>
                         </div>
                         <div class="slide-visual">
                             <div class="showcase-container">
                                 <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
-                                    <span data-i18n="slide.aicaptain.badge">AI AGENT</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>
+                                    <span data-i18n="slide.kundenkalender.badge">DESKTOP APP</span>
                                 </div>
-                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="AI Captain Website ansehen"><div class="showcase-frame">
+                                <div class="showcase-frame">
                                     <div class="browser-bar" aria-hidden="true">
                                         <span class="dot"></span>
                                         <span class="dot"></span>
                                         <span class="dot"></span>
-                                        <span class="browser-url">ai-captain-delta.vercel.app</span>
+                                        <span class="browser-url">Kundenkalender.exe</span>
                                     </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/aicaptain.webp" data-srcset="assets/img/projects/aicaptain-800.webp 800w, assets/img/projects/aicaptain-1200.webp 1200w, assets/img/projects/aicaptain.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="AI Captain: Landingpage mit dem Agenten-Chat in VS Code" loading="lazy" decoding="async" width="1600" height="800">
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" data-src="assets/img/projects/kundenkalender.webp" data-srcset="assets/img/projects/kundenkalender-800.webp 800w, assets/img/projects/kundenkalender-1200.webp 1200w, assets/img/projects/kundenkalender.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Kundenkalender: Monatsansicht mit farbigen Kundenterminen und Kundenliste in der Seitenleiste" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/kundenkalender-week.webp" data-srcset="assets/img/projects/kundenkalender-week-800.webp 800w, assets/img/projects/kundenkalender-week-1200.webp 1200w, assets/img/projects/kundenkalender-week.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
-                                </div></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Eigen 11: Shookroko -->
-                <div class="hero-slide" id="slide-shookroko" data-mode="own" data-theme="shookroko" role="tabpanel" aria-labelledby="tab-shookroko" aria-hidden="true">
+                <!-- Eigen 9b: reachlab (Bild zeigt Messwerte aus dem README des Projekts) -->
+                <div class="hero-slide" id="slide-reachlab" data-mode="own" data-theme="reachlab" role="tabpanel" aria-labelledby="tab-reachlab" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.reachlab.t1">reachlab.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.reachlab.t2">Was Reichweite</span></span>
+                                <span class="title-line" data-i18n="slide.reachlab.t3">wirklich bringt.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.reachlab.desc">Eine Pipeline, die Kurzvideos handwerklich vermisst, also Schnitt, Lautheit, Bild, gesprochenen und eingeblendeten Text, und das mit der tatsächlichen Reichweite auf TikTok und Instagram abgleicht. Jede Schwelle ist an Kontrollclips mit bekannter Antwort kalibriert, die Korrelation läuft mit Permutationstest und FDR-Korrektur. Der belastbarste Fund kommt aus einem kontrollierten Vergleich: dasselbe Video auf beiden Plattformen.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.reachlab.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag1">Python</span>
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag2">ffmpeg &amp; Whisper</span>
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag3">Statistik</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+                                    <span data-i18n="slide.reachlab.badge">DATENANALYSE</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">reachlab report</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/reachlab.webp" data-srcset="assets/img/projects/reachlab-800.webp 800w, assets/img/projects/reachlab-1200.webp 1200w, assets/img/projects/reachlab.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="reachlab: Report mit Follower-Vergleich identischer Videos auf Instagram und TikTok und der Kalibrierung der Texterkennung" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 9c: E46 in 3D (Blender-Renders aus dem Repo E46CustomZ) -->
+                <div class="hero-slide" id="slide-e46customz" data-mode="own" data-theme="e46customz" role="tabpanel" aria-labelledby="tab-e46customz" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.e46customz.t1">E46 in 3D.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46customz.t2">Nachgebaut</span></span>
+                                <span class="title-line" data-i18n="slide.e46customz.t3">in Originalmaßen.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.e46customz.desc">Eine BMW E46 Limousine mit M Sportpaket II, in Blender aus Fotos rekonstruiert statt aus einem Herstellerscan. Die Karosserie stimmt in den Originalmaßen, dazu kommen ein bearbeitbarer M54B25-Motorraum mit animierter Haube, 13 Lackvarianten und 20 Zierleisten fürs Cockpit. Exportiert als GLB, als Grundlage für einen 3D-Showroom im Browser.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.e46customz.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag1">Blender</span>
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag2">glTF / GLB</span>
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag3">3D-Modellierung</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12"/><path d="M21 7l-9 5-9-5"/></svg>
+                                    <span data-i18n="slide.e46customz.badge">3D-MODELL</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">BMW_E46_V4.blend</span>
+                                    </div>
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" data-src="assets/img/projects/e46customz-front.webp" data-srcset="assets/img/projects/e46customz-front-800.webp 800w, assets/img/projects/e46customz-front-1200.webp 1200w, assets/img/projects/e46customz-front.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Blender-Rendering einer dunkelblauen BMW E46 Limousine mit M-Paket, Ansicht schräg von vorn" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/e46customz-rear.webp" data-srcset="assets/img/projects/e46customz-rear-800.webp 800w, assets/img/projects/e46customz-rear-1200.webp 1200w, assets/img/projects/e46customz-rear.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 10: Shookroko -->
+                <div class="hero-slide" id="slide-shookroko" data-mode="own" data-theme="shookroko" role="tabpanel" aria-labelledby="tab-shookroko" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
@@ -638,238 +822,42 @@
                     </div>
                 </div>
 
-                <!-- Eigen 12: Kundenkalender (Demo-Daten auf dem Screenshot, keine echten Kunden) -->
-                <div class="hero-slide" id="slide-kundenkalender" data-mode="own" data-theme="kundenkalender" role="tabpanel" aria-labelledby="tab-kundenkalender" aria-hidden="true">
+                <!-- Eigen 11: Medieval Tower Defense -->
+                <div class="hero-slide" id="slide-medieval" data-mode="own" data-theme="medieval" role="tabpanel" aria-labelledby="tab-medieval" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.kundenkalender.t1">Kundenkalender.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.kundenkalender.t2">Eine EXE,</span></span>
-                                <span class="title-line" data-i18n="slide.kundenkalender.t3">kein Server.</span>
+                                <span class="title-line" data-i18n="slide.medieval.t1">Medieval.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.medieval.t2">Tower</span></span>
+                                <span class="title-line" data-i18n="slide.medieval.t3">Defense.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.kundenkalender.desc">Ein Kalender für Kundentermine, der komplett lokal läuft: eine einzige Windows-App von rund 3 MB, ohne Server, Account oder Internet. Monats-, Wochen- und Tagesansicht, Serientermine mit Ausnahmen, Drag-and-Drop, Tagebuch und Export als ICS, CSV und JSON. Der ganze Bestand liegt in einer lesbaren JSON-Datei, die so geschrieben wird, dass auch ein Absturz nichts kostet.</p>
+                            <p class="slide-description" data-i18n="slide.medieval.desc">Medieval Tower Defense: Ein im Browser spielbares Strategiespiel im Mittelalter-Setting. Eigene Spielmechanik, Wave-System und Pixel-Art, gebaut für die Vercel-Edge mit modernem Web-Stack.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.kundenkalender.cta1">Projekt anfragen</a>
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.medieval.cta1">Live spielen</a>
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="slide.medieval.cta2">Zum Spiel</a>
                             </div>
                             <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag1">React 19</span>
-                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag2">Tauri 2</span>
-                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag3">Local-first</span>
+                                <span class="slide-tag" data-i18n="slide.medieval.tag1">Browser Game</span>
+                                <span class="slide-tag" data-i18n="slide.medieval.tag2">Tower Defense</span>
+                                <span class="slide-tag" data-i18n="slide.medieval.tag3">Vercel</span>
                             </div>
                         </div>
                         <div class="slide-visual">
                             <div class="showcase-container">
                                 <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>
-                                    <span data-i18n="slide.kundenkalender.badge">DESKTOP APP</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M7 12h4M9 10v4"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="14" r="1"/></svg>
+                                    <span data-i18n="slide.medieval.badge">TOWER DEFENSE</span>
                                 </div>
-                                <div class="showcase-frame">
+                                <a href="https://mittel-alte.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="Medieval Tower Defense spielen"><div class="showcase-frame">
                                     <div class="browser-bar" aria-hidden="true">
                                         <span class="dot"></span>
                                         <span class="dot"></span>
                                         <span class="dot"></span>
-                                        <span class="browser-url">Kundenkalender.exe</span>
+                                        <span class="browser-url">mittel-alte.vercel.app</span>
                                     </div>
                                     <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" data-src="assets/img/projects/kundenkalender.webp" data-srcset="assets/img/projects/kundenkalender-800.webp 800w, assets/img/projects/kundenkalender-1200.webp 1200w, assets/img/projects/kundenkalender.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Kundenkalender: Monatsansicht mit farbigen Kundenterminen und Kundenliste in der Seitenleiste" loading="lazy" decoding="async" width="1600" height="800">
-                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/kundenkalender-week.webp" data-srcset="assets/img/projects/kundenkalender-week-800.webp 800w, assets/img/projects/kundenkalender-week-1200.webp 1200w, assets/img/projects/kundenkalender-week.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 13: reachlab (Bild zeigt Messwerte aus dem README des Projekts) -->
-                <div class="hero-slide" id="slide-reachlab" data-mode="own" data-theme="reachlab" role="tabpanel" aria-labelledby="tab-reachlab" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.reachlab.t1">reachlab.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.reachlab.t2">Was Reichweite</span></span>
-                                <span class="title-line" data-i18n="slide.reachlab.t3">wirklich bringt.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.reachlab.desc">Eine Pipeline, die Kurzvideos handwerklich vermisst, also Schnitt, Lautheit, Bild, gesprochenen und eingeblendeten Text, und das mit der tatsächlichen Reichweite auf TikTok und Instagram abgleicht. Jede Schwelle ist an Kontrollclips mit bekannter Antwort kalibriert, die Korrelation läuft mit Permutationstest und FDR-Korrektur. Der belastbarste Fund kommt aus einem kontrollierten Vergleich: dasselbe Video auf beiden Plattformen.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.reachlab.cta1">Projekt anfragen</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.reachlab.tag1">Python</span>
-                                <span class="slide-tag" data-i18n="slide.reachlab.tag2">ffmpeg &amp; Whisper</span>
-                                <span class="slide-tag" data-i18n="slide.reachlab.tag3">Statistik</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
-                                    <span data-i18n="slide.reachlab.badge">DATENANALYSE</span>
-                                </div>
-                                <div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">reachlab report</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/reachlab.webp" data-srcset="assets/img/projects/reachlab-800.webp 800w, assets/img/projects/reachlab-1200.webp 1200w, assets/img/projects/reachlab.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="reachlab: Report mit Follower-Vergleich identischer Videos auf Instagram und TikTok und der Kalibrierung der Texterkennung" loading="lazy" decoding="async" width="1600" height="800">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eigen 14: E46 in 3D (Blender-Renders aus dem Repo E46CustomZ) -->
-                <div class="hero-slide" id="slide-e46customz" data-mode="own" data-theme="e46customz" role="tabpanel" aria-labelledby="tab-e46customz" aria-hidden="true">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.e46customz.t1">E46 in 3D.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46customz.t2">Nachgebaut</span></span>
-                                <span class="title-line" data-i18n="slide.e46customz.t3">in Originalmaßen.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.e46customz.desc">Eine BMW E46 Limousine mit M Sportpaket II, in Blender aus Fotos rekonstruiert statt aus einem Herstellerscan. Die Karosserie stimmt in den Originalmaßen, dazu kommen ein bearbeitbarer M54B25-Motorraum mit animierter Haube, 13 Lackvarianten und 20 Zierleisten fürs Cockpit. Exportiert als GLB, als Grundlage für einen 3D-Showroom im Browser.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.e46customz.cta1">Projekt anfragen</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.e46customz.tag1">Blender</span>
-                                <span class="slide-tag" data-i18n="slide.e46customz.tag2">glTF / GLB</span>
-                                <span class="slide-tag" data-i18n="slide.e46customz.tag3">3D-Modellierung</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12"/><path d="M21 7l-9 5-9-5"/></svg>
-                                    <span data-i18n="slide.e46customz.badge">3D-MODELL</span>
-                                </div>
-                                <div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">BMW_E46_V4.blend</span>
-                                    </div>
-                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
-                                        <img class="showcase-shot" data-src="assets/img/projects/e46customz-front.webp" data-srcset="assets/img/projects/e46customz-front-800.webp 800w, assets/img/projects/e46customz-front-1200.webp 1200w, assets/img/projects/e46customz-front.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Blender-Rendering einer dunkelblauen BMW E46 Limousine mit M-Paket, Ansicht schräg von vorn" loading="lazy" decoding="async" width="1600" height="800">
-                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/e46customz-rear.webp" data-srcset="assets/img/projects/e46customz-rear-800.webp 800w, assets/img/projects/e46customz-rear-1200.webp 1200w, assets/img/projects/e46customz-rear.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ═══ KUNDENPROJEKTE ═══ -->
-
-                <!-- Kunde 1: Senihelp24 (in Arbeit, noch ohne Screenshot) -->
-                <div class="hero-slide" id="slide-senihelp24" data-mode="customers" data-theme="senihelp24" role="tabpanel" aria-labelledby="tab-senihelp24" aria-hidden="true" hidden>
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.senihelp24.t1">senihelp24.pl</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.senihelp24.t2">Website</span></span>
-                                <span class="title-line" data-i18n="slide.senihelp24.t3">in Arbeit.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.senihelp24.desc">Neuer Web-Auftritt für senihelp24.pl. Aktuell in Entwicklung, eines der ersten Projekte zum Start meiner Selbstständigkeit am 1. Oktober 2026.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.senihelp24.cta1">Anfragen</a>
-                                <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.senihelp24.cta2">Bald live</button>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.senihelp24.tag1">Next.js & Vercel</span>
-                                <span class="slide-tag" data-i18n="slide.senihelp24.tag2">Website</span>
-                                <span class="slide-tag" data-i18n="slide.senihelp24.tag3">In Arbeit</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
-                                    <div class="project-mock">
-                                        <span class="project-mock-line project-mock-line--lg"></span>
-                                        <span class="project-mock-line"></span>
-                                        <span class="project-mock-line project-mock-line--sm"></span>
-                                        <span class="project-mock-grid"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kunde 2: Daniel Brecheis (in Arbeit, live ab 01.10., noch ohne Screenshot) -->
-                <div class="hero-slide" id="slide-danielbrecheis" data-mode="customers" data-theme="danielbrecheis" role="tabpanel" aria-labelledby="tab-danielbrecheis" aria-hidden="true" hidden>
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.danielbrecheis.t1">Daniel Brecheis</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.danielbrecheis.t2">Website</span></span>
-                                <span class="title-line" data-i18n="slide.danielbrecheis.t3">in Arbeit.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.danielbrecheis.desc">Markenwebsite für Daniel Brecheis (Human Bridges Consulting): HR-Coaching, Workshops und Interim-Management. Aktuell in Entwicklung, live zum Start meiner Selbstständigkeit am 1. Oktober 2026.</p>
-                            <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.danielbrecheis.cta1">Anfragen</a>
-                                <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.danielbrecheis.cta2">Live ab 1. Oktober</button>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag1">Coaching</span>
-                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag2">Branding</span>
-                                <span class="slide-tag" data-i18n="slide.danielbrecheis.tag3">Live ab 01.10.</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
-                                    <div class="project-mock">
-                                        <span class="project-mock-line project-mock-line--lg"></span>
-                                        <span class="project-mock-line"></span>
-                                        <span class="project-mock-line project-mock-line--sm"></span>
-                                        <span class="project-mock-grid"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kunde 3: Imkerei Feuerstein (MVP, Livegang mit Bestellsystem in Vorbereitung; keine Aussagen ueber fertigen Shop oder Verkaeufe) -->
-                <div class="hero-slide" id="slide-imkerei" data-mode="customers" data-theme="imkerei" role="tabpanel" aria-labelledby="tab-imkerei" aria-hidden="true" hidden>
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.imkerei.t1">Imkerei Feuerstein</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.imkerei.t2">Relaunch</span></span>
-                                <span class="title-line" data-i18n="slide.imkerei.t3">als MVP.</span>
-                            </h2>
-                            <p class="slide-description" data-i18n="slide.imkerei.desc">MVP: Relaunch-Website mit Shop-Oberfläche für die Familienimkerei Feuerstein aus Elchingen. 122 statisch erzeugte Seiten, 103 Produkte mit Suche und Filter, Warenkorb, Galerie und FAQ. Der Livegang mit angebundenem Bestellsystem ist in Vorbereitung.</p>
-                            <div class="slide-cta">
-                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="slide.imkerei.cta1">MVP ansehen</a>
-                                <a href="projects/imkerei-feuerstein.html" class="btn btn-outline" data-i18n="slide.imkerei.cta2">Projekt-Details</a>
-                            </div>
-                            <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.imkerei.tag1">Astro</span>
-                                <span class="slide-tag" data-i18n="slide.imkerei.tag2">Shop-Oberfläche</span>
-                                <span class="slide-tag" data-i18n="slide.imkerei.tag3">MVP</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="showcase-container">
-                                <div class="showcase-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                    <span data-i18n="slide.imkerei.badge">MVP-DEMO</span>
-                                </div>
-                                <a href="https://imkerei-feuerstein.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="MVP-Demo der Imkerei Feuerstein ansehen" data-i18n-aria-label="slide.imkerei.linkLabel"><div class="showcase-frame">
-                                    <div class="browser-bar" aria-hidden="true">
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="browser-url">imkerei-feuerstein.vercel.app</span>
-                                    </div>
-                                    <div class="showcase-image-wrap">
-                                        <img data-src="assets/img/projects/imkerei-feuerstein.webp" data-srcset="assets/img/projects/imkerei-feuerstein-800.webp 800w, assets/img/projects/imkerei-feuerstein-1200.webp 1200w, assets/img/projects/imkerei-feuerstein.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Startseite der MVP-Demo der Imkerei Feuerstein mit dem Imkermeister vor Bienenstöcken und Honiggläsern" data-i18n-alt="slide.imkerei.alt" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot" data-src="assets/img/projects/medieval-menu.webp" data-srcset="assets/img/projects/medieval-menu-800.webp 800w, assets/img/projects/medieval-menu-1200.webp 1200w, assets/img/projects/medieval-menu.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Medieval Tower Defense: Titelbildschirm mit Burghof und Kampagnen-Auswahl" loading="lazy" decoding="async" width="1600" height="896">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/medieval-ingame.webp" data-srcset="assets/img/projects/medieval-ingame-800.webp 800w, assets/img/projects/medieval-ingame-1200.webp 1200w, assets/img/projects/medieval-ingame.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="896">
                                     </div>
                                 </div></a>
                             </div>
@@ -877,33 +865,43 @@
                     </div>
                 </div>
 
-                <!-- Kunde 4: Einladung. Kein Projekt, sondern der offene Platz fuer das naechste. -->
-                <div class="hero-slide" id="slide-invite" data-mode="customers" data-theme="maxhaak" role="tabpanel" aria-labelledby="tab-invite" aria-hidden="true" hidden>
+                <!-- Eigen 12: AI Captain -->
+                <div class="hero-slide" id="slide-aicaptain" data-mode="own" data-theme="aicaptain" role="tabpanel" aria-labelledby="tab-aicaptain" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.invite.t1">Ihr Projekt.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.invite.t2">Als Nächstes.</span></span>
-                                <span class="title-line" data-i18n="slide.invite.t3">Hier.</span>
+                                <span class="title-line" data-i18n="slide.aicaptain.t1">AI Captain.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.aicaptain.t2">VS Code</span></span>
+                                <span class="title-line" data-i18n="slide.aicaptain.t3">Extension.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.invite.desc">Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich seit dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.</p>
+                            <p class="slide-description" data-i18n="slide.aicaptain.desc">Mein eigenes Produkt im VS Code Marketplace: Ein KI-Agent für intelligente Code-Generierung, Debugging und Review. Gebaut mit TypeScript, LLM-APIs und der VS Code Extension API.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.invite.cta1">Projekt besprechen</a>
+                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="slide.aicaptain.cta1">Mehr erfahren</a>
+                                <a href="projects/aicaptain.html" class="btn btn-outline" data-i18n="slide.aicaptain.cta2">Projekt-Details</a>
                             </div>
                             <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.invite.tag1">Websites</span>
-                                <span class="slide-tag" data-i18n="slide.invite.tag2">Web-Apps</span>
-                                <span class="slide-tag" data-i18n="slide.invite.tag3">Betreuung</span>
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag1">VS Code Marketplace</span>
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag2">TypeScript</span>
+                                <span class="slide-tag" data-i18n="slide.aicaptain.tag3">LLM APIs</span>
                             </div>
                         </div>
                         <div class="slide-visual">
                             <div class="showcase-container">
-                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
-                                    <div class="project-mock project-mock--invite">
-                                        <p class="project-mock-headline" data-i18n="slide.invite.mock1">Platz für Ihr Projekt.</p>
-                                        <p class="project-mock-sub" data-i18n="slide.invite.mock2">Kein Platzhalter, ein freier Platz.</p>
-                                    </div>
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+                                    <span data-i18n="slide.aicaptain.badge">AI AGENT</span>
                                 </div>
+                                <a href="https://ai-captain-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase-link" aria-label="AI Captain Website ansehen"><div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">ai-captain-delta.vercel.app</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/aicaptain.webp" data-srcset="assets/img/projects/aicaptain-800.webp 800w, assets/img/projects/aicaptain-1200.webp 1200w, assets/img/projects/aicaptain.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="AI Captain: Landingpage mit dem Agenten-Chat in VS Code" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div></a>
                             </div>
                         </div>
                     </div>
@@ -920,80 +918,80 @@
 
             <div class="container">
                     <nav class="project-pagination" role="tablist" aria-label="Projekt auswählen" data-i18n-aria-label="projects.pick">
-                        <!-- Eigene Projekte -->
-                        <button id="tab-haakly" class="project-nav-btn project-pag-btn active" data-mode="own" data-project="haakly" role="tab" aria-selected="true" aria-controls="slide-haakly" tabindex="0">
-                            <span class="project-pag-index" aria-hidden="true">01</span>
-                            <span class="project-pag-name">Haakly</span>
-                        </button>
-                        <button id="tab-capitalcombo" class="project-nav-btn project-pag-btn" data-mode="own" data-project="capitalcombo" role="tab" aria-selected="false" aria-controls="slide-capitalcombo" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">02</span>
-                            <span class="project-pag-name">CapitalCombo</span>
-                        </button>
-                        <button id="tab-dealhunter" class="project-nav-btn project-pag-btn" data-mode="own" data-project="dealhunter" role="tab" aria-selected="false" aria-controls="slide-dealhunter" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">03</span>
-                            <span class="project-pag-name">DealHunter</span>
-                        </button>
-                        <button id="tab-e46" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46" role="tab" aria-selected="false" aria-controls="slide-e46" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">04</span>
-                            <span class="project-pag-name">E46 Studio</span>
-                        </button>
-                        <button id="tab-albert" class="project-nav-btn project-pag-btn" data-mode="own" data-project="albert" role="tab" aria-selected="false" aria-controls="slide-albert" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">05</span>
-                            <span class="project-pag-name">Albert Royale</span>
-                        </button>
-                        <button id="tab-aurevia" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aurevia" role="tab" aria-selected="false" aria-controls="slide-aurevia" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">06</span>
-                            <span class="project-pag-name">Aurevia</span>
-                        </button>
-                        <button id="tab-ageofmax" class="project-nav-btn project-pag-btn" data-mode="own" data-project="ageofmax" role="tab" aria-selected="false" aria-controls="slide-ageofmax" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">07</span>
-                            <span class="project-pag-name">Age of Max</span>
-                        </button>
-                        <button id="tab-medieval" class="project-nav-btn project-pag-btn" data-mode="own" data-project="medieval" role="tab" aria-selected="false" aria-controls="slide-medieval" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">08</span>
-                            <span class="project-pag-name">Medieval TD</span>
-                        </button>
-                        <button id="tab-detreview" class="project-nav-btn project-pag-btn" data-mode="own" data-project="detreview" role="tab" aria-selected="false" aria-controls="slide-detreview" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">09</span>
-                            <span class="project-pag-name">Det. Review</span>
-                        </button>
-                        <button id="tab-aicaptain" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aicaptain" role="tab" aria-selected="false" aria-controls="slide-aicaptain" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">10</span>
-                            <span class="project-pag-name">AI Captain</span>
-                        </button>
-                        <button id="tab-shookroko" class="project-nav-btn project-pag-btn" data-mode="own" data-project="shookroko" role="tab" aria-selected="false" aria-controls="slide-shookroko" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">11</span>
-                            <span class="project-pag-name">Shookroko</span>
-                        </button>
-                        <button id="tab-kundenkalender" class="project-nav-btn project-pag-btn" data-mode="own" data-project="kundenkalender" role="tab" aria-selected="false" aria-controls="slide-kundenkalender" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">12</span>
-                            <span class="project-pag-name">Kundenkalender</span>
-                        </button>
-                        <button id="tab-reachlab" class="project-nav-btn project-pag-btn" data-mode="own" data-project="reachlab" role="tab" aria-selected="false" aria-controls="slide-reachlab" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">13</span>
-                            <span class="project-pag-name">reachlab</span>
-                        </button>
-                        <button id="tab-e46customz" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46customz" role="tab" aria-selected="false" aria-controls="slide-e46customz" tabindex="-1">
-                            <span class="project-pag-index" aria-hidden="true">14</span>
-                            <span class="project-pag-name">E46 in 3D</span>
-                        </button>
-
                         <!-- Kundenprojekte -->
-                        <button id="tab-senihelp24" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="senihelp24" role="tab" aria-selected="false" aria-controls="slide-senihelp24" tabindex="-1" hidden>
+                        <button id="tab-imkerei" class="project-nav-btn project-pag-btn active" data-mode="customers" data-project="imkerei" role="tab" aria-selected="true" aria-controls="slide-imkerei" tabindex="0">
                             <span class="project-pag-index" aria-hidden="true">01</span>
-                            <span class="project-pag-name">Senihelp24</span>
+                            <span class="project-pag-name">Imkerei Feuerstein</span>
                         </button>
                         <button id="tab-danielbrecheis" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="danielbrecheis" role="tab" aria-selected="false" aria-controls="slide-danielbrecheis" tabindex="-1" hidden>
                             <span class="project-pag-index" aria-hidden="true">02</span>
                             <span class="project-pag-name">Daniel Brecheis</span>
                         </button>
-                        <button id="tab-imkerei" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="imkerei" role="tab" aria-selected="false" aria-controls="slide-imkerei" tabindex="-1" hidden>
+                        <button id="tab-senihelp24" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="senihelp24" role="tab" aria-selected="false" aria-controls="slide-senihelp24" tabindex="-1" hidden>
                             <span class="project-pag-index" aria-hidden="true">03</span>
-                            <span class="project-pag-name">Imkerei Feuerstein</span>
+                            <span class="project-pag-name">Senihelp24</span>
                         </button>
                         <button id="tab-invite" class="project-nav-btn project-pag-btn" data-mode="customers" data-project="maxhaak" role="tab" aria-selected="false" aria-controls="slide-invite" tabindex="-1" hidden>
                             <span class="project-pag-index" aria-hidden="true">04</span>
                             <span class="project-pag-name" data-i18n="projects.pag.invite">Ihr Projekt</span>
+                        </button>
+
+                        <!-- Eigene Projekte -->
+                        <button id="tab-albert" class="project-nav-btn project-pag-btn" data-mode="own" data-project="albert" role="tab" aria-selected="false" aria-controls="slide-albert" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">01</span>
+                            <span class="project-pag-name">Albert Royale</span>
+                        </button>
+                        <button id="tab-capitalcombo" class="project-nav-btn project-pag-btn" data-mode="own" data-project="capitalcombo" role="tab" aria-selected="false" aria-controls="slide-capitalcombo" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">02</span>
+                            <span class="project-pag-name">ChartCombo</span>
+                        </button>
+                        <button id="tab-aurevia" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aurevia" role="tab" aria-selected="false" aria-controls="slide-aurevia" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">03</span>
+                            <span class="project-pag-name">Aurevia</span>
+                        </button>
+                        <button id="tab-e46" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46" role="tab" aria-selected="false" aria-controls="slide-e46" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">04</span>
+                            <span class="project-pag-name">E46 Studio</span>
+                        </button>
+                        <button id="tab-haakly" class="project-nav-btn project-pag-btn" data-mode="own" data-project="haakly" role="tab" aria-selected="false" aria-controls="slide-haakly" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">05</span>
+                            <span class="project-pag-name">Haakly</span>
+                        </button>
+                        <button id="tab-dealhunter" class="project-nav-btn project-pag-btn" data-mode="own" data-project="dealhunter" role="tab" aria-selected="false" aria-controls="slide-dealhunter" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">06</span>
+                            <span class="project-pag-name">DealHunter</span>
+                        </button>
+                        <button id="tab-ageofmax" class="project-nav-btn project-pag-btn" data-mode="own" data-project="ageofmax" role="tab" aria-selected="false" aria-controls="slide-ageofmax" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">07</span>
+                            <span class="project-pag-name">Age of Max</span>
+                        </button>
+                        <button id="tab-detreview" class="project-nav-btn project-pag-btn" data-mode="own" data-project="detreview" role="tab" aria-selected="false" aria-controls="slide-detreview" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">08</span>
+                            <span class="project-pag-name">Det. Review</span>
+                        </button>
+                        <button id="tab-kundenkalender" class="project-nav-btn project-pag-btn" data-mode="own" data-project="kundenkalender" role="tab" aria-selected="false" aria-controls="slide-kundenkalender" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">09</span>
+                            <span class="project-pag-name">Kundenkalender</span>
+                        </button>
+                        <button id="tab-reachlab" class="project-nav-btn project-pag-btn" data-mode="own" data-project="reachlab" role="tab" aria-selected="false" aria-controls="slide-reachlab" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">10</span>
+                            <span class="project-pag-name">reachlab</span>
+                        </button>
+                        <button id="tab-e46customz" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46customz" role="tab" aria-selected="false" aria-controls="slide-e46customz" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">11</span>
+                            <span class="project-pag-name">E46 in 3D</span>
+                        </button>
+                        <button id="tab-shookroko" class="project-nav-btn project-pag-btn" data-mode="own" data-project="shookroko" role="tab" aria-selected="false" aria-controls="slide-shookroko" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">12</span>
+                            <span class="project-pag-name">Shookroko</span>
+                        </button>
+                        <button id="tab-medieval" class="project-nav-btn project-pag-btn" data-mode="own" data-project="medieval" role="tab" aria-selected="false" aria-controls="slide-medieval" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">13</span>
+                            <span class="project-pag-name">Medieval TD</span>
+                        </button>
+                        <button id="tab-aicaptain" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aicaptain" role="tab" aria-selected="false" aria-controls="slide-aicaptain" tabindex="-1" hidden>
+                            <span class="project-pag-index" aria-hidden="true">14</span>
+                            <span class="project-pag-name">AI Captain</span>
                         </button>
                     </nav>
             </div>
@@ -1111,15 +1109,62 @@
             </div>
         </section>
 
-        <!-- Individual project inquiries -->
+        <!-- Services: three offers, then the inquiry.
+             No prices on purpose: every project gets its own quote. -->
         <section id="services" class="services-section">
             <div class="container">
                 <span id="pricing" aria-hidden="true"></span>
                 <div class="services-head">
-                    <p class="section-tag" data-i18n="services.tag">Zusammenarbeit</p>
-                    <h2 class="section-title" data-i18n="services.title">Ihr Projekt beginnt mit einem Gespräch</h2>
-                    <p class="services-lead" data-i18n="services.lead">Sie interessieren sich für eine Website, eine Web-App oder eine KI-Lösung? Nehmen Sie direkt Kontakt mit mir auf. Wir besprechen Ihr Vorhaben, den passenden Umfang und den Zeitrahmen. Anschließend erhalten Sie ein individuelles Angebot.</p>
+                    <p class="section-tag" data-i18n="services.tag">Leistungen</p>
+                    <h2 class="section-title" data-i18n="services.title">Was ich für Sie umsetze</h2>
+                    <p class="services-lead" data-i18n="services.lead">Drei typische Wege, wie wir zusammenarbeiten. Den genauen Umfang, den Zeitrahmen und den Preis klären wir in einem kurzen Gespräch, danach erhalten Sie ein individuelles Angebot.</p>
                 </div>
+
+                <ul class="services-grid" role="list">
+                    <li class="service-card">
+                        <span class="service-icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </span>
+                        <h3 class="service-title" data-i18n="services.web.title">Website</h3>
+                        <p class="service-desc" data-i18n="services.web.desc">Für Betriebe, Selbstständige und Vereine, die online gefunden und verstanden werden wollen.</p>
+                        <ul class="service-list" role="list">
+                            <li data-i18n="services.web.li1">Eigenes Design statt Baukasten</li>
+                            <li data-i18n="services.web.li2">Schnell, mobil optimiert, mit SEO-Grundlagen</li>
+                            <li data-i18n="services.web.li3">Impressum, Datenschutz und Kontaktwege eingerichtet</li>
+                            <li data-i18n="services.web.li4">Auf Wunsch mit Shop oder Redaktionssystem</li>
+                        </ul>
+                        <p class="service-meta" data-i18n="services.web.meta">Typisch 3 bis 5 Wochen</p>
+                    </li>
+                    <li class="service-card">
+                        <span class="service-icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                        </span>
+                        <h3 class="service-title" data-i18n="services.app.title">Web-App</h3>
+                        <p class="service-desc" data-i18n="services.app.desc">Für Abläufe, die heute in Excel-Listen, E-Mails oder auf Papier stecken.</p>
+                        <ul class="service-list" role="list">
+                            <li data-i18n="services.app.li1">Kundenportale, Buchungen und interne Tools</li>
+                            <li data-i18n="services.app.li2">Datenbank, Login und Benutzerrollen</li>
+                            <li data-i18n="services.app.li3">Anbindung an bestehende Systeme und APIs</li>
+                            <li data-i18n="services.app.li4">In Etappen gebaut, das Wichtigste zuerst</li>
+                        </ul>
+                        <p class="service-meta" data-i18n="services.app.meta">Umfang nach Absprache</p>
+                    </li>
+                    <li class="service-card">
+                        <span class="service-icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-6.1 1.9L12 18.5l-1.9-5.9L4 10.7l6.1-1.9z"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+                        </span>
+                        <h3 class="service-title" data-i18n="services.ai.title">KI &amp; Automatisierung</h3>
+                        <p class="service-desc" data-i18n="services.ai.desc">Für wiederkehrende Aufgaben, die jede Woche Zeit kosten.</p>
+                        <ul class="service-list" role="list">
+                            <li data-i18n="services.ai.li1">Assistenten auf Basis Ihrer eigenen Dokumente</li>
+                            <li data-i18n="services.ai.li2">Automatische Auswertungen und Berichte</li>
+                            <li data-i18n="services.ai.li3">Agenten, die Daten sammeln und vorsortieren</li>
+                            <li data-i18n="services.ai.li4">Kosten und Ergebnisse bleiben nachvollziehbar</li>
+                        </ul>
+                        <p class="service-meta" data-i18n="services.ai.meta">Start mit einem kleinen Pilotprojekt</p>
+                    </li>
+                </ul>
+
                 <div class="services-cta">
                     <a href="mailto:maximilian@haak.in" class="btn btn-primary" data-i18n="services.cta.email">Direkt per E-Mail anfragen</a>
                     <a href="#contact" class="btn btn-outline" data-i18n="services.cta.contact">Zum Kontakt</a>
@@ -1219,6 +1264,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js?v=20261021-lcp" defer></script>
+    <script src="assets/js/main.js?v=20261023-services" defer></script>
 </body>
 </html>
