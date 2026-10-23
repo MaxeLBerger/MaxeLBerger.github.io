@@ -654,34 +654,124 @@
                     </div>
                 </div>
 
-                <!-- Eigen 9: MemeCoinTrader (in Arbeit, noch ohne Screenshot) -->
-                <div class="hero-slide" id="slide-memecointrader" data-mode="own" data-theme="memecointrader" role="tabpanel" aria-labelledby="tab-memecointrader" aria-hidden="true" hidden>
+                <!-- Eigen 9a: Kundenkalender (Demo-Daten auf dem Screenshot, keine echten Kunden) -->
+                <div class="hero-slide" id="slide-kundenkalender" data-mode="own" data-theme="kundenkalender" role="tabpanel" aria-labelledby="tab-kundenkalender" aria-hidden="true" hidden>
                     <div class="slide-content">
                         <div class="slide-text">
                             <h2 class="slide-title">
-                                <span class="title-line" data-i18n="slide.memecointrader.t1">MemeCoinTrader.</span>
-                                <span class="title-line"><span class="gradient-text" data-i18n="slide.memecointrader.t2">Solana-Streams,</span></span>
-                                <span class="title-line" data-i18n="slide.memecointrader.t3">live ausgewertet.</span>
+                                <span class="title-line" data-i18n="slide.kundenkalender.t1">Kundenkalender.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.kundenkalender.t2">Eine EXE,</span></span>
+                                <span class="title-line" data-i18n="slide.kundenkalender.t3">kein Server.</span>
                             </h2>
-                            <p class="slide-description" data-i18n="slide.memecointrader.desc">Eine Java-Desktop-Anwendung, die WebSocket-Streams neuer Solana-Token einliest, Kandidaten über eine Score- und Regel-Engine bewertet und Orders über Jupiter-Quotes ausführt, standardmäßig im Papiermodus. Ein eigener Backtesting-Teil spielt aufgezeichnete Entscheidungen erneut ab und prüft sie mit Purged K-Fold und Deflated Sharpe auf Überanpassung.</p>
+                            <p class="slide-description" data-i18n="slide.kundenkalender.desc">Ein Kalender für Kundentermine, der komplett lokal läuft: eine einzige Windows-App von rund 3 MB, ohne Server, Account oder Internet. Monats-, Wochen- und Tagesansicht, Serientermine mit Ausnahmen, Drag-and-Drop, Tagebuch und Export als ICS, CSV und JSON. Der ganze Bestand liegt in einer lesbaren JSON-Datei, die so geschrieben wird, dass auch ein Absturz nichts kostet.</p>
                             <div class="slide-cta">
-                                <a href="#contact" class="btn btn-primary" data-i18n="slide.memecointrader.cta1">Ähnliches Projekt besprechen</a>
-                                <button type="button" class="btn btn-outline" disabled aria-disabled="true" data-i18n="slide.memecointrader.cta2">In Arbeit</button>
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.kundenkalender.cta1">Projekt anfragen</a>
                             </div>
                             <div class="slide-tags">
-                                <span class="slide-tag" data-i18n="slide.memecointrader.tag1">Java 21</span>
-                                <span class="slide-tag" data-i18n="slide.memecointrader.tag2">Solana RPC</span>
-                                <span class="slide-tag" data-i18n="slide.memecointrader.tag3">Backtesting</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag1">React 19</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag2">Tauri 2</span>
+                                <span class="slide-tag" data-i18n="slide.kundenkalender.tag3">Local-first</span>
                             </div>
                         </div>
                         <div class="slide-visual">
                             <div class="showcase-container">
-                                <div class="showcase-frame showcase-frame--mock" aria-hidden="true">
-                                    <div class="project-mock">
-                                        <span class="project-mock-line project-mock-line--lg"></span>
-                                        <span class="project-mock-line"></span>
-                                        <span class="project-mock-line project-mock-line--sm"></span>
-                                        <span class="project-mock-grid"></span>
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>
+                                    <span data-i18n="slide.kundenkalender.badge">DESKTOP APP</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">Kundenkalender.exe</span>
+                                    </div>
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" data-src="assets/img/projects/kundenkalender.webp" data-srcset="assets/img/projects/kundenkalender-800.webp 800w, assets/img/projects/kundenkalender-1200.webp 1200w, assets/img/projects/kundenkalender.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Kundenkalender: Monatsansicht mit farbigen Kundenterminen und Kundenliste in der Seitenleiste" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/kundenkalender-week.webp" data-srcset="assets/img/projects/kundenkalender-week-800.webp 800w, assets/img/projects/kundenkalender-week-1200.webp 1200w, assets/img/projects/kundenkalender-week.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 9b: reachlab (Bild zeigt Messwerte aus dem README des Projekts) -->
+                <div class="hero-slide" id="slide-reachlab" data-mode="own" data-theme="reachlab" role="tabpanel" aria-labelledby="tab-reachlab" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.reachlab.t1">reachlab.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.reachlab.t2">Was Reichweite</span></span>
+                                <span class="title-line" data-i18n="slide.reachlab.t3">wirklich bringt.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.reachlab.desc">Eine Pipeline, die Kurzvideos handwerklich vermisst, also Schnitt, Lautheit, Bild, gesprochenen und eingeblendeten Text, und das mit der tatsächlichen Reichweite auf TikTok und Instagram abgleicht. Jede Schwelle ist an Kontrollclips mit bekannter Antwort kalibriert, die Korrelation läuft mit Permutationstest und FDR-Korrektur. Der belastbarste Fund kommt aus einem kontrollierten Vergleich: dasselbe Video auf beiden Plattformen.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.reachlab.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag1">Python</span>
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag2">ffmpeg &amp; Whisper</span>
+                                <span class="slide-tag" data-i18n="slide.reachlab.tag3">Statistik</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+                                    <span data-i18n="slide.reachlab.badge">DATENANALYSE</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">reachlab report</span>
+                                    </div>
+                                    <div class="showcase-image-wrap">
+                                        <img data-src="assets/img/projects/reachlab.webp" data-srcset="assets/img/projects/reachlab-800.webp 800w, assets/img/projects/reachlab-1200.webp 1200w, assets/img/projects/reachlab.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="reachlab: Report mit Follower-Vergleich identischer Videos auf Instagram und TikTok und der Kalibrierung der Texterkennung" loading="lazy" decoding="async" width="1600" height="800">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eigen 9c: E46 in 3D (Blender-Renders aus dem Repo E46CustomZ) -->
+                <div class="hero-slide" id="slide-e46customz" data-mode="own" data-theme="e46customz" role="tabpanel" aria-labelledby="tab-e46customz" aria-hidden="true" hidden>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2 class="slide-title">
+                                <span class="title-line" data-i18n="slide.e46customz.t1">E46 in 3D.</span>
+                                <span class="title-line"><span class="gradient-text" data-i18n="slide.e46customz.t2">Nachgebaut</span></span>
+                                <span class="title-line" data-i18n="slide.e46customz.t3">in Originalmaßen.</span>
+                            </h2>
+                            <p class="slide-description" data-i18n="slide.e46customz.desc">Eine BMW E46 Limousine mit M Sportpaket II, in Blender aus Fotos rekonstruiert statt aus einem Herstellerscan. Die Karosserie stimmt in den Originalmaßen, dazu kommen ein bearbeitbarer M54B25-Motorraum mit animierter Haube, 13 Lackvarianten und 20 Zierleisten fürs Cockpit. Exportiert als GLB, als Grundlage für einen 3D-Showroom im Browser.</p>
+                            <div class="slide-cta">
+                                <a href="#contact" class="btn btn-primary" data-i18n="slide.e46customz.cta1">Projekt anfragen</a>
+                            </div>
+                            <div class="slide-tags">
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag1">Blender</span>
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag2">glTF / GLB</span>
+                                <span class="slide-tag" data-i18n="slide.e46customz.tag3">3D-Modellierung</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="showcase-container">
+                                <div class="showcase-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12"/><path d="M21 7l-9 5-9-5"/></svg>
+                                    <span data-i18n="slide.e46customz.badge">3D-MODELL</span>
+                                </div>
+                                <div class="showcase-frame">
+                                    <div class="browser-bar" aria-hidden="true">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="browser-url">BMW_E46_V4.blend</span>
+                                    </div>
+                                    <div class="showcase-image-wrap showcase-image-wrap--swap">
+                                        <img class="showcase-shot" data-src="assets/img/projects/e46customz-front.webp" data-srcset="assets/img/projects/e46customz-front-800.webp 800w, assets/img/projects/e46customz-front-1200.webp 1200w, assets/img/projects/e46customz-front.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="Blender-Rendering einer dunkelblauen BMW E46 Limousine mit M-Paket, Ansicht schräg von vorn" loading="lazy" decoding="async" width="1600" height="800">
+                                        <img class="showcase-shot showcase-shot--hover" data-src="assets/img/projects/e46customz-rear.webp" data-srcset="assets/img/projects/e46customz-rear-800.webp 800w, assets/img/projects/e46customz-rear-1200.webp 1200w, assets/img/projects/e46customz-rear.webp 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1240px) 55vw, 660px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1600" height="800">
                                     </div>
                                 </div>
                             </div>
@@ -879,20 +969,28 @@
                             <span class="project-pag-index" aria-hidden="true">08</span>
                             <span class="project-pag-name">Det. Review</span>
                         </button>
-                        <button id="tab-memecointrader" class="project-nav-btn project-pag-btn" data-mode="own" data-project="memecointrader" role="tab" aria-selected="false" aria-controls="slide-memecointrader" tabindex="-1" hidden>
+                        <button id="tab-kundenkalender" class="project-nav-btn project-pag-btn" data-mode="own" data-project="kundenkalender" role="tab" aria-selected="false" aria-controls="slide-kundenkalender" tabindex="-1">
                             <span class="project-pag-index" aria-hidden="true">09</span>
-                            <span class="project-pag-name">MemeCoinTrader</span>
+                            <span class="project-pag-name">Kundenkalender</span>
+                        </button>
+                        <button id="tab-reachlab" class="project-nav-btn project-pag-btn" data-mode="own" data-project="reachlab" role="tab" aria-selected="false" aria-controls="slide-reachlab" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">10</span>
+                            <span class="project-pag-name">reachlab</span>
+                        </button>
+                        <button id="tab-e46customz" class="project-nav-btn project-pag-btn" data-mode="own" data-project="e46customz" role="tab" aria-selected="false" aria-controls="slide-e46customz" tabindex="-1">
+                            <span class="project-pag-index" aria-hidden="true">11</span>
+                            <span class="project-pag-name">E46 in 3D</span>
                         </button>
                         <button id="tab-shookroko" class="project-nav-btn project-pag-btn" data-mode="own" data-project="shookroko" role="tab" aria-selected="false" aria-controls="slide-shookroko" tabindex="-1" hidden>
-                            <span class="project-pag-index" aria-hidden="true">10</span>
+                            <span class="project-pag-index" aria-hidden="true">12</span>
                             <span class="project-pag-name">Shookroko</span>
                         </button>
                         <button id="tab-medieval" class="project-nav-btn project-pag-btn" data-mode="own" data-project="medieval" role="tab" aria-selected="false" aria-controls="slide-medieval" tabindex="-1" hidden>
-                            <span class="project-pag-index" aria-hidden="true">11</span>
+                            <span class="project-pag-index" aria-hidden="true">13</span>
                             <span class="project-pag-name">Medieval TD</span>
                         </button>
                         <button id="tab-aicaptain" class="project-nav-btn project-pag-btn" data-mode="own" data-project="aicaptain" role="tab" aria-selected="false" aria-controls="slide-aicaptain" tabindex="-1" hidden>
-                            <span class="project-pag-index" aria-hidden="true">12</span>
+                            <span class="project-pag-index" aria-hidden="true">14</span>
                             <span class="project-pag-name">AI Captain</span>
                         </button>
                     </nav>

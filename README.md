@@ -68,7 +68,9 @@ Listed in slider order: projects people can open or play first, work without a p
 | DealHunter | Autonomous marketplace scanner | none |
 | Age of Max | Browser game | none |
 | Deterministische Review | Git review pipeline (developer tool) | none |
-| MemeCoinTrader | Java desktop trading app, in progress | none |
+| Kundenkalender | Local-first desktop calendar (Tauri); the screenshot uses invented demo data | none |
+| reachlab | Short-video analysis pipeline; the slide image is a rendered summary of the numbers in its README | none |
+| E46 in 3D | Blender reconstruction of a BMW E46 (repo E46CustomZ); Blender renders as slide images | none |
 | Shookroko | Browser game (Phaser 3) | [shookroko.html](projects/shookroko.html) |
 | Medieval Tower Defense | Browser game | none |
 | AI Captain | VS Code extension (AI agent) | [aicaptain.html](projects/aicaptain.html) |
