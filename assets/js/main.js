@@ -266,7 +266,6 @@
             'slide.invite.t1': 'Ihr Projekt.',
             'slide.invite.t2': 'Als Nächstes.',
             'slide.invite.t3': 'Hier.',
-            'slide.invite.badge': 'FREIER PLATZ',
             'slide.invite.desc': 'Drei Kundenprojekte zeigt diese Auswahl, echte Arbeit statt Musterseiten. Selbstständig bin ich seit dem 1. Oktober 2026, der Platz für das nächste Projekt ist frei. Ein kurzes Gespräch vorab klärt, ob es passt.',
             'slide.invite.cta1': 'Projekt besprechen',
             'slide.invite.tag1': 'Websites',
@@ -275,16 +274,10 @@
             'slide.invite.mock1': 'Platz für Ihr Projekt.',
             'slide.invite.mock2': 'Kein Platzhalter, ein freier Platz.',
             // About section (extra keys)
-            'about.available': 'Verfügbar für Projekte & Festanstellung',
-            'about.lead': 'Webentwickler & KI-Spezialist aus Bayern',
-            'about.h1': 'Moderne Technologien & AI-first',
-            'about.h2': 'Faire Preise & klare Kommunikation',
-            'about.h3': 'Von Konzept bis Go-Live aus einer Hand',
             'skills.row.web': 'Web, 3D & Games',
             'skills.row.ai': 'KI & Agents',
             'skills.row.eng': 'Sprachen & Tools',
             'skills.more': 'Außerdem im Einsatz',
-            'about.cta': 'Projekt besprechen',
         },
         en: {
             'slide.e46.badge': 'DESKTOP APP',
@@ -544,7 +537,6 @@
             'slide.invite.t1': 'Your project.',
             'slide.invite.t2': 'Up next.',
             'slide.invite.t3': 'Right here.',
-            'slide.invite.badge': 'OPEN SLOT',
             'slide.invite.desc': 'This selection shows three client projects, real work rather than sample pages. I have been self-employed since 1 October 2026, and the slot for the next project is open. A short conversation beforehand is enough to tell whether it is a fit.',
             'slide.invite.cta1': 'Let us talk',
             'slide.invite.tag1': 'Websites',
@@ -553,16 +545,10 @@
             'slide.invite.mock1': 'Room for your project.',
             'slide.invite.mock2': 'Not a placeholder, an open slot.',
             // About section (extra keys)
-            'about.available': 'Available for Projects & Employment',
-            'about.lead': 'Web Developer & AI Specialist from Bavaria',
-            'about.h1': 'Modern Technologies & AI-first',
-            'about.h2': 'Fair Prices & Clear Communication',
-            'about.h3': 'From Concept to Go-Live in One Hand',
             'skills.row.web': 'Web, 3D & Games',
             'skills.row.ai': 'AI & Agents',
             'skills.row.eng': 'Languages & Tools',
             'skills.more': 'Also in my toolbox',
-            'about.cta': 'Discuss Your Project',
         }
     };
 
