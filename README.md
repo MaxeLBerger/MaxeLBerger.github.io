@@ -27,7 +27,7 @@ The slider on the homepage runs in two modes, filtered through `data-mode` on bo
 `customers`: the mode button marked `is-active` and the pagination button marked `active` decide what shows at load.
 That slide is the only one whose screenshot uses a real `src`; every other slide carries `data-src` and loads on demand.
 
-The section header carries a `.section-note` line (`projects.note`): self-employed since 1 October 2026. Client slides
+The section header carries a `.section-note` line (`projects.note`): client projects are in progress or MVP and go live one by one. Client slides
 that are not live yet say "in Arbeit" and carry no launch date, so the page never shows a date that has already passed.
 
 Slide order: the pagination buttons in `index.html` are the single source of it. The slider pairs slides to buttons by
