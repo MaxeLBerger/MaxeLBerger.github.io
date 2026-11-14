@@ -605,8 +605,8 @@
 
     /* ═══ PROJECT THEME ═══ */
     /**
-     * The neutral `maxhaak` theme has no slide of its own, so anything that
-     * has to map it onto a slide falls back to the first project in the
+     * The `maxhaak` theme belongs to the invite slide; anything that has to
+     * map it onto a project slide falls back to the first project in the
      * pagination. Keep this in sync with the leading tab in index.html.
      */
     const FIRST_PROJECT_THEME = 'imkerei';
@@ -626,31 +626,52 @@
     /**
      * Theme controller: single source of truth for `data-project-theme`.
      *
-     * Two writers remain: the project slider (active slide → theme) and a
-     * scroll observer that resyncs to the active slide when the projects
-     * section enters the viewport. Writes are cached so an identical theme
-     * does not retrigger the CSS transitions on every theme-aware section.
+     * Three places carry the attribute, so blue and yellow never share a view:
+     *  - #hero is pinned to `haakly` (the shirt in the portrait) in the markup
+     *    and never changes.
+     *  - #projects always wears the theme of its active slide, so it arrives
+     *    already in its own colour as it scrolls up under the hero.
+     *  - <html> (navbar, services, contact, footer) is `haakly` until the top
+     *    of #projects has reached the bottom of the navbar, i.e. until the hero
+     *    is gone from the screen, and takes the slide's theme from then on.
+     *    Scrolling back above that line hands it back to `haakly`.
+     * Writes are cached so an identical theme does not retrigger the CSS
+     * transitions.
      */
     const themeController = (() => {
         const root = document.documentElement;
-        let currentTheme = root.getAttribute('data-project-theme') || 'maxhaak';
+        const BASE_THEME = 'haakly';
+        let currentTheme = root.getAttribute('data-project-theme') || BASE_THEME;
+        let wanted = currentTheme;
+        let engaged = false;
 
-        function setProjectTheme(theme, source) {
-            if (!theme) return;
-            if (theme !== currentTheme) {
-                currentTheme = theme;
-                root.setAttribute('data-project-theme', theme);
-            }
+        function paintRoot(theme) {
+            if (theme === currentTheme) return;
+            currentTheme = theme;
+            root.setAttribute('data-project-theme', theme);
             document.dispatchEvent(new CustomEvent('project-theme:change', {
-                detail: { theme, source },
+                detail: { theme },
             }));
         }
 
-        function getProjectTheme() {
-            return currentTheme;
+        function setProjectTheme(theme) {
+            if (!theme) return;
+            wanted = theme;
+            const projects = document.getElementById('projects');
+            if (projects && projects.getAttribute('data-project-theme') !== theme) {
+                projects.setAttribute('data-project-theme', theme);
+            }
+            if (engaged) paintRoot(theme);
         }
 
-        return { setProjectTheme, getProjectTheme };
+        // Called by the scroll watcher: true once the hero has scrolled out.
+        function setEngaged(flag) {
+            if (flag === engaged) return;
+            engaged = flag;
+            paintRoot(engaged ? wanted : BASE_THEME);
+        }
+
+        return { setProjectTheme, setEngaged };
     })();
 
     /* ═══ MOBILE MENU ═══ */
@@ -916,14 +937,14 @@
         setActiveSlide(index, options = {}) {
             if (index < 0 || index >= this.slides.length) return;
 
-            const { dispatchEvent = true, updateTheme = false, themeSource = 'slider' } = options;
+            const { dispatchEvent = true, updateTheme = false } = options;
             const activeSlide = this.slides[index];
             this.loadSlideMedia(activeSlide);
             this.preloadAround(index);
 
             if (updateTheme) {
                 const theme = activeSlide.getAttribute('data-theme');
-                if (theme) themeController.setProjectTheme(theme, themeSource);
+                if (theme) themeController.setProjectTheme(theme);
             }
 
             this.setActiveTab(index);
@@ -1213,7 +1234,7 @@
             // over a second later. settle() re-asserts the same theme, which
             // the controller treats as a no-op.
             const incomingTheme = newSlide.getAttribute('data-theme');
-            if (incomingTheme) themeController.setProjectTheme(incomingTheme, 'slider');
+            if (incomingTheme) themeController.setProjectTheme(incomingTheme);
 
             let settled = false;
             const settle = () => {
@@ -1224,7 +1245,7 @@
                     window.clearTimeout(this.animationGuardTimer);
                     this.animationGuardTimer = null;
                 }
-                this.setActiveSlide(index, { updateTheme: true, themeSource: 'slider' });
+                this.setActiveSlide(index, { updateTheme: true });
                 // Same task as the class change above, so no frame shows the
                 // slides between the animated and the settled state.
                 this.cancelSlideAnimations();
@@ -1390,28 +1411,31 @@
         blocks.forEach(el => observer.observe(el));
     }
 
-    /* When the projects section reaches the middle of the viewport on the way
-       down, align the global theme with the active slide. Going back up does
-       not reset anything: that used to clobber slide-derived themes. */
+    /* The page-wide theme (navbar and the sections below the projects) stays
+       blue until the hero has scrolled out from under the navbar, so the
+       fixed navbar never shows a project colour over the blue hero. The
+       projects section itself already wears its own colour (see the theme
+       controller), so nothing blue is left on screen when this flips. */
     function initProjectsThemeSync() {
         const projectsSection = document.querySelector('#projects');
-        if (!projectsSection || !('IntersectionObserver' in window)) return;
-        new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                // top < 0 means the section came in from above (scrolling up).
-                if (!entry.isIntersecting || entry.boundingClientRect.top < 0) return;
-                const activeSlide = projectsSection.querySelector('.hero-slide.active');
-                const activeTheme = activeSlide && activeSlide.getAttribute('data-theme');
-                const currentTheme = themeController.getProjectTheme();
-                const currentProjectTheme = currentTheme === 'maxhaak' ? FIRST_PROJECT_THEME : currentTheme;
-                const currentThemeHasSlide = Array.from(projectsSection.querySelectorAll('.hero-slide'))
-                    .filter(slide => !slide.hidden)
-                    .some(slide => slide.getAttribute('data-theme') === currentProjectTheme);
-
-                if (currentThemeHasSlide && activeTheme !== currentProjectTheme) return;
-                if (activeTheme) themeController.setProjectTheme(activeTheme, 'scroll');
-            });
-        }, { rootMargin: '-50% 0px -49% 0px' }).observe(projectsSection);
+        if (!projectsSection) return;
+        let queued = false;
+        const navbar = document.getElementById('navbar');
+        const sync = () => {
+            queued = false;
+            const navHeight = navbar ? navbar.offsetHeight : 0;
+            themeController.setEngaged(
+                projectsSection.getBoundingClientRect().top <= navHeight
+            );
+        };
+        const queue = () => {
+            if (queued) return;
+            queued = true;
+            requestAnimationFrame(sync);
+        };
+        window.addEventListener('scroll', queue, { passive: true });
+        window.addEventListener('resize', queue, { passive: true });
+        sync();
     }
 
     /* ═══ CONTACT FORM ═══ */

@@ -1148,6 +1148,28 @@ html[data-color-scheme="light"] #themeToggle .icon-moon {
     background: #080a12;
 }
 
+/* The hero is always the blue of the shirt in the portrait. Its own theme
+   attribute shadows the page-wide one, so it never changes while the page
+   theme flips to a project colour further down. #projects does the same with
+   the theme of its active slide. --accent and --on-accent are declared on
+   :root as var() and would otherwise arrive already resolved to the page
+   theme, so they are re-pointed here (dark values; light values below). */
+#hero[data-project-theme],
+#projects[data-project-theme] {
+    --accent: var(--theme-primary);
+    --on-accent: var(--theme-on-primary);
+}
+
+#hero[data-project-theme] {
+    --theme-on-primary: #0a0a0f;
+}
+
+html[data-color-scheme="light"] #hero[data-project-theme],
+html[data-color-scheme="light"] #projects[data-project-theme] {
+    --accent: var(--accent-ink);
+    --on-accent: #ffffff;
+}
+
 .hero-bg-slides {
     position: absolute;
     inset: 0;
