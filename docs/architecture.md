@@ -49,10 +49,10 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |---|---|---|
 | `data-color-scheme` | `dark` (default), `light` | `#themeToggle` button |
-| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider, scroll observer, color picker |
+| `data-project-theme` | `maxhaak`, `imkerei`, `coha`, `aicaptain`, `e46`, `soundoflvke`, `shookroko` | Slider (`#projects`), scroll watcher (`<html>`); `#hero` is pinned to `haakly` |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for
-`data-project-theme`. All callers go through `setProjectTheme(theme, source)`.
+`data-project-theme`. All callers go through `setProjectTheme(theme)`.
 Color-picker writes are persisted to `localStorage('themeColor')`; slider writes
 are not.
 
