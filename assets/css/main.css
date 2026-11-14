@@ -2561,15 +2561,104 @@ html[data-color-scheme="light"] .skills-section {
 .service-card:hover {
     border-color: rgba(var(--accent), 0.45);
 }
-.service-icon {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    background: rgba(var(--accent), 0.12);
-    color: rgb(var(--accent));
+/* ── Service illustrations ──────────────────────────────────────────────
+   Hand-drawn motifs on a 120 grid, same system as the senihelp24 art:
+   the classes say what a shape is, the tokens below say how it looks.
+     f = main fill, f2 = light fill (paper), a = warm accent, d = ink fill,
+     l = thin detail line, dash = dotted line, s = hatch shadow,
+     hl = marker stroke, blob = soft backdrop, star = sparkle.
+   Main and light fills mix --accent into the card colour, so the art
+   follows the scroll-driven project theme like the rest of the section.
+   The tokens live on the section because the hatch pattern (.ilu-defs)
+   sits outside the art and has to read them too. */
+.services-section {
+    --ilu-ink: #e6ebf4;
+    --ilu-main: rgba(var(--accent), 0.55);
+    --ilu-light: var(--color-bg-elevated);
+    --ilu-accent: #f5b84b;
 }
+@supports (color: color-mix(in srgb, red, blue)) {
+    .services-section {
+        --ilu-main: color-mix(in srgb, rgb(var(--accent)) 58%, var(--color-bg-card));
+        --ilu-light: color-mix(in srgb, rgb(var(--accent)) 12%, var(--color-bg-card));
+    }
+    html[data-color-scheme="light"] .services-section {
+        --ilu-main: color-mix(in srgb, rgb(var(--accent)) 42%, #ffffff);
+    }
+}
+html[data-color-scheme="light"] .services-section {
+    --ilu-ink: #0b1220;
+    --ilu-light: #ffffff;
+    --ilu-accent: #f2a93b;
+}
+.ilu-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.ilu-hatch-line {
+    stroke: var(--ilu-ink);
+    stroke-width: 1;
+    stroke-opacity: 0.7;
+}
+.service-art {
+    display: block;
+    flex-shrink: 0;
+    align-self: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-xs);
+    overflow: visible;
+}
+.service-art :is(.f, .f2, .a, .d, .l) { stroke: var(--ilu-ink); }
+.service-art .f { fill: var(--ilu-main); }
+.service-art .f2 { fill: var(--ilu-light); }
+.service-art .a { fill: var(--ilu-accent); }
+.service-art .d { fill: var(--ilu-ink); }
+.service-art .l { stroke-width: 1.5; }
+.service-art .dash { stroke-dasharray: 1 5; stroke-width: 2.4; }
+.service-art .s { fill: url(#ilu-hatch); stroke: none; }
+.service-art .star { stroke-width: 1.2; }
+.service-art .blob {
+    fill: rgba(var(--accent), 0.1);
+    stroke: none;
+}
+.service-art .hl {
+    stroke: var(--ilu-accent);
+    stroke-width: 6;
+    stroke-opacity: 0.85;
+}
+/* Cursor inverts the ink so it reads on any fill below it. */
+.service-art .cursor {
+    fill: var(--ilu-ink);
+    stroke: var(--color-bg-card);
+    stroke-width: 1.6;
+}
+
+/* Small hover moments, transform only: the cursor clicks, the toggle
+   switches on, the gear turns. */
+.service-art :is(.cursor, .knob, .gear) {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+.service-art .gear { transition-duration: 900ms; }
+.service-card:hover .cursor { transform: translate(-2px, -3px); }
+.service-card:hover .knob { transform: translateX(7px); }
+.service-card:hover .gear { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) {
+    .service-art :is(.cursor, .knob, .gear) { transition: none; }
+}
+/* Art, title, lead and meta sit on the card's centre line; the check list
+   stays left-aligned (as a centred block) because ragged centred bullets
+   are hard to scan. */
+.service-title,
+.service-desc,
+.service-meta {
+    text-align: center;
+}
+.service-desc { text-wrap: balance; }
 .service-title {
     margin: 0;
     font-size: var(--font-size-xl);
@@ -2583,6 +2672,7 @@ html[data-color-scheme="light"] .skills-section {
 }
 .service-list {
     display: grid;
+    align-self: center;
     gap: var(--space-sm);
     margin: 0;
     padding: 0;
@@ -2627,6 +2717,10 @@ html[data-color-scheme="light"] .skills-section {
 @media (max-width: 560px) {
     .service-card {
         padding: var(--space-lg);
+    }
+    .service-art {
+        width: 104px;
+        height: 104px;
     }
 }
 .contact-form-note {
