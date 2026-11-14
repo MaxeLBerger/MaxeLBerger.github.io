@@ -2650,6 +2650,15 @@ html[data-color-scheme="light"] .services-section {
 @media (prefers-reduced-motion: reduce) {
     .service-art :is(.cursor, .knob, .gear) { transition: none; }
 }
+/* Art, title, lead and meta sit on the card's centre line; the check list
+   stays left-aligned (as a centred block) because ragged centred bullets
+   are hard to scan. */
+.service-title,
+.service-desc,
+.service-meta {
+    text-align: center;
+}
+.service-desc { text-wrap: balance; }
 .service-title {
     margin: 0;
     font-size: var(--font-size-xl);
@@ -2663,6 +2672,7 @@ html[data-color-scheme="light"] .services-section {
 }
 .service-list {
     display: grid;
+    align-self: center;
     gap: var(--space-sm);
     margin: 0;
     padding: 0;
