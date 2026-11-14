@@ -27,12 +27,12 @@ The slider on the homepage runs in two modes, filtered through `data-mode` on bo
 `customers`: the mode button marked `is-active` and the pagination button marked `active` decide what shows at load.
 That slide is the only one whose screenshot uses a real `src`; every other slide carries `data-src` and loads on demand.
 
-The section header carries a `.section-note` line (`projects.note`): self-employed since 1 October 2026. Client slides
+The section header carries a `.section-note` line (`projects.note`): client projects are in progress or MVP and go live one by one. Client slides
 that are not live yet say "in Arbeit" and carry no launch date, so the page never shows a date that has already passed.
 
 Slide order: the pagination buttons in `index.html` are the single source of it. The slider pairs slides to buttons by
 `data-project`, so moving a project means moving its button (the slide blocks follow the same order for readability).
-`FIRST_PROJECT_THEME` in `assets/js/main.js` resolves the neutral `maxhaak` theme onto the leading project,
+`FIRST_PROJECT_THEME` in `assets/js/main.js` maps the invite slide's `maxhaak` theme onto the leading project,
 so it has to name the first client project.
 
 Own projects without a public link use "Ähnliches Projekt besprechen" (to `#contact`), client slides without a live
@@ -202,7 +202,7 @@ Full rules in [`.github/copilot-instructions.md`](.github/copilot-instructions.m
 - **No em dash and no en dash** anywhere in this repository, in any file type. Use a colon, comma, parentheses, semicolon or a separate sentence. Plain hyphens in compound words and ranges are fine.
 - **Images:** convert to WebP first, keep each file at or below 600 KB, otherwise CI fails.
 - **i18n:** every visible string uses `data-i18n="key"`; keep `translations.de` and `translations.en` in [assets/js/main.js](assets/js/main.js) at identical key sets.
-- **Theming:** `data-color-scheme` (light/dark) and `data-project-theme` (per-project palette) on `<html>`. The only writer is `themeController` in [assets/js/main.js](assets/js/main.js); the project palette follows the active slide.
+- **Theming:** `data-color-scheme` (light/dark) and `data-project-theme` (per-project palette) on `<html>`. The only writer is `themeController` in [assets/js/main.js](assets/js/main.js). `#hero` is pinned to `haakly` (the shirt blue), `#projects` wears the theme of its active slide, and `<html>` stays `haakly` until the hero has scrolled out from under the navbar, then follows the slide.
 - **Accent tokens:** never write `rgb(var(--theme-primary))` in a rule. Use `rgb(var(--accent))` for anything that carries meaning (text, border, filled surface) and `var(--on-accent)` for the text on a filled surface. `--accent` resolves to `--theme-primary` in dark mode and to `--accent-ink` in light mode, the darkened variant of the same hue that each `[data-project-theme]` block carries. The one exception is the transparent navbar over the hero on phones, where the ground is the dark photo in both schemes: there the logo and the icon buttons set `--accent` to `--accent-bright`, so "Haak" and the focus rings on the photo take the lightened step of the same hue that each theme block also carries (same OKLCH hue, lightness raised to a relative luminance of 0.46), because the theme colour itself sat between 1.0:1 and 2.8:1 on the wood. The menu panel keeps the accent of its scheme. That rule lives in the 768 px block of [assets/css/main.css](assets/css/main.css). Reason for the ramps: the project palettes are tuned for a dark ground, and 11 of 14 fell below 4.5:1 on the light page, 7 of them below 3:1 even as a button surface.
 - **Contrast:** run `node tools/contrast-audit.mjs` against a local server before shipping colour work. It measures every visible element across all pages, both schemes and all 14 project themes, and exits non-zero on anything below 4.5:1 (3:1 for large text). It only stacks background colours, so it cannot see text over the hero photo: measure that against the real pixels in headless Edge (hide the text, screenshot, compare the text colour with every pixel of its box, and take the 3rd percentile as the worst case). [tools/pixel-contrast/](tools/pixel-contrast/) does that for you.
 - **No inline `style="..."`** for state, use CSS classes (`.is-success`, `.is-error`, `.active` and so on).

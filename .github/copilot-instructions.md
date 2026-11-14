@@ -256,10 +256,10 @@ Two independent attributes on `<html>`:
 | Attribute | Values | Controlled by |
 |-----------|--------|---------------|
 | `data-color-scheme` | `dark` (default), `light` | Theme toggle button (`#themeToggle`) |
-| `data-project-theme` | one per project slide: `e46`, `aicaptain`, `albert`, `medieval`, `shookroko`, `dogkennel`, `imkerei`, `coha`, `danielbrecheis`, `kayaseeds`, `jkentertainment`, `soundoflvke`, `senihelp24` | Slider and scroll observer |
+| `data-project-theme` | one per project slide: `e46`, `aicaptain`, `albert`, `medieval`, `shookroko`, `dogkennel`, `imkerei`, `coha`, `danielbrecheis`, `kayaseeds`, `jkentertainment`, `soundoflvke`, `senihelp24` | Slider (`#projects`) and scroll watcher (`<html>`); `#hero` is pinned to `haakly` |
 
 The `themeController` IIFE in `assets/js/main.js` is the **single writer** for `data-project-theme`. All callers go
-through `setProjectTheme(theme, source)`.
+through `setProjectTheme(theme)`.
 
 The manual color picker in the navbar was removed, along with its popover, its swatches and its
 `localStorage('themeColor')` persistence. The project palette now follows the active slide only. Do not reintroduce
